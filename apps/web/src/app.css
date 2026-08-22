@@ -1,0 +1,147 @@
+.shell {
+  display: grid;
+  grid-template-columns: var(--rail) 1fr var(--drawer);
+  grid-template-rows: var(--bar) 1fr;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Top Signal Bar ─────────────────────────────── */
+.bar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0 20px;
+  background: var(--carbon);
+  border-bottom: 1px solid var(--steel-800);
+}
+.brand { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; }
+.brand b { font-weight: 500; }
+.brand span { color: var(--electric-yellow); }
+.bar .screen {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em;
+  color: var(--electric-yellow); text-transform: uppercase;
+}
+.bar .spacer { flex: 1; }
+
+.state { display: flex; align-items: center; gap: 7px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success-green); }
+.dot.observing { background: var(--signal-cyan); }
+.dot.off { background: var(--alert-red); }
+
+.blackout-btn {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  background: transparent; color: var(--alert-red);
+  border: 1px solid rgba(239, 87, 78, 0.35);
+  padding: 5px 11px; cursor: pointer; text-transform: uppercase;
+}
+.blackout-btn:hover { background: rgba(239, 87, 78, 0.09); }
+.blackout-btn.armed { background: var(--alert-red); color: var(--void-950); }
+
+/* ── Left Rail ──────────────────────────────────── */
+.rail {
+  background: var(--carbon);
+  border-inline-end: 1px solid var(--steel-800);
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: 14px; gap: 4px;
+}
+.rail button {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  background: transparent; border: 0; cursor: pointer;
+  color: var(--dust); border-inline-start: 2px solid transparent;
+}
+.rail button:hover { color: var(--bone-100); }
+.rail button[aria-current="true"] {
+  color: var(--electric-yellow);
+  border-inline-start-color: var(--electric-yellow);
+  background: rgba(242, 201, 76, 0.05);
+}
+
+/* ── Main Stage ─────────────────────────────────── */
+.stage { overflow-y: auto; padding: 26px 30px 40px; }
+.stage h1 {
+  font-family: var(--ui); font-size: 26px; font-weight: 600;
+  letter-spacing: -0.01em; margin: 0 0 2px;
+}
+.stage .sub { color: var(--muted-400); font-size: 13px; margin-bottom: 26px; }
+
+.section { margin-bottom: 30px; }
+.section > .label { display: block; margin-bottom: 11px; }
+
+/* ── Evidence card, not widget — Expansion §32.2 ── */
+.sig {
+  background: var(--graphite-900);
+  border: 1px solid var(--steel-800);
+  border-inline-start: 2px solid var(--steel-800);
+  padding: 15px 17px;
+  margin-bottom: 9px;
+}
+.sig.tier-interrupt { border-inline-start-color: var(--alert-red); }
+.sig.tier-window    { border-inline-start-color: var(--electric-yellow); }
+.sig.tier-nudge     { border-inline-start-color: var(--electric-yellow); }
+.sig.tier-inbox     { border-inline-start-color: var(--signal-cyan); opacity: 0.82; }
+.sig.tier-whisper   { border-inline-start-color: var(--dust); opacity: 0.7; }
+
+.sig-top {
+  display: flex; align-items: baseline; gap: 10px;
+  margin-bottom: 6px; flex-wrap: wrap;
+}
+.sig h3 { font-size: 15px; font-weight: 600; margin: 0; flex: 1; min-width: 220px; }
+.tag {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 2px 6px;
+  border: 1px solid var(--steel-800); color: var(--dust);
+}
+.tag.rel { color: var(--signal-cyan); border-color: rgba(56, 215, 223, 0.3); }
+
+.why { color: var(--muted-400); font-size: 13px; margin: 0 0 10px; }
+
+.move {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--electric-yellow); font-size: 13px; margin-bottom: 10px;
+}
+.move::before { content: "◈"; font-size: 10px; }
+
+.ev { border-top: 1px solid var(--steel-800); padding-top: 9px; }
+.ev-row {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px;
+  color: var(--dust); padding: 2px 0;
+}
+.ev-row .m { font-size: 8px; }
+.ev-row .m.observed { color: var(--signal-cyan); }
+.ev-row .m.inferred { color: var(--evidence-paper); }
+.ev-row a { color: var(--signal-cyan); text-decoration: none; }
+.ev-row a:hover { text-decoration: underline; }
+
+/* ── Silence is a success state, not an empty one ── */
+.silent {
+  border: 1px dashed var(--steel-800);
+  padding: 30px; text-align: center; color: var(--muted-400);
+}
+.silent strong { display: block; color: var(--bone-100); font-size: 15px; margin-bottom: 5px; }
+
+/* ── Right drawer — HANDLER BRIEF ───────────────── */
+.drawer {
+  background: var(--carbon);
+  border-inline-start: 1px solid var(--steel-800);
+  padding: 22px 20px; overflow-y: auto;
+}
+.brief { margin-bottom: 24px; }
+.brief > .label { display: block; margin-bottom: 7px; }
+.brief p { margin: 0; font-size: 13px; color: var(--bone-100); }
+.brief ul { margin: 0; padding-inline-start: 16px; font-size: 12.5px; color: var(--muted-400); }
+
+/* أهم سطر في التصميم كله — يحوّل الإحساس من مراقَب إلى مسيطِر */
+.not-accessed { color: var(--dust); }
+.not-accessed li::marker { color: var(--alert-red); }
+
+.meter { height: 3px; background: var(--steel-800); margin-top: 7px; }
+.meter i { display: block; height: 100%; background: var(--signal-cyan); }
+
+.budget { display: flex; gap: 5px; margin-top: 8px; }
+.budget i { width: 22px; height: 3px; background: var(--steel-800); }
+.budget i.spent { background: var(--electric-yellow); }

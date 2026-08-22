@@ -1,0 +1,19 @@
+{
+  "name": "gonaim-os",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @gonaim/web",
+    "build": "npm run build -w @gonaim/web",
+    "test": "vitest run",
+    "typecheck": "tsc -b --force"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  }
+}

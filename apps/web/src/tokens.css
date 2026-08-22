@@ -1,0 +1,71 @@
+/* Design tokens — Blueprint §25.2, Expansion §33
+   الأصفر هو هوية غنيم. بدونه تصبح الشاشة زرقاء عامة.
+   الأحمر إشارة نادرة، لا لون زخرفي. */
+:root {
+  --void-950:        #050606;
+  --carbon:          #080B0C;
+  --graphite-900:    #0B0E10;
+  --steel-800:       #161B1E;
+  --gunmetal:        #141A1C;
+  --bone-100:        #F1EEE6;
+  --muted-400:       #899397;
+  --dust:            #7E898D;
+  --signal-cyan:     #38D7DF;
+  --electric-yellow: #F2C94C;
+  --alert-red:       #EF574E;
+  --success-green:   #35C78A;
+  --evidence-paper:  #B9AD91;
+
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --ar:   "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --ui:   "Inter", system-ui, sans-serif;
+
+  --rail: 72px;
+  --bar:  52px;
+  --drawer: 400px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; margin: 0; }
+
+body {
+  background: var(--void-950);
+  color: var(--bone-100);
+  font-family: var(--ar);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Film grain خفيف جدًا على الخلفية فقط — §25.3 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* الـIDs وأسماء الأدوات تبقى LTR داخل نص عربي — §25.4 */
+.ltr { direction: ltr; unicode-bidi: isolate; font-family: var(--mono); }
+
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+.label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dust);
+}
+
+/* Reduced motion يقدم تجربة كاملة، لا منقوصة — §37.2 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
