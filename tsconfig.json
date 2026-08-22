@@ -1,7 +1,14 @@
 {
   "files": [],
   "references": [
-    { "path": "./packages/domain" },
-    { "path": "./packages/rules" }
+    {
+      "path": "./packages/domain"
+    },
+    {
+      "path": "./packages/rules"
+    },
+    {
+      "path": "./packages/intake"
+    }
   ]
 }

@@ -145,3 +145,69 @@
 .budget { display: flex; gap: 5px; margin-top: 8px; }
 .budget i { width: 22px; height: 3px; background: var(--steel-800); }
 .budget i.spent { background: var(--electric-yellow); }
+
+/* ── DEAD DROP — المدخل ──────────────────────────── */
+.capture {
+  position: fixed; inset-block-start: var(--bar); inset-inline: 0;
+  z-index: 20; margin: 0 auto; max-width: 900px;
+  background: var(--graphite-900);
+  border: 1px solid var(--steel-800);
+  border-block-start: 2px solid var(--electric-yellow);
+  padding: 18px 20px 20px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.7);
+  max-height: calc(100vh - var(--bar) - 40px); overflow-y: auto;
+}
+.capture-head { display: flex; align-items: center; margin-bottom: 12px; }
+.capture-head .label { flex: 1; }
+.capture-head .x {
+  background: transparent; border: 0; color: var(--dust);
+  cursor: pointer; font-size: 15px;
+}
+.capture textarea {
+  width: 100%; background: var(--void-950); color: var(--bone-100);
+  border: 1px solid var(--steel-800); padding: 12px 14px;
+  font-family: var(--ar); font-size: 14px; line-height: 1.7; resize: vertical;
+}
+.capture textarea:focus { outline: 0; border-color: var(--signal-cyan); }
+.capture textarea::placeholder { color: #4A5254; }
+
+.capture-actions {
+  display: flex; align-items: center; gap: 12px; margin-top: 12px;
+}
+.capture-actions .label { flex: 1; }
+button.primary {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 8px 16px; cursor: pointer;
+  background: var(--electric-yellow); color: var(--void-950); border: 0;
+}
+button.primary:disabled { background: var(--steel-800); color: var(--dust); cursor: not-allowed; }
+
+.capture-error {
+  margin-top: 14px; padding: 13px 15px;
+  border: 1px solid rgba(239,87,78,.3); background: rgba(239,87,78,.05);
+}
+.capture-error strong { display: block; color: var(--alert-red); font-size: 13px; }
+.capture-error p { margin: 5px 0 0; font-size: 13px; color: var(--muted-400); }
+
+.review { margin-top: 18px; }
+.review > .label { display: block; margin-bottom: 10px; }
+
+.cand {
+  display: flex; gap: 11px; align-items: flex-start;
+  background: var(--carbon); border: 1px solid var(--steel-800);
+  border-inline-start: 2px solid var(--steel-800);
+  padding: 11px 14px; margin-bottom: 7px; cursor: pointer;
+}
+.cand.on { border-inline-start-color: var(--success-green); }
+.cand input { margin-top: 4px; accent-color: var(--success-green); }
+.cand > div { flex: 1; }
+.cand-top { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.cand-top strong { font-size: 14px; }
+.cand-ev {
+  margin-top: 5px; font-size: 12px; color: var(--evidence-paper);
+  border-inline-start: 1px solid var(--steel-800); padding-inline-start: 9px;
+}
+.unresolved { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--steel-800); }
+
+/* أوامر الشِل والمسارات تُنسخ كما هي — لا تحويل حالة داخل .label */
+.label .ltr { text-transform: none; letter-spacing: 0; }

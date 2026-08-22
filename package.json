@@ -10,9 +10,12 @@
     "dev": "npm run dev -w @gonaim/web",
     "build": "npm run build -w @gonaim/web",
     "test": "vitest run",
-    "typecheck": "tsc -b --force"
+    "typecheck": "tsc -b --force",
+    "dev:api": "npm run dev -w @gonaim/api"
   },
   "devDependencies": {
+    "@types/node": "^26.2.0",
+    "tsx": "^4.23.12",
     "typescript": "^5.6.3",
     "vitest": "^2.1.8"
   }

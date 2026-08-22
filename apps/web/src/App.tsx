@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { ALL_RULES, runRules } from "@gonaim/rules";
 import { snapshot } from "./seed.js";
 import { SignalCard } from "./SignalCard.js";
+import { Capture } from "./Capture.js";
 import "./tokens.css";
 import "./app.css";
 
@@ -11,6 +12,7 @@ export default function App() {
   const [blackout, setBlackout] = useState(false);
   const [quiet, setQuiet] = useState(false);
   const [seen] = useState<ReadonlySet<string>>(new Set());
+  const [capturing, setCapturing] = useState(false);
 
   const result = useMemo(
     () => runRules(ALL_RULES, { snapshot, alreadySurfaced: seen },
@@ -33,6 +35,11 @@ export default function App() {
           <i className={`dot ${blackout ? "off" : "observing"}`} />
           <span className="label">{blackout ? "local only" : "observing"}</span>
         </div>
+        <button className="blackout-btn"
+                style={{ color: "var(--electric-yellow)", borderColor: "rgba(242,201,76,.35)" }}
+                onClick={() => setCapturing(true)}>
+          capture
+        </button>
         <span className="label mono">09:42:17</span>
         <button
           className={`blackout-btn ${blackout ? "armed" : ""}`}
@@ -145,6 +152,8 @@ export default function App() {
           </button>
         </div>
       </aside>
+
+      {capturing && <Capture today={snapshot.today} onClose={() => setCapturing(false)} />}
     </div>
   );
 }
