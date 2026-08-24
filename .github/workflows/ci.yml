@@ -60,12 +60,16 @@ jobs:
           psql -v ON_ERROR_STOP=1 -c "create or replace function auth.uid() returns uuid
             language sql stable as \$\$ select '00000000-0000-0000-0000-000000000001'::uuid \$\$;"
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+
+      # عبر المشغّل نفسه الذي يستخدمه التطبيق، لا حلقة psql. حلقة psql
+      # تعمل بـautocommit لكل جملة فتخفي أخطاء لا تظهر إلا داخل معاملة.
       - name: Apply migrations
-        run: |
-          for f in supabase/migrations/*.sql; do
-            echo "→ $f"
-            psql -v ON_ERROR_STOP=1 -f "$f"
-          done
+        run: npx tsx scripts/migrate.mts
 
       # الأهم: القواعد الحاكمة قيود في القاعدة، لا اتفاق مكتوب.
       # نتحقق من أسماء القيود التي أُطلقت، لا من عدد الأخطاء — العدّ يتغير
@@ -94,3 +98,9 @@ jobs:
 
       - name: Life rules
         run: psql -v ON_ERROR_STOP=1 -f supabase/tests/0002_life_rules_test.sql
+
+      # الدورة كاملة: هجرة ← حفظ ← قراءة ← قواعد، على قاعدة حقيقية
+      - name: Round-trip
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/gonaim_test
+        run: npx vitest run packages/db

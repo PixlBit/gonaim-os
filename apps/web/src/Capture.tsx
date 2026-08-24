@@ -1,10 +1,11 @@
 import { useState } from "react";
 import type { Candidate } from "@gonaim/intake";
 
-const API = "http://localhost:8787/api/extract";
+const API = "http://localhost:8787/api";
 
 interface Extraction {
   candidates: Candidate[];
+  redactionCount?: number;
   unresolved: { text: string; whyUnresolved: string }[];
   rejectedCount: number;
 }
@@ -21,7 +22,9 @@ const KIND_LABEL: Record<Candidate["kind"], string> = {
   obligation: "التزام", possession: "مقتنى",
 };
 
-export function Capture({ today, onClose }: { today: string; onClose: () => void }) {
+export function Capture({ today, onClose, onSaved }: {
+  today: string; onClose: () => void; onSaved: () => void;
+}) {
   const [text, setText] = useState("");
   const [state, setState] = useState<State>({ phase: "idle" });
   const [accepted, setAccepted] = useState<Set<number>>(new Set());
@@ -30,7 +33,7 @@ export function Capture({ today, onClose }: { today: string; onClose: () => void
     if (!text.trim()) return;
     setState({ phase: "extracting" });
     try {
-      const res = await fetch(API, {
+      const res = await fetch(`${API}/extract`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ text, today }),
@@ -53,6 +56,31 @@ export function Capture({ today, onClose }: { today: string; onClose: () => void
         message: "تعذّر الوصول إلى الخادم المحلي على 8787 — إمّا أنه لا يعمل، أو أن أصل الصفحة غير مسموح به.",
         hint: "start_server",
       });
+    }
+  }
+
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+
+  async function save() {
+    if (state.phase !== "review" || accepted.size === 0) return;
+    setSaving(true);
+    setSaveError(null);
+    try {
+      const chosen = state.data.candidates.filter((_, i) => accepted.has(i));
+      const res = await fetch(`${API}/commit`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ candidates: chosen, redactedCount: state.data.redactionCount ?? 0 }),
+      });
+      const body = await res.json();
+      if (!res.ok) { setSaveError(body.message ?? body.error ?? "فشل الحفظ"); return; }
+      onSaved();
+      onClose();
+    } catch {
+      setSaveError("تعذّر الوصول إلى الخادم أثناء الحفظ.");
+    } finally {
+      setSaving(false);
     }
   }
 
@@ -133,12 +161,14 @@ export function Capture({ today, onClose }: { today: string; onClose: () => void
             </div>
           )}
 
+          {saveError && <div className="capture-error"><strong>لم يُحفظ</strong><p>{saveError}</p></div>}
+
           <div className="capture-actions">
             <span className="label">
               {state.data.rejectedCount > 0 && `${state.data.rejectedCount} مرشح رُفض لعدم استناده لنصك`}
             </span>
-            <button className="primary" disabled={accepted.size === 0}>
-              احفظ {accepted.size} مؤكَّدًا
+            <button className="primary" onClick={save} disabled={accepted.size === 0 || saving}>
+              {saving ? "يحفظ…" : `احفظ ${accepted.size} مؤكَّدًا`}
             </button>
           </div>
         </div>

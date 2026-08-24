@@ -12,6 +12,9 @@
     },
     {
       "path": "./packages/intake"
+    },
+    {
+      "path": "./packages/db"
     }
   ]
 }

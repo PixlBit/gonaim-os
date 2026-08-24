@@ -20,6 +20,24 @@ GONAIM//OS = Private Web OS + Browser Companion + Cloud Intelligence
 
 ---
 
+## التشغيل
+
+```bash
+npm ci
+cp .env.example .env          # اضبط DATABASE_URL و ANTHROPIC_API_KEY
+
+createdb gonaim
+npm run migrate               # هجرات مرتّبة، مرة واحدة، بمجموع تحقّق
+
+npm run dev:api               # الخادم — المفتاح يعيش هنا وحده
+npm run dev                   # الواجهة
+```
+
+التحقق الكامل: `npm run ci` — أنواع، ٦٦ اختبارًا، بناء، وفحص أسرار في المخرَج.
+اختبارات القاعدة تحتاج `DATABASE_URL` وتُتخطّى بدونه.
+
+---
+
 ## حالة المستودع
 
 المرحلة الحالية هي **المخرجات السبعة** التي يشترطها الـMaster Blueprint §42
@@ -30,7 +48,7 @@ GONAIM//OS = Private Web OS + Browser Companion + Cloud Intelligence
 | 1 | Architecture decision records | [`docs/architecture/adr/`](docs/architecture/adr/) — ٩ قرارات |
 | 2 | Data sensitivity map | [`docs/security/data-sensitivity-map.md`](docs/security/data-sensitivity-map.md) |
 | 3 | Event taxonomy | [`docs/architecture/event-taxonomy.md`](docs/architecture/event-taxonomy.md) |
-| 4 | Database schema | [`supabase/migrations/0001_init.sql`](supabase/migrations/0001_init.sql) — مطبَّقة ومختبَرة |
+| 4 | Database schema | [`supabase/migrations/`](supabase/migrations/) — مطبَّقة ومختبَرة، بمشغّل هجرات |
 | 5 | Tool permission matrix | [`docs/security/tool-permission-matrix.md`](docs/security/tool-permission-matrix.md) |
 | 6 | Wireframe inventory | [`docs/design/wireframe-inventory.md`](docs/design/wireframe-inventory.md) |
 | 7 | Vertical slice plan | [`docs/product/vertical-slice-plan.md`](docs/product/vertical-slice-plan.md) |
@@ -73,6 +91,20 @@ JUDGMENT →  CORTEX: متى يصمت · متى يقترح · متى يحتاج 
 الحكم في §43: لو نجحت الطبقات الثلاث، تتحول الواجهات التخيلية من صور جميلة
 إلى نظام شخصي حقيقي. ولو بدأ البناء من الأنيميشن قبل نموذج الذاكرة والأحداث،
 يخرج Demo جميل بلا عقل.
+
+---
+
+## ما هو مبنيّ الآن
+
+| الحزمة | الدور |
+| --- | --- |
+| `packages/domain` | الأنواع ومناطق الحساسية |
+| `packages/security` | التنقيح — طبقتان، لا يُبطَّل بإعداد |
+| `packages/rules` | ثماني قواعد حتمية + بوابة التسجيل + ميزانية المقاطعة |
+| `packages/intake` | تطبيع، حل تواريخ، استخلاص، بوابة ربط المصدر |
+| `packages/db` | مشغّل هجرات، حفظ، قراءة، سجل تدقيق |
+| `apps/api` | بوابة محلية — المفتاح لا يغادرها |
+| `apps/web` | DOSSIER والمدخل |
 
 ---
 

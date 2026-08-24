@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@gonaim/intake": "*",
-    "@anthropic-ai/sdk": "^0.120.0"
+    "@anthropic-ai/sdk": "^0.120.0",
+    "@gonaim/db": "*",
+    "@gonaim/rules": "*"
   }
 }
