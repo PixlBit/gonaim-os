@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  code:
+    name: types · tests · bundle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npx tsc -b --force
+      - name: Tests
+        run: npx vitest run
+      - name: Build web
+        run: npm run build
+      # ADR-0006: المفاتيح لا تصل إلى العميل. هذا ما يجعل المنع قابلًا للإثبات.
+      - name: No secrets in bundle
+        run: node scripts/scan-bundle.mjs
+
+  schema:
+    name: migrations · constraints
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: gonaim_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      PGDATABASE: gonaim_test
+    steps:
+      - uses: actions/checkout@v4
+
+      # Supabase تقدّم auth.uid()؛ هنا نوفّرها كبديل حتى تُختبر سياسات RLS
+      - name: Auth shim
+        run: |
+          psql -v ON_ERROR_STOP=1 -c "create schema if not exists auth;"
+          psql -v ON_ERROR_STOP=1 -c "create or replace function auth.uid() returns uuid
+            language sql stable as \$\$ select '00000000-0000-0000-0000-000000000001'::uuid \$\$;"
+
+      - name: Apply migrations
+        run: |
+          for f in supabase/migrations/*.sql; do
+            echo "→ $f"
+            psql -v ON_ERROR_STOP=1 -f "$f"
+          done
+
+      # الأهم: القواعد الحاكمة قيود في القاعدة، لا اتفاق مكتوب.
+      # نتحقق من أسماء القيود التي أُطلقت، لا من عدد الأخطاء — العدّ يتغير
+      # مع ترتيب التشغيل وأي سطر تهيئة، فيمرّ أو يفشل لأسباب لا علاقة لها
+      # بالأمان. الاسم يثبت أن القيد المقصود تحديدًا هو ما رفض.
+      - name: Constraint tests
+        run: |
+          out=$(psql -f supabase/tests/0001_constraints_test.sql 2>&1)
+          echo "$out"
+          fail=0
+          for c in observed_has_no_confidence \
+                   inferred_has_confidence \
+                   events_fingerprint_idx \
+                   sensitive_has_no_cloud_embedding \
+                   must_bind_something \
+                   hard_ceiling_on_dangerous_tools \
+                   no_self_relation; do
+            if ! echo "$out" | grep -q "$c"; then
+              echo "::error::القيد $c لم يرفض شيئًا — ثغرة في نموذج الأمان"
+              fail=1
+            fi
+          done
+          # وحالات القبول: معادلة XP تُحسب في القاعدة
+          echo "$out" | grep -q "288" || { echo "::error::حساب XP لم ينتج القيمة المتوقعة"; fail=1; }
+          exit $fail
+
+      - name: Life rules
+        run: psql -v ON_ERROR_STOP=1 -f supabase/tests/0002_life_rules_test.sql

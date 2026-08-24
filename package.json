@@ -11,7 +11,9 @@
     "build": "npm run build -w @gonaim/web",
     "test": "vitest run",
     "typecheck": "tsc -b --force",
-    "dev:api": "npm run dev -w @gonaim/api"
+    "dev:api": "npm run dev -w @gonaim/api",
+    "scan": "node scripts/scan-bundle.mjs",
+    "ci": "npx tsc -b --force && npx vitest run && npm run build && npm run scan"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",

@@ -49,6 +49,44 @@ describe("رسالة الطلب", () => {
   });
 });
 
+describe("التنقيح قبل النموذج", () => {
+  const DIRTY = "مشترك في OpenAI بـ٧٥ ريال، والمفتاح sk-ant-api03-AAAAAAAAAAAAAAAAAAAA وحوّلت على SA0380000000608010167519 لـlayla@studio.sa";
+
+  it("لا سر ولا IBAN ولا بريد يغادر إلى النموذج", async () => {
+    let req: any;
+    await extract(DIRTY, { today: TODAY, client: fakeClient(
+      { candidates: [], unresolved: [] }, (r) => { req = r; }) });
+
+    const sent = JSON.stringify(req);
+    expect(sent).not.toContain("sk-ant-api03");
+    expect(sent).not.toContain("608010167519");
+    expect(sent).not.toContain("layla@studio.sa");
+  });
+
+  it("النص المفيد يمر سليمًا رغم التنقيح", async () => {
+    let req: any;
+    await extract(DIRTY, { today: TODAY, client: fakeClient(
+      { candidates: [], unresolved: [] }, (r) => { req = r; }) });
+    const sent = JSON.stringify(req);
+    expect(sent).toContain("OpenAI");
+    expect(sent).toContain("75 SAR");
+  });
+
+  it("ما نُقِّح يُعاد للمالك ليعرف ما لم يره النموذج", async () => {
+    const out = await extract(DIRTY, { today: TODAY,
+      client: fakeClient({ candidates: [], unresolved: [] }) });
+    expect(out.redactions.map((r) => r.kind).sort()).toEqual(["email", "iban", "secret"]);
+  });
+
+  it("الأصل غير المنقّح لا يُرسل ولو كمرجع", async () => {
+    let req: any;
+    await extract(DIRTY, { today: TODAY, client: fakeClient(
+      { candidates: [], unresolved: [] }, (r) => { req = r; }) });
+    // كان يُرسل نسخة "للرجوع" تلتف حول التنقيح كاملًا
+    expect(JSON.stringify(req)).not.toContain("الأصل قبل التطبيع");
+  });
+});
+
 describe("المسار كامل", () => {
   const good = {
     kind: "subscription", title: "OpenAI Plus", provider: "OpenAI",

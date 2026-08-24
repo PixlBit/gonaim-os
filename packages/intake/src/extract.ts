@@ -3,6 +3,7 @@ import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { ExtractionResult } from "./schema.js";
 import { prepass, type Prepass } from "./prepass.js";
 import { normalizeText } from "./normalize.js";
+import { redact, assertClean, type Redaction } from "@gonaim/security";
 
 /**
  * التعليمات ثابتة عبر كل الطلبات — توضع في بادئة مخبأة.
@@ -35,10 +36,19 @@ export interface ExtractOutcome {
   prepass: Prepass;
   /** مرشحون رُفضوا لأن نصهم الشاهد غير موجود في كلام المالك. */
   rejected: { candidate: unknown; reason: string }[];
+  /** ما نُقِّح قبل الإرسال. يُعرض للمالك: ما رآه النموذج ليس كل ما كتب. */
+  redactions: Redaction[];
 }
 
 export async function extract(rawText: string, opts: ExtractOptions): Promise<ExtractOutcome> {
-  const pre = prepass(rawText, opts.today);
+  // التنقيح أولًا. ما يُنقَّح لا يصل إلى النموذج، ولا إلى الـprepass، ولا
+  // إلى أي مقارنة لاحقة — فالنص المنقّح هو النص الوحيد من هنا فصاعدًا.
+  const safe = redact(rawText);
+  // الطبقة الثانية (ADR-0006): تأكيد قبل الحد الخارجي. تحمي من مسار جديد
+  // يستدعي extract بنص سبق أن مر بعميل قديم أو بتنقيح ناقص.
+  assertClean(safe.text);
+
+  const pre = prepass(safe.text, opts.today);
   const client = opts.client ?? new Anthropic();
 
   const response = await client.messages.parse({
@@ -47,18 +57,18 @@ export async function extract(rawText: string, opts: ExtractOptions): Promise<Ex
     thinking: { type: "adaptive" },
     // البادئة الثابتة فقط تُخبَّأ. النص واليوم متغيران ويأتيان بعدها.
     system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
-    messages: [{ role: "user", content: buildUserMessage(rawText, pre, opts.today) }],
+    messages: [{ role: "user", content: buildUserMessage(safe.text, pre, opts.today) }],
     output_config: { format: zodOutputFormat(ExtractionResult) },
   });
 
   const parsed = response.parsed_output;
   if (!parsed) {
-    return { result: { candidates: [], unresolved: [] }, prepass: pre, rejected: [] };
+    return { result: { candidates: [], unresolved: [] }, prepass: pre, rejected: [], redactions: safe.redactions };
   }
-  return { ...enforceSourceBinding(parsed, pre.normalized), prepass: pre };
+  return { ...enforceSourceBinding(parsed, pre.normalized), prepass: pre, redactions: safe.redactions };
 }
 
-export function buildUserMessage(rawText: string, pre: Prepass, today: string): string {
+export function buildUserMessage(_safeText: string, pre: Prepass, today: string): string {
   const money = pre.money.length
     ? pre.money.map((m) => `  "${m.text}" → ${m.amount} ${m.currency}`).join("\n")
     : "  (لا مبالغ مرصودة)";
@@ -74,15 +84,13 @@ ${money}
 تواريخ محسوبة مسبقًا (اتبعها حرفيًا):
 ${dates}
 
-نص المالك:
+نص المالك (بعد التطبيع والتنقيح):
 """
 ${pre.normalized}
 """
 
-الأصل قبل التطبيع، للرجوع فقط:
-"""
-${rawText}
-"""`;
+ما ظهر كـ[REDACTED_…] أو [PERSON_…] منقّح عمدًا. عامله كقيمة معتمة موجودة،
+ولا تحاول تخمين ما تحته.`;
 }
 
 /**
