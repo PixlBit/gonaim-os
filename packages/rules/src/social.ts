@@ -1,5 +1,6 @@
 import type { Rule, RuleFinding } from "./types.js";
 import { daysSince } from "./dates.js";
+import { count, elapsed, DAY } from "@gonaim/domain";
 
 export const obligationOverdue: Rule = {
   code: "obligation.overdue_vs_typical",
@@ -21,7 +22,7 @@ export const obligationOverdue: Rule = {
       out.push({
         key: `${this.code}:${o.entityId}`,
         headline: person ? `${o.what} — ${person}` : o.what,
-        whyNow: `مر ${silent} يومًا، والمعتاد في هذه العلاقة ${o.typicalReplyDays}.`,
+        whyNow: `${elapsed(silent)}، والمعتاد في هذه العلاقة ${count(o.typicalReplyDays, DAY)}.`,
         suggestedMove: "رد قصير الآن، أو إعلانه متروكًا",
         sensitivity: "sensitive",
         evidence: [{

@@ -1,6 +1,7 @@
 import type { Rule, RuleFinding } from "./types.js";
 import type { Evidence } from "@gonaim/domain";
 import { daysUntil, daysSince } from "./dates.js";
+import { count, inDays, DAY } from "@gonaim/domain";
 
 /**
  * القاعدة الجامعة — هي وحدها ما يجعل النظام يبدو مختلفًا عن تطبيق محاسبة.
@@ -28,7 +29,7 @@ export const cashWindow: Rule = {
       outflow += s.amount;
       subsumes.push(`sub.renewal_approaching:${s.entityId}:${s.renewsOn}`);
       const title = snapshot.entities.get(s.entityId)?.title ?? s.provider;
-      evidence.push({ label: `${title} · −${s.amount} ${s.currency} بعد ${d} أيام`, mode: "observed" });
+      evidence.push({ label: `${title} · −${s.amount} ${s.currency} ${inDays(d)}`, mode: "observed" });
     }
 
     for (const inv of snapshot.invoices) {
@@ -58,8 +59,8 @@ export const cashWindow: Rule = {
     const finding: RuleFinding = {
       key: `${this.code}:${snapshot.today}`,
       headline: pressure
-        ? `نافذة ضغط سيولة خلال ${windowDays} أيام — ${Math.abs(net).toLocaleString("en-US")} SAR`
-        : `نافذة سيولة موجبة خلال ${windowDays} أيام — ${net.toLocaleString("en-US")} SAR`,
+        ? `نافذة ضغط سيولة خلال ${count(windowDays, DAY)} — ${Math.abs(net).toLocaleString("en-US")} SAR`
+        : `نافذة سيولة موجبة خلال ${count(windowDays, DAY)} — ${net.toLocaleString("en-US")} SAR`,
       whyNow: `${domains.size} مجالات تتقاطع في نفس النافذة: ${[...domains].join(" · ")}.`,
       suggestedMove: receivable > 0
         ? "متابعة المستحق قبل التجديد التلقائي"

@@ -1,5 +1,8 @@
 import type { Rule, RuleFinding } from "./types.js";
 import { daysSince } from "./dates.js";
+import { count, DAY, TIME, STORE, type ArabicNoun } from "@gonaim/domain";
+
+const VISIT: ArabicNoun = { one: "زيارة", two: "زيارتان", few: "زيارات", many: "زيارة" };
 
 const WATCHING = new Set(["want", "considering", "watching_price"]);
 const fmt = (n: number, c: string) => `${n.toLocaleString("en-US")} ${c}`;
@@ -26,14 +29,14 @@ export const revisitedRepeatedly: Rule = {
       const title = snapshot.entities.get(w.entityId)?.title ?? "عنصر";
       out.push({
         key: `${this.code}:${w.entityId}`,
-        headline: `${title} — رجعت له ${w.revisits30d} مرات من متجرين`,
-        whyNow: `اهتمام متكرر منذ ${daysSince(w.firstSeenAt, snapshot.today)} يومًا. القرار مؤجَّل، لا محسوم.`,
+        headline: `${title} — رجعت له ${count(w.revisits30d, TIME)} من ${count(w.distinctStores, STORE)}`,
+        whyNow: `اهتمام متكرر منذ ${count(daysSince(w.firstSeenAt, snapshot.today), DAY)}. القرار مؤجَّل، لا محسوم.`,
         suggestedMove: w.targetPrice
           ? `تثبيت قاعدة: نبّهني تحت ${fmt(w.targetPrice, w.currency)}`
           : "تحديد سعر مستهدف، أو تأجيل صريح",
         sensitivity: "private",
         evidence: [
-          { label: `${w.revisits30d} زيارة · ${w.distinctStores} متجر`, mode: "observed" },
+          { label: `${count(w.revisits30d, VISIT)} · ${count(w.distinctStores, STORE)}`, mode: "observed" },
           ...(w.whyWant.length ? [{ label: `السبب: ${w.whyWant.join(" · ")}`, mode: "observed" as const }] : []),
         ],
         urgency: 0.35,

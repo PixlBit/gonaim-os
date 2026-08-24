@@ -1,6 +1,6 @@
 import { createServer } from "node:http";
 import { extract } from "@gonaim/intake";
-import { connect, commitCandidates, loadSnapshot, type ConfirmedCandidate } from "@gonaim/db";
+import { connect, commitCandidates, loadSnapshot, exportMind, type ConfirmedCandidate } from "@gonaim/db";
 import { ALL_RULES, runRules } from "@gonaim/rules";
 
 /**
@@ -52,6 +52,17 @@ const server = createServer(async (req, res) => {
     } catch (err) {
       console.error("[signals]", err);
       return json(res, 502, cors, { error: "load_failed" });
+    }
+  }
+
+  // §5.6: البيانات ملك غنيم. الوعد لا يُختبر إلا بتصدير يعمل.
+  if (req.method === "GET" && req.url === "/api/export") {
+    if (!db) return json(res, 503, cors, { error: "no_database", message: "DATABASE_URL غير مضبوط." });
+    try {
+      return json(res, 200, cors, await exportMind(db, OWNER));
+    } catch (err) {
+      console.error("[export]", err);
+      return json(res, 502, cors, { error: "export_failed" });
     }
   }
 

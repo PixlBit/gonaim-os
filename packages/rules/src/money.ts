@@ -1,5 +1,6 @@
 import type { Rule, RuleFinding } from "./types.js";
 import { daysUntil, daysSince } from "./dates.js";
+import { count, inDays, elapsed, DAY } from "@gonaim/domain";
 
 const fmt = (n: number, c: string) => `${n.toLocaleString("en-US")} ${c}`;
 
@@ -18,8 +19,8 @@ export const renewalApproaching: Rule = {
       const title = snapshot.entities.get(s.entityId)?.title ?? s.provider;
       out.push({
         key: `${this.code}:${s.entityId}:${s.renewsOn}`,
-        headline: `${title} يتجدد بعد ${days} أيام — ${fmt(s.amount, s.currency)}`,
-        whyNow: `التجديد التلقائي مفعّل، وباقي ${days} أيام على السحب.`,
+        headline: `${title} يتجدد ${inDays(days)} — ${fmt(s.amount, s.currency)}`,
+        whyNow: `التجديد التلقائي مفعّل، وباقي ${count(days, DAY)} على السحب.`,
         sensitivity: "sensitive",
         evidence: [{
           label: `مبلغ مؤكد من: ${s.amountSource} · آخر تحقق ${s.lastVerifiedAt.slice(0, 10)}`,
@@ -52,7 +53,7 @@ export const creditUnderused: Rule = {
       const pct = Math.round(ratio * 100);
       out.push({
         key: `${this.code}:${s.entityId}:${s.renewsOn}`,
-        headline: `${title} — استهلكت ${pct}٪ من الكريدت وباقي ${days} أيام`,
+        headline: `${title} — استهلكت ${pct}٪ من الكريدت وباقي ${count(days, DAY)}`,
         whyNow: `تدفع ${fmt(s.amount, s.currency)} مقابل ${s.creditIncluded} ${s.creditUnit ?? "وحدة"}، واستخدمت ${s.creditUsed}.`,
         // الاقتراح ليس "ألغِ" — القرار له، والنظام يعرض الخيارين
         suggestedMove: "استغلال الكريدت قبل التجديد، أو مراجعة الخطة",
@@ -86,7 +87,7 @@ export const invoiceOverdue: Rule = {
       out.push({
         key: `${this.code}:${inv.entityId}`,
         headline: `${title} — ${fmt(inv.amount, inv.currency)} من ${inv.counterparty}`,
-        whyNow: `مر ${age} يومًا، والمعتاد مع ${inv.counterparty} هو ${inv.typicalDays}.`,
+        whyNow: `${elapsed(age)}، والمعتاد مع ${inv.counterparty} ${count(inv.typicalDays, DAY)}.`,
         suggestedMove: "متابعة مع العميل",
         sensitivity: "sensitive",
         evidence: [{ label: `صدرت ${inv.issuedOn} · المصدر: ${inv.amountSource}`, mode: "observed" }],

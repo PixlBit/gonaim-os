@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import postgres from "postgres";
-import { migrate, commitCandidates, loadSnapshot, audit, type ConfirmedCandidate } from "../src/index.js";
+import { migrate, commitCandidates, loadSnapshot, audit, exportMind, type ConfirmedCandidate } from "../src/index.js";
 import { ALL_RULES, runRules } from "@gonaim/rules";
 import type { Sql } from "postgres";
 
@@ -120,3 +120,64 @@ async function read(prefix: string): Promise<string> {
   const f = readdirSync("supabase/migrations").find((n) => n.startsWith(prefix))!;
   return readFileSync(`supabase/migrations/${f}`, "utf8");
 }
+
+d("Export my mind", () => {
+  let sql: Sql;
+  beforeAll(async () => { sql = postgres(URL!, { max: 2, onnotice: () => {} }); });
+  afterAll(async () => { await sql?.end(); });
+
+  it("يخرج الصيغ الثلاث", async () => {
+    const { files } = await exportMind(sql, OWNER);
+    const names = files.map((f) => f.name);
+    expect(names).toContain("manifest.json");
+    expect(names).toContain("nodes.json");
+    expect(names).toContain("life.md");
+    expect(names.filter((n) => n.endsWith(".csv")).length).toBeGreaterThan(3);
+  });
+
+  it("يعلن ما ليس فيه — تصدير يوحي بالاكتمال أسوأ من ناقص معلَن", async () => {
+    const { manifest } = await exportMind(sql, OWNER);
+    expect(manifest.notIncluded.length).toBeGreaterThanOrEqual(4);
+    const all = manifest.notIncluded.map((n) => n.what).join(" ");
+    expect(all).toContain("الملفات");
+    expect(all).toContain("المفاتيح");
+  });
+
+  it("لا يصدّر أعمدة الأسرار ولا المتجهات", async () => {
+    const { files } = await exportMind(sql, OWNER);
+    const nodes = files.find((f) => f.name === "nodes.json")!.content;
+    expect(nodes).not.toContain("\"embedding\"");
+    expect(nodes).not.toContain("sk-ant");
+  });
+
+  it("Markdown مقروء بلا أدوات ويحمل إصدار المخطط", async () => {
+    const { files } = await exportMind(sql, OWNER);
+    const md = files.find((f) => f.name === "life.md")!.content;
+    expect(md).toContain("# GONAIM//OS");
+    expect(md).toContain("0001_init.sql");
+    expect(md).toContain("## ما ليس في هذا التصدير");
+    // الفاتورة بلا معتاد تُكتب صراحة، لا تُترك فارغة
+    expect(md).toMatch(/المعتاد (غير معروف|\d+ يومًا)/);
+  });
+
+  it("CSV يبدأ بـBOM حتى تفتح العربية صحيحة", async () => {
+    const { files } = await exportMind(sql, OWNER);
+    const csv = files.find((f) => f.name === "subscriptions.csv")!.content;
+    expect(csv.charCodeAt(0)).toBe(0xfeff);
+  });
+
+  it("التصدير نفسه فعل مسجَّل", async () => {
+    await exportMind(sql, OWNER);
+    const [row] = await sql<{ action: string }[]>`
+      select action from audit_log where owner_id = ${OWNER}
+      and action = 'export_mind' order by at desc limit 1`;
+    expect(row?.action).toBe("export_mind");
+  });
+
+  it("الأعداد في البيان تطابق ما في الملفات", async () => {
+    const { manifest, files } = await exportMind(sql, OWNER);
+    const nodes = JSON.parse(files.find((f) => f.name === "nodes.json")!.content);
+    expect(nodes.subscriptions).toHaveLength(manifest.counts["subscriptions"]!);
+    expect(nodes.entities).toHaveLength(manifest.counts["entities"]!);
+  });
+});

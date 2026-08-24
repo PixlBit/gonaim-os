@@ -9,7 +9,21 @@ describe("القواعد تقارن بالمعتاد لهذا الطرف، لا 
   it("فاتورة تأخرت عن معتاد عميلها تُطلق", () => {
     const [f] = invoiceOverdue.run(ctx());
     expect(f?.whyNow).toContain("مر 18 يومًا");
-    expect(f?.whyNow).toContain("المعتاد مع Studio Client هو 14");
+    expect(f?.whyNow).toContain("المعتاد مع Studio Client 14 يومًا");
+  });
+
+  it("صيغة المعدود تتبع العدد", () => {
+    const s3 = gonaimSnapshot();
+    s3.invoices[0]!.typicalDays = 3;
+    s3.invoices[0]!.issuedOn = "2026-08-12";   // مرت 10 أيام
+    const [a] = invoiceOverdue.run({ snapshot: s3, alreadySurfaced: NOTHING_SEEN });
+    expect(a?.whyNow).toContain("مرت 10 أيام");
+    expect(a?.whyNow).toContain("3 أيام");     // لا "3 يومًا"
+
+    const s1 = gonaimSnapshot();
+    s1.invoices[0]!.typicalDays = 1;
+    const [b] = invoiceOverdue.run({ snapshot: s1, alreadySurfaced: NOTHING_SEEN });
+    expect(b?.whyNow).toContain("المعتاد مع Studio Client يوم");  // لا "1 يوم"
   });
 
   it("نفس التأخير مع عميل معتاده أطول لا يُطلق", () => {

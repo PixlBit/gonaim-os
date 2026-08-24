@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SignalCard } from "./SignalCard.js";
 import { Capture } from "./Capture.js";
+import { Export } from "./Export.js";
 import { useLife, isColdStart } from "./useLife.js";
 import "./tokens.css";
 import "./app.css";
@@ -10,6 +11,7 @@ const BUDGET = 3;
 export default function App() {
   const [blackout, setBlackout] = useState(false);
   const [capturing, setCapturing] = useState(false);
+  const [exporting, setExporting] = useState(false);
   const { state, reload } = useLife();
 
   const data = state.phase === "ready" ? state.data : null;
@@ -156,8 +158,18 @@ export default function App() {
           <span className="label">مصدر الأرقام</span>
           <ul><li>كل ما هنا مُدخَل يدويًا ومؤكَّد منك</li></ul>
         </div>
+
+        <div className="brief">
+          <span className="label">بياناتك</span>
+          <button className="blackout-btn"
+                  style={{ color: "var(--bone-100)", borderColor: "var(--steel-800)" }}
+                  onClick={() => setExporting(true)}>
+            export my mind
+          </button>
+        </div>
       </aside>
 
+      {exporting && <Export onClose={() => setExporting(false)} />}
       {capturing && (
         <Capture
           today={data?.today ?? new Date().toISOString().slice(0, 10)}

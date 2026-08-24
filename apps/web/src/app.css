@@ -211,3 +211,6 @@ button.primary:disabled { background: var(--steel-800); color: var(--dust); curs
 
 /* أوامر الشِل والمسارات تُنسخ كما هي — لا تحويل حالة داخل .label */
 .label .ltr { text-transform: none; letter-spacing: 0; }
+
+/* الأرقام والوحدات اللاتينية داخل سياق عربي تنقلب بلا عزل: "KB 1.3" */
+.tag.ltr { direction: ltr; unicode-bidi: isolate; }
