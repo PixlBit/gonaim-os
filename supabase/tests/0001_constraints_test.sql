@@ -56,3 +56,14 @@ values ('00000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-00000000
 insert into xp_events (owner_id,domain,label,base_value,evidence_confidence,personal_importance)
 values ('00000000-0000-0000-0000-000000000001','creative','Master reference locked',400,0.9,0.8);
 select xp from xp_events where label='Master reference locked';
+
+\echo '--- 14. حذف كيان له دليل  => لازم ينجح (لا يخالف must_bind_something)'
+insert into entities (id,owner_id,type,title) values
+ ('00000000-0000-0000-0000-0000000000c1','00000000-0000-0000-0000-000000000001','want','عنصر بدليل');
+insert into memories (id,owner_id,kind,statement,confidence,confidence_reason,sensitivity,created_by)
+ values ('00000000-0000-0000-0000-0000000000c2','00000000-0000-0000-0000-000000000001','preference','تفضيل',0.9,'س','private','cortex');
+insert into memory_sources (memory_id,entity_id)
+ values ('00000000-0000-0000-0000-0000000000c2','00000000-0000-0000-0000-0000000000c1');
+delete from entities where id='00000000-0000-0000-0000-0000000000c1';
+select count(*) as remaining_links from memory_sources
+ where memory_id='00000000-0000-0000-0000-0000000000c2';

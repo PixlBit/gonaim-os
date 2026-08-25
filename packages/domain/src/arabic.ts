@@ -32,6 +32,8 @@ export const SIGNAL: ArabicNoun= { one: "إشارة", two: "إشارتان", few
 export const STORE: ArabicNoun = { one: "متجر",  two: "متجران",  few: "متاجر",  many: "متجرًا" };
 export const RECORD: ArabicNoun= { one: "سجل",   two: "سجلان",   few: "سجلات",  many: "سجلًا" };
 export const FILE: ArabicNoun  = { one: "ملف",   two: "ملفان",   few: "ملفات",  many: "ملفًا" };
+export const MEMORY: ArabicNoun= { one: "ذاكرة", two: "ذاكرتان", few: "ذاكرات", many: "ذاكرة" };
+export const LINK: ArabicNoun  = { one: "علاقة", two: "علاقتان", few: "علاقات", many: "علاقة" };
 
 /**
  * يعيد العدد مع معدوده بالصيغة الصحيحة.

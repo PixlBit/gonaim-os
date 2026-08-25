@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SignalCard } from "./SignalCard.js";
 import { Capture } from "./Capture.js";
 import { Export } from "./Export.js";
+import { Known } from "./Known.js";
 import { useLife, isColdStart } from "./useLife.js";
 import "./tokens.css";
 import "./app.css";
@@ -12,6 +13,7 @@ export default function App() {
   const [blackout, setBlackout] = useState(false);
   const [capturing, setCapturing] = useState(false);
   const [exporting, setExporting] = useState(false);
+  const [reviewing, setReviewing] = useState(false);
   const { state, reload } = useLife();
 
   const data = state.phase === "ready" ? state.data : null;
@@ -144,7 +146,9 @@ export default function App() {
 
         {data && !cold && (
           <div className="brief">
-            <span className="label">ما تعرفه القاعدة</span>
+            <span className="label">
+              <button className="linky" onClick={() => setReviewing(true)}>ما تعرفه القاعدة ↗</button>
+            </span>
             <ul>
               <li>اشتراكات: {data.counts["subscriptions"] ?? 0}</li>
               <li>فواتير مفتوحة: {data.counts["invoices"] ?? 0}</li>
@@ -170,6 +174,7 @@ export default function App() {
       </aside>
 
       {exporting && <Export onClose={() => setExporting(false)} />}
+      {reviewing && <Known onClose={() => setReviewing(false)} onChanged={reload} />}
       {capturing && (
         <Capture
           today={data?.today ?? new Date().toISOString().slice(0, 10)}

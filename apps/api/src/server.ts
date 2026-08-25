@@ -1,6 +1,7 @@
 import { createServer } from "node:http";
 import { extract } from "@gonaim/intake";
-import { connect, commitCandidates, loadSnapshot, exportMind, type ConfirmedCandidate } from "@gonaim/db";
+import { connect, commitCandidates, loadSnapshot, exportMind, forget, listKnown,
+         type ConfirmedCandidate } from "@gonaim/db";
 import { ALL_RULES, runRules } from "@gonaim/rules";
 
 /**
@@ -55,6 +56,17 @@ const server = createServer(async (req, res) => {
     }
   }
 
+  // ما تعرفه القاعدة عنك — شرط لأي حذف واعٍ
+  if (req.method === "GET" && req.url === "/api/known") {
+    if (!db) return json(res, 503, cors, { error: "no_database", message: "DATABASE_URL غير مضبوط." });
+    try {
+      return json(res, 200, cors, { entities: await listKnown(db, OWNER) });
+    } catch (err) {
+      console.error("[known]", err);
+      return json(res, 502, cors, { error: "load_failed" });
+    }
+  }
+
   // §5.6: البيانات ملك غنيم. الوعد لا يُختبر إلا بتصدير يعمل.
   if (req.method === "GET" && req.url === "/api/export") {
     if (!db) return json(res, 503, cors, { error: "no_database", message: "DATABASE_URL غير مضبوط." });
@@ -66,7 +78,7 @@ const server = createServer(async (req, res) => {
     }
   }
 
-  if (req.method !== "POST" || !["/api/extract", "/api/commit"].includes(req.url ?? "")) {
+  if (req.method !== "POST" || !["/api/extract", "/api/commit", "/api/forget"].includes(req.url ?? "")) {
     return json(res, 404, cors, { error: "not_found" });
   }
 
@@ -78,8 +90,22 @@ const server = createServer(async (req, res) => {
     }
   } catch { return json(res, 400, cors, { error: "read_failed" }); }
 
-  let body: { text?: unknown; today?: unknown; candidates?: unknown; redactedCount?: unknown };
+  let body: Record<string, unknown>;
   try { body = JSON.parse(raw); } catch { return json(res, 400, cors, { error: "bad_json" }); }
+
+  if (req.url === "/api/forget") {
+    if (!db) return json(res, 503, cors, { error: "no_database", message: "DATABASE_URL غير مضبوط." });
+    const ids = Array.isArray(body["entityIds"]) ? body["entityIds"] as string[] : null;
+    if (!ids?.length) return json(res, 400, cors, { error: "no_targets" });
+    try {
+      const reason = typeof body["reason"] === "string" ? body["reason"] : undefined;
+      return json(res, 200, cors, await forget(db, OWNER, ids, reason));
+    } catch (err) {
+      console.error("[forget]", err);
+      const code = err instanceof Error && err.message === "not_found" ? 404 : 502;
+      return json(res, code, cors, { error: code === 404 ? "not_found" : "forget_failed" });
+    }
+  }
 
   if (req.url === "/api/commit") {
     if (!db) return json(res, 503, cors, { error: "no_database", message: "DATABASE_URL غير مضبوط." });

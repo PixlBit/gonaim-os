@@ -214,3 +214,26 @@ button.primary:disabled { background: var(--steel-800); color: var(--dust); curs
 
 /* الأرقام والوحدات اللاتينية داخل سياق عربي تنقلب بلا عزل: "KB 1.3" */
 .tag.ltr { direction: ltr; unicode-bidi: isolate; }
+
+/* ── النسيان ────────────────────────────────────── */
+.cand.danger { border-inline-start-color: var(--alert-red); }
+.cand.danger input { accent-color: var(--alert-red); }
+button.primary.danger { background: var(--alert-red); color: var(--bone-100); }
+button.primary.danger:disabled { background: var(--steel-800); color: var(--dust); }
+
+.receipt {
+  margin: 14px 0; padding: 14px 16px;
+  border: 1px solid var(--steel-800);
+  border-inline-start: 2px solid var(--electric-yellow);
+  background: var(--carbon);
+}
+/* الأخضر يظهر فقط عند نسيان تام — لا يُمنح لحذف ناقص */
+.receipt.clean { border-inline-start-color: var(--success-green); }
+.receipt > strong { display: block; font-size: 14px; margin-bottom: 8px; }
+.receipt.clean > strong { color: var(--success-green); }
+button.linky {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; color: inherit; letter-spacing: inherit;
+  text-transform: inherit;
+}
+button.linky:hover { color: var(--bone-100); }

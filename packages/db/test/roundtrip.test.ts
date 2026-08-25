@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import postgres from "postgres";
-import { migrate, commitCandidates, loadSnapshot, audit, exportMind, type ConfirmedCandidate } from "../src/index.js";
+import { migrate, commitCandidates, loadSnapshot, audit, exportMind, forget, type ConfirmedCandidate } from "../src/index.js";
 import { ALL_RULES, runRules } from "@gonaim/rules";
 import type { Sql } from "postgres";
 
@@ -9,22 +9,24 @@ const d = URL ? describe : describe.skip;
 const TODAY = "2026-08-22";
 const OWNER = "00000000-0000-0000-0000-000000000001";
 
+let sql: Sql;
+
+beforeAll(async () => {
+  if (!URL) return;
+  sql = postgres(URL, { max: 4, onnotice: () => {} });
+  await sql`drop schema if exists public cascade`;
+  await sql`create schema public`;
+  await sql`create schema if not exists auth`;
+  await sql.unsafe(`create or replace function auth.uid() returns uuid
+    language sql stable as $$ select '${OWNER}'::uuid $$`);
+  await migrate(sql, "supabase/migrations");
+  await sql`insert into users (id, email, display_name)
+            values (${OWNER}, 'ahmgonaim@gmail.com', 'Ahmed Gonaim')`;
+});
+
+afterAll(async () => { await sql?.end(); });
+
 d("الدورة كاملة على Postgres", () => {
-  let sql: Sql;
-
-  beforeAll(async () => {
-    sql = postgres(URL!, { max: 2, onnotice: () => {} });
-    await sql`drop schema if exists public cascade`;
-    await sql`create schema public`;
-    await sql`create schema if not exists auth`;
-    await sql.unsafe(`create or replace function auth.uid() returns uuid
-      language sql stable as $$ select '${OWNER}'::uuid $$`);
-    await migrate(sql, "supabase/migrations");
-    await sql`insert into users (id, email, display_name)
-              values (${OWNER}, 'ahmgonaim@gmail.com', 'Ahmed Gonaim')`;
-  });
-
-  afterAll(async () => { await sql?.end(); });
 
   it("الهجرات تُطبَّق مرة واحدة", async () => {
     const again = await migrate(sql, "supabase/migrations");
@@ -122,10 +124,6 @@ async function read(prefix: string): Promise<string> {
 }
 
 d("Export my mind", () => {
-  let sql: Sql;
-  beforeAll(async () => { sql = postgres(URL!, { max: 2, onnotice: () => {} }); });
-  afterAll(async () => { await sql?.end(); });
-
   it("يخرج الصيغ الثلاث", async () => {
     const { files } = await exportMind(sql, OWNER);
     const names = files.map((f) => f.name);
@@ -179,5 +177,125 @@ d("Export my mind", () => {
     const nodes = JSON.parse(files.find((f) => f.name === "nodes.json")!.content);
     expect(nodes.subscriptions).toHaveLength(manifest.counts["subscriptions"]!);
     expect(nodes.entities).toHaveLength(manifest.counts["entities"]!);
+  });
+});
+
+d("Proof of Forgetting", () => {
+  const OWNER2 = "00000000-0000-0000-0000-000000000002";
+
+  beforeAll(async () => {
+    await sql`insert into users (id, email, display_name)
+              values (${OWNER2}, 'forget@test', 'Forget Test')
+              on conflict (id) do nothing`;
+  });
+
+  async function seed(sourceUri: string | null = null) {
+    const [e] = await sql<{ id: string }[]>`
+      insert into entities (owner_id, type, title, sensitivity, source_uri)
+      values (${OWNER2}, 'want', 'شيء عابر', 'private', ${sourceUri})
+      returning id`;
+    await sql`insert into wish_items (entity_id, owner_id, state, currency)
+              values (${e!.id}, ${OWNER2}, 'want', 'SAR')`;
+    return e!.id;
+  }
+
+  it("يحذف الكيان ووجهه معًا", async () => {
+    const id = await seed();
+    const r = await forget(sql, OWNER2, [id]);
+    expect(r.deleted["entities"]).toBe(1);
+    const left = await sql`select 1 from wish_items where entity_id = ${id}`;
+    expect(left).toHaveLength(0);
+  });
+
+  it("لا يقول «نُسي» ما دام سجل التدقيق يذكره", async () => {
+    const id = await seed();
+    await sql`insert into audit_log (owner_id, actor, action, outcome, target_id)
+              values (${OWNER2}, 'owner', 'commit_candidates', 'executed', ${id})`;
+    const r = await forget(sql, OWNER2, [id]);
+    expect(r.complete).toBe(false);
+    const why = r.retained.map((x) => x.why).join(" ");
+    expect(why).toContain("سجل التدقيق لا يُحذف");
+  });
+
+  it("الأصل الخارجي يُسمّى ويُطلب فعل من المالك", async () => {
+    const id = await seed("https://drive.google.com/file/abc");
+    const r = await forget(sql, OWNER2, [id]);
+    expect(r.complete).toBe(false);
+    expect(r.externalRemnants[0]?.where).toContain("drive.google.com");
+    expect(r.externalRemnants[0]?.action).toContain("احذفه من مصدره");
+  });
+
+  it("الحدث يُجرَّد من الإشارة ولا يُحذف", async () => {
+    const id = await seed();
+    const [ev] = await sql<{ id: string }[]>`
+      insert into events (owner_id, event_type, occurred_at, source, sensitivity,
+                          observed_or_inferred, entity_ids, fingerprint)
+      values (${OWNER2}, 'manual.capture.created', now(), 'manual', 'private',
+              'observed', array[${id}::uuid], ${"fp_" + id})
+      returning id`;
+
+    const r = await forget(sql, OWNER2, [id]);
+    const [after] = await sql<{ entity_ids: string[] }[]>`
+      select entity_ids from events where id = ${ev!.id}`;
+    // الحدث باقٍ — أن شيئًا وقع في وقت ما يظل صحيحًا
+    expect(after).toBeDefined();
+    expect(after!.entity_ids).toHaveLength(0);
+    expect(r.retained.some((x) => x.what.includes("أحداث"))).toBe(true);
+  });
+
+  it("ذاكرة فقدت مصدرها الوحيد تُحذف — ذاكرة بلا مصدر حالة محرَّمة", async () => {
+    const id = await seed();
+    const [m] = await sql<{ id: string }[]>`
+      insert into memories (owner_id, kind, statement, confidence, confidence_reason,
+                            sensitivity, created_by)
+      values (${OWNER2}, 'preference', 'يحب الأسود', 0.9, 'تكرر', 'private', 'cortex')
+      returning id`;
+    await sql`insert into memory_sources (memory_id, entity_id) values (${m!.id}, ${id})`;
+
+    const r = await forget(sql, OWNER2, [id]);
+    expect(r.deleted["memories"]).toBe(1);
+    expect(await sql`select 1 from memories where id = ${m!.id}`).toHaveLength(0);
+  });
+
+  it("ذاكرة لها مصدر آخر تبقى", async () => {
+    const a = await seed();
+    const b = await seed();
+    const [m] = await sql<{ id: string }[]>`
+      insert into memories (owner_id, kind, statement, confidence, confidence_reason,
+                            sensitivity, created_by)
+      values (${OWNER2}, 'preference', 'مصدران', 0.9, 'تكرر', 'private', 'cortex')
+      returning id`;
+    await sql`insert into memory_sources (memory_id, entity_id) values (${m!.id}, ${a})`;
+    await sql`insert into memory_sources (memory_id, entity_id) values (${m!.id}, ${b})`;
+
+    await forget(sql, OWNER2, [a]);
+    expect(await sql`select 1 from memories where id = ${m!.id}`).toHaveLength(1);
+    await forget(sql, OWNER2, [b]);
+  });
+
+  it("الإيصال يُحفظ ويمكن مراجعته لاحقًا", async () => {
+    const id = await seed();
+    await forget(sql, OWNER2, [id], "ما عدت أريده");
+    const [row] = await sql<{ complete: boolean; deleted_counts: unknown }[]>`
+      select complete, deleted_counts from purge_receipts
+      where owner_id = ${OWNER2} order by requested_at desc limit 1`;
+    expect(row).toBeDefined();
+    expect(row!.deleted_counts).toMatchObject({ entities: 1 });
+  });
+
+  it("النسيان نفسه فعل مسجَّل بمخاطرة مُعلنة", async () => {
+    const id = await seed();
+    await forget(sql, OWNER2, [id], "تجربة");
+    const [row] = await sql<{ risk: string; reason: string }[]>`
+      select risk, reason from audit_log where owner_id = ${OWNER2}
+      and action = 'forget' order by at desc limit 1`;
+    expect(row!.risk).toBe("destructive");
+    expect(row!.reason).toBe("تجربة");
+  });
+
+  it("ما ليس ملكك لا يُحذف", async () => {
+    const id = await seed();
+    await expect(forget(sql, OWNER, [id])).rejects.toThrow(/not_found/);
+    await forget(sql, OWNER2, [id]);
   });
 });
