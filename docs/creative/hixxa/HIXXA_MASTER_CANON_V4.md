@@ -722,6 +722,7 @@ unpainted nails, and every object keeps the size given above.
 | B04 | `beats/B04-FOX-COLOR-RUN.md` | 8s / 4 شوتات | تلوين الثعلب |
 | B05 | `beats/B05-FOX-FIRST-REJECTION.md` | 8s / 4 شوتات | كرمشة الورقة ورميها وPOV من داخل السلة |
 | B06 | `beats/B06-HYSTERICAL-MONTAGE.md` | 10s / 7 شوتات | ست رفضات والسلة تُملأ من STAGE 3 إلى STAGE 4 |
+| B07 | `beats/B07-CHASM-AND-PAPER-COLUMNS.md` | 8s / 4 شوتات | السقوط في الهاوية والمظلة الورقية والعمودان |
 
 ### سجل التاقات
 
