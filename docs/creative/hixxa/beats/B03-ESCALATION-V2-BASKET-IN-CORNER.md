@@ -3,7 +3,7 @@
 > **البنية:** برومبت واحد — أربعة شوتات متصلة داخليًا وثلاثة انتقالات محددة، **بالنسب المئوية كما في الأصل**
 > **المعيار:** CINEDANCE Bible v2.0 — Dimensional Hand-Painted Cinematic
 > **التاقات:** `@loc_location-room-1` `@char_hixxa` `@hixa-face` `@desk` `@EAR`
-> **موضع السلة:** على الأرض في **الزاوية الخلفية world-left** خلف كتفها الأيسر، كما في مرجع اللوكيشن
+> **السلة:** سلة مهملات معدنية عادية **على أرضية الغرفة** في **الزاوية الخلفية world-left** خلف كتفها الأيسر، كما في مرجع اللوكيشن
 > **البداية:** أهدأ — تبدأ من سكون كامل والقلم مرفوع
 
 ---
@@ -57,12 +57,26 @@ It does not add, remove or reposition any desk prop.
 both buds seated, one physically continuous cable on its established route.
 They never vanish, multiply or change design.
 
+THE METAL WASTEBASKET — PHYSICAL DESCRIPTION
+
+It is an ordinary metal wastebasket: a plain open cylindrical bin of thin galvanised sheet
+metal, roughly 30 centimetres across and 35 centimetres tall, lightly dented and scuffed from
+use, with a plain rolled rim, no lid, no liner and no pedal.
+
+It stands directly on the floorboards and casts its own contact shadow onto the floor beside
+it. Its rim sits far below the desk surface, at roughly her knee height while she is seated,
+so every throw travels downward into an opening well beneath the desk top.
+
+It is never a desk-top container: never a pen cup, pencil holder, jar, tin, tray, pot or small
+bin, never resting on the desk or on any other raised surface, never held, lifted or moved.
+Its position on the floor is fixed for the entire sequence.
+
 WORLD AND STAGING
 
 The desk stays world-right beneath the attic window, and HIXXA sits facing it.
-The metal waste basket always stands on the floor — never on the desk or any other surface.
-It sits in the rear world-left corner of the room, behind her left shoulder and across the
-room from the desk, in the exact corner position established by the location reference. It stays in shadow, outside the lamp's pool, for the whole sequence.
+The metal wastebasket stands on the floorboards in the rear world-left corner of the room,
+behind her left shoulder and across the room from the desk, in the exact corner position
+established by the location reference. It stays in shadow, outside the lamp's pool, for the whole sequence.
 
 The throw axis therefore runs diagonally from her seated shoulder, back across the room, into
 that corner. Every throw is a full over-shoulder throw with real trunk rotation and a high
@@ -77,7 +91,7 @@ STATE LADDER AND COUNTS
 
 Every sheet follows one continuous physical path with no step skipped:
 [in the existing stack] → [pulled out by hand] → [drawn on] → [visibly rejected]
-→ [crushed into a ball inside her fist] → [thrown over her shoulder] → [landed in the basket].
+→ [crushed into a ball inside her fist] → [thrown over her shoulder] → [landed in the wastebasket].
 No sheet, ball, mark or prop ever materialises. Nothing enters frame without a hand.
 
 Exactly one HIXXA. Exactly one metal basket, one desk lamp, one phone, one coffee cup.
@@ -85,7 +99,7 @@ The basket holds exactly four crumpled balls at the start from earlier work, and
 exactly six with a seventh released and still airborne. It is partially filled at all times,
 never overflows, and clear empty volume stays visible above the balls.
 Exactly three fresh sheets are consumed across the sequence.
-Every throw lands inside the basket: no ball misses, bounces out, or comes to rest on the
+Every throw lands inside the wastebasket: no ball misses, bounces out, or comes to rest on the
 floor. Failed loose sheets accumulate only on the available desk surface; the floor stays clear.
 
 CRUMPLING AND FLIGHT PHYSICS
@@ -96,7 +110,7 @@ result is never a clean sphere: it keeps sharp creased ridges, flat crushed plan
 visible seam where the last fold closed. The ball springs back a few millimetres when the
 fist opens.
 
-Because the basket sits across the room, each throw is a genuine long flight: her trunk
+Because the wastebasket sits across the room, each throw is a genuine long flight: her trunk
 rotates, her shoulder drives, her wrist releases at the top of the arc, and the ball travels
 with believable mass on a rising then falling path. In flight it tumbles two or three times
 around an off-centre axis, passes once through the lamp's pool of warm light, then darkens as
@@ -152,8 +166,8 @@ SHOT B — ESCALATING FAILURE LOOP — 24mm
 ################################################################
 
 ONE CONTINUOUS INTERIOR WIDE SHOT. Preserve the full room staging, the diagonal
-desk-to-corner throw axis and the basket position. The existing stack of unused sheets is
-visible at frame zero, and the basket in the shadowed rear world-left corner already holds
+desk-to-corner throw axis and the wastewastebasket position. The existing stack of unused sheets is
+visible at frame zero, and the wastebasket in the shadowed rear world-left corner already holds
 exactly four crumpled balls.
 
 0–15%: HIXXA finishes the current stroke and reaches toward the existing paper stack with a
@@ -174,7 +188,7 @@ tense micro-settle; no new object appears.
   CYCLE THREE — she pulls the third sheet, draws with the most aggressive speed of the three,
   stops mid-stroke and begins to crush it.
 
-She never turns to look at the basket; every throw is made blind, over the shoulder, from
+She never turns to look at the wastebasket; every throw is made blind, over the shoulder, from
 muscle memory. Between cycles, two clearly failed sheets accumulate only across the available
 desk area. Her earbuds remain seated, the cable stays connected, and neither the phone nor the
 coffee moves. Use only a restrained 4% push or short lateral drift while preserving the full
@@ -186,8 +200,8 @@ her arm follows through and her trunk unwinds. The camera settles on the release
 freezing the ball unnaturally; the ball is still travelling at the last frame.
 
 No cut within the shot, lens change, time-lapse morphing, magically appearing paper,
-overflowing basket, missed throw, ball resting on the floor, floor clutter, duplicated hands,
-disturbed desk objects, fourth cycle or head turn toward the basket.
+overflowing wastebasket, missed throw, ball resting on the floor, floor clutter, duplicated hands,
+disturbed desk objects, fourth cycle or head turn toward the wastebasket.
 
 HARD CUT ON THE PAPER BALL LEAVING HER HAND.
 
@@ -294,7 +308,7 @@ ball is a genuinely volumetric object with faceted relief and its own contact sh
 flat cut-out disc, and it holds that volume through the entire flight.
 
 The deep corner of the room reads as real recedable space: the distance between the desk in
-the foreground and the basket at the rear is carried by perspective, occlusion, falloff and
+the foreground and the wastebasket at the rear is carried by perspective, occlusion, falloff and
 restrained atmospheric depth, not by scale alone.
 
 The result feels like a richly hand-painted cinematic frame occupying real three-dimensional
@@ -310,7 +324,7 @@ LIGHTING AND VISUAL CONTINUITY
 
 The desk lamp is the dominant warm interior source and stays physically fixed.
 A cooler cyan exterior sits beyond the attic window as the secondary source.
-The rear corner holding the basket stays outside both pools and remains the darkest area of
+The rear corner holding the wastebasket stays outside both pools and remains the darkest area of
 the room in every shot. The world direction, color temperature, exposure, shadow placement and
 time of day of all sources remain identical in all four shots. Any apparent change in rhythm
 comes from her hand crossing the lamp's stable pool of light, never from the fixture itself.
@@ -344,12 +358,13 @@ PRESERVATION LOCKS
 
 Only one HIXXA appears. Preserve her exact identity, facial structure, hairstyle, wardrobe
 layers, earbuds and cable route, correct anatomical left and right, and the established desk,
-lamp, phone, coffee and corner-basket placements, attic architecture, exterior window
+lamp, phone, coffee and corner wastebasket placement, attic architecture, exterior window
 geometry, lighting and throw axis.
 
-She never looks into the lens, never speaks and never turns to watch the basket.
-The basket always rests on the floor in its corner and is never lifted, moved, or placed on
-the desk. The desk lamp never pulses. The window glass never distorts. The room architecture
+She never looks into the lens, never speaks and never turns to watch the wastebasket.
+The wastebasket always rests on the floorboards in its corner with its rim below the desk
+surface. It is never lifted, moved, or placed on the desk, and never becomes a desk-top
+container. The desk lamp never pulses. The window glass never distorts. The room architecture
 never changes. No duplicated silhouette, no duplicated hands, no extra fingers or limbs.
 No text, logo, caption, brand name, notification message, watermark or subtitle.
 No time-lapse morphing, no crawling motion, no replay after a transition, no pose reset.
@@ -360,6 +375,6 @@ No generated fade, dissolve, wipe effect, morph, flash, blur transition, whip tr
 interstitial frame.
 
 Across the sequence, prioritize HIXXA's identity, accurate room and window continuity, visible
-paper causality, exact basket fill level, the shadowed corner's depth, undisturbed phone and
+paper causality, exact wastebasket fill level, the shadowed corner's depth, undisturbed phone and
 coffee, readable escalation and clean real-time motion over spectacle.
 ```
