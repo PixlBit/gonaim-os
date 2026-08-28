@@ -35,7 +35,7 @@
 | B04 | [HX-DRAW-FOX-02 — COLOR RUN](beats/B04-FOX-COLOR-RUN.md) | 8s / 4 شوتات | `@fox` `@EAR` `@desk` | تلوين الثعلب حتى اكتمال الجناحين السوداوين |
 | B05 | [HIXXA FOX 03 — FIRST REJECTION](beats/B05-FOX-FIRST-REJECTION.md) | 8s / 4 شوتات | `@fox` `@EAR` `@loc_location-room-1` | رفع الورقة، كرمشتها، رميها، وPOV من داخل السلة |
 | B06 | [HYSTERICAL MONTAGE](beats/B06-HYSTERICAL-MONTAGE.md) | 10s / 7 شوتات | `@basket` `@ear` `@desk` | ست رفضات متتالية والسلة تُملأ حتى الحافة |
-| B07 | [CHASM AND THE PAPER COLUMNS](beats/B07-CHASM-AND-PAPER-COLUMNS.md) | 8s / 4 شوتات | `@char_hixxa` `@fox` | سقوط في الهاوية، مظلة من ورقة الثعلب، وعمودان بينهما شق |
+| B07 | [THE PAPER COLUMNS AND THE LOST PENCIL](beats/B07-CHASM-AND-PAPER-COLUMNS.md) | 8s / 4 شوتات | `@char_hixxa` `@hixa-face` | العبور من الشق، القلم يطير، والسقوط لفضاء مفتوح |
 
 الأفلام قابلة للتوليد منفردة، ومرتبة زمنيًا كقوس واحد إذا وُلِّدت بالترتيب:
 

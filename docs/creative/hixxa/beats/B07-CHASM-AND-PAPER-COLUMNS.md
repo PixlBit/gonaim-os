@@ -1,52 +1,73 @@
-# HIXXA — CHASM DESCENT AND THE PAPER COLUMNS
+# HIXXA — THE PAPER COLUMNS AND THE LOST PENCIL
 
 > **المدة:** 8.0 ثوانٍ — **الشوتات:** 4 — **القطعات:** 3
 > **المسار:** `STRICT FIRST-FRAME I2V` — الفريم الأول هو السلطة العليا على البيئة
 > **المعيار:** `HIXXA_MASTER_CANON_V4` — §6A · §6B · §6D · §6F · §14A
-> **التاقات:** `@char_hixxa` `@hixa-face` `@fox`
-> **التسليم:** يتغيّر — لم يعد الـinkfall، صار **الشق بين العمودين**
+> **التاقات:** `@char_hixxa` `@hixa-face`
+> **التسليم:** فضاء مفتوح، والقلم الأحمر **منفصل عنها ويسقط بجوارها** — جاهز للبرومبت التالي
 
 ---
 
-## الشوت الأخير الجديد
+## تصحيح: لا مظلة في هذا الكليب
 
-بدل انفتاح المظلة كصورة ختامية، صار الختام:
+المظلة كانت في نصك الأصلي (`SHOT 3` و`SHOT 4`)، لكن حين طلبت تبديل الشوت الأخير كان الصواب **حذف سلسلتها كاملة** لأن العمودين يحلّان محلها. استبقيتها فاجتمع بيتان مختلفان في كليب واحد. أُزيلت الآن بالكامل:
 
-**كادر من خلفها** وهي **عائمة** تحت المظلة، وأمامها **عمودان هائلان من الرسومات المرصوصة** فوق بعضها، وبينهما **شق رأسي ضيق** يمرّ منه ضوء الهاوية.
-
-لماذا هي أقوى من ظل التنين؟ لأن ظل التنين **تهديد مستعار** — شكل على حائط. أما العمودان فهما **كل ما رفضته يعود إليها كجدار مادي**، والشق هو المخرج الوحيد. الصورة تحمل معنى القصة بدل أن تشير إليه.
-
-### ⚠️ تناقض فيزيائي يحتاج قرارك
-
-- **المظلة** عرضها أوسع من كتفيها بكثير — هي التي تصنع «العوم» أصلًا.
-- **الشق** بعرض كتفيها ملتفة جانبيًا حتى تنحشر فيه.
-
-**لا يمكن أن تمرّ من الشق والمظلة مفتوحة.** أحدهما يمنع الآخر.
-
-**الحسم المطبَّق:** الشوت الرابع **لا يمرّ من الشق** — ينتهي وهي تتجه إليه والمظلة **تبدأ الانطواء** حول جسدها. العبور نفسه هو **الكليب التالي**، ويرث فريمًا نظيفًا وحالة واضحة. هذا أيضًا أصح إخراجيًا: الشق كوجهة أقوى من الشق كعبور مستعجل في آخر 0.4 ثانية.
-
-**البديل لو أردت العبور داخل هذه الثماني ثوانٍ:** تُلغى المظلة من الكليب كله (الشوتات 3 و4 تتغير)، وتظل ساقطة حرة فتمرّ من الشق مباشرة. قل أيهما.
-
----
-
-## ما اتصلح
-
-| المشكلة | التصحيح |
+| ما حُذف | السبب |
 |---|---|
-| **بلا `@` واحد** — `@[Image 1]` فقط، فلا شيء يحكم الهوية | ثلاثة عناصر بسلطة وحدود، مع احترام أن الـI2V يجعل الفريم الأول أعلى من المراجع في البيئة |
-| بلا Mood / Lighting / Audio | الثلاثة مضافة |
-| **بلا مقياس للأعمدة** — «giant» كلمة لا يقيسها النموذج | المرساة: **ورقة واحدة في الكومة = نفس الورقة التي تمسكها**، فيُقرأ العمود كآلاف الأوراق |
-| بلا قفل عرض الشق | **بعرض كتفيها ملتفة جانبيًا** — لا أوسع فتفقد التوتر، ولا أضيق فتصير مستحيلة |
-| كتلة الكرات «finite ball swarm» بلا سلوك | فقرة فيزياء: تنساب حول المظلة ولا تصطدم ولا تُحبس |
-| الفيزياء متناثرة داخل الشوتات | قسم مستقل، والشوتات تحمل الفعل فقط |
+| الورقة الكريمية التي تنسلخ من الجدار | كانت تمهيدًا للمظلة فقط |
+| الإمساك بالطية المقوّاة | نفس السبب |
+| انفتاح المظلة بأربع طيات شعاعية | **تنتمي إلى البرومبت التالي، وتأتي من القلم لا من الورقة** |
+| ظل التنين كبيت درامي | حلّ محله العمودان — يبقى في الفريم الأول كظل عابر فقط |
+| نهاية الـinkfall | حلّ محلها الفضاء المفتوح |
 
-**التوقيت الأصلي محفوظ:** 1.55 + 1.75 + 2.15 + 2.55 = **8.00**، والقطعات الثلاث في مواضعها.
+وأُضيف قفل صريح يمنع النموذج من اختراعها: `no canopy, no umbrella, no parachute, no caught sheet`.
+
+---
+
+## التسلسل الصحيح
+
+```
+سقوط في الهاوية
+  → عمودان من الرسومات المرصوصة وبينهما شق رأسي ضيق
+  → كادر من خلفها وهي تنجرف نحوه
+  → تنحشر وتعبر — والممر قصير
+  → القلم الأحمر يعلق بحافة ورق ويطير من شعرها
+  → تسقط من الطرف الآخر إلى فضاء مفتوح
+  → القلم يسقط منفصلًا بجوارها
+```
+
+**البرومبت التالي يبدأ من هنا:** تلحق القلم، ومنه تتكوّن المظلة.
+
+---
+
+## ⚠️ كسر مقصود لقفل قائم
+
+الـCanon يقفل: **«قلم أحمر صغير واحد داخل خصل الشعر، لا يتضاعف ولا يتحول»** ويبقى فيها طوال الفيلم.
+
+هذا الكليب **يكسر القفل عمدًا** لأنه الحدث نفسه. الكسر مضبوط بثلاثة شروط حتى لا يصير خطأ استمرارية:
+
+1. **له سبب مادي مرئي:** سن القلم يعلق بحافة ورقية داخل الشق ويُنتزع — لا يسقط وحده.
+2. **يحدث داخل الكادر:** لا يختفي بين قطعتين.
+3. **يبقى موجودًا:** لا يخرج من الفيلم، بل يسقط منفصلًا في الكادر ويظل مرئيًا حتى آخر فريم.
+
+**من هذه اللحظة، عبارة «القلم في شعرها» تسقط من أقفال الأحلام التالية** حتى تستعيده.
+
+---
+
+## المقاييس
+
+| العنصر | المرساة |
+|---|---|
+| العمودان | **ورقة واحدة في الكومة = ورقة رسم عادية بحجم اللي بترسم عليها** — فيُقرأ العمود كآلاف الرسومات |
+| الشق | **بعرض كتفيها ملتفة جانبيًا** — لا باب ولا ممر |
+| طول الممر | **قصير: نحو ضعف طول جسدها** — الفتحة البعيدة مرئية من القريبة |
+| القلم | قصير بطول سبابتها |
 
 ---
 
 ```text
 ################################################################
-HIXXA — CHASM DESCENT AND THE PAPER COLUMNS
+HIXXA — THE PAPER COLUMNS AND THE LOST PENCIL
 ################################################################
 
 SEEDANCE 2.5 — STRICT FIRST-FRAME I2V — 8.0 SECONDS — 16:9 — 24 FPS
@@ -57,12 +78,13 @@ REAL-TIME MOTION — NO SLOW MOTION — NO SPEED RAMPS — NO VISUAL TRANSITIONS
 START STATE
 
 Start exactly from the first frame. HIXXA has just exited the zoetrope rings and is falling
-feet-first through one open torn-paper chasm. A huge asymmetric dragon-shaped shadow already
-lies across the far wall, with one complete wing silhouette and one broken skeletal
-construction side. It is only a cast shadow from torn paper layers.
+feet-first through one open torn-paper chasm, with the small red pencil still held in her curls.
 
 The first frame is the authority for the chasm topology, the paper-ball lanes, HIXXA's pose and
-momentum, the shadow direction, the materials and the light. Preserve all of it.
+momentum, the materials and the light. Preserve all of it. The dragon-shaped shadow already on
+the far wall stays what it is — a cast shadow from torn paper layers — and simply passes out of
+relevance as she descends. It is not the threat of this clip and it never gains volume, detaches
+or becomes a body.
 
 REFERENCE ASSIGNMENTS
 
@@ -73,11 +95,6 @@ the camera angle or the shot size.
 
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person and never drifts between shots.
-
-@fox controls only the printed fox study on the single cream sheet: its anatomy, proportions,
-markings, its one finished wing and one construction wing, and its rust-orange and black
-palette. That fox exists only as flat ink on paper. It never becomes a creature, and its
-reference sheet, turnaround grid or extra poses never appear anywhere in the world.
 
 HANDS
 
@@ -95,25 +112,23 @@ SCALE
 
 HIXXA is about 165 centimetres and her body is the scale reference for the chasm.
 
-One sheet inside the paper columns is the same size as the single cream sheet she catches, so
-each column reads as many thousands of stacked drawings. The columns rise past the top of
-frame and fall away past the bottom; no end of either is visible.
+One sheet inside the paper columns is an ordinary drawing sheet, the size she works on, so each
+column reads as many thousands of stacked drawings. The columns rise past the top of frame and
+fall away past the bottom; no end of either is visible.
 
-The vertical slot between the columns is just wide enough for her shoulders turned sideways —
-never a doorway, never a corridor, never so narrow that a body could not pass.
+The vertical slot between them is just wide enough for her shoulders turned sideways — never a
+doorway, never a corridor, never so narrow that a body could not pass. The passage through is
+short, roughly twice her own body length, so the far opening is already visible from the near
+one.
 
-The paper canopy opens wider than her shoulders but stays a single sheet: it never reaches the
-width of the chasm.
+The red pencil is a short stub about as long as her index finger.
 
 MOTION OBJECTIVE
 
-The changing overlap of fixed torn-paper layers makes the dragon-shaped shadow sweep across the
-canyon as HIXXA falls beneath it. She reads it as a threat, compacts her body and slips through
-one closing slot. A single large cream sheet carrying the flat rust-orange fox study peels from
-the canyon wall and enters her path. She catches one reinforced fold with both hands and the
-sheet opens into a temporary protective canopy through visible hinged folds, slowing her into a
-drift — and that drift carries her toward two colossal columns of stacked drawings with one
-narrow vertical slot between them.
+She falls, drifts toward two colossal columns of stacked drawings, squeezes through the narrow
+vertical slot between them, loses the red pencil from her hair as it catches on a paper edge
+inside the passage, and drops out of the far side into open space with the pencil tumbling
+separately beside her.
 
 ################################################################
 TIMELINE
@@ -122,100 +137,95 @@ TIMELINE
 SHOT 1 — 0.00–1.55
 28mm WIDE SAME-SIDE DESCENT.
 
-Frame zero is the start image. The camera tracks parallel from the shadow side of HIXXA.
-Torn overhead layers slide past each other under the pull of the chasm, moving the dragon
-shadow across the far wall. HIXXA's eyes follow the dark wing shape.
+Frame zero is the start image. The camera tracks parallel with her fall from one side.
+Torn overhead layers slide past each other under the pull of the chasm and the wall shadow
+crosses out of frame behind her.
 
-The shadow never leaves the wall, never gains volume and never detaches from the paper layers
-casting it; its movement is explainable entirely by the changing occlusion above.
+Below her the chasm changes character: two immense vertical masses begin to resolve out of the
+depth on either side, their surfaces reading as stacked edges rather than rock or wall.
 
-End with the shadow's wing edge crossing her line of sight and her body beginning to compact.
+End with both masses legible as columns of paper and her body still falling feet-first between
+them.
 
-HARD CUT at 1.55 THROUGH THE MOVING SHADOW EDGE.
+HARD CUT at 1.55 ON THE COLUMNS RESOLVING.
 
-SHOT 2 — 1.55–3.30
-35mm CLOSE FRONT THREE-QUARTER.
-
-Inherit her compacting body and unchanged downward momentum. A pair of compressed-paper ridges
-narrows ahead. She draws both knees upward, turns one shoulder and passes through the slot
-without touching her head and without losing the red pencil. Her apron and overshirt trail,
-clear the edges and snap back into the gravity stream.
-
-End with her fully through the slot, limbs extending again and a cream ridge filling frame.
-
-MATCH CUT at 3.30 ON THE CREAM RIDGE.
-
-SHOT 3 — 3.30–5.45
-24mm WIDE FROM SLIGHTLY BELOW.
-
-Inherit her extended body just past the ridge. The single fox-study sheet peels from that same
-ridge under the air pressure of her passage. Its printed fox stays a flat rust-orange and black
-drawing with one finished wing and one construction wing.
-
-She reaches upward with both hands and catches one existing reinforced fold. Her shoulders
-absorb the sudden drag, her descent slows a little and continues.
-
-The wide low angle keeps real depth between her body, the peeling sheet and the chasm walls
-receding above and below, so the catch happens in space rather than against a flat backdrop.
-
-End with both hands closed on the fold and the sheet beginning to open above her.
-
-HARD CUT at 5.45 ON THE CAUGHT FOLD CROSSING CAMERA.
-
-FINAL SHOT — 5.45–8.00
+SHOT 2 — 1.55–3.40
 24mm WIDE FROM BEHIND AND SLIGHTLY ABOVE HER.
 
-Inherit her grip on the fold and the sheet mid-opening. The camera is now behind her, looking
-down the chasm past her shoulders in the direction of her fall.
+Inherit her fall and her position between the two masses. The camera is now behind her,
+looking down the chasm past her shoulders in the direction she is travelling.
 
-Air load completes the opening through four connected radial folds into a broad umbrella-like
-paper canopy above her. There is no separate umbrella handle and no metal or brass rib. She
-grips the same central folded spine with both hands, body suspended below it, and her fall
-settles into a slow steady drift.
+Two colossal columns of stacked drawings rise on either side, sheet upon sheet upon sheet,
+edges uneven, their printed marks fragmentary and unreadable at this distance. Between them
+stands one narrow vertical slot, tall and thin, with the chasm's light coming through it as a
+single bright seam. Her descent slows into a drift as the air compresses between the columns.
 
-That drift reveals what lies ahead: two colossal columns of stacked drawings rise out of the
-chasm on either side, sheet upon sheet upon sheet, edges uneven, their printed marks fragmentary
-and unreadable at this distance. Between them stands one narrow vertical slot, tall and thin,
-with the chasm's light coming through it as a single bright seam.
+She reads the slot, turns her body toward it and begins to compact: shoulders narrowing, arms
+drawing in against her sides.
 
-She angles her body toward that seam. The canopy above her begins to fold inward at its outer
-edges as she narrows toward the gap.
+The rear framing reveals restrained parallax between HIXXA, the drifting paper balls and the two
+columns, so they read as enormous receding masses rather than a painted wall.
 
-The rear framing reveals restrained parallax between HIXXA, the drifting paper balls, the two
-columns and the lit seam beyond them, so the columns read as enormous receding masses rather
-than a painted wall.
+End with her small and centred on the bright seam, body compacted, arms in.
 
-End on a stable frame: HIXXA seen from behind and centred on the bright vertical slot, drifting
-toward it beneath the fox-study canopy, the canopy's outer folds already closing inward, the
-columns filling both sides of frame, and the fox still flat on the inner face of the canopy.
+HARD CUT at 3.40 ON HER SHOULDERS TURNING SIDEWAYS.
 
-CAMERA AND EDIT
+SHOT 3 — 3.40–5.60
+35mm CLOSE, tight in the slot with her.
 
-Stay on one side of the fall axis and keep downward screen direction throughout.
-The dragon shadow's movement must be explainable by changing paper occlusion.
-The canopy forms only from the one visible fox-study sheet through mechanical paper folds;
-no material morph and no new prop spawn.
+Inherit her compacted body and her turned shoulders as she enters the gap. The stacked paper
+edges pass close on both sides. The passage is short and the far opening is already visible
+ahead of her.
+
+She works through it in one continuous movement, shoulder first, hips following, the paper
+edges brushing her overshirt and apron. Partway through, the small red pencil in her curls
+catches on a protruding paper edge, is pulled cleanly out of her hair and left behind her in
+the passage, tumbling free.
+
+Her hand goes up after it too late; her fingers close on nothing.
+
+End with the pencil tumbling loose in the slot behind her and her body already clearing the far
+opening.
+
+HARD CUT at 5.60 ON HER SHOULDERS CLEARING THE FAR EDGE.
+
+FINAL SHOT — 5.60–8.00
+24mm WIDE, from behind and below, opening out.
+
+Inherit her body leaving the passage and the pencil loose behind her. She drops out of the
+columns into open space: the walls fall away on all sides and there is suddenly nothing near
+her. Her limbs extend again into the fall and her hair lifts free with the pencil gone from it.
+
+The red pencil comes out of the passage a moment after her, tumbling end over end and falling
+alongside her, close but out of reach.
+
+The opening-out reveals real depth: the two columns receding upward behind her, the drifting
+paper balls spreading into the wider volume, and no floor visible below.
+
+End on a stable frame: HIXXA falling in open space seen from behind, her hair loose, the small
+red pencil tumbling separately and clearly visible beside her within the same frame, and the
+two columns closing away above.
 
 ################################################################
 PHYSICS AND PERFORMANCE
 ################################################################
 
-Gravity never stops. The canopy slows her and turns the fall into a drift; it does not cancel
-the descent, and there is no floaty parachute motion. Show load, drag, shoulder response and
-continued downward travel at every moment.
+Gravity never stops. Her descent slows between the columns because the air compresses there,
+and opens up again into free fall once she clears them; there is no floating, no hovering and
+no cancelled weight at any point.
 
-The sheet behaves as one large piece of real paper: it peels, it snaps taut under air load, it
-opens along existing creases as hinges, and its outer edges flutter and ripple with delayed
-motion. It never becomes fabric, never becomes rigid, and never gains a manufactured structure.
+The columns are solid stacked mass with real weight. Their outer sheets shift and rustle in the
+moving air, but the columns themselves never sway, topple, unstack or open. The paper edges
+inside the slot are stiff and dry; they brush and bend against her clothing without tearing her
+or cutting.
 
-The paper columns are solid stacked mass with real weight. Their outer sheets shift and rustle
-in the moving air, but the columns themselves never sway, topple, unstack or open.
+The pencil is a small rigid wooden object. It is pulled out by an actual snag on an actual paper
+edge, never falls on its own, and once free it tumbles end over end with believable light mass
+and stays in frame.
 
-The paper balls in the swarm keep their finite number. They curve around the wider canopy in
-the airstream without striking it, without becoming trapped in it and without gathering into
-new masses.
+The paper balls in the swarm keep their finite number and drift around her without striking her.
+Her curls, overshirt and apron trail behind her motion and settle.
 
-Her curls and the red pencil hold their position through the whole descent.
 No object moves before direct contact or a visible physical force.
 
 ################################################################
@@ -231,10 +241,10 @@ Skin, curls, plaid cotton, canvas apron, torn paper edge, stacked paper mass and
 remain materially distinct and physically dimensional.
 
 CRITICAL DISTINCTION: the world is dimensional, the drawings are not.
-The chasm, HIXXA, the sheet, the canopy and the columns all carry full sculptural volume,
-perspective and contact shadow. The fox on the sheet and every mark inside the columns exist
-only as flat ink bonded to paper surfaces: no thickness, no volume, no lift and no shadow of
-their own. The dragon shape stays a cast shadow on a wall and never becomes a body.
+The chasm, HIXXA, the columns and the pencil all carry full sculptural volume, perspective and
+contact shadow. Every mark on every sheet inside the columns exists only as flat ink bonded to
+paper: no thickness, no volume, no lift and no shadow of its own. No drawing inside the columns
+animates, reacts or becomes a creature, and the wall shadow stays a shadow.
 
 ################################################################
 LIGHTING AND VISUAL CONTINUITY
@@ -245,10 +255,10 @@ the whole clip, along with its colour temperature, exposure and shadow placement
 
 Light travels down the chasm and is blocked by the two columns, so the narrow slot between them
 reads as one bright vertical seam against their dark stacked mass. This is occlusion, not a
-glowing object: the seam is open space, and neither column nor sheet ever emits light.
+glowing object: the seam is open space, and neither column nor pencil ever emits light.
 
-The canopy takes light through its paper from above, so the fox study reads faintly from
-beneath without becoming a projection or a lit graphic.
+Inside the passage the light narrows to a hard slot of brightness ahead of her with the stacked
+edges in near silhouette. On the far side the light opens out again into the wider volume.
 
 Use soft directional shadow, stable contact shadows and restrained atmospheric perspective.
 Colours stay rich and controlled without neon glow or excessive saturation.
@@ -259,14 +269,14 @@ AUDIO
 
 No dialogue, narration, lyrics, captions or subtitles.
 
-0.00–1.55: the deep hollow rush of falling air in a large paper space, dry sheet layers sliding
-across each other overhead.
-1.55–3.30: the air tightening as the ridges narrow, cloth snapping past edges, one sharp
-release as she clears the slot.
-3.30–5.45: one sheet tearing free, fluttering hard, then a heavy snap as her hands catch and
-her weight loads it.
-5.45–8.00: the canopy filling and settling to a steady low rumble, the falling rush dropping to
-a drift, and the vast dry stillness of the two columns opening ahead.
+0.00–1.55: the deep hollow rush of falling air in a large paper space, dry layers sliding
+overhead.
+1.55–3.40: the rush narrowing and pitching up as the air compresses between the columns, with
+a vast dry stillness underneath it.
+3.40–5.60: paper edges brushing hard against cloth on both sides, one small sharp snag as the
+pencil is pulled from her hair, and a short catch in her breath.
+5.60–8.00: the sound opening out into wide empty air, the tumbling pencil almost inaudible
+beside her, and the columns' rustle falling away above.
 
 Every sound begins only after its visible physical cause.
 
@@ -278,17 +288,18 @@ Only one HIXXA appears. Preserve her exact face, body proportions, skin tone, ha
 wardrobe and anatomy. Her hands keep their five-finger anatomy, their worn dried paint stains
 and their clean unpainted nails, and every object keeps the size given above.
 
-Exactly one cream sheet becomes exactly one canopy. Exactly one red pencil stays in her hair.
 Exactly two paper columns and exactly one vertical slot between them.
+Exactly one red pencil: it leaves her hair only by the visible snag inside the passage, never
+between cuts, and it stays in frame from that moment to the last frame. It never multiplies,
+never changes into another object and is never recovered inside this clip.
+
+NO CANOPY IN THIS CLIP. No sheet peels from the walls, no sheet is caught, and nothing opens
+into an umbrella, canopy, parachute or shade of any kind. No manufactured umbrella, handle,
+metal or brass rib appears. No physical companion, bag, tablet, stylus, weapon or monster.
+No creature emerges from the shadow, the columns or the paper balls.
+
 The paper-ball swarm keeps the same finite number it starts with.
-
-The dragon and the fox remain non-living graphic foreshadowing throughout.
-No manufactured umbrella, handle, metal or brass rib. No physical companion, second canopy,
-bag, tablet, stylus, weapon or monster. No creature emerges from the shadow, the sheet or the
-columns.
-
-She does not pass through the slot inside this clip; she is still approaching it at the last
-frame.
+She passes through the slot exactly once and does not return.
 
 Every angle change is a direct hard cut on a motivated physical event.
 No fade, dissolve, wipe, morph, flash, blur transition, whip transition, animated overlay or
@@ -296,11 +307,11 @@ generated interstitial frame. No text, UI, logo, caption, subtitle or watermark.
 
 ENDPOINT AND HANDOFF
 
-End with the fox-study canopy fully load-bearing but still drifting downward, HIXXA seen from
-behind and centred on the bright vertical slot between the two paper columns, the canopy's
-outer folds beginning to close inward, and the printed fox still flat on the inner canopy.
-Preserve this exact composition, drift speed and canopy state as the inherited first frame of
-the next clip, in which the passage through the slot occurs.
+End with HIXXA falling in open space, seen from behind, hair loose and no pencil in it, the two
+paper columns receding above her, and the small red pencil tumbling separately and clearly
+visible within the same frame beside her, still out of reach.
+Preserve this exact composition, fall speed, body attitude and pencil position as the inherited
+first frame of the next clip, in which she reaches the pencil.
 ```
 
 ---
@@ -309,12 +320,12 @@ the next clip, in which the passage through the slot occurs.
 
 | القطعة | آخر فريم | أول فريم بعدها |
 |---|---|---|
-| 1→2 (1.55) | حافة جناح الظل تعبر خط نظرها وجسدها يبدأ الانضغاط | نفس الانضغاط ونفس الاندفاع الهابط |
-| 2→3 (3.30) | خرجت من الشق والأطراف تمتد، وحافة كريمية تملأ الكادر | نفس الجسد الممتد بعد الحافة |
-| 3→4 (5.45) | الكفّان مغلقتان على الطية والورقة تبدأ الانفتاح | نفس القبضة والورقة في منتصف انفتاحها، من خلفها |
+| 1→2 (1.55) | العمودان صارا مقروءين وهي تسقط بينهما | نفس السقوط، الكاميرا خلفها |
+| 2→3 (3.40) | كتفاها يلتفان جانبيًا وجسدها منضغط على الشق | نفس الالتفاف عند الدخول |
+| 3→5.60 | القلم يتقلب حرًا خلفها وكتفاها يعبران الحافة | نفس العبور، الفضاء ينفتح |
 
-**التوقيت:** 1.55 + 1.75 + 2.15 + 2.55 = **8.00** — بلا فراغ، والصوت كذلك.
+**التوقيت:** 1.55 + 1.85 + 2.20 + 2.40 = **8.00** — بلا فراغ، والصوت كذلك.
 
-## تنبيه على التسليم
+## ما يرثه البرومبت التالي
 
-النهاية القديمة كانت `black inkfall → SF048`. **لم تعد كذلك.** التسليم الآن هو **الشق بين العمودين**، فحالة دخول الكليب التالي تتغير: يبدأ من فريم خلفي، عوم بطيء، مظلة تبدأ الانطواء، والشق أمامها مباشرة. لو `SF048` مكتوب بالفعل على الـinkfall، ابعته وأعيد ضبط مدخله.
+فريم خلفي، سقوط حر في فضاء مفتوح، شعرها منفلت بلا قلم، والقلم يتقلب بجوارها **داخل نفس الكادر** وعلى مسافة قريبة لكن خارج المتناول. من هنا تبدأ: تلحقه، ثم تتكوّن المظلة منه.
