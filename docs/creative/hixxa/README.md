@@ -34,6 +34,7 @@
 | B03·V2 | [ESCALATION — BASKET IN THE CORNER](beats/B03-ESCALATION-V2-BASKET-IN-CORNER.md) | برومبت واحد / 4 شوتات | `@loc_location-room-1` `@desk` `@EAR` | نفس الحلقة ببداية أهدأ، السلة في زاوية الغرفة خلفها يسارًا ورمية فوق الكتف |
 | B04 | [HX-DRAW-FOX-02 — COLOR RUN](beats/B04-FOX-COLOR-RUN.md) | 8s / 4 شوتات | `@fox` `@EAR` `@desk` | تلوين الثعلب حتى اكتمال الجناحين السوداوين |
 | B05 | [HIXXA FOX 03 — FIRST REJECTION](beats/B05-FOX-FIRST-REJECTION.md) | 8s / 4 شوتات | `@fox` `@EAR` `@loc_location-room-1` | رفع الورقة، كرمشتها، رميها، وPOV من داخل السلة |
+| B06 | [HYSTERICAL MONTAGE](beats/B06-HYSTERICAL-MONTAGE.md) | 10s / 7 شوتات | `@basket` `@ear` `@desk` | ست رفضات متتالية والسلة تُملأ حتى الحافة |
 
 الأفلام قابلة للتوليد منفردة، ومرتبة زمنيًا كقوس واحد إذا وُلِّدت بالترتيب:
 
