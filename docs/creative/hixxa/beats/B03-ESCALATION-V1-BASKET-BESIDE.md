@@ -38,7 +38,7 @@ USE ONLY THE THREE SPECIFIED TRANSITIONS
 REFERENCE ASSIGNMENTS
 
 @loc_location-room-1 controls the exact attic architecture, ceiling angles, wall treatment,
-exterior window geometry, floor material, the metal waste basket and all fixed background
+exterior window geometry, floor material, the metal wastebasket and all fixed background
 objects. It does not control the camera angle or the shot size.
 
 @char_hixxa controls HIXXA's exact single full-body identity, skin tone, body proportions,
@@ -89,8 +89,8 @@ Every sheet follows one continuous physical path with no step skipped:
 → [crushed into a ball inside her fist] → [thrown] → [landed in the wastebasket].
 No sheet, ball, mark or prop ever materialises. Nothing enters frame without a hand.
 
-Exactly one HIXXA. Exactly one metal basket, one desk lamp, one phone, one coffee cup.
-The basket holds exactly four crumpled balls at the start from earlier work, and ends holding
+Exactly one HIXXA. Exactly one metal wastebasket, one desk lamp, one phone, one coffee cup.
+The wastebasket holds exactly four crumpled balls at the start from earlier work, and ends holding
 exactly six with a seventh released and still airborne. It is partially filled at all times,
 never overflows, and clear empty volume stays visible above the balls.
 Exactly three fresh sheets are consumed across the sequence.
@@ -161,10 +161,10 @@ tense micro-settle; no new object appears.
 
   CYCLE ONE — she pulls one sheet from the existing stack, draws across it with fast weighted
   strokes, rejects it, crushes it in her fist and tosses it into the wastebasket. It rings the
-  metal once and settles. The basket now holds five.
+  metal once and settles. The wastebasket now holds five.
 
   CYCLE TWO — she pulls the next sheet, draws harder and faster, rejects it sooner, crushes it
-  and throws it in. Second ring, second settle. The basket now holds six, still with clear
+  and throws it in. Second ring, second settle. The wastebasket now holds six, still with clear
   empty volume above the balls.
 
   CYCLE THREE — she pulls the third sheet, draws with the most aggressive speed of the three,
@@ -330,7 +330,7 @@ PRESERVATION LOCKS
 
 Only one HIXXA appears. Preserve her exact identity, facial structure, hairstyle, wardrobe
 layers, earbuds and cable route, correct anatomical left and right, and the established desk,
-lamp, phone, coffee and basket placements, attic architecture, exterior window geometry,
+lamp, phone, coffee and wastebasket placements, attic architecture, exterior window geometry,
 lighting and action axis.
 
 She never looks into the lens and never speaks.

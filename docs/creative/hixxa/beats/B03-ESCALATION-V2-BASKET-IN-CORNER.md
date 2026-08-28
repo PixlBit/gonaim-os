@@ -38,7 +38,7 @@ USE ONLY THE THREE SPECIFIED TRANSITIONS
 REFERENCE ASSIGNMENTS
 
 @loc_location-room-1 controls the exact attic architecture, ceiling angles, wall treatment,
-exterior window geometry, the rear corner geometry, floor material, the metal waste basket
+exterior window geometry, the rear corner geometry, floor material, the metal wastebasket
 standing in that corner and all fixed background objects.
 It does not control the camera angle or the shot size.
 
@@ -94,8 +94,8 @@ Every sheet follows one continuous physical path with no step skipped:
 → [crushed into a ball inside her fist] → [thrown over her shoulder] → [landed in the wastebasket].
 No sheet, ball, mark or prop ever materialises. Nothing enters frame without a hand.
 
-Exactly one HIXXA. Exactly one metal basket, one desk lamp, one phone, one coffee cup.
-The basket holds exactly four crumpled balls at the start from earlier work, and ends holding
+Exactly one HIXXA. Exactly one metal wastebasket, one desk lamp, one phone, one coffee cup.
+The wastebasket holds exactly four crumpled balls at the start from earlier work, and ends holding
 exactly six with a seventh released and still airborne. It is partially filled at all times,
 never overflows, and clear empty volume stays visible above the balls.
 Exactly three fresh sheets are consumed across the sequence.
@@ -178,12 +178,12 @@ tense micro-settle; no new object appears.
   CYCLE ONE — she pulls one sheet from the existing stack, draws across it with fast weighted
   strokes, rejects it, crushes it in her fist, then rotates her trunk and throws it back over
   her shoulder toward the corner. The ball crosses the room on a high arc, passes once through
-  the lamp's light, darkens into the corner shadow and rings the metal. The basket now holds
+  the lamp's light, darkens into the corner shadow and rings the metal. The wastebasket now holds
   five.
 
   CYCLE TWO — she pulls the next sheet, draws harder and faster, rejects it sooner, crushes it
   and throws again with more shoulder behind it. Second flight, second ring, second settle.
-  The basket now holds six, still with clear empty volume above the balls.
+  The wastebasket now holds six, still with clear empty volume above the balls.
 
   CYCLE THREE — she pulls the third sheet, draws with the most aggressive speed of the three,
   stops mid-stroke and begins to crush it.
