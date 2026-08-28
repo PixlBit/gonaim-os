@@ -36,6 +36,7 @@
 | B05 | [HIXXA FOX 03 — FIRST REJECTION](beats/B05-FOX-FIRST-REJECTION.md) | 8s / 4 شوتات | `@fox` `@EAR` `@loc_location-room-1` | رفع الورقة، كرمشتها، رميها، وPOV من داخل السلة |
 | B06 | [HYSTERICAL MONTAGE](beats/B06-HYSTERICAL-MONTAGE.md) | 10s / 7 شوتات | `@basket` `@ear` `@desk` | ست رفضات متتالية والسلة تُملأ حتى الحافة |
 | B07 | [THE PAPER COLUMNS AND THE LOST PENCIL](beats/B07-CHASM-AND-PAPER-COLUMNS.md) | 8s / 4 شوتات | `@char_hixxa` `@hixa-face` | العبور من الشق، القلم يطير، والسقوط لفضاء مفتوح |
+| B08 | [BATTERY DEATH](beats/B08-BATTERY-DEATH.md) | 27s / 5 شوتات | `@ear` `@basket` `@desk` | هياج الرسم، تحذير البطارية، موت التليفون، والصمت |
 
 الأفلام قابلة للتوليد منفردة، ومرتبة زمنيًا كقوس واحد إذا وُلِّدت بالترتيب:
 
