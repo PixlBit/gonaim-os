@@ -9,25 +9,14 @@
 
 ---
 
-## ⚠️ تعارض يحتاج قرارك قبل التوليد
+## ✅ تعارضان حُسما بالـMaster Canon
 
-| الملف | حالة الرسمة |
-|---|---|
-| `HX-DRAW-FOX-02` — سطر التسليم | «the fully finished rust-orange fox illustration with **exactly two completely black wings**» |
-| `FOX-03` — وصف الورقة المرفوضة | «**one black wing and one pale unfinished wing**» |
+| الموضوع | الحسم | المرجع |
+|---|---|---|
+| **حالة جناحي الثعلب** | «الجناح القريب ينجح، البعيد يفشل» — فحالة FOX-03 هي الصحيحة، و`B04` عُدِّل ليسلّمها | `PART I §20` |
+| **اليد التي ترمي** | اليمين للرسم، و**اليسار تنفذ الرمية بعد نقل الكرة إليها مرئيًا** — عُدِّلت الشوتات B و C | `PART I §21` |
 
-FOX-02 يقفل الجناحين أسودين مصمتين ويسلّمهما إلى FOX-03، وFOX-03 يبدأ بجناح واحد أسود وآخر شاحب غير مكتمل. **الحالتان لا تجتمعان.**
-
-الأهم أن الجناح الشاحب هو **سبب الرفض نفسه** في شوت A — «looks from the finished black wing to the pale unfinished wing». لو الجناحان مكتملان، يفقد الشوت الأول مبرره الدرامي كله ويصير الرفض بلا سبب مرئي.
-
-**الخياران:**
-
-1. **الأقوى دراميًا — عدّل FOX-02:** اجعل شوت C ينهي الجناح الأول فقط ويترك الثاني شاحبًا غير مكتمل، ويصير سطر التسليم «one completed black wing and one pale unfinished wing». تقولي وأنفّذها في FOX-02 فورًا.
-2. **الأسهل — عدّل FOX-03:** اجعل الورقة بجناحين أسودين، ويصير سبب الرفض شيئًا آخر (التكوين، الوضعية، الوجه) يُقرأ في نقلة عينها.
-
-**البرومبت تحت مكتوب على الخيار الأول** — أي بجناح واحد أسود وآخر شاحب — لأنه ما بعتّه لي الآن، ولأنه يحفظ منطق المشهد.
-
----
+الجناح الشاحب هو **سبب الرفض نفسه**: شوت A كله عين HIXXA وهي تنتقل من الجناح المكتمل إلى الناقص. الـCanon والدراما متفقان.
 
 ## ما اتصلح
 
@@ -185,7 +174,8 @@ SHEET STATE LADDER
 The sheet follows one continuous physical path with no step skipped:
 [lying flat on the desk] → [gripped at opposite edges] → [lifted to chest height]
 → [thumbs folding inward] → [progressively crushed through visible creases]
-→ [one compact ball in her right palm] → [released on a diagonal arc]
+→ [one compact ball in her right palm] → [visibly transferred to her left palm]
+→ [released on a diagonal arc]
 → [crossing the wastebasket rim] → [settled at the bottom].
 
 COUNTS
@@ -231,19 +221,20 @@ resists in stages rather than collapsing at once.
 The close perspective preserves real surface relief and tactile separation between skin,
 paper fibre and the printed pigment folding into the creases.
 
-End with the single ball compressed inside her anatomical right palm while the left hand
-releases and drops clear. No other paper or object moves.
+End with the single ball compressed inside her anatomical right palm, already passing across
+into her open anatomical left palm, the transfer visible and complete before the cut.
+No other paper or object moves.
 
-ACTION CUT at 4.45s on her right shoulder loading toward the wastebasket.
+ACTION CUT at 4.45s on her left shoulder loading toward the wastebasket.
 
 SHOT C — 4.45–6.55s — 28mm REAR THREE-QUARTER WIDE
 
-Inherit the compressed ball in her right palm, her left hand clear and her right shoulder
-already loading.
+Inherit the compressed ball now held in her anatomical left palm, her right hand clear at the
+desk, and her left shoulder already loading.
 
 Frame HIXXA, the desk and the fixed wastebasket together. She rotates her seated torso toward
-the world-space rear-left corner, draws her right arm back and throws the one ball on a clean
-diagonal arc toward the wastebasket. Show shoulder initiation, elbow extension, wrist release
+the world-space rear-left corner, draws her left arm back and throws the one ball on a clean
+diagonal arc toward the wastebasket. Her right hand stays free at the desk throughout. Show shoulder initiation, elbow extension, wrist release
 and follow-through. The camera uses only a short lateral drift on one side of the
 desk-to-wastebasket axis. The ball never changes shape or scale.
 

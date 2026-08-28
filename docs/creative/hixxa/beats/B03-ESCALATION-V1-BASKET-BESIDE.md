@@ -126,7 +126,7 @@ STATE LADDER AND COUNTS
 
 Every sheet follows one continuous physical path with no step skipped:
 [in the existing stack] → [pulled out by hand] → [drawn on] → [visibly rejected]
-→ [crushed into a ball inside her fist] → [thrown] → [landed in the wastebasket].
+→ [crushed into a ball] → [visibly passed to her left hand] → [thrown] → [landed in the wastebasket].
 No sheet, ball, mark or prop ever materialises. Nothing enters frame without a hand.
 
 Exactly one HIXXA. Exactly one metal wastebasket, one desk lamp, one phone, one coffee cup.
@@ -203,8 +203,9 @@ tense micro-settle; no new object appears.
 15–78%: her workflow escalates through exactly three rapid but physically continuous cycles.
 
   CYCLE ONE — she pulls one sheet from the existing stack, draws across it with fast weighted
-  strokes, rejects it, crushes it in her fist and tosses it into the wastebasket. It rings the
-  metal once and settles beside the first. The wastebasket now holds two.
+  strokes, rejects it, crushes it, passes the ball visibly into her left hand and tosses it
+  down into the wastebasket. It rings the metal once and settles beside the first.
+  The wastebasket now holds two.
 
   CYCLE TWO — she pulls the next sheet, draws harder and faster, rejects it sooner, crushes it
   and throws it in. Second ring, second settle. The wastebasket now holds three, still far from

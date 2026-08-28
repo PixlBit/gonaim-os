@@ -79,7 +79,8 @@ both worn throughout with one continuous cable. They never vanish, multiply or c
 
 Use @[fox](98900fd0-3b3a-47b9-a9e9-401406dde49f) only for the final design, markings and
 palette of exactly one fox illustration: rust-orange body, its reference-specific lighter
-areas and graphite accents, and exactly two completely black wings.
+areas and graphite accents, and its two-wing construction: the near wing is completed in matte
+black, the far wing is left pale and unfinished.
 Do not copy the turnaround grid, multiple poses, captions or reference background.
 The animal exists only as flat artwork on paper.
 
@@ -121,7 +122,8 @@ The artwork progresses through one continuous state and never skips or reorders 
 → [lighter muzzle, chest and tail accents established]
 → [first wing begun in matte black from the root outward]
 → [eye, muzzle markings and ear accents defined]
-→ [both wings completed to uniform matte black to their outer contours]
+→ [the near wing completed to uniform matte black to its outer contour]
+→ [the far wing left pale and unfinished]
 → [final tail markings added]
 → [complete illustration, brush withdrawn].
 
@@ -197,12 +199,15 @@ Her left hand remains at its upper edge; her right hand remains the painting han
 
 Inherit the completed face markings, the partially filled first wing and the bare second wing.
 
-She finishes the second wing and deepens both wings to uniform matte black all the way to
-their outer contours; no orange, gray or unpainted patch remains inside either wing. She adds
-the final tail markings without covering the construction character of the drawing.
+She deepens the near wing to uniform matte black all the way to its outer contour; no orange,
+gray or unpainted patch remains inside it. She reaches toward the far wing, lays one short
+stroke at its root, and stops — that wing stays pale, its bare graphite construction showing
+through. She adds the final tail markings without covering the construction character of the
+drawing.
 
-End with both wings solid matte black to their outer edges, the tail markings placed, and the
-brush clear of the paper above the outer wing edge.
+End with the near wing solid matte black to its outer edge, the far wing still pale with one
+short black stroke at its root, the tail markings placed, and the brush clear of the paper
+above the outer wing edge.
 
 MATCH CUT at 6.55s on the diagonal outer wing edge — a direct hard cut holding the same
 diagonal across the join, with no morph, dissolve or blend.
@@ -218,10 +223,11 @@ light. The complete flat colored fox drawing fills the lower center; HIXXA, the 
 recognizable room remain clearly present behind it.
 
 She withdraws the brush from over the page and gives the result a silent measuring look, her
-shoulders lowering once. No further paint changes.
+gaze settling on the unfinished far wing and her shoulders lowering once.
+No further paint changes.
 
-End fully settled on a locked frame: the completed rust-orange fox with exactly two solid
-black wings lying flat on the same uncreased sheet, her left hand still at the upper edge, the
+End fully settled on a locked frame: the rust-orange fox with one solid black wing and one
+pale unfinished wing lying flat on the same uncreased sheet, her left hand still at the upper edge, the
 brush held clear and still, and the room unchanged behind her.
 
 ################################################################
@@ -328,8 +334,10 @@ The drawing never animates, blinks, changes pose, becomes a live fox, rises from
 gains volume or turns into folded sculpture. Only one fox is depicted.
 The page never slides, rotates, wrinkles or duplicates.
 
-Exactly two wings, and both finish uniformly matte black to their outer contours with no
-orange, gray or unpainted patch remaining inside either one.
+Exactly two wings. The near wing finishes uniformly matte black to its outer contour with no
+orange, gray or unpainted patch inside it. The far wing is never completed: it keeps its pale
+unfinished state with bare graphite showing, carrying one short black stroke at the root only.
+This asymmetry is the reason for the rejection that follows and must survive to the last frame.
 The graphite construction stays partly readable beneath the colour and is never fully buried.
 
 No cuts before 4.00s; exactly three cuts afterward, at 4.00, 5.15 and 6.55.
@@ -343,8 +351,8 @@ contact.
 
 ENDPOINT AND HANDOFF
 
-Hold on the fully finished rust-orange fox illustration with exactly two completely black
-wings, still flat on the same uncreased sheet, the brush withdrawn and still.
+Hold on the rust-orange fox illustration with one completed black wing and one pale unfinished
+wing, still flat on the same uncreased sheet, the brush withdrawn and still.
 Preserve this exact sheet orientation, camera framing and paint state as the inherited first
 frame of HX-DRAW-FOX-03.
 ```
@@ -360,6 +368,10 @@ frame of HX-DRAW-FOX-03.
 | C→D (6.55) | جناحان أسودان مصمتان، علامات الذيل، الفرشاة فوق الحافة الخارجية | نفس القطر الخارجي للجناح في بداية الكادر الواسع |
 
 **التوقيت:** 4.00 + 1.15 + 1.40 + 1.45 = **8.00** — بلا فراغ، والقطعات الثلاث كلها بعد 4.00 كما اشترطت.
+
+## تعديل الـCanon المطبَّق
+
+`PART I §20` يقفل: **«الجناح القريب ينجح. الجناح البعيد يفشل.»** فشوت C لم يعد ينهي الجناحين — ينهي القريب فقط، ويضع ضربة واحدة قصيرة عند جذر البعيد ثم يتوقف، ويسلّم الورقة بحالة **جناح أسود مكتمل + جناح شاحب غير مكتمل** إلى `FOX-03`. هذه الحالة هي سبب الرفض في الفيلم التالي.
 
 ## نقطة تحتاج قرارك
 

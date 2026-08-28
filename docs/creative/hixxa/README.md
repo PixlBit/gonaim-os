@@ -1,6 +1,8 @@
 # HIXXA — ANIME SCENE ANIMATION PROMPTS
 
-مجموعة برومبتات تحريك مكتوبة بالكامل وفق [`HIXXA — CINEDANCE 30-SECOND PROMPT BIBLE v2.0`](HIXXA_CINEDANCE_30S_PROMPT_BIBLE.md) — إصدار **DIMENSIONAL HAND-PAINTED CINEMATIC** — ومبنية على عناصر المكتبة الموجودة فعليًا (`@char_hixxa`, `@fox`, `@monster`, `@weaponribbon` … إلخ).
+**المرجع الحاكم:** [`HIXXA_MASTER_CANON_V4.md`](HIXXA_MASTER_CANON_V4.md) — الـMaster الكامل: قصة المشروع وCanon الشخصيات والعالم، نظام CINEDANCE التنفيذي كاملًا، وفوقهما **طبقة التصليب الإنتاجي** المستخرجة من فشل توليد حقيقي (§6A–§6F، §14A، §40A).
+
+مجموعة برومبتات تحريك مبنية على عناصر المكتبة الموجودة فعليًا (`@char_hixxa`, `@fox`, `@basket`, `@weaponribbon` … إلخ).
 
 كل ملف هنا **فيلم مصغر جاهز للنسخ** على Seedance 2.5 — Multi-Reference R2V، 30 ثانية، 16:9، 24 FPS.
 
@@ -10,7 +12,8 @@
 
 | # | الفيلم | المكان | العناصر الأساسية | الحدث المحوري |
 |---|---|---|---|---|
-| — | [PROMPT BIBLE v2.0](HIXXA_CINEDANCE_30S_PROMPT_BIBLE.md) | — | — | المرجع الحاكم لكل ما تحته |
+| — | [MASTER CANON V4](HIXXA_MASTER_CANON_V4.md) | — | — | **المرجع الحاكم** لكل ما تحته |
+| — | [PROMPT BIBLE v2.0](HIXXA_CINEDANCE_30S_PROMPT_BIBLE.md) | — | — | مرجع سابق، مُستوعَب داخل V4 |
 | 00 | [TAG REGISTRY](00-TAG-REGISTRY.md) | — | كل التاقات | عقود السلطة والحدود لكل `@tag` |
 | 01 | [THE SKETCH AWAKENS](01-THE-SKETCH-AWAKENS.md) | الغرفة | `@fox` `@cat` `@dragon` `@EAR` | الرسم يقوم عن الورقة ويصير جسمًا له ظل |
 | 02 | [CHOOSE YOUR WEAPON](02-CHOOSE-YOUR-WEAPON.md) | الغرفة/المكتب | `@taplet` `@tapletui` `@stage1weapon` | تختار أصغر سلاح لأنه يناسب الثعلب |
