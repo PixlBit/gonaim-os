@@ -20,7 +20,7 @@ It does not control [explicit boundary].
 
 | Tag | النوع | السلطة (يتحكم في) | الحد (لا يتحكم في) | يُستخدم في |
 |---|---|---|---|---|
-| `@char_hixxa` | Character | هوية HIXXA الكاملة الواحدة: البشرة، النسب، الشعر المجعد، الملابس المعتمدة | زاوية الكاميرا، التكوين، تعبير الوجه اللحظي | كل الأفلام |
+| `@char_hixxa` | Character | هوية HIXXA الكاملة الواحدة: البشرة، النسب، الشعر المجعد، الملابس المعتمدة، **وأثر الألوان الجاف على اليدين** | زاوية الكاميرا، التكوين، تعبير الوجه اللحظي | كل الأفلام |
 | `@hixa-face` | Character | وجه نفس HIXXA فقط، تعزيزًا | لا يصنع شخصًا ثانيًا ولا يفرض حجم لقطة | كل الأفلام |
 | `@loc_location-room-1` | Location | معمار الغرفة، الخامات، الجغرافيا الدائمة، الشباك الحقيقي | زاوية الكاميرا وحركة الشوت | 01, 02, 03 |
 | `@outdoor` | Location | الممر خارج باب HIXXA: الحوائط، الأرضية الخشبية، اللوحات، الباب المكتوب عليه HIXXA، ونهاية السلّم | الكاميرا، اتجاه الحركة، وقت اليوم داخل الغرفة | 04, 05, 06 |
@@ -120,7 +120,49 @@ One wired earbud set with one continuous cable.
 Exactly one small red pencil in her curls.
 ```
 
-### 3.5 عقد المود الملزم
+### 3.5 يدا HIXXA وأثر الألوان — إلزامي في كل برومبت
+
+أثر الألوان على اليدين **سمة هوية**، لا تفصيلة تجميلية؛ ويُكتب في كل فيلم بعد سطر `@hixa-face` مباشرة:
+
+```text
+HANDS AND PAINT STAINS
+
+Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
+stains are part of her identity in every shot: soft pale-blue and cyan patches worn into the
+sides of the thumb and across the finger pads, a smaller lilac or dusty-pink patch near one or
+two nail beds, scattered cream and white flecks over the knuckles and the backs of the
+fingers, and faint colour caught in the cuticle edges.
+
+They read as dried, absorbed and worn — thin, matte, slightly faded, and following the skin's
+own creases and folds. They are never wet paint, never fresh droplets, never glossy, raised,
+wet-looking or glowing. The stains sit beneath the skin's hand-painted shading rather than on
+top of it, so the hand keeps its full sculptural volume, knuckle relief and tendon structure.
+
+The nails stay clean and natural with a visible pale nail plate; colour gathers around the
+nail edges and cuticles, not across the nail surface.
+
+The pattern is soft and irregular and never resolves into a graphic shape, a logo, a glove, a
+tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
+every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
+```
+
+وفي أفلام الرسم والتلوين فقط يُضاف:
+
+```text
+When she is actively painting, fresh wet colour may additionally appear on her fingertips only
+after visible contact with pigment; it never replaces or covers the permanent dried stains.
+```
+
+وفي الـLocks:
+
+```text
+Preserve the permanent dried paint stains on both of her hands exactly as established:
+same placement, same colours, same density, dried and matte, in every shot and at every lens.
+```
+
+**سببان لأهميتها:** أنها تصنع تاريخًا للشخصية من دون سطر حوار، وأنها أول ما يسقط عند تغيير العدسة إذا لم تُقفل — خصوصًا في الماكرو حيث تكون اليد هي الكادر كله.
+
+### 3.6 عقد المود الملزم
 
 هذا البلوك يُنسخ حرفيًا في كل فيلم تحت عنوان `MOOD AND RENDER CONTRACT`، ويُملأ سطر الخامات وحده حسب المشهد:
 
@@ -147,7 +189,7 @@ Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe
 construction and material response across every lens and angle.
 ```
 
-### 3.6 جمل العمق المحلية
+### 3.7 جمل العمق المحلية
 
 تُستخدم **عند الحاجة فقط** داخل الشوت الذي فيه حركة كاميرا أو ماكرو أو بورتريه، ولا تُنسخ الثلاثة في كل شوت:
 
@@ -172,6 +214,8 @@ body proportions, curly hairstyle and established wardrobe.
 
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person.
+
+[HANDS AND PAINT STAINS BLOCK — see 3.5, copied verbatim]
 
 @desk controls the exact desk surface, wood grain and permanent tools.
 It does not introduce any additional device or interface.

@@ -75,6 +75,26 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 Use @hixa-face to reinforce only the face of that same single HIXXA.
 It never creates a second person.
 
+HANDS AND PAINT STAINS
+
+Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
+stains are part of her identity in every shot: soft pale-blue and cyan patches worn into the
+sides of the thumb and across the finger pads, a smaller lilac or dusty-pink patch near one or
+two nail beds, scattered cream and white flecks over the knuckles and the backs of the
+fingers, and faint colour caught in the cuticle edges.
+
+They read as dried, absorbed and worn — thin, matte, slightly faded, and following the skin's
+own creases and folds. They are never wet paint, never fresh droplets, never glossy, raised,
+wet-looking or glowing. The stains sit beneath the skin's hand-painted shading rather than on
+top of it, so the hand keeps its full sculptural volume, knuckle relief and tendon structure.
+
+The nails stay clean and natural with a visible pale nail plate; colour gathers around the
+nail edges and cuticles, not across the nail surface.
+
+The pattern is soft and irregular and never resolves into a graphic shape, a logo, a glove, a
+tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
+every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
+
 Use @[EAR](449e8116-6279-4951-adf6-56a5f43a670b) only for the exact black wired earbuds.
 HIXXA wears exactly one pair throughout, both buds in place, one physically continuous cable.
 They never vanish, multiply or change design.
@@ -257,7 +277,7 @@ PRESERVATION LOCKS
 Only one HIXXA appears.
 Preserve her exact face, body proportions, skin tone, hair mass, layered wardrobe and anatomy,
 including correct five-finger hands, the right-hand pencil grip and the left-hand paper
-contact.
+contact. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens.
 
 Exactly one active sheet and exactly one drawn fox, with exactly two wings.
 Exactly one graphite pencil in her hand and exactly one small red pencil in her curls;

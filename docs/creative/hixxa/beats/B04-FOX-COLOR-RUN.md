@@ -74,6 +74,29 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 Use @hixa-face to reinforce only the face of that same single HIXXA.
 It never creates a second person and never drifts between shots.
 
+HANDS AND PAINT STAINS
+
+Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
+stains are part of her identity in every shot: soft pale-blue and cyan patches worn into the
+sides of the thumb and across the finger pads, a smaller lilac or dusty-pink patch near one or
+two nail beds, scattered cream and white flecks over the knuckles and the backs of the
+fingers, and faint colour caught in the cuticle edges.
+
+They read as dried, absorbed and worn — thin, matte, slightly faded, and following the skin's
+own creases and folds. They are never wet paint, never fresh droplets, never glossy, raised,
+wet-looking or glowing. The stains sit beneath the skin's hand-painted shading rather than on
+top of it, so the hand keeps its full sculptural volume, knuckle relief and tendon structure.
+
+The nails stay clean and natural with a visible pale nail plate; colour gathers around the
+nail edges and cuticles, not across the nail surface.
+
+The pattern is soft and irregular and never resolves into a graphic shape, a logo, a glove, a
+tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
+every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
+
+When she is actively painting, fresh wet colour may additionally appear on her fingertips only
+after visible contact with pigment; it never replaces or covers the permanent dried stains.
+
 Use @[EAR](449e8116-6279-4951-adf6-56a5f43a670b) for exactly one pair of black wired earbuds,
 both worn throughout with one continuous cable. They never vanish, multiply or change design.
 
@@ -301,7 +324,7 @@ PRESERVATION LOCKS
 
 Only one HIXXA appears. Preserve her exact face, body proportions, skin tone, hair mass,
 layered wardrobe and anatomy, including correct five-finger hands.
-The right hand is always the painting hand; the left always stabilizes the same sheet.
+The right hand is always the painting hand; the left always stabilizes the same sheet. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens.
 
 The drawing never animates, blinks, changes pose, becomes a live fox, rises from the sheet,
 gains volume or turns into folded sculpture. Only one fox is depicted.
