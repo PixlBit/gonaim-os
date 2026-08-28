@@ -178,6 +178,8 @@
 - لقطات الأنيمي السريعة لا تتحول إلى Cel-shaded 2D.
 - خطوط الإضاءة في النفق لا تحول الفيلم إلى Neon world.
 
+> **التفصيل التنفيذي الكامل في §6G** — ثلاث طبقات: FULL للحالات الحرجة، OPERATIVE افتراضيًا في كل برومبت، SHORT LOCK للبرومبتات المزدحمة بالحركة.
+
 ### الجملة التشغيلية المختصرة
 
 ```text
@@ -441,6 +443,216 @@ with one further ball released and still airborne at the final frame.
 ### ضغط المحتوى عند تقصير المدة
 
 عند تقليل مدة كليب، **لا تُضغط النوافذ زمنيًا فقط؛ تُقلَّل المراحل**. الفعل الصغير الواضح يحتاج 0.8–1.5 ثانية؛ وإذا نزل عن ذلك ظهر أسوأ أعراض الحشو: **خطوط ترسم نفسها لتلحق بالزمن**، وهو ما تمنعه الأقفال أصلًا.
+
+---
+
+## 6G. قفل الستايل الكامل — ثلاث طبقات
+
+هذا القسم هو **المرجع البصري النهائي** ويمتد على §6. الصيغة في §6 تبقى صحيحة، وهذه تفصيلها التنفيذي.
+
+**السبب في التقسيم إلى طبقات:** النص الكامل نحو 600 كلمة. نسخه في كل برومبت يكسر §15 و§40A — تراكم يبعثر انتباه الموديل ويزاحم الأقفال العاملة. فالماستر يحمل الكامل، والبرومبت يحمل ما يلزمه.
+
+| الطبقة | الاستخدام | الطول |
+|---|---|---|
+| **TIER 1 — FULL** | أول توليدة لمظهر جديد، أو Hero shot، أو حين ينحرف الستايل ولا تكفي الطبقة الثانية | ~600 كلمة |
+| **TIER 2 — OPERATIVE** | **الافتراضي في كل برومبت** | ~150 كلمة |
+| **TIER 3 — SHORT LOCK** | البرومبتات المزدحمة بالحركة حيث الميزانية النصية ضيقة | فقرة واحدة |
+
+---
+
+### TIER 1 — FULL MASTER VISUAL STYLE
+
+```text
+################################################################
+MASTER VISUAL STYLE — HAND-PAINTED STYLIZED 3D
+################################################################
+
+Premium stylized 3D character animation rendered through a hand-painted illustrative finish.
+
+The underlying world, characters, props and camera are fully dimensional and volumetric 3D,
+with convincing perspective, depth, spatial parallax, sculpted anatomy and cinematic lens
+behavior; however, the final image must read as a moving hand-painted illustration rather than
+conventional CGI.
+
+CHARACTER RENDERING
+
+Characters use strongly sculpted, graphic forms with elegant stylized proportions and
+controlled anatomical exaggeration.
+
+Faces are dimensional and expressive, with clearly modeled cheekbones, brows, noses, lips and
+jaw planes. Eyes may be slightly amplified for expressive readability while remaining grounded
+and mature, never generic anime.
+
+Use deliberate planar facial shading, painted tonal variation and selective illustrated detail
+instead of smooth photorealistic skin rendering.
+
+Skin must feel hand-painted over dimensional form: subtle brush-shaped tonal breakup,
+controlled warm/cool variation, crisp shadow shapes and selectively simplified highlights.
+
+HAIR
+
+Hair is constructed from large, readable sculpted locks and graphic clumps with dimensional
+volume. Individual strands are secondary.
+
+Avoid photorealistic hair simulation, fuzzy strand rendering or perfectly smooth plastic hair.
+
+SURFACE TREATMENT
+
+Every 3D surface receives a controlled hand-painted finish.
+
+Use painterly color transitions, selective brush-like texture, graphic value grouping,
+restrained surface irregularity and illustrated material definition while preserving clean
+dimensional form.
+
+The painting exists ON the objects; do not place a paper texture, watercolor wash or canvas
+filter over the entire image.
+
+SHADING
+
+Use hybrid illustrative shading: dimensional 3D lighting combined with deliberately designed
+graphic shadow shapes.
+
+Favor readable light planes, selective hard shadow boundaries and restrained soft transitions.
+
+Forms must remain sculptural and three-dimensional while avoiding physically perfect CGI
+shading.
+
+Do not use flat two-tone cel shading. Do not use glossy PBR realism.
+
+LINEWORK
+
+No uniform cartoon outline around characters.
+
+Allow only subtle selective drawn accents, dark graphic creases, painted edge definition and
+occasional hand-inked detail where naturally motivated.
+
+Most silhouette definition must come from value separation, painted edges and dimensional
+lighting.
+
+ENVIRONMENT
+
+Environments remain fully dimensional with real perspective, depth and camera parallax but
+receive the same illustrated hand-painted treatment as the characters.
+
+Background detail may simplify progressively with distance, producing the feeling of animated
+production concept art rather than a photorealistic 3D set.
+
+CINEMATIC IMAGE
+
+Feature-animation cinematography with intentional focal hierarchy, atmospheric depth,
+controlled depth of field, strong foreground / midground / background separation and carefully
+shaped practical lighting.
+
+Preserve rich dimensionality without revealing a conventional CG-render aesthetic.
+
+ANIMATION FEEL
+
+Full-body dimensional character animation with confident pose-to-pose staging, strong
+silhouettes, clear anticipation, physical weight, clean arcs and expressive facial acting.
+
+Motion should feel intentionally animated rather than motion-captured or mechanically
+interpolated.
+
+Fast actions may use controlled pose compression, directional motion blur, brief deformation
+and strong readable impact poses.
+
+Camera movement exists naturally inside the dimensional environment with true parallax and
+perspective change.
+
+The animation remains fluid and cinematic while preserving authored poses and graphic clarity.
+
+################################################################
+ABSOLUTELY AVOID
+################################################################
+
+photorealism, live-action appearance, conventional glossy CGI, plastic skin, wax skin,
+PBR showcase rendering, Unreal Engine look, Blender-render look, hyper-detailed pores,
+photorealistic hair strands, generic Pixar-like smoothness, flat 2D anime, flat cel-shading,
+uniform black cartoon outlines, watercolor, gouache wash, paper-grain overlay, canvas texture
+overlay, fuzzy painterly edges, muddy colors, overly soft airbrushed shading, excessive bloom,
+neon rim light everywhere, AI-smoothed faces, rubbery motion, motion-capture stiffness.
+```
+
+---
+
+### TIER 2 — OPERATIVE (الافتراضي في كل برومبت)
+
+```text
+MOOD AND RENDER CONTRACT
+
+Premium stylized 3D animation finished as a moving hand-painted illustration. The world,
+characters, props and camera are fully dimensional — real perspective, depth, spatial parallax,
+sculpted anatomy and cinematic lens behavior — but the final image never reads as conventional
+CGI.
+
+Faces stay dimensional with modeled cheekbones, brows, nose, lips and jaw planes, shaded in
+deliberate planes with painted tonal variation rather than smooth photoreal skin. Hair is built
+from large readable sculpted locks, not individual strands. Shading is hybrid: dimensional
+lighting plus deliberately designed graphic shadow shapes, with readable light planes and
+selective hard shadow boundaries — never flat two-tone cel, never glossy PBR.
+
+The painting exists ON the objects. Do not lay a paper grain, watercolor wash or canvas filter
+over the image.
+
+There is no uniform cartoon outline. Silhouettes read through value separation, painted edges
+and dimensional lighting, with only selective drawn accents and dark graphic creases where
+naturally motivated.
+
+[SCENE MATERIAL LIST] remain materially distinct and physically dimensional.
+
+Animation is authored pose to pose: strong silhouettes, clear anticipation, physical weight,
+clean arcs and expressive facial acting — intentionally animated, never motion-captured or
+mechanically interpolated.
+
+Avoid photorealism, glossy or plastic CGI, waxy skin, game-render materials, flat 2D or cel
+art, uniform outlines, watercolor or canvas overlays, muddy colour, airbrushed softness,
+excessive bloom, unmotivated neon rim light and AI-smoothed faces.
+```
+
+---
+
+### TIER 3 — SHORT LOCK
+
+```text
+Preserve the established HIXXA look: cinematic sculptural 3D animation with true volumetric
+form, depth, parallax and spatial lighting, finished entirely with controlled hand-painted
+digital surfaces and softly illustrated edges. The painting is on the objects, not an overlay.
+No uniform outline, no flat 2D or cel art, no glossy PBR, plastic CGI or photorealism.
+```
+
+---
+
+### تعديل مهم على قواعد الحركة
+
+الطبقة الأولى تسمح صراحةً بـ:
+
+```text
+Fast actions may use controlled pose compression, directional motion blur, brief deformation
+and strong readable impact poses.
+```
+
+وهذا **لا يناقض** `REAL-TIME MOTION — NO SLOW MOTION — NO SPEED RAMPS`، والفرق يجب أن يبقى واضحًا في كل برومبت:
+
+| مسموح — حرفة رسوم | ممنوع — تلاعب زمني أو مؤثر |
+|---|---|
+| Pose compression عند الفعل السريع | Speed ramp أو Slow motion |
+| Directional motion blur طبيعي داخل اللقطة | Blur transition عبر القطعة |
+| Brief deformation في إطارات الاندفاع | Morph أو تحول شكل جسم |
+| Impact pose مقروء | Freeze frame غير مقصود |
+
+**الصياغة المعتمدة عند الحاجة:**
+
+```text
+Fast actions may carry controlled pose compression, natural directional blur and brief
+animation deformation. These are drawing craft inside the shot: they are never a speed ramp,
+never slow motion, never a blur transition across a cut, and never a morph of any object.
+```
+
+### أثر ذلك على الأقفال القديمة
+
+- عبارة `no motion trails, no speed lines` تبقى صحيحة — وهي غير الـdirectional blur.
+- عبارة `no camera shake` تبقى صحيحة.
+- عبارة `no morph` تبقى صحيحة، وتُقرأ الآن كـ**تحول جسم**، لا كـdeformation لحظي في إطار حركة.
 
 ---
 

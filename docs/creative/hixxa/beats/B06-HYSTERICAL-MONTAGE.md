@@ -320,10 +320,23 @@ No object moves before direct contact or a visible physical force.
 MOOD AND RENDER CONTRACT
 ################################################################
 
-Preserve the established HIXXA look: cinematic sculptural 3D animation with true volumetric
-form, depth, parallax and spatial lighting, finished entirely with controlled hand-painted
-digital surfaces and softly illustrated edges. Never flatten into 2D/cel art and never drift
-into glossy PBR, plastic CGI or photorealism.
+Premium stylized 3D animation finished as a moving hand-painted illustration. The world,
+characters, props and camera are fully dimensional — real perspective, depth, spatial parallax,
+sculpted anatomy and cinematic lens behavior — but the final image never reads as conventional
+CGI.
+
+Faces stay dimensional with modeled cheekbones, brows, nose, lips and jaw planes, shaded in
+deliberate planes with painted tonal variation rather than smooth photoreal skin. Hair is built
+from large readable sculpted locks, not individual strands. Shading is hybrid: dimensional
+lighting plus deliberately designed graphic shadow shapes, with readable light planes and
+selective hard shadow boundaries — never flat two-tone cel, never glossy PBR.
+
+The painting exists ON the objects. Do not lay a paper grain, watercolor wash or canvas filter
+over the image.
+
+There is no uniform cartoon outline. Silhouettes read through value separation, painted edges
+and dimensional lighting, with only selective drawn accents and dark graphic creases where
+naturally motivated.
 
 Skin, curls, plaid cotton, canvas apron, desk wood, paper fibre, graphite, woven wire mesh and
 the earpiece's cable rubber remain materially distinct and physically dimensional. Each crumpled
@@ -335,6 +348,19 @@ Every cat, fox and dragon exists only as flat static pigment and graphite bonded
 of a dimensional sheet. They never animate, blink, breathe, move, react, gain volume or become
 creatures, and no ball unfolds, transforms, merges with another or carries an image across to
 a different sheet.
+
+Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe construction and
+material response across every lens and angle.
+
+Animation is authored pose to pose: strong silhouettes, clear anticipation, physical weight,
+clean arcs and expressive facial acting — intentionally animated, never motion-captured or
+mechanically interpolated. Fast actions may carry controlled pose compression, natural
+directional blur and brief animation deformation; these are drawing craft inside the shot and
+are never a speed ramp, slow motion, a blur transition across a cut, or a morph of any object.
+
+Avoid photorealism, glossy or plastic CGI, waxy skin, game-render materials, flat 2D or cel
+art, uniform outlines, watercolor or canvas overlays, muddy colour, airbrushed softness,
+excessive bloom, unmotivated neon rim light and AI-smoothed faces.
 
 ################################################################
 LIGHTING AND VISUAL CONTINUITY
