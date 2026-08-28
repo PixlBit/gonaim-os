@@ -43,41 +43,26 @@ and never multiply into three.
 @razor controls the exact spined pale figure: plate shapes, rigid wing spans,
 proportions and stance. It never flies above ceiling height and never leaves the corridor.
 
-HANDS AND PAINT STAINS
+HANDS
 
-Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
-stains are part of her identity in every shot: soft pale-blue and cyan patches worn into the
-sides of the thumb and across the finger pads, a smaller lilac or dusty-pink patch near one or
-two nail beds, scattered cream and white flecks over the knuckles and the backs of the
-fingers, and faint colour caught in the cuticle edges.
+Her hands are a working artist's hands: five fingers with one opposing thumb, correct joint
+count and proportion, natural knuckle relief and tendon lines, fingers resting in a soft
+natural curl, and grips that close with real contact against what they hold.
 
-They read as dried, absorbed and worn — thin, matte, slightly faded, and following the skin's
-own creases and folds. They are never wet paint, never fresh droplets, never glossy, raised,
-wet-looking or glowing. The stains sit beneath the skin's hand-painted shading rather than on
-top of it, so the hand keeps its full sculptural volume, knuckle relief and tendon structure.
+Dried paint is worn into the skin from long working days — soft pale blue and cyan along the
+sides of the thumb and across the finger pads, a little dusty pink, cream flecks over the
+knuckles. It is matte, faded and absorbed, following the skin's own creases and sitting under
+the shading rather than on top of it. The fingernails stay clean bare nail: no colour on the
+nail plate. The stains live on skin only.
 
-The nails stay clean and natural with a visible pale nail plate; colour gathers around the
-nail edges and cuticles, not across the nail surface.
+SCALE
 
-The pattern is soft and irregular and never resolves into a graphic shape, a logo, a glove, a
-tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
-every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
+HIXXA is about 165 centimetres and her hand is the scale reference; where a stated size and a
+hand-relative anchor seem to disagree, the anchor wins.
 
-PROP SCALE LOCK
-
-HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
-film. Every object below is locked to both a real dimension and a hand-relative anchor.
-Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
-smaller than its stated relationship to her hand or body, and no object changes size between
-shots, lenses or angles.
-
-LANCES — each about 200 centimetres long and finger-thin along most of its length, tapering to
-a fine point.
-
-SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
-roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
-
-CREATURE SCALE — the dragon's body is about 160 centimetres long with a 120-centimetre wingspan. Razor stands about 140 centimetres with a spined span reaching about 200 centimetres.
+Each lance is longer than Razor is tall and finger-thin along its length.
+Razor stands shorter than HIXXA, with a spined span half again its own height.
+The dragon is long enough to coil around the ceiling beam but never fills the room.
 
 CONTINUITY MAP
 
@@ -352,7 +337,7 @@ PRESERVATION LOCKS
 ################################################################
 
 Only one HIXXA appears, and she stays in her doorway for the whole film.
-Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
+Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Her hands keep their five-finger anatomy, their worn dried paint stains and their clean unpainted nails, and every object keeps the size given above.
 
 Exactly one dragon, one Razor and exactly two lances at all times.
 No blood, no wounds, no severed parts, no fire and no breath weapon.

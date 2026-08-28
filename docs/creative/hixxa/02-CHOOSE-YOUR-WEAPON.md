@@ -55,51 +55,27 @@ Stages two and three appear only as artwork inside the screen and never become p
 @fox controls the exact fox identity, proportions, tail mass and face markings.
 It never appears as a reference sheet or drawn page inside the world.
 
-HANDS AND PAINT STAINS
+HANDS
 
-Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
-stains are part of her identity in every shot: soft pale-blue and cyan patches worn into the
-sides of the thumb and across the finger pads, a smaller lilac or dusty-pink patch near one or
-two nail beds, scattered cream and white flecks over the knuckles and the backs of the
-fingers, and faint colour caught in the cuticle edges.
+Her hands are a working artist's hands: five fingers with one opposing thumb, correct joint
+count and proportion, natural knuckle relief and tendon lines, fingers resting in a soft
+natural curl, and grips that close with real contact against what they hold.
 
-They read as dried, absorbed and worn — thin, matte, slightly faded, and following the skin's
-own creases and folds. They are never wet paint, never fresh droplets, never glossy, raised,
-wet-looking or glowing. The stains sit beneath the skin's hand-painted shading rather than on
-top of it, so the hand keeps its full sculptural volume, knuckle relief and tendon structure.
+Dried paint is worn into the skin from long working days — soft pale blue and cyan along the
+sides of the thumb and across the finger pads, a little dusty pink, cream flecks over the
+knuckles. It is matte, faded and absorbed, following the skin's own creases and sitting under
+the shading rather than on top of it. The fingernails stay clean bare nail: no colour on the
+nail plate. The stains live on skin only.
 
-The nails stay clean and natural with a visible pale nail plate; colour gathers around the
-nail edges and cuticles, not across the nail surface.
+SCALE
 
-The pattern is soft and irregular and never resolves into a graphic shape, a logo, a glove, a
-tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
-every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
+HIXXA is about 165 centimetres and her hand is the scale reference; where a stated size and a
+hand-relative anchor seem to disagree, the anchor wins.
 
-PROP SCALE LOCK
-
-HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
-film. Every object below is locked to both a real dimension and a hand-relative anchor.
-Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
-smaller than its stated relationship to her hand or body, and no object changes size between
-shots, lenses or angles.
-
-WOODEN-FRAMED SLATE — a two-handed tablet-sized device about 25 centimetres wide, 17 tall and
-1 thick, roughly the size of a sheet of paper and clearly larger than a phone. It always reads
-as a tablet resting on the desk, never as a phone and never as a wall-sized screen.
-
-STYLUS — about 14 centimetres long and pencil-thin, noticeably shorter than a full pencil.
-
-SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
-roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
-
-WEAPON ARTWORK SCALE — the stage one blaster is about 35 centimetres long, the stage two
-launcher about 60, and the stage three cannon about 110. Only the stage one blaster becomes a
-physical object; at 35 centimetres it is roughly as long as the fox's whole body.
-
-DESK LAMP — about 40 centimetres tall on the desk, its shade roughly the size of her cupped
-hand.
-
-CREATURE SCALE — the fox stands about 35 centimetres at the shoulder, small enough to sit on the desk beside the slate with room to spare.
+The wooden-framed slate is tablet-sized, about as large as a sheet of paper — clearly not a phone.
+The stylus is pencil-thin and shorter than a full pencil.
+On screen the three weapons rise in size; only the compact stage one blaster materialises, and at roughly the fox's own body length.
+The fox stands about knee-high to a seated person — small enough to stand on the desk.
 
 CONTINUITY MAP
 
@@ -369,7 +345,7 @@ PRESERVATION LOCKS
 ################################################################
 
 Only one HIXXA appears.
-Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
+Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Her hands keep their five-finger anatomy, their worn dried paint stains and their clean unpainted nails, and every object keeps the size given above.
 
 Exactly one fox, one slate, one stylus, one red pencil in her curls,
 and exactly one physical weapon, which exists only after the confirming tap at 21.80.

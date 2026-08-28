@@ -45,6 +45,7 @@ It does not control [explicit boundary].
 | `@HEROS` | Character | الثلاثي البطولي مجتمعًا: الثعلب، القط، الكائن المجنّح | لا يضيف بطلًا رابعًا | 06 |
 | `@EAR` | Prop | السماعة السلكية: سماعتان داخل الأذن وكابل واحد متصل | لا wireless pods ولا over-ear | 01 |
 | `@bag` | Prop | الحقيبة الجلدية: الحجم، السير، الإبزيم، اللون | لا تتضاعف ولا تتحرك بلا لمس | 01 (حالة موروثة) |
+| `@basket` | Prop | **جسم** سلة المهملات الشبكية: نسيج السلك، الحافة المطوية، القاعدة الصلبة، النسب، وطريقة استقرار الورق المكرمش داخلها — **ومرحلة الامتلاء** | لا يحدد **موضع** السلة (ذلك لمرجع المكان)، ولا الكاميرا، ولا يضع أكثر من سلة واحدة | B03·V1، B03·V2، B05 |
 
 ---
 
@@ -237,7 +238,57 @@ with one further ball released and still airborne at the final frame.
 
 وحتى تمتلئ السلة فعلًا، يبقى السطر: **الكرات ترقد سائبة على القاعدة، لا تتكدّس، والسلة لا تتجاوز رُبع امتلائها ولا تفيض.**
 
-### 3.8 عقد المود الملزم
+### 3.8 `@basket` — مراحل الامتلاء الأربع
+
+مرجع `@basket` يعرض **أربع سلال جنب بعضها** بأربع مستويات امتلاء. وهذا يخلق فخّين:
+
+1. أن يضع النموذج **أربع سلال** داخل الغرفة.
+2. أن يخلط بين المراحل فيملأ السلة في مشهد يفترض أن تكون فيه شبه فارغة.
+
+لذلك يُكتب دائمًا بهذه الصيغة:
+
+```text
+@basket controls the exact metal mesh wastebasket: the wire weave, rolled rim, solid base,
+its proportions, and the way crumpled paper sits inside it.
+The reference shows four fill levels side by side; use only STAGE [N] of it.
+It never places more than one wastebasket in the room and never shows the four-bin sheet
+itself. It does not control the camera angle.
+```
+
+| المرحلة | الحالة |
+|---|---|
+| **STAGE 1** | فارغة |
+| **STAGE 2** | ممتلئة قليلًا — حفنة كرات سائبة على القاعدة والسلة ما زالت شبه فارغة |
+| **STAGE 3** | ممتلئة حتى قرب الحافة |
+| **STAGE 4** | مكوّمة فوق الحافة |
+
+#### الفائدة الأهم: نسبة الكرة إلى السلة
+
+المرجع يحل مشكلة «الورق كبير جدًا» لأنه يعطي **نسبة مرئية** بدل وصف نصي:
+
+```text
+Ball-to-bin scale comes from the reference: each ball is roughly a quarter of the bin's inner
+width, so several sit loose on the base without touching. A ball is never a third or more of
+that width.
+```
+
+#### فصل السلطة
+
+`@basket` يحكم **الجسم ومرحلة الامتلاء**؛ ومرجع المكان يحكم **أين تقف السلة**. يُكتب الفصل صراحة في سطر المكان:
+
+```text
+It does not control the wastebasket object itself, which belongs to @basket.
+```
+
+#### الخريطة الحالية
+
+| البرومبت | المرحلة | الحالة |
+|---|---|---|
+| `B05` الثعلب — أول رفض | STAGE 1 | فارغة → كرة واحدة |
+| `B03` حلقة التصعيد | STAGE 1 | كرة واحدة → ثلاث + رابعة في الهواء |
+| المراحل القادمة | 2 ثم 3 ثم 4 | حسب ما تبعثه |
+
+### 3.9 عقد المود الملزم
 
 هذا البلوك يُنسخ حرفيًا في كل فيلم تحت عنوان `MOOD AND RENDER CONTRACT`، ويُملأ سطر الخامات وحده حسب المشهد:
 
@@ -264,7 +315,7 @@ Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe
 construction and material response across every lens and angle.
 ```
 
-### 3.9 جمل العمق المحلية
+### 3.10 جمل العمق المحلية
 
 تُستخدم **عند الحاجة فقط** داخل الشوت الذي فيه حركة كاميرا أو ماكرو أو بورتريه، ولا تُنسخ الثلاثة في كل شوت:
 

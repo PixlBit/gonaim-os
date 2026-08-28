@@ -44,38 +44,26 @@ It does not add a fox anywhere else in the corridor and never duplicates.
 proportions, and one unfinished contour along its world-left flank where the line stops
 and the form is left open. That open edge is the point of the film and never closes by itself.
 
-HANDS AND PAINT STAINS
+HANDS
 
-Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
-stains are part of her identity in every shot: soft pale-blue and cyan patches worn into the
-sides of the thumb and across the finger pads, a smaller lilac or dusty-pink patch near one or
-two nail beds, scattered cream and white flecks over the knuckles and the backs of the
-fingers, and faint colour caught in the cuticle edges.
+Her hands are a working artist's hands: five fingers with one opposing thumb, correct joint
+count and proportion, natural knuckle relief and tendon lines, fingers resting in a soft
+natural curl, and grips that close with real contact against what they hold.
 
-They read as dried, absorbed and worn — thin, matte, slightly faded, and following the skin's
-own creases and folds. They are never wet paint, never fresh droplets, never glossy, raised,
-wet-looking or glowing. The stains sit beneath the skin's hand-painted shading rather than on
-top of it, so the hand keeps its full sculptural volume, knuckle relief and tendon structure.
+Dried paint is worn into the skin from long working days — soft pale blue and cyan along the
+sides of the thumb and across the finger pads, a little dusty pink, cream flecks over the
+knuckles. It is matte, faded and absorbed, following the skin's own creases and sitting under
+the shading rather than on top of it. The fingernails stay clean bare nail: no colour on the
+nail plate. The stains live on skin only.
 
-The nails stay clean and natural with a visible pale nail plate; colour gathers around the
-nail edges and cuticles, not across the nail surface.
+SCALE
 
-The pattern is soft and irregular and never resolves into a graphic shape, a logo, a glove, a
-tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
-every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
+HIXXA is about 165 centimetres and her hand is the scale reference; where a stated size and a
+hand-relative anchor seem to disagree, the anchor wins.
 
-PROP SCALE LOCK
-
-HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
-film. Every object below is locked to both a real dimension and a hand-relative anchor.
-Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
-smaller than its stated relationship to her hand or body, and no object changes size between
-shots, lenses or angles.
-
-SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
-roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
-
-CREATURE SCALE — each of the three heroes stands between 30 and 45 centimetres tall, so HIXXA remains far taller than any of them even when kneeling. The monster is about 220 centimetres long, taller than her kneeling and level with her standing.
+Each of the three heroes is small enough that HIXXA kneeling is still far taller.
+The monster is larger than any hero in every dimension.
+The red pencil in her curls is a short stub about as long as her index finger.
 
 CONTINUITY MAP
 
@@ -358,7 +346,7 @@ PRESERVATION LOCKS
 ################################################################
 
 Only one HIXXA appears.
-Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
+Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Her hands keep their five-finger anatomy, their worn dried paint stains and their clean unpainted nails, and every object keeps the size given above.
 
 Exactly three heroes, one monster, one fox within that line and one small red pencil.
 No fourth hero enters and no hero is replaced between shots.

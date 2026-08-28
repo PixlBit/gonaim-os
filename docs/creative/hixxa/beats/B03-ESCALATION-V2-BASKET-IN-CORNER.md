@@ -38,9 +38,10 @@ USE ONLY THE THREE SPECIFIED TRANSITIONS
 REFERENCE ASSIGNMENTS
 
 @loc_location-room-1 controls the exact attic architecture, ceiling angles, wall treatment,
-exterior window geometry, the rear corner geometry, floor material, the metal wastebasket
-standing in that corner and all fixed background objects.
-It does not control the camera angle or the shot size.
+exterior window geometry, the rear corner geometry, floor material and all fixed background
+objects, and it fixes where the wastebasket stands in that corner.
+It does not control the wastebasket object itself, which belongs to @basket, and it does not
+control the camera angle or the shot size.
 
 @char_hixxa controls HIXXA's exact single full-body identity, skin tone, body proportions,
 curls and layered wardrobe. Identity and wardrobe stay stable from every angle.
@@ -57,88 +58,58 @@ It does not add, remove or reposition any desk prop.
 both buds seated, one physically continuous cable on its established route.
 They never vanish, multiply or change design.
 
-HANDS AND PAINT STAINS
+@basket controls the exact metal mesh wastebasket: the wire weave, rolled rim, solid base,
+its proportions, and the way crumpled paper sits inside it.
+The reference shows four fill levels side by side; use only STAGE 1 of it.
+It never places more than one wastebasket in the room and never shows the four-bin sheet
+itself. It does not control the camera angle.
 
-Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
-stains are part of her identity in every shot: soft pale-blue and cyan patches worn into the
-sides of the thumb and across the finger pads, a smaller lilac or dusty-pink patch near one or
-two nail beds, scattered cream and white flecks over the knuckles and the backs of the
-fingers, and faint colour caught in the cuticle edges.
+HANDS
 
-They read as dried, absorbed and worn — thin, matte, slightly faded, and following the skin's
-own creases and folds. They are never wet paint, never fresh droplets, never glossy, raised,
-wet-looking or glowing. The stains sit beneath the skin's hand-painted shading rather than on
-top of it, so the hand keeps its full sculptural volume, knuckle relief and tendon structure.
+Her hands are a working artist's hands: five fingers with one opposing thumb, correct joint
+count and proportion, natural knuckle relief and tendon lines, fingers resting in a soft
+natural curl, and grips that close with real contact against what they hold.
 
-The nails stay clean and natural with a visible pale nail plate; colour gathers around the
-nail edges and cuticles, not across the nail surface.
+Dried paint is worn into the skin from long working days — soft pale blue and cyan along the
+sides of the thumb and across the finger pads, a little dusty pink, cream flecks over the
+knuckles. It is matte, faded and absorbed, following the skin's own creases and sitting under
+the shading rather than on top of it. The fingernails stay clean bare nail: no colour on the
+nail plate. The stains live on skin only.
 
-The pattern is soft and irregular and never resolves into a graphic shape, a logo, a glove, a
-tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
-every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
+SCALE
 
-PROP SCALE LOCK
+HIXXA is about 165 centimetres and her hand is the scale reference; where a stated size and a
+hand-relative anchor seem to disagree, the anchor wins.
 
-HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
-film. Every object below is locked to both a real dimension and a hand-relative anchor.
-Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
-smaller than its stated relationship to her hand or body, and no object changes size between
-shots, lenses or angles.
+The phone is an ordinary one-hand phone, no longer than her palm plus a finger joint. It is not a tablet.
+The metal wastebasket is knee-high beside her seated position, standing on the floor.
+The earbuds are tiny in-ear units, each smaller than the bowl of her ear.
+One landscape sheet a little wider than her two hands set side by side.
 
-PHONE — an ordinary one-hand mobile phone, about 15 centimetres tall, 7 wide and under 1
-thick. Set beside her hand it is no longer than her palm plus one finger joint, and her spread
-hand would cover almost all of it. It is never a tablet, never an iPad, never a large-format
-or two-handed device, and never grows between shots or lenses.
+The crumpled paper ball is small: one sheet crushed down until it closes inside her fist, and
+about four of them would sit side by side across the base of the wastebasket without touching,
+exactly as the balls sit in the @basket reference.
+It is angular rather than round — flat crushed planes meeting at sharp fold ridges with one
+closing seam — never a smooth sphere. Each ball carries its own fold pattern; balls resting
+together never repeat each other's creases. A ball from a painted sheet shows small fragments
+of that colour on its outward facets.
 
-EARBUDS — tiny in-ear units, each one smaller than the concha bowl of her ear and no wider
-than her little fingernail. They are never ear-cups, never headset-sized, never large discs
-and never protrude beyond her ear silhouette. The cable is a thin 2-millimetre cord.
+The wastebasket stands on the floorboards with its own contact shadow, its rim far below the
+desk surface at roughly her knee height while she is seated, so every throw travels downward
+into an opening well beneath the desk top. It is never a desk-top container, never held or
+moved, and its position is fixed for the whole film.
 
-METAL WASTEBASKET — about 30 centimetres across and 35 tall, its rim reaching roughly her knee
-while she is seated, as described in full above.
+WASTEBASKET FILL STAGES — @basket
 
-SKETCH SHEET — one landscape sheet about 30 centimetres wide and 21 tall, a little wider than
-her two hands set side by side. It is never poster-sized and never notebook-small.
+STAGE 1 empty · STAGE 2 lightly filled, a handful of balls loose on the base with the bin
+still mostly empty · STAGE 3 filled to near the rim · STAGE 4 heaped above the rim.
 
-DESK LAMP — about 40 centimetres tall on the desk, its shade roughly the size of her cupped
-hand.
+This film runs inside STAGE 1: one ball on the base at frame zero, three by the end,
+with a fourth airborne. It never reaches stage two.
 
-COFFEE CUP — an ordinary mug about 9 centimetres tall that her hand closes around comfortably.
-
-SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
-roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
-
-CRUMPLED PAPER BALL — FORM
-
-Each ball is made from one single sheet and nothing else. It is small: roughly 7 to 8
-centimetres across, closing fully inside her fist with her fingers meeting around it —
-about the size of a plum, never the size of an apple, a melon or a football.
-
-Its form is angular, not round. Flat crushed planes meet along sharp fold ridges, a few
-corners stand out where the paper refused to compress, and one visible seam marks where the
-last fold closed. It is never a smooth sphere, never a soft wad of tissue, never a moulded
-papier-mache lump.
-
-Paper that carried only graphite reads as plain cream, its printed marks broken up and mostly
-hidden inside the folds. A ball made from a painted sheet shows small broken fragments of its
-colour on the outward-facing facets only, where the painted side happened to fold outward.
-
-Every ball has its own distinct fold pattern. Balls resting together are never identical
-copies of each other, never mirrored, and never share the same crease layout.
-
-THE METAL WASTEBASKET — PHYSICAL DESCRIPTION
-
-It is an ordinary metal wastebasket: a plain open cylindrical bin of thin galvanised sheet
-metal, roughly 30 centimetres across and 35 centimetres tall, lightly dented and scuffed from
-use, with a plain rolled rim, no lid, no liner and no pedal.
-
-It stands directly on the floorboards and casts its own contact shadow onto the floor beside
-it. Its rim sits far below the desk surface, at roughly her knee height while she is seated,
-so every throw travels downward into an opening well beneath the desk top.
-
-It is never a desk-top container: never a pen cup, pencil holder, jar, tin, tray, pot or small
-bin, never resting on the desk or on any other raised surface, never held, lifted or moved.
-Its position on the floor is fixed for the entire sequence.
+Ball-to-bin scale comes from the reference: each ball is roughly a quarter of the bin's inner
+width, so several sit loose on the base without touching. A ball is never a third or more of
+that width.
 
 WORLD AND STAGING
 
@@ -432,7 +403,7 @@ PRESERVATION LOCKS
 Only one HIXXA appears. Preserve her exact identity, facial structure, hairstyle, wardrobe
 layers, earbuds and cable route, correct anatomical left and right, and the established desk,
 lamp, phone, coffee and corner wastebasket placement, attic architecture, exterior window
-geometry, lighting and throw axis. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
+geometry, lighting and throw axis. Her hands keep their five-finger anatomy, their worn dried paint stains and their clean unpainted nails, and every object keeps the size given above.
 
 She never looks into the lens, never speaks and never turns to watch the wastebasket.
 The wastebasket always rests on the floorboards in its corner with its rim below the desk
