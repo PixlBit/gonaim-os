@@ -1,6 +1,7 @@
 # HIXXA — HEROS AT THE THRESHOLD
 
 > **المدة:** 30 ثانية — **الشوتات:** 12 — **القطعات:** 11 hard cuts
+> **المعيار:** CINEDANCE Bible v2.0 — Dimensional Hand-Painted Cinematic
 > **المكان:** الممر خارج باب HIXXA (`@outdoor`)
 > **التاقات:** `@outdoor` `@char_hixxa` `@hixa-face` `@HEROS` `@fox` `@monster`
 > **القوس الشعوري:** صف دفاعي → خطر ظاهر → إدراك → عبور → إصلاح → طمأنينة
@@ -132,6 +133,9 @@ that she is looking at her own unfinished drawing. Her hand comes off the door f
 No dialogue, no lip movement.
 
 Extremely subtle forward drift.
+Keep the face fully dimensional through stable cheek volume, nose projection, jaw structure,
+eyelid depth and natural light wrapping.
+
 End with her hand clear of the frame and her expression settled into recognition.
 
 HARD CUT ON HER HAND LEAVING THE FRAME.
@@ -144,6 +148,9 @@ the world-right side of the line. Neither lowers a weapon yet. The fox turns its
 follow her the whole way. The runner rug takes her steps quietly.
 
 Track parallel with her, one continuous move.
+The dimensional tracking move reveals restrained parallax between the heroes in the foreground,
+HIXXA in the midground and the monster held in the corridor's depth.
+
 End with her clear of the line and one step ahead of it.
 
 HARD CUT ON HER PASSING THE LINE.
@@ -177,10 +184,14 @@ SHOT 09 — 19.40–22.40
 
 Inherit the raised pencil tip. It meets the open edge and draws one continuous line that
 closes the missing contour in a single unbroken pass, her wrist leading, her forearm steady.
-Charcoal-red pigment lays into the form and the paper grain inside it settles.
+Charcoal-red pigment lays into the form and the newly closed surface takes on the same modeled
+volume and shading as the rest of its body.
 The tremor stops where the line has passed.
 
 Slow track along the line as it closes.
+The macro perspective preserves real surface relief and tactile separation between the pencil
+tip, the hard plating and the open edge where the form stops in space.
+
 End with the contour fully closed and the pencil tip still in contact at its last point.
 
 HARD CUT ON THE LINE CLOSING.
@@ -239,23 +250,58 @@ No object moves before direct contact or a visible physical force.
 Nothing about the open contour changes until the pencil touches it.
 
 ################################################################
+MOOD AND RENDER CONTRACT
+################################################################
+
+Preserve the established HIXXA dimensional hand-painted cinematic animation language.
+
+The image is fully constructed in three-dimensional space: volumetric characters,
+modeled facial planes, rounded body forms, dimensional architecture, real perspective,
+physical occlusion, natural parallax and clear foreground-to-background separation.
+
+Render every character and object with convincing sculptural volume comparable to
+high-end 3D animation, while treating every visible surface through controlled
+hand-painted illustration: clean illustrated shapes, softly brushed shading,
+painterly color transitions, subtly drawn edges, tactile material variation and
+restrained authored texture.
+
+Skin, curls, clothing fabric, floorboards, painted plaster, the wool runner rug, the
+heroes' weapon materials, the monster's hard plating and the red pencil's pigment remain
+materially distinct and physically dimensional.
+
+The result feels like a richly hand-painted cinematic frame occupying real
+three-dimensional space: never flat 2D, never a paper cutout, never photoreal live
+action and never glossy plastic or toy-like CGI.
+
+Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe
+construction and material response across every lens and angle.
+
+The monster's open contour is a genuine gap in a volumetric body — the form stops in space and
+the wall behind shows through it — not a missing line on a flat surface.
+
+################################################################
 LIGHTING AND VISUAL CONTINUITY
 ################################################################
 
-Preserve the established stylized hand-painted cinematic animation language:
-clean illustrated shapes, controlled painterly texture, tactile materials,
-natural dimensional depth and expressive but grounded character animation.
-
-One warm ceiling fixture near HIXXA's door is the dominant source at the near end,
-reinforced by the warm spill from her open doorway.
-A cooler daylight leak arrives from the stairwell at the far end.
-Both keep the same direction, exposure and time of day in every shot.
+One warm ceiling fixture near HIXXA's door remains the dominant source at the near end,
+reinforced by the warm spill from her open doorway;
+a cooler daylight leak arrives from the stairwell at the far end.
+The world direction, color temperature, exposure and time of day of both remain unchanged
+across every angle. The warm key sculpts her cheek planes and curls at the near end while
+raking light along the floorboards holds the corridor's depth readable from every angle.
 As the monster comes closer it moves from the cool leak into the warm spill;
 this is a positional change, not a lighting change.
 
-Never become photorealistic, glossy plastic 3D, flat cutout animation,
-watercolor bleed, neon-lit or heavily grainy.
-The closing line is drawn pigment, not light: no glow, no sparkle, no energy effect.
+Use soft directional shadow, stable contact shadows and restrained atmospheric
+perspective to preserve sculptural volume and real dimensional depth.
+
+Colors remain rich and controlled without neon glow or excessive saturation.
+
+No flat 2D or paper-cutout motion. No photoreal live action. No glossy plastic or
+toy-like CGI. No waxy skin, generic game-render materials, watercolor bleed,
+unmotivated neon lighting, heavy grain or style drift between shots.
+The closing line is drawn pigment on a dimensional surface, not light:
+no glow, no sparkle and no energy effect.
 
 ################################################################
 AUDIO

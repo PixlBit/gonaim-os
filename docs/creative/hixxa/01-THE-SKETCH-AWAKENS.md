@@ -1,6 +1,7 @@
 # HIXXA — THE SKETCH AWAKENS
 
 > **المدة:** 30 ثانية — **الشوتات:** 12 — **القطعات:** 11 hard cuts
+> **المعيار:** CINEDANCE Bible v2.0 — Dimensional Hand-Painted Cinematic
 > **المكان:** غرفة HIXXA، أواخر العصر
 > **التاقات:** `@loc_location-room-1` `@char_hixxa` `@hixa-face` `@desk` `@prop_tapletpen` `@EAR` `@bag` `@fox` `@cat` `@dragon`
 > **القوس الشعوري:** رسم هادئ → ارتعاشة في الخط → إدراك → أول خطوة حية → دهشة → صحبة
@@ -98,6 +99,9 @@ two centimetres clear. A single charcoal line along the fox's back shivers once,
 independently, and a faint ridge of graphite rises off the paper fibre.
 
 Extremely subtle forward drift, no more than a few centimetres.
+The macro perspective preserves real surface relief and tactile separation between graphite,
+paper fibre and desk wood.
+
 End with that one line standing a millimetre proud of the page and the rest of the drawing flat.
 
 HARD CUT ON THE LINE'S SHIVER.
@@ -107,7 +111,8 @@ SHOT 03 — 4.10–6.00
 
 Inherit the raised line. The fox's outline peels upward along its back, the paper
 staying perfectly still beneath it, until the drawing is standing at a shallow angle
-like a page corner lifted by a draught. The paper grain stays visible inside the fill.
+like a page corner lifted by a draught. As it rises it gains real thickness and rounded volume,
+its charcoal surface shading curving with the new form rather than staying flat.
 
 Track back a few centimetres.
 End with the fox's shoulder and forelegs free of the page and the hindquarters still flat.
@@ -185,6 +190,9 @@ wingbeats. Loose sheets on the desk flutter under the downdraught; the satchel o
 does not move. HIXXA's chair creaks as she leans back to follow it.
 
 Slow tilt up with the dragon.
+The dimensional tilt reveals restrained parallax between the desk, HIXXA, the rising dragon and
+the far wall, and the dragon's mass stays consistent as it climbs through the room's depth.
+
 End with the dragon level with the ceiling beam and HIXXA's face tilted up toward it.
 
 HARD CUT ON HER HEAD REACHING FULL TILT.
@@ -197,6 +205,9 @@ from the desk and the cat hops to the desk edge; three separate shadows sweep ac
 the wood. Her curls lift very slightly in the moving air; the red pencil stays put.
 
 Slow parallel track around her, one continuous move.
+The dimensional camera move reveals restrained parallax between her cheek, curls, the desk lamp
+and the room behind her without flattening the image.
+
 End with the dragon completing its circle and beginning to descend toward the lamp arm.
 
 HARD CUT ON THE DRAGON'S DESCENT BEGINNING.
@@ -209,6 +220,9 @@ out, her shoulders drop a full centimetre and a restrained private smile forms g
 first at the corner of her mouth and then in her eyes. No dialogue, no lip movement.
 
 Extremely subtle forward drift.
+Keep the face fully dimensional through stable cheek volume, nose projection, jaw structure,
+eyelid depth and natural light wrapping.
+
 End with the smile fully formed and her gaze lowering toward the desk.
 
 HARD CUT ON HER GAZE CHANGING.
@@ -232,9 +246,13 @@ PHYSICS AND PERFORMANCE
 All movement is grounded and human: real foot and paw contact, believable balance,
 shoulder contribution, joint compression, natural recovery and restrained micro-motion.
 
-The living sketches are physical charcoal-and-pigment creatures. Paper grain stays visible
-inside their fill, they are opaque, they occlude what is behind them and they cast soft
-grounded shadows. They never glow, never emit particles and are never translucent holograms.
+The living sketches are volumetric creatures, not drawings standing upright: real skeletal
+structure, rounded muscle mass, modeled facial planes and believable weight. Their surfaces
+carry a hand-painted charcoal treatment — brushed graphite shading, softly drawn contour edges
+and a faint pigment grain that follows the form in three dimensions instead of sitting flat on
+top of it. They are fully opaque, they occlude what is behind them, they cast stable contact
+shadows and they hold their volume from every angle. They never glow, never emit particles,
+are never translucent holograms and never flatten into paper cutouts.
 
 Paper flexes and settles but never slides on its own. The earbud cable bends elastically
 and never becomes a rigid rod. Her curls lag slightly behind head movement and settle.
@@ -244,18 +262,52 @@ No object moves before direct contact or a visible physical force,
 except the three pages, which move only under a creature already rising from them.
 
 ################################################################
+MOOD AND RENDER CONTRACT
+################################################################
+
+Preserve the established HIXXA dimensional hand-painted cinematic animation language.
+
+The image is fully constructed in three-dimensional space: volumetric characters,
+modeled facial planes, rounded body forms, dimensional architecture, real perspective,
+physical occlusion, natural parallax and clear foreground-to-background separation.
+
+Render every character and object with convincing sculptural volume comparable to
+high-end 3D animation, while treating every visible surface through controlled
+hand-painted illustration: clean illustrated shapes, softly brushed shading,
+painterly color transitions, subtly drawn edges, tactile material variation and
+restrained authored texture.
+
+Skin, curls, wool and cotton clothing, desk wood, paper, the leather satchel, cable
+rubber and the charcoal-pigment surfaces of the living sketches remain materially distinct
+and physically dimensional.
+
+The result feels like a richly hand-painted cinematic frame occupying real
+three-dimensional space: never flat 2D, never a paper cutout, never photoreal live
+action and never glossy plastic or toy-like CGI.
+
+Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe
+construction and material response across every lens and angle.
+
+The living sketches carry hand-painted charcoal surfaces over genuinely volumetric bodies;
+they are lit by the same window and cast the same contact shadows as every solid object.
+
+################################################################
 LIGHTING AND VISUAL CONTINUITY
 ################################################################
 
-Preserve the established stylized hand-painted cinematic animation language:
-clean illustrated shapes, controlled painterly texture, tactile materials,
-natural dimensional depth and expressive but grounded character animation.
-
 The real window beside the desk remains the dominant warm late-afternoon source, world-right.
-Its direction, exposure, shadow placement and time of day remain unchanged across every angle.
+Its world direction, color temperature, exposure, shadow placement and time of day remain
+unchanged across every angle. Warm directional light wraps her curls, cheek planes, hands and
+clothing folds, and rakes across the desk wood so its grain reads as relief rather than pattern.
 
-Never become photorealistic, glossy plastic 3D, flat cutout animation,
-watercolor bleed, neon-lit or heavily grainy.
+Use soft directional shadow, stable contact shadows and restrained atmospheric
+perspective to preserve sculptural volume and real dimensional depth.
+
+Colors remain rich and controlled without neon glow or excessive saturation.
+
+No flat 2D or paper-cutout motion. No photoreal live action. No glossy plastic or
+toy-like CGI. No waxy skin, generic game-render materials, watercolor bleed,
+unmotivated neon lighting, heavy grain or style drift between shots.
 
 ################################################################
 AUDIO

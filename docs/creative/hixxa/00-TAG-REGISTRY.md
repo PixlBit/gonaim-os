@@ -1,7 +1,7 @@
 # HIXXA — REFERENCE TAG REGISTRY
 
-> **الإصدار:** 1.0
-> **المرجع الحاكم:** `HIXXA — CINEDANCE 30-SECOND PROMPT BIBLE` — القسم 5 (نظام توزيع الـReferences) والقسم 16 (Canon).
+> **الإصدار:** 2.0 — DIMENSIONAL HAND-PAINTED CINEMATIC UPDATE
+> **المرجع الحاكم:** `HIXXA — CINEDANCE 30-SECOND PROMPT BIBLE v2.0` — القسم 5 (نظام توزيع الـReferences)، القسم 13 (Mood and Render Bible)، القسم 16 (Canon).
 > **الوظيفة:** هذا الملف يحوّل عناصر المكتبة الموجودة فعليًا إلى **عقود سلطة** (Authority Contracts) قابلة للنسخ داخل أي برومبت.
 
 القاعدة الأساسية من الـBible: **وظيفة أساسية واحدة لكل Element**، بصيغة:
@@ -61,17 +61,23 @@ It does not control [explicit boundary].
 
 هذه ثوابت تخص أفلام السكتش الحي، وتُقرأ فوق Canon الغرفة الأصلي:
 
-### 3.1 قانون المخلوق المرسوم
+### 3.1 قانون المخلوق المرسوم — نسخة v2.0
+
+المخلوق الحي **جسم مجسّم**، والفحم معالجة سطح فوقه؛ ليس رسمة واقفة على الحافة.
 
 ```text
-The living sketches are physical charcoal-and-pigment creatures.
-Paper grain remains visible inside their fill.
-They are opaque, they occlude what is behind them
-and they cast soft grounded shadows on wood and cloth.
-They never glow, never emit particles and are never translucent holograms.
+The living sketches are volumetric creatures, not drawings standing upright:
+real skeletal structure, rounded muscle mass, modeled facial planes and believable weight.
+Their surfaces carry a hand-painted charcoal treatment — brushed graphite shading,
+softly drawn contour edges and a faint pigment grain that follows the form in three
+dimensions instead of sitting flat on top of it.
+They are fully opaque, they occlude what is behind them, they cast stable contact shadows
+and they hold their volume from every angle.
+They never glow, never emit particles, are never translucent holograms
+and never flatten into paper cutouts.
 ```
 
-هذا يمنع أكثر خطأ متوقع: تحويل الرسم الحي إلى تأثير نيون أو هولوجرام.
+هذا القانون يحمي من خطأين متعاكسين معًا: تحويل المخلوق إلى تأثير نيون/هولوجرام من ناحية، وتسطيحه إلى قصاصة ورق 2D من الناحية الأخرى — والثاني هو الخطر الأكبر بعد تحديث v2.0.
 
 ### 3.2 مقاييس ثابتة
 
@@ -89,13 +95,20 @@ They never glow, never emit particles and are never translucent holograms.
 ### 3.3 ضوء المكانين
 
 ```text
-ROOM: the real window beside the desk is the dominant warm late-afternoon source,
-world-right, unchanged across every angle. There is no mirror in this room.
+ROOM: the real window beside the desk is the dominant warm late-afternoon source, world-right.
+Its world direction, color temperature, exposure, shadow placement and time of day remain
+unchanged across every angle. Warm directional light wraps her curls, cheek planes, hands and
+clothing folds, and rakes across the desk wood so its grain reads as relief rather than pattern.
+There is no mirror in this room.
 
-CORRIDOR: one warm ceiling fixture near HIXXA's door is the dominant source;
+CORRIDOR: one warm ceiling fixture near HIXXA's door is the dominant source at the near end;
 a cooler daylight leak arrives from the stairwell at the far end.
-Both keep the same direction, exposure and time of day in every shot.
+The world direction, color temperature, exposure and time of day of both remain unchanged
+across every angle. The warm key sculpts her cheek planes and curls at the near end while
+raking light along the floorboards holds the corridor's depth readable from every angle.
 ```
+
+في الحالتين: ظل اتصال ثابت تحت كل جسم ملامس، ظل موجّه لين ينحت الحجم من دون سحق تفاصيل الوجه، وatmospheric perspective مضبوط يحفظ العمق.
 
 ### 3.4 أعداد مقفولة افتراضيًا
 
@@ -106,6 +119,43 @@ Exactly one weapon of the chosen stage.
 One wired earbud set with one continuous cable.
 Exactly one small red pencil in her curls.
 ```
+
+### 3.5 عقد المود الملزم
+
+هذا البلوك يُنسخ حرفيًا في كل فيلم تحت عنوان `MOOD AND RENDER CONTRACT`، ويُملأ سطر الخامات وحده حسب المشهد:
+
+```text
+Preserve the established HIXXA dimensional hand-painted cinematic animation language.
+
+The image is fully constructed in three-dimensional space: volumetric characters,
+modeled facial planes, rounded body forms, dimensional architecture, real perspective,
+physical occlusion, natural parallax and clear foreground-to-background separation.
+
+Render every character and object with convincing sculptural volume comparable to
+high-end 3D animation, while treating every visible surface through controlled
+hand-painted illustration: clean illustrated shapes, softly brushed shading,
+painterly color transitions, subtly drawn edges, tactile material variation and
+restrained authored texture.
+
+[SCENE MATERIAL LIST] remain materially distinct and physically dimensional.
+
+The result feels like a richly hand-painted cinematic frame occupying real
+three-dimensional space: never flat 2D, never a paper cutout, never photoreal live
+action and never glossy plastic or toy-like CGI.
+
+Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe
+construction and material response across every lens and angle.
+```
+
+### 3.6 جمل العمق المحلية
+
+تُستخدم **عند الحاجة فقط** داخل الشوت الذي فيه حركة كاميرا أو ماكرو أو بورتريه، ولا تُنسخ الثلاثة في كل شوت:
+
+| الحالة | الجملة |
+|---|---|
+| حركة كاميرا | `The dimensional camera move reveals restrained parallax between [A], [B] and [C] without flattening the image.` |
+| ماكرو / إنسرت | `The macro perspective preserves real surface relief and tactile separation between [A], [B] and [C].` |
+| بورتريه | `Keep the face fully dimensional through stable cheek volume, nose projection, jaw structure, eyelid depth and natural light wrapping.` |
 
 ---
 

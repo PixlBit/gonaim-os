@@ -1,6 +1,7 @@
 # HIXXA — RAZOR AND THE DRAGON
 
 > **المدة:** 30 ثانية — **الشوتات:** 12 — **القطعات:** 11 hard cuts
+> **المعيار:** CINEDANCE Bible v2.0 — Dimensional Hand-Painted Cinematic
 > **المكان:** الممر خارج باب HIXXA (`@outdoor`) حتى درابزين السلّم
 > **التاقات:** `@outdoor` `@char_hixxa` `@hixa-face` `@dragon` `@weaponrazor` `@razor`
 > **القوس الشعوري:** ترقب معلّق → هبوط → تلاقٍ → تحويل مسار بدل قطع → دوران مشترك → هدنة
@@ -114,6 +115,9 @@ bright score lines into the boards, raising thin curls of pale shaving.
 The grip wrapping tightens visibly as its hands close.
 
 Hold fixed.
+The macro perspective preserves real surface relief and tactile separation between the tempered
+points, the cut board grain and the curled shavings standing off the floor.
+
 End with the two score lines complete and the shavings still curled on the boards.
 
 HARD CUT ON THE SCORE LINES ENDING.
@@ -175,6 +179,9 @@ each other down the length of the corridor, Razor's feet leaving the boards for 
 a second before finding them again. The rug drags with them and the pictures swing.
 
 Slow track forward, one continuous move.
+The dimensional tracking move reveals restrained parallax between the two turning bodies, the
+wall pictures and the stairwell beyond, and both hold constant volume through the whole turn.
+
 End with the turn completed and both of them facing the stairwell.
 
 HARD CUT ON THEIR FEET RETURNING TO THE BOARDS.
@@ -199,6 +206,9 @@ breath she has been holding, her shoulders drop and her jaw softens.
 Her eyes stay open and on them. No dialogue, no lip movement.
 
 Extremely subtle forward drift.
+Keep the face fully dimensional through stable cheek volume, nose projection, jaw structure,
+eyelid depth and natural light wrapping.
+
 End with her shoulders fully down and one curl still settling against her cheek.
 
 HARD CUT ON HER SHOULDERS SETTLING.
@@ -233,21 +243,55 @@ No object moves before direct contact or a visible physical force.
 The lance points never touch the dragon at any moment of the film.
 
 ################################################################
+MOOD AND RENDER CONTRACT
+################################################################
+
+Preserve the established HIXXA dimensional hand-painted cinematic animation language.
+
+The image is fully constructed in three-dimensional space: volumetric characters,
+modeled facial planes, rounded body forms, dimensional architecture, real perspective,
+physical occlusion, natural parallax and clear foreground-to-background separation.
+
+Render every character and object with convincing sculptural volume comparable to
+high-end 3D animation, while treating every visible surface through controlled
+hand-painted illustration: clean illustrated shapes, softly brushed shading,
+painterly color transitions, subtly drawn edges, tactile material variation and
+restrained authored texture.
+
+Skin, curls, clothing fabric, floorboards, painted plaster, the lances' tempered metal,
+Razor's pale shell plates and the dragon's layered hide and wing membrane remain materially
+distinct and physically dimensional.
+
+The result feels like a richly hand-painted cinematic frame occupying real
+three-dimensional space: never flat 2D, never a paper cutout, never photoreal live
+action and never glossy plastic or toy-like CGI.
+
+Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe
+construction and material response across every lens and angle.
+
+The dragon holds its volume in flight: the wing membrane catches transmitted light and shows
+its internal structure, and the body's mass stays consistent through every change of angle.
+
+################################################################
 LIGHTING AND VISUAL CONTINUITY
 ################################################################
 
-Preserve the established stylized hand-painted cinematic animation language:
-clean illustrated shapes, controlled painterly texture, tactile materials,
-natural dimensional depth and expressive but grounded character animation.
-
-One warm ceiling fixture near HIXXA's door is the dominant source at the near end.
-A cooler daylight leak arrives from the stairwell at the far end.
-Both keep the same direction, exposure and time of day in every shot.
+One warm ceiling fixture near HIXXA's door remains the dominant source at the near end;
+a cooler daylight leak arrives from the stairwell at the far end.
+The world direction, color temperature, exposure and time of day of both remain unchanged
+across every angle. The warm key sculpts her cheek planes and curls at the near end while
+raking light along the floorboards holds the corridor's depth readable from every angle.
 As the action travels toward the stairs the pale plates move from warm to cool light;
-the transition is positional, not a lighting change.
+this is a positional change, not a lighting change.
 
-Never become photorealistic, glossy plastic 3D, flat cutout animation,
-watercolor bleed, neon-lit or heavily grainy.
+Use soft directional shadow, stable contact shadows and restrained atmospheric
+perspective to preserve sculptural volume and real dimensional depth.
+
+Colors remain rich and controlled without neon glow or excessive saturation.
+
+No flat 2D or paper-cutout motion. No photoreal live action. No glossy plastic or
+toy-like CGI. No waxy skin, generic game-render materials, watercolor bleed,
+unmotivated neon lighting, heavy grain or style drift between shots.
 No glow, no motion trails, no speed lines and no impact flashes.
 
 ################################################################

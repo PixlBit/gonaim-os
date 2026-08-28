@@ -1,6 +1,7 @@
 # HIXXA — RIBBON, FIRST BREATH
 
 > **المدة:** 30 ثانية — **الشوتات:** 12 — **القطعات:** 11 hard cuts
+> **المعيار:** CINEDANCE Bible v2.0 — Dimensional Hand-Painted Cinematic
 > **المكان:** غرفة HIXXA، أمام المكتب، أواخر العصر
 > **التاقات:** `@loc_location-room-1` `@char_hixxa` `@hixa-face` `@desk` `@cat` `@weaponribbon` `@ribbon`
 > **القوس الشعوري:** عرض هادئ → تردد → أول تماس → التفاف → تجسد → ثقة صامتة
@@ -127,6 +128,9 @@ motion, laying itself flat against the fur with real cloth tension. It does not 
 It draws snug and the foreleg takes the pressure.
 
 Slow track upward along the winding.
+The macro perspective preserves real surface relief and tactile separation between woven ribbon,
+fur and the matte shaft beneath them.
+
 End with the ribbon wound to the shoulder and still climbing.
 
 HARD CUT ON THE RIBBON PASSING THE SHOULDER.
@@ -140,6 +144,9 @@ White enamelled plates form out of the folds, layer over layer, like fabric sett
 No flash, no light burst, no particles.
 
 Slow tilt up with the growing cocoon.
+The dimensional tilt keeps the cocoon a solid volume in the room rather than a shape on a plane:
+it occludes the desk behind it and its contact shadow travels with it.
+
 End with the cocoon fully closed, standing upright, the shaft vertical at its core.
 
 HARD CUT ON THE COCOON CLOSING.
@@ -165,6 +172,9 @@ her weight transfers and her breath catches once. Her eyes widen a few millimetr
 then steady. Her hands stay open at her sides.
 
 Extremely subtle retreat.
+Keep the face fully dimensional through stable cheek volume, nose projection, jaw structure,
+eyelid depth and natural light wrapping.
+
 End with her weight settled on the back foot and her gaze level and steady.
 
 HARD CUT ON HER WEIGHT SETTLING.
@@ -233,20 +243,56 @@ No object moves before direct contact or a visible physical force.
 The transformation is a mechanical winding event, not a light event.
 
 ################################################################
+MOOD AND RENDER CONTRACT
+################################################################
+
+Preserve the established HIXXA dimensional hand-painted cinematic animation language.
+
+The image is fully constructed in three-dimensional space: volumetric characters,
+modeled facial planes, rounded body forms, dimensional architecture, real perspective,
+physical occlusion, natural parallax and clear foreground-to-background separation.
+
+Render every character and object with convincing sculptural volume comparable to
+high-end 3D animation, while treating every visible surface through controlled
+hand-painted illustration: clean illustrated shapes, softly brushed shading,
+painterly color transitions, subtly drawn edges, tactile material variation and
+restrained authored texture.
+
+Skin, curls, clothing fabric, desk wood, the ribbon's woven cloth, the black shaft's
+matte finish and Ribbon's enamelled shell plates remain materially distinct and physically
+dimensional.
+
+The result feels like a richly hand-painted cinematic frame occupying real
+three-dimensional space: never flat 2D, never a paper cutout, never photoreal live
+action and never glossy plastic or toy-like CGI.
+
+Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe
+construction and material response across every lens and angle.
+
+Ribbon is a fully sculptural body: overlapping plates with real thickness, shadowed gaps
+between them and hand-painted shading that follows their curvature.
+
+################################################################
 LIGHTING AND VISUAL CONTINUITY
 ################################################################
 
-Preserve the established stylized hand-painted cinematic animation language:
-clean illustrated shapes, controlled painterly texture, tactile materials,
-natural dimensional depth and expressive but grounded character animation.
-
 The real window beside the desk remains the dominant warm late-afternoon source, world-right.
-Its direction, exposure, shadow placement and time of day remain unchanged across every angle.
-Ribbon's white plates take warm light on the window side and hold soft shadow on the other.
+Its world direction, color temperature, exposure, shadow placement and time of day remain
+unchanged across every angle. Warm directional light wraps her curls, cheek planes, hands and
+clothing folds, and rakes across the desk wood so its grain reads as relief rather than pattern.
+Ribbon's white plates take warm light on the window side and hold soft shaped shadow on the
+other, so its volume reads clearly without blowing out to flat white.
 
-Never become photorealistic, glossy plastic 3D, flat cutout animation,
-watercolor bleed, neon-lit or heavily grainy.
-No glow, no light burst, no particle sparkle at any point of the transformation.
+Use soft directional shadow, stable contact shadows and restrained atmospheric
+perspective to preserve sculptural volume and real dimensional depth.
+
+Colors remain rich and controlled without neon glow or excessive saturation.
+
+No flat 2D or paper-cutout motion. No photoreal live action. No glossy plastic or
+toy-like CGI. No waxy skin, generic game-render materials, watercolor bleed,
+unmotivated neon lighting, heavy grain or style drift between shots.
+No glow, no light burst and no particle sparkle at any point of the transformation:
+it is a mechanical winding event lit by the same window as everything else.
 
 ################################################################
 AUDIO

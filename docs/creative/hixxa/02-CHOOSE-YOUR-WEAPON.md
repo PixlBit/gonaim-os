@@ -1,6 +1,7 @@
 # HIXXA — CHOOSE YOUR WEAPON
 
 > **المدة:** 30 ثانية — **الشوتات:** 12 — **القطعات:** 11 hard cuts
+> **المعيار:** CINEDANCE Bible v2.0 — Dimensional Hand-Painted Cinematic
 > **المكان:** غرفة HIXXA، مكتب، أواخر العصر (بعد فيلم 01 مباشرة بساعة تقريبًا)
 > **التاقات:** `@loc_location-room-1` `@char_hixxa` `@hixa-face` `@desk` `@taplet` `@tapletui` `@tapletui0` `@prop_tapletpen` `@stage1weapon` `@stage2weapon` `@stage3weapon` `@fox`
 > **القوس الشعوري:** فضول → قوة معروضة → إغراء الحجم → مقارنة → قرار متواضع → صحبة مسلّحة
@@ -138,6 +139,9 @@ turning slowly on its own axis inside the frame of the card, teal and pink strip
 catching the interface light. The stylus tip rests at the card's lower edge.
 
 Hold fixed.
+The macro perspective preserves real surface relief and tactile separation between the flat
+screen artwork, the glass surface above it and the wooden frame around it.
+
 End with the blaster completing one full slow rotation and facing forward again.
 
 HARD CUT ON THE ROTATION CLOSING.
@@ -175,6 +179,9 @@ Her jaw softens, her shoulders come down and her thumb stops moving on the stylu
 No lip movement, no dialogue.
 
 Extremely subtle forward drift.
+Keep the face fully dimensional through stable cheek volume, nose projection, jaw structure,
+eyelid depth and natural light wrapping.
+
 End with her gaze fixed on the fox and the decision visible in her stilled hands.
 
 HARD CUT ON HER GAZE RETURNING TO THE SCREEN.
@@ -197,9 +204,13 @@ SHOT 10 — 21.80–25.20
 Inherit the confirmed card. On the bare desk beside the slate a charcoal outline draws
 itself, grip first, then barrel, then the stripe detail, and fills into a solid object
 with real weight. It settles onto the wood with a small audible knock and a soft grounded
-shadow. Paper grain remains visible inside its painted surfaces.
+shadow. It arrives with real thickness and modeled surfaces, its hand-painted shading following
+the curvature of grip and barrel.
 
 Slow track from the slate to the new object.
+The dimensional camera move reveals restrained parallax between the slate, the new object and
+the desk edge, and the weapon gains real thickness and occlusion as it forms.
+
 End with the blaster resting solid on the desk, still, and the slate dimmed behind it.
 
 HARD CUT ON THE WEAPON MEETING THE WOOD.
@@ -236,24 +247,60 @@ joint compression, natural recovery and restrained micro-motion.
 The stylus never sinks into the glass; contact is a surface event.
 The interface responds only to an actual touch or drag, never in anticipation.
 The materialising weapon has believable mass: it lands, it does not float or drift.
-The fox is opaque, occludes what is behind it and casts a soft grounded shadow.
+The fox is a volumetric body with real weight: opaque, occluding what is behind it and casting
+a stable contact shadow where its paws meet the wood.
 
 No object moves before direct contact or a visible physical force.
+
+################################################################
+MOOD AND RENDER CONTRACT
+################################################################
+
+Preserve the established HIXXA dimensional hand-painted cinematic animation language.
+
+The image is fully constructed in three-dimensional space: volumetric characters,
+modeled facial planes, rounded body forms, dimensional architecture, real perspective,
+physical occlusion, natural parallax and clear foreground-to-background separation.
+
+Render every character and object with convincing sculptural volume comparable to
+high-end 3D animation, while treating every visible surface through controlled
+hand-painted illustration: clean illustrated shapes, softly brushed shading,
+painterly color transitions, subtly drawn edges, tactile material variation and
+restrained authored texture.
+
+Skin, curls, clothing fabric, desk wood, the slate's oiled wooden frame, matte screen
+glass, stylus metal and the painted alloy of the blaster remain materially distinct and
+physically dimensional.
+
+The result feels like a richly hand-painted cinematic frame occupying real
+three-dimensional space: never flat 2D, never a paper cutout, never photoreal live
+action and never glossy plastic or toy-like CGI.
+
+Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe
+construction and material response across every lens and angle.
+
+The interface is a flat image living on a dimensional object: the screen's artwork stays
+graphic and flat while the slate itself keeps real thickness, edge relief and contact shadow.
 
 ################################################################
 LIGHTING AND VISUAL CONTINUITY
 ################################################################
 
-Preserve the established stylized hand-painted cinematic animation language:
-clean illustrated shapes, controlled painterly texture, tactile materials,
-natural dimensional depth and expressive but grounded character animation.
-
 The real window beside the desk remains the dominant warm late-afternoon source, world-right.
-The screen is a secondary local source that lights only the near desk surface, her fingers
-and the underside of her chin. Its colour stays neutral and never becomes neon.
+Its world direction, color temperature, exposure, shadow placement and time of day remain
+unchanged across every angle. Warm directional light wraps her curls, cheek planes, hands and
+clothing folds, and rakes across the desk wood so its grain reads as relief rather than pattern.
+The screen is a secondary local source lighting only the near desk surface, her fingers and
+the underside of her chin. Its colour stays neutral and never becomes neon.
 
-Never become photorealistic, glossy plastic 3D, flat cutout animation,
-watercolor bleed, neon-lit or heavily grainy.
+Use soft directional shadow, stable contact shadows and restrained atmospheric
+perspective to preserve sculptural volume and real dimensional depth.
+
+Colors remain rich and controlled without neon glow or excessive saturation.
+
+No flat 2D or paper-cutout motion. No photoreal live action. No glossy plastic or
+toy-like CGI. No waxy skin, generic game-render materials, watercolor bleed,
+unmotivated neon lighting, heavy grain or style drift between shots.
 
 ################################################################
 AUDIO

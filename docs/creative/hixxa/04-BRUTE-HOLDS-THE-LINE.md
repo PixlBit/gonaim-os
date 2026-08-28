@@ -1,6 +1,7 @@
 # HIXXA — BRUTE HOLDS THE LINE
 
 > **المدة:** 30 ثانية — **الشوتات:** 12 — **القطعات:** 11 hard cuts
+> **المعيار:** CINEDANCE Bible v2.0 — Dimensional Hand-Painted Cinematic
 > **المكان:** الممر خارج باب HIXXA (`@outdoor`)، نفس المساء
 > **التاقات:** `@outdoor` `@char_hixxa` `@hixa-face` `@fox` `@weaponbrute` `@brute` `@monster`
 > **القوس الشعوري:** ضغط قادم → تسليح → مشي ثقيل → غرز الأقدام → اصطدام → صمود
@@ -105,6 +106,9 @@ iron banding dull in the warm light. A fine tremor runs through the floor and bo
 shift a few millimetres against the grain and stop.
 
 Hold fixed.
+The macro perspective preserves real surface relief and tactile separation between quarried
+stone, weathered timber, iron banding and floorboard grain.
+
 End with both gauntlets settled and one iron band still ringing faintly.
 
 HARD CUT ON THE TREMOR PASSING.
@@ -141,6 +145,10 @@ at a time. Every footfall flexes the boards, lifts the runner rug slightly ahead
 knocks the framed pictures a few degrees out of true on the world-left wall.
 
 Track parallel, one continuous move, matched to its pace.
+The dimensional tracking move reveals restrained parallax between Brute's near shoulder, the
+wall pictures and the corridor depth beyond, and its block masses stay carved and separated
+by shadow throughout.
+
 End with Brute mid-corridor and the last picture still swinging behind it.
 
 HARD CUT ON THE STEP THAT STOPS.
@@ -202,6 +210,9 @@ fist at her side. Her breath is held; her chest does not move. The fox is still 
 head lifted. Her eyes stay on the corridor.
 
 Extremely subtle forward drift.
+Keep the face fully dimensional through stable cheek volume, nose projection, jaw structure,
+eyelid depth and natural light wrapping.
+
 End with the fist closed, the breath still held and her gaze unbroken.
 
 HARD CUT ON THE FIST CLOSING.
@@ -234,21 +245,55 @@ No object moves before direct contact or a visible physical force.
 There is exactly one impact in this film, at 19.60, and it is absorbed rather than returned.
 
 ################################################################
+MOOD AND RENDER CONTRACT
+################################################################
+
+Preserve the established HIXXA dimensional hand-painted cinematic animation language.
+
+The image is fully constructed in three-dimensional space: volumetric characters,
+modeled facial planes, rounded body forms, dimensional architecture, real perspective,
+physical occlusion, natural parallax and clear foreground-to-background separation.
+
+Render every character and object with convincing sculptural volume comparable to
+high-end 3D animation, while treating every visible surface through controlled
+hand-painted illustration: clean illustrated shapes, softly brushed shading,
+painterly color transitions, subtly drawn edges, tactile material variation and
+restrained authored texture.
+
+Skin, curls, clothing fabric, corridor floorboards, painted plaster, the wool runner rug,
+Brute's weathered timber and quarried stone and its iron banding remain materially distinct
+and physically dimensional.
+
+The result feels like a richly hand-painted cinematic frame occupying real
+three-dimensional space: never flat 2D, never a paper cutout, never photoreal live
+action and never glossy plastic or toy-like CGI.
+
+Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe
+construction and material response across every lens and angle.
+
+Brute reads as carved mass: block faces with real depth, chipped edges catching the key light
+and deep occlusion inside every joint gap.
+
+################################################################
 LIGHTING AND VISUAL CONTINUITY
 ################################################################
 
-Preserve the established stylized hand-painted cinematic animation language:
-clean illustrated shapes, controlled painterly texture, tactile materials,
-natural dimensional depth and expressive but grounded character animation.
+One warm ceiling fixture near HIXXA's door remains the dominant source at the near end;
+a cooler daylight leak arrives from the stairwell at the far end.
+The world direction, color temperature, exposure and time of day of both remain unchanged
+across every angle. The warm key sculpts her cheek planes and curls at the near end while
+raking light along the floorboards holds the corridor's depth readable from every angle.
+Brute is lit warm from behind camera-left so its block masses separate by shadow;
+the monster stays in the cool leak and is never lit clearly enough to read every surface.
 
-One warm ceiling fixture near HIXXA's door is the dominant source at the near end.
-A cooler daylight leak arrives from the stairwell at the far end.
-Both keep the same direction, exposure and time of day in every shot.
-Brute is lit warm from behind camera-left; the monster stays in the cool leak and is never
-lit clearly enough to read every surface.
+Use soft directional shadow, stable contact shadows and restrained atmospheric
+perspective to preserve sculptural volume and real dimensional depth.
 
-Never become photorealistic, glossy plastic 3D, flat cutout animation,
-watercolor bleed, neon-lit or heavily grainy.
+Colors remain rich and controlled without neon glow or excessive saturation.
+
+No flat 2D or paper-cutout motion. No photoreal live action. No glossy plastic or
+toy-like CGI. No waxy skin, generic game-render materials, watercolor bleed,
+unmotivated neon lighting, heavy grain or style drift between shots.
 
 ################################################################
 AUDIO
