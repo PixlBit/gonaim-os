@@ -3,7 +3,7 @@
 > **المدة:** 10.0 ثوانٍ — **الشوتات:** 7 (A–G) — **القطعات:** 6
 > **المعيار:** `HIXXA_MASTER_CANON_V4` — §6A اليدين · §6B المقاييس · §6E `@basket` · §6F الزمن · §14A القالب
 > **التاقات:** `@loc_location-room-1` `@desk` `@char_hixxa` `@hixa-face` `@ear` `@basket`
-> **السلة:** `@basket` **STAGE 3 → STAGE 4** — على الأرض عند يمينها التشريحي
+> **السلة:** `@basket` **STAGE 3 → STAGE 4** — على الأرض **خلفها بقليل وناحية يمينها التشريحي**
 > **الوراثة:** بعد مراحل رفض كثيرة سابقة — **التسليم:** سلة ممتلئة حتى الحافة
 
 ---
@@ -50,17 +50,19 @@
 
 ---
 
-## ⚠️ تعارض يحتاج تأكيدك
+## موضع السلة والرمية
 
-`PART I §21` من الـMaster يقفل: **«اليد اليمنى للرسم. اليسار تنفذ الرمية بعد نقل الكرة إليها مرئيًا.»**
+السلة **على الأرض خلفها بقليل وناحية يمينها التشريحي** — قطر خلفي قصير خلف ركن كرسيها، في متناول رمية للخلف بلا وقوف ولا التفاف.
 
-لكن برومبتك الحالي يضع السلة عند **يمينها التشريحي** ويطلب **رمية جانبية قصيرة** بأقل دوران جذع. رمية باليسار نحو اليمين تعني **عبور الجسم بالكامل** — وهذا يناقض «short lateral toss» و«only the small natural rotation needed».
+هذا الموضع **يحلّ التوتر مع `PART I §21`** الذي كان قائمًا في النسخة السابقة: سلة عند اليمين تمامًا كانت تفرض رمية جانبية، ورمية باليسار نحوها تعني عبور الجسم. أما السلة **الخلفية-اليمنى** فمسارها الطبيعي **نفضة قصيرة للخلف باليد اليمنى** بعد إفلات القلم — بلا عبور جسم وبلا التفاف.
 
-**الحسم المطبَّق:** بترتيب السلطة في §2، البند الأول هو «آخر تصحيح صريح من المستخدم» — وهو هندستك الحالية. فالبرومبت مكتوب بـ**رمية اليد اليمنى** نحو السلة اليمنى، والقلم يُفلت أولًا لتتحرر اليد.
+```
+HAND → LOW RELEASE BESIDE HER HIP → SHORT REAR-RIGHT DIAGONAL → DOWN OVER THE RIM
+```
 
-**البديل لو أردت الالتزام بـ§21:** انقل السلة إلى **يسارها التشريحي**، وتعود الرمية لليسار بلا عبور جسم. قل أيهما وأثبّته في كل السلسلة.
+ورأسها لا يتبع الرمية: **لا تلتفت لتنظر إلى السلة، لأنها تعرف مكانها.** هذه التفصيلة وحدها تصنع فرق الشخصية — الرمي صار عادة، وهذه ليست أول ورقة ترفضها اليوم.
 
----
+**الشوت D يستفيد أكثر من غيره:** الكاميرا خلفها أصلًا، فالسلة تدخل الكادر طبيعيًا ويصير الشوت هو الإثبات المكاني بدل أن يكون خطرًا على الاستمرارية.
 
 ```text
 ################################################################
@@ -135,12 +137,14 @@ draws, crushes and throws hard, the wire may sway with delayed secondary motion 
 
 WORLD AND AXIS MAP
 
-The wastebasket stands on the floor directly beside HIXXA's ANATOMICAL RIGHT, alongside her
-chair and immediately adjacent to the desk, within short comfortable throwing reach.
+The wastebasket stands on the floor SLIGHTLY BEHIND HIXXA AND TO HER ANATOMICAL RIGHT — on a
+short rear-right diagonal from her seated position, past the back corner of her chair, within
+easy backward throwing reach without standing up or turning around.
 This is a body-relative world-space position, not a screen position.
 
-It is never in front of her, never behind her, never on her anatomical left, never under or on
-the desk, never on a shelf and never raised off the floor. Its base stays fully supported by
+It is never in front of her, never level with her or ahead of her chair, never on her
+anatomical left, never directly behind her centre line, never under or on the desk, never on a
+shelf and never raised off the floor. Its base stays fully supported by
 the floor and it never slides, rotates, relocates, grows, shrinks or duplicates.
 There is exactly one wastebasket in the room.
 
@@ -160,11 +164,15 @@ The earpiece is small enough to sit inside the bowl of her ear.
 
 THROW PATH
 
-Every ball travels the same route: her hand releases low, the ball carries rightward and
-downward on a short lateral arc, crosses the rim and enters the wastebasket beside her.
-No throw goes straight forward, backward, over her shoulder or across the room, and no ball
-leaves her hand into open space and lands by coincidence. Her torso performs only the small
-natural rotation a side toss needs; she never turns around to throw behind herself.
+Every ball travels the same route: her hand releases low beside her hip, the ball carries
+BACK AND TO HER RIGHT on a short rear-diagonal arc, drops and crosses the rim into the
+wastebasket behind her right side.
+
+The throw is a quick backward flick past her own body, not a forward throw and not a full
+over-the-shoulder pitch. Her torso gives only the small rearward twist that reach requires,
+her head stays on the desk, and she never turns around to look at the wastebasket — she knows
+where it is. No ball goes straight forward, to her left, across the room, or leaves her hand
+into open space to land by coincidence.
 
 Her anatomical right hand draws and, once the pencil is out of it, throws.
 Her anatomical left hand keeps the working sheet planted and joins the crush.
@@ -195,11 +203,12 @@ on the cut. Everything else about the pile, the pencil and her body is governed 
 SHOT A — 0.00–1.70 — 35mm HIGH OBLIQUE TOP SHOT
 
 Frame zero already shows her pencil in contact with the mechanical cat sheet, her left hand
-planting it flat, and the wastebasket clearly visible on the floor beside her anatomical right,
+planting it flat, and the wastebasket clearly visible on the floor behind her right shoulder,
 already crowded to near its rim.
 
 She drives three fast final strokes into the sheet, stops dead, and crushes the sheet between
-both hands through visible folds into one ball. She releases it low on the short rightward arc.
+both hands through visible folds into one ball. She flicks it back and to her right on the
+short rear-diagonal arc.
 
 End with the ball airborne on that arc, close to the rim.
 
@@ -210,7 +219,7 @@ SHOT B — 1.70–3.00 — 65mm TIGHT FRONT THREE-QUARTER, past stationary desk 
 Inherit the settled pile and the reduced stack, the mechanical fox sheet now on top.
 
 She scratches two rapid final lines, snaps the sheet inward and crushes it through hard folds,
-then tosses it on the same short rightward arc.
+then flicks it back on the same rear-diagonal arc.
 
 End with her arm at full follow-through and the ball already past her hand.
 
@@ -219,11 +228,12 @@ ACTION CUT ON THE FOLLOW-THROUGH.
 SHOT C — 3.00–4.50 — 24mm WIDE SIDE ANGLE
 
 This shot establishes the spatial truth in one readable composition: HIXXA seated at the desk,
-the wastebasket on the floor immediately beside her anatomical right, both in frame together.
+the wastebasket on the floor on the rear-right diagonal behind her chair, both in frame
+together with the throwing lane between them clear.
 
 Inherit the fuller pile. She attacks the mechanical dragon sheet with frantic but controlled
 strokes, her eyes locked on the pencil's contact point, then crushes it and makes a compact
-right-side toss that crosses the short lateral distance in full view.
+rear-right flick that crosses the short diagonal in full view.
 
 End with the ball entering the crowded pile and the whole spatial relationship legible.
 
@@ -231,11 +241,11 @@ HARD CUT ON IMPACT.
 
 SHOT D — 4.50–5.70 — 50mm REAR OVER-THE-SHOULDER, restrained lateral slide
 
-Inherit the denser pile. The camera is behind her; the wastebasket is still on her anatomical
-right and has not moved.
+Inherit the denser pile. The camera is behind her, so the wastebasket now sits in clear view
+on the floor at frame right, exactly where it has been the whole time.
 
 She scribbles furious correction strokes into the second cat sheet, crushes it in one fast
-motion and tosses it sideways to her right. The ball never travels backward relative to her body.
+motion and flicks it back to her right, straight down the established lane into the bin.
 
 End with the ball dropping past the rim and nothing spilling.
 
@@ -243,12 +253,13 @@ ACTION CUT AS SHE REACHES FOR THE NEXT SHEET.
 
 SHOT E — 5.70–7.10 — 28mm LOW BASKET-SIDE ANGLE looking back toward the desk
 
-The camera sits low on the floor beside the real wastebasket at her anatomical right. The bin
-dominates the foreground; its world position is unchanged. HIXXA is visible beyond it.
+The camera sits low on the floor at the wastebasket, looking forward past its rim toward
+HIXXA's back and the desk beyond. The bin dominates the foreground; its world position is
+unchanged and HIXXA is seen from behind and slightly to her left.
 
 Inherit the pile now very close to the rim. She finishes the second fox sheet, crushes it and
-throws on the same arc. The ball grows in perspective as it genuinely approaches the lens, then
-crosses the rim into the packed balls.
+flicks it back on the same arc. The ball travels toward camera and grows in perspective as it
+genuinely approaches the lens, then crosses the rim into the packed balls.
 
 End with the top layer visibly compressing and the pile a finger's width from the rim.
 
@@ -260,7 +271,7 @@ Inherit the last sheet alone on the desk. Her jaw is tight, her shoulders are up
 breathing is fast; the frustration is at its peak and stays physical, not theatrical.
 
 She scratches at the second dragon sheet, gives up abruptly, and crushes it through forceful
-folding into one compact ball, then makes the final short right-side toss.
+folding into one compact ball, then makes the final short rear-right flick.
 
 End as the ball crosses the fixed rim.
 
@@ -381,8 +392,8 @@ generated interstitial frame. No text, UI, logo, caption, subtitle or watermark.
 
 FINAL STATE
 
-HIXXA at the same desk, the room unchanged, one wastebasket still on the floor at her
-anatomical right, packed naturally to its rim with nothing spilled, every rejected sheet
+HIXXA at the same desk, the room unchanged, one wastebasket still on the floor behind her
+right side, packed naturally to its rim with nothing spilled, every rejected sheet
 accounted for as one ball, and the same small vintage wired earpiece in its exact reference
 colour with its cable continuous and attached.
 ```
