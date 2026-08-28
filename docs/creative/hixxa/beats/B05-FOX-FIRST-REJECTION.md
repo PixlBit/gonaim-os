@@ -86,6 +86,38 @@ The pattern is soft and irregular and never resolves into a graphic shape, a log
 tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
 every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
 
+PROP SCALE LOCK
+
+HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
+film. Every object below is locked to both a real dimension and a hand-relative anchor.
+Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
+smaller than its stated relationship to her hand or body, and no object changes size between
+shots, lenses or angles.
+
+PHONE — an ordinary one-hand mobile phone, about 15 centimetres tall, 7 wide and under 1
+thick. Set beside her hand it is no longer than her palm plus one finger joint, and her spread
+hand would cover almost all of it. It is never a tablet, never an iPad, never a large-format
+or two-handed device, and never grows between shots or lenses.
+
+EARBUDS — tiny in-ear units, each one smaller than the concha bowl of her ear and no wider
+than her little fingernail. They are never ear-cups, never headset-sized, never large discs
+and never protrude beyond her ear silhouette. The cable is a thin 2-millimetre cord.
+
+METAL WASTEBASKET — about 30 centimetres across and 35 tall, its rim reaching roughly her knee
+while she is seated, as described in full above.
+
+SKETCH SHEET — one landscape sheet about 30 centimetres wide and 21 tall, a little wider than
+her two hands set side by side. It is never poster-sized and never notebook-small.
+
+CRUMPLED PAPER BALL — about 7 centimetres across, small enough to close fully inside her fist
+with her fingers meeting. It never becomes larger than her fist and never shrinks to a pebble.
+
+GRAPHITE DRAWING PENCIL — a standard full-length pencil about 17 centimetres long and 7
+millimetres across; held in her grip the tip clears her fingers by about a palm's width.
+
+SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
+roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
+
 Use @EAR for the small black wired non-glowing earbuds, worn continuously with one connected
 cable. They never vanish, multiply or change design.
 
@@ -352,7 +384,7 @@ LOCKS
 ################################################################
 
 Only one HIXXA appears. Preserve her exact face, body proportions, skin tone, hair mass,
-wardrobe and anatomy, including correct five-finger hands and correct anatomical left and right. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens.
+wardrobe and anatomy, including correct five-finger hands and correct anatomical left and right. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
 
 Exactly one fox sheet becomes exactly one ball and enters the same fixed wastebasket.
 No duplicate ball, torn fragment, magical shrink, trajectory correction, wastebasket

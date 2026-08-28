@@ -53,6 +53,22 @@ The pattern is soft and irregular and never resolves into a graphic shape, a log
 tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
 every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
 
+PROP SCALE LOCK
+
+HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
+film. Every object below is locked to both a real dimension and a hand-relative anchor.
+Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
+smaller than its stated relationship to her hand or body, and no object changes size between
+shots, lenses or angles.
+
+STONE GAUNTLETS — each is a block roughly 30 centimetres across, as wide as Brute's own
+forearm and heavy enough that its arms visibly carry the load.
+
+SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
+roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
+
+CREATURE SCALE — the fox stands about 35 centimetres at the shoulder. Brute stands about 160 centimetres and nearly fills the corridor's width. The monster is about 220 centimetres long, larger than Brute in every dimension.
+
 @fox controls the exact fox identity, proportions, tail mass and face markings.
 It stays at her ankle for the whole film and never enters the corridor alone.
 
@@ -337,7 +353,7 @@ PRESERVATION LOCKS
 ################################################################
 
 Only one HIXXA appears, and she stays in her doorway for the whole film.
-Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens.
+Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
 
 Exactly one Brute, one monster, one fox and exactly two gauntlets.
 The gauntlets are never both on the floor after 9.00 and never duplicate.

@@ -52,6 +52,32 @@ The pattern is soft and irregular and never resolves into a graphic shape, a log
 tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
 every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
 
+PROP SCALE LOCK
+
+HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
+film. Every object below is locked to both a real dimension and a hand-relative anchor.
+Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
+smaller than its stated relationship to her hand or body, and no object changes size between
+shots, lenses or angles.
+
+WOODEN-FRAMED SLATE — a two-handed tablet-sized device about 25 centimetres wide, 17 tall and
+1 thick, roughly the size of a sheet of paper and clearly larger than a phone. It always reads
+as a tablet resting on the desk, never as a phone and never as a wall-sized screen.
+
+STYLUS — about 14 centimetres long and pencil-thin, noticeably shorter than a full pencil.
+
+SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
+roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
+
+WEAPON ARTWORK SCALE — the stage one blaster is about 35 centimetres long, the stage two
+launcher about 60, and the stage three cannon about 110. Only the stage one blaster becomes a
+physical object; at 35 centimetres it is roughly as long as the fox's whole body.
+
+DESK LAMP — about 40 centimetres tall on the desk, its shade roughly the size of her cupped
+hand.
+
+CREATURE SCALE — the fox stands about 35 centimetres at the shoulder, small enough to sit on the desk beside the slate with room to spare.
+
 @desk controls the exact desk surface, wood grain and permanent tools.
 It does not introduce any additional device or interface.
 
@@ -343,7 +369,7 @@ PRESERVATION LOCKS
 ################################################################
 
 Only one HIXXA appears.
-Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens.
+Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
 
 Exactly one fox, one slate, one stylus, one red pencil in her curls,
 and exactly one physical weapon, which exists only after the confirming tap at 21.80.

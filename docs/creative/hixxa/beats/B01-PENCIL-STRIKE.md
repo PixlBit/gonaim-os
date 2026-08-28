@@ -72,6 +72,29 @@ The pattern is soft and irregular and never resolves into a graphic shape, a log
 tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
 every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
 
+PROP SCALE LOCK
+
+HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
+film. Every object below is locked to both a real dimension and a hand-relative anchor.
+Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
+smaller than its stated relationship to her hand or body, and no object changes size between
+shots, lenses or angles.
+
+PENCIL CUP — a metal cup about 10 centimetres tall and 9 across, standing on the desk within
+her hand's grasp. It is never a bucket and never a wastebasket.
+
+GRAPHITE DRAWING PENCIL — a standard full-length pencil about 17 centimetres long and 7
+millimetres across; held in her grip the tip clears her fingers by about a palm's width.
+
+DESK TOOLS — brushes and pens standing in the cup are all between 14 and 20 centimetres long;
+none is taller than the cup by more than half its own length.
+
+SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
+roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
+
+SKETCH SHEET — one landscape sheet about 30 centimetres wide and 21 tall, a little wider than
+her two hands set side by side. It is never poster-sized and never notebook-small.
+
 @desk controls the exact desk surface, wood grain, the metal pencil cup and its permanent
 tools. It does not introduce any additional device, interface or new drawing surface.
 
@@ -254,7 +277,7 @@ Only one HIXXA appears.
 Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy:
 large brown eyes, freckles, dense dark curly high puff with loose curls, silver hoop earrings,
 teal plaid overshirt, mustard shirt, burgundy paint-marked apron, cuffed charcoal trousers
-and worn red high-top shoes. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens.
+and worn red high-top shoes. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
 
 Exactly three pencils leave the cup: two land on the desk and one stays in her hand.
 The count never changes after the grip closes at 1.60.

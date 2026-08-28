@@ -69,6 +69,40 @@ The pattern is soft and irregular and never resolves into a graphic shape, a log
 tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
 every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
 
+PROP SCALE LOCK
+
+HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
+film. Every object below is locked to both a real dimension and a hand-relative anchor.
+Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
+smaller than its stated relationship to her hand or body, and no object changes size between
+shots, lenses or angles.
+
+PHONE — an ordinary one-hand mobile phone, about 15 centimetres tall, 7 wide and under 1
+thick. Set beside her hand it is no longer than her palm plus one finger joint, and her spread
+hand would cover almost all of it. It is never a tablet, never an iPad, never a large-format
+or two-handed device, and never grows between shots or lenses.
+
+EARBUDS — tiny in-ear units, each one smaller than the concha bowl of her ear and no wider
+than her little fingernail. They are never ear-cups, never headset-sized, never large discs
+and never protrude beyond her ear silhouette. The cable is a thin 2-millimetre cord.
+
+METAL WASTEBASKET — about 30 centimetres across and 35 tall, its rim reaching roughly her knee
+while she is seated, as described in full above.
+
+SKETCH SHEET — one landscape sheet about 30 centimetres wide and 21 tall, a little wider than
+her two hands set side by side. It is never poster-sized and never notebook-small.
+
+CRUMPLED PAPER BALL — about 7 centimetres across, small enough to close fully inside her fist
+with her fingers meeting. It never becomes larger than her fist and never shrinks to a pebble.
+
+DESK LAMP — about 40 centimetres tall on the desk, its shade roughly the size of her cupped
+hand.
+
+COFFEE CUP — an ordinary mug about 9 centimetres tall that her hand closes around comfortably.
+
+SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
+roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
+
 @desk controls the exact desk construction, proportions, surface material and existing prop
 layout: the desk lamp, the phone, the coffee cup and the stack of unused sheets.
 It does not add, remove or reposition any desk prop.
@@ -379,7 +413,7 @@ PRESERVATION LOCKS
 Only one HIXXA appears. Preserve her exact identity, facial structure, hairstyle, wardrobe
 layers, earbuds and cable route, correct anatomical left and right, and the established desk,
 lamp, phone, coffee and corner wastebasket placement, attic architecture, exterior window
-geometry, lighting and throw axis. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens.
+geometry, lighting and throw axis. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
 
 She never looks into the lens, never speaks and never turns to watch the wastebasket.
 The wastebasket always rests on the floorboards in its corner with its rim below the desk

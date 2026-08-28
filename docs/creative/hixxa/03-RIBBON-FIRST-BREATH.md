@@ -52,6 +52,25 @@ The pattern is soft and irregular and never resolves into a graphic shape, a log
 tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
 every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
 
+PROP SCALE LOCK
+
+HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
+film. Every object below is locked to both a real dimension and a hand-relative anchor.
+Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
+smaller than its stated relationship to her hand or body, and no object changes size between
+shots, lenses or angles.
+
+BLACK SHAFT AND RIBBON — the shaft is about 90 centimetres long and 2 across, with one
+continuous white ribbon roughly 4 centimetres wide and 3 metres long.
+
+SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
+roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
+
+DESK LAMP — about 40 centimetres tall on the desk, its shade roughly the size of her cupped
+hand.
+
+CREATURE SCALE — the cat stands about 30 centimetres at the shoulder. Ribbon stands about 110 centimetres, clearly shorter than HIXXA and never taller than her shoulder.
+
 @desk controls the exact desk surface, wood grain and permanent tools.
 It does not introduce any additional device or interface.
 
@@ -335,7 +354,7 @@ PRESERVATION LOCKS
 ################################################################
 
 Only one HIXXA appears.
-Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens.
+Preserve her exact face, body proportions, skin tone, hair mass, wardrobe and anatomy. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
 
 Exactly one cat before the transformation and exactly one Ribbon after it.
 The cat and Ribbon never appear in the same frame and the cat never reappears.

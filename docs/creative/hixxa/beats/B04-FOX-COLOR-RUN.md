@@ -94,6 +94,29 @@ The pattern is soft and irregular and never resolves into a graphic shape, a log
 tattoo, a bruise, a wound or dirt. Its placement, colours and density stay consistent across
 every shot, lens and angle, and it never washes off, spreads or changes colour within a film.
 
+PROP SCALE LOCK
+
+HIXXA stands about 165 centimetres tall and her hand is the scale reference for this entire
+film. Every object below is locked to both a real dimension and a hand-relative anchor.
+Where the two seem to disagree, the hand-relative anchor wins. No object is rendered larger or
+smaller than its stated relationship to her hand or body, and no object changes size between
+shots, lenses or angles.
+
+SKETCH SHEET — one landscape sheet about 30 centimetres wide and 21 tall, a little wider than
+her two hands set side by side. It is never poster-sized and never notebook-small.
+
+PAINTBRUSH — a small round brush about 18 centimetres long with a ferrule under 6 millimetres
+wide. Held like a pencil, its handle ends near the base of her thumb.
+
+PALETTE — a small hand-sized tray no wider than her spread fingers, lying flat on the desk.
+
+EARBUDS — tiny in-ear units, each one smaller than the concha bowl of her ear and no wider
+than her little fingernail. They are never ear-cups, never headset-sized, never large discs
+and never protrude beyond her ear silhouette. The cable is a thin 2-millimetre cord.
+
+SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
+roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
+
 When she is actively painting, fresh wet colour may additionally appear on her fingertips only
 after visible contact with pigment; it never replaces or covers the permanent dried stains.
 
@@ -324,7 +347,7 @@ PRESERVATION LOCKS
 
 Only one HIXXA appears. Preserve her exact face, body proportions, skin tone, hair mass,
 layered wardrobe and anatomy, including correct five-finger hands.
-The right hand is always the painting hand; the left always stabilizes the same sheet. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens.
+The right hand is always the painting hand; the left always stabilizes the same sheet. Preserve the permanent dried paint stains on both of her hands exactly as established: same placement, same colours, same density, dried and matte, in every shot and at every lens. Every object holds the exact size given in the prop scale lock, measured against her hand, in every shot and at every lens.
 
 The drawing never animates, blinks, changes pose, becomes a live fox, rises from the sheet,
 gains volume or turns into folded sculpture. Only one fox is depicted.
