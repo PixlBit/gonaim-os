@@ -1,50 +1,45 @@
 # HX-ESCALATION — V1 — BASKET BESIDE THE DESK
 
-> **البنية:** أربعة شوتات، كل شوت **توليدة مستقلة**، لقطة واحدة متصلة بلا قطع داخلي
-> **المدد:** A = 5.0s · B = 8.0s · C = 5.0s · D = 5.0s — **الإجمالي 23.0 ثانية**
+> **البنية:** برومبت واحد — أربعة شوتات متصلة داخليًا وثلاثة انتقالات محددة، **بالنسب المئوية كما في الأصل**
 > **المعيار:** CINEDANCE Bible v2.0 — Dimensional Hand-Painted Cinematic
 > **التاقات:** `@loc_location-room-1` `@char_hixxa` `@hixa-face` `@desk` `@EAR`
-> **موضع السلة:** على الأرض **بجوار المكتب مباشرة** ضمن مدى ذراعها — رمية قصيرة منخفضة القوس
-> **القوس الشعوري:** إيقاع ثابت → تسارع → فشل متكرر → تحذير لا يُجاب
+> **موضع السلة:** **على الأرض دائمًا** — world-right، **أمام المكتب وبجانبها مباشرة** ضمن مدى ذراعها — قذفة قصيرة هابطة
+> **الورق:** مكرمش، بفيزياء كرمشة وارتطام معدني مكتوبة
+
+**البنية الأصلية محفوظة كما هي:** لا ثواني، لا تقسيم إلى توليدات منفصلة، نفس نوافذ `0–15% / 15–78% / 78–100%`، نفس ترتيب الشوتات والانتقالات الثلاثة. المضاف هو طبقات المعايير حولها فقط.
 
 ---
 
-## ما اتصلح
+## ما أضافته المعايير
 
-| المشكلة | التصحيح |
-|---|---|
-| **بلا مدة إطلاقًا** — نسب مئوية فقط، والنسبة بلا زمن لا تُنتج إيقاعًا | كل شوت له مدة بالثواني، ونوافذ النسب مترجَمة لثواني دقيقة |
-| **`several rapid cycles`** — عدد غير محدد، وهو أخطر شيء في شوت B | **ثلاث دورات بالضبط**، كل واحدة موصوفة |
-| **مستوى امتلاء السلة بلا رقم** — «partially filled» تُترك للنموذج | **أربع كرات عند الفريم صفر → ست في نهاية B**، وواحدة في الهواء |
-| **بلا Reference Assignments** — ولا عنصر واحد يحكم الهوية أو المكان | خمسة عناصر بسلطة وحدود |
-| **تعارض مع قاعدة المونتاج** — «use only the three specified transitions» بينما القاعدة hard cuts فقط | الـwipe والـpush **أحداث داخل الكاميرا** لا انتقالات مولَّدة — وقُفلت بهذه الصيغة صراحةً |
-| بلا Mood / Lighting / Audio | الثلاثة مضافة |
-| «ورق مكرمش» بلا فيزياء | فقرة كاملة لفيزياء الكرمشة والارتطام بالمعدن |
-
----
-
-## طريقة الاستخدام
-
-انسخ **`SEQUENCE CONTRACT`** أولًا، ثم ألصق تحته **بلوك الشوت** المطلوب. العقد نفسه يتكرر في كل توليدة بلا تغيير.
+| البند | الحالة في الأصل | بعد الضبط |
+|---|---|---|
+| Reference Assignments | غير موجودة | خمسة عناصر بسلطة وحدود صريحة |
+| `several rapid cycles` | عدد مفتوح | **ثلاث دورات بالضبط** |
+| مستوى امتلاء السلة | «partially filled» | **أربع كرات عند الفريم صفر → ست، وواحدة في الهواء** |
+| الورق المكرمش | مذكور بلا فيزياء | فقرة كاملة: الانبعاج، الأوجه الزاويّة، الدرزة، الرنة المعدنية |
+| Mood / Lighting / Audio | غير موجودة | الثلاثة مضافة بمعيار v2.0 |
+| الانتقالات الثلاثة | «use only the three specified transitions» يصطدم ظاهريًا مع قاعدة الـhard cuts | وُصفت كأحداث **داخل الكاميرا** لا انتقالات مولَّدة — والمنع صار على التصنيع لا على الحدث |
 
 ---
-
-## SEQUENCE CONTRACT
 
 ```text
 ################################################################
-HIXXA — ESCALATION SEQUENCE — SHARED CONTRACT
+HIXXA — ESCALATION SEQUENCE — BASKET BESIDE THE DESK
 ################################################################
 
 SEEDANCE 2.5 — MULTI-REFERENCE R2V — 16:9 — 24 FPS
+
+CONTROLLED FOUR-SHOT ESCALATION SEQUENCE
 REAL-TIME MOTION — NO SLOW MOTION — NO SPEED RAMPS
-EACH SHOT IS ONE CONTINUOUS TAKE WITH ONE FIXED LENS AND NO INTERNAL CUT
+EACH SHOT IS INTERNALLY CONTINUOUS WITH ONE FIXED LENS AND NO INTERNAL CUT
+USE ONLY THE THREE SPECIFIED TRANSITIONS
 
 REFERENCE ASSIGNMENTS
 
 @loc_location-room-1 controls the exact attic architecture, ceiling angles, wall treatment,
-exterior window geometry, corner geometry, floor material, the metal waste basket and all
-fixed background objects. It does not control the camera angle or the shot size.
+exterior window geometry, floor material, the metal waste basket and all fixed background
+objects. It does not control the camera angle or the shot size.
 
 @char_hixxa controls HIXXA's exact single full-body identity, skin tone, body proportions,
 curls and layered wardrobe. Identity and wardrobe stay stable from every angle.
@@ -65,28 +60,26 @@ WORLD AND STAGING
 
 The desk stays world-right beneath the attic window. The desk lamp stays in its fixed
 position and is the dominant warm interior source; it never moves, pulses or changes output.
-The metal waste basket stands on the floor immediately beside the desk, world-right, within
-her seated arm's reach, so every throw is a short low-arc toss of roughly half a metre.
+The metal waste basket always stands on the floor — never on the desk or any other surface.
+It sits world-right, in front of the desk line and immediately beside her seated position,
+within easy reach of her right hand. Every throw is therefore a short downward toss of roughly
+half a metre with a shallow arc, released low and dropping almost straight into the basket.
 The phone lies flat on the desk with its music waveform running. The coffee cup stays where
-it is. Never mirror, rotate or rebuild this geography, and never break the established
-action axis between her drawing hand, the desk edge and the basket.
+it is. Never mirror, rotate or rebuild this geography, and never break the established action
+axis between her drawing hand, the desk edge and the basket.
 
-STATE LADDER — PAPER
+STATE LADDER AND COUNTS
 
 Every sheet follows one continuous physical path with no step skipped:
 [in the existing stack] → [pulled out by hand] → [drawn on] → [visibly rejected]
 → [crushed into a ball inside her fist] → [thrown] → [landed in the basket].
-
 No sheet, ball, mark or prop ever materialises. Nothing enters frame without a hand.
 
-COUNTS
-
-Exactly one HIXXA. Exactly one metal basket. Exactly one desk lamp, one phone, one coffee cup.
-The basket holds exactly four crumpled balls at frame zero from earlier work.
-Exactly three fresh sheets are consumed across the whole sequence.
-The basket ends holding exactly six balls with a seventh released and still airborne;
-it is partially filled at all times and never overflows, and clear empty volume stays visible
-above the balls.
+Exactly one HIXXA. Exactly one metal basket, one desk lamp, one phone, one coffee cup.
+The basket holds exactly four crumpled balls at the start from earlier work, and ends holding
+exactly six with a seventh released and still airborne. It is partially filled at all times,
+never overflows, and clear empty volume stays visible above the balls.
+Exactly three fresh sheets are consumed across the sequence.
 Failed loose sheets accumulate only on the available desk surface; the floor stays clear.
 
 CRUMPLING PHYSICS
@@ -99,274 +92,246 @@ fist opens. In flight it holds its irregular silhouette and tumbles slowly aroun
 off-centre axis. On landing it strikes thin metal with one bright ring, rocks once against
 the balls already in the basket and settles; it never bounces out and never deforms further.
 
-MOOD AND RENDER CONTRACT
-
-Preserve the established HIXXA dimensional hand-painted cinematic animation language.
-
-The image is fully constructed in three-dimensional space: volumetric characters,
-modeled facial planes, rounded body forms, dimensional architecture, real perspective,
-physical occlusion, natural parallax and clear foreground-to-background separation.
-
-Render every character and object with convincing sculptural volume comparable to
-high-end 3D animation, while treating every visible surface through controlled
-hand-painted illustration: clean illustrated shapes, softly brushed shading,
-painterly color transitions, subtly drawn edges, tactile material variation and
-restrained authored texture.
-
-Skin, curls, plaid cotton, canvas apron, desk wood, paper fibre, graphite, thin painted
-metal, glass and rubber cable remain materially distinct and physically dimensional.
-Each crumpled ball is a genuinely volumetric object with faceted relief and its own contact
-shadow, never a flat cut-out disc.
-
-The result feels like a richly hand-painted cinematic frame occupying real
-three-dimensional space: never flat 2D, never a paper cutout, never photoreal live
-action and never glossy plastic or toy-like CGI.
-
-Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe construction
-and material response across every lens and angle in the sequence.
-
-LIGHTING AND VISUAL CONTINUITY
-
-The desk lamp is the dominant warm interior source and stays physically fixed.
-A cooler cyan exterior sits beyond the attic window as the secondary source.
-The world direction, color temperature, exposure, shadow placement and time of day of both
-remain identical in all four shots. Any apparent change in rhythm comes from her hand
-crossing the lamp's stable pool of light, never from the fixture itself.
-
-Warm directional light wraps her curls, cheek planes and knuckles; the cyan window edge
-separates her silhouette from the room behind her. Use soft directional shadow, stable
-contact shadows and restrained atmospheric perspective to preserve sculptural volume and
-real dimensional depth. Colors remain rich and controlled without neon glow or excessive
-saturation.
-
-No flat 2D or paper-cutout motion. No photoreal live action. No glossy plastic or toy-like
-CGI. No waxy skin, generic game-render materials, watercolor bleed, unmotivated neon
-lighting, heavy grain or style drift between shots.
-
-AUDIO
-
-No dialogue, narration, lyrics, captions or subtitles. No added music track.
-A faint muffled bleed of her own music escapes the earbuds throughout; the room stays
-dominant. Room tone, graphite friction, dry paper crackle on every crush, one bright metal
-ring per landing. Every sound begins only after its visible physical cause.
-
-SEQUENCE-WIDE LOCKS
-
-Preserve HIXXA's exact identity, facial structure, hairstyle, wardrobe layers, earbuds and
-cable route, and correct anatomical left and right in every shot.
-She never looks into the lens and never speaks.
-The desk lamp never pulses. The window glass never distorts. The room architecture never
-changes. No duplicated silhouette, no duplicated hands, no extra fingers or limbs.
-No text, logo, caption, brand name, notification message, watermark or subtitle.
-No time-lapse morphing, no crawling motion, no replay after a transition, no pose reset.
-Every join between shots is an in-camera motivated event or a direct hard cut.
-No generated fade, dissolve, wipe effect, morph, flash, blur transition or interstitial frame.
-```
-
----
-
-## SHOT A — RHYTHM THROUGH GLASS — 135mm — 5.0s
-
-```text
 ################################################################
-SHOT A — RHYTHM THROUGH GLASS
+SHOT A — RHYTHM THROUGH GLASS — 135mm
 ################################################################
 
-135mm — 5.0 SECONDS — ONE CONTINUOUS COMPRESSED EXTERIOR WINDOW SHOT
-VIEWED THROUGH REAL GLASS — NO CUT, NO LENS CHANGE
+ONE CONTINUOUS COMPRESSED EXTERIOR WINDOW SHOT viewed through real glass. Frame HIXXA at the
+desk inside the attic, compressed behind authentic reflections. The desk lamp, drawing hand
+and her silhouette remain spatially consistent with the room.
 
-Frame zero already shows HIXXA at the desk inside the attic, compressed by the long lens and
-seen through authentic window glass, with real exterior reflections layered over her.
-The desk lamp, her drawing hand and her silhouette stay spatially consistent with the room
-established behind the glass.
+0–15%: HIXXA draws at an established steady tempo beneath the fixed warm and cyan lamp light.
+Her shoulders rise and fall once with a slow breath. Real exterior reflections make a
+restrained micro-shift across the glass; no new object appears and the reflection never
+resolves into a second figure.
 
-0.00–0.75: she draws at an established steady tempo beneath the fixed lamp. Her shoulders
-rise and fall once with a slow breath. The exterior reflections make one restrained
-micro-shift across the glass. No new object appears and the reflection never becomes a
-second figure.
-
-0.75–3.90: her drawing hand accelerates through repeated weighted strokes, passing in and out
-of the lamp's stable pool of light. The lamp itself remains physically fixed and its output
-never changes; the entire apparent rhythm comes from her hand repeatedly crossing that
+15–78%: her drawing hand accelerates through repeated weighted strokes, passing in and out of
+the lamp's stable pool of light. The lamp itself remains physically fixed and its output never
+changes; the apparent rhythm comes entirely from her hand repeatedly crossing that
 illumination. Her forearm carries the acceleration while her shoulder stays low and
-controlled. Execute one restrained compressed push toward the window, preserving the window
-axis and the real depth of the glass.
+controlled. Execute the compressed exterior move with restrained acceleration while preserving
+the window axis and real-glass depth.
 
-3.90–5.00: her hand completes one full stroke exactly as it enters the brightest part of the
-lamp's pool, landing a clear visual synchronisation between the light and the drawing rhythm.
-The camera settles completely and holds for the remainder.
+78–100%: her hand completes one stroke exactly as it enters the brightest part of the lamp's
+light, producing a clear visual synchronization between lamp illumination and drawing rhythm.
+Settle completely for the final 15%.
 
-The compressed long-lens perspective keeps three readable depth layers: the reflected
-exterior on the glass surface, the glass itself, and HIXXA's dimensional body in the room
-beyond it. The reflection never flattens her into the glass plane.
+The compressed long-lens perspective keeps three readable depth layers: the reflected exterior
+on the glass surface, the glass itself, and HIXXA's dimensional body in the room beyond it.
+The reflection never flattens her into the glass plane.
 
-End on a clean usable hold with motion headroom, her hand at the brightest point of the pool
-and the tempo settled.
+No cut within the shot, whip-pan, lens change, pulsing lamp fixture, distorted glass,
+duplicated silhouette or altered room architecture.
 
-TRANSITION OUT — IN-CAMERA, NOT GENERATED
-Allow one authentic exterior reflection to travel across the glass and cover the frame as a
-motivated natural wipe into the attic interior. This is a real reflection moving on real
-glass, photographed in camera. Do not synthesise a wipe, dissolve, morph, flash or any
-overlay transition effect.
+ENDPOINT AND EDIT
 
-SHOT-SPECIFIC EXCLUSIONS
-No cut within the shot, no whip-pan, no lens change, no pulsing or moving lamp fixture,
-no distorted or warped glass, no duplicated silhouette, no altered room architecture,
-no new object entering the reflection.
-```
+End on a clean usable hold with motion headroom. Allow one authentic glass reflection to cross
+the frame as a motivated wipe back inside the attic. This is a real reflection travelling on
+real glass, captured in camera; do not synthesise a wipe, dissolve, morph, flash or overlay.
 
----
+GLASS-REFLECTION WIPE TO THE INTERIOR.
 
-## SHOT B — ESCALATING FAILURE LOOP — 24mm — 8.0s
-
-```text
 ################################################################
-SHOT B — ESCALATING FAILURE LOOP
+SHOT B — ESCALATING FAILURE LOOP — 24mm
 ################################################################
 
-24mm — 8.0 SECONDS — ONE CONTINUOUS INTERIOR WIDE SHOT — NO CUT, NO LENS CHANGE
+ONE CONTINUOUS INTERIOR WIDE SHOT. Preserve the full room staging, desk-to-basket axis and
+basket position. The existing stack of unused sheets is visible at frame zero, and the basket
+standing on the floor world-right in front of the desk already holds exactly four crumpled
+balls.
 
-Frame zero already shows the full room staging: HIXXA seated at the desk world-right, the
-existing stack of unused sheets within reach, the metal basket on the floor immediately
-beside the desk holding exactly four crumpled balls from earlier work, the lamp fixed, the
-phone and coffee cup undisturbed, and the complete desk-to-basket axis visible in frame.
+0–15%: HIXXA finishes the current stroke and reaches toward the existing paper stack with a
+tense micro-settle; no new object appears.
 
-0.00–1.20: she finishes the stroke she is already making, lifts the pencil and reaches toward
-the existing stack with a tense micro-settle in her shoulders. No new object appears.
+15–78%: her workflow escalates through exactly three rapid but physically continuous cycles.
 
-1.20–6.25: her workflow escalates through exactly three physically continuous cycles.
+  CYCLE ONE — she pulls one sheet from the existing stack, draws across it with fast weighted
+  strokes, rejects it, crushes it in her fist and tosses it into the basket. It rings the
+  metal once and settles. The basket now holds five.
 
-  CYCLE ONE — she pulls one sheet from the stack, draws across it with fast weighted strokes,
-  stops, rejects it, crushes it in her fist and tosses it into the basket. It rings the metal
-  once and settles. The basket now holds five.
-
-  CYCLE TWO — she pulls the next sheet, draws harder and faster, rejects it sooner, crushes
-  it and throws it in. Second ring, second settle. The basket now holds six, still with clear
+  CYCLE TWO — she pulls the next sheet, draws harder and faster, rejects it sooner, crushes it
+  and throws it in. Second ring, second settle. The basket now holds six, still with clear
   empty volume above the balls.
 
   CYCLE THREE — she pulls the third sheet, draws with the most aggressive speed of the three,
-  and stops mid-stroke. She begins to crush it.
+  stops mid-stroke and begins to crush it.
 
-Between cycles, two clearly failed loose sheets accumulate on the available desk surface only.
-Her earbuds stay seated, the cable stays connected on its route, and neither the phone nor
-the coffee moves at any point. Use only a restrained four percent push or a short lateral
-drift, preserving the full staging and the action axis for the whole shot.
+Between cycles, two clearly failed sheets accumulate only across the available desk area.
+Her earbuds remain seated, the cable stays connected, and neither the phone nor the coffee
+moves. Use only a restrained 4% push or short lateral drift while preserving the full staging
+and action axis.
 
-6.25–8.00: she completes the crush on the third sheet and releases the fresh ball from her
-hand. It leaves the desk edge on a clean low trajectory toward the basket while her arm
-follows through and her shoulder drops back. The camera settles on the release. The ball is
-still travelling at the final frame and is never frozen unnaturally in the air.
+78–100%: HIXXA crushes the latest failed sheet and releases the fresh paper ball from her
+hand. It leaves the desk edge on a clean short downward trajectory toward the basket at her
+right on the floor, while her arm follows through and her shoulder drops back. The camera settles on the release without
+freezing the ball unnaturally; the ball is still travelling at the last frame.
 
-End with the ball airborne between the desk edge and the basket, exactly six balls resting in
-the basket, two failed sheets on the desk and her arm at the end of its follow-through.
+No cut within the shot, lens change, time-lapse morphing, magically appearing paper,
+overflowing basket, floor clutter, duplicated hands, disturbed desk objects or fourth cycle.
 
 HARD CUT ON THE PAPER BALL LEAVING THE DESK EDGE.
 
-SHOT-SPECIFIC EXCLUSIONS
-No cut within the shot, no lens change, no time-lapse morphing, no magically appearing paper,
-no sheet pulled from outside the visible stack, no overflowing basket, no ball bouncing out,
-no floor clutter, no duplicated hands, no disturbed desk objects, no fourth cycle.
-```
-
----
-
-## SHOT C — ATTIC-WINDOW ACCELERATION — 50mm — 5.0s
-
-```text
 ################################################################
-SHOT C — ATTIC-WINDOW ACCELERATION
+SHOT C — ATTIC-WINDOW ACCELERATION — 50mm
 ################################################################
 
-50mm — 5.0 SECONDS — ONE CONTINUOUS EXTERIOR WIDE SHOT — NO CUT, NO LENS CHANGE
+ONE CONTINUOUS EXTERIOR WIDE SHOT. Show the established building exterior with exactly one
+attic window glowing warm and cyan. HIXXA is a small but recognizable silhouette drawing at
+the correctly positioned desk. Preserve the attic's window placement, ceiling angles,
+furniture layout and internal architecture.
 
-Frame zero already shows the established building exterior with exactly one attic window
-glowing warm and cyan. HIXXA is a small but clearly recognisable silhouette drawing at the
-correctly positioned desk inside. The attic's window placement, ceiling angles, furniture
-layout and internal architecture stay exactly as established.
+0–15%: the exterior remains still while her tiny silhouette finishes a drawing motion behind
+the glass; no new object appears and no other window lights.
 
-0.00–0.75: the exterior is still. Her tiny silhouette finishes a drawing motion behind the
-glass. No new object appears and no other window lights.
+15–78%: her silhouette draws at escalating speed, then her throwing arm loads and accelerates
+across the illuminated interior. Show readable shoulder rotation and arm force without
+enlarging or distorting her body. Use only a restrained 4% push or short lateral drift while
+preserving the wide exterior staging and established axis.
 
-0.75–3.90: her silhouette draws at escalating speed, then her throwing arm loads and
-accelerates across the illuminated interior. Shoulder rotation and arm force read clearly at
-this scale without her body enlarging, stretching or distorting. Use only a restrained four
-percent push or a short lateral drift, preserving the wide exterior staging and the
-established axis.
-
-3.90–5.00: her arm reaches its fastest acceleration behind the glass. The warm and cyan attic
-window remains the only illuminated opening on the whole building. The exterior camera
-settles completely.
+78–100%: her arm reaches its fastest acceleration behind the glass. The warm and cyan window
+remains the only illuminated attic opening, and the exterior camera settles completely.
 
 The wide exterior perspective keeps the building's real volume and roof geometry, with the lit
 window reading as a deep opening into a dimensional room rather than a bright rectangle
 painted on a flat facade.
 
-End on a clean usable hold with motion headroom around the attic window.
+No cut within the shot, lens change, additional glowing windows, changing building geometry,
+oversized silhouette or object passing through the glass.
 
-TRANSITION OUT — IN-CAMERA, NOT GENERATED
-Begin one slow optically motivated telephoto push toward that same window, using the phone's
-screen glow inside the room as the target. This is a continuous camera move, not an effect.
-Do not synthesise a zoom blur, morph, flash, dissolve or overlay transition.
+ENDPOINT AND EDIT
 
-SHOT-SPECIFIC EXCLUSIONS
-No cut within the shot, no lens change, no additional glowing windows, no changing building
-geometry, no oversized or distorted silhouette, no object passing through the glass,
-no reflection becoming a second figure.
-```
+End on a clean usable hold with motion headroom around the attic window. Begin a slow,
+optically motivated push toward that same window, using the phone's screen glow inside as the
+target for the next cut. This is a continuous camera move, not an effect; do not synthesise a
+zoom blur, morph, flash or dissolve.
 
----
+TELEPHOTO PUSH THROUGH THE WINDOW TO THE PHONE GLOW.
 
-## SHOT D — UNANSWERED LOW-BATTERY WARNING — 90mm macro — 5.0s
-
-```text
 ################################################################
-SHOT D — UNANSWERED LOW-BATTERY WARNING
+SHOT D — UNANSWERED LOW-BATTERY WARNING — 90mm macro
 ################################################################
 
-90mm MACRO — 5.0 SECONDS — ONE CONTINUOUS CHARACTER CLOSE SHOT — NO CUT, NO LENS CHANGE
+ONE CONTINUOUS CHARACTER CLOSE SHOT. Frame the phone screen in sharp foreground detail while
+keeping HIXXA's unchanged face, eye line and rapid drawing motion spatially readable behind
+it. She never looks toward or touches the phone.
 
-Frame zero already shows the phone screen in sharp foreground detail with HIXXA's unchanged
-face, eye line and rapid drawing motion spatially readable behind it. She never looks toward
-the phone and never touches it at any point.
+0–15%: the existing music waveform continues moving steadily on the screen while HIXXA draws
+in the background; no new interface element appears.
 
-0.00–0.75: the existing music waveform continues moving steadily on the screen while she
-draws in the background. No new interface element appears.
+15–78%: one simple low-battery icon already present on the interface brightens and pulses
+exactly once, then begins to fade. The waveform continues uninterrupted, confirming that the
+music is still playing. Use a restrained micro-push and one motivated rack focus from HIXXA's
+concentrated face to the phone warning.
 
-0.75–3.90: one simple low-battery icon already present on the interface brightens and pulses
-exactly once, then begins to fade. The waveform continues uninterrupted throughout,
-confirming the music is still playing. Use a restrained micro-push and one motivated rack
-focus travelling from her concentrated face to the phone warning.
-
-3.90–5.00: the low-battery warning dims, unanswered. The waveform continues. HIXXA stays
-absorbed in drawing with her eye line fixed on the paper. The camera settles completely.
+78–100%: the low-battery warning dims unanswered while the waveform continues. HIXXA remains
+absorbed in drawing, her eye line fixed on the paper. Settle completely for the final 15%.
 
 The macro perspective preserves real surface relief and tactile separation between the glass
 screen, the phone body edge and the desk wood beneath it, and the rack focus reveals genuine
 depth between her face and the foreground device rather than sliding between flat planes.
 
-End on the dim unanswered battery warning with the waveform still active and HIXXA still
-drawing behind it. Hold cleanly for the next escalation beat.
+No cut within the shot, lens change, brand name, text, logo, notification message, second
+pulse, hand reaching for the phone, music stopping or facial-identity drift.
 
-SHOT-SPECIFIC EXCLUSIONS
-No cut within the shot, no lens change, no brand name, no text, no logo, no notification
-message, no second pulse, no hand reaching for the phone, no music stopping, no eye contact
-with the phone or the lens, no facial-identity drift.
+ENDPOINT AND EDIT
+
+End on the dim unanswered battery warning with the music waveform still active and HIXXA
+continuing to draw behind it. Hold cleanly for the next escalation beat.
+
+################################################################
+PHYSICS AND PERFORMANCE
+################################################################
+
+All movement is grounded and human: real hand weight, believable wrist and shoulder mechanics,
+trunk contribution on each throw, joint compression and natural recovery. The energy rises
+because she is escalating, never because the footage is accelerated.
+
+Paper flexes, tears nothing, and stays where a hand leaves it. The desk lamp, phone and coffee
+cup are inert and never shift from vibration or proximity. Her curls, sleeve cuff, apron and
+earbud cable each lag one beat behind her body and settle; nothing floats independently.
+
+No object moves before direct contact or a visible physical force.
+
+################################################################
+MOOD AND RENDER CONTRACT
+################################################################
+
+Preserve the established HIXXA dimensional hand-painted cinematic animation language.
+
+The image is fully constructed in three-dimensional space: volumetric characters, modeled
+facial planes, rounded body forms, dimensional architecture, real perspective, physical
+occlusion, natural parallax and clear foreground-to-background separation.
+
+Render every character and object with convincing sculptural volume comparable to high-end 3D
+animation, while treating every visible surface through controlled hand-painted illustration:
+clean illustrated shapes, softly brushed shading, painterly color transitions, subtly drawn
+edges, tactile material variation and restrained authored texture.
+
+Skin, curls, plaid cotton, canvas apron, desk wood, paper fibre, graphite, thin painted metal,
+glass and rubber cable remain materially distinct and physically dimensional. Each crumpled
+ball is a genuinely volumetric object with faceted relief and its own contact shadow, never a
+flat cut-out disc.
+
+The result feels like a richly hand-painted cinematic frame occupying real three-dimensional
+space: never flat 2D, never a paper cutout, never photoreal live action and never glossy
+plastic or toy-like CGI.
+
+Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe construction
+and material response across every lens and angle in the sequence.
+
+################################################################
+LIGHTING AND VISUAL CONTINUITY
+################################################################
+
+The desk lamp is the dominant warm interior source and stays physically fixed.
+A cooler cyan exterior sits beyond the attic window as the secondary source.
+The world direction, color temperature, exposure, shadow placement and time of day of both
+remain identical in all four shots. Any apparent change in rhythm comes from her hand crossing
+the lamp's stable pool of light, never from the fixture itself.
+
+Warm directional light wraps her curls, cheek planes and knuckles; the cyan window edge
+separates her silhouette from the room behind her. Use soft directional shadow, stable contact
+shadows and restrained atmospheric perspective to preserve sculptural volume and real
+dimensional depth. Colors remain rich and controlled without neon glow or excessive saturation.
+
+No flat 2D or paper-cutout motion. No photoreal live action. No glossy plastic or toy-like
+CGI. No waxy skin, generic game-render materials, watercolor bleed, unmotivated neon lighting,
+heavy grain or style drift between shots.
+
+################################################################
+AUDIO
+################################################################
+
+No dialogue, narration, lyrics, captions or subtitles. No added music track.
+A faint muffled bleed of her own music escapes the earbuds throughout; the room stays dominant.
+Room tone and window air under everything. Graphite friction that hardens as the strokes
+escalate. One dry paper crackle per crush. One bright metal ring per landing.
+Silence around the final release, with the ball still in the air.
+
+Every sound begins only after its visible physical cause.
+
+################################################################
+PRESERVATION LOCKS
+################################################################
+
+Only one HIXXA appears. Preserve her exact identity, facial structure, hairstyle, wardrobe
+layers, earbuds and cable route, correct anatomical left and right, and the established desk,
+lamp, phone, coffee and basket placements, attic architecture, exterior window geometry,
+lighting and action axis.
+
+She never looks into the lens and never speaks.
+The basket always rests on the floor and is never lifted, moved, or placed on the desk.
+The desk lamp never pulses. The window glass never distorts. The room architecture never
+changes. No duplicated silhouette, no duplicated hands, no extra fingers or limbs.
+No text, logo, caption, brand name, notification message, watermark or subtitle.
+No time-lapse morphing, no crawling motion, no replay after a transition, no pose reset.
+
+Only the three specified transitions are used, and each is an in-camera motivated event:
+the glass reflection, the hard cut and the telephoto push.
+No generated fade, dissolve, wipe effect, morph, flash, blur transition, whip transition or
+interstitial frame.
+
+Across the sequence, prioritize HIXXA's identity, accurate room and window continuity, visible
+paper causality, exact basket fill level, undisturbed phone and coffee, readable escalation
+and clean real-time motion over spectacle.
 ```
-
----
-
-## أولويات التوليد
-
-> Across the sequence, prioritise HIXXA's identity, accurate room and window continuity,
-> visible paper causality, the exact basket fill level, undisturbed phone and coffee,
-> readable escalation and clean real-time motion over spectacle.
-
-## فحص الاستمرارية
-
-| الوصلة | آخر فريم | أول فريم بعدها |
-|---|---|---|
-| A→B | انعكاس حقيقي يعبر الزجاج ويغطي الكادر | داخل الغرفة، هي تنهي نفس الضربة |
-| B→C | الكرة في الهواء بين حافة المكتب والسلة | صورة خارجية، الذراع في نهاية اندفاعها |
-| C→D | دفعة تليفوتو نحو الشباك مستهدفة وهج التليفون | الشاشة في المقدمة والوجه خلفها |
-
-**السلة:** 4 كرات → 5 → 6 + واحدة في الهواء. الأرض تفضل نضيفة، والأوراق الفاشلة على المكتب بس.

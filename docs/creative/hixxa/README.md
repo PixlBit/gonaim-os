@@ -27,8 +27,8 @@
 |---|---|---|---|---|
 | B01 | [PENCIL STRIKE](beats/B01-PENCIL-STRIKE.md) | 8s | `@desk` `@loc_location-room-1` | انتزاع ثلاثة أقلام، فرزها، وأول ضربة نحو الورقة |
 | B02 | [HX-DRAW-FOX-01 — THE FOX TAKES SHAPE](beats/B02-FOX-TAKES-SHAPE.md) | 5s | `@fox` `@EAR` `@desk` | لقطة واحدة متصلة: بناء اسكتش الثعلب بجناحين حتى رفع القلم |
-| B03·V1 | [ESCALATION — BASKET BESIDE](beats/B03-ESCALATION-V1-BASKET-BESIDE.md) | 23s / 4 شوتات | `@loc_location-room-1` `@desk` `@EAR` | حلقة فشل متصاعدة، السلة بجوار المكتب، رمية قصيرة |
-| B03·V2 | [ESCALATION — BASKET IN THE CORNER](beats/B03-ESCALATION-V2-BASKET-IN-CORNER.md) | 24s / 4 شوتات | `@loc_location-room-1` `@desk` `@EAR` | نفس الحلقة ببداية أهدأ، السلة في الزاوية الخلفية ورمية فوق الكتف |
+| B03·V1 | [ESCALATION — BASKET AT HER RIGHT](beats/B03-ESCALATION-V1-BASKET-BESIDE.md) | برومبت واحد / 4 شوتات | `@loc_location-room-1` `@desk` `@EAR` | حلقة فشل متصاعدة، السلة على الأرض يمينها أمام المكتب، قذفة هابطة قصيرة |
+| B03·V2 | [ESCALATION — BASKET IN THE CORNER](beats/B03-ESCALATION-V2-BASKET-IN-CORNER.md) | برومبت واحد / 4 شوتات | `@loc_location-room-1` `@desk` `@EAR` | نفس الحلقة ببداية أهدأ، السلة في زاوية الغرفة خلفها يسارًا ورمية فوق الكتف |
 
 الأفلام قابلة للتوليد منفردة، ومرتبة زمنيًا كقوس واحد إذا وُلِّدت بالترتيب:
 
