@@ -32,6 +32,29 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person.
 
+@desk controls the exact desk surface, wood grain and permanent tools.
+It does not introduce any additional device or interface.
+
+@taplet controls the exact physical slate: wooden frame, thickness, rounded corners
+and dark matte screen. It does not control what is displayed on that screen.
+
+@tapletui controls the exact on-screen interface: the CHOOSE YOUR WEAPON header,
+the card row and the forward arrow. It does not control the slate body or the camera angle.
+
+@tapletui0 controls the alternate browsing state of that same interface.
+Only one interface state is visible in any single frame.
+
+@prop_tapletpen controls the exact stylus identity, length, metal ring and tip colour.
+Exactly one stylus exists and it never becomes a charcoal pencil.
+
+@stage1weapon controls the exact compact blaster: silhouette, teal and pink stripe placement,
+materials and scale. @stage2weapon controls the exact mid launcher with its four round shells.
+@stage3weapon controls the exact long heavy cannon.
+Stages two and three appear only as artwork inside the screen and never become physical objects.
+
+@fox controls the exact fox identity, proportions, tail mass and face markings.
+It never appears as a reference sheet or drawn page inside the world.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -77,29 +100,6 @@ DESK LAMP — about 40 centimetres tall on the desk, its shade roughly the size 
 hand.
 
 CREATURE SCALE — the fox stands about 35 centimetres at the shoulder, small enough to sit on the desk beside the slate with room to spare.
-
-@desk controls the exact desk surface, wood grain and permanent tools.
-It does not introduce any additional device or interface.
-
-@taplet controls the exact physical slate: wooden frame, thickness, rounded corners
-and dark matte screen. It does not control what is displayed on that screen.
-
-@tapletui controls the exact on-screen interface: the CHOOSE YOUR WEAPON header,
-the card row and the forward arrow. It does not control the slate body or the camera angle.
-
-@tapletui0 controls the alternate browsing state of that same interface.
-Only one interface state is visible in any single frame.
-
-@prop_tapletpen controls the exact stylus identity, length, metal ring and tip colour.
-Exactly one stylus exists and it never becomes a charcoal pencil.
-
-@stage1weapon controls the exact compact blaster: silhouette, teal and pink stripe placement,
-materials and scale. @stage2weapon controls the exact mid launcher with its four round shells.
-@stage3weapon controls the exact long heavy cannon.
-Stages two and three appear only as artwork inside the screen and never become physical objects.
-
-@fox controls the exact fox identity, proportions, tail mass and face markings.
-It never appears as a reference sheet or drawn page inside the world.
 
 CONTINUITY MAP
 

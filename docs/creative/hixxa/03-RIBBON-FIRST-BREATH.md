@@ -32,6 +32,20 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person.
 
+@desk controls the exact desk surface, wood grain and permanent tools.
+It does not introduce any additional device or interface.
+
+@cat controls the exact cat identity, proportions, markings and collar.
+It never appears as a reference sheet or drawn page inside the world.
+
+@weaponribbon controls the exact slim black shaft and its one continuous white ribbon:
+length, thickness, ribbon width and the metal collar near the tip.
+Exactly one ribbon exists and it never splits, doubles or becomes a blade.
+
+@ribbon controls the exact transformed form: white enamelled plates, folded wing shapes,
+proportions and the way the black shaft sits in its grip.
+It appears only after the transformation shot and never stands beside the cat.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -70,20 +84,6 @@ DESK LAMP — about 40 centimetres tall on the desk, its shade roughly the size 
 hand.
 
 CREATURE SCALE — the cat stands about 30 centimetres at the shoulder. Ribbon stands about 110 centimetres, clearly shorter than HIXXA and never taller than her shoulder.
-
-@desk controls the exact desk surface, wood grain and permanent tools.
-It does not introduce any additional device or interface.
-
-@cat controls the exact cat identity, proportions, markings and collar.
-It never appears as a reference sheet or drawn page inside the world.
-
-@weaponribbon controls the exact slim black shaft and its one continuous white ribbon:
-length, thickness, ribbon width and the metal collar near the tip.
-Exactly one ribbon exists and it never splits, doubles or becomes a blade.
-
-@ribbon controls the exact transformed form: white enamelled plates, folded wing shapes,
-proportions and the way the black shaft sits in its grip.
-It appears only after the transformation shot and never stands beside the cat.
 
 CONTINUITY MAP
 

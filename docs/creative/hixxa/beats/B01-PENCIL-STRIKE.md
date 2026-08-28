@@ -52,6 +52,9 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 @hixa-face reinforces only the face of that same single HIXXA: large brown eyes, freckles
 and facial structure. It never creates a second person.
 
+@desk controls the exact desk surface, wood grain, the metal pencil cup and its permanent
+tools. It does not introduce any additional device, interface or new drawing surface.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -94,9 +97,6 @@ roughly the length of her index finger. It never becomes a full-length pencil, b
 
 SKETCH SHEET — one landscape sheet about 30 centimetres wide and 21 tall, a little wider than
 her two hands set side by side. It is never poster-sized and never notebook-small.
-
-@desk controls the exact desk surface, wood grain, the metal pencil cup and its permanent
-tools. It does not introduce any additional device, interface or new drawing surface.
 
 CONTINUITY MAP
 

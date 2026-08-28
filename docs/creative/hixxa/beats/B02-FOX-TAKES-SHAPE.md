@@ -75,6 +75,16 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 Use @hixa-face to reinforce only the face of that same single HIXXA.
 It never creates a second person.
 
+Use @[EAR](449e8116-6279-4951-adf6-56a5f43a670b) only for the exact black wired earbuds.
+HIXXA wears exactly one pair throughout, both buds in place, one physically continuous cable.
+They never vanish, multiply or change design.
+
+Use @[fox](98900fd0-3b3a-47b9-a9e9-401406dde49f) only for the fox's anatomy, proportions,
+silhouette, facial design, tail and exact two-wing construction.
+It controls the design of one drawing on paper only.
+Do not import its turnaround grid, extra poses, labels, background or additional foxes.
+Do not show the reference sheet itself.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -117,16 +127,6 @@ and never protrude beyond her ear silhouette. The cable is a thin 2-millimetre c
 
 SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
 roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
-
-Use @[EAR](449e8116-6279-4951-adf6-56a5f43a670b) only for the exact black wired earbuds.
-HIXXA wears exactly one pair throughout, both buds in place, one physically continuous cable.
-They never vanish, multiply or change design.
-
-Use @[fox](98900fd0-3b3a-47b9-a9e9-401406dde49f) only for the fox's anatomy, proportions,
-silhouette, facial design, tail and exact two-wing construction.
-It controls the design of one drawing on paper only.
-Do not import its turnaround grid, extra poses, labels, background or additional foxes.
-Do not show the reference sheet itself.
 
 SCENE STATE
 

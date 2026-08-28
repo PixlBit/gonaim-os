@@ -74,6 +74,15 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 Use @hixa-face to reinforce only the face of that same single HIXXA.
 It never creates a second person and never drifts between shots.
 
+Use @[EAR](449e8116-6279-4951-adf6-56a5f43a670b) for exactly one pair of black wired earbuds,
+both worn throughout with one continuous cable. They never vanish, multiply or change design.
+
+Use @[fox](98900fd0-3b3a-47b9-a9e9-401406dde49f) only for the final design, markings and
+palette of exactly one fox illustration: rust-orange body, its reference-specific lighter
+areas and graphite accents, and exactly two completely black wings.
+Do not copy the turnaround grid, multiple poses, captions or reference background.
+The animal exists only as flat artwork on paper.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -119,15 +128,6 @@ roughly the length of her index finger. It never becomes a full-length pencil, b
 
 When she is actively painting, fresh wet colour may additionally appear on her fingertips only
 after visible contact with pigment; it never replaces or covers the permanent dried stains.
-
-Use @[EAR](449e8116-6279-4951-adf6-56a5f43a670b) for exactly one pair of black wired earbuds,
-both worn throughout with one continuous cable. They never vanish, multiply or change design.
-
-Use @[fox](98900fd0-3b3a-47b9-a9e9-401406dde49f) only for the final design, markings and
-palette of exactly one fox illustration: rust-orange body, its reference-specific lighter
-areas and graphite accents, and exactly two completely black wings.
-Do not copy the turnaround grid, multiple poses, captions or reference background.
-The animal exists only as flat artwork on paper.
 
 FIRST FRAME AND CONTINUITY IN
 

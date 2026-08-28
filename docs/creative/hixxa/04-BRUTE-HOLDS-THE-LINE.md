@@ -33,6 +33,19 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person.
 
+@fox controls the exact fox identity, proportions, tail mass and face markings.
+It stays at her ankle for the whole film and never enters the corridor alone.
+
+@weaponbrute controls the exact pair of heavy stone-and-timber gauntlets:
+block proportions, iron banding, surface wear and scale.
+Exactly two gauntlets exist and they are always either on the floor or on Brute's forearms.
+
+@brute controls the exact heavy blocky figure: timber and stone masses, exposed joints,
+proportions and stance. It never enters the room and never runs.
+
+@monster controls the exact angular pale-and-pink creature with its unfinished edge.
+It is never lit clearly in this film and never crosses the middle of the corridor.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -68,19 +81,6 @@ SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and penc
 roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
 
 CREATURE SCALE — the fox stands about 35 centimetres at the shoulder. Brute stands about 160 centimetres and nearly fills the corridor's width. The monster is about 220 centimetres long, larger than Brute in every dimension.
-
-@fox controls the exact fox identity, proportions, tail mass and face markings.
-It stays at her ankle for the whole film and never enters the corridor alone.
-
-@weaponbrute controls the exact pair of heavy stone-and-timber gauntlets:
-block proportions, iron banding, surface wear and scale.
-Exactly two gauntlets exist and they are always either on the floor or on Brute's forearms.
-
-@brute controls the exact heavy blocky figure: timber and stone masses, exposed joints,
-proportions and stance. It never enters the room and never runs.
-
-@monster controls the exact angular pale-and-pink creature with its unfinished edge.
-It is never lit clearly in this film and never crosses the middle of the corridor.
 
 CONTINUITY MAP
 

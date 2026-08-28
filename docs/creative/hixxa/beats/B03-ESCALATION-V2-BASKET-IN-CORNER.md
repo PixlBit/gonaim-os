@@ -49,6 +49,14 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person and never drifts between shots.
 
+@desk controls the exact desk construction, proportions, surface material and existing prop
+layout: the desk lamp, the phone, the coffee cup and the stack of unused sheets.
+It does not add, remove or reposition any desk prop.
+
+@EAR controls the exact black wired earbuds. HIXXA wears exactly one pair throughout,
+both buds seated, one physically continuous cable on its established route.
+They never vanish, multiply or change design.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -92,9 +100,6 @@ while she is seated, as described in full above.
 SKETCH SHEET — one landscape sheet about 30 centimetres wide and 21 tall, a little wider than
 her two hands set side by side. It is never poster-sized and never notebook-small.
 
-CRUMPLED PAPER BALL — about 7 centimetres across, small enough to close fully inside her fist
-with her fingers meeting. It never becomes larger than her fist and never shrinks to a pebble.
-
 DESK LAMP — about 40 centimetres tall on the desk, its shade roughly the size of her cupped
 hand.
 
@@ -103,13 +108,23 @@ COFFEE CUP — an ordinary mug about 9 centimetres tall that her hand closes aro
 SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
 roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
 
-@desk controls the exact desk construction, proportions, surface material and existing prop
-layout: the desk lamp, the phone, the coffee cup and the stack of unused sheets.
-It does not add, remove or reposition any desk prop.
+CRUMPLED PAPER BALL — FORM
 
-@EAR controls the exact black wired earbuds. HIXXA wears exactly one pair throughout,
-both buds seated, one physically continuous cable on its established route.
-They never vanish, multiply or change design.
+Each ball is made from one single sheet and nothing else. It is small: roughly 7 to 8
+centimetres across, closing fully inside her fist with her fingers meeting around it —
+about the size of a plum, never the size of an apple, a melon or a football.
+
+Its form is angular, not round. Flat crushed planes meet along sharp fold ridges, a few
+corners stand out where the paper refused to compress, and one visible seam marks where the
+last fold closed. It is never a smooth sphere, never a soft wad of tissue, never a moulded
+papier-mache lump.
+
+Paper that carried only graphite reads as plain cream, its printed marks broken up and mostly
+hidden inside the folds. A ball made from a painted sheet shows small broken fragments of its
+colour on the outward-facing facets only, where the painted side happened to fold outward.
+
+Every ball has its own distinct fold pattern. Balls resting together are never identical
+copies of each other, never mirrored, and never share the same crease layout.
 
 THE METAL WASTEBASKET — PHYSICAL DESCRIPTION
 
@@ -149,9 +164,12 @@ Every sheet follows one continuous physical path with no step skipped:
 No sheet, ball, mark or prop ever materialises. Nothing enters frame without a hand.
 
 Exactly one HIXXA. Exactly one metal wastebasket, one desk lamp, one phone, one coffee cup.
-The wastebasket holds exactly four crumpled balls at the start from earlier work, and ends holding
-exactly six with a seventh released and still airborne. It is partially filled at all times,
-never overflows, and clear empty volume stays visible above the balls.
+BALL COUNT — SEQUENCE POSITION
+The wastebasket holds exactly ONE crumpled ball at frame zero, resting on the base: the
+rejected fox sheet from the previous film. Two more land during the loop, so it ends holding
+exactly THREE, with a FOURTH released and still airborne at the final frame.
+It stays mostly empty throughout: the balls sit loose on the base, they do not stack, and the
+bin is never more than a quarter full and never overflows.
 Exactly three fresh sheets are consumed across the sequence.
 Every throw lands inside the wastebasket: no ball misses, bounces out, or comes to rest on the
 floor. Failed loose sheets accumulate only on the available desk surface; the floor stays clear.
@@ -220,9 +238,9 @@ SHOT B — ESCALATING FAILURE LOOP — 24mm
 ################################################################
 
 ONE CONTINUOUS INTERIOR WIDE SHOT. Preserve the full room staging, the diagonal
-desk-to-corner throw axis and the wastewastebasket position. The existing stack of unused sheets is
+desk-to-corner throw axis and the wastebasket position. The existing stack of unused sheets is
 visible at frame zero, and the wastebasket in the shadowed rear world-left corner already holds
-exactly four crumpled balls.
+exactly one crumpled ball.
 
 0–15%: HIXXA finishes the current stroke and reaches toward the existing paper stack with a
 tense micro-settle; no new object appears.
@@ -232,12 +250,13 @@ tense micro-settle; no new object appears.
   CYCLE ONE — she pulls one sheet from the existing stack, draws across it with fast weighted
   strokes, rejects it, crushes it in her fist, then rotates her trunk and throws it back over
   her shoulder toward the corner. The ball crosses the room on a high arc, passes once through
-  the lamp's light, darkens into the corner shadow and rings the metal. The wastebasket now holds
-  five.
+  the lamp's light, darkens into the corner shadow and rings the metal. It settles beside the
+  first. The wastebasket now holds two.
 
   CYCLE TWO — she pulls the next sheet, draws harder and faster, rejects it sooner, crushes it
   and throws again with more shoulder behind it. Second flight, second ring, second settle.
-  The wastebasket now holds six, still with clear empty volume above the balls.
+  The wastebasket now holds three, still far from full, with the three balls sitting loose
+  and separate on the base.
 
   CYCLE THREE — she pulls the third sheet, draws with the most aggressive speed of the three,
   stops mid-stroke and begins to crush it.

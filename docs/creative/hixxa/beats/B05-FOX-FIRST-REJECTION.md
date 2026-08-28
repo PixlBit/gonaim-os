@@ -66,6 +66,22 @@ expression.
 Use @hixa-face for the same single face. It never creates a second person and never drifts
 between shots.
 
+Use @EAR for the small black wired non-glowing earbuds, worn continuously with one connected
+cable. They never vanish, multiply or change design.
+
+Use @loc_location-room-1 for the exact room geography and the fixed empty metal mesh
+wastebasket in the rear-left corner diagonally behind HIXXA beside the shelf.
+It does not control the camera angle or the shot size.
+
+Use @desk for the exact desk and untouched props. Nothing on the desk moves except the one
+fox sheet HIXXA lifts.
+
+Use @fox only as family-design context while preserving HIXXA's distinct original rejected
+fox-like artwork from the preceding stages: its different face, ears, markings, tail, body
+proportions and wing geometry, plus its rust-orange body, black claws, amber eye, one
+completed black wing and one pale unfinished wing.
+Never replace it with the exact @fox character, and never complete the pale wing.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -109,30 +125,29 @@ while she is seated, as described in full above.
 SKETCH SHEET — one landscape sheet about 30 centimetres wide and 21 tall, a little wider than
 her two hands set side by side. It is never poster-sized and never notebook-small.
 
-CRUMPLED PAPER BALL — about 7 centimetres across, small enough to close fully inside her fist
-with her fingers meeting. It never becomes larger than her fist and never shrinks to a pebble.
-
 GRAPHITE DRAWING PENCIL — a standard full-length pencil about 17 centimetres long and 7
 millimetres across; held in her grip the tip clears her fingers by about a palm's width.
 
 SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and pencil-thin,
 roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
 
-Use @EAR for the small black wired non-glowing earbuds, worn continuously with one connected
-cable. They never vanish, multiply or change design.
+CRUMPLED PAPER BALL — FORM
 
-Use @loc_location-room-1 for the exact room geography and the fixed empty metal mesh
-wastebasket in the rear-left corner diagonally behind HIXXA beside the shelf.
-It does not control the camera angle or the shot size.
+Each ball is made from one single sheet and nothing else. It is small: roughly 7 to 8
+centimetres across, closing fully inside her fist with her fingers meeting around it —
+about the size of a plum, never the size of an apple, a melon or a football.
 
-Use @desk for the exact desk and untouched props. Nothing on the desk moves except the one
-fox sheet HIXXA lifts.
+Its form is angular, not round. Flat crushed planes meet along sharp fold ridges, a few
+corners stand out where the paper refused to compress, and one visible seam marks where the
+last fold closed. It is never a smooth sphere, never a soft wad of tissue, never a moulded
+papier-mache lump.
 
-Use @fox only as family-design context while preserving HIXXA's distinct original rejected
-fox-like artwork from the preceding stages: its different face, ears, markings, tail, body
-proportions and wing geometry, plus its rust-orange body, black claws, amber eye, one
-completed black wing and one pale unfinished wing.
-Never replace it with the exact @fox character, and never complete the pale wing.
+Paper that carried only graphite reads as plain cream, its printed marks broken up and mostly
+hidden inside the folds. A ball made from a painted sheet shows small broken fragments of its
+colour on the outward-facing facets only, where the painted side happened to fold outward.
+
+Every ball has its own distinct fold pattern. Balls resting together are never identical
+copies of each other, never mirrored, and never share the same crease layout.
 
 THE ARTWORK — REJECTION READ
 

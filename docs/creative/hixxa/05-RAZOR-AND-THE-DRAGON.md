@@ -33,6 +33,16 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person.
 
+@dragon controls the exact dragon identity: serpentine neck, wing structure, limb proportions
+and head shape. It never appears as a reference sheet or drawn page inside the world.
+
+@weaponrazor controls the exact pair of long slender lances: shaft length, taper,
+fine point and grip wrapping. Exactly two lances exist; they never become swords
+and never multiply into three.
+
+@razor controls the exact spined pale figure: plate shapes, rigid wing spans,
+proportions and stance. It never flies above ceiling height and never leaves the corridor.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -68,16 +78,6 @@ SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and penc
 roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
 
 CREATURE SCALE — the dragon's body is about 160 centimetres long with a 120-centimetre wingspan. Razor stands about 140 centimetres with a spined span reaching about 200 centimetres.
-
-@dragon controls the exact dragon identity: serpentine neck, wing structure, limb proportions
-and head shape. It never appears as a reference sheet or drawn page inside the world.
-
-@weaponrazor controls the exact pair of long slender lances: shaft length, taper,
-fine point and grip wrapping. Exactly two lances exist; they never become swords
-and never multiply into three.
-
-@razor controls the exact spined pale figure: plate shapes, rigid wing spans,
-proportions and stance. It never flies above ceiling height and never leaves the corridor.
 
 CONTINUITY MAP
 

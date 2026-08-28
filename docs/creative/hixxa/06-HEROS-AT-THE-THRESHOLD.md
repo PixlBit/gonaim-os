@@ -33,6 +33,17 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person.
 
+@HEROS controls the exact three-hero line-up as a group: which three they are,
+their relative heights and their weapons. It never adds a fourth hero.
+
+@fox controls the exact fox identity, proportions, tail mass and face markings
+for the fox standing at the left of that line.
+It does not add a fox anywhere else in the corridor and never duplicates.
+
+@monster controls the exact angular pale-and-pink creature: plate shapes, head structure,
+proportions, and one unfinished contour along its world-left flank where the line stops
+and the form is left open. That open edge is the point of the film and never closes by itself.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -65,17 +76,6 @@ SMALL RED PENCIL IN HER CURLS — a short stub about 9 centimetres long and penc
 roughly the length of her index finger. It never becomes a full-length pencil, brush or rod.
 
 CREATURE SCALE — each of the three heroes stands between 30 and 45 centimetres tall, so HIXXA remains far taller than any of them even when kneeling. The monster is about 220 centimetres long, taller than her kneeling and level with her standing.
-
-@HEROS controls the exact three-hero line-up as a group: which three they are,
-their relative heights and their weapons. It never adds a fourth hero.
-
-@fox controls the exact fox identity, proportions, tail mass and face markings
-for the fox standing at the left of that line.
-It does not add a fox anywhere else in the corridor and never duplicates.
-
-@monster controls the exact angular pale-and-pink creature: plate shapes, head structure,
-proportions, and one unfinished contour along its world-left flank where the line stops
-and the form is left open. That open edge is the point of the film and never closes by itself.
 
 CONTINUITY MAP
 

@@ -32,6 +32,23 @@ It does not control the camera angle, the shot size or her moment-to-moment expr
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person.
 
+@desk controls the exact desk surface, wood grain, drawer fronts and permanent tools.
+It does not introduce any additional device or interface.
+
+@prop_tapletpen controls the exact stylus identity, length, metal ring and tip colour.
+It rests unused on the desk in this film and never replaces the charcoal pencil.
+
+@EAR controls the exact wired earbud set: two small in-ear buds and one continuous cable.
+No wireless pods, no over-ear headphones, no second cable.
+
+@bag controls the exact leather satchel identity, size, strap and buckle.
+It stays settled on the bed for the whole film and never moves.
+
+@fox controls the exact fox identity, proportions, tail mass and face markings.
+@cat controls the exact cat identity, proportions, markings and collar.
+@dragon controls the exact dragon identity, neck, wing structure and proportions.
+None of these three ever appears as a reference sheet, poster or drawn page inside the world.
+
 HANDS AND PAINT STAINS
 
 Both of HIXXA's hands carry permanent dried paint stains from long working days, and those
@@ -79,23 +96,6 @@ DESK LAMP — about 40 centimetres tall on the desk, its shade roughly the size 
 hand.
 
 CREATURE SCALE — the fox stands about 35 centimetres at the shoulder and the cat about 30, each small enough to stand on the desk without crowding it. The dragon's body is about 160 centimetres long with a 120-centimetre wingspan, large enough to coil around the ceiling beam but never filling the room.
-
-@desk controls the exact desk surface, wood grain, drawer fronts and permanent tools.
-It does not introduce any additional device or interface.
-
-@prop_tapletpen controls the exact stylus identity, length, metal ring and tip colour.
-It rests unused on the desk in this film and never replaces the charcoal pencil.
-
-@EAR controls the exact wired earbud set: two small in-ear buds and one continuous cable.
-No wireless pods, no over-ear headphones, no second cable.
-
-@bag controls the exact leather satchel identity, size, strap and buckle.
-It stays settled on the bed for the whole film and never moves.
-
-@fox controls the exact fox identity, proportions, tail mass and face markings.
-@cat controls the exact cat identity, proportions, markings and collar.
-@dragon controls the exact dragon identity, neck, wing structure and proportions.
-None of these three ever appears as a reference sheet, poster or drawn page inside the world.
 
 CONTINUITY MAP
 
