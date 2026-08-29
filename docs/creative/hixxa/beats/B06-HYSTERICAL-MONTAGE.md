@@ -97,7 +97,7 @@ wastebasket, the camera angle or her moment-to-moment expression.
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person and never drifts between shots.
 
-@EAR controls the earpiece completely: its small vintage wired design, its scale, its exact
+@EAR controls both earbuds completely: their small vintage wired design, their scale, the exact
 seating in the ear, its material character, its cable attachment point and thickness, and its
 exact body colour. It does not control anything else in frame.
 
@@ -119,21 +119,21 @@ knuckles. It is matte, faded and absorbed, following the skin's own creases and 
 the shading rather than on top of it. The fingernails stay clean bare nail: no colour on the
 nail plate. The stains live on skin only.
 
-EARPIECE
+EARBUDS
 
-HIXXA wears the same small vintage wired earpiece throughout, seated naturally in the ear
-exactly as in @EAR, with one physically continuous wire leaving it and hanging downward under
-gravity from the same attachment point on the same side.
+HIXXA wears exactly TWO small vintage wired earbuds, one in each ear, seated exactly as in
+@EAR, joined by one physically continuous black cable running down to the single phone.
 
-Its body keeps the exact non-white colour of the reference under every lighting angle.
-Specular highlights may brighten, but the material colour never reads as white, off-white,
-cream or pale grey, and never becomes modern white plastic. When lighting makes the colour
-ambiguous, take it from @EAR rather than from generic earphone priors.
+Both earbud bodies and the whole cable are BLACK and stay unmistakably black under every
+lighting condition. Highlights may brighten, but the material never reads as white, cream,
+ivory, silver, pale grey or translucent, and never becomes modern white plastic. When lighting
+makes the colour ambiguous, take it from @EAR rather than from generic earbud priors.
 
-It is never enlarged into headphones, never given a headband or ear cups, and never becomes
-wireless earbuds or a headset. The wire never disappears, duplicates, switches sides, detaches,
-or passes through her neck, clothing, arm, the desk, the chair or the wastebasket. Because she
-draws, crushes and throws hard, the wire may sway with delayed secondary motion and settle.
+They are never enlarged into headphones, never given a headband or ear cups, and never become
+wireless earbuds or a headset. The cable never disappears, duplicates, switches sides,
+detaches, or passes through her neck, clothing, arm, the desk, the chair or the wastebasket.
+Because she draws, crushes and throws hard, it may sway with delayed secondary motion and
+settle.
 
 WORLD AND AXIS MAP
 
@@ -160,7 +160,7 @@ hand-relative anchor seem to disagree, the anchor wins.
 The wastebasket is knee-high beside her seated position, standing on the floor.
 Ball-to-bin scale comes from @basket: each ball is just under a third of the bin's inner width.
 One landscape sheet is a little wider than her two hands set side by side.
-The earpiece is small enough to sit inside the bowl of her ear.
+Each earbud is small enough to sit inside the bowl of her ear.
 
 THROW PATH
 
@@ -313,7 +313,7 @@ contacted balls compress, roll a few centimetres and shift into small available 
 balls stay supported by the base and mesh walls. There is no whole-pile explosion, no paper
 fountain, no levitation and no sudden increase in volume or bin size.
 
-Her curls, sleeve fabric and the earpiece wire lag one beat behind her motion and settle.
+Her curls, sleeve fabric and the earbud cable lag one beat behind her motion and settle.
 No object moves before direct contact or a visible physical force.
 
 ################################################################
@@ -339,7 +339,7 @@ and dimensional lighting, with only selective drawn accents and dark graphic cre
 naturally motivated.
 
 Skin, curls, plaid cotton, canvas apron, desk wood, paper fibre, graphite, woven wire mesh and
-the earpiece's cable rubber remain materially distinct and physically dimensional. Each crumpled
+the earbud cable rubber remain materially distinct and physically dimensional. Each crumpled
 ball is a genuinely volumetric object with faceted relief and its own contact shadow, never a
 flat cut-out disc.
 
@@ -420,7 +420,7 @@ FINAL STATE
 
 HIXXA at the same desk, the room unchanged, one wastebasket still on the floor behind her
 right side, packed naturally to its rim with nothing spilled, every rejected sheet
-accounted for as one ball, and the same small vintage wired earpiece in its exact reference
+accounted for as one ball, and the same two small vintage wired earbuds in their exact reference
 colour with its cable continuous and attached.
 ```
 
