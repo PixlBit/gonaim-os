@@ -407,6 +407,25 @@ with one further ball released and still airborne at the final frame.
 
 **قاعدة تحرير:** العدد يُكتب في هذا البلوك وحده، ثم تُطابَق أرقام الدورات داخل الشوتات. لا يُكتب العدد في مكان ثانٍ.
 
+### عند STAGE 4 يتوقف العدّاد عن كونه عددًا
+
+السلة 30×35 سم والكرة ربع العرض ≈ 7.5 سم. بحساب الحجم وكفاءة رصّ الورق المكرمش (55–60%):
+
+| | |
+|---|---|
+| للوصول إلى الحافة | **62–67 كرة** |
+| التاج فوق الحافة (5–8 سم) | **+11** |
+
+لذلك أي رقم منخفض مثل «ثلاثين كرة» **يملأ أقل من النصف**؛ ولو أردناه أن يملأها لوجب أن يصير قطر الكرة ثلث العرض — وهو ممنوع في هذا القسم نفسه.
+
+**القاعدة:** في المراحل 1–3 يُكتب **عدد**؛ وفي STAGE 4 تُكتب **الحالة**:
+
+```text
+Full from base to rim with no visible gap anywhere, plus a dense supported crown rising five to
+eight centimetres above the rim. At this scale that reads as many dozens of balls, but the
+instruction is the absence of gaps, not a count: fill it until nothing more would fit.
+```
+
 | المرحلة | STAGE | فريم صفر | النهاية |
 |---|---|---|---|
 | الثعلب — أول رفض (`HX30-02A/B`) | 1 | فارغة | كرة واحدة |
@@ -992,6 +1011,7 @@ unpainted nails, and every object keeps the size given above.
 | B07 | `beats/B07-CHASM-AND-PAPER-COLUMNS.md` | 8s / 4 شوتات | العبور بين العمودين، وفقد القلم الأحمر، والسقوط لفضاء مفتوح |
 | B08 | `beats/B08-BATTERY-DEATH.md` | 10s / 5 شوتات | انقطاع الموسيقى بموت البطارية — سبب الهياج في B06 |
 | B09 | `beats/B09-PHONE-REJECTION-AND-COLLAPSE.md` | 12s / 7 شوتات | نزع السماعتين ورمي التليفون والانهيار — السلة STAGE 4 |
+| B10 | `beats/B10-TIMELAPSE-AND-HERO-HOLD.md` | 10s / 6 شوتات | تايم لابس الرفض حتى الامتلاء الكامل، والكادر البطولي — الفريم الأول لبرومبت الحلم |
 
 ### سجل التاقات
 

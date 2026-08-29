@@ -38,6 +38,7 @@
 | B07 | [THE PAPER COLUMNS AND THE LOST PENCIL](beats/B07-CHASM-AND-PAPER-COLUMNS.md) | 8s / 4 شوتات | `@char_hixxa` `@hixa-face` | العبور من الشق، القلم يطير، والسقوط لفضاء مفتوح |
 | B08 | [BATTERY DEATH](beats/B08-BATTERY-DEATH.md) | 10s / 5 شوتات | `@ear` `@basket` `@desk` | هياج الرسم، تحذير البطارية، موت التليفون، والصمت |
 | B09 | [PHONE REJECTION AND COLLAPSE](beats/B09-PHONE-REJECTION-AND-COLLAPSE.md) | 12s / 7 شوتات | `@ear` `@basket` `@bag` | نزع السماعتين، رمي التليفون، والرأس على المكتب |
+| B10 | [TIMELAPSE AND HERO HOLD](beats/B10-TIMELAPSE-AND-HERO-HOLD.md) | 10s / 6 شوتات | `@basket` `@ear` `@bag` | تايم لابس رفض، السلة تكتمل، والكادر البطولي |
 
 الأفلام قابلة للتوليد منفردة، ومرتبة زمنيًا كقوس واحد إذا وُلِّدت بالترتيب:
 
