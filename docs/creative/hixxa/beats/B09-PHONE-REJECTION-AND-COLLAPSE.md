@@ -2,7 +2,7 @@
 
 > **المدة:** 12.0 ثانية — **الشوتات:** 7 — **القطعات:** 6 — **برومبت واحد**
 > **المعيار:** `HIXXA_MASTER_CANON_V4` — §6A · §6B · §6E · §6F · §6G · §14A · §14B
-> **التاقات:** `@char_hixxa` `@hixa-face` `@ear` `@basket` `@bag` `@desk` `@loc_location-room-1`
+> **التاقات:** `@char_hixxa` `@hixa-face` `@EAR` `@basket` `@bag` `@desk` `@loc_location-room-1`
 > **السلة:** `@basket` **STAGE 4** — مكوّمة حتى الحافة، المرحلة الأخيرة، من الفريم الأول
 > **الشوتان الجديدان:** 6 رأسها على المكتب · 7 الكادر الواسع الختامي
 
@@ -112,7 +112,7 @@ camera angle or her moment-to-moment expression.
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person and never drifts between shots.
 
-@ear controls the earbud assembly completely: two small vintage wired earbuds, the inline
+@EAR controls the earbud assembly completely: two small vintage wired earbuds, the inline
 control, the visible repair-tape section, the cable and the 3.5mm plug, with their exact scale,
 material character and colour. It does not control anything else in frame.
 
@@ -175,7 +175,7 @@ SCALE
 HIXXA is about 165 centimetres and her hand is the scale reference.
 The phone is an ordinary one-hand phone, no longer than her palm plus a finger joint; it is not
 a tablet. The earbuds are small enough to sit inside the bowl of her ear. The wastebasket is
-knee-high beside her seated position, and each crumpled ball is roughly a quarter of its inner
+knee-high beside her seated position, and each crumpled ball is just under a third of its inner
 width.
 
 ################################################################

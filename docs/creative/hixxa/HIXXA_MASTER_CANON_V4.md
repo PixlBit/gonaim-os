@@ -245,7 +245,7 @@ hand-relative anchor seem to disagree, the anchor wins.
 | الفشل | المرساة الخاطئة | المرساة الصحيحة |
 |---|---|---|
 | الموبايل بحجم آيباد | «15 سم» | **طول كفها + سلامية** |
-| كرة الورق أكبر من السلة | «7 سم» أو «تُغلق في قبضتها» | **ربع عرض السلة الداخلي** |
+| كرة الورق أكبر من السلة | «8 سم» أو «تُغلق في قبضتها» | **أقل من ثلث عرض السلة الداخلي — ثلاث كرات متجاورة تعبر القاع** |
 | السلة تُوضع على المكتب | «على الأرض» | **حافتها عند ركبتها وهي قاعدة** |
 
 ### أمثلة معتمدة
@@ -367,7 +367,7 @@ It does not control the wastebasket object itself, which belongs to @basket.
 هذه هي الفائدة الأهم من المرجع: نسبة **مرئية** بدل وصف نصي.
 
 ```text
-Ball-to-bin scale comes from the reference: each ball is roughly a quarter of the bin's inner
+Ball-to-bin scale comes from the reference: each ball is just under a third of the bin's inner
 width, so several sit loose on the base without touching. A ball is never a third or more of
 that width.
 ```
@@ -385,7 +385,7 @@ moved, and its position is fixed for the whole film.
 
 ```text
 The crumpled paper ball is small: one sheet crushed down until it closes inside her fist, and
-about four of them would sit side by side across the base of the wastebasket without touching.
+about three of them would sit side by side across the base of the wastebasket without touching.
 It is angular rather than round — flat crushed planes meeting at sharp fold ridges with one
 closing seam — never a smooth sphere. Each ball carries its own fold pattern; balls resting
 together never repeat each other's creases. A ball from a painted sheet shows small fragments
@@ -421,16 +421,25 @@ with one further ball released and still airborne at the final frame.
 
 ### عند STAGE 4 يتوقف العدّاد عن كونه عددًا
 
-السلة 30×35 سم والكرة ربع العرض ≈ 7.5 سم. بحساب الحجم وكفاءة رصّ الورق المكرمش (55–60%):
+**مقاس السلة المعتمد: 25 × 28 سم، والكرة 8 سم.** هذا المقاس ليس اعتباطيًا — هو ناتج معادلة، وهذه هي المعادلة:
 
-| | |
-|---|---|
-| للوصول إلى الحافة | **62–67 كرة** |
-| التاج فوق الحافة (5–8 سم) | **+11** |
+عدد الكرات الذي يملأ السلة إلى الحافة = حجم السلة الداخلي ÷ حجم الكرة، مضروبًا في كفاءة رصّ الورق المكرمش (55–60%). وبتطبيقها:
 
-لذلك أي رقم منخفض مثل «ثلاثين كرة» **يملأ أقل من النصف**؛ ولو أردناه أن يملأها لوجب أن يصير قطر الكرة ثلث العرض — وهو ممنوع في هذا القسم نفسه.
+| السلة | الكرة | الكرة ÷ العرض | للوصول إلى الحافة |
+|---|---|---|---|
+| 30 × 35 سم (المقاس القديم) | 7.5 سم | 0.25 | **62–67 كرة** |
+| **25 × 28 سم (المعتمد)** | **8 سم** | **0.32** | **30 كرة** |
 
-**القاعدة:** في المراحل 1–3 يُكتب **عدد**؛ وفي STAGE 4 تُكتب **الحالة**:
+بالمقاس القديم كان أي رقم قصصي منخفض مثل «ثلاثين كرة» **يملأ أقل من النصف**، فينكشف التناقض بين
+الرقم المكتوب والصورة المولَّدة. وبالمقاس المعتمد يتطابق الاثنان: الثلاثون تصل إلى الحافة وتصنع
+التاج، والكرة تبقى **أقل من ثلث** العرض الداخلي فلا تخرق قاعدة هذا القسم.
+
+**لماذا نزّلنا السلة ولم ننزّل العدد:** الثلاثون رقم **قصة** لا رقم ديكور — كرة واحدة لكل رسمة
+رفضتها. تعديل الرقم يكسر السرد، وتعديل المقاس لا يكسر شيئًا.
+
+**القاعدة:** في المراحل 1–3 يُكتب **عدد**. وفي STAGE 4 تجوز الصيغتان بالمقاس المعتمد لأنهما صارتا
+متطابقتين — يُكتب **عدد** (ثلاثون) حين يكون العدد جزءًا من السرد كما في `pack/P01`، أو تُكتب
+**الحالة** حين لا يهم العدد:
 
 ```text
 Full from base to rim with no visible gap anywhere, plus a dense supported crown rising five to
@@ -1026,6 +1035,27 @@ unpainted nails, and every object keeps the size given above.
 | B10 | `beats/B10-TIMELAPSE-AND-HERO-HOLD.md` | 10s / 6 شوتات | تايم لابس الرفض حتى الامتلاء الكامل، والكادر البطولي — الفريم الأول لبرومبت الحلم |
 | B11 | `beats/B11-POUR-STEAM-PAGE.md` | 8s / 3 شوتات | طقس البداية: صبّ وبخار وورقة نظيفة |
 
+### سلسلة ROOM TO RIVER — ثمانية برومبتات متتالية
+
+من الأوضة إلى النهر. **كل سطر جيل واحد 8.00s** بأربع شوتات وثلاث قطعات؛ عناوين `SHOT` بنية قطع
+داخل الكليب لا برومبتات منفصلة (§14B).
+
+| # | المقطع | العناصر | الحدث |
+|---|---|---|---|
+| P01 | `pack/P01-BASKET-AWAKENING.md` | `@basket` `@desk` `@bag` `@EAR` | السلة STAGE 4 تنقلب والثلاثون كرة تغطي الأرض |
+| P02 | `pack/P02-PAPER-IRIS.md` | `@basket` `@desk` `@loc_location-room-1` | ثلاث دورات، الأرض تنفتح كعين ورقية، وإمساك بحرف المكتب |
+| P03 | `pack/P03-GRIP-FAILURE.md` | `@fox` `@cat` `@dragon` `@desk` | انفلات القبضة والسقوط داخل نفق من الصفحات |
+| P04 | `pack/P04-TUNNEL-JAWS.md` | `@fox` `@cat` `@dragon` | الصفحات تطبق كفكوك **ملتصقة بالجدار**، ومطاردة محورية |
+| P05 | `pack/P05-ZOETROPE-RINGS.md` | `@fox` `@cat` `@dragon` | ثلاث حلقات زيوتروب، ولحظة التعرّف على رسوماتها المرفوضة |
+| P06 | `pack/P06-DRAGON-SHADOW-PENCIL-LOSS.md` | `@dragon` `@char_hixxa` | ظل التنين، فقد القلم الأحمر، الإمساك به، ومظلة الأربع صفحات |
+| P07 | `pack/P07-INKFALL-ENTRY.md` | `@outdoor` `@char_hixxa` | الدخول لشلال الحبر وإعادة طي المظلة إلى زحّافة |
+| P08 | `pack/P08-RIVERBANK-CRASH.md` | `@outdoor` `@fox` `@cat` `@dragon` | **جبل واحد**، شلال حبر، والارتطام بضفة النهر |
+
+**تنبيه تسلسل:** `P06` و`B07` **بدايل** لا متتاليان — كلاهما يحمل لحظة فقد القلم الأحمر. أنظف
+تركيب لاستعمال الاثنين: `B07` كاملًا (العمودان + الحشر + الوقوع + طيران القلم) ثم شوتا `P06`
+الأخيران وحدهما (الإمساك + المظلة)، فيُفقد القلم مرة واحدة.
+
+
 ### سجل التاقات
 
 `00-TAG-REGISTRY.md` — لكل عنصر من عناصر المكتبة **سلطة واحدة وحد صريح**، مع تحذيرات التسمية (`@taplet` ≠ `@tapletui` ≠ `@tapletui0`، و`@dragon` ≠ `@monster`).
@@ -1059,7 +1089,7 @@ unpainted nails, and every object keeps the size given above.
 - §6F انضباط الزمن والتحقق الآلي وقاعدة الضغط عند تقصير المدة.
 - §14A إضافات القالب الموحّد ومواضعها.
 - §40A ثمانية أخطاء جديدة مرصودة، وقاعدة «الأقفال ليست تراكمية».
-- §53 مكتبة اثني عشر برومبتًا منتجًا وسجل التاقات.
+- §53 مكتبة البرومبتات المنتجة (ستة أفلام 30s + أحد عشر Beat + سلسلة ROOM TO RIVER الثمانية) وسجل التاقات.
 - §54 خمسة تعارضات حُسمت بترتيب السلطة في §2.
 
 ---

@@ -2,7 +2,7 @@
 
 > **المدة:** 10.0 ثوانٍ — **الشوتات:** 6 (A–F) — **القطعات:** 5 — **برومبت واحد**
 > **المعيار:** `HIXXA_MASTER_CANON_V4` — §6A · §6B · §6E · §6F · §6G(TIER 1) · §14B
-> **التاقات:** `@char_hixxa` `@hixa-face` `@loc_location-room-1` `@desk` `@basket` `@ear` `@bag`
+> **التاقات:** `@char_hixxa` `@hixa-face` `@loc_location-room-1` `@desk` `@basket` `@EAR` `@bag`
 > **السلة:** تدخل قرب الامتلاء وتنتهي **STAGE 4** مكوّمة
 > **التسليم:** الفريم الأول الصارم لبرومبت الدوّامة والحلم
 
@@ -128,7 +128,7 @@ The reference shows four fill levels side by side; this clip runs from STAGE 3 t
 never shows the four-bin sheet itself. The basket shell never changes size — "the basket grows"
 means only that the paper inside it rises. It does not control the camera angle.
 
-@ear controls the same two old compact black wired in-ear earbuds, both already fitted deeply
+@EAR controls the same two old compact black wired in-ear earbuds, both already fitted deeply
 and naturally enough to read as small realistic earbuds rather than oversized headphones.
 One complete black cable: two short branches leave the ears, join below the collarbone, pass
 through the inline control and the repair-tape section, then continue as one main lead to the
@@ -188,8 +188,8 @@ limbs, ears, wings or any recognisable creature shape.
 SCALE
 
 HIXXA is about 165 centimetres and her hand is the scale reference.
-The basket is knee-high beside her seated position, about a third of a metre across at the rim.
-Each crumpled ball is roughly a quarter of the basket's inner width — small enough that several
+The basket is knee-high beside her seated position, about 25 centimetres across at the rim.
+Each crumpled ball is just under a third of the basket's inner width — small enough that several
 sit side by side on the base — and never a third or more of it.
 One landscape sheet is a little wider than her two hands set side by side.
 The earbuds are small enough to sit inside the bowl of her ear.

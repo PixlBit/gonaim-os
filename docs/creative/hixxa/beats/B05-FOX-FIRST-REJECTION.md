@@ -101,7 +101,7 @@ The earbuds are tiny in-ear units, each smaller than the bowl of her ear.
 One landscape sheet a little wider than her two hands set side by side.
 
 The crumpled paper ball is small: one sheet crushed down until it closes inside her fist, and
-about four of them would sit side by side across the base of the wastebasket without touching,
+about three of them would sit side by side across the base of the wastebasket without touching,
 exactly as the balls sit in the @basket reference.
 It is angular rather than round — flat crushed planes meeting at sharp fold ridges with one
 closing seam — never a smooth sphere. Each ball carries its own fold pattern; balls resting
@@ -128,7 +128,7 @@ still mostly empty · STAGE 3 filled to near the rim · STAGE 4 heaped above the
 This film is STAGE 1 throughout: the bin is empty at frame zero and holds exactly one ball
 on the base at the last frame.
 
-Ball-to-bin scale comes from the reference: each ball is roughly a quarter of the bin's inner
+Ball-to-bin scale comes from the reference: each ball is just under a third of the bin's inner
 width, so several sit loose on the base without touching. A ball is never a third or more of
 that width.
 

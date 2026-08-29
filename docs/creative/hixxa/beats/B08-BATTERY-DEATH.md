@@ -2,7 +2,7 @@
 
 > **المدة:** 10.0 ثوانٍ — **الشوتات:** 5 — **القطعات:** 4 — **برومبت واحد، توليدة واحدة**
 > **المعيار:** `HIXXA_MASTER_CANON_V4` — §6A · §6B · §6E · §6F · §14A
-> **التاقات:** `@char_hixxa` `@hixa-face` `@ear` `@basket` `@desk` `@loc_location-room-1`
+> **التاقات:** `@char_hixxa` `@hixa-face` `@EAR` `@basket` `@desk` `@loc_location-room-1`
 > **السلة:** `@basket` **STAGE 2** — بين `B05` (فارغة → كرة واحدة) و`B06` (STAGE 3 → 4)
 
 ---
@@ -104,7 +104,7 @@ camera angle or her moment-to-moment expression.
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person and never drifts between shots.
 
-@ear controls the earbuds completely: their small vintage wired design, their scale, their
+@EAR controls the earbuds completely: their small vintage wired design, their scale, their
 seating in the ears, their material character, the inline control, the cable attachment point
 and thickness, and their exact colour. It does not control anything else in frame.
 
@@ -129,13 +129,13 @@ nail plate. The stains live on skin only.
 EARBUDS
 
 HIXXA wears exactly TWO small vintage wired earbuds, one in each ear, seated exactly as in
-@ear, joined by one physically continuous black cable running to one single phone with the
+@EAR, joined by one physically continuous black cable running to one single phone with the
 same inline control, attachment point and side as the reference.
 
 Both earbud bodies and the whole cable are BLACK and stay unmistakably black under every
 lighting condition. Highlights may brighten, but the material never reads as white, cream,
 ivory, beige, silver, pale grey or translucent, and never becomes modern white plastic. When
-lighting makes the colour ambiguous, take it from @ear rather than from generic earbud priors.
+lighting makes the colour ambiguous, take it from @EAR rather than from generic earbud priors.
 They are never enlarged into headphones, never given a headband or ear cups, and never become
 wireless earbuds or a headset.
 
@@ -182,7 +182,7 @@ SCALE
 HIXXA is about 165 centimetres and her hand is the scale reference.
 The phone is an ordinary one-hand phone, no longer than her palm plus a finger joint; it is not
 a tablet. The earbuds are small enough to sit inside the bowl of her ear. Each crumpled ball is
-roughly a quarter of the wastebasket's inner width, and the wastebasket is knee-high beside her
+just under a third of the wastebasket's inner width, and the wastebasket is knee-high beside her
 seated position.
 
 ################################################################

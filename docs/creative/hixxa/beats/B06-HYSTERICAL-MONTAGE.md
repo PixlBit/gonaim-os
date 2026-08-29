@@ -2,7 +2,7 @@
 
 > **المدة:** 10.0 ثوانٍ — **الشوتات:** 7 (A–G) — **القطعات:** 6
 > **المعيار:** `HIXXA_MASTER_CANON_V4` — §6A اليدين · §6B المقاييس · §6E `@basket` · §6F الزمن · §14A القالب
-> **التاقات:** `@loc_location-room-1` `@desk` `@char_hixxa` `@hixa-face` `@ear` `@basket`
+> **التاقات:** `@loc_location-room-1` `@desk` `@char_hixxa` `@hixa-face` `@EAR` `@basket`
 > **السلة:** `@basket` **STAGE 3 → STAGE 4** — على الأرض **خلفها بقليل وناحية يمينها التشريحي**
 > **الوراثة:** بعد مراحل رفض كثيرة سابقة — **التسليم:** سلة ممتلئة حتى الحافة
 
@@ -97,7 +97,7 @@ wastebasket, the camera angle or her moment-to-moment expression.
 @hixa-face reinforces only the face of that same single HIXXA.
 It never creates a second person and never drifts between shots.
 
-@ear controls the earpiece completely: its small vintage wired design, its scale, its exact
+@EAR controls the earpiece completely: its small vintage wired design, its scale, its exact
 seating in the ear, its material character, its cable attachment point and thickness, and its
 exact body colour. It does not control anything else in frame.
 
@@ -122,13 +122,13 @@ nail plate. The stains live on skin only.
 EARPIECE
 
 HIXXA wears the same small vintage wired earpiece throughout, seated naturally in the ear
-exactly as in @ear, with one physically continuous wire leaving it and hanging downward under
+exactly as in @EAR, with one physically continuous wire leaving it and hanging downward under
 gravity from the same attachment point on the same side.
 
 Its body keeps the exact non-white colour of the reference under every lighting angle.
 Specular highlights may brighten, but the material colour never reads as white, off-white,
 cream or pale grey, and never becomes modern white plastic. When lighting makes the colour
-ambiguous, take it from @ear rather than from generic earphone priors.
+ambiguous, take it from @EAR rather than from generic earphone priors.
 
 It is never enlarged into headphones, never given a headband or ear cups, and never becomes
 wireless earbuds or a headset. The wire never disappears, duplicates, switches sides, detaches,
@@ -158,7 +158,7 @@ HIXXA is about 165 centimetres and her hand is the scale reference; where a stat
 hand-relative anchor seem to disagree, the anchor wins.
 
 The wastebasket is knee-high beside her seated position, standing on the floor.
-Ball-to-bin scale comes from @basket: each ball is roughly a quarter of the bin's inner width.
+Ball-to-bin scale comes from @basket: each ball is just under a third of the bin's inner width.
 One landscape sheet is a little wider than her two hands set side by side.
 The earpiece is small enough to sit inside the bowl of her ear.
 

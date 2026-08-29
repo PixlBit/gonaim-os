@@ -190,8 +190,8 @@ shots, lenses or angles.
 | القلم الأحمر | 9 سم | بطول سبابتها | ليس قلمًا كامل الطول |
 | قلم الجرافيت | 17 سم | السن يتجاوز أصابعها بعرض كف | — |
 | الفرشاة | 18 سم، سنّها < 6 مم | نهاية اليد عند قاعدة إبهامها | — |
-| كرة الورق | 7 سم | تُغلق كاملة داخل قبضتها | ليست أكبر من القبضة ولا حصاة |
-| سلة المهملات | 30 × 35 سم | حافتها عند ركبتها وهي قاعدة | ليست وعاء مكتب |
+| كرة الورق | 8 سم | ثلاثها متجاورة تعبر قاع السلة | ليست أكبر من القبضة ولا حصاة |
+| سلة المهملات | 25 × 28 سم | حافتها عند ركبتها وهي قاعدة | ليست وعاء مكتب |
 | كوباية الأقلام | 10 × 9 سم | كفّها يطبق عليها | ليست دلوًا ولا سلة |
 | اللمبة | 40 سم | الأباجورة بحجم كفها المقوّس | — |
 | الشنطة `@bag` | 38 سم عرضًا | تغطي وركها | — |
@@ -267,7 +267,7 @@ itself. It does not control the camera angle.
 المرجع يحل مشكلة «الورق كبير جدًا» لأنه يعطي **نسبة مرئية** بدل وصف نصي:
 
 ```text
-Ball-to-bin scale comes from the reference: each ball is roughly a quarter of the bin's inner
+Ball-to-bin scale comes from the reference: each ball is just under a third of the bin's inner
 width, so several sit loose on the base without touching. A ball is never a third or more of
 that width.
 ```
