@@ -283,6 +283,18 @@ The red pencil in her curls is a short stub about as long as her index finger.
 
 المعدل العملي: **ثلاث إلى أربع جمل في فيلم من اثني عشر شوتًا**، موزعة على الشوتات التي تحتاجها فقط.
 
+### الزاوية العلوية المستوية — أخطر حالة
+
+`top-down planimetric` تلغي الأفق والـparallax معًا، فهي **أكثر زاوية تُسقط الصورة إلى `flat 2D`** الذي يمنعه §6G. لا تُترك بلا سطر عمق:
+
+```text
+Even square to the surface, the frame stays dimensional: [tall props] keep visible height and
+cast real contact shadows, her hands and forearms hold rounded volume above the surface plane,
+and [the flat object] lifts a hair at one edge before it settles.
+```
+
+المفتاح أن العمق يأتي من **ارتفاع الأجسام وظلال اتصالها**، لا من المنظور — لأن المنظور مُلغى في هذه الزاوية أصلًا.
+
 ---
 
 ## 6D. قانون المخلوق المرسوم
@@ -1012,6 +1024,7 @@ unpainted nails, and every object keeps the size given above.
 | B08 | `beats/B08-BATTERY-DEATH.md` | 10s / 5 شوتات | انقطاع الموسيقى بموت البطارية — سبب الهياج في B06 |
 | B09 | `beats/B09-PHONE-REJECTION-AND-COLLAPSE.md` | 12s / 7 شوتات | نزع السماعتين ورمي التليفون والانهيار — السلة STAGE 4 |
 | B10 | `beats/B10-TIMELAPSE-AND-HERO-HOLD.md` | 10s / 6 شوتات | تايم لابس الرفض حتى الامتلاء الكامل، والكادر البطولي — الفريم الأول لبرومبت الحلم |
+| B11 | `beats/B11-POUR-STEAM-PAGE.md` | 8s / 3 شوتات | طقس البداية: صبّ وبخار وورقة نظيفة |
 
 ### سجل التاقات
 

@@ -39,6 +39,7 @@
 | B08 | [BATTERY DEATH](beats/B08-BATTERY-DEATH.md) | 10s / 5 شوتات | `@ear` `@basket` `@desk` | هياج الرسم، تحذير البطارية، موت التليفون، والصمت |
 | B09 | [PHONE REJECTION AND COLLAPSE](beats/B09-PHONE-REJECTION-AND-COLLAPSE.md) | 12s / 7 شوتات | `@ear` `@basket` `@bag` | نزع السماعتين، رمي التليفون، والرأس على المكتب |
 | B10 | [TIMELAPSE AND HERO HOLD](beats/B10-TIMELAPSE-AND-HERO-HOLD.md) | 10s / 6 شوتات | `@basket` `@ear` `@bag` | تايم لابس رفض، السلة تكتمل، والكادر البطولي |
+| B11 | [POUR, STEAM, FRESH PAGE](beats/B11-POUR-STEAM-PAGE.md) | 8s / 3 شوتات | `@desk` `@char_hixxa` | طقس هادئ: صبّ، بخار، وورقة نظيفة في المنتصف |
 
 الأفلام قابلة للتوليد منفردة، ومرتبة زمنيًا كقوس واحد إذا وُلِّدت بالترتيب:
 
