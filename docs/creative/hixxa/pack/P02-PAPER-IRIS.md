@@ -54,7 +54,7 @@ Construct the starting state from the assigned Elements and the explicit continu
 REFERENCE ASSIGNMENTS
 ################################################################
 
-Use @char_hixxa and @hixa-face for one exact HIXXA and one exact face. Use @loc_location-room-1 for room topology and stable lighting, @desk for the solid worn desk and its edge scratches, @basket for the exact tipped empty mesh basket beside HIXXA's anatomical RIGHT side, @bag for the fully closed bag with the dead phone resting on top, and @EAR only for the inert disconnected black earbud assembly on the desk.
+Use @char_hixxa and @hixa-face for one exact HIXXA and one exact face. Use @loc_location-room-1 for room topology and stable lighting, @desk for the solid worn desk and its edge scratches, @basket for the exact tipped empty mesh basket beside HIXXA's anatomical RIGHT side, @bag for the fully closed bag with the dead phone resting on top (@bag is the only authority for the bag itself — its shape, leather grain, stitching, flap, strap attachment, buckle and hardware; @loc_location-room-1 supplies only where it lies, and where the two disagree or the room reference is too soft to read a detail, @bag wins. Never simplify it into a generic bag shape), and @EAR only for the inert disconnected black earbud assembly on the desk.
 
 No physical fox, cat, dragon, weapon, tablet or outdoor environment appears.
 

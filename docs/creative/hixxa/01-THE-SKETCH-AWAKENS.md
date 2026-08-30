@@ -23,7 +23,8 @@ REAL-TIME MOTION — NO SLOW MOTION — NO SPEED RAMPS — NO VISUAL TRANSITIONS
 REFERENCE ASSIGNMENTS
 
 @loc_location-room-1 controls the exact room architecture, permanent geography,
-materials and the real window beside the desk. It does not control the camera angle.
+materials and the real window beside the desk. It does not control the camera angle, and it
+does not control the bag object, which belongs entirely to @bag.
 
 @char_hixxa controls HIXXA's exact single full-body identity, skin tone,
 body proportions, curly hairstyle and established wardrobe.
@@ -41,7 +42,18 @@ It rests unused on the desk in this film and never replaces the charcoal pencil.
 @EAR controls the exact wired earbud set: two small in-ear buds and one continuous cable.
 No wireless pods, no over-ear headphones, no second cable.
 
-@bag controls the exact leather satchel identity, size, strap and buckle.
+@bag controls the bag COMPLETELY and is its only authority: the exact shape and proportions,
+the leather grain and colour, the stitching along every seam, the flap, the strap and the point
+where the strap meets the body, the buckle and every piece of metal hardware, the edge wear and
+the way the leather creases where it has been carried.
+
+@loc_location-room-1 also shows a bag lying on the bed, but that reference supplies only WHERE
+it lies and how the blanket sits under it. The object itself always comes from @bag. Where the
+two disagree, or where the room reference is too small, too soft or too low in detail to read a
+feature, @bag WINS: take the feature from @bag, never from the room reference, never invented
+and never averaged between the two. It is never simplified into a generic featureless bag
+shape, and its small details are never dropped because it sits in the background.
+
 It stays settled on the bed for the whole film and never moves.
 
 @fox controls the exact fox identity, proportions, tail mass and face markings.

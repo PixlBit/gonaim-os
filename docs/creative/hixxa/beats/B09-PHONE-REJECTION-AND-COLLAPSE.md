@@ -100,7 +100,8 @@ REFERENCE ASSIGNMENTS
 
 @loc_location-room-1 controls the exact room topology, furniture layout, the desk-to-bed
 geography, wall and floor materials, permanent light and the floor position of the wastebasket.
-It does not control the camera angle or the shot size.
+It does not control the camera angle or the shot size, and it does not control the bag object,
+which belongs entirely to @bag.
 
 @desk controls the exact desk, chair and work surface with its existing prop layout.
 It does not add or reposition any desk prop.
@@ -116,8 +117,20 @@ It never creates a second person and never drifts between shots.
 control, the visible repair-tape section, the cable and the 3.5mm plug, with their exact scale,
 material character and colour. It does not control anything else in frame.
 
-@bag controls the exact open bag on the bed: its identity, size, leather, strap and the shape
-of its opening. It stays where it lies and is never moved, closed or duplicated.
+@bag controls the bag COMPLETELY and is its only authority: the exact shape and proportions,
+the leather grain and colour, the stitching along every seam, the flap, the strap and the point
+where the strap meets the body, the buckle and every piece of metal hardware, the edge wear and
+the way the leather creases where it has been carried.
+
+@loc_location-room-1 also shows a bag lying on the bed, but that reference supplies only WHERE
+it lies and how the blanket sits under it. The object itself always comes from @bag. Where the
+two disagree, or where the room reference is too small, too soft or too low in detail to read a
+feature, @bag WINS: take the feature from @bag, never from the room reference, never invented
+and never averaged between the two. It is never simplified into a generic featureless bag
+shape, and its small details are never dropped because it sits in the background.
+
+In this clip it lies OPEN on the bed with its opening facing the room. It stays where it lies
+and is never moved, closed or duplicated.
 
 @basket controls the exact metal mesh wastebasket: the wire weave, rolled rim, solid base and
 the way crumpled paper sits inside it. The reference shows four fill levels side by side; this

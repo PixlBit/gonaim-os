@@ -117,7 +117,8 @@ It never creates a second person and never changes the incoming expression befor
 
 @loc_location-room-1 controls the attic bedroom studio topology, window, shelf, bed, chair,
 floor, desk-to-bed geography, burgundy blanket, furniture relationships, materials and warm
-practical light. It does not control the camera angle or the shot size.
+practical light. It does not control the camera angle, the shot size, or the bag object, which
+belongs entirely to @bag.
 
 @desk controls the exact desk design, dimensions, worn finish, scratches, drawing surface and
 tool layout.
@@ -135,8 +136,20 @@ through the inline control and the repair-tape section, then continue as one mai
 free 3.5mm plug resting on the desk, disconnected. The earbuds emit no light and stay worn
 through the final pose.
 
-@bag controls the exact fully CLOSED bag on the burgundy blanket. It stays closed, stationary
-and never shows an opening or an interior.
+@bag controls the bag COMPLETELY and is its only authority: the exact shape and proportions,
+the leather grain and colour, the stitching along every seam, the flap, the strap and the point
+where the strap meets the body, the buckle and every piece of metal hardware, the edge wear and
+the way the leather creases where it has been carried.
+
+@loc_location-room-1 also shows a bag lying on the bed, but that reference supplies only WHERE
+it lies and how the blanket sits under it. The object itself always comes from @bag. Where the
+two disagree, or where the room reference is too small, too soft or too low in detail to read a
+feature, @bag WINS: take the feature from @bag, never from the room reference, never invented
+and never averaged between the two. It is never simplified into a generic featureless bag
+shape, and its small details are never dropped because it sits in the background.
+
+In this clip it is fully CLOSED on the burgundy blanket. It stays closed, stationary, and never
+shows an opening or an interior.
 
 No inactive reference influences the generation. No new phone, bag, basket, person, drawing
 tool or earbud appears.

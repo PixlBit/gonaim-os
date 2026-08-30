@@ -77,7 +77,7 @@ REFERENCE ASSIGNMENTS
 
 Use @char_hixxa for one exact HIXXA: identity, proportions, skin tone, sculpted curly high puff, wardrobe and anatomical left/right. Use @hixa-face only to reinforce the same single face.
 
-Use @loc_location-room-1 for the exact attic bedroom/studio topology, window, shelf, bed, chair, floor, desk-to-bed geography, burgundy blanket, lighting and material relationships. Use @desk for the exact worn desk and established tool layout. Use @basket for one exact mesh basket fixed beside HIXXA's anatomical RIGHT side. Use @bag for the exact fully closed bag on the bed. Use @EAR only for the two small old black wired earbuds and complete disconnected cable assembly lying inert on the desk; neither earbud is worn.
+Use @loc_location-room-1 for the exact attic bedroom/studio topology, window, shelf, bed, chair, floor, desk-to-bed geography, burgundy blanket, lighting and material relationships. Use @desk for the exact worn desk and established tool layout. Use @basket for one exact mesh basket fixed beside HIXXA's anatomical RIGHT side. Use @bag for the exact fully closed bag on the bed. @bag is the only authority for the bag itself — its shape, leather grain, stitching, flap, strap attachment, buckle and hardware; @loc_location-room-1 supplies only where it lies, and where the two disagree or the room reference is too soft to read a detail, @bag wins. Never simplify it into a generic bag shape. Use @EAR only for the two small old black wired earbuds and complete disconnected cable assembly lying inert on the desk; neither earbud is worn.
 
 No inactive character, animal, weapon, tablet or outdoor reference influences this generation.
 
