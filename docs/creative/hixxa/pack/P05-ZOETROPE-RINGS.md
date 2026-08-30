@@ -146,45 +146,75 @@ Audio: layered paper-wheel rotation, panel clicks, close ball passes, falling wi
 ################################################################
 MOOD AND RENDER CONTRACT
 ################################################################
+A hand-painted 2D animated film. Every frame reads as an illustration painted by hand over
+drawn construction, and never as a 3D render.
 
-Premium stylized 3D animation finished as a moving hand-painted illustration. The world,
-characters, props and camera are fully dimensional — real perspective, depth, spatial parallax,
-sculpted anatomy and cinematic lens behavior — but the final image never reads as conventional
-CGI.
+Form is DRAWN, not rendered. Faces, hands and bodies carry real construction, correct
+perspective and believable volume, but that volume is built from painted value blocks and
+deliberately designed shadow shapes — never from a lighting simulation. Skin is painted colour
+in clear tonal steps with brush-defined edges: no subsurface glow, no specular highlight on the
+nose, lips or forehead, no rendered sheen anywhere on skin.
 
-Faces stay dimensional with modeled cheekbones, brows, nose, lips and jaw planes, shaded in
-deliberate planes with painted tonal variation rather than smooth photoreal skin. Hair is built
-from large readable sculpted locks, not individual strands. Shading is hybrid: dimensional
-lighting plus deliberately designed graphic shadow shapes, with readable light planes and
-selective hard shadow boundaries — never flat two-tone cel, never glossy PBR.
+Hair is painted as shaped masses and curl clusters with a strong graphic silhouette and a few
+drawn accent strands — never individually rendered strands, never volumetric hair. Brows,
+freckles, fabric pattern, wall plaster and wood grain are painted marks sitting on the surface
+as brushwork.
 
-The painting exists ON the objects. Do not lay a paper grain, watercolor wash or canvas filter
+Shadows are designed shapes with readable edges, not soft raytraced falloff. Light is warm and
+motivated, but painted in rather than simulated. Depth comes from staging, overlap, scale and
+atmospheric value — never from rendered depth of field; backgrounds may soften, but as painted
+softness, never as lens bokeh.
+
+The painting exists ON the objects. Do not lay a paper grain, watercolour wash or canvas filter
 over the image.
 
-There is no uniform cartoon outline. Silhouettes read through value separation, painted edges
-and dimensional lighting, with only selective drawn accents and dark graphic creases where
-naturally motivated.
+There is no uniform cartoon outline. Silhouettes read through value separation and painted
+edges, with selective dark graphic creases where naturally motivated.
 
 Skin, curls, plaid cotton, canvas apron, cream paper panels, graphite, ink and restrained
-test colour remain materially distinct and physically dimensional.
+test colour each keep their own distinct painted character.
 
-CRITICAL DISTINCTION: the world is dimensional, the drawings are not. Every fox, cat and dragon
-study exists only as flat ink and graphite bonded to a dimensional page — no thickness, no
+CRITICAL DISTINCTION: the room is painted with depth and the drawings are not. Every fox, cat and dragon
+study exists only as flat ink and graphite bonded to the page — no thickness, no
 volume, no lift, no shadow of its own — and none of them ever animates, detaches or becomes a
 creature.
 
-Maintain stable facial volume, eye size, curl mass, body proportions, wardrobe construction and
-material response across every lens and angle.
+Maintain stable facial construction, eye size, curl mass, body proportions, wardrobe and
+material character across every lens and angle.
 
 Animation is authored pose to pose: strong silhouettes, clear anticipation, physical weight,
 clean arcs and expressive facial acting — intentionally animated, never motion-captured or
-mechanically interpolated. Fast actions may carry controlled pose compression, natural
-directional blur and brief animation deformation; these are drawing craft inside the shot and
-are never a speed ramp, slow motion, a blur transition across a cut, or a morph of any object.
+mechanically interpolated.
 
-Avoid photorealism, glossy or plastic CGI, waxy skin, game-render materials, flat 2D or cel
-art, uniform outlines, watercolor or canvas overlays, muddy colour, airbrushed softness,
-excessive bloom, unmotivated neon rim light and AI-smoothed faces.
+ABSOLUTELY NOT 3D: no CGI, no Pixar or DreamWorks render look, no Unreal or Blender render, no
+PBR materials, no subsurface scattering, no specular skin, no rendered hair strands, no
+depth-of-field bokeh, no photorealism, no waxy or plastic skin, no AI-smoothed faces. Also not
+flat two-tone cel anime, no uniform black outlines, no watercolour or canvas overlay, no muddy
+colour, no airbrushed softness, no excessive bloom and no unmotivated neon rim light.
+
+################################################################
+PHYSICAL BEHAVIOUR CONTRACT
+################################################################
+
+Everything in frame has mass. Objects resist, drag, settle and take time to stop; nothing
+slides weightlessly or snaps to a pose. Contact is literal: fingers close in sequence and grip
+with real pressure, feet transfer weight, and anything resting on a surface stays in contact
+with it and carries its own painted contact shadow.
+
+Motion carries overlap and follow-through. What is pulled trails a beat behind the hand that
+pulls it; cloth, curls, cable and loose contents lag and resettle late rather than moving
+locked to the body.
+
+Materials behave as themselves — each with its own stiffness, weight and sound.
+
+Depth is real and readable: distance across a space reads as distance, and the camera never
+cheats an object closer than it is.
+
+Repeated objects are individuated, never cloned: each keeps its own creases, orientation and
+wear.
+
+Emotion is held rather than performed: tension stays in the jaw, shoulders and tempo, and does
+not release between actions.
 
 ################################################################
 OUTGOING CONTINUITY

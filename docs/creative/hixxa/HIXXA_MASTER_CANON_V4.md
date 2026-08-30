@@ -545,114 +545,70 @@ instruction is the absence of gaps, not a count: fill it until nothing more woul
 ### TIER 1 — FULL MASTER VISUAL STYLE
 
 ```text
-################################################################
-MASTER VISUAL STYLE — HAND-PAINTED STYLIZED 3D
-################################################################
+MASTER VISUAL STYLE — HAND-PAINTED 2D
 
-Premium stylized 3D character animation rendered through a hand-painted illustrative finish.
-
-The underlying world, characters, props and camera are fully dimensional and volumetric 3D,
-with convincing perspective, depth, spatial parallax, sculpted anatomy and cinematic lens
-behavior; however, the final image must read as a moving hand-painted illustration rather than
-conventional CGI.
+A hand-painted 2D animated film. Every frame reads as an illustration painted by hand over
+drawn construction — brush, ink and pencil over real draughtsmanship — and never as a 3D
+render. The world has genuine perspective, staging and depth, but that depth is DRAWN and
+PAINTED, never simulated.
 
 CHARACTER RENDERING
-
-Characters use strongly sculpted, graphic forms with elegant stylized proportions and
-controlled anatomical exaggeration.
-
-Faces are dimensional and expressive, with clearly modeled cheekbones, brows, noses, lips and
-jaw planes. Eyes may be slightly amplified for expressive readability while remaining grounded
-and mature, never generic anime.
-
-Use deliberate planar facial shading, painted tonal variation and selective illustrated detail
-instead of smooth photorealistic skin rendering.
-
-Skin must feel hand-painted over dimensional form: subtle brush-shaped tonal breakup,
-controlled warm/cool variation, crisp shadow shapes and selectively simplified highlights.
+Characters are drawn with real construction: correct anatomy, foreshortening that holds, and
+clear believable volume in the head, hands and body. That volume is built entirely from
+painted value — blocks of tone, deliberately designed shadow shapes and crisp painted edges —
+not from a lighting model. Faces carry modelled cheekbones, brows, nose, lips and jaw, but
+they are painted in planes with brush-shaped tonal breakup and controlled warm/cool variation.
+Skin is painted colour in clear tonal steps. There is NO subsurface glow, NO specular
+highlight on the nose, lips or forehead, and NO rendered sheen anywhere on skin. Eyes may be
+slightly amplified for readability while staying grounded and mature. Brows and lashes are
+bold graphic painted shapes; freckles are painted marks.
 
 HAIR
-
-Hair is constructed from large, readable sculpted locks and graphic clumps with dimensional
-volume. Individual strands are secondary.
-
-Avoid photorealistic hair simulation, fuzzy strand rendering or perfectly smooth plastic hair.
+Hair is painted as shaped masses and curl clusters with a strong graphic silhouette, plus a few
+drawn accent strands and escaped curls at the edge. Never individually rendered strands, never
+volumetric or simulated hair, never smooth plastic hair.
 
 SURFACE TREATMENT
+Every surface carries a painted finish that belongs to the object: painterly colour
+transitions, selective brush texture, graphic value grouping and restrained irregularity.
+Fabric pattern, wall plaster, wood grain, paper fibre and metal all read as painted marks
+sitting ON the form. The painting exists ON the objects — never lay a paper grain, watercolour
+wash or canvas filter across the whole image.
 
-Every 3D surface receives a controlled hand-painted finish.
+LIGHT AND SHADOW
+Light is warm, motivated and directional, but it is PAINTED IN, not simulated. Shadows are
+designed shapes with readable edges and selective hard boundaries — not soft raytraced
+falloff, not ambient occlusion. Contact shadows are painted where objects meet surfaces so
+everything sits on the ground.
 
-Use painterly color transitions, selective brush-like texture, graphic value grouping,
-restrained surface irregularity and illustrated material definition while preserving clean
-dimensional form.
+DEPTH
+Depth comes from staging, overlap, scale, edge control and atmospheric value. Backgrounds may
+soften, but as painted softness and reduced contrast — never as lens bokeh, never as rendered
+depth of field.
 
-The painting exists ON the objects; do not place a paper texture, watercolor wash or canvas
-filter over the entire image.
+EDGES
+There is no uniform cartoon outline. Silhouettes read through value separation and painted
+edges, with only selective dark graphic creases where naturally motivated.
 
-SHADING
+ANIMATION
+Authored pose to pose: strong silhouettes, clear anticipation, physical weight, clean arcs and
+expressive facial acting. Intentionally animated, never motion-captured, never mechanically
+interpolated. Fast actions may carry controlled pose compression, natural directional blur and
+brief animation deformation; these are drawing craft inside the shot, never a speed ramp, slow
+motion, a blur transition across a cut, or a morph.
 
-Use hybrid illustrative shading: dimensional 3D lighting combined with deliberately designed
-graphic shadow shapes.
+CONSISTENCY
+Maintain stable facial construction, eye size, curl mass, body proportions, wardrobe and
+material character across every lens and angle.
 
-Favor readable light planes, selective hard shadow boundaries and restrained soft transitions.
-
-Forms must remain sculptural and three-dimensional while avoiding physically perfect CGI
-shading.
-
-Do not use flat two-tone cel shading. Do not use glossy PBR realism.
-
-LINEWORK
-
-No uniform cartoon outline around characters.
-
-Allow only subtle selective drawn accents, dark graphic creases, painted edge definition and
-occasional hand-inked detail where naturally motivated.
-
-Most silhouette definition must come from value separation, painted edges and dimensional
-lighting.
-
-ENVIRONMENT
-
-Environments remain fully dimensional with real perspective, depth and camera parallax but
-receive the same illustrated hand-painted treatment as the characters.
-
-Background detail may simplify progressively with distance, producing the feeling of animated
-production concept art rather than a photorealistic 3D set.
-
-CINEMATIC IMAGE
-
-Feature-animation cinematography with intentional focal hierarchy, atmospheric depth,
-controlled depth of field, strong foreground / midground / background separation and carefully
-shaped practical lighting.
-
-Preserve rich dimensionality without revealing a conventional CG-render aesthetic.
-
-ANIMATION FEEL
-
-Full-body dimensional character animation with confident pose-to-pose staging, strong
-silhouettes, clear anticipation, physical weight, clean arcs and expressive facial acting.
-
-Motion should feel intentionally animated rather than motion-captured or mechanically
-interpolated.
-
-Fast actions may use controlled pose compression, directional motion blur, brief deformation
-and strong readable impact poses.
-
-Camera movement exists naturally inside the dimensional environment with true parallax and
-perspective change.
-
-The animation remains fluid and cinematic while preserving authored poses and graphic clarity.
-
-################################################################
-ABSOLUTELY AVOID
-################################################################
-
-photorealism, live-action appearance, conventional glossy CGI, plastic skin, wax skin,
-PBR showcase rendering, Unreal Engine look, Blender-render look, hyper-detailed pores,
-photorealistic hair strands, generic Pixar-like smoothness, flat 2D anime, flat cel-shading,
-uniform black cartoon outlines, watercolor, gouache wash, paper-grain overlay, canvas texture
-overlay, fuzzy painterly edges, muddy colors, overly soft airbrushed shading, excessive bloom,
-neon rim light everywhere, AI-smoothed faces, rubbery motion, motion-capture stiffness.
+ABSOLUTELY NOT 3D
+No CGI, no 3D animation, no Pixar or DreamWorks render look, no Unreal or Blender render, no
+PBR materials, no subsurface scattering, no specular skin, no rendered hair strands, no
+ambient occlusion, no raytraced shadows, no depth-of-field bokeh, no photorealism, no waxy or
+plastic skin, no hyper-detailed pores, no AI-smoothed faces.
+Also not flat two-tone cel anime, no uniform black outlines, no watercolour or gouache wash
+overlay, no canvas texture overlay, no fuzzy painterly edges, no muddy colour, no airbrushed
+softness, no excessive bloom, no unmotivated neon rim light, no rubbery motion.
 ```
 
 ---
@@ -662,33 +618,53 @@ neon rim light everywhere, AI-smoothed faces, rubbery motion, motion-capture sti
 ```text
 MOOD AND RENDER CONTRACT
 
-Premium stylized 3D animation finished as a moving hand-painted illustration. The world,
-characters, props and camera are fully dimensional — real perspective, depth, spatial parallax,
-sculpted anatomy and cinematic lens behavior — but the final image never reads as conventional
-CGI.
+A hand-painted 2D animated film. Every frame reads as an illustration painted by hand over
+drawn construction, and never as a 3D render.
 
-Faces stay dimensional with modeled cheekbones, brows, nose, lips and jaw planes, shaded in
-deliberate planes with painted tonal variation rather than smooth photoreal skin. Hair is built
-from large readable sculpted locks, not individual strands. Shading is hybrid: dimensional
-lighting plus deliberately designed graphic shadow shapes, with readable light planes and
-selective hard shadow boundaries — never flat two-tone cel, never glossy PBR.
+Form is DRAWN, not rendered. Faces, hands and bodies carry real construction, correct
+perspective and believable volume, but that volume is built from painted value blocks and
+deliberately designed shadow shapes — never from a lighting simulation. Skin is painted colour
+in clear tonal steps with brush-defined edges: no subsurface glow, no specular highlight on the
+nose, lips or forehead, no rendered sheen anywhere on skin.
 
-The painting exists ON the objects. Do not lay a paper grain, watercolor wash or canvas filter
+Hair is painted as shaped masses and curl clusters with a strong graphic silhouette and a few
+drawn accent strands — never individually rendered strands, never volumetric hair. Brows,
+freckles, fabric pattern, wall plaster and wood grain are painted marks sitting on the surface
+as brushwork.
+
+Shadows are designed shapes with readable edges, not soft raytraced falloff. Light is warm and
+motivated, but painted in rather than simulated. Depth comes from staging, overlap, scale and
+atmospheric value — never from rendered depth of field; backgrounds may soften, but as painted
+softness, never as lens bokeh.
+
+The painting exists ON the objects. Do not lay a paper grain, watercolour wash or canvas filter
 over the image.
 
-There is no uniform cartoon outline. Silhouettes read through value separation, painted edges
-and dimensional lighting, with only selective drawn accents and dark graphic creases where
-naturally motivated.
+There is no uniform cartoon outline. Silhouettes read through value separation and painted
+edges, with selective dark graphic creases where naturally motivated.
 
-[SCENE MATERIAL LIST] remain materially distinct and physically dimensional.
+Skin, curls, plaid cotton, canvas apron, desk wood, cream paper fibre, graphite, woven wire
+mesh and the room's painted plaster each keep their own distinct painted character.
+Each crumpled ball is painted as a solid object with faceted relief, its own fold pattern
+and its own contact shadow; balls resting together never repeat each other's creases.
+
+CRITICAL DISTINCTION: the room is painted with depth and the drawings are not. Every fox, cat and dragon
+study exists only as flat ink and graphite bonded to the page — no thickness, no
+volume, no lift, no shadow of its own — and none of them ever animates, detaches or becomes a
+creature.
+
+Maintain stable facial construction, eye size, curl mass, body proportions, wardrobe and
+material character across every lens and angle.
 
 Animation is authored pose to pose: strong silhouettes, clear anticipation, physical weight,
 clean arcs and expressive facial acting — intentionally animated, never motion-captured or
 mechanically interpolated.
 
-Avoid photorealism, glossy or plastic CGI, waxy skin, game-render materials, flat 2D or cel
-art, uniform outlines, watercolor or canvas overlays, muddy colour, airbrushed softness,
-excessive bloom, unmotivated neon rim light and AI-smoothed faces.
+ABSOLUTELY NOT 3D: no CGI, no Pixar or DreamWorks render look, no Unreal or Blender render, no
+PBR materials, no subsurface scattering, no specular skin, no rendered hair strands, no
+depth-of-field bokeh, no photorealism, no waxy or plastic skin, no AI-smoothed faces. Also not
+flat two-tone cel anime, no uniform black outlines, no watercolour or canvas overlay, no muddy
+colour, no airbrushed softness, no excessive bloom and no unmotivated neon rim light.
 ```
 
 ---
@@ -696,10 +672,11 @@ excessive bloom, unmotivated neon rim light and AI-smoothed faces.
 ### TIER 3 — SHORT LOCK
 
 ```text
-Preserve the established HIXXA look: cinematic sculptural 3D animation with true volumetric
-form, depth, parallax and spatial lighting, finished entirely with controlled hand-painted
-digital surfaces and softly illustrated edges. The painting is on the objects, not an overlay.
-No uniform outline, no flat 2D or cel art, no glossy PBR, plastic CGI or photorealism.
+Preserve the established HIXXA look: a hand-painted 2D animated film with drawn form, real
+perspective and painted depth. Volume comes from painted value blocks and designed shadow
+shapes, never from a lighting simulation. No CGI, no 3D render, no subsurface or specular
+skin, no rendered hair strands, no depth-of-field bokeh — and equally no flat cel anime and no
+uniform outlines.
 ```
 
 ---
@@ -737,6 +714,97 @@ never slow motion, never a blur transition across a cut, and never a morph of an
 - عبارة `no morph` تبقى صحيحة، وتُقرأ الآن كـ**تحول جسم**، لا كـdeformation لحظي في إطار حركة.
 
 ---
+
+
+---
+
+## 6H. عقد السلوك الفيزيائي
+
+مستخرج من برومبت `B12` — وهو برومبت لم يحمل بلوك ستايل واحدًا، لكن كل سطر فيه تقريبًا كان يصف
+**كيف تتصرف الأشياء**. هذه بصمته، وهي معيار مستقل عن §6G.
+
+**الفرق بين القفلين — ولا يغني أحدهما عن الآخر:**
+
+| | يحكم |
+|---|---|
+| **§6G — MOOD AND RENDER CONTRACT** | **شكل الصورة**: مرسومة يدويًا، ثنائية الأبعاد، بلا ريندر |
+| **§6H — PHYSICAL BEHAVIOUR CONTRACT** | **كيف تتحرك الأشياء**: وزن، احتكاك، تأخير، تلامس، عمق |
+
+`§6G` بلا `§6H` يعطي لوحة جميلة بحركة بلا وزن؛ و`§6H` بلا `§6G` يعطي حركة مقنعة بمظهر CGI.
+
+```text
+PHYSICAL BEHAVIOUR CONTRACT
+
+Everything in frame has mass. Objects resist, drag, settle and take time to stop; nothing
+slides weightlessly or snaps to a pose. Contact is literal: fingers close in sequence and grip
+with real pressure, feet transfer weight, and anything resting on a surface stays in contact
+with it and carries its own painted contact shadow.
+
+Motion carries overlap and follow-through. What is pulled trails a beat behind the hand that
+pulls it; cloth, curls, cable and loose contents lag and resettle late rather than moving
+locked to the body.
+
+Materials behave as themselves — woven wire, metal, wood, paper fibre, leather, cotton, skin —
+each with its own stiffness, weight and sound.
+
+Depth is real and readable: distance across a space reads as distance, and the camera never
+cheats an object closer than it is.
+
+Repeated objects are individuated, never cloned: each keeps its own creases, orientation and
+wear.
+
+Emotion is held rather than performed: tension stays in the jaw, shoulders and tempo, and does
+not release between actions.
+```
+
+**قاعدة الاستعمال:** يُكتب مرة واحدة تحت `MOOD AND RENDER CONTRACT` مباشرة، وتُحذف مقابله سطور
+الفيزياء المبعثرة داخل الشوتات (الوزن، التأخير، التلامس) — فالنتيجة برومبت **أقصر** لا أطول
+(§15، §40A).
+
+---
+
+## 6I. ما تعلّمناه من طريقة كتابة `B12`
+
+طُلب دراسة **كيف كُتب** البرومبت لا مضمونه فقط. هذه العناصر أُضيفت للقالب، والباقي رُفض بسبب.
+
+### ما اعتُمد
+
+**1. القوس المعلن في سطرين — `ABSOLUTE START STATE` / `ABSOLUTE ENDPOINT`**
+
+آخر ما يقرؤه النموذج، وأقوى موضع في البرومبت. يلخّص الكليب كله في جملتين فيبقى القوس مقروءًا
+حتى لو تشتّت الوسط:
+
+```text
+ABSOLUTE START STATE: [حالة فريم صفر في سطر واحد]
+ABSOLUTE ENDPOINT: [حالة الفريم الأخير في سطر واحد]
+```
+
+**2. مفردات القطع الثلاث بدل واحدة**
+
+كنا نكتب `HARD CUT` دائمًا. والتفريق يعطي النموذج نية القطع لا مجرد موضعه:
+
+| الصيغة | متى |
+|---|---|
+| `ACTION CUT ON [حدث]` | القطع على فعل جارٍ يكمل عبر القطع |
+| `MATCH CUT ON [عنصر]` | العنصر نفسه في الكادرين، فتُقرأ الحركة كاستمرار |
+| `HARD CUT ON [حدث]` | قطع حاسم على تلامس أو ارتطام أو نظرة |
+
+**3. بلوك الوراثة مرة واحدة بدل تكراره في كل شوت**
+
+```text
+Each incoming shot inherits from the preceding endpoint: her exact body phase, hand state,
+[object] position, orientation and velocity, and the visible arrangement of [contents].
+```
+
+### ما رُفض ولماذا
+
+| الأسلوب | لماذا لا |
+|---|---|
+| قفل واحد مكرر في خمسة بلوكات | يكسر §15 و§40A — التكرار يبعثر الانتباه ولا يزيد الالتزام |
+| `CONTINUITY LOCK` + `FINAL STATE LOCK` + `ABSOLUTE PRIORITIES` معًا | ثلاثة بلوكات تقول الشيء نفسه؛ يكفي `OUTGOING CONTINUITY` + القوس المعلن |
+| شوتات بلا نوافذ زمنية | يكسر §6F — بلا نوافذ لا يوجد تحقق ولا توزيع حمل |
+| `Use @X as the strict first-frame` لعنصر مرجعي | خلط مسارات: العنصر ليس صورة فريم أول (§5) |
+| تعداد بالنقاط لصفات محفوظة | النثر المتصل أقوى من قوائم النقاط في وصف الفعل |
 
 ## 7. قفل القصة الحالي في سطر واحد
 
@@ -4067,7 +4135,7 @@ Think of the result as **painted sculptural animation**:
 Use this block in image-generation masters, location references, character sheets and any Seedance generation in which the active references do not already lock the style strongly enough:
 
 ```text
-HIXXA MASTER VISUAL STYLE — PAINTED SCULPTURAL 3D ANIMATION
+HIXXA MASTER VISUAL STYLE — HAND-PAINTED 2D ANIMATION
 
 A cinematic stylized 3D animated world with fully volumetric characters, props and environments, but every surface is finished like a carefully hand-painted digital illustration. Preserve real three-dimensional depth, rounded sculptural forms, convincing perspective, spatial occlusion, contact shadows and strong camera parallax. Model form through broad painterly color transitions and soft cinematic shadow gradients rather than hard cel bands or universal ink outlines. Edges remain clean and controlled but gently illustrated, with selective hand-drawn accents only where structurally useful. Materials feel tactile, crafted and painted: fabric, worn wood, paper, graphite, metal and plaster retain their physical identity without becoming photoreal or PBR. Use rich controlled color, dimensional lighting, expressive animation design and a colorful, ingenious, slightly manic energy. The image should feel like concept art brought to life as a finished 3D animated film—not a flat drawing and not a conventional CGI render.
 
