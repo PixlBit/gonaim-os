@@ -38,6 +38,7 @@
 | B07 | [THE PAPER COLUMNS AND THE LOST PENCIL](beats/B07-CHASM-AND-PAPER-COLUMNS.md) | 8s / 4 شوتات | `@char_hixxa` `@hixa-face` | العبور من الشق، القلم يطير، والسقوط لفضاء مفتوح |
 | B08 | [BATTERY DEATH](beats/B08-BATTERY-DEATH.md) | 10s / 5 شوتات | `@EAR` `@basket` `@desk` | هياج الرسم، تحذير البطارية، موت التليفون، والصمت |
 | B09 | [PHONE REJECTION AND COLLAPSE](beats/B09-PHONE-REJECTION-AND-COLLAPSE.md) | 12s / 7 شوتات | `@EAR` `@basket` `@bag` | نزع السماعتين، رمي التليفون، والرأس على المكتب |
+| B09·V2 | [PHONE REJECTION — HIGH-ANGLE FINAL](beats/B09-V2-ANGLED-FINAL.md) | 12s / 7 شوتات | `@EAR` `@basket` `@bag` | نفس المقطع، والشوت الأخير وايد **بزاوية عالية 45°** بدل مستوى النظر |
 | B10 | [TIMELAPSE AND HERO HOLD](beats/B10-TIMELAPSE-AND-HERO-HOLD.md) | 10s / 6 شوتات | `@basket` `@EAR` `@bag` | تايم لابس رفض، السلة تكتمل، والكادر البطولي |
 | B11 | [POUR, STEAM, FRESH PAGE](beats/B11-POUR-STEAM-PAGE.md) | 8s / 3 شوتات | `@desk` `@char_hixxa` | طقس هادئ: صبّ، بخار، وورقة نظيفة في المنتصف |
 | B12 | [BASKET RELOCATION PRELUDE](beats/B12-BASKET-RELOCATION-PRELUDE.md) | 10s / 5 شوتات | `@basket` `@loc_location-room-1` `@EAR` | تسحب السلة المليانة من الزاوية لموضع الرمي — تمهيد `B06` مباشرة |

@@ -1142,6 +1142,7 @@ unpainted nails, and every object keeps the size given above.
 | B07 | `beats/B07-CHASM-AND-PAPER-COLUMNS.md` | 8s / 4 شوتات | العبور بين العمودين، وفقد القلم الأحمر، والسقوط لفضاء مفتوح |
 | B08 | `beats/B08-BATTERY-DEATH.md` | 10s / 5 شوتات | انقطاع الموسيقى بموت البطارية — سبب الهياج في B06 |
 | B09 | `beats/B09-PHONE-REJECTION-AND-COLLAPSE.md` | 12s / 7 شوتات | نزع السماعتين ورمي التليفون والانهيار — السلة STAGE 4 |
+| B09·V2 | `beats/B09-V2-ANGLED-FINAL.md` | 12s / 7 شوتات | نفس المقطع بنهاية وايد بزاوية عالية 45° — مولَّد آليًا من `B09`، الفرق الشوت الأخير وحده |
 | B10 | `beats/B10-TIMELAPSE-AND-HERO-HOLD.md` | 10s / 6 شوتات | تايم لابس الرفض حتى الامتلاء الكامل، والكادر البطولي — الفريم الأول لبرومبت الحلم |
 | B11 | `beats/B11-POUR-STEAM-PAGE.md` | 8s / 3 شوتات | طقس البداية: صبّ وبخار وورقة نظيفة |
 | B12 | `beats/B12-BASKET-RELOCATION-PRELUDE.md` | 10s / 5 شوتات | سحب السلة المليانة من الزاوية إلى موضع الرمي — تمهيد `B06` |
