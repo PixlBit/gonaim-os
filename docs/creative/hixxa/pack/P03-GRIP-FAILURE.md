@@ -7,7 +7,7 @@
 | المسار | `SEEDANCE 2.5 — MULTI-REFERENCE R2V` |
 | المدة | `8.00s` — **جيل واحد** |
 | البناء | 4 شوتات · 3 قطعات · 16:9 · 24fps |
-| التاقات | @char_hixxa · @hixa-face · @loc_location-room-1 · @desk · @basket · @EAR · @fox · @cat · @dragon |
+| التاقات | @char_hixxa · @hixa-face · @loc_location-room-1 · @desk · @fox · @cat · @dragon |
 
 ## مكانه في السلسلة
 
@@ -29,6 +29,24 @@
   منهم بيتحرك أو ينفصل أو يبقى مخلوق. ده مثبّت صراحة في الـ CRITICAL DISTINCTION.
 - خسارة القبضة اتقسّمت لمراحل: أصابع بتزحلق، إبهام بيفلت، الكف بيسيب — مش انفلات لحظي.
 
+## استمرارية المود الجديد
+
+يرث القاعدة من `P02` بسطر مستقل في `STARTING CONTINUITY`:
+
+> **GRAVITY IN THIS ROOM POINTS AT THE THROAT, NOT DOWN.**
+
+فجسمها معلّق **بزاوية** ناحية الفتحة مش لتحت، والأوضة لسه بتتفرّغ حواليها — الورق بيعدّي جنبها،
+والجرافيت بينسحب من الخشب في خطوط رفيعة ناحية المركز.
+
+**وأهم تغيير درامي:** فقد القبضة مابقاش ضعف فيها. اتكتب صراحة *she is not failing — she is being
+taken*، والشوت الأول بقى **وشها** هو اللقطة: لحظة ما تفهم إنها مش هتقدر تمسك — إدراك متّسع مش
+رعب، نَفَس محبوس وعين لسه مفتوحة.
+
+**وقفل استمرارية:** السلة والكرسي دخلوا الحلق في `P02` فمابيرجعوش تاني. `@basket` **اتشال** من
+تاقات الملف ومن `REFERENCE ASSIGNMENTS`، ومعاه سطر صريح بيمنع ظهوره.
+
+---
+
 ---
 
 ## البرومبت — انسخه كامل
@@ -48,13 +66,13 @@ REAL-TIME MOTION — NO SLOW MOTION — NO SPEED RAMPS — NO VISUAL TRANSITIONS
 SCENE AND MODE
 ################################################################
 
-Construct the starting state from the assigned Elements and explicit continuity. Do not use first-frame or last-frame images. This is one uninterrupted event covered by four angles and exactly three hard cuts: HIXXA begins already hanging from the desk, loses the near grip, pivots under the far hand, releases finger by finger, falls feet-first through the localized iris and carries the connected sheet spiral into the birth of the illustrated tunnel.
+Construct the starting state from the assigned Elements and explicit continuity. Do not use first-frame or last-frame images. This is one uninterrupted event covered by four angles and exactly three hard cuts: HIXXA begins already hanging from the desk, loses the near grip, pivots under the far hand, releases finger by finger, falls feet-first through the open paper throat and carries the connected sheet spiral into the birth of the illustrated tunnel.
 
 ################################################################
 REFERENCE ASSIGNMENTS
 ################################################################
 
-Use @char_hixxa and @hixa-face for one exact HIXXA and one exact face. Use @loc_location-room-1 only for the receding room topology above, @desk for the solid anchored desk and worn contact edge, and @basket for the same tipped empty basket remaining on the intact floor above.
+Use @char_hixxa and @hixa-face for one exact HIXXA and one exact face. Use @loc_location-room-1 only for the receding room topology above and @desk for the solid anchored desk and its worn contact edge. @basket is NOT used in this clip: the basket has already gone into the throat and never appears again.
 
 Use @fox, @cat and @dragon narrowly as design sources for varied flat graphite-and-ink studies printed on the descending cream sheets. They do not create physical animals, dimensional body parts or living companions.
 
@@ -87,11 +105,27 @@ thousands of them rather than as a smooth wall.
 STARTING CONTINUITY
 ################################################################
 
-HIXXA already hangs beneath the same worn desk edge with both hands. Both arms are fully extended, torso suspended below the edge and legs aligned over the one open paper throat, about a metre and a half across at the rim. The chair is already absent and must not reappear. The floorboards outside the throat are whole and undamaged: the opening is made of stacked overlapping sheets receding into depth, never a hole cut into the floor.
+HIXXA already hangs beneath the same worn desk edge with both hands, arms fully extended and
+torso below the edge, over the one open paper throat about a metre and a half across at the rim.
+The chair and the tipped basket are already gone into it and must not reappear. The floorboards
+outside the throat are whole and undamaged: the opening is made of stacked overlapping sheets
+receding into depth, never a hole cut into the floor.
 
-Connected cream-paper bands form one coherent clockwise spiral around her legs, waist and torso with visible air gaps. They never bind her arms, cover her face or touch the desk grip. Graphite arcs travel across the sheets; thin black ink brushstrokes remain confined between page layers.
+GRAVITY IN THIS ROOM POINTS AT THE THROAT, NOT DOWN.
 
-Exactly thirty crumpled-paper balls remain abundant in three groups: ten circulating near the upper rim, ten descending around HIXXA and ten leading deeper into the shaft. The tipped empty basket remains on solid floor above.
+This is inherited from the previous clip and holds for the whole of this one. Her body hangs
+ANGLED toward the opening rather than straight down, and her curls, open shirt and apron ties
+stream toward it. The room is still emptying into the throat behind and around her: the paper
+surface travels inward, loose sheets peel off the desk top and stream past her flat and fast,
+and fine graphite dust draws off the boards in lines toward the centre. The walls, window, bed
+frame and shelf stay whole and in place — only what was loose is leaving.
+
+Connected cream-paper bands form one coherent clockwise spiral around her legs, waist and torso
+with visible air gaps. They never bind her arms, cover her face or touch the desk grip. Graphite
+arcs travel across the sheets; thin black ink brushstrokes remain confined between page layers.
+
+Exactly thirty crumpled-paper balls remain abundant in three groups: ten circulating near the
+upper rim, ten descending around HIXXA and ten leading deeper into the shaft.
 
 ################################################################
 CONTROLLED FOUR-SHOT TIMELINE
@@ -99,11 +133,20 @@ CONTROLLED FOUR-SHOT TIMELINE
 
 SHOT 1 — 0.00–1.85 — BOTH-HAND LOAD / NEAR GRIP FAILURE
 
-70 mm low-side character close shot. Frame HIXXA's face, both fully extended arms, both hands and the worn desk edge while the paper iris remains readable below in depth. Use a restrained 4% push with one focus transfer from her eyes to the near hand.
+70 mm low-side character close shot. Frame HIXXA's face, both fully extended arms, both hands
+and the worn desk edge while the open throat stays readable below in depth. Use a restrained 4%
+push with one focus transfer from her eyes to the near hand.
 
-The vertical pull produces one sharp body swing. The hand closer to camera begins slipping first. Correct fingertips slide across paint scratches, knuckles blanch under strain and the final near fingertip separates. The farther hand remains firmly attached and immediately carries her full weight.
+She is not failing — she is being taken. The pull toward the throat strengthens and her body
+swings once on the angle. The hand closer to camera begins slipping first: fingertips slide
+across the paint scratches, knuckles blanch under strain, and the final near fingertip
+separates. The farther hand stays firmly attached and immediately carries her whole weight.
 
-No re-grab occurs. The sheets accelerate downward around her lower body and the thirty-ball swarm remains dense.
+Her face is the shot. Read the moment she understands she cannot hold this — not terror, but a
+wide, arrested recognition, breath caught and eyes still open on it.
+
+No re-grab occurs. Sheets stream past her toward the throat and the thirty-ball swarm stays
+dense.
 
 HARD CUT on the near hand's last fingertip leaving wood at 1.85.
 

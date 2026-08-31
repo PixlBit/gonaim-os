@@ -80,6 +80,44 @@ speed ramp — وده ممنوع عندنا أصلاً.
 **والكرسي**: بدل ما يتبلع، بيتزق لورا وبيخرج من الكادر وهي بتقوم. أرخص وأنضف، و`P03` مش محتاج
 غير إنه يكون مش موجود.
 
+## نقطة تحوّل المود — الغرفة بتتفرّغ
+
+الشوت الرابع اتبنى من الأول عشان يشيل **التأثير اللي طلبته**: الأرض بتتسحب من النقطة اللي تحت،
+وكل حاجة بتتشد وبتقع في النص.
+
+### وده اتكتب كـ**قاعدة واحدة** مش كقائمة تأثيرات
+
+> **من لحظة فتح الحلق، الجاذبية في الأوضة دي بقت بتشاور على الحلق مش على تحت.**
+
+سطر واحد، وكل اللي بعده بينبع منه. ودي الحرفة بالظبط: لو كتبت قائمة («الكرسي بينجذب، السلة
+بتنجذب، الورق بينجذب…») الموديل هيطلّع **أجسام بتتزحلق بنفس السرعة في خط واحد** — منظر رخيص.
+لما تكتب **قاعدة**، بيطلّع **أوضة بتتفرّغ**.
+
+**وشرط الاشتقاق مكتوب صراحة:** كل جسم بيروح **بوزنه هو**. الخفيف المسطّح الأول وأسرع، المتدحرج
+بعده، التقيل آخر حاجة وبالعافية. كل واحد **بيميل، يعلق، يقاوم لحظته، وبعدين يروح**. مافيش انزلاق
+موحّد ولا تسارع جماعي.
+
+### الأوضة ما بتتدمرش — بتتفرّغ
+
+اللي بيمشي هو **اللي كان سايب**: سطح الورق واللي واقف عليه. الحيطان والشباك وهيكل السرير والرفّ
+والباب **سليمة في مكانها**. مافيش تشقيق ولا شظايا ولا انهيار ولا سحابة تراب ولا قمع رياح ولا
+وهج. ده الفرق بين مشهد سينمائي ومشهد كارثة.
+
+### والمكتب هو المرساة — ودي مش تفصيلة
+
+المكتب هو الحاجة الوحيدة اللي مش بتتحرك، **وعشان كده هي بتمسك فيه**. ده سبب درامي مش قرار كاميرا:
+بيدي إيدها هدف، وبيخلي تمسّكها منطقي، وبيحوّل فقد القبضة في `P03` من **ضعف فيها** لـ**قوة
+بتسحبها**.
+
+### وجسمها بيقول القاعدة من غير كلام
+
+آخر بيت: مابقتش معلّقة لتحت — **معلّقة بزاوية ناحية الحلق**، وكيرلزها وقميصها ورباط المريلة كلهم
+بيتمدّوا ناحيته. الجاذبية اتغيرت، والجسم بيوريك ده من غير ما حد يشرحه.
+
+📐 الجدول الكامل لتحوّل المود (الجاذبية، الكاميرا، الضوء، الصوت، اللون، أداؤها) في الماستر **§6J**.
+
+---
+
 ---
 
 ## البرومبت — انسخه كامل
@@ -178,7 +216,7 @@ entire clip.
 CONTROLLED FOUR-SHOT TIMELINE
 ################################################################
 
-SHOT 1 — 0.00–1.85 — FLOOR LEVEL / THE GAPS CLOSE
+SHOT 1 — 0.00–1.70 — FLOOR LEVEL / THE GAPS CLOSE
 
 24mm at floor level, lens almost resting on the boards, looking across the turning lane so the
 balls sweep past close to camera. Track a short distance parallel to the desk front. The camera
@@ -196,7 +234,7 @@ Behind the moving lane HIXXA pushes up off her forearms, her chair scraping back
 
 HARD CUT ON A BALL SWEEPING ACROSS THE FOREGROUND.
 
-SHOT 2 — 1.85–3.90 — INSIDE THE SPIN / SHE LOOKS AROUND
+SHOT 2 — 1.70–3.50 — INSIDE THE SPIN / SHE LOOKS AROUND
 
 35mm at her chest height, slowly orbiting with the direction of the spin so the room slides
 behind her and she stays centred. One movement only, continuous, never reversing.
@@ -215,7 +253,7 @@ brushed elongation inside each shape — never a rendered motion-blur filter ove
 
 HARD CUT ON HER GAZE FOLLOWING THE BAND PAST CAMERA.
 
-SHOT 3 — 3.90–5.85 — THE PAPER OPENS AND LIES DOWN
+SHOT 3 — 3.50–5.30 — THE PAPER OPENS AND LIES DOWN
 
 50mm from just above her waist height, angled down across the floor, still drifting with the
 spin.
@@ -236,28 +274,39 @@ HIXXA is standing on that turning surface, feet apart, weight low, watching it f
 
 HARD CUT AS THE LAST SHEET COMPLETES THE DISC.
 
-SHOT 4 — 5.85–8.00 — THE THROAT
+SHOT 4 — 5.30–8.00 — THE DRAIN / THE ROOM GOES DOWN
 
 28mm low three-quarter wide from just above the paper surface, looking across the disc toward
-HIXXA with the solid desk anchored at frame edge. One restrained push in, ending before the
-shot does.
+HIXXA with the solid desk anchored at frame edge. One restrained push in that stops before the
+shot ends.
 
-The centre of the spinning disc begins to descend. The spiral tightens and draws its own middle
-downward in one smooth continuous motion — exactly the way water leaves a drain — the overlapping
-sheets sliding over each other as they go, each layer darkening a little more than the one above
-it through simple occlusion until the depth reads as a soft black throat rather than a painted
-black circle.
+THE CENTRE GOES DOWN. The spiral tightens and draws its own middle downward in one smooth
+continuous motion — exactly the way water leaves a drain — overlapping sheets sliding over each
+other as they go, each layer darkening a little more than the one above it through simple
+occlusion until the depth reads as a soft black throat rather than a painted black circle.
 
-It is smooth from beginning to end. No snap, no pop, no flash, no seam, no crack, no burst of
-light, no impact, no dust and no debris. The paper never becomes anything other than paper.
+THEN THE RULE CHANGES. From this moment down is no longer down: everything in this room is
+pulled toward that point. The entire paper surface begins travelling inward and disappearing
+into it, drawn through like a wide sheet being pulled through a ring, and the whole floor of
+the room empties itself into the opening.
 
-The surface under her feet slides away with the centre. She goes down with it just far enough
-that both hands find the worn desk edge and hold: palms strike the wood, fingers curl over, both
-arms take her weight and extend, her torso drops below the edge and her legs hang centred over
-the open throat. The chair is already gone and never returns.
+Everything standing on that surface goes with it, each with its own correct weight and its own
+moment of tipping: the tipped empty basket rolls, catches, and slides in; the pushed-back chair
+skates across the paper, turns once and drops through; loose rejected sheets peel off the desk
+top and stream in flat and fast; scattered pencils roll in; dust and graphite pull off the
+boards in fine lines toward the centre. The lamp leans on its cord toward the throat. The
+burgundy blanket edge lifts off the bed and points at it.
 
-End with both grips secure and the throat fully open beneath her. Do not begin any finger
-slipping in this clip.
+The desk does not move. It is the only thing in the room still holding still, and that is
+exactly why she reaches for it.
+
+The surface under her feet slides out from beneath her. She drops, and both palms strike the
+worn desk edge: fingers curl over, arms extend, her torso goes below the edge. Her body no
+longer hangs straight down — it hangs ANGLED TOWARD THE THROAT, and her curls, her open shirt
+and her apron ties all stream toward that point instead of falling under normal gravity.
+
+End with both grips secure, the throat fully open beneath her, the room still emptying into it.
+Do not begin any finger slipping in this clip.
 
 ################################################################
 PAPER PHYSICS — HOW THE OPENING IS MADE
@@ -277,8 +326,24 @@ Exactly thirty sheets exist from the first frame to the last. They change state 
 ball to flat sheet — and never back. They never duplicate, disappear, multiply or become
 creatures, origami or animals. Each keeps its own crease pattern; no two repeat.
 
-The desk stays solid, anchored and outside the opening on whole floorboards. The tipped basket
-stays on whole floorboards near its original position. There is exactly one opening.
+The desk stays solid and anchored on whole floorboards for the entire clip and never slides.
+There is exactly one opening.
+
+THE DRAIN — ONE RULE, NOT A LIST OF EFFECTS
+
+Once the throat is open, gravity in this room points at the throat instead of pointing down.
+Every movement in the last shot follows from that single rule and from each object's own real
+weight — nothing is sucked by a wind, blown by a blast, or pulled on a visible force.
+
+Objects go in the order their weight allows: light flat things first and fastest, rolling
+things next, heavy things last and reluctantly. Each one tips, catches, resists for its own
+instant and then goes. Nothing slides uniformly, nothing accelerates as a group, and nothing
+is pulled in a straight line if its shape would make it turn.
+
+The room itself is not destroyed. Walls, window, bed frame, shelf and door stay whole and in
+place. What leaves is what was loose: the paper surface and the things standing on it. No
+cracking, no splintering, no collapsing structure, no debris cloud, no vortex funnel of wind,
+no visible energy and no glow.
 
 ################################################################
 CHARACTER AND PROP LOCKS
@@ -383,23 +448,30 @@ OUTGOING CONTINUITY
 ################################################################
 
 HIXXA hangs from the worn desk edge with both hands, arms fully extended, torso below the edge
-and legs centred over the open paper throat. The chair is absent. The throat is fully formed
-beneath her, its overlapping cream sheets spiralling down and darkening with depth. Exactly
-thirty sheets are in play around and below her. The floorboards outside the opening are whole,
-the desk is solid, and the tipped empty basket is still on solid floor near its original spot.
+and her whole body angled TOWARD the throat rather than straight down — her curls, shirt and
+apron ties all streaming toward it.
+
+The throat is fully open beneath her, its overlapping cream sheets spiralling down and darkening
+with depth. The room is still emptying into it: the paper surface is still travelling inward,
+loose sheets are still streaming off the desk, and the pull has not stopped.
+
+The chair and the tipped empty basket are both gone into the throat and never return. The desk
+is solid and unmoved. The walls, window, bed frame and shelf are whole and in place.
 
 ################################################################
 AUDIO TIMELINE
 ################################################################
 
-0.00–1.85: separate dry paper scrapes and rolling knocks on wood, closing steadily into one
+0.00–1.70: separate dry paper scrapes and rolling knocks on wood, closing steadily into one
 continuous rush; a chair scraping back underneath it.
-1.85–3.90: the rush now unbroken and rising in pitch, air moving past her, two desk sheets
+1.70–3.50: the rush now unbroken and rising in pitch, air moving past her, two desk sheets
 fluttering at one corner, her breathing quickening.
-3.90–5.85: the rush softening and widening as sheets open and lay down, a broad papery hush
+3.50–5.30: the rush softening and widening as sheets open and lay down, a broad papery hush
 turning under her feet.
-5.85–8.00: a low descending draw as the centre goes down, one sharp intake of breath, and the
-flat double impact of her palms on the desk wood.
+5.30–8.00: a low descending draw opening underneath everything, then the room emptying into it —
+the basket's hollow roll and knock, the chair's scrape and drop, a long flat rush of sheets
+leaving the desk — one sharp intake of breath, and the flat double impact of her palms on the
+wood. The room's small ordinary sounds thin out and leave with the paper.
 
 ################################################################
 ABSOLUTE START AND ENDPOINT
@@ -408,6 +480,7 @@ ABSOLUTE START AND ENDPOINT
 ABSOLUTE START STATE: HIXXA is seated at the desk on whole floorboards while thirty separate
 crumpled balls circle her across the wood.
 
-ABSOLUTE ENDPOINT: HIXXA hangs by both hands from the desk edge above an open paper throat that
-formed smoothly out of the thirty sheets themselves, with the floorboards around it still whole.
+ABSOLUTE ENDPOINT: HIXXA hangs by both hands from the unmoved desk while the whole floor of her
+room drains into an open paper throat beneath her, her body angled toward it because gravity now
+points there instead of down.
 ```
