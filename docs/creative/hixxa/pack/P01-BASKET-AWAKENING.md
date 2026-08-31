@@ -69,7 +69,7 @@ SCENE AND MODE
 
 Construct the starting shot from the assigned Elements. Do not use a first-frame image or last-frame image. This is a direct narrative continuation after HIXXA threw the dead phone onto the closed bag, drove herself through one final hysterical drawing montage, filled the basket completely and fell asleep with her head on her folded forearms.
 
-Use exactly four coherent shots and three direct hard cuts. Begin in suspended exhaustion, escalate through tactile micro-movement, then release all existing crumpled papers onto the floor. Stop before the floor transforms or any portal opens.
+Use exactly four coherent shots and three direct hard cuts. Begin in suspended exhaustion, escalate through tactile micro-movement, then release all existing crumpled papers onto the floor. Stop before the paper begins to flatten or any opening forms.
 
 ################################################################
 REFERENCE ASSIGNMENTS

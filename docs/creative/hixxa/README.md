@@ -51,7 +51,7 @@
 | # | المقطع | المدة | العناصر | الحدث المحوري |
 |---|---|---|---|---|
 | P01 | [BASKET AWAKENING](pack/P01-BASKET-AWAKENING.md) | 8s / 4 شوتات | `@basket` `@desk` `@bag` `@EAR` | السلة المليانة بتتقلب والثلاثين كرة بتغطي الأرض |
-| P02 | [PAPER IRIS](pack/P02-PAPER-IRIS.md) | 8s / 4 شوتات | `@basket` `@desk` `@loc_location-room-1` | تلات دورات، الأرض بتفتح كعين ورقية، وهي بتمسك الديسك |
+| P02 | [PAPER MAELSTROM](pack/P02-PAPER-MAELSTROM.md) | 8s / 4 شوتات | `@basket` `@desk` `@loc_location-room-1` | الورق بيلف أسرع وأسرع، بينبسط ويغطي الأرض، ومركزه بينزل كحلق |
 | P03 | [GRIP FAILURE](pack/P03-GRIP-FAILURE.md) | 8s / 4 شوتات | `@fox` `@cat` `@dragon` `@desk` | القبضة بتفلت وهي بتقع جوّه نفق من الصفحات |
 | P04 | [TUNNEL JAWS](pack/P04-TUNNEL-JAWS.md) | 8s / 4 شوتات | `@fox` `@cat` `@dragon` | الصفحات بتطبق كفكوك ملتصقة والمطاردة محورية |
 | P05 | [ZOETROPE RINGS](pack/P05-ZOETROPE-RINGS.md) | 8s / 4 شوتات | `@fox` `@cat` `@dragon` | تلات حلقات بتلف، وهي بتعرف إن دي رسوماتها المرفوضة |

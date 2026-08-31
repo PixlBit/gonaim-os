@@ -1155,7 +1155,7 @@ unpainted nails, and every object keeps the size given above.
 | # | المقطع | العناصر | الحدث |
 |---|---|---|---|
 | P01 | `pack/P01-BASKET-AWAKENING.md` | `@basket` `@desk` `@bag` `@EAR` | السلة STAGE 4 تنقلب والثلاثون كرة تغطي الأرض |
-| P02 | `pack/P02-PAPER-IRIS.md` | `@basket` `@desk` `@loc_location-room-1` | ثلاث دورات، الأرض تنفتح كعين ورقية، وإمساك بحرف المكتب |
+| P02 | `pack/P02-PAPER-MAELSTROM.md` | `@basket` `@desk` `@loc_location-room-1` | دوامة متسارعة، الورق ينبسط ويغطي الأرض، ومركزه ينزل كحلق — **الفتحة مصنوعة من الورق لا مقطوعة في الأرض** |
 | P03 | `pack/P03-GRIP-FAILURE.md` | `@fox` `@cat` `@dragon` `@desk` | انفلات القبضة والسقوط داخل نفق من الصفحات |
 | P04 | `pack/P04-TUNNEL-JAWS.md` | `@fox` `@cat` `@dragon` | الصفحات تطبق كفكوك **ملتصقة بالجدار**، ومطاردة محورية |
 | P05 | `pack/P05-ZOETROPE-RINGS.md` | `@fox` `@cat` `@dragon` | ثلاث حلقات زيوتروب، ولحظة التعرّف على رسوماتها المرفوضة |

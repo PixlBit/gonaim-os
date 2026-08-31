@@ -87,7 +87,7 @@ thousands of them rather than as a smooth wall.
 STARTING CONTINUITY
 ################################################################
 
-HIXXA already hangs beneath the same worn desk edge with both hands. Both arms are fully extended, torso suspended below the edge and legs aligned over the one portal inside the original chair footprint. The chair is already absent and must not reappear.
+HIXXA already hangs beneath the same worn desk edge with both hands. Both arms are fully extended, torso suspended below the edge and legs aligned over the one open paper throat, about a metre and a half across at the rim. The chair is already absent and must not reappear. The floorboards outside the throat are whole and undamaged: the opening is made of stacked overlapping sheets receding into depth, never a hole cut into the floor.
 
 Connected cream-paper bands form one coherent clockwise spiral around her legs, waist and torso with visible air gaps. They never bind her arms, cover her face or touch the desk grip. Graphite arcs travel across the sheets; thin black ink brushstrokes remain confined between page layers.
 
