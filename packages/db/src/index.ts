@@ -5,3 +5,4 @@ export * from "./commit.js";
 export * from "./snapshot.js";
 export * from "./export.js";
 export * from "./forget.js";
+export * from "./ingest.js";

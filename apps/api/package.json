@@ -11,6 +11,7 @@
     "@gonaim/intake": "*",
     "@anthropic-ai/sdk": "^0.120.0",
     "@gonaim/db": "*",
-    "@gonaim/rules": "*"
+    "@gonaim/rules": "*",
+    "@gonaim/ingest": "*"
   }
 }

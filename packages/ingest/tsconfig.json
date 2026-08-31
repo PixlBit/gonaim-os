@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": { "composite": true, "noEmit": false, "emitDeclarationOnly": true, "outDir": "dist", "types": ["node"] },
+  "references": [{ "path": "../domain" }, { "path": "../security" }],
+  "include": ["src", "test"]
+}

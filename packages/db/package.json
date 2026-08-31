@@ -7,6 +7,7 @@
   "dependencies": {
     "@gonaim/domain": "*",
     "postgres": "^3.4.5",
-    "@gonaim/rules": "*"
+    "@gonaim/rules": "*",
+    "@gonaim/ingest": "*"
   }
 }

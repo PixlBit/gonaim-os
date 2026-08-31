@@ -1,7 +1,9 @@
 import { createServer } from "node:http";
 import { extract } from "@gonaim/intake";
 import { connect, commitCandidates, loadSnapshot, exportMind, forget, listKnown,
-         type ConfirmedCandidate } from "@gonaim/db";
+         ingestEvents, isBlackout, type ConfirmedCandidate } from "@gonaim/db";
+import { IngestBatch, toEvent } from "@gonaim/ingest";
+import { timingSafeEqual } from "node:crypto";
 import { ALL_RULES, runRules } from "@gonaim/rules";
 
 /**
@@ -17,6 +19,11 @@ const ORIGINS = (process.env["WEB_ORIGIN"] ?? "http://localhost:5173,http://loca
 const MAX_BODY = 32 * 1024;
 const OWNER = process.env["OWNER_ID"] ?? "00000000-0000-0000-0000-000000000001";
 const DB_URL = process.env["DATABASE_URL"];
+/** توكن الهاتف. بدونه بوابة الاستقبال مقفلة — لا وضع "مفتوح للتجربة". */
+const INGEST_TOKEN = process.env["INGEST_TOKEN"] ?? "";
+const LOCATION_PRECISION =
+  (process.env["LOCATION_PRECISION"] ?? "city") as "city" | "area" | "exact";
+const BODY_RETENTION = (process.env["SMS_BODY_RETENTION"] ?? "drop") as "drop" | "redacted";
 const db = DB_URL ? connect({ url: DB_URL, ownerId: OWNER }) : null;
 
 const server = createServer(async (req, res) => {
@@ -78,7 +85,7 @@ const server = createServer(async (req, res) => {
     }
   }
 
-  if (req.method !== "POST" || !["/api/extract", "/api/commit", "/api/forget"].includes(req.url ?? "")) {
+  if (req.method !== "POST" || !["/api/extract", "/api/commit", "/api/forget", "/api/ingest"].includes(req.url ?? "")) {
     return json(res, 404, cors, { error: "not_found" });
   }
 
@@ -92,6 +99,40 @@ const server = createServer(async (req, res) => {
 
   let body: Record<string, unknown>;
   try { body = JSON.parse(raw); } catch { return json(res, 400, cors, { error: "bad_json" }); }
+
+  if (req.url === "/api/ingest") {
+    if (!db) return json(res, 503, cors, { error: "no_database" });
+    if (!INGEST_TOKEN) {
+      return json(res, 503, cors, {
+        error: "ingest_disabled",
+        message: "INGEST_TOKEN غير مضبوط. بوابة الهاتف مقفلة حتى يُضبط.",
+      });
+    }
+    // مقارنة ثابتة الزمن: مقارنة عادية تسرّب التوكن حرفًا حرفًا
+    const given = String(req.headers["x-gonaim-token"] ?? "");
+    if (!sameToken(given, INGEST_TOKEN)) {
+      return json(res, 401, cors, { error: "bad_token" });
+    }
+
+    const parsed = IngestBatch.safeParse(body);
+    if (!parsed.success) {
+      return json(res, 400, cors, { error: "bad_signal", issues: parsed.error.issues.slice(0, 5) });
+    }
+
+    try {
+      const blackout = await isBlackout(db, OWNER);
+      const drafts = parsed.data.signals.map((sig) => toEvent(sig, {
+        device: parsed.data.device,
+        bodyRetention: BODY_RETENTION,
+        maxLocationPrecision: LOCATION_PRECISION,
+      }));
+      const out = await ingestEvents(db, OWNER, drafts, blackout);
+      return json(res, blackout ? 202 : 200, cors, out);
+    } catch (err) {
+      console.error("[ingest]", err);
+      return json(res, 502, cors, { error: "ingest_failed" });
+    }
+  }
 
   if (req.url === "/api/forget") {
     if (!db) return json(res, 503, cors, { error: "no_database", message: "DATABASE_URL غير مضبوط." });
@@ -152,6 +193,13 @@ const server = createServer(async (req, res) => {
     return json(res, 502, cors, { error: "extraction_failed" });
   }
 });
+
+function sameToken(a: string, b: string): boolean {
+  const ba = Buffer.from(a), bb = Buffer.from(b);
+  // الأطوال المختلفة تُقارَن بطول ثابت حتى لا يتسرب الطول نفسه
+  if (ba.length !== bb.length) { timingSafeEqual(bb, bb); return false; }
+  return timingSafeEqual(ba, bb);
+}
 
 function json(res: import("node:http").ServerResponse, status: number,
               headers: Record<string, string>, payload: unknown) {

@@ -8,6 +8,9 @@
       "path": "./packages/domain"
     },
     {
+      "path": "./packages/ingest"
+    },
+    {
       "path": "./packages/rules"
     },
     {
