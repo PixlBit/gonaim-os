@@ -1,0 +1,13 @@
+{
+  "name": "new-thumamah-studio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "تصور مكاني تفاعلي ثلاثي الأبعاد لوجهة نيو ثمامة",
+  "scripts": {
+    "start": "node tools/serve.cjs",
+    "test": "node tools/verify.cjs",
+    "build": "node tools/build.cjs",
+    "smoke": "node tools/smoke.mjs",
+    "data": "node tools/export-data.cjs"
+  }
+}

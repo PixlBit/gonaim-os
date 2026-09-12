@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>نيو ثمامة — استوديو المخطط ثلاثي الأبعاد</title>
+<meta name="description" content="تصور مبدئي ثلاثي الأبعاد لوجهة نيو ثمامة: خيل ودروب وأطفال ومخيمات وقباب ومبيت خاص وضيافة وفعاليات شركات.">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+ <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+ <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 3 21 8v8l-9 5-9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></symbol>
+ <symbol id="i-plan" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 10h18M10 3v18"/></symbol>
+ <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+ <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+ <symbol id="i-home" viewBox="0 0 24 24"><path d="m4 11 8-7 8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1Z"/></symbol>
+ <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V5a1 1 0 0 1 1-1h4M20 9V5a1 1 0 0 0-1-1h-4M4 15v4a1 1 0 0 0 1 1h4M20 15v4a1 1 0 0 1-1 1h-4"/></symbol>
+ <symbol id="i-export" viewBox="0 0 24 24"><path d="M12 3v12M8 11l4 4 4-4M4 17v3h16v-3"/></symbol>
+ <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m4 16 5-5 4 4 3-2 4 4"/><circle cx="9" cy="9" r="1.4"/></symbol>
+ <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7Z"/><path d="M14 3v4h4"/></symbol>
+ <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7.5 19.4l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 7.5l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 2.7-1.1V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1.3Z"/></symbol>
+ <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+ <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5Z"/></symbol>
+ <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol>
+ <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.5 2.5 0 1 1 3.3 2.4c-.6.2-.9.8-.9 1.4v.5"/><path d="M12 17h.01"/></symbol>
+ <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+ <symbol id="i-focus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+ <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+</svg>
+
+<div class="app">
+ <header class="topbar">
+  <div class="brand">
+   <span class="brand-mark">ن</span>
+   <div><strong>نيو ثمامة</strong><small>NEW THUMAMAH</small></div>
+   <span class="divider"></span>
+   <span class="project-title">استوديو المخطط ثلاثي الأبعاد</span>
+  </div>
+  <div class="top-actions">
+   <span class="coord"><svg style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.7"><use href="#i-pin"/></svg><a id="coordLink" class="latin" target="_blank" rel="noopener noreferrer"></a></span>
+   <button class="btn ghost icon" id="helpBtn" aria-label="طريقة التحكم"><svg><use href="#i-help"/></svg></button>
+   <button class="btn ghost" id="aboutBtn">أساس التصور</button>
+   <div class="export-wrap">
+    <button class="btn primary" id="exportBtn" aria-expanded="false" aria-controls="exportMenu"><svg><use href="#i-export"/></svg>تصدير</button>
+    <div class="menu" id="exportMenu" hidden>
+     <button id="exportPng"><svg><use href="#i-image"/></svg>حفظ صورة المشهد</button>
+     <button id="exportGeo"><svg><use href="#i-file"/></svg>الحدود والمناطق · GeoJSON</button>
+     <button id="exportData"><svg><use href="#i-file"/></svg>بيانات المناطق · JSON</button>
+    </div>
+   </div>
+   <button class="btn ghost icon panel-toggle" id="panelToggle" aria-label="لوحة المعلومات" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+  </div>
+ </header>
+
+ <main class="workspace">
+  <section class="scene" id="sceneWrap" aria-label="المشهد التفاعلي">
+   <canvas id="scene3d" aria-label="نموذج نيو ثمامة ثلاثي الأبعاد. استخدم الأسهم للتحريك، واختر المناطق من القائمة الجانبية."></canvas>
+   <canvas id="mapCanvas" aria-hidden="true"></canvas>
+   <div class="labels" id="labels"></div>
+
+   <div class="overlay">
+    <div class="scene-head">
+     <div class="scene-title">
+      <div class="eyebrow">NEW THUMAMAH · CONCEPT 02</div>
+      <h2 id="sceneHeading">المخطط على الموقع</h2>
+      <small id="assumptionNote">1,500 م شرقًا × 1,500 م شمالًا · افتراض مبدئي</small>
+     </div>
+     <div class="switch" role="group" aria-label="زاوية العرض">
+      <button id="viewMap" aria-pressed="false"><svg><use href="#i-pin"/></svg><span>الخريطة</span></button>
+      <button id="view3d" aria-pressed="true"><svg><use href="#i-cube"/></svg><span>ثري دي</span></button>
+      <button id="viewPlan" aria-pressed="false"><svg><use href="#i-plan"/></svg><span>مسقط</span></button>
+     </div>
+    </div>
+
+    <div class="compass" aria-hidden="true">
+     <span>N</span>
+     <svg viewBox="0 0 40 44" id="compassArrow"><path d="m20 3 9 32-9-7-9 7Z" fill="#e6bd78"/><path d="m20 3 9 32-9-7Z" fill="#f7f3e6"/></svg>
+    </div>
+
+    <div class="scene-side">
+     <div class="pad">
+      <button id="zoomIn" aria-label="تكبير"><svg><use href="#i-plus"/></svg></button>
+      <button id="zoomOut" aria-label="تصغير"><svg><use href="#i-minus"/></svg></button>
+     </div>
+     <div class="pad">
+      <button id="resetView" aria-label="إعادة الضبط"><svg><use href="#i-home"/></svg></button>
+      <button id="focusZone" aria-label="تقريب المنطقة المختارة"><svg><use href="#i-focus"/></svg></button>
+      <button id="fullscreen" aria-label="ملء الشاشة"><svg><use href="#i-full"/></svg></button>
+     </div>
+    </div>
+
+    <div class="scene-foot">
+     <div class="toolbar">
+      <div class="seg" role="group" aria-label="وقت اليوم">
+       <button id="timeDay" aria-pressed="true">نهار</button>
+       <button id="timeSunset" aria-pressed="false">غروب</button>
+       <button id="timeNight" aria-pressed="false">ليل</button>
+      </div>
+      <span class="split"></span>
+      <button class="btn ghost" id="tourBtn"><svg><use href="#i-play"/></svg><span id="tourLabel">جولة</span></button>
+      <span class="split"></span>
+      <label id="sliderWrap" for="opacity"><span id="sliderLabel">وضوح المخطط</span>
+       <input id="opacity" type="range" min="0" max="100" step="5" value="55">
+       <output class="latin" id="opacityOut">55%</output>
+      </label>
+      <span class="split"></span>
+      <button class="btn ghost icon" id="layersBtn" aria-label="الطبقات" aria-expanded="false"><svg><use href="#i-layers"/></svg></button>
+     </div>
+     <div class="scale">
+      <div class="scale-row"><span id="scaleLabel">200 م</span><span>0</span></div>
+      <div class="scale-bar" id="scaleBar"></div>
+      <small id="surfaceNote">أرض مستوية · صورة الموقع الحقيقية</small>
+     </div>
+    </div>
+
+    <div class="tour-bar" id="tourBar">
+     <div class="tour-text"><strong id="tourTitle"></strong><span id="tourCaption"></span></div>
+     <div class="tour-dots" id="tourDots"></div>
+     <button class="btn ghost icon" id="tourStop" aria-label="إيقاف الجولة"><svg><use href="#i-stop"/></svg></button>
+    </div>
+
+    <div class="hint" id="hint">اسحب للتدوير · عجلة الفأرة للتكبير · اضغط على منطقة لاستكشافها</div>
+    <div class="status" id="status" hidden></div>
+    <div class="menu" id="layersMenu" hidden style="inset-inline-start:auto;inset-inline-end:16px;bottom:74px;top:auto;position:absolute">
+     <button data-layer="labels" aria-pressed="true">أسماء المناطق</button>
+     <button data-layer="boundary" aria-pressed="true">حدود الأرض</button>
+     <button data-layer="zoning" aria-pressed="false">تلوين الاستخدامات</button>
+     <button data-layer="context" aria-pressed="true">محيط الموقع</button>
+    </div>
+   </div>
+
+   <div class="attribution" id="attribution"></div>
+   <div class="loader" id="loader"><div class="loader-inner"><strong>يُبنى المشهد الآن</strong><span>نموذج ثلاثي الأبعاد للموقع مع صورة الأرض</span><div class="bar"><i></i></div></div></div>
+  </section>
+
+  <aside class="sidebar" id="sidebar" aria-label="معلومات المخطط">
+   <section>
+    <div class="eyebrow">MASTERPLAN / 02</div>
+    <div class="headline"><h1>بعد المدينة…</h1><span class="chip">تصور مبدئي</span></div>
+    <p class="subtle">يبدأ وقتك. خيل ودروب وأطفال، مخيمات وقباب ومبيت خاص، ضيافة وغروب وفعاليات شركات.</p>
+   </section>
+
+   <section class="hero" aria-label="بيانات الأرض">
+    <div><span class="value latin" id="totalArea">2,250,000</span><span class="unit">م²</span></div>
+    <div class="caption">إجمالي مساحة الأرض المفترضة</div>
+    <div class="metrics">
+     <div><span class="metric-label">شرقًا × شمالًا</span><span class="metric-value latin" id="dims">1.50 × 1.50 km</span></div>
+     <div><span class="metric-label">مناطق التجارب</span><span class="metric-value"><span class="latin">09</span> مناطق</span></div>
+    </div>
+   </section>
+
+   <section aria-label="توزيع استخدامات الأرض">
+    <h2 class="section-label">استخدامات الأرض</h2>
+    <div class="stack" id="usageStack" aria-hidden="true"></div>
+    <div class="uses" id="usageList"></div>
+   </section>
+
+   <section aria-label="المنطقة المختارة">
+    <div class="zone-card" aria-live="polite">
+     <div class="zone-id latin" id="zoneId"></div>
+     <h2 id="zoneName"></h2>
+     <p id="zoneDesc"></p>
+     <div class="facts">
+      <div><span>مساحة المنطقة</span><strong id="zoneArea"></strong></div>
+      <div><span>الكتل المقترحة</span><strong id="zoneHeight"></strong></div>
+     </div>
+     <ul class="program" id="zoneProgram"></ul>
+    </div>
+    <label class="sr-only" for="zoneSelect">اختيار منطقة</label>
+    <select class="zone-select" id="zoneSelect"></select>
+    <div class="zone-actions">
+     <button class="btn" id="zoneFly">طيران إلى المنطقة</button>
+     <button class="btn" id="zonePlan">مسقط المنطقة</button>
+    </div>
+   </section>
+
+   <section>
+    <p class="note">التوزيع والأعداد والمقاسات مقترحات تصميمية. لا سعات تشغيلية ولا أسعار ولا موعد افتتاح. الإحداثيات والأبعاد افتراضات لم تُؤكد، والنموذج ليس رفعًا مساحيًا.</p>
+   </section>
+  </aside>
+  <div class="sidebar-bottom"><button class="btn" id="editSite">إحداثيات وأبعاد الموقع<svg><use href="#i-settings"/></svg></button></div>
+ </main>
+</div>
+
+<dialog id="siteDialog" aria-labelledby="siteTitle">
+ <div class="dialog-head"><h2 id="siteTitle">ضبط الموقع والأبعاد</h2><button class="btn ghost icon" data-close="siteDialog" aria-label="إغلاق"><svg><use href="#i-close"/></svg></button></div>
+ <form class="dialog-body" id="siteForm">
+  <div class="notice">الافتراض الأولي: 1,500 <strong>متر</strong> لكل ضلع، والنقطة هي الركن الجنوبي الغربي. النص الأصلي ذكر «كم»، لذلك عدّل القيم هنا عند التأكيد.</div>
+  <div class="form-row" style="margin-top:16px">
+   <label class="field">خط العرض (شمالًا)<input id="latInput" type="number" min="-80" max="80" step="any" required></label>
+   <label class="field">خط الطول (شرقًا)<input id="lonInput" type="number" min="-180" max="180" step="any" required></label>
+  </div>
+  <div class="form-row">
+   <label class="field">الامتداد شرقًا · متر<input id="widthInput" type="number" min="200" max="10000" step="1" required></label>
+   <label class="field">الامتداد شمالًا · متر<input id="depthInput" type="number" min="200" max="10000" step="1" required></label>
+  </div>
+  <label class="field full">موقع الإحداثيات من الأرض
+   <select id="anchorInput"><option value="sw">الركن الجنوبي الغربي</option><option value="center">مركز الأرض</option></select>
+  </label>
+  <p class="subtle">تغيير الأبعاد يعيد بناء النموذج بالكامل ويحافظ على مقاسات المباني الحقيقية. المدى المتاح: 200–10,000 متر لكل ضلع.</p>
+  <p class="warning" id="formError" role="alert" hidden></p>
+  <div class="dialog-actions"><button type="submit" class="btn primary">تطبيق</button><button type="button" class="btn" data-close="siteDialog">إلغاء</button></div>
+ </form>
+</dialog>
+
+<dialog id="aboutDialog" aria-labelledby="aboutTitle">
+ <div class="dialog-head"><h2 id="aboutTitle">أساس هذا التصور</h2><button class="btn ghost icon" data-close="aboutDialog" aria-label="إغلاق"><svg><use href="#i-close"/></svg></button></div>
+ <div class="dialog-body">
+  <p>تصور مكاني لـ<strong>نيو ثمامة</strong> مبني على الإحداثيات المعطاة. البرنامج مستمد من خطة التسويق المرفقة (ص 3 و8 و33 و35–37): خيل، دروب، أطفال، مخيمات، قباب، مبيت خاص، ضيافة وغروب، وفعاليات شركات.</p>
+  <p>أما <strong>التوزيع المكاني والأعداد والمقاسات والمساحات فمقترحات تصميمية</strong> قابلة للتغيير. لا يتضمن هذا العرض سعات تشغيلية ولا أسعارًا ولا موعد افتتاح.</p>
+  <p id="aboutAssumption"></p>
+  <div class="corners" id="corners"></div>
+  <p class="subtle">الأرض في النموذج <strong>مستوية</strong> ولا تمثل التضاريس الفعلية؛ صورة الأرض من خدمة الخرائط المختارة وتظهر كما هي دون تعديل. نقاط التصدير مشتقة من إزاحات محلية على مرجع WGS 84 وليست نقاط رفع مساحي. الخطوة التالية: تأكيد الوحدة والمدخل وحدود الملكية، ثم الرفع المساحي والتضاريس.</p>
+  <div class="dialog-actions"><a class="btn" id="aboutMapLink" target="_blank" rel="noopener noreferrer">عرض النقطة على الخريطة</a></div>
+ </div>
+</dialog>
+
+<dialog id="helpDialog" aria-labelledby="helpTitle">
+ <div class="dialog-head"><h2 id="helpTitle">التحكم بالمشهد</h2><button class="btn ghost icon" data-close="helpDialog" aria-label="إغلاق"><svg><use href="#i-close"/></svg></button></div>
+ <div class="dialog-body">
+  <div class="keys">
+   <kbd>سحب</kbd><span>تدوير المشهد حول نقطة النظر</span>
+   <kbd>Shift + سحب</kbd><span>تحريك أفقي (أو زر الفأرة الأيمن)</span>
+   <kbd>عجلة</kbd><span>تكبير نحو موضع المؤشر</span>
+   <kbd>نقرة مزدوجة</kbd><span>الطيران إلى الموضع</span>
+   <kbd>W A S D</kbd><span>تحريك · مع <kbd>Shift</kbd> أسرع</span>
+   <kbd>Q E</kbd><span>تدوير يمينًا ويسارًا</span>
+   <kbd>R F</kbd><span>رفع وخفض زاوية النظر</span>
+   <kbd>إصبعان</kbd><span>تحريك وتكبير وتدوير على الشاشة اللمسية</span>
+  </div>
+  <p class="subtle" style="margin-top:16px">تُبدّل أزرار الأعلى بين الخريطة الجغرافية والنموذج ثلاثي الأبعاد والمسقط العلوي. «جولة» تشغّل مسارًا سينمائيًا يتبع تسلسل الفيلم في الخطة: وصول، خيل، درب، أطفال، غروب، مخيم، قبة.</p>
+ </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="vendor/three.js"></script>
+<script src="src/data.js"></script>
+<script src="src/geo.js"></script>
+<script src="src/textures.js"></script>
+<script src="src/props.js"></script>
+<script src="src/content.js"></script>
+<script src="src/world.js"></script>
+<script src="src/basemap.js"></script>
+<script src="src/mapview.js"></script>
+<script src="src/controls.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>
