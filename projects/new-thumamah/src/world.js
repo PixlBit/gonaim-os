@@ -181,6 +181,7 @@
         return ctx;
       },
       /* أشخاص: توزيع بأحجام وملابس متنوعة */
+      model(name) { return NT.models.parts(name, materials); },
       people(list, options) {
         const opt = options || {};
         const groups = { thobe: [], abaya: [], staff: [], child: [] };
@@ -195,7 +196,9 @@
           if (!groups[kind].length) continue;
           const cloth = kind === 'thobe' ? (rnd() < 0.5 ? materials.thobe : materials.thobeWarm)
             : kind === 'child' ? (rnd() < 0.5 ? materials.shirtA : materials.shirtB) : null;
-          builder.instances(NT.assets.person(materials, kind, cloth), groups[kind], { pick: ctx.zone ? ctx.zone.id : null });
+          const slot = kind === 'abaya' ? 'personAbaya' : kind === 'child' ? 'personChild' : 'personThobe';
+          const parts = NT.models.has(slot) ? NT.models.parts(slot, materials) : NT.assets.person(materials, kind, cloth);
+          builder.instances(parts, groups[kind], { pick: ctx.zone ? ctx.zone.id : null });
         }
         return ctx;
       },
@@ -211,13 +214,15 @@
           buckets.get(key).list.push(at(v[0], v[1], v[2] || 0, 1));
         }
         for (const bucket of buckets.values()) {
-          const parts = NT.assets[bucket.type] ? NT.assets[bucket.type](materials, bucket.tint) : NT.assets.sedan(materials, bucket.tint);
+          const parts = NT.models.has(bucket.type)
+            ? NT.models.parts(bucket.type, materials)
+            : (NT.assets[bucket.type] ? NT.assets[bucket.type](materials, bucket.tint) : NT.assets.sedan(materials, bucket.tint));
           builder.instances(parts, bucket.list, { pick: ctx.zone ? ctx.zone.id : null });
         }
         return ctx;
       },
       lights(list, height, arms) {
-        builder.instances(NT.assets.streetLight(materials, height || 9, arms || 1), list.map((p) => at(p[0], p[1], p[2] || 0, 1)));
+        builder.instances(NT.models.parts('lightPole', materials) || NT.assets.streetLight(materials, height || 9, arms || 1), list.map((p) => at(p[0], p[1], p[2] || 0, 1)));
         for (const p of list) occupy(p[0], p[1], 4, 4);
         return ctx;
       },
@@ -320,7 +325,7 @@
       paddock(x, y, w, d) { return ctx.rail(x, y, w, d); },
       majlisRing(list) {
         for (const p of list) {
-          builder.addParts(NT.props.majlis(materials, 4.4), at(p[0], p[1], rnd() * 3));
+          builder.addParts(NT.models.parts('majlis', materials), at(p[0], p[1], rnd() * 3));
           occupy(p[0], p[1], 12, 12);
           fires.push([p[0], p[1]]);
         }
@@ -361,12 +366,12 @@
           if (!free(x, y)) continue;
           shrubs.push(at(x, y, rnd() * 6.28, 0.7 + rnd() * 0.8));
         }
-        if (acacias.length) builder.instances(NT.props.acacia(materials, 1), acacias, { pick: zone.id });
-        if (shrubs.length) builder.instances(NT.props.shrub(materials, 1), shrubs, { pick: zone.id });
+        if (acacias.length) builder.instances(NT.models.parts('acacia', materials), acacias, { pick: zone.id });
+        if (shrubs.length) builder.instances(NT.models.parts('shrub', materials), shrubs, { pick: zone.id });
         return ctx;
       },
       palms(list) {
-        builder.instances(NT.props.palm(materials, 6.4), list.map((p) => at(p[0], p[1], rnd() * 6.28, 0.82 + rnd() * 0.4)));
+        builder.instances(NT.models.parts('palm', materials), list.map((p) => at(p[0], p[1], rnd() * 6.28, 0.82 + rnd() * 0.4)));
         for (const p of list) occupy(p[0], p[1], 4, 4);
         return ctx;
       },
@@ -378,7 +383,7 @@
           if (!free(px, py)) continue;
           list.push(at(px, py, rnd() * 6.28, 0.5 + rnd() * 1.5));
         }
-        if (list.length) builder.instances(NT.props.rock(materials, 1, 7), list);
+        if (list.length) builder.instances(NT.models.parts('rock', materials), list);
         return ctx;
       },
       /* صفوف مواقف: 2.5 × 5 م لكل سيارة مع ممر 6 م */
@@ -519,7 +524,7 @@
           }
         }
       }
-      builder.instances(NT.props.palm(materials, 6.2), avenue);
+      builder.instances(NT.models.parts('palm', materials), avenue);
       ctx.lights(poles, 9, 1);
     }
 
@@ -545,9 +550,9 @@
         else if (pick < 0.74 && slope < 0.5 && shrubs.length < budget.s) shrubs.push(at(x, y, rnd() * 6.28, 0.55 + rnd() * 0.9));
         else if (rocksList.length < budget.r) rocksList.push(at(x, y, rnd() * 6.28, 0.3 + rnd() * 0.9 + slope * 0.8));
       }
-      if (acacias.length) builder.instances(NT.props.acacia(materials, 1), acacias);
-      if (shrubs.length) builder.instances(NT.props.shrub(materials, 1), shrubs);
-      if (rocksList.length) builder.instances(NT.props.rock(materials, 1, 13), rocksList);
+      if (acacias.length) builder.instances(NT.models.parts('acacia', materials), acacias);
+      if (shrubs.length) builder.instances(NT.models.parts('shrub', materials), shrubs);
+      if (rocksList.length) builder.instances(NT.models.parts('rock', materials), rocksList);
 
       // نتوءات صخرية على سفوح الجبل تعطيه طابع الحافة الصخرية
       const outcrops = [];
@@ -561,7 +566,7 @@
         if (slope < 0.32 || !free(x, y)) continue;
         outcrops.push(ctx.slopeMatrix(x, y, rnd() * 6.28, 0.45 + rnd() * 1.15 + slope * 0.7));
       }
-      if (outcrops.length) builder.instances(NT.props.rock(materials, 1, 29), outcrops);
+      if (outcrops.length) builder.instances(NT.models.parts('rock', materials), outcrops);
     }
 
     builder.flush();

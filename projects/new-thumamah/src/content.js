@@ -17,7 +17,7 @@
       const M = c.M, z = c.zone, THREE = window.THREE;
       c.pad(800, 58, 210, 96, M.track, 0.08);
       c.pad(800, 58, 26, 96, M.asphalt, 0.1);
-      c.place(P().fuelStation(M), 742, 56, EAST);          // الواجهة نحو الطريق
+      c.place(c.model('fuelStation'), 742, 56, EAST);          // الواجهة نحو الطريق
       c.place(P().workshop(M), 872, 34, WEST);
       c.place(P().grocery(M), 874, 92, WEST);
       // لافتة مدخل الممر
@@ -40,7 +40,7 @@
       // البوابة
       c.pad(800, 168, 210, 80, M.track, 0.08);
       c.pad(800, 168, 34, 80, M.asphalt, 0.1);
-      c.place(P().gateHouse(M, 3), 800, 168, NORTH);
+      c.place(c.model('gate'), 800, 168, NORTH);
       // لوحة الرسوم بجوار الكشك
       const board = new THREE.BoxGeometry(0.22, 1.5, 2.6);
       c.add(board, M.lamp, c.atY(776, 152, 1.9));
@@ -103,7 +103,7 @@
       c.instances(P().car(M), cars, { pick: z.id });
 
       // كشتات مفتوحة على الرمل
-      const kashta = P().kashta(M), spots = [
+      const kashta = c.model('kashta'), spots = [
         [150, 380], [160, 500], [140, 660], [175, 790], [260, 880],
         [390, 890], [500, 860], [560, 780], [575, 640], [545, 500]
       ];
@@ -111,7 +111,7 @@
         c.place(kashta, s[0], s[1], c.rnd() * 6.28);
         c.fire(s[0], s[1] - 2.6);
       }
-      c.instances(P().offRoader(M), spots.map((s) => c.at(s[0] + 9, s[1] + 7, c.rnd() * 6.28, 1)), { pick: z.id });
+      c.instances(NT.models.has('suv') ? c.model('suv') : P().offRoader(M), spots.map((s) => c.at(s[0] + 9, s[1] + 7, c.rnd() * 6.28, 1)), { pick: z.id });
 
       // خدمات ودورات مياه لكل مجموعة
       for (const p of [[300, 380], [280, 640], [400, 800]]) c.place(P().buildingBlock(M, 12, 5, 3.2, M.plasterWarm), p[0], p[1], SOUTH);
@@ -138,7 +138,7 @@
       c.pad(900, 655, 150, 120, M.track, 0.07);
       const tints = [M.plaster, M.canvasWarm, M.plasterWarm, M.canvasLight, M.plaster, M.canvasWarm];
       const arc = [[862, 612, 0.25], [900, 604, 0], [938, 612, -0.25], [956, 648, -0.6], [860, 700, 0.7], [900, 712, 1.0]];
-      arc.forEach((p, i) => c.place(P().foodTruck(M, tints[i % tints.length]), p[0], p[1], p[2] + Math.PI));
+      arc.forEach((p, i) => c.place(NT.models.has('foodTruck') ? c.model('foodTruck') : P().foodTruck(M, tints[i % tints.length]), p[0], p[1], p[2] + Math.PI));
       const sets = [];
       for (let i = 0; i < 14; i++) {
         const a = (i / 14) * Math.PI * 2, r = 16 + (i % 3) * 7;
@@ -215,7 +215,7 @@
       c.instances(P().lantern(M), c.grid([[692, 1138], [716, 1138], [692, 1154], [716, 1154]]));
 
       // الدومز: صفان متعرجان بإطلالة جنوبية غربية
-      const dome = P().domeStay(M), placements = [];
+      const dome = c.model('dome'), placements = [];
       for (let i = 0; i < 12; i++) {
         const row = i % 2, k = Math.floor(i / 2);
         const x = 520 + row * 74 + c.rnd() * 8;
@@ -263,7 +263,7 @@
         if (c.rnd() < 0.25) continue;
         rides.push(c.at(1112 + i * 15, 930 + r * 30, 0, 1));
       }
-      c.instances(P().offRoader(M), rides, { pick: z.id });
+      c.instances(NT.models.has('suv') ? c.model('suv') : P().offRoader(M), rides, { pick: z.id });
       c.place(P().shadeStructure(M, 18, 8, 3.6, false), 1230, 962, NORTH);
       c.place(P().buildingBlock(M, 10, 6, 3.2, M.plasterWarm), 1236, 1000, SOUTH);
 

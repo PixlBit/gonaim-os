@@ -165,5 +165,196 @@
     return out;
   }
 
-  NT.textures = { makeRandom, valueNoise, fbm, fallbackAerial, sand, fabric, wood, gravel, asphalt, normalFrom, canvasOf };
+
+  /* ===== مولّدات خامات أغنى: ألبيدو + خشونة + نتوءات من نفس المصدر ===== */
+
+  // تعتيق: أوساخ متدرجة من الأسفل وبقع استعمال
+  function weather(canvas, amount, seed) {
+    const ctx = canvas.getContext('2d'), size = canvas.width, rnd = makeRandom(seed || 5);
+    const grad = ctx.createLinearGradient(0, size, 0, size * 0.45);
+    grad.addColorStop(0, `rgba(96,82,58,${0.34 * amount})`);
+    grad.addColorStop(1, 'rgba(96,82,58,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, size, size);
+    for (let i = 0; i < 90 * amount; i++) {
+      const x = rnd() * size, y = rnd() * size, r = size * (0.01 + rnd() * 0.06);
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, `rgba(120,104,78,${0.05 + rnd() * 0.09 * amount})`);
+      g.addColorStop(1, 'rgba(120,104,78,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+    }
+    return canvas;
+  }
+
+  // رمل بتموّج ريح اتجاهي وحبيبات دقيقة
+  function sandDune(size = 512, seed = 17) {
+    const c = canvasOf(size), ctx = c.getContext('2d'), img = ctx.createImageData(size, size);
+    const n = valueNoise(seed, 64), warp = valueNoise(seed + 5, 16), grain = valueNoise(seed + 9, 256);
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      const u = x / size, v = y / size;
+      const bend = fbm(warp, u * 2.4, v * 2.4, 3, 0.5);
+      const ripple = Math.pow(Math.sin((u * 34 + bend * 7 + v * 6) * Math.PI) * 0.5 + 0.5, 1.7);
+      const coarse = fbm(n, u * 7, v * 7, 4, 0.55);
+      const fine = fbm(grain, u * 120, v * 120, 2, 0.6);
+      const k = ripple * 0.42 + coarse * 0.4 + fine * 0.18;
+      const i = (y * size + x) * 4;
+      img.data[i] = 196 + k * 44;
+      img.data[i + 1] = 173 + k * 42;
+      img.data[i + 2] = 133 + k * 40;
+      img.data[i + 3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+    return c;
+  }
+
+  // قماش خيام: نسيج وخيوط ودروز وظل داخلي
+  function tentCanvas(size = 512, tint = '#f2ece0', seed = 23) {
+    const c = canvasOf(size), ctx = c.getContext('2d');
+    ctx.fillStyle = tint; ctx.fillRect(0, 0, size, size);
+    const rnd = makeRandom(seed);
+    ctx.globalAlpha = 0.1;
+    for (let i = 0; i < size; i += 2) {
+      ctx.fillStyle = i % 4 ? '#ffffff' : '#8f8булет'.replace('булет', '070');
+      ctx.fillRect(i, 0, 1, size);
+      ctx.fillRect(0, i, size, 1);
+    }
+    ctx.globalAlpha = 1;
+    // دروز خياطة
+    ctx.strokeStyle = 'rgba(120,104,80,0.35)';
+    ctx.lineWidth = 2;
+    for (let i = 1; i < 4; i++) {
+      ctx.beginPath(); ctx.moveTo((i * size) / 4, 0); ctx.lineTo((i * size) / 4, size); ctx.stroke();
+    }
+    ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+    ctx.lineWidth = 1;
+    for (let i = 1; i < 4; i++) {
+      ctx.beginPath(); ctx.moveTo((i * size) / 4 + 2, 0); ctx.lineTo((i * size) / 4 + 2, size); ctx.stroke();
+    }
+    // بقع استعمال خفيفة
+    for (let i = 0; i < 26; i++) {
+      const x = rnd() * size, y = rnd() * size, r = size * (0.02 + rnd() * 0.05);
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, 'rgba(150,132,102,0.14)');
+      g.addColorStop(1, 'rgba(150,132,102,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+    }
+    return c;
+  }
+
+  // جدار مبني: طبقة إسمنتية بتموّج وخطوط فواصل وأثر رطوبة أسفل
+  function plasterWall(size = 512, base = '#ded4c2', seed = 31) {
+    const c = canvasOf(size), ctx = c.getContext('2d'), img = ctx.createImageData(size, size);
+    const n = valueNoise(seed, 48), blotch = valueNoise(seed + 3, 12);
+    const rgb = parseInt(base.slice(1), 16);
+    const br = (rgb >> 16) & 255, bg = (rgb >> 8) & 255, bb = rgb & 255;
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      const u = x / size, v = y / size;
+      const k = fbm(n, u * 22, v * 22, 4, 0.55) * 0.5 + fbm(blotch, u * 3, v * 3, 3, 0.5) * 0.5;
+      const shade = 0.88 + k * 0.24;
+      const i = (y * size + x) * 4;
+      img.data[i] = br * shade; img.data[i + 1] = bg * shade; img.data[i + 2] = bb * shade; img.data[i + 3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+    return weather(c, 0.55, seed + 11);
+  }
+
+  // حجر: مداميك غير منتظمة بفواصل غائرة
+  function stoneWall(size = 512, seed = 41) {
+    const c = canvasOf(size), ctx = c.getContext('2d'), rnd = makeRandom(seed);
+    ctx.fillStyle = '#9d907a'; ctx.fillRect(0, 0, size, size);
+    const rows = 7, rh = size / rows;
+    for (let r = 0; r < rows; r++) {
+      let x = -rnd() * 60;
+      while (x < size) {
+        const w = size * (0.1 + rnd() * 0.14);
+        const tone = 0.82 + rnd() * 0.3;
+        ctx.fillStyle = `rgb(${Math.round(168 * tone)},${Math.round(154 * tone)},${Math.round(129 * tone)})`;
+        ctx.fillRect(x + 2, r * rh + 2, w - 4, rh - 4);
+        ctx.fillStyle = 'rgba(255,255,255,0.08)';
+        ctx.fillRect(x + 2, r * rh + 2, w - 4, 2);
+        x += w;
+      }
+    }
+    ctx.fillStyle = 'rgba(60,52,40,0.25)';
+    for (let r = 0; r <= rows; r++) ctx.fillRect(0, r * rh - 1.5, size, 3);
+    return weather(c, 0.4, seed + 7);
+  }
+
+  // أسفلت: ركام وبقع إصلاح
+  function asphaltTop(size = 512, seed = 71) {
+    const c = gravel(size, seed, '#8f8c84'), ctx = c.getContext('2d'), rnd = makeRandom(seed + 2);
+    for (let i = 0; i < 9; i++) {
+      const x = rnd() * size, y = rnd() * size, w = size * (0.1 + rnd() * 0.3), h = size * (0.05 + rnd() * 0.2);
+      ctx.fillStyle = `rgba(${100 + rnd() * 30},${98 + rnd() * 28},${92 + rnd() * 26},0.3)`;
+      ctx.fillRect(x, y, w, h);
+    }
+    ctx.fillStyle = 'rgba(60,58,54,0.14)'; ctx.fillRect(0, 0, size, size);
+    return c;
+  }
+
+  // خشب: ألواح بعروق وعُقد وفواصل
+  function deckWood(size = 512, seed = 53) {
+    const c = canvasOf(size), ctx = c.getContext('2d'), rnd = makeRandom(seed), n = valueNoise(seed, 32);
+    const planks = 7, ph = size / planks;
+    for (let p = 0; p < planks; p++) {
+      const tone = 0.78 + rnd() * 0.3;
+      ctx.fillStyle = `rgb(${Math.round(150 * tone)},${Math.round(114 * tone)},${Math.round(74 * tone)})`;
+      ctx.fillRect(0, p * ph, size, ph - 2);
+      ctx.globalAlpha = 0.22;
+      for (let g = 0; g < 30; g++) {
+        ctx.strokeStyle = g % 2 ? '#5c4126' : '#d9b98a';
+        ctx.beginPath();
+        const y0 = p * ph + rnd() * ph;
+        ctx.moveTo(0, y0);
+        for (let x = 0; x <= size; x += 24) ctx.lineTo(x, y0 + (fbm(n, x / size * 7, p, 3, 0.5) - 0.5) * 6);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      if (rnd() < 0.6) {
+        const kx = rnd() * size, ky = p * ph + ph * 0.5;
+        const g = ctx.createRadialGradient(kx, ky, 0, kx, ky, ph * 0.3);
+        g.addColorStop(0, 'rgba(70,48,26,0.6)');
+        g.addColorStop(1, 'rgba(70,48,26,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(kx, ky, ph * 0.3, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.fillStyle = 'rgba(40,28,16,0.5)';
+      ctx.fillRect(0, p * ph + ph - 2.5, size, 2.5);
+    }
+    return weather(c, 0.35, seed + 5);
+  }
+
+  // بطاقة أوراق بشفافية — للنخيل والطلح
+  function leafCard(size = 256, color = '#6f8a4c', seed = 61) {
+    const c = canvasOf(size), ctx = c.getContext('2d'), rnd = makeRandom(seed);
+    ctx.clearRect(0, 0, size, size);
+    for (let i = 0; i < 42; i++) {
+      const x = size * (0.1 + rnd() * 0.8), y = size * (0.1 + rnd() * 0.8);
+      const r = size * (0.04 + rnd() * 0.09);
+      const tone = 0.75 + rnd() * 0.5;
+      const rgb = parseInt(color.slice(1), 16);
+      ctx.fillStyle = `rgba(${Math.round(((rgb >> 16) & 255) * tone)},${Math.round(((rgb >> 8) & 255) * tone)},${Math.round((rgb & 255) * tone)},0.95)`;
+      ctx.beginPath();
+      ctx.ellipse(x, y, r, r * (0.4 + rnd() * 0.5), rnd() * Math.PI, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    return c;
+  }
+
+  // خشونة مشتقة من السطوع: الفاتح أنعم والداكن أخشن
+  function roughnessFrom(source, low = 0.45, high = 0.98) {
+    const size = source.width;
+    const src = source.getContext('2d').getImageData(0, 0, size, size).data;
+    const out = canvasOf(size), ctx = out.getContext('2d'), img = ctx.createImageData(size, size);
+    for (let i = 0; i < size * size; i++) {
+      const lum = (src[i * 4] * 0.299 + src[i * 4 + 1] * 0.587 + src[i * 4 + 2] * 0.114) / 255;
+      const r = Math.round((high - (high - low) * lum) * 255);
+      img.data[i * 4] = r; img.data[i * 4 + 1] = r; img.data[i * 4 + 2] = r; img.data[i * 4 + 3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+    return out;
+  }
+
+  NT.textures = { makeRandom, valueNoise, fbm, fallbackAerial, sand, fabric, wood, gravel, asphalt, normalFrom, canvasOf,
+    weather, sandDune, tentCanvas, plasterWall, stoneWall, asphaltTop, deckWood, leafCard, roughnessFrom };
 })(window.NT = window.NT || {});

@@ -42,7 +42,7 @@
   const pixelCap = state.quality === 'low' ? 1 : state.quality === 'medium' ? 1.6 : 2;
 
   const scene = new THREE.Scene();
-  let world = null, composer = null, bloom = null, ao = null, grade = null, dirty = true, mapDirty = true;
+  let world = null, composer = null, bloom = null, ao = null, grade = null, clampPass = null, dirty = true, mapDirty = true;
   let siteSurface = null, contextSurface = null, siteTexture = null, contextTexture = null;
 
   /* ===== أدوات المشهد ===== */
@@ -453,8 +453,9 @@
     if (bloom) {
       bloom.strength = t.bloom;
       bloom.threshold = t.bloomThreshold === undefined ? 1.6 : t.bloomThreshold;
-      bloom.radius = key === 'night' ? 0.9 : 0.6;
+      bloom.radius = key === 'night' ? 0.9 : 0.45;
     }
+    if (clampPass) clampPass.uniforms.maxLum.value = key === 'night' ? 4.5 : key === 'sunset' ? 7.0 : 9.0;
     if (grade) {
       grade.uniforms.warmth.value = key === 'sunset' ? 0.12 : key === 'night' ? 0.02 : 0.06;
       grade.uniforms.vignette.value = key === 'night' ? 0.20 : 0.26;
@@ -802,6 +803,12 @@
 
   /* ===== الإقلاع ===== */
   function boot() {
+    NT.models.loadAll(window.NT_MODELS || null).then((modelInfo) => {
+      if (modelInfo.available.length) {
+        toast(`حُمّل ${modelInfo.available.length} نموذجًا ثلاثي الأبعاد`);
+        buildWorld();
+      }
+    }).catch(() => {});
     buildWorld();
     if (!state.webgl) {
       for (const id of ['view3d', 'viewPlan', 'tourBtn', 'timeDay', 'timeSunset', 'timeNight', 'focusZone', 'zoneFly', 'zonePlan']) $(id).disabled = true;
@@ -833,6 +840,22 @@
         Object.defineProperty(ao, 'camera', { get: () => rig.camera, set: () => {} });
         composer.addPass(ao);
       } catch (e) { ao = null; }
+      // قرص الشمس في سماء HDR يتجاوز آلاف الوحدات؛ بلا سقف يبتلع التوهجُ الصورةَ كلها.
+      // هذا المرشّح يحدّ الذروة مع حفظ نسب الألوان، فيبقى للشمس وهجها بلا غسل المشهد.
+      clampPass = new THREE.ShaderPass({
+        uniforms: { tDiffuse: { value: null }, maxLum: { value: 9.0 } },
+        vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
+        fragmentShader: [
+          'uniform sampler2D tDiffuse; uniform float maxLum; varying vec2 vUv;',
+          'void main(){',
+          '  vec4 c = texture2D(tDiffuse, vUv);',
+          '  float m = max(max(c.r, c.g), c.b);',
+          '  if (m > maxLum) c.rgb *= maxLum / m;',
+          '  gl_FragColor = c;',
+          '}'
+        ].join('\n')
+      });
+      composer.addPass(clampPass);
       bloom = new THREE.UnrealBloomPass(new THREE.Vector2(width, height), 0.12, 0.6, 2.2);
       composer.addPass(bloom);
       // تدرّج لوني وتعتيم أطراف خفيف — لمسة تصوير لا أكثر

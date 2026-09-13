@@ -11,7 +11,7 @@ const checks = [];
 const ok = (name) => checks.push(name);
 
 /* 1. كل ملفات المصدر تُحلَّل بلا أخطاء نحوية */
-const sources = ['data', 'geo', 'textures', 'terrain', 'props', 'assets', 'content', 'world', 'basemap', 'mapview', 'controls', 'app'];
+const sources = ['data', 'geo', 'textures', 'terrain', 'props', 'assets', 'models', 'content', 'world', 'basemap', 'mapview', 'controls', 'app'];
 for (const name of sources) new vm.Script(read(`src/${name}.js`), { filename: `${name}.js` });
 ok('صحة بناء الجملة في ' + sources.length + ' ملفات');
 

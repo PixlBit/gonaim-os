@@ -6,7 +6,26 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
 const guard = (code) => code.replace(/<\/script/gi, '<\\/script');
-const sources = ['data', 'geo', 'textures', 'terrain', 'props', 'assets', 'content', 'world', 'basemap', 'mapview', 'controls', 'app'];
+
+// نماذج GLB تُدمج كـ data URI حتى تعمل الصفحة الواحدة بلا ملفات جانبية
+const modelsDir = path.join(root, 'assets/models');
+let modelScript = '';
+if (fs.existsSync(modelsDir)) {
+  const map = {};
+  const slots = read('src/models.js').match(/(\w+):\s*\{ file: '([^']+)'/g) || [];
+  for (const entry of slots) {
+    const m = /(\w+):\s*\{ file: '([^']+)'/.exec(entry);
+    const file = path.join(modelsDir, m[2]);
+    if (!fs.existsSync(file)) continue;
+    map[m[1]] = 'data:model/gltf-binary;base64,' + fs.readFileSync(file).toString('base64');
+  }
+  if (Object.keys(map).length) {
+    modelScript = `<script>window.NT_MODELS=${JSON.stringify(map)};<\/script>\n`;
+    console.log(`  ${Object.keys(map).length} نموذجًا مدمجًا: ${Object.keys(map).join(', ')}`);
+  }
+}
+
+const sources = ['data', 'geo', 'textures', 'terrain', 'props', 'assets', 'models', 'content', 'world', 'basemap', 'mapview', 'controls', 'app'];
 
 const html = read('index.html');
 const body = html.slice(html.indexOf('<body>') + 6, html.lastIndexOf('</body>'))
@@ -18,6 +37,7 @@ parts.push('<style>\n:root{color-scheme:dark}\nhtml,body{direction:rtl;height:10
   + read('assets/app.css') + '\n</style>');
 parts.push(body.trim());
 parts.push('<script>window.NT_PREVIEW={tiles:false,downloads:false};<\/script>');
+  if (modelScript) parts.push(modelScript);
 parts.push(`<script>${guard(read('vendor/three.js'))}<\/script>`);
 for (const name of sources) parts.push(`<script>${guard(read(`src/${name}.js`))}<\/script>`);
 
