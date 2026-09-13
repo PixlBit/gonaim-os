@@ -69,10 +69,11 @@
       ctx.fillStyle = state.style === 'satellite' ? '#b3ab90' : '#e6e4d6';
       ctx.fillRect(0, 0, W, H);
 
+      let ready = 0, failed = 0, pending = 0, blocked = false;
       const z = Math.floor(state.zoom), mag = Math.pow(2, state.zoom - z), unit = 256 * Math.pow(2, z);
       const left = state.centre[0] * unit - W * 0.5 / mag, top = state.centre[1] * unit - H * 0.52 / mag;
-      let ready = 0, failed = 0, pending = 0;
-      for (let ty = Math.floor(top / 256); ty <= Math.floor((top + H / mag) / 256); ty++) {
+      if (NT.env && NT.env.tiles === false) blocked = true;
+      else for (let ty = Math.floor(top / 256); ty <= Math.floor((top + H / mag) / 256); ty++) {
         for (let tx = Math.floor(left / 256); tx <= Math.floor((left + W / mag) / 256); tx++) {
           const t = NT.basemap.tile(state.style, z, tx, ty, () => opt.onTile && opt.onTile());
           if (!t) continue;
@@ -126,7 +127,7 @@
       ctx.fillStyle = '#e4f4b1';
       ctx.beginPath(); ctx.arc(pin[0], pin[1] - 27, 4.6, 0, Math.PI * 2); ctx.fill();
 
-      return { ready, failed, pending };
+      return { ready, failed, pending, blocked };
     }
 
     const scaleOfMetre = () => 1 / geo.metresPerPixel(state.zoom, NT.data.site.lat);

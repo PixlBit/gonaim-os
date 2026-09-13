@@ -91,6 +91,7 @@
     function load() {
       ctx.fillStyle = opt.style === 'satellite' ? '#b8ae92' : '#e6e4d6';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      if (NT.env && NT.env.tiles === false) { fallback(); return; }   // معاينة مستضافة تمنع مصادر الخرائط
       const x0 = Math.floor(box.x0 / 256), x1 = Math.floor((box.x0 + box.size) / 256);
       const y0 = Math.floor(box.y0 / 256), y1 = Math.floor((box.y0 + box.size) / 256);
       state.pending = 0;

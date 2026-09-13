@@ -7,6 +7,9 @@
   const fmt = (n) => Math.round(n).toLocaleString('en-US');
   const geo = NT.geo, data = NT.data, site = data.site;
 
+  // وضع المعاينة المستضافة: بعض المنصات تحجب مصادر الخرائط والتنزيل
+  NT.env = Object.assign({ tiles: true, downloads: true }, window.NT_PREVIEW || {});
+  const env = NT.env;
   const params = new URLSearchParams(location.search);
   const state = {
     view: '3d', time: 'day', selected: 'S1', hover: null,
@@ -178,8 +181,11 @@
     if (s.ready > 0) { $('status').hidden = true; return; }
     if (s.drawnFallback) {
       $('status').hidden = false;
-      $('status').textContent = 'تعذر تحميل صورة الأقمار الصناعية؛ يظهر سطح صحراوي بديل. تحقق من الاتصال أو بدّل مصدر الخريطة.';
-      $('surfaceNote').textContent = 'أرض مستوية · سطح بديل';
+      $('status').textContent = env.tiles
+        ? 'تعذر تحميل صورة الأقمار الصناعية؛ يظهر سطح صحراوي بديل. تحقق من الاتصال أو بدّل مصدر الخريطة.'
+        : 'هذه معاينة مستضافة تمنع مصادر الخرائط الخارجية، فيظهر سطح صحراوي تمثيلي. صورة الموقع الحقيقية تظهر عند فتح الملف محليًا.';
+      $('surfaceNote').textContent = 'أرض مستوية · سطح تمثيلي';
+      setTimeout(() => { $('status').hidden = true; }, 9000);
     }
   }
   function setAttribution() {
@@ -299,7 +305,10 @@
         const s = mapview.draw(state.selected, state.hover, state.layers);
         mapDirty = false;
         updateScale();
-        if (!s.ready && !s.pending) {
+        if (s.blocked) {
+          $('status').hidden = false;
+          $('status').textContent = 'خريطة الموقع تحتاج مصدر بلاطات خارجيًا تمنعه هذه المعاينة. المناطق والحدود معروضة بإحداثياتها الحقيقية، والصورة تظهر عند فتح الملف محليًا.';
+        } else if (!s.ready && !s.pending) {
           $('status').hidden = false;
           $('status').textContent = s.failed ? 'تعذر تحميل الخريطة. بدّل المصدر أو تحقق من الاتصال.' : 'جارٍ تحميل صورة الموقع…';
         } else if (s.ready) $('status').hidden = true;
@@ -407,7 +416,7 @@
     $('hint').textContent = view === 'map'
       ? 'اسحب الخريطة · عجلة الفأرة للتكبير · اضغط على منطقة لاستكشافها'
       : view === 'plan' ? 'مسقط علوي بالشمال لأعلى · اسحب للتحريك' : 'اسحب للتدوير · Shift مع السحب للتحريك · نقرة مزدوجة للطيران';
-    $('surfaceNote').textContent = view === 'map' ? 'مخطط مثبت جغرافيًا' : 'أرض مستوية · صورة الموقع الحقيقية';
+    $('surfaceNote').textContent = view === 'map' ? 'مخطط مثبت جغرافيًا' : (env.tiles ? 'أرض مستوية · صورة الموقع الحقيقية' : 'أرض مستوية · سطح تمثيلي');
     for (const id of ['timeDay', 'timeSunset', 'timeNight']) $(id).disabled = view === 'map';
     $('tourBtn').disabled = view === 'map';
     if (view === 'plan' && world) {
@@ -521,13 +530,34 @@
   }
 
   /* ===== التصدير ===== */
-  function download(blob, name) {
+  // حفظ الملف: عبر مضيف المعاينة إن وفّر ذلك، وإلا عبر رابط تنزيل عادي
+  let saver = null, saverChecked = false;
+  async function getSaver() {
+    if (saverChecked) return saver;
+    saverChecked = true;
+    try {
+      saver = window.claude && typeof window.claude.use === 'function' ? await window.claude.use('downloads') : null;
+    } catch (e) { saver = null; }
+    return saver;
+  }
+  async function download(blob, name) {
+    $('exportMenu').hidden = true;
+    $('exportBtn').setAttribute('aria-expanded', 'false');
+    const host = await getSaver();
+    if (host) {
+      try {
+        await host.save({ filename: name.replace(/\.geojson$/, '.json'), data: blob });
+        toast('تم حفظ الملف');
+      } catch (e) {
+        if (!e || e.code !== 'declined') toast('تعذر حفظ الملف في هذه المعاينة');
+      }
+      return;
+    }
+    if (!env.downloads) { toast('التنزيل غير متاح في هذه المعاينة؛ يعمل عند فتح الملف محليًا.'); return; }
     const url = URL.createObjectURL(blob), a = document.createElement('a');
     a.href = url; a.download = name;
     document.body.append(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 4000);
-    $('exportMenu').hidden = true;
-    $('exportBtn').setAttribute('aria-expanded', 'false');
   }
   function exportPng() {
     if (state.view !== 'map' && world) { world.updateShadow(rig.target.x, rig.target.z, rig.current.dist); render(); }
