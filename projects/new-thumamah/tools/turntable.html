@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<title>منصة تصوير العناصر</title>
+<style>html,body{margin:0;background:#ffffff}canvas{display:block}</style>
+</head><body>
+<script src="../vendor/three.js"></script>
+<script src="../src/textures.js"></script>
+<script src="../src/props.js"></script>
+<script src="../src/assets.js"></script>
+<script>
+/* منصة تصوير: تعرض عنصرًا واحدًا من مكتبتنا الحالية على خلفية استوديو،
+   لتُستخدم لقطاتها كمرجع بصري عند توليد نموذج بديل عالي الجودة. */
+(function () {
+  const q = new URLSearchParams(location.search);
+  const W = +(q.get('w') || 1024), H = +(q.get('h') || 1024);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  renderer.setSize(W, H); renderer.setPixelRatio(1);
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.0;
+  document.body.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xf2f2f2);
+  const camera = new THREE.PerspectiveCamera(35, W / H, 0.1, 500);
+
+  // إضاءة استوديو محايدة: مفتاح + ملء + خلفي
+  const key = new THREE.DirectionalLight(0xffffff, 2.6);
+  key.position.set(6, 9, 7); key.castShadow = true;
+  key.shadow.mapSize.set(2048, 2048);
+  const c = key.shadow.camera; c.left = -14; c.right = 14; c.top = 14; c.bottom = -14; c.near = 0.5; c.far = 60;
+  scene.add(key);
+  const fill = new THREE.DirectionalLight(0xdfe8f5, 0.9);
+  fill.position.set(-7, 5, -4); scene.add(fill);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0xd8d2c4, 1.1));
+
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(200, 200),
+    new THREE.MeshStandardMaterial({ color: 0xf2f2f2, roughness: 1 }));
+  ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+
+  const M = NT.props.makeMaterials(null);
+  const P = NT.props, A = NT.assets;
+  const REG = {
+    tent: () => P.safariTent(M),
+    dome: () => P.domeStay(M),
+    kashta: () => P.kashta(M),
+    majlis: () => P.majlis(M, 4.4),
+    suv: () => A.suv(M),
+    sedan: () => A.sedan(M),
+    pickup: () => A.pickup(M),
+    coach: () => A.coach(M),
+    foodTruck: () => P.foodTruck(M),
+    personThobe: () => A.person(M, 'thobe'),
+    personAbaya: () => A.person(M, 'abaya'),
+    personChild: () => A.person(M, 'child'),
+    lightPole: () => A.streetLight(M, 9, 1),
+    fuelStation: () => P.fuelStation(M),
+    gate: () => P.gateHouse(M, 3),
+    acacia: () => P.acacia(M, 1),
+    shrub: () => P.shrub(M, 1),
+    rock: () => P.rock(M, 1, 7),
+    palm: () => P.palm(M, 6.4),
+    summitRestaurant: () => P.summitRestaurant(M),
+    stableRow: () => P.stableRow(M),
+    playSet: () => P.playSet(M),
+    firePit: () => P.firePit(M)
+  };
+
+  const group = new THREE.Group(); scene.add(group);
+  const name = q.get('prop') || 'tent';
+  const parts = REG[name] ? REG[name]() : [];
+  for (const p of parts) {
+    const mesh = new THREE.Mesh(p.geometry, p.material);
+    mesh.castShadow = p.shadow !== false; mesh.receiveShadow = true;
+    group.add(mesh);
+  }
+
+  const box = new THREE.Box3().setFromObject(group);
+  const size = new THREE.Vector3(); box.getSize(size);
+  const centre = new THREE.Vector3(); box.getCenter(centre);
+  group.position.set(-centre.x, -box.min.y, -centre.z);
+  const radius = Math.max(size.x, size.y, size.z) * 0.5 || 1;
+  const target = new THREE.Vector3(0, size.y * 0.45, 0);
+
+  const az = THREE.MathUtils.degToRad(+(q.get('az') || 35));
+  const el = THREE.MathUtils.degToRad(+(q.get('el') || 16));
+  const dist = radius / Math.tan(THREE.MathUtils.degToRad(35 / 2)) * 1.35;
+  camera.position.set(
+    target.x + dist * Math.cos(el) * Math.sin(az),
+    target.y + dist * Math.sin(el),
+    target.z + dist * Math.cos(el) * Math.cos(az)
+  );
+  camera.lookAt(target);
+  key.target.position.copy(target); scene.add(key.target);
+
+  renderer.render(scene, camera);
+  window.NTSHOT = { ok: true, prop: name, parts: parts.length, size: size.toArray().map((v) => +v.toFixed(2)) };
+})();
+</script>
+</body></html>
