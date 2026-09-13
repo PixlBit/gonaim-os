@@ -42,7 +42,7 @@
   const pixelCap = state.quality === 'low' ? 1 : state.quality === 'medium' ? 1.6 : 2;
 
   const scene = new THREE.Scene();
-  let world = null, composer = null, bloom = null, dirty = true, mapDirty = true;
+  let world = null, composer = null, bloom = null, ao = null, grade = null, dirty = true, mapDirty = true;
   let siteSurface = null, contextSurface = null, siteTexture = null, contextTexture = null;
 
   /* ===== أدوات المشهد ===== */
@@ -328,6 +328,7 @@
     } else if (world) {
       const moved = rig.update(dt);
       if (moved) { syncLabels(); updateCompass(); updateScale(); }
+      if (world.clouds) { world.clouds.update(dt); dirty = true; }
       if (moved || dirty) {
         world.updateShadow(rig.target.x, rig.target.z, rig.current.dist);
         render();
@@ -449,7 +450,16 @@
     state.time = key;
     for (const [id, k] of [['timeDay', 'day'], ['timeSunset', 'sunset'], ['timeNight', 'night']]) $(id).setAttribute('aria-pressed', String(key === k));
     const t = world.setTime(key, renderer);
-    if (bloom) bloom.strength = t.bloom;
+    if (bloom) {
+      bloom.strength = t.bloom;
+      bloom.threshold = t.bloomThreshold === undefined ? 1.6 : t.bloomThreshold;
+      bloom.radius = key === 'night' ? 0.9 : 0.6;
+    }
+    if (grade) {
+      grade.uniforms.warmth.value = key === 'sunset' ? 0.12 : key === 'night' ? 0.02 : 0.06;
+      grade.uniforms.vignette.value = key === 'night' ? 0.42 : 0.28;
+    }
+    if (ao) ao.configuration.intensity = key === 'night' ? 1.6 : 2.6;
     dirty = true;
   }
 
@@ -781,6 +791,7 @@
       renderer.setPixelRatio(dpr);
       renderer.setSize(width, height, false);
       if (composer) composer.setSize(width, height);
+      if (ao && ao.setSize) ao.setSize(width, height);
     }
     rig.resize(width, height);
     mapview.resize(width, height, dpr);
@@ -805,12 +816,43 @@
     }
     if (state.quality !== 'low') {
       composer = new THREE.EffectComposer(renderer);
-      composer.addPass(new THREE.RenderPass(scene, rig.perspective));
-      bloom = new THREE.UnrealBloomPass(new THREE.Vector2(width, height), 0.14, 0.72, 0.86);
+      const renderPass = new THREE.RenderPass(scene, rig.perspective);
+      Object.defineProperty(renderPass, 'camera', { get: () => rig.camera, set: () => {} });
+      composer.addPass(renderPass);
+      // تظليل محيطي: يثبّت العناصر على الأرض ويظهر تلامسها
+      try {
+        if (params.get('ao') === '0') throw new Error('ao disabled');
+        ao = new THREE.N8AOPass(scene, rig.perspective, width, height);
+        ao.configuration.aoRadius = 6;
+        ao.configuration.distanceFalloff = 1.4;
+        ao.configuration.intensity = 2.6;
+        ao.configuration.color = new THREE.Color(0x2a2418);
+        // المشهد يمر لاحقًا على OutputPass، فلا تصحيح ألوان مزدوج هنا
+        ao.configuration.gammaCorrection = false;
+        ao.setQualityMode(state.quality === 'high' ? 'Medium' : 'Low');
+        Object.defineProperty(ao, 'camera', { get: () => rig.camera, set: () => {} });
+        composer.addPass(ao);
+      } catch (e) { ao = null; }
+      bloom = new THREE.UnrealBloomPass(new THREE.Vector2(width, height), 0.12, 0.6, 2.2);
       composer.addPass(bloom);
+      // تدرّج لوني وتعتيم أطراف خفيف — لمسة تصوير لا أكثر
+      if (params.get('grade') !== '0') grade = new THREE.ShaderPass({
+        uniforms: { tDiffuse: { value: null }, warmth: { value: 0.06 }, vignette: { value: 0.28 } },
+        vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
+        fragmentShader: [
+          'uniform sampler2D tDiffuse; uniform float warmth; uniform float vignette; varying vec2 vUv;',
+          'void main(){',
+          '  vec4 c = texture2D(tDiffuse, vUv);',
+          '  c.rgb = mix(c.rgb, c.rgb * vec3(1.05, 1.0, 0.94), warmth * 6.0);',
+          '  float d = distance(vUv, vec2(0.5));',
+          '  float v = 1.0 - smoothstep(0.30, 0.92, d);',
+          '  c.rgb *= mix(1.0, v, vignette);',
+          '  gl_FragColor = c;',
+          '}'
+        ].join('\n')
+      });
+      if (grade) composer.addPass(grade);
       composer.addPass(new THREE.OutputPass());
-      const pass = composer.passes[0];
-      Object.defineProperty(pass, 'camera', { get: () => rig.camera, set: () => {} });
     }
     resize();
     updateUI();

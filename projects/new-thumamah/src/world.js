@@ -7,17 +7,20 @@
     day: {
       label: 'نهار', elevation: 56, azimuth: 162, turbidity: 3.2, rayleigh: 1.05, mie: 0.005, mieG: 0.75,
       sun: 0xfff4e4, sunI: 3.1, hemiSky: 0xa8c8ea, hemiGround: 0xb09c74, hemiI: 0.17, ambient: 0.02, envI: 0.26,
-      exposure: 0.42, fog: 0xd6d2c4, fogNear: 3200, fogFar: 24000, emissive: 0, bloom: 0.1
+      exposure: 0.42, bloom: 0.1, fog: 0xd6d2c4, fogNear: 3200, fogFar: 24000, emissive: 0, bloom: 0.1,
+      cloud: 0xffffff, cloudOpacity: 0.72, bloomThreshold: 2.4
     },
     sunset: {
       label: 'غروب', elevation: 7.0, azimuth: 287, turbidity: 6.2, rayleigh: 2.5, mie: 0.010, mieG: 0.86,
       sun: 0xffb379, sunI: 4.3, hemiSky: 0xdaa87c, hemiGround: 0x75593f, hemiI: 0.30, ambient: 0.05, envI: 0.6,
-      exposure: 0.48, fog: 0xddb890, fogNear: 2200, fogFar: 17000, emissive: 0.32, bloom: 0.3
+      exposure: 0.48, fog: 0xddb890, fogNear: 2200, fogFar: 17000, emissive: 0.32, bloom: 0.3,
+      cloud: 0xffc79a, cloudOpacity: 0.82, bloomThreshold: 1.5
     },
     night: {
       label: 'ليل', elevation: -11, azimuth: 300, turbidity: 1.8, rayleigh: 0.6, mie: 0.003, mieG: 0.8,
       sun: 0x9cb4dc, sunI: 0.62, hemiSky: 0x33455f, hemiGround: 0x2b2419, hemiI: 0.30, ambient: 0.10, envI: 0.6,
-      exposure: 0.82, fog: 0x1a2331, fogNear: 1200, fogFar: 11000, emissive: 1, bloom: 0.62
+      exposure: 0.82, fog: 0x1a2331, fogNear: 1200, fogFar: 11000, emissive: 1, bloom: 0.62,
+      cloud: 0x4a5c78, cloudOpacity: 0.45, bloomThreshold: 0.45
     }
   };
 
@@ -146,6 +149,94 @@
       stripes(list, material) {
         const g = new THREE.BoxGeometry(0.14, 0.06, 4.6 * SZ);
         for (const p of list) builder.add(g, material, NT.props.M4(wx(p[0]) - 1.3, hAt(p[0], p[1]) + 0.07, wz(p[1] + 2.3), 0, 1));
+        return ctx;
+      },
+      /* دهانات الطريق: خط وسط متقطع وخطان جانبيان */
+      markings(points, width) {
+        const dash = [];
+        for (let i = 0; i < points.length - 1; i++) {
+          const a = points[i], b = points[i + 1];
+          const len = Math.hypot((b[0] - a[0]) * SX, (b[1] - a[1]) * SZ);
+          const steps = Math.max(1, Math.round(len / 9));
+          for (let k = 0; k < steps; k++) {
+            const t0 = (k + 0.15) / steps, t1 = (k + 0.65) / steps;
+            dash.push([[a[0] + (b[0] - a[0]) * t0, a[1] + (b[1] - a[1]) * t0],
+                       [a[0] + (b[0] - a[0]) * t1, a[1] + (b[1] - a[1]) * t1]]);
+          }
+        }
+        for (const seg of dash) {
+          const g = ribbonGeometry(seg, 0.18, 0.1);
+          if (g) builder.add(g, materials.paint, null);
+        }
+        for (const side of [-1, 1]) {
+          const edge = points.map((p, i) => {
+            const prev = points[Math.max(0, i - 1)], next = points[Math.min(points.length - 1, i + 1)];
+            const dx = next[0] - prev[0], dy = next[1] - prev[1];
+            const len = Math.hypot(dx, dy) || 1;
+            return [p[0] - (dy / len) * side * (width / 2 - 0.5), p[1] + (dx / len) * side * (width / 2 - 0.5)];
+          });
+          const g = ribbonGeometry(edge, 0.16, 0.1);
+          if (g) builder.add(g, materials.paint, null);
+        }
+        return ctx;
+      },
+      /* أشخاص: توزيع بأحجام وملابس متنوعة */
+      people(list, options) {
+        const opt = options || {};
+        const groups = { thobe: [], abaya: [], staff: [], child: [] };
+        for (const spot of list) {
+          const kind = spot[2] || (rnd() < 0.42 ? 'thobe' : rnd() < 0.62 ? 'abaya' : rnd() < 0.82 ? 'child' : 'staff');
+          const jitter = opt.spread || 0;
+          const x = spot[0] + (rnd() - 0.5) * jitter, y = spot[1] + (rnd() - 0.5) * jitter;
+          groups[kind] = groups[kind] || [];
+          groups[kind].push(at(x, y, rnd() * 6.28, 0.96 + rnd() * 0.1));
+        }
+        for (const kind of Object.keys(groups)) {
+          if (!groups[kind].length) continue;
+          const cloth = kind === 'thobe' ? (rnd() < 0.5 ? materials.thobe : materials.thobeWarm)
+            : kind === 'child' ? (rnd() < 0.5 ? materials.shirtA : materials.shirtB) : null;
+          builder.instances(NT.assets.person(materials, kind, cloth), groups[kind], { pick: ctx.zone ? ctx.zone.id : null });
+        }
+        return ctx;
+      },
+      /* مركبات: نوع محدد أو خليط واقعي */
+      vehicles(list, kind) {
+        const palette = [materials.carBody, materials.plaster, materials.metalLight, materials.plasterWarm, materials.stone];
+        const buckets = new Map();
+        for (const v of list) {
+          const type = v[3] || kind || (rnd() < 0.42 ? 'sedan' : rnd() < 0.78 ? 'suv' : 'pickup');
+          const tint = palette[Math.floor(rnd() * palette.length)];
+          const key = type + '|' + palette.indexOf(tint);
+          if (!buckets.has(key)) buckets.set(key, { type, tint, list: [] });
+          buckets.get(key).list.push(at(v[0], v[1], v[2] || 0, 1));
+        }
+        for (const bucket of buckets.values()) {
+          const parts = NT.assets[bucket.type] ? NT.assets[bucket.type](materials, bucket.tint) : NT.assets.sedan(materials, bucket.tint);
+          builder.instances(parts, bucket.list, { pick: ctx.zone ? ctx.zone.id : null });
+        }
+        return ctx;
+      },
+      lights(list, height, arms) {
+        builder.instances(NT.assets.streetLight(materials, height || 9, arms || 1), list.map((p) => at(p[0], p[1], p[2] || 0, 1)));
+        for (const p of list) occupy(p[0], p[1], 4, 4);
+        return ctx;
+      },
+      floods(list, height) {
+        builder.instances(NT.assets.floodMast(materials, height || 16), list.map((p) => at(p[0], p[1], p[2] || 0, 1)));
+        return ctx;
+      },
+      bollards(points, spacing) {
+        const list = [], step = spacing || 12;
+        for (let i = 0; i < points.length - 1; i++) {
+          const a = points[i], b = points[i + 1];
+          const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+          const n = Math.max(1, Math.round(len / step));
+          for (let k = 0; k < n; k++) {
+            const t = k / n;
+            list.push(at(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, 0, 1));
+          }
+        }
+        builder.instances(NT.assets.bollard(materials), list);
         return ctx;
       },
       ribbon(points, width, material, lift) {
@@ -403,6 +494,7 @@
       } else {
         ctx.ribbon(road.points, road.width + 7, materials.track, 0.04);
         ctx.ribbon(road.points, road.width, materials.asphalt, 0.06);
+        ctx.markings(road.points, road.width);
       }
     }
     // تشجير وإنارة على مسار الدخول والمحور
@@ -422,13 +514,13 @@
             const off = road.width / 2 + 6;
             avenue.push(at(x + nx * off, y + ny * off, rnd() * 6.28, 0.85 + rnd() * 0.25));
             avenue.push(at(x - nx * off, y - ny * off, rnd() * 6.28, 0.85 + rnd() * 0.25));
-            if (k % 3 === 0) poles.push(at(x + nx * (off + 3), y + ny * (off + 3), 0, 1));
+            if (k % 2 === 0) poles.push([x + nx * (off + 3.5), y + ny * (off + 3.5)]);
             occupy(x, y, 24, 24);
           }
         }
       }
       builder.instances(NT.props.palm(materials, 6.2), avenue);
-      builder.instances(NT.props.lightPole(materials, 6), poles);
+      ctx.lights(poles, 9, 1);
     }
 
     /* ===== محتوى المناطق ===== */
@@ -489,6 +581,11 @@
     sun.shadow.normalBias = 0.7;
     scene.add(sun);
     scene.add(sun.target);
+
+    const clouds = NT.assets.createClouds(scene, {
+      count: quality === 'low' ? 26 : 52,
+      spread: 11000, base: 950, height: 1500, size: 950
+    });
 
     const hemi = new THREE.HemisphereLight(0xbcd4ea, 0xc9b68f, 0.5);
     scene.add(hemi);
@@ -552,6 +649,7 @@
       scene.fog = new THREE.Fog(t.fog, t.fogNear, t.fogFar);
       for (const key2 of materials.emissiveKeys) materials[key2].emissiveIntensity = t.emissive * (key2 === 'fire' ? 1.6 : 1);
       materials.windowGlow.emissiveIntensity = t.emissive * 0.9;
+      clouds.setTint(t.cloud === undefined ? 0xffffff : t.cloud, t.cloudOpacity === undefined ? 0.75 : t.cloudOpacity);
       for (const l of fireLights) l.intensity = t.emissive * 420;
       for (const l of clusterLights) l.intensity = t.emissive * 320;
       if (renderer) {
@@ -598,7 +696,7 @@
     }
 
     const api = {
-      root, ground, contextGround, boundary, materials, sky, sun, hemi, ambient, fireLights, clusterLights,
+      root, ground, contextGround, boundary, materials, sky, sun, hemi, ambient, fireLights, clusterLights, clouds,
       terrain, zones: NT.data.zones, meshes: builder.meshes, times: TIMES,
       get time() { return current; },
       setTime, updateShadow, applySurface, wx, wz, SX, SZ,
@@ -648,6 +746,7 @@
         scene.remove(hemi); scene.remove(ambient);
         for (const l of fireLights) scene.remove(l);
         for (const l of clusterLights) scene.remove(l);
+        clouds.dispose();
         if (pmrem) pmrem.dispose();
       }
     };

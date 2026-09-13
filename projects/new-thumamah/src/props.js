@@ -104,7 +104,18 @@
       lamp: std({ color: 0xe8e2d2, roughness: 0.6, emissive: 0xffc978, emissiveIntensity: 0 }),
       windowGlow: std({ color: 0x2b3238, roughness: 0.2, metalness: 0.1, emissive: 0xffb765, emissiveIntensity: 0 }),
       fire: std({ color: 0x2a1c12, roughness: 1, emissive: 0xff7a2a, emissiveIntensity: 0 }),
-      water: std({ color: 0x3c6d74, roughness: 0.12, metalness: 0.2 })
+      water: std({ color: 0x3c6d74, roughness: 0.12, metalness: 0.2 }),
+      skin: std({ color: 0xc99a72, roughness: 0.78 }),
+      thobe: std({ color: 0xf2efe6, roughness: 0.86 }),
+      thobeWarm: std({ color: 0xe3dccb, roughness: 0.88 }),
+      abaya: std({ color: 0x2b2b30, roughness: 0.82 }),
+      ghutra: std({ color: 0xfbf8f0, roughness: 0.84 }),
+      vest: std({ color: 0xc9762c, roughness: 0.7 }),
+      hair: std({ color: 0x2a2320, roughness: 0.9 }),
+      shirtA: std({ color: 0x9db7c8, roughness: 0.85 }),
+      shirtB: std({ color: 0xb6714f, roughness: 0.85 }),
+      signFace: std({ color: 0x2f6d4a, roughness: 0.6, emissive: 0x0d2a1a, emissiveIntensity: 0 }),
+      paint: std({ color: 0xf1ede0, roughness: 0.9 })
     };
     if (env) for (const k of ['glass', 'metal', 'metalLight', 'carBody', 'water']) mats[k].envMap = env;
     mats.emissiveKeys = ['lamp', 'windowGlow', 'fire'];

@@ -81,7 +81,8 @@ src/data.js           نموذج البيانات: الموقع، المناطق
 src/terrain.js        حقل الارتفاعات: الجبل والكثبان والمساحات المسوّاة
 src/geo.js            Vincenty على WGS 84، المساحات، تصدير GeoJSON
 src/textures.js       خامات مولّدة برمجيًا (رمل، قماش، خشب، حصى) وبديل الصور الجوية
-src/props.js          مكتبة العناصر بمقاسات حقيقية (محطة وقود، بوابة، فود تراك، اسطبل، قبة 6 م، خيمة 5×7 م…)
+src/props.js          مكتبة المنشآت بمقاسات حقيقية (محطة وقود، بوابة، فود تراك، اسطبل، قبة 6 م، خيمة 5×7 م…)
+src/assets.js         أشخاص ومركبات وسحاب وتجهيزات طرق وإنارة — كلها مولّدة برمجيًا
 src/content.js        محتوى كل منطقة وتوزيعها
 src/world.js          المشهد: تضاريس، سماء وشمس، ظلال، نبات، طرق تتبع الأرض
 src/basemap.js        بلاطات الخرائط وفرشها على الأرض
@@ -98,5 +99,6 @@ reference/            الخطة التسويقية — مرجع للفهم، ل
 
 - صور الأقمار الصناعية: [Esri World Imagery](https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9) — تُطلب البلاطات المرئية فقط، بلا تخزين أو تنزيل بالجملة.
 - خريطة الشوارع: [OpenStreetMap](https://www.openstreetmap.org/copyright) وفق [سياسة البلاطات](https://operations.osmfoundation.org/policies/tiles/).
-- محرك العرض: [three.js](https://threejs.org) رخصة MIT، مدمج في `vendor/`.
+- محرك العرض: [three.js](https://threejs.org) رخصة MIT، والتظليل المحيطي [n8ao](https://github.com/N8python/n8ao) رخصة ISC — كلاهما مدمج في `vendor/three.js`.
+- لا نماذج ثلاثية الأبعاد خارجية: كل الأصول مولّدة برمجيًا داخل المشروع.
 - الإسناد ظاهر دائمًا داخل التطبيق وفي صور التصدير.

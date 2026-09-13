@@ -3,6 +3,7 @@
 (function (NT) {
   'use strict';
   const P = () => NT.props;
+  const A = () => NT.assets;
   const NORTH = 0, WEST = Math.PI / 2, EAST = -Math.PI / 2, SOUTH = Math.PI;
 
   function build(kind, ctx) {
@@ -26,8 +27,10 @@
         c.add(mast, M.metal, c.atY(x, 8, 3.5));
         c.add(panel, M.lamp, c.atY(x, 8, 6.2));
       }
-      c.instances(P().lightPole(M, 7), c.grid([[736, 20], [736, 96], [864, 20], [864, 108]]));
-      c.instances(P().car(M), [[770, 22, 0], [786, 22, 0], [846, 100, Math.PI]].map((p) => c.at(p[0], p[1], p[2], 1)), { pick: z.id });
+      c.lights([[734, 22], [734, 96], [866, 22], [866, 106]], 9, 1);
+      c.vehicles([[752, 50, 0, 'sedan'], [752, 62, 0, 'suv'], [734, 50, 0, 'pickup'], [846, 100, Math.PI, 'sedan'], [812, 14, 0, 'suv']]);
+      c.people([[758, 54], [746, 58], [868, 92, 'staff'], [860, 86], [744, 44, 'staff'], [866, 100], [852, 96, 'child']], { spread: 3 });
+      c.place(A().roadSign(M, true), 786, 100, SOUTH);
       c.trees(z, 5, 0.4);
     },
 
@@ -62,6 +65,16 @@
       c.ribbon([[1062, 228], [1000, 226], [930, 222], [872, 205], [830, 186]], 4, M.track, 0.08);
       for (let i = 0; i < 4; i++) c.place(P().shadeStructure(M, 12, 4.5, 3.2, false), 1040 - i * 56, 226 - i * 4, NORTH);
       c.palms([[860, 128], [880, 128], [900, 132], [920, 136], [940, 140], [960, 144]]);
+      // طابور الدخول وحافلات المجموعات
+      c.vehicles([[792, 132, 0, 'sedan'], [804, 126, 0, 'suv'], [792, 112, 0, 'suv'], [806, 104, 0, 'pickup'], [794, 92, 0, 'sedan']]);
+      c.vehicles([[884, 160, -Math.PI / 2, 'coach'], [884, 178, -Math.PI / 2, 'coach']]);
+      c.people([[812, 156, 'staff'], [788, 156, 'staff'], [800, 140], [806, 134], [790, 126, 'child'], [862, 168], [868, 176, 'child'], [874, 164]], { spread: 3 });
+      // مشاة على ممشى المواقف
+      const walk = [];
+      for (let i = 0; i < 26; i++) walk.push([1040 - i * 8 + c.rnd() * 6, 224 + (c.rnd() - 0.5) * 7]);
+      c.people(walk, { spread: 2 });
+      c.lights([[1062, 196], [1062, 262], [1180, 196], [1180, 262], [1300, 196], [1300, 262], [1400, 228]], 10, 2);
+      c.place(A().roadSign(M, true), 856, 208, SOUTH);
       c.trees(z, 22, 0.5);
     },
 
@@ -102,7 +115,18 @@
 
       // خدمات ودورات مياه لكل مجموعة
       for (const p of [[300, 380], [280, 640], [400, 800]]) c.place(P().buildingBlock(M, 12, 5, 3.2, M.plasterWarm), p[0], p[1], SOUTH);
-      c.instances(P().lightPole(M, 6), c.grid([[300, 350], [430, 500], [250, 690], [470, 690], [350, 810]]));
+      c.lights([[300, 350], [430, 500], [250, 690], [470, 690], [350, 810]], 8, 1);
+      // ناس حول المجالس والخيام والكشتات
+      const campPeople = [];
+      for (const p of plots) {
+        const n = 2 + Math.floor(c.rnd() * 4);
+        for (let i = 0; i < n; i++) campPeople.push([p[0] + (c.rnd() - 0.5) * 26, p[1] - 6 + (c.rnd() - 0.5) * 16]);
+      }
+      for (const sp of spots) {
+        const n = 2 + Math.floor(c.rnd() * 3);
+        for (let i = 0; i < n; i++) campPeople.push([sp[0] + (c.rnd() - 0.5) * 9, sp[1] + (c.rnd() - 0.5) * 8]);
+      }
+      c.people(campPeople, { spread: 1.5 });
       c.trees(z, 34, 0.9);
       c.palms([[560, 300], [575, 340], [120, 300], [120, 350]]);
     },
@@ -143,6 +167,23 @@
       c.instances(P().lightPole(M, 6), c.grid([[880, 812], [980, 880]]));
       const bale = new THREE.BoxGeometry(1.8, 1.2, 1.2);
       for (const b of [[1004, 878], [1004, 882], [1006, 886]]) c.add(bale, M.foliageDry, c.atY(b[0], b[1], 0.6));
+      // زحام ساحة الفود تراك
+      const crowd = [];
+      for (let i = 0; i < 46; i++) {
+        const a = c.rnd() * Math.PI * 2, r = 6 + Math.sqrt(c.rnd()) * 26;
+        crowd.push([900 + Math.cos(a) * r, 658 + Math.sin(a) * r * 0.85]);
+      }
+      for (const p of [[862, 620, 'staff'], [900, 612, 'staff'], [938, 620, 'staff'], [956, 656, 'staff'], [860, 706, 'staff'], [900, 718, 'staff']]) crowd.push(p);
+      c.people(crowd, { spread: 2 });
+      // أطفال WOOSH
+      const kids = [];
+      for (let i = 0; i < 18; i++) kids.push([1014 + (c.rnd() - 0.5) * 40, 646 + (c.rnd() - 0.5) * 36, c.rnd() < 0.75 ? 'child' : 'abaya']);
+      c.people(kids, { spread: 2 });
+      // الاسطبل
+      c.people([[926, 842, 'staff'], [938, 848], [1000, 806, 'child'], [994, 812], [908, 800]], { spread: 2 });
+      c.vehicles([[1078, 690, 0.4, 'suv'], [1080, 706, 0.2, 'pickup'], [1064, 722, -0.3, 'sedan'], [836, 592, 0, 'suv']]);
+      c.lights([[848, 600], [956, 600], [848, 716], [956, 716], [1062, 646]], 8, 1);
+      c.floods([[930, 878]], 14);
       c.trees(z, 16, 0.6);
       c.palms([[790, 560], [812, 556], [1088, 560], [1088, 600]]);
     },
@@ -198,6 +239,17 @@
         c.add(mast, M.metalLight, c.atY(x, 1196, 4.5));
         c.add(new THREE.BoxGeometry(0.06, 1.1, 1.9), M.canvasLight, c.atY(x, 1196, 8));
       }
+      // ناس على الشرفات وحول المطعم
+      const summitPeople = [];
+      for (let i = 0; i < 22; i++) summitPeople.push([892 + (c.rnd() - 0.5) * 54, 1178 + (c.rnd() - 0.5) * 30]);
+      for (let i = 0; i < 10; i++) summitPeople.push([704 + (c.rnd() - 0.5) * 22, 1134 + (c.rnd() - 0.5) * 14]);
+      for (let i = 0; i < 8; i++) summitPeople.push([946 + (c.rnd() - 0.5) * 16, 1132 + (c.rnd() - 0.5) * 12]);
+      for (let i = 0; i < 12; i++) summitPeople.push([780 + (c.rnd() - 0.5) * 46, 1200 + (c.rnd() - 0.5) * 16]);
+      for (let i = 0; i < 6; i++) summitPeople.push([560 + (c.rnd() - 0.5) * 70, 1240 + (c.rnd() - 0.5) * 60]);
+      summitPeople.push([806, 1206, 'staff'], [762, 1210, 'staff'], [884, 1188, 'staff']);
+      c.people(summitPeople, { spread: 2 });
+      c.bollards(rim, 14);
+      c.lights([[1010, 1196], [930, 1214], [840, 1220]], 8, 1);
       c.trees(z, 18, 0.5);
     },
 
@@ -244,6 +296,15 @@
       const warn = new THREE.BoxGeometry(0.2, 1.4, 2.2);
       for (const p of [[1215, 1240], [1395, 1240]]) c.add(warn, M.fire, c.atY(p[0], p[1], 1.6));
       c.instances(P().lightPole(M, 6), c.grid([[1250, 1240], [1360, 1240]]));
+      // متفرجون على حافة مسار التطعيس، ورماة خلف خط الرماية
+      const azmPeople = [];
+      for (let i = 0; i < 14; i++) azmPeople.push([1165 + (c.rnd() - 0.5) * 120, 962 + (c.rnd() - 0.5) * 90]);
+      for (let i = 0; i < 8; i++) azmPeople.push([1240 + (c.rnd() - 0.5) * 70, 1046 + (c.rnd() - 0.5) * 40]);
+      for (let i = 0; i < 7; i++) azmPeople.push([1250 + i * 18, 1268 + (c.rnd() - 0.5) * 4, i % 3 === 0 ? 'staff' : 'thobe']);
+      c.people(azmPeople, { spread: 2 });
+      c.vehicles([[1112, 1010, 0.3, 'pickup'], [1146, 1022, -0.2, 'suv'], [1360, 1250, 0, 'suv']]);
+      c.floods([[1240, 1238], [1372, 1238]], 14);
+      c.lights([[1186, 930], [1244, 930]], 9, 1);
       c.rocks(1240, 1120, 90, 26);
       c.trees(z, 12, 0.4);
     }

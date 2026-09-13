@@ -7,7 +7,7 @@ const root = path.resolve(__dirname, '..');
 const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
 const guard = (code) => code.replace(/<\/script/gi, '<\\/script');
 
-const sources = ['data', 'geo', 'textures', 'terrain', 'props', 'content', 'world', 'basemap', 'mapview', 'controls', 'app'];
+const sources = ['data', 'geo', 'textures', 'terrain', 'props', 'assets', 'content', 'world', 'basemap', 'mapview', 'controls', 'app'];
 let html = read('index.html');
 
 html = html.replace('<link rel="stylesheet" href="assets/app.css">', `<style>\n${read('assets/app.css')}\n</style>`);

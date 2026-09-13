@@ -173,11 +173,11 @@
       "type": "Feature",
       "properties": {
         "id": "ZON4",
-        "name": "الأطفال والخيل والفود تراك",
-        "name_en": "KIDS · STABLE · FOOD TRUCKS",
+        "name": "WOOSH والخيل والفود تراك",
+        "name_en": "WOOSH · STABLE · FOOD TRUCKS",
         "land_use": "family",
         "area_m2": 121600,
-        "height_concept": "ساحة فود تراك ولعب واسطبل",
+        "height_concept": "ساحة فود تراك ومنطقة WOOSH واسطبل",
         "conceptual": true,
         "surveyed": false
       },
