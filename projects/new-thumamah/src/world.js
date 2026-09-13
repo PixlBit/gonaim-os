@@ -5,9 +5,9 @@
 
   const TIMES = {
     day: {
-      label: 'نهار', elevation: 56, azimuth: 162, turbidity: 3.2, rayleigh: 1.05, mie: 0.005, mieG: 0.75,
+      label: 'نهار', elevation: 56, azimuth: 162, turbidity: 2.4, rayleigh: 1.35, mie: 0.004, mieG: 0.76,
       sun: 0xfff4e4, sunI: 3.1, hemiSky: 0xa8c8ea, hemiGround: 0xb09c74, hemiI: 0.17, ambient: 0.02, envI: 0.26,
-      exposure: 0.42, bloom: 0.1, fog: 0xd6d2c4, fogNear: 3200, fogFar: 24000, emissive: 0, bloom: 0.1,
+      exposure: 0.44, fog: 0xd8d1bf, fogNear: 2600, fogFar: 21000, emissive: 0, bloom: 0.1,
       cloud: 0xffffff, cloudOpacity: 0.72, bloomThreshold: 2.4
     },
     sunset: {
@@ -425,20 +425,84 @@
         const lx = pos.getX(i) / SX + 750, ly = 750 - pos.getZ(i) / SZ;
         const slope = Math.min(1, terrain.slopeAt(Math.min(1500, Math.max(0, lx)), Math.min(1500, Math.max(0, ly))) * 1.5);
         const rock = Math.pow(slope, 1.3);
-        colors[i * 3] = 1 - rock * 0.22;
-        colors[i * 3 + 1] = 1 - rock * 0.19;
-        colors[i * 3 + 2] = 1 - rock * 0.12;
+        // الحجر المنكشف في نجد جيريّ دافئ: نخفض الأزرق أكثر من الأحمر
+        colors[i * 3] = 1 - rock * 0.10;
+        colors[i * 3 + 1] = 1 - rock * 0.13;
+        colors[i * 3 + 2] = 1 - rock * 0.21;
       }
       groundGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     }
-    const sandDetail = NT.textures.sand(512, 11);
-    const sandNormal = new THREE.CanvasTexture(NT.textures.normalFrom(sandDetail, 1.4));
-    sandNormal.wrapS = sandNormal.wrapT = THREE.RepeatWrapping;
-    sandNormal.repeat.set(180, 180);
+    /* الأرض: صورة جوية على مقياس الموقع، وفوقها نسيج إجرائي على مقياس المتر.
+       الخريطة الأساسية تُستبدل وقت التحميل ومعها إحداثيات النسيج الجغرافية،
+       فلا يصحّ وضع نسيج الرمل في map — يُمرَّر بمُوحِّد خاص ويُضرب فوق الصورة.
+       والعينة تُؤخذ حسب ميل السطح حتى لا يتمطّط النسيج على المنحدرات. */
+    const sandDetail = NT.textures.sandDune(512, 17);
+    const detailMap = new THREE.CanvasTexture(sandDetail);
+    detailMap.wrapS = detailMap.wrapT = THREE.RepeatWrapping;
+    detailMap.colorSpace = THREE.SRGBColorSpace;
+    detailMap.anisotropy = 8;
+
+    const macroMap = new THREE.CanvasTexture(NT.textures.sandMacro(1024, 23));
+    macroMap.wrapS = macroMap.wrapT = THREE.ClampToEdgeWrapping;
+    macroMap.colorSpace = THREE.SRGBColorSpace;
+    macroMap.anisotropy = 4;
+
     const groundMat = new THREE.MeshStandardMaterial({
-      color: 0xe6d8b8, roughness: 1, metalness: 0, vertexColors: true,
-      normalMap: sandNormal, normalScale: new THREE.Vector2(0.55, 0.55)
+      color: 0xe3d0a6, roughness: 1, metalness: 0, vertexColors: true
     });
+    /* مقابض حيّة: ترفع قوة التنويع الكبير حين تفشل الصورة الجوية،
+       وتخفضها حين تدرَّس صورة حقيقية لأنها تحمل تنويعها بنفسها. */
+    const groundTune = {
+      detail: { value: 0.85 },   // قوة النسيج الدقيق
+      macro: { value: 0.9 },     // قوة التنويع على مقياس الموقع
+      scale: { value: 0.17 },    // بلاطة نسيج كل ~5.9 م
+      bump: { value: 1.05 },     // بروز تموّج الرمل تحت الضوء المائل
+      key: 'site'
+    };
+    /* نفس معالجة النسيج تُطبَّق على الأرض وعلى المحيط،
+       فلا يظهر الموقع كشريحة مقصوصة موضوعة على لوح أملس. */
+    function applyGroundDetail(material, tune) {
+      material.onBeforeCompile = (shader) => {
+      shader.uniforms.ntDetailMap = { value: detailMap };
+      shader.uniforms.ntMacroMap = { value: macroMap };
+      shader.uniforms.ntDetail = tune.detail;
+      shader.uniforms.ntMacro = tune.macro;
+      shader.uniforms.ntScale = tune.scale;
+      shader.uniforms.ntBump = tune.bump;
+      shader.vertexShader = shader.vertexShader
+        .replace('#include <common>',
+          '#include <common>\nvarying vec2 vNtSiteUv;\nvarying vec3 vNtPos;\nvarying vec3 vNtNrm;')
+        .replace('#include <begin_vertex>',
+          '#include <begin_vertex>\n\tvNtSiteUv = uv;\n\tvNtPos = ( modelMatrix * vec4( transformed, 1.0 ) ).xyz;\n\tvNtNrm = normalize( mat3( modelMatrix ) * objectNormal );');
+      shader.fragmentShader = shader.fragmentShader
+        .replace('#include <common>',
+          '#include <common>\nuniform sampler2D ntDetailMap;\nuniform sampler2D ntMacroMap;\nuniform float ntDetail;\nuniform float ntMacro;\nuniform float ntScale;\nuniform float ntBump;\nvarying vec2 vNtSiteUv;\nvarying vec3 vNtPos;\nvarying vec3 vNtNrm;')
+        .replace('#include <map_fragment>', [
+          '#include <map_fragment>',
+          '\tvec3 ntN = normalize( vNtNrm );',
+          '\tfloat ntSide = 1.0 - smoothstep( 0.55, 0.93, abs( ntN.y ) );',
+          '\tvec2 ntTopUv = vNtPos.xz * ntScale;',
+          '\tvec2 ntSideUv = vec2( mix( vNtPos.x, vNtPos.z, step( abs( ntN.x ), abs( ntN.z ) ) ), vNtPos.y ) * ntScale;',
+          '\tvec3 ntGrain = mix( texture2D( ntDetailMap, ntTopUv ).rgb, texture2D( ntDetailMap, ntSideUv ).rgb, ntSide );',
+          '\tfloat ntL = dot( ntGrain, vec3( 0.2126, 0.7152, 0.0722 ) );',
+          '\tvec3 ntPatch = texture2D( ntMacroMap, vNtSiteUv ).rgb * 1.9;',
+          '\tdiffuseColor.rgb *= ( 1.0 + ( ntL - 0.60 ) * ntDetail * 2.6 ) * mix( vec3( 1.0 ), ntPatch, ntMacro );'
+        ].join('\n'));
+      shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>', [
+        '#include <normal_fragment_maps>',
+        '\tfloat ntE = 0.55 * ntScale;',
+        '\tfloat ntLx = dot( texture2D( ntDetailMap, ntTopUv + vec2( ntE, 0.0 ) ).rgb, vec3( 0.2126, 0.7152, 0.0722 ) );',
+        '\tfloat ntLz = dot( texture2D( ntDetailMap, ntTopUv + vec2( 0.0, ntE ) ).rgb, vec3( 0.2126, 0.7152, 0.0722 ) );',
+        '\tvec3 ntWorldBump = normalize( vec3( ( ntL - ntLx ) * ntBump, 0.16, ( ntL - ntLz ) * ntBump ) );',
+        '\tvec3 ntViewBump = normalize( ( viewMatrix * vec4( ntWorldBump, 0.0 ) ).xyz );',
+        '\tnormal = normalize( mix( normal, ntViewBump, ( 1.0 - ntSide ) * 0.42 ) );'
+      ].join('\n'));
+      };
+      material.customProgramCacheKey = () => 'nt-ground-detail-' + tune.key;
+      material.needsUpdate = true;
+      return material;
+    }
+    applyGroundDetail(groundMat, groundTune);
     const ground = new THREE.Mesh(groundGeo, groundMat);
     ground.receiveShadow = true;
     ground.castShadow = true;
@@ -459,7 +523,11 @@
       }
       contextGeo.computeVertexNormals();
     }
-    const contextMat = new THREE.MeshStandardMaterial({ color: 0xd9c9a6, roughness: 1 });
+    const contextMat = new THREE.MeshStandardMaterial({ color: 0xe3d0a6, roughness: 1, metalness: 0 });
+    applyGroundDetail(contextMat, {
+      detail: { value: 0.55 }, macro: { value: 0.75 }, scale: { value: 0.17 },
+      bump: { value: 0.7 }, key: 'context'
+    });
     const contextGround = new THREE.Mesh(contextGeo, contextMat);
     contextGround.receiveShadow = false;
     root.add(contextGround);
@@ -497,8 +565,10 @@
       if (road.type === 'track') {
         ctx.ribbon(road.points, road.width, materials.track, 0.05);
       } else {
-        ctx.ribbon(road.points, road.width + 7, materials.track, 0.04);
-        ctx.ribbon(road.points, road.width, materials.asphalt, 0.06);
+        /* ثلاث طبقات: تراب متأثر، كتف حصى يذيب الحدّ، ثم سطح الأسفلت */
+        ctx.ribbon(road.points, road.width + 9, materials.track, 0.03);
+        ctx.ribbon(road.points, road.width + 2.6, materials.shoulder, 0.045);
+        ctx.ribbon(road.points, road.width, materials.roadTop, 0.06);
         ctx.markings(road.points, road.width);
       }
     }
@@ -590,8 +660,11 @@
     scene.add(sun.target);
 
     const clouds = NT.assets.createClouds(scene, {
-      count: quality === 'low' ? 26 : 52,
-      spread: 11000, base: 950, height: 1500, size: 950
+      /* قاعدة الركام فوق نجد تقارب 2 كم، والانتشار يمتدّ عشرات الكيلومترات
+         حتى تصغر السحب قرب الأفق فيقرأ العمق. القيم السابقة كانت تضع
+         سحابة عرضها كيلومتر على بعد كيلومتر، فتملأ ثلث السماء. */
+      count: quality === 'low' ? 40 : 96,
+      spread: 18000, base: 1900, height: 1500, size: 720
     });
 
     const hemi = new THREE.HemisphereLight(0xbcd4ea, 0xc9b68f, 0.5);
@@ -698,6 +771,11 @@
       target.material.color.setHex(isSite
         ? (surface.state.drawnFallback ? 0xc7b791 : 0xe9e3d6)
         : (surface.state.drawnFallback ? 0xc2b28c : 0xe4ded0));
+      if (isSite) {
+        // صورة القمر الصناعي تحمل تنويعها الخاص، فلا نضاعفه عليها
+        groundTune.macro.value = surface.state.drawnFallback ? 0.9 : 0.28;
+        groundTune.detail.value = surface.state.drawnFallback ? 0.85 : 0.55;
+      }
       target.material.needsUpdate = true;
       return texture;
     }

@@ -216,49 +216,107 @@
   }
 
   /* ===== سحاب: لوحات تواجه الكاميرا مع نسيج مولّد ===== */
-  function cloudTexture(size) {
+  /* سحابة ركامية بقاعدة مسطّحة وقمّة منتفخة، مع تظليل رأسي مخبوز:
+     القمّة تلقى الشمس فتبيضّ، والقاعدة في ظلّ نفسها فتزرقّ.
+     النسخة السابقة كانت دوائر متطابقة بتدرّج واحد، فبدت كلها لطخة مكررة. */
+  function cloudTexture(size, seed) {
     const THREE = T(), c = NT.textures.canvasOf(size || 256), ctx = c.getContext('2d');
-    const rnd = NT.textures.makeRandom(9021);
-    ctx.clearRect(0, 0, c.width, c.height);
-    for (let i = 0; i < 26; i++) {
-      const x = c.width * (0.2 + rnd() * 0.6), y = c.height * (0.35 + rnd() * 0.4);
-      const r = c.width * (0.08 + rnd() * 0.17);
-      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
-      g.addColorStop(0, 'rgba(255,255,255,0.5)');
-      g.addColorStop(0.55, 'rgba(255,255,255,0.22)');
+    const rnd = NT.textures.makeRandom(seed || 9021);
+    const W = c.width, H = c.height;
+    ctx.clearRect(0, 0, W, H);
+
+    const baseY = H * (0.62 + rnd() * 0.08);        // خط القاعدة المسطّح
+    const lobes = 7 + Math.floor(rnd() * 7);
+    const puffs = [];
+    for (let i = 0; i < lobes; i++) {
+      const t = i / (lobes - 1);
+      // الكتلة أعرض في الوسط وأخفض عند الطرفين
+      const arc = Math.sin(t * Math.PI);
+      const x = W * (0.13 + t * 0.74) + (rnd() - 0.5) * W * 0.06;
+      const r = W * (0.07 + arc * 0.12 + rnd() * 0.05);
+      const y = baseY - arc * H * (0.16 + rnd() * 0.14) - r * 0.35;
+      puffs.push({ x, y, r });
+    }
+    // فصوص داخلية تملأ الجسم فلا يبدو سلسلة كرات
+    for (let i = 0; i < lobes * 2; i++) {
+      const a = puffs[Math.floor(rnd() * lobes)];
+      puffs.push({ x: a.x + (rnd() - 0.5) * a.r, y: a.y + rnd() * a.r * 0.7, r: a.r * (0.45 + rnd() * 0.4) });
+    }
+
+    for (const p of puffs) {
+      const g = ctx.createRadialGradient(p.x, p.y - p.r * 0.25, p.r * 0.1, p.x, p.y, p.r);
+      g.addColorStop(0, 'rgba(255,255,255,0.95)');
+      g.addColorStop(0.6, 'rgba(255,255,255,0.55)');
       g.addColorStop(1, 'rgba(255,255,255,0)');
       ctx.fillStyle = g;
-      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
     }
+
+    // قصّ ما تحت القاعدة بتدرّج قصير حتى تبقى القاعدة مسطّحة لا كروية
+    const cut = ctx.createLinearGradient(0, baseY - H * 0.05, 0, baseY + H * 0.10);
+    cut.addColorStop(0, 'rgba(0,0,0,1)');
+    cut.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.globalCompositeOperation = 'destination-in';
+    ctx.fillStyle = 'rgba(0,0,0,1)';
+    ctx.fillRect(0, 0, W, baseY - H * 0.05);
+    ctx.fillStyle = cut;
+    ctx.fillRect(0, baseY - H * 0.05, W, H * 0.15);
+    ctx.globalCompositeOperation = 'source-over';
+
+    // تظليل رأسي: قمّة بيضاء وقاعدة رمادية مزرقّة
+    ctx.globalCompositeOperation = 'source-atop';
+    const shade = ctx.createLinearGradient(0, H * 0.18, 0, baseY);
+    shade.addColorStop(0, 'rgba(255,255,255,0)');
+    shade.addColorStop(0.55, 'rgba(188,196,212,0.20)');
+    shade.addColorStop(1, 'rgba(150,163,186,0.46)');
+    ctx.fillStyle = shade;
+    ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+
     const t = new THREE.CanvasTexture(c);
     t.colorSpace = THREE.SRGBColorSpace;
+    t.anisotropy = 4;
     return t;
   }
 
+  /* طبقة سحاب: عدة أشكال مختلفة موزّعة في عناقيد على ارتفاعين،
+     فتقرأ كسماء فيها عمق بدل صفّ من اللطخات المتطابقة. */
   function createClouds(scene, options) {
     const THREE = T();
-    const opt = Object.assign({ count: 46, spread: 9000, base: 900, height: 1400, size: 900 }, options);
-    const texture = cloudTexture(256);
+    const opt = Object.assign({ count: 54, spread: 11000, base: 850, height: 1500, size: 900 }, options);
+    const shapes = [];
+    for (let i = 0; i < 6; i++) shapes.push(cloudTexture(256, 9021 + i * 137));
     const group = new THREE.Group();
     const rnd = NT.textures.makeRandom(4411);
     const sprites = [];
-    for (let i = 0; i < opt.count; i++) {
-      const material = new THREE.SpriteMaterial({
-        map: texture, transparent: true, opacity: 0.5 + rnd() * 0.35,
-        depthWrite: false, fog: false, color: 0xffffff
-      });
-      const sprite = new THREE.Sprite(material);
-      const s = opt.size * (0.55 + rnd() * 0.9);
-      sprite.scale.set(s, s * (0.38 + rnd() * 0.18), 1);
-      sprite.position.set(
-        (rnd() - 0.5) * opt.spread,
-        opt.base + rnd() * opt.height,
-        (rnd() - 0.5) * opt.spread
-      );
-      sprite.renderOrder = -5;
-      sprite.userData.drift = 1.6 + rnd() * 2.8;
-      group.add(sprite);
-      sprites.push(sprite);
+
+    const clusters = Math.max(6, Math.round(opt.count / 4));
+    for (let c = 0; c < clusters; c++) {
+      const cx = (rnd() - 0.5) * opt.spread;
+      const cz = (rnd() - 0.5) * opt.spread;
+      const deck = rnd() < 0.35 ? 0.62 : 1;           // طبقتان: سحاب عالٍ وآخر أخفض
+      const cy = opt.base * deck + rnd() * opt.height * deck;
+      const members = 2 + Math.floor(rnd() * 4);
+      for (let m = 0; m < members; m++) {
+        const base = 0.62 + rnd() * 0.3;
+        const material = new THREE.SpriteMaterial({
+          map: shapes[Math.floor(rnd() * shapes.length)],
+          transparent: true, opacity: base, depthWrite: false, fog: false, color: 0xffffff
+        });
+        const sprite = new THREE.Sprite(material);
+        const w = opt.size * (0.5 + rnd() * 1.0) * (deck < 1 ? 1.25 : 1);
+        sprite.scale.set(w, w * (0.42 + rnd() * 0.18), 1);
+        sprite.position.set(
+          cx + (rnd() - 0.5) * opt.size * 1.6,
+          cy + (rnd() - 0.5) * opt.size * 0.16,
+          cz + (rnd() - 0.5) * opt.size * 1.6
+        );
+        sprite.renderOrder = -5;
+        sprite.userData.drift = (1.2 + rnd() * 2.6) * (deck < 1 ? 0.6 : 1);
+        sprite.userData.base = base;
+        group.add(sprite);
+        sprites.push(sprite);
+      }
     }
     scene.add(group);
     return {
@@ -266,7 +324,7 @@
       setTint(color, opacity) {
         for (const s of sprites) {
           s.material.color.setHex(color);
-          s.material.opacity = Math.min(0.95, s.material.opacity * 0 + opacity * (0.6 + (s.userData.drift % 1) * 0.5));
+          s.material.opacity = Math.min(0.95, opacity * s.userData.base * 1.35);
         }
       },
       update(dt) {
@@ -275,7 +333,7 @@
           if (s.position.x > opt.spread / 2) s.position.x -= opt.spread;
         }
       },
-      dispose() { scene.remove(group); texture.dispose(); }
+      dispose() { scene.remove(group); for (const t of shapes) t.dispose(); }
     };
   }
 

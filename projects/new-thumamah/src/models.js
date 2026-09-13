@@ -4,30 +4,35 @@
 (function (NT) {
   'use strict';
 
-  /* كل خانة: الارتفاع الحقيقي بالمتر، ودوران التصحيح، والبديل عند غياب الملف.
-     الاتجاه المرجعي: الواجهة نحو -Z (شمالًا)، والقاعدة عند y=0. */
+  /* كل خانة: مقاسها الحقيقي بالمتر، ودوران التصحيح، والبديل عند غياب الملف.
+     الاتجاه المرجعي: الواجهة نحو -Z (شمالًا)، والقاعدة عند y=0.
+
+     التطبيع: ما له بصمة أرضية مرسومة على المخطط (خيمة، قبة، بوابة، مركبة…)
+     يُقاس بـ plan أي أكبر بعد أفقي، فتبقى البصمة مطابقة للمسقط مهما اختلف
+     ارتفاع النموذج الوارد. وما هو رأسي بطبعه (نخلة، عمود، شخص) يُقاس بـ height.
+     قياس كل شيء بالارتفاع كان يشوّه المباني: نموذج بسقف أعلى ينكمش في مسقطه. */
   const SLOTS = {
     palm:      { file: 'palm.glb',      height: 7.5,  yaw: 0, fallback: (M) => NT.props.palm(M, 6.4) },
     acacia:    { file: 'acacia.glb',    height: 4.6,  yaw: 0, fallback: (M) => NT.props.acacia(M, 1) },
     shrub:     { file: 'shrub.glb',     height: 0.9,  yaw: 0, fallback: (M) => NT.props.shrub(M, 1) },
-    rock:      { file: 'rock.glb',      height: 1.2,  yaw: 0, fallback: (M) => NT.props.rock(M, 1, 7) },
-    tent:      { file: 'tent.glb',      height: 3.6,  yaw: 0, fallback: (M) => NT.props.safariTent(M) },
-    dome:      { file: 'dome.glb',      height: 3.6,  yaw: 0, fallback: (M) => NT.props.domeStay(M) },
-    kashta:    { file: 'kashta.glb',    height: 2.6,  yaw: 0, fallback: (M) => NT.props.kashta(M) },
-    majlis:    { file: 'majlis.glb',    height: 1.1,  yaw: 0, fallback: (M) => NT.props.majlis(M, 4.4) },
-    suv:       { file: 'suv.glb',       height: 1.95, yaw: 0, fallback: (M) => NT.assets.suv(M) },
-    sedan:     { file: 'sedan.glb',     height: 1.5,  yaw: 0, fallback: (M) => NT.assets.sedan(M) },
-    pickup:    { file: 'pickup.glb',    height: 1.95, yaw: 0, fallback: (M) => NT.assets.pickup(M) },
-    coach:     { file: 'coach.glb',     height: 3.4,  yaw: 0, fallback: (M) => NT.assets.coach(M) },
-    foodTruck: { file: 'food-truck.glb', height: 3.2, yaw: 0, fallback: (M) => NT.assets.foodTruck(M) },
+    rock:      { file: 'rock.glb',      plan: 2.9,    yaw: 0, fallback: (M) => NT.props.rock(M, 1, 7) },
+    tent:      { file: 'tent.glb',      plan: 10.1,   yaw: 0, fallback: (M) => NT.props.safariTent(M) },
+    dome:      { file: 'dome.glb',      plan: 9.0,    yaw: 0, fallback: (M) => NT.props.domeStay(M) },
+    kashta:    { file: 'kashta.glb',    plan: 6.0,    yaw: 0, fallback: (M) => NT.props.kashta(M) },
+    majlis:    { file: 'majlis.glb',    plan: 8.8,    yaw: 0, fallback: (M) => NT.props.majlis(M, 4.4) },
+    suv:       { file: 'suv.glb',       plan: 5.28,   yaw: 0, fallback: (M) => NT.assets.suv(M) },
+    sedan:     { file: 'sedan.glb',     plan: 4.7,    yaw: 0, fallback: (M) => NT.assets.sedan(M) },
+    pickup:    { file: 'pickup.glb',    plan: 5.6,    yaw: 0, fallback: (M) => NT.assets.pickup(M) },
+    coach:     { file: 'coach.glb',     plan: 12.0,   yaw: 0, fallback: (M) => NT.assets.coach(M) },
+    foodTruck: { file: 'food-truck.glb', plan: 7.66,  yaw: 0, fallback: (M) => NT.assets.foodTruck(M) },
     personThobe: { file: 'person-thobe.glb', height: 1.75, yaw: 0, fallback: (M) => NT.assets.person(M, 'thobe') },
     personAbaya: { file: 'person-abaya.glb', height: 1.68, yaw: 0, fallback: (M) => NT.assets.person(M, 'abaya') },
     personChild: { file: 'person-child.glb', height: 1.15, yaw: 0, fallback: (M) => NT.assets.person(M, 'child') },
-    camel:     { file: 'camel.glb',     height: 2.2,  yaw: 0, fallback: null },
-    horse:     { file: 'horse.glb',     height: 1.6,  yaw: 0, fallback: null },
+    camel:     { file: 'camel.glb',     plan: 3.0,    yaw: 0, fallback: null },
+    horse:     { file: 'horse.glb',     plan: 2.6,    yaw: 0, fallback: null },
     lightPole: { file: 'light-pole.glb', height: 9,   yaw: 0, fallback: (M) => NT.assets.streetLight(M, 9, 1) },
-    fuelStation: { file: 'fuel-station.glb', height: 6.5, yaw: 0, fallback: (M) => NT.props.fuelStation(M) },
-    gate:      { file: 'gate.glb',      height: 7,    yaw: 0, fallback: (M) => NT.props.gateHouse(M, 3) }
+    fuelStation: { file: 'fuel-station.glb', plan: 26.4, yaw: 0, fallback: (M) => NT.props.fuelStation(M) },
+    gate:      { file: 'gate.glb',      plan: 22.6,   yaw: 0, fallback: (M) => NT.props.gateHouse(M, 3) }
   };
 
   const loaded = new Map();     // slot → parts[]
@@ -43,8 +48,10 @@
     box.getSize(size);
     const centre = new THREE.Vector3();
     box.getCenter(centre);
-    const tallest = Math.max(size.y, 0.0001);
-    const scale = slot.height / tallest;
+    /* المباني والمركبات تُقاس ببصمتها الأرضية، والعناصر الرأسية بارتفاعها */
+    const scale = slot.plan
+      ? slot.plan / Math.max(size.x, size.z, 0.0001)
+      : slot.height / Math.max(size.y, 0.0001);
 
     const fix = new THREE.Matrix4()
       .makeTranslation(-centre.x, -box.min.y, -centre.z)

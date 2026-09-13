@@ -136,10 +136,21 @@
     return c;
   }
 
+  /* أسفلت الساحات والمواقف: ركام بمقياسين بلا بنية اتجاهية،
+     لأن الساحة لا تحمل مسارات إطارات ولا درزًا طوليًا كالطريق. */
   function asphalt(size = 512, seed = 71) {
-    const c = gravel(size, seed, '#8e8b82');
-    const ctx = c.getContext('2d');
-    ctx.fillStyle = 'rgba(70,68,62,0.16)'; ctx.fillRect(0, 0, size, size);
+    const c = canvasOf(size), ctx = c.getContext('2d'), img = ctx.createImageData(size, size);
+    const coarse = valueNoise(seed, 96), fine = valueNoise(seed + 4, 256), patch = valueNoise(seed + 11, 16);
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      const u = x / size, v = y / size;
+      const agg = fbm(coarse, u * 24, v * 24, 3, 0.5);
+      const micro = fbm(fine, u * 145, v * 145, 2, 0.6);
+      const blot = fbm(patch, u * 6, v * 6, 3, 0.5);
+      const k = Math.max(0.16, Math.min(0.9, 0.44 + agg * 0.30 + micro * 0.19 + (blot - 0.5) * 0.09));
+      const i = (y * size + x) * 4;
+      img.data[i] = k * 190; img.data[i + 1] = k * 187; img.data[i + 2] = k * 181; img.data[i + 3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
     return c;
   }
 
@@ -165,6 +176,64 @@
     return out;
   }
 
+
+
+  /* تنويع الرمل على مقياس الموقع كله: بقع رمل فاتح، مسطّحات حصى، وأثر مجرى الوادي.
+     يُضرب في نسيج الحبيبات الدقيق فيكسر تكرار البلاطة ويعطي الأرض عمقًا لونيًا. */
+  function sandMacro(size = 1024, seed = 23) {
+    const c = canvasOf(size), ctx = c.getContext('2d'), img = ctx.createImageData(size, size);
+    const patch = valueNoise(seed, 8);        // بقع كبيرة
+    const grit = valueNoise(seed + 3, 24);    // مسطّحات حصى
+    const drift = valueNoise(seed + 7, 4);    // انسياب عام
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      const u = x / size, v = y / size;
+      const broad = fbm(drift, u * 1.6, v * 1.6, 3, 0.55);
+      const p = fbm(patch, u * 3.2 + broad * 0.4, v * 3.2, 4, 0.5);
+      const g = Math.pow(fbm(grit, u * 9, v * 9, 3, 0.5), 2.1);
+      // فاتح حيث الرمل الطري، أدكن وأبرد حيث الحصى المنكشف
+      const light = 0.86 + p * 0.30;
+      const stony = g * 0.34;
+      const i = (y * size + x) * 4;
+      img.data[i] = Math.min(255, (light - stony * 0.9) * 150);
+      img.data[i + 1] = Math.min(255, (light - stony * 0.8) * 146);
+      img.data[i + 2] = Math.min(255, (light - stony * 0.55) * 140);
+      img.data[i + 3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+    return c;
+  }
+
+  /* سطح طريق معبّد: الإحداثي الأفقي u يعبر عرض الطريق، وv يجري بطوله.
+     فتُرسم مسارات الإطارات وحواف الحصى والدرز الطولي في مواضعها الصحيحة
+     بدل ضجيج رمادي موحّد لا يقرأ كأسفلت. */
+  function roadSurface(size = 512, seed = 71) {
+    const c = canvasOf(size), ctx = c.getContext('2d'), img = ctx.createImageData(size, size);
+    const coarse = valueNoise(seed, 96), fine = valueNoise(seed + 4, 256), blotch = valueNoise(seed + 8, 12);
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      const u = x / size, v = y / size;
+      // ركام بمقياسين: حصى مرئي وحبيبات دقيقة
+      const agg = fbm(coarse, u * 26, v * 26, 3, 0.5);
+      const micro = fbm(fine, u * 150, v * 150, 2, 0.6);
+      const patchy = fbm(blotch, u * 9, v * 9, 3, 0.5);
+      let k = 0.46 + agg * 0.30 + micro * 0.20 + (patchy - 0.5) * 0.07;
+
+      // مسارات الإطارات: أربعة خطوط مصقولة أغمق قليلًا
+      for (const lane of [0.20, 0.33, 0.67, 0.80]) {
+        k -= 0.085 * Math.exp(-Math.pow((u - lane) / 0.045, 2));
+      }
+      // حواف الطريق: غبار وحصى متراكم يفتحها
+      const edge = Math.min(u, 1 - u);
+      k += 0.16 * Math.exp(-Math.pow(edge / 0.045, 2));
+      // درز طولي في المنتصف
+      k -= 0.10 * Math.exp(-Math.pow((u - 0.5) / 0.006, 2));
+
+      k = Math.max(0.14, Math.min(0.92, k));
+      const i = (y * size + x) * 4;
+      img.data[i] = k * 196; img.data[i + 1] = k * 192; img.data[i + 2] = k * 186; img.data[i + 3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+    return c;
+  }
 
   /* ===== مولّدات خامات أغنى: ألبيدو + خشونة + نتوءات من نفس المصدر ===== */
 
@@ -193,11 +262,14 @@
     const n = valueNoise(seed, 64), warp = valueNoise(seed + 5, 16), grain = valueNoise(seed + 9, 256);
     for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
       const u = x / size, v = y / size;
-      const bend = fbm(warp, u * 2.4, v * 2.4, 3, 0.5);
-      const ripple = Math.pow(Math.sin((u * 34 + bend * 7 + v * 6) * Math.PI) * 0.5 + 0.5, 1.7);
+      /* التموّج الحقيقي ينحني ويتغيّر تباعده؛ الجيب الصافي يعطي شكل المخمل المحزّز.
+         نلوي الإحداثي بضجيج قوي ونُخضع التردّد نفسه لضجيج آخر. */
+      const bend = fbm(warp, u * 2.2, v * 2.2, 4, 0.55);
+      const pitch = 26 + fbm(warp, u * 1.1 + 3.7, v * 1.1, 3, 0.5) * 16;
+      const ripple = Math.pow(Math.sin((u * pitch + bend * 15 + v * 5) * Math.PI) * 0.5 + 0.5, 1.45);
       const coarse = fbm(n, u * 7, v * 7, 4, 0.55);
       const fine = fbm(grain, u * 120, v * 120, 2, 0.6);
-      const k = ripple * 0.42 + coarse * 0.4 + fine * 0.18;
+      const k = ripple * 0.34 + coarse * 0.46 + fine * 0.20;
       const i = (y * size + x) * 4;
       img.data[i] = 196 + k * 44;
       img.data[i + 1] = 173 + k * 42;
@@ -355,6 +427,6 @@
     return out;
   }
 
-  NT.textures = { makeRandom, valueNoise, fbm, fallbackAerial, sand, fabric, wood, gravel, asphalt, normalFrom, canvasOf,
+  NT.textures = { makeRandom, valueNoise, fbm, fallbackAerial, sand, sandMacro, roadSurface, fabric, wood, gravel, asphalt, normalFrom, canvasOf,
     weather, sandDune, tentCanvas, plasterWall, stoneWall, asphaltTop, deckWood, leafCard, roughnessFrom };
 })(window.NT = window.NT || {});

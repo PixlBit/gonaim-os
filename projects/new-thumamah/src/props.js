@@ -76,13 +76,31 @@
     const woodCanvas = tex.wood(512, 31);
     const gravelCanvas = tex.gravel(512, 53, '#bcae90');
     const asphaltCanvas = tex.asphalt(512, 71);
+    const roadCanvas = tex.roadSurface(512, 71);
 
     const std = (o) => new THREE.MeshStandardMaterial(o);
     const mats = {
       sand: std({ map: canvasTex(sandCanvas, 60), normalMap: normalTex(tex.normalFrom(sandCanvas, 1.6), 60), normalScale: new THREE.Vector2(0.7, 0.7), roughness: 1, metalness: 0, color: 0xcdbc96 }),
       arenaSand: std({ map: canvasTex(sandCanvas, 8), roughness: 1, color: 0xd7c49b }),
       track: std({ map: canvasTex(gravelCanvas, 24), roughness: 0.98, color: 0xc4b795 }),
-      asphalt: std({ map: canvasTex(asphaltCanvas, 30), roughness: 0.95, color: 0xc4bfb4 }),
+      asphalt: std({
+        map: canvasTex(asphaltCanvas, 26),
+        normalMap: normalTex(tex.normalFrom(asphaltCanvas, 0.9), 26),
+        normalScale: new THREE.Vector2(0.35, 0.35),
+        roughnessMap: canvasTex(tex.roughnessFrom(asphaltCanvas, 0.66, 0.95), 26),
+        roughness: 0.92, metalness: 0, color: 0xb6b2a9
+      }),
+      /* سطح الطريق: بلاطة واحدة عبر العرض حتى تقع مسارات الإطارات والدرز في مواضعها.
+         التكرار الطولي مبنيّ أصلًا في إحداثيات الشريط. */
+      roadTop: std({
+        map: canvasTex(roadCanvas, 1),
+        normalMap: normalTex(tex.normalFrom(roadCanvas, 1.1), 1),
+        normalScale: new THREE.Vector2(0.45, 0.45),
+        roughnessMap: canvasTex(tex.roughnessFrom(roadCanvas, 0.62, 0.94), 1),
+        roughness: 0.9, metalness: 0, color: 0xb9b4aa
+      }),
+      /* كتف الطريق: حصى متراكم يذيب الحدّ الحادّ بين الأسفلت والرمل */
+      shoulder: std({ map: canvasTex(gravelCanvas, 18), roughness: 1, color: 0xbdae8e }),
       deck: std({ map: canvasTex(woodCanvas, 3), roughness: 0.72, color: 0xc0a57e }),
       timber: std({ color: 0x8a6844, roughness: 0.8 }),
       canvasLight: std({ map: canvasTex(fabricCanvas, 4), color: 0xeae2d2, roughness: 0.9, side: THREE.DoubleSide }),
