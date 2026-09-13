@@ -47,3 +47,21 @@ NODE_PATH=/opt/node22/lib/node_modules NT_VIEWS=hero node tools/shoot-props.mjs 
 
 فائدة المرجع أنه يثبّت النسب والبصمة الأرضية المطابقة للمخطط العام،
 فلا يعود شكل النموذج المولَّد رهن الصدفة.
+
+## تنزيل النماذج المولّدة
+
+روابط نتائج التوليد محجوبة على بيئة التطوير بسياسة المؤسسة، لكنها تعمل من أي جهاز عادي.
+لذلك يوجد سكربتان ينزّلان الاثنين والثلاثين ملفًا بأسمائها الصحيحة مباشرة إلى هذا المجلد:
+
+```
+bash tools/fetch-models.sh                                    # لينكس وماك
+powershell -ExecutionPolicy Bypass -File tools\fetch-models.ps1  # ويندوز
+```
+
+ثم يُضغط كل ملف قبل الاستعمال:
+
+```
+for f in assets/models/*.glb; do node tools/install-model.cjs "$f" "$(basename "$f" .glb)"; done
+```
+
+(اسم الخانة في `src/models.js` يطابق اسم الملف بلا الامتداد، عدا ما يستخدم شرطة — راجع جدول الخانات أعلاه.)
