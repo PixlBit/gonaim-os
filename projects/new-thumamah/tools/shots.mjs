@@ -28,9 +28,17 @@ const errors = [];
 page.on('console', (m) => { if (m.type() === 'error') errors.push('console: ' + m.text().slice(0, 300)); });
 page.on('pageerror', (e) => errors.push(e.message));
 
+/* الطلبات الخارجية محجوبة على هذه البيئة، وانتظارها يعلّق الالتقاط:
+   لقطة الصفحة تنتظر document.fonts.ready، وخط لا يصل لا يحسم أبدًا. */
+await page.route('**://**', (route) => {
+  const host = new URL(route.request().url()).hostname;
+  if (host === '127.0.0.1' || host === 'localhost') return route.continue();
+  return route.abort();
+});
+
 await page.goto(base, { waitUntil: 'load' });
-await page.waitForFunction(() => window.NT && window.NT.app && window.NT.app.world, null, { timeout: 90000 });
-await page.waitForTimeout(4000);
+await page.waitForFunction(() => window.NT && window.NT.app && window.NT.app.world, null, { timeout: 300000 });
+await page.waitForTimeout(9000);   // تحميل النماذج يستغرق وقتًا
 // إخفاء واجهة الاستخدام حتى تبقى اللقطة للمشهد وحده
 await page.addStyleTag({ content: '.overlay,.labels,.loader,.attribution,.corners,.panel,.compass{display:none!important}' });
 await page.evaluate(() => window.dispatchEvent(new Event('resize')));
@@ -44,7 +52,7 @@ for (const v of VIEWS) {
     rig.flyTo({ target: new THREE.Vector3(...view.target), az: view.az, pitch: view.pitch, dist: view.dist, ms: 1 });
   }, v);
   await page.waitForTimeout(2200);
-  await page.screenshot({ path: path.join(outDir, `${time}-${v.id}.png`), animations: 'disabled' });
+  await page.screenshot({ path: path.join(outDir, `${time}-${v.id}.png`), animations: 'disabled', timeout: 90000, caret: 'hide' });
 }
 
 const info = await page.evaluate(() => ({
