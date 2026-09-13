@@ -9,5 +9,11 @@
     "build": "node tools/build.cjs",
     "smoke": "node tools/smoke.mjs",
     "data": "node tools/export-data.cjs"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.5.0",
+    "@gltf-transform/extensions": "^4.5.0",
+    "@gltf-transform/functions": "^4.5.0",
+    "sharp": "^0.35.4"
   }
 }
