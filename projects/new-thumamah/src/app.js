@@ -457,9 +457,9 @@
     }
     if (grade) {
       grade.uniforms.warmth.value = key === 'sunset' ? 0.12 : key === 'night' ? 0.02 : 0.06;
-      grade.uniforms.vignette.value = key === 'night' ? 0.42 : 0.28;
+      grade.uniforms.vignette.value = key === 'night' ? 0.20 : 0.26;
     }
-    if (ao) ao.configuration.intensity = key === 'night' ? 1.6 : 2.6;
+    if (ao) ao.configuration.intensity = key === 'night' ? 1.1 : 2.6;
     dirty = true;
   }
 

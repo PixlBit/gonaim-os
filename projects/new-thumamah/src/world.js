@@ -18,8 +18,8 @@
     },
     night: {
       label: 'ليل', elevation: -11, azimuth: 300, turbidity: 1.8, rayleigh: 0.6, mie: 0.003, mieG: 0.8,
-      sun: 0x9cb4dc, sunI: 0.62, hemiSky: 0x33455f, hemiGround: 0x2b2419, hemiI: 0.30, ambient: 0.10, envI: 0.6,
-      exposure: 0.82, fog: 0x1a2331, fogNear: 1200, fogFar: 11000, emissive: 1, bloom: 0.62,
+      sun: 0x9cb4dc, sunI: 0.85, hemiSky: 0x3b4d68, hemiGround: 0x332a1e, hemiI: 0.42, ambient: 0.16, envI: 0.75,
+      exposure: 0.96, fog: 0x1e2839, fogNear: 1500, fogFar: 12000, emissive: 1, bloom: 0.58,
       cloud: 0x4a5c78, cloudOpacity: 0.45, bloomThreshold: 0.45
     }
   };
