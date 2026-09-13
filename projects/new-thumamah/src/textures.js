@@ -137,9 +137,9 @@
   }
 
   function asphalt(size = 512, seed = 71) {
-    const c = gravel(size, seed, '#585854');
+    const c = gravel(size, seed, '#8e8b82');
     const ctx = c.getContext('2d');
-    ctx.fillStyle = 'rgba(30,30,28,0.25)'; ctx.fillRect(0, 0, size, size);
+    ctx.fillStyle = 'rgba(70,68,62,0.16)'; ctx.fillRect(0, 0, size, size);
     return c;
   }
 

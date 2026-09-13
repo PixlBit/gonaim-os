@@ -12,7 +12,7 @@
   const env = NT.env;
   const params = new URLSearchParams(location.search);
   const state = {
-    view: '3d', time: 'day', selected: 'S1', hover: null,
+    view: '3d', time: 'day', selected: 'ZON3', hover: null,
     zoning: false, overlay: 0.55, mapOpacity: 0.55,
     layers: { labels: true, boundary: true, context: true },
     tour: null, quality: params.get('q') || null
@@ -56,8 +56,12 @@
     if (!width) return null;
     ndc.set((px / width) * 2 - 1, -(py / height) * 2 + 1);
     raycaster.setFromCamera(ndc, rig.camera);
-    const hit = new THREE.Vector3();
-    return raycaster.ray.intersectPlane(groundPlane, hit) ? hit : null;
+    if (world) {
+      const hit = world.rayTerrain(raycaster.ray.origin, raycaster.ray.direction);
+      if (hit) return hit;
+    }
+    const flat = new THREE.Vector3();
+    return raycaster.ray.intersectPlane(groundPlane, flat) ? flat : null;
   }
   function pickZone(px, py, deep) {
     if (!world) return null;
@@ -79,6 +83,7 @@
   /* ===== منظومة الكاميرا ===== */
   const rig = new NT.CameraRig($('sceneWrap'), {
     groundAt: (px, py) => pointOnGround(px, py),
+    terrainHeight: (x, z) => (world ? world.worldHeightAt(x, z) : 0),
     onClick: (p) => {
       if (state.view === 'map') return;
       const id = pickZone(p.x, p.y, true);
@@ -121,12 +126,20 @@
     zoningGroup.visible = state.zoning;
     for (const z of data.zones) {
       const cat = data.categories.find((c) => c.id === z.cat);
-      const geoPlane = new THREE.PlaneGeometry(z.w * world.SX, z.d * world.SZ);
+      const seg = 18;
+      const geoPlane = new THREE.PlaneGeometry(z.w * world.SX, z.d * world.SZ, seg, seg);
       geoPlane.rotateX(-Math.PI / 2);
+      const pos = geoPlane.attributes.position;
+      const cx = z.x + z.w / 2, cy = z.y + z.d / 2;
+      for (let i = 0; i < pos.count; i++) {
+        const lx = cx + pos.getX(i) / world.SX, ly = cy - pos.getZ(i) / world.SZ;
+        pos.setY(i, world.heightAt(Math.min(1500, Math.max(0, lx)), Math.min(1500, Math.max(0, ly))) + 0.45);
+      }
+      geoPlane.computeVertexNormals();
       const mesh = new THREE.Mesh(geoPlane, new THREE.MeshBasicMaterial({
         color: new THREE.Color(cat.color), transparent: true, opacity: state.overlay * 0.55, depthWrite: false
       }));
-      mesh.position.set(world.wx(z.x + z.w / 2), 0.32, world.wz(z.y + z.d / 2));
+      mesh.position.set(world.wx(cx), 0, world.wz(cy));
       mesh.renderOrder = 2;
       zoningGroup.add(mesh);
     }
@@ -137,18 +150,17 @@
     const z = data.zones.find((s) => s.id === state.selected);
     while (selection.children.length) selection.remove(selection.children[0]);
     if (!z || !world) return;
-    const w = z.w * world.SX, d = z.d * world.SZ;
-    const pts = [[-w / 2, -d / 2], [w / 2, -d / 2], [w / 2, d / 2], [-w / 2, d / 2], [-w / 2, -d / 2]];
-    const g = new THREE.BufferGeometry().setFromPoints(pts.map((p) => new THREE.Vector3(p[0], 0.5, p[1])));
-    const line = new THREE.Line(g, new THREE.LineBasicMaterial({ color: 0xf4d98a, transparent: true, opacity: 0.95 }));
-    line.position.set(world.wx(z.x + z.w / 2), 0, world.wz(z.y + z.d / 2));
-    selection.add(line);
-    const glow = new THREE.Mesh(
-      new THREE.PlaneGeometry(w, d).rotateX(-Math.PI / 2),
-      new THREE.MeshBasicMaterial({ color: 0xf6e6a8, transparent: true, opacity: 0.09, depthWrite: false })
-    );
-    glow.position.set(world.wx(z.x + z.w / 2), 0.22, world.wz(z.y + z.d / 2));
-    selection.add(glow);
+    const corners = [[z.x, z.y], [z.x + z.w, z.y], [z.x + z.w, z.y + z.d], [z.x, z.y + z.d], [z.x, z.y]];
+    const pts = [];
+    for (let i = 0; i < corners.length - 1; i++) {
+      const a = corners[i], b = corners[i + 1];
+      for (let s = 0; s <= 24; s++) {
+        const t = s / 24, lx = a[0] + (b[0] - a[0]) * t, ly = a[1] + (b[1] - a[1]) * t;
+        pts.push(new THREE.Vector3(world.wx(lx), world.heightAt(lx, ly) + 0.9, world.wz(ly)));
+      }
+    }
+    const g = new THREE.BufferGeometry().setFromPoints(pts);
+    selection.add(new THREE.Line(g, new THREE.LineBasicMaterial({ color: 0xf4d98a, transparent: true, opacity: 0.95 })));
     dirty = true;
   }
 
@@ -461,7 +473,7 @@
     if (t.index >= data.tour.length) { stopTour(); return; }
     const step = data.tour[t.index];
     const zone = step.zone && data.zones.find((z) => z.id === step.zone);
-    const f = zone && (zone.focus || [zone.x + zone.w / 2, zone.y + zone.d / 2]);
+    const f = step.focus || (zone && (zone.focus || [zone.x + zone.w / 2, zone.y + zone.d / 2]));
     const target = zone ? new THREE.Vector3(world.wx(f[0]), 0, world.wz(f[1])) : new THREE.Vector3(0, 0, 0);
     if (step.time !== state.time) setTime(step.time);
     if (zone) select(step.zone);
@@ -513,6 +525,16 @@
       op.value = z.id;
       op.textContent = `${z.id} · ${z.name}`;
       $('zoneSelect').append(op);
+    }
+    const factsBox = $('factsList');
+    if (factsBox) {
+      factsBox.innerHTML = '';
+      for (const f of data.facts || []) {
+        const row = document.createElement('div');
+        row.className = 'fact';
+        row.innerHTML = `<span>${f.label}</span><strong>${f.value}</strong>`;
+        factsBox.append(row);
+      }
     }
     $('corners').innerHTML = '';
     for (const [name, x, y] of [['SW', 0, 0], ['SE', 1500, 0], ['NE', 1500, 1500], ['NW', 0, 1500]]) {

@@ -82,7 +82,7 @@
       sand: std({ map: canvasTex(sandCanvas, 60), normalMap: normalTex(tex.normalFrom(sandCanvas, 1.6), 60), normalScale: new THREE.Vector2(0.7, 0.7), roughness: 1, metalness: 0, color: 0xcdbc96 }),
       arenaSand: std({ map: canvasTex(sandCanvas, 8), roughness: 1, color: 0xd7c49b }),
       track: std({ map: canvasTex(gravelCanvas, 24), roughness: 0.98, color: 0xc4b795 }),
-      asphalt: std({ map: canvasTex(asphaltCanvas, 30), roughness: 0.94, color: 0xa9a49a }),
+      asphalt: std({ map: canvasTex(asphaltCanvas, 30), roughness: 0.95, color: 0xc4bfb4 }),
       deck: std({ map: canvasTex(woodCanvas, 3), roughness: 0.72, color: 0xc0a57e }),
       timber: std({ color: 0x8a6844, roughness: 0.8 }),
       canvasLight: std({ map: canvasTex(fabricCanvas, 4), color: 0xeae2d2, roughness: 0.9, side: THREE.DoubleSide }),
@@ -379,7 +379,8 @@
       const k = 0.72 + rnd() * 0.5;
       pos.setXYZ(i, pos.getX(i) * k, pos.getY(i) * k * 0.66, pos.getZ(i) * k);
     }
-    g.computeVertexNormals(); g.translate(0, s * 0.3, 0);
+    g.scale(1.25, 0.55, 1.15);
+    g.computeVertexNormals(); g.translate(0, s * 0.16, 0);
     return [{ geometry: g, material: M.rock }];
   }
 
@@ -413,9 +414,295 @@
     return parts;
   }
 
+  /* ===== عناصر الملف المعتمد ===== */
+
+  // محطة وقود: مظلة على أعمدة، مضخات، ومتجر صغير
+  function fuelStation(M) {
+    const THREE = T(), parts = [];
+    const canopy = new THREE.BoxGeometry(26, 0.9, 13); canopy.translate(0, 5.6, 0);
+    parts.push({ geometry: canopy, material: M.plaster });
+    const fascia = new THREE.BoxGeometry(26.4, 0.7, 0.4);
+    parts.push({ geometry: fascia.clone().applyMatrix4(M4(0, 5.05, -6.6)), material: M.lamp });
+    parts.push({ geometry: fascia.clone().applyMatrix4(M4(0, 5.05, 6.6)), material: M.lamp });
+    const col = new THREE.CylinderGeometry(0.26, 0.3, 5.2, 10);
+    for (const p of [[-9, -3.4], [9, -3.4], [-9, 3.4], [9, 3.4]]) {
+      parts.push({ geometry: col.clone().applyMatrix4(M4(p[0], 2.6, p[1])), material: M.metalLight });
+    }
+    const island = new THREE.BoxGeometry(7, 0.25, 2.2);
+    const pump = new THREE.BoxGeometry(0.8, 1.9, 1.2);
+    for (const z of [-3.2, 3.2]) {
+      parts.push({ geometry: island.clone().applyMatrix4(M4(0, 0.12, z)), material: M.stone });
+      for (const x of [-2.2, 2.2]) parts.push({ geometry: pump.clone().applyMatrix4(M4(x, 1.2, z)), material: M.metalLight });
+    }
+    for (const part of buildingBlock(M, 10, 7, 3.6, M.plaster)) {
+      part.geometry = part.geometry.clone().applyMatrix4(M4(0, 0, 12));
+      parts.push(part);
+    }
+    return parts;
+  }
+
+  // بنشر: سقيفة مفتوحة وإطارات وعدة
+  function workshop(M) {
+    const THREE = T(), parts = [];
+    const roof = new THREE.BoxGeometry(14, 0.35, 10); roof.translate(0, 4.4, 0);
+    parts.push({ geometry: roof, material: M.metalLight });
+    const back = new THREE.BoxGeometry(14, 4.2, 0.3); back.translate(0, 2.1, 4.8);
+    parts.push({ geometry: back, material: M.plasterWarm });
+    const side = new THREE.BoxGeometry(0.3, 4.2, 10);
+    parts.push({ geometry: side.clone().applyMatrix4(M4(-6.9, 2.1, 0)), material: M.plasterWarm });
+    parts.push({ geometry: side.clone().applyMatrix4(M4(6.9, 2.1, 0)), material: M.plasterWarm });
+    const col = new THREE.CylinderGeometry(0.13, 0.15, 4.2, 8);
+    for (const x of [-6.6, 0, 6.6]) parts.push({ geometry: col.clone().applyMatrix4(M4(x, 2.1, -4.7)), material: M.metal });
+    const tyre = new THREE.TorusGeometry(0.42, 0.16, 6, 12); tyre.rotateX(Math.PI / 2);
+    for (let i = 0; i < 9; i++) {
+      parts.push({ geometry: tyre.clone().applyMatrix4(M4(-5.4 + (i % 3) * 1.1, 0.2 + Math.floor(i / 3) * 0.34, -6.4)), material: M.tyre });
+    }
+    const bench = new THREE.BoxGeometry(4, 0.9, 0.8); bench.translate(3.4, 0.45, 4);
+    parts.push({ geometry: bench, material: M.metal });
+    return parts;
+  }
+
+  // بقالة: مبنى بواجهة زجاجية ومظلة وصناديق عرض
+  function grocery(M) {
+    const THREE = T(), parts = buildingBlock(M, 13, 9, 4, M.plaster);
+    const awning = new THREE.BoxGeometry(14.5, 0.18, 3.4); awning.translate(0, 3.5, -6);
+    parts.push({ geometry: awning, material: M.canvasShade });
+    const post = new THREE.CylinderGeometry(0.09, 0.1, 3.4, 8);
+    for (const x of [-6.4, 6.4]) parts.push({ geometry: post.clone().applyMatrix4(M4(x, 1.7, -7.4)), material: M.timber });
+    const crate = new THREE.BoxGeometry(1.1, 0.5, 0.8);
+    for (let i = 0; i < 4; i++) parts.push({ geometry: crate.clone().applyMatrix4(M4(-3 + i * 1.6, 0.25, -6.2)), material: M.timber });
+    return parts;
+  }
+
+  // البوابة: أكشاك وحواجز وجسر لافتة فوق المسارات
+  function gateHouse(M, lanes) {
+    const THREE = T(), parts = [], n = lanes || 3, span = n * 4.2;
+    const booth = new THREE.BoxGeometry(3, 3.1, 3);
+    const glass = new THREE.BoxGeometry(2.6, 1.3, 0.1);
+    for (const x of [-span / 2 - 2.4, span / 2 + 2.4]) {
+      parts.push({ geometry: booth.clone().applyMatrix4(M4(x, 1.55, 0)), material: M.plaster });
+      parts.push({ geometry: glass.clone().applyMatrix4(M4(x, 1.9, -1.55)), material: M.windowGlow });
+      const cap = new THREE.BoxGeometry(3.8, 0.25, 3.8);
+      parts.push({ geometry: cap.clone().applyMatrix4(M4(x, 3.2, 0)), material: M.plasterWarm });
+    }
+    // جسر لافتة
+    const beam = new THREE.BoxGeometry(span + 10, 1.5, 1.1); beam.translate(0, 6.4, 0);
+    parts.push({ geometry: beam, material: M.metal });
+    const panel = new THREE.BoxGeometry(span * 0.55, 1.05, 0.22); panel.translate(0, 6.4, -0.6);
+    parts.push({ geometry: panel, material: M.lamp });
+    const mast = new THREE.CylinderGeometry(0.3, 0.36, 6.4, 10);
+    for (const x of [-span / 2 - 4.6, span / 2 + 4.6]) parts.push({ geometry: mast.clone().applyMatrix4(M4(x, 3.2, 0)), material: M.metal });
+    // جزر وحواجز
+    const island = new THREE.BoxGeometry(3.4, 0.3, 7);
+    const arm = new THREE.BoxGeometry(3.9, 0.16, 0.16);
+    for (let i = 0; i < n; i++) {
+      const x = -span / 2 + 2.1 + i * 4.2;
+      parts.push({ geometry: island.clone().applyMatrix4(M4(x - 2.1, 0.15, 0)), material: M.stone });
+      parts.push({ geometry: arm.clone().applyMatrix4(M4(x, 1.15, 1.6)), material: M.lamp });
+    }
+    return parts;
+  }
+
+  // عربة طعام: صندوق بنافذة خدمة ومظلة وعجلات
+  function foodTruck(M, tint) {
+    const THREE = T(), parts = [];
+    const body = new THREE.BoxGeometry(6.2, 2.5, 2.4); body.translate(0, 1.75, 0);
+    parts.push({ geometry: body, material: tint || M.plaster });
+    const cab = new THREE.BoxGeometry(1.9, 1.7, 2.3); cab.translate(-3.6, 1.4, 0);
+    parts.push({ geometry: cab, material: M.metalLight });
+    const windshield = new THREE.BoxGeometry(0.12, 1, 2.1); windshield.translate(-4.5, 1.8, 0);
+    parts.push({ geometry: windshield, material: M.carGlass });
+    const hatch = new THREE.BoxGeometry(4.2, 1.2, 0.12); hatch.translate(0.4, 2, -1.26);
+    parts.push({ geometry: hatch, material: M.windowGlow });
+    const awning = new THREE.BoxGeometry(4.6, 0.1, 1.9);
+    const m = new THREE.Matrix4().makeRotationX(-0.28);
+    m.premultiply(new THREE.Matrix4().makeTranslation(0.4, 3.05, -2.1));
+    parts.push({ geometry: awning.clone().applyMatrix4(m), material: M.canvasShade });
+    const wheel = new THREE.CylinderGeometry(0.42, 0.42, 0.3, 10); wheel.rotateZ(Math.PI / 2);
+    for (const p of [[-3.2, -1.2], [-3.2, 1.2], [2.2, -1.2], [2.2, 1.2]]) {
+      parts.push({ geometry: wheel.clone().applyMatrix4(M4(p[0], 0.42, p[1])), material: M.tyre });
+    }
+    const counter = new THREE.BoxGeometry(4.2, 0.12, 0.5); counter.translate(0.4, 1.42, -1.5);
+    parts.push({ geometry: counter, material: M.timber });
+    return parts;
+  }
+
+  // طاولة وكراسي
+  function diningSet(M) {
+    const THREE = T(), parts = [];
+    const top = new THREE.CylinderGeometry(0.75, 0.72, 0.1, 12); top.translate(0, 0.76, 0);
+    parts.push({ geometry: top, material: M.timber });
+    const stem = new THREE.CylinderGeometry(0.09, 0.14, 0.76, 8); stem.translate(0, 0.38, 0);
+    parts.push({ geometry: stem, material: M.metal });
+    const seat = new THREE.BoxGeometry(0.45, 0.08, 0.45), backRest = new THREE.BoxGeometry(0.45, 0.5, 0.07);
+    for (let i = 0; i < 4; i++) {
+      const a = (i / 4) * Math.PI * 2, x = Math.cos(a) * 1.15, z = Math.sin(a) * 1.15;
+      parts.push({ geometry: seat.clone().applyMatrix4(M4(x, 0.46, z, -a)), material: M.canvasWarm });
+      parts.push({ geometry: backRest.clone().applyMatrix4(M4(x + Math.cos(a) * 0.2, 0.72, z + Math.sin(a) * 0.2, -a)), material: M.canvasWarm });
+    }
+    return parts;
+  }
+
+  // ألعاب أطفال: هيكل تسلق وزحليقة وأرجوحة
+  function playSet(M) {
+    const THREE = T(), parts = [];
+    const deck = new THREE.BoxGeometry(3.4, 0.25, 3.4); deck.translate(0, 1.7, 0);
+    parts.push({ geometry: deck, material: M.deck });
+    const post = new THREE.BoxGeometry(0.18, 2.6, 0.18);
+    for (const p of [[-1.6, -1.6], [1.6, -1.6], [-1.6, 1.6], [1.6, 1.6]]) {
+      parts.push({ geometry: post.clone().applyMatrix4(M4(p[0], 1.3, p[1])), material: M.timber });
+    }
+    const roof = new THREE.ConeGeometry(2.8, 1.2, 4); roof.rotateY(Math.PI / 4); roof.translate(0, 3.4, 0);
+    parts.push({ geometry: roof, material: M.canvasShade });
+    const slide = new THREE.BoxGeometry(0.9, 0.12, 4.2);
+    const sm = new THREE.Matrix4().makeRotationX(0.42);
+    sm.premultiply(new THREE.Matrix4().makeTranslation(1.1, 1.05, 3.2));
+    parts.push({ geometry: slide.clone().applyMatrix4(sm), material: M.metalLight });
+    const frame = new THREE.BoxGeometry(3.6, 0.16, 0.16); frame.translate(-3.6, 2.3, 0);
+    parts.push({ geometry: frame, material: M.metal });
+    const leg = new THREE.CylinderGeometry(0.08, 0.09, 2.3, 8);
+    for (const p of [[-5.2, -0.9], [-5.2, 0.9], [-2, -0.9], [-2, 0.9]]) {
+      parts.push({ geometry: leg.clone().applyMatrix4(M4(p[0], 1.15, p[1])), material: M.metal });
+    }
+    const swing = new THREE.BoxGeometry(0.5, 0.07, 0.22);
+    for (const x of [-4.4, -2.8]) {
+      parts.push({ geometry: swing.clone().applyMatrix4(M4(x, 0.6, 0)), material: M.timber });
+      const rope = new THREE.CylinderGeometry(0.025, 0.025, 1.7, 5);
+      parts.push({ geometry: rope.clone().applyMatrix4(M4(x, 1.45, -0.08)), material: M.metal });
+      parts.push({ geometry: rope.clone().applyMatrix4(M4(x, 1.45, 0.08)), material: M.metal });
+    }
+    return parts;
+  }
+
+  // اسطبل: صف بوكسات بسقف مائل ومنطقة تجهيز
+  function stableRow(M, boxes) {
+    const THREE = T(), parts = [], n = boxes || 10, w = n * 3.6;
+    const roof = new THREE.BoxGeometry(w + 2.4, 0.3, 13);
+    const rm = new THREE.Matrix4().makeRotationX(-0.07);
+    rm.premultiply(new THREE.Matrix4().makeTranslation(0, 4.3, 0));
+    parts.push({ geometry: roof.clone().applyMatrix4(rm), material: M.metalLight });
+    const back = new THREE.BoxGeometry(w, 3.4, 0.3); back.translate(0, 1.7, 5.4);
+    parts.push({ geometry: back, material: M.plasterWarm });
+    const divider = new THREE.BoxGeometry(0.22, 2.9, 7);
+    const door = new THREE.BoxGeometry(3.2, 1.35, 0.16);
+    for (let i = 0; i <= n; i++) {
+      parts.push({ geometry: divider.clone().applyMatrix4(M4(-w / 2 + i * 3.6, 1.45, 2)), material: M.timber });
+      if (i < n) parts.push({ geometry: door.clone().applyMatrix4(M4(-w / 2 + 1.8 + i * 3.6, 0.68, -1.4)), material: M.timber });
+    }
+    const col = new THREE.CylinderGeometry(0.12, 0.14, 3.9, 8);
+    for (let i = 0; i <= n; i += 2) parts.push({ geometry: col.clone().applyMatrix4(M4(-w / 2 + i * 3.6, 1.95, -5.4)), material: M.metal });
+    return parts;
+  }
+
+  // مطعم القمة: واجهة زجاجية للجنوب وشرفة إطلالة ومطبخ خلفي
+  function summitRestaurant(M) {
+    const THREE = T(), parts = buildingBlock(M, 44, 16, 5.4, M.plaster);
+    const deck = new THREE.BoxGeometry(48, 0.45, 12); deck.translate(0, 0.2, -14);
+    parts.push({ geometry: deck, material: M.deck });
+    parts.push(...railing(M, 48, 12).map((r) => ({ geometry: r.geometry.clone().applyMatrix4(M4(0, 0.42, -14)), material: r.material })));
+    const pergola = new THREE.BoxGeometry(46, 0.22, 0.22);
+    for (let i = 0; i < 14; i++) parts.push({ geometry: pergola.clone().applyMatrix4(M4(0, 3.9, -8.6 - i * 0.78)), material: M.timber });
+    const col = new THREE.CylinderGeometry(0.19, 0.22, 3.9, 8);
+    for (const x of [-22, -7, 8, 22]) parts.push({ geometry: col.clone().applyMatrix4(M4(x, 1.95, -19.4)), material: M.timber });
+    const kitchen = new THREE.BoxGeometry(16, 4, 9); kitchen.translate(-14, 2, 11);
+    parts.push({ geometry: kitchen, material: M.plasterWarm });
+    const flue = new THREE.CylinderGeometry(0.4, 0.4, 3, 8);
+    for (const x of [-18, -14, -10]) parts.push({ geometry: flue.clone().applyMatrix4(M4(x, 5.4, 11)), material: M.metal });
+    return parts;
+  }
+
+  // ساتر ترابي لمنطقة الرماية
+  function berm(M, length, height) {
+    const THREE = T(), h = height || 4, l = length || 40;
+    const g = new THREE.BufferGeometry();
+    const pos = [], idx = [], half = h * 1.7;
+    const seg = Math.max(6, Math.round(l / 6));
+    for (let i = 0; i <= seg; i++) {
+      const x = -l / 2 + (i * l) / seg;
+      const jitter = Math.sin(i * 1.7) * 0.25;
+      pos.push(x, 0, -half, x, h + jitter, 0, x, 0, half);
+    }
+    for (let i = 0; i < seg; i++) {
+      const a = i * 3;
+      idx.push(a, a + 3, a + 1, a + 1, a + 3, a + 4, a + 1, a + 4, a + 2, a + 2, a + 4, a + 5);
+    }
+    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    g.setIndex(idx); g.computeVertexNormals();
+    return [{ geometry: g, material: M.sand }];
+  }
+
+  // إطار هدف للرماية
+  function target(M) {
+    const THREE = T(), parts = [];
+    const post = new THREE.BoxGeometry(0.12, 1.8, 0.12);
+    for (const x of [-0.6, 0.6]) parts.push({ geometry: post.clone().applyMatrix4(M4(x, 0.9, 0)), material: M.timber });
+    const face = new THREE.BoxGeometry(1.3, 1.3, 0.06); face.translate(0, 1.35, 0);
+    parts.push({ geometry: face, material: M.canvasLight });
+    return parts;
+  }
+
+  // سيارة دفع رباعي بقاعدة أعلى ورفرف سقف
+  function offRoader(M) {
+    const THREE = T(), parts = [];
+    const body = new THREE.BoxGeometry(2.05, 1.1, 4.9); body.translate(0, 1.15, 0);
+    parts.push({ geometry: body, material: M.carBody });
+    const cabin = new THREE.BoxGeometry(1.95, 0.85, 2.9); cabin.translate(0, 2.1, 0.1);
+    parts.push({ geometry: cabin, material: M.carGlass });
+    const rack = new THREE.BoxGeometry(1.8, 0.12, 2.4); rack.translate(0, 2.62, 0.1);
+    parts.push({ geometry: rack, material: M.metal });
+    const bar = new THREE.BoxGeometry(2.1, 0.14, 0.14); bar.translate(0, 1.5, -2.5);
+    parts.push({ geometry: bar, material: M.metalLight });
+    const wheel = new THREE.CylinderGeometry(0.48, 0.48, 0.34, 10); wheel.rotateZ(Math.PI / 2);
+    for (const p of [[-1.02, -1.6], [1.02, -1.6], [-1.02, 1.6], [1.02, 1.6]]) {
+      parts.push({ geometry: wheel.clone().applyMatrix4(M4(p[0], 0.48, p[1])), material: M.tyre });
+    }
+    return parts;
+  }
+
+  // كشتة: فرشة ومجلس ونار ومظلة خفيفة
+  function kashta(M) {
+    const THREE = T(), parts = [];
+    const rug = new THREE.BoxGeometry(6, 0.08, 5); rug.translate(0, 0.05, 0);
+    parts.push({ geometry: rug, material: M.canvasWarm });
+    const cushion = new THREE.BoxGeometry(0.9, 0.32, 0.6);
+    for (let i = 0; i < 7; i++) {
+      const a = Math.PI * (0.15 + (i / 7) * 1.2);
+      parts.push({ geometry: cushion.clone().applyMatrix4(M4(Math.cos(a) * 2.4, 0.24, Math.sin(a) * 2, -a)), material: M.canvasLight });
+    }
+    const ring = new THREE.TorusGeometry(0.8, 0.2, 6, 14); ring.rotateX(Math.PI / 2); ring.translate(0, 0.2, -2.6);
+    parts.push({ geometry: ring, material: M.stone });
+    const flame = new THREE.ConeGeometry(0.45, 0.9, 8); flame.translate(0, 0.75, -2.6);
+    parts.push({ geometry: flame, material: M.fire });
+    const shade = new THREE.BoxGeometry(6.4, 0.07, 3.4); shade.translate(0, 2.5, 1.6);
+    parts.push({ geometry: shade, material: M.canvasShade });
+    const pole = new THREE.CylinderGeometry(0.06, 0.07, 2.5, 6);
+    for (const p of [[-3, 0.2], [3, 0.2], [-3, 3.1], [3, 3.1]]) {
+      parts.push({ geometry: pole.clone().applyMatrix4(M4(p[0], 1.25, p[1])), material: M.timber });
+    }
+    return parts;
+  }
+
+  // سور قطعة مخيم: ألواح قماش على قوائم
+  function campScreen(M, w, d) {
+    const THREE = T(), parts = [];
+    const panel = new THREE.BoxGeometry(w, 2, 0.12), panelZ = new THREE.BoxGeometry(0.12, 2, d);
+    parts.push({ geometry: panel.clone().applyMatrix4(M4(0, 1, -d / 2)), material: M.canvasWarm });
+    parts.push({ geometry: panelZ.clone().applyMatrix4(M4(-w / 2, 1, 0)), material: M.canvasWarm });
+    parts.push({ geometry: panelZ.clone().applyMatrix4(M4(w / 2, 1, 0)), material: M.canvasWarm });
+    const post = new THREE.CylinderGeometry(0.08, 0.09, 2.3, 6);
+    for (let i = 0; i <= w / 4; i++) parts.push({ geometry: post.clone().applyMatrix4(M4(-w / 2 + i * 4, 1.15, -d / 2)), material: M.timber });
+    for (let i = 0; i <= d / 4; i++) {
+      parts.push({ geometry: post.clone().applyMatrix4(M4(-w / 2, 1.15, -d / 2 + i * 4)), material: M.timber });
+      parts.push({ geometry: post.clone().applyMatrix4(M4(w / 2, 1.15, -d / 2 + i * 4)), material: M.timber });
+    }
+    return parts;
+  }
+
   NT.props = {
     Builder, makeMaterials, M4,
     domeStay, safariTent, privateVilla, tensileCanopy, shadeStructure, buildingBlock,
-    majlis, firePit, palm, acacia, shrub, rock, car, lightPole, lantern, railing
+    majlis, firePit, palm, acacia, shrub, rock, car, lightPole, lantern, railing,
+    fuelStation, workshop, grocery, gateHouse, foodTruck, diningSet, playSet, stableRow,
+    summitRestaurant, berm, target, offRoader, kashta, campScreen
   };
 })(window.NT = window.NT || {});

@@ -6,7 +6,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
 const guard = (code) => code.replace(/<\/script/gi, '<\\/script');
-const sources = ['data', 'geo', 'textures', 'props', 'content', 'world', 'basemap', 'mapview', 'controls', 'app'];
+const sources = ['data', 'geo', 'textures', 'terrain', 'props', 'content', 'world', 'basemap', 'mapview', 'controls', 'app'];
 
 const html = read('index.html');
 const body = html.slice(html.indexOf('<body>') + 6, html.lastIndexOf('</body>'))

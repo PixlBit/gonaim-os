@@ -270,10 +270,17 @@
       c.target.lerp(d.target, rate);
       this.target.copy(c.target);
 
+      if (this.opt.terrainHeight) {
+        const ty = this.opt.terrainHeight(c.target.x, c.target.z);
+        c.target.y += (ty - c.target.y) * Math.min(1, rate * 1.4);
+        this.desired.target.y = ty;
+      }
       const cosP = Math.cos(c.pitch), sinP = Math.sin(c.pitch);
       const x = c.target.x + Math.sin(c.az) * cosP * c.dist;
       const z = c.target.z + Math.cos(c.az) * cosP * c.dist;
-      const y = Math.max(2.2, c.target.y + sinP * c.dist);
+      let y = c.target.y + sinP * c.dist;
+      if (this.opt.terrainHeight) y = Math.max(y, this.opt.terrainHeight(x, z) + 3.5);
+      y = Math.max(2.2, y);
       this.perspective.position.set(x, y, z);
       this.perspective.lookAt(c.target);
       this.perspective.near = Math.max(0.6, c.dist * 0.006);
@@ -285,7 +292,7 @@
         const half = c.dist * 0.42;
         this.ortho.left = -half * aspect; this.ortho.right = half * aspect;
         this.ortho.top = half; this.ortho.bottom = -half;
-        this.ortho.position.set(c.target.x, 3000, c.target.z + 0.001);
+        this.ortho.position.set(c.target.x, 4000, c.target.z + 0.001);
         this.ortho.up.set(0, 0, -1);
         this.ortho.lookAt(c.target.x, 0, c.target.z);
         this.ortho.updateProjectionMatrix();
