@@ -5,13 +5,14 @@
 
   const TIMES = {
     day: {
-      /* شمس منخفضة لا شمس ظهيرة: الضوء المائل هو ما يُظهر النسيج.
-         الشمس فوق الرأس تمحو الظلال فتبدو الأرض والمباني مسطّحة مهما
-         أتقنّا الخامات — وهذا ما كان يخفي تموّج الرمل وبروز الطرق.
-         ومعها ملء أخفّ حتى يبقى في الظل عمق، وتعريض أعلى يعوّضه. */
-      label: 'نهار', elevation: 29, azimuth: 138, turbidity: 2.9, rayleigh: 1.5, mie: 0.005, mieG: 0.78,
-      sun: 0xfff0d8, sunI: 3.4, hemiSky: 0x9cc0e8, hemiGround: 0xb5a077, hemiI: 0.13, ambient: 0.015, envI: 0.24,
-      exposure: 0.50, fog: 0xd9cfb6, fogNear: 2400, fogFar: 20000, emissive: 0, bloom: 0.1,
+      /* ارتفاع الشمس مقايضة بين لقطتين متعارضتين: الضوء المائل يُظهر نسيج
+         الرمل وبروز المباني عن قرب، لكنه يمدّ الظلال حتى تبتلع المنظر
+         العام — وهو أهم لقطة في العرض. تسع وعشرون درجة أغرقت الشاملة،
+         وستّ وخمسون محت النسيج. إحدى وأربعون تحفظ الاثنين.
+         والضباب أُبعد مداه لأنه كان يطمس الموقع كله من ارتفاع الطائر. */
+      label: 'نهار', elevation: 41, azimuth: 141, turbidity: 2.6, rayleigh: 1.4, mie: 0.004, mieG: 0.77,
+      sun: 0xfff3e0, sunI: 3.5, hemiSky: 0xa6c8ea, hemiGround: 0xbaa87e, hemiI: 0.16, ambient: 0.02, envI: 0.28,
+      exposure: 0.58, fog: 0xdcd4c2, fogNear: 3800, fogFar: 27000, emissive: 0, bloom: 0.1,
       cloud: 0xffffff, cloudOpacity: 0.72, bloomThreshold: 2.4
     },
     sunset: {

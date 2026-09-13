@@ -22,6 +22,9 @@ const VIEWS = [
   { id: 'hero',   target: [0, 0, 100],    az: 0.55, pitch: 0.34, dist: 1800 }  // اللقطة العامة
 ];
 
+const only = (process.env.NT_ONLY || '').split(',').filter(Boolean);
+const views = only.length ? VIEWS.filter((v) => only.includes(v.id)) : VIEWS;
+
 const browser = await chromium.launch({ args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader'] });
 const page = await browser.newPage({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1 });
 const errors = [];
@@ -46,13 +49,13 @@ await page.waitForTimeout(800);
 await page.evaluate((t) => window.NT.app.setTime(t), time);
 await page.waitForTimeout(1500);
 
-for (const v of VIEWS) {
+for (const v of views) {
   await page.evaluate((view) => {
     const THREE = window.THREE, rig = window.NT.app.rig;
     rig.flyTo({ target: new THREE.Vector3(...view.target), az: view.az, pitch: view.pitch, dist: view.dist, ms: 1 });
   }, v);
   await page.waitForTimeout(2200);
-  await page.screenshot({ path: path.join(outDir, `${time}-${v.id}.png`), animations: 'disabled', timeout: 90000, caret: 'hide' });
+  await page.screenshot({ path: path.join(outDir, `${time}-${v.id}.png`), animations: 'disabled', timeout: 300000, caret: 'hide' });
 }
 
 const info = await page.evaluate(() => ({
