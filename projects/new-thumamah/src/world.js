@@ -555,6 +555,8 @@
       let tries = 0;
       while (outcrops.length < target && tries++ < 40000) {
         const x = 120 + rnd() * 1360, y = 820 + rnd() * 660;
+        // إبقاء مجال الرؤية من حافة القمة نظيفًا من النتوءات
+        if (x > 470 && x < 1090 && y > 1040 && y < 1210) continue;
         const slope = terrain.slopeAt(x, y);
         if (slope < 0.32 || !free(x, y)) continue;
         outcrops.push(ctx.slopeMatrix(x, y, rnd() * 6.28, 0.45 + rnd() * 1.15 + slope * 0.7));
