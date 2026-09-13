@@ -62,7 +62,21 @@
     summitRestaurant: () => P.summitRestaurant(M),
     stableRow: () => P.stableRow(M),
     playSet: () => P.playSet(M),
-    firePit: () => P.firePit(M)
+    firePit: () => P.firePit(M),
+    privateVilla: () => P.privateVilla(M),
+    buildingBlock: () => P.buildingBlock(M, 24, 12, 4.2, M.plaster || M.canvasWarm),
+    workshop: () => P.workshop(M),
+    grocery: () => P.grocery(M),
+    tensileCanopy: () => P.tensileCanopy(M, 18, 12, 5.5, [[-0.5, 0], [0.5, 0]]),
+    shadeStructure: () => P.shadeStructure(M, 16, 5, 2.8, 9),
+    campScreen: () => P.campScreen(M, 14, 10),
+    diningSet: () => P.diningSet(M),
+    lantern: () => P.lantern(M),
+    railing: () => P.railing(M, 6, 0.2),
+    offRoader: () => P.offRoader(M),
+    berm: () => P.berm(M, 30, 3),
+    target: () => P.target(M),
+    personStaff: () => A.person(M, 'staff')
   };
 
   const group = new THREE.Group(); scene.add(group);

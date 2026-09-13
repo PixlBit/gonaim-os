@@ -32,7 +32,37 @@
     horse:     { file: 'horse.glb',     plan: 2.6,    yaw: 0, fallback: null },
     lightPole: { file: 'light-pole.glb', height: 9,   yaw: 0, fallback: (M) => NT.assets.streetLight(M, 9, 1) },
     fuelStation: { file: 'fuel-station.glb', plan: 26.4, yaw: 0, fallback: (M) => NT.props.fuelStation(M) },
-    gate:      { file: 'gate.glb',      plan: 22.6,   yaw: 0, fallback: (M) => NT.props.gateHouse(M, 3) }
+    gate:      { file: 'gate.glb',      plan: 22.6,   yaw: 0, fallback: (M) => NT.props.gateHouse(M, 3) },
+
+    /* مبانٍ ومنشآت: كلها تُقاس ببصمتها الأرضية لأن مسقطها مرسوم على المخطط */
+    summitRestaurant: { file: 'summit-restaurant.glb', plan: 48.1, yaw: 0, fallback: (M) => NT.props.summitRestaurant(M) },
+    privateVilla: { file: 'private-villa.glb', plan: 22.4, yaw: 0, fallback: (M) => NT.props.privateVilla(M) },
+    stableRow:  { file: 'stable-row.glb',  plan: 38.4,  yaw: 0, fallback: (M) => NT.props.stableRow(M) },
+    playSet:    { file: 'play-set.glb',    plan: 7.4,   yaw: 0, fallback: (M) => NT.props.playSet(M) },
+    adminBlock: { file: 'admin-block.glb', plan: 26.4,  yaw: 0, fallback: (M) => NT.props.buildingBlock(M, 24, 12, 4.2) },
+    workshop:   { file: 'workshop.glb',    plan: 14.1,  yaw: 0, fallback: (M) => NT.props.workshop(M) },
+    grocery:    { file: 'grocery.glb',     plan: 15.4,  yaw: 0, fallback: (M) => NT.props.grocery(M) },
+    tensileCanopy: { file: 'tensile-canopy.glb', plan: 18.2, yaw: 0, fallback: (M) => NT.props.tensileCanopy(M, 18, 12, 5.5, [[-0.5, 0], [0.5, 0]]) },
+    shadeStructure: { file: 'shade-structure.glb', plan: 16.4, yaw: 0, fallback: (M) => NT.props.shadeStructure(M, 16, 5, 2.8, 9) },
+    campScreen: { file: 'camp-screen.glb', plan: 14.2,  yaw: 0, fallback: (M) => NT.props.campScreen(M, 14, 10) },
+
+    /* عناصر ومركبات */
+    personStaff: { file: 'person-staff.glb', height: 1.75, yaw: 0, fallback: (M) => NT.assets.person(M, 'staff') },
+    offRoader:  { file: 'off-roader.glb',  plan: 4.2,   yaw: 0, fallback: (M) => NT.props.offRoader(M) },
+    diningSet:  { file: 'dining-set.glb',  plan: 2.6,   yaw: 0, fallback: (M) => NT.props.diningSet(M) },
+    firePit:    { file: 'fire-pit.glb',    plan: 1.2,   yaw: 0, fallback: (M) => NT.props.firePit(M) },
+    lantern:    { file: 'lantern.glb',     height: 0.6, yaw: 0, fallback: (M) => NT.props.lantern(M) },
+    railing:    { file: 'railing.glb',     plan: 6.0,   yaw: 0, fallback: (M) => NT.props.railing(M, 6, 0.2) },
+    bollard:    { file: 'bollard.glb',     height: 0.9, yaw: 0, fallback: (M) => NT.assets.bollard(M) },
+    roadSign:   { file: 'road-sign.glb',   height: 3.0, yaw: 0, fallback: (M) => NT.assets.roadSign(M) },
+    floodMast:  { file: 'flood-mast.glb',  height: 18,  yaw: 0, fallback: (M) => NT.assets.floodMast(M) },
+    target:     { file: 'target.glb',      height: 1.6, yaw: 0, fallback: (M) => NT.props.target(M) },
+
+    /* تنويعات: نفس الدور بشكل مختلف، فلا يبدو الصفّ مستنسخًا */
+    palm2:   { file: 'palm-2.glb',   height: 9.0, yaw: 0, fallback: null, variantOf: 'palm' },
+    acacia2: { file: 'acacia-2.glb', height: 5.2, yaw: 0, fallback: null, variantOf: 'acacia' },
+    rock2:   { file: 'rock-2.glb',   plan: 3.0,   yaw: 0, fallback: null, variantOf: 'rock' },
+    shrub2:  { file: 'shrub-2.glb',  plan: 1.0,   yaw: 0, fallback: null, variantOf: 'shrub' }
   };
 
   const loaded = new Map();     // slot → parts[]
@@ -107,5 +137,23 @@
   }
   const has = (name) => loaded.has(name);
 
-  NT.models = { SLOTS, loadAll, parts, has, info, loaded };
+  /* كل الأشكال المتاحة لدور واحد: الأساسي وتنويعاته المحمّلة */
+  function variants(name, materials) {
+    const out = [];
+    const base = parts(name, materials);
+    if (base && base.length) out.push(base);
+    for (const [key, slot] of Object.entries(SLOTS)) {
+      if (slot.variantOf === name && loaded.has(key)) out.push(loaded.get(key));
+    }
+    return out;
+  }
+
+  /* اختيار شكل بحسب رقم عشوائي — يمنع صفًّا من النسخ المتطابقة */
+  function pick(name, materials, r) {
+    const list = variants(name, materials);
+    if (!list.length) return null;
+    return list[Math.min(list.length - 1, Math.floor((r || 0) * list.length))];
+  }
+
+  NT.models = { SLOTS, loadAll, parts, variants, pick, has, info, loaded };
 })(window.NT = window.NT || {});
