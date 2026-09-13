@@ -633,7 +633,9 @@
       /* الصخور خُفّضت كثافتها إلى النصف تقريبًا: بضع مئات من الكتل الفاتحة
          المتناثرة تقرأ كحبيبات فلّين لا كصحراء. والنبات يحتمل كثافة أعلى
          لأنه داكن ومتغيّر الشكل فلا ينتظم في عين الناظر. */
-      const budget = quality === 'low' ? { a: 180, s: 680, r: 150 } : { a: 600, s: 2100, r: 420 };
+      /* أعداد النثر خُفّضت لتُصرف الميزانية على تفاصيل كل عنصر لا على تكراره:
+         ثمانمئة شجيرة بألف مثلث تقرأ أسوأ من ثلاثمئة بأربعة آلاف. */
+      const budget = quality === 'low' ? { a: 90, s: 240, r: 80 } : { a: 200, s: 620, r: 190 };
       let guard = 0;
       while ((acacias.length < budget.a || shrubs.length < budget.s || rocksList.length < budget.r) && guard++ < 60000) {
         const x = rnd() * 1500, y = rnd() * 1500;
@@ -651,7 +653,7 @@
 
       // نتوءات صخرية على سفوح الجبل تعطيه طابع الحافة الصخرية
       const outcrops = [];
-      const target = quality === 'low' ? 120 : 320;
+      const target = quality === 'low' ? 70 : 170;
       let tries = 0;
       while (outcrops.length < target && tries++ < 40000) {
         const x = 120 + rnd() * 1360, y = 820 + rnd() * 660;

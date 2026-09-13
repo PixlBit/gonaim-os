@@ -39,19 +39,42 @@ const DEFAULT_ERROR = 0.02;
 const NO_SLOPPY = new Set(['lightPole', 'floodMast', 'railing', 'roadSign', 'bollard', 'target']);
 
 const BUDGET = {
-  palm: 2600, palm2: 2600, acacia: 2600, acacia2: 2600,
-  shrub: 900, shrub2: 900, rock: 1200, rock2: 1200,
-  personThobe: 2600, personAbaya: 2600, personChild: 2200, personStaff: 2600,
-  camel: 3200, horse: 3200,
-  sedan: 4500, suv: 4500, pickup: 4500, coach: 5000, offRoader: 4500,
-  tent: 5000, dome: 5000, kashta: 5000, majlis: 4000, campScreen: 2600,
-  foodTruck: 5000, diningSet: 1200, firePit: 800, lantern: 500,
-  bollard: 600, roadSign: 1200, target: 1200,
-  lightPole: 2200, floodMast: 3000, railing: 1800,
-  tensileCanopy: 3000, shadeStructure: 2200,
-  gate: 9000, fuelStation: 9000, workshop: 7000, grocery: 7000,
-  adminBlock: 7000, privateVilla: 9000, stableRow: 10000,
-  playSet: 6000, summitRestaurant: 16000
+  /* الميزانية تُشتقّ من عدد النسخ في المشهد لا من حجم العنصر.
+     ما يوضع مرة أو مرتين لا يُبسَّط أصلًا (صفر) — تبسيطه خسارة خالصة
+     في الجودة مقابل بضعة آلاف مثلث لا تُذكر. والضغط يشتدّ كلما كثرت
+     النسخ: الشجيرة موضوعة مئات المرات فثمن كل مثلث فيها مئات الأضعاف.
+
+     ورُفعت الميزانيات بعد تقليل أعداد النثر: ثلاثمئة شجيرة بتفاصيل وافية
+     تقرأ أفضل من ثمانمئة مهترئة، والتكلفة واحدة. */
+
+  // مئات النسخ
+  shrub: 4200, shrub2: 4200,
+  acacia: 8000, acacia2: 8000,
+  rock: 6000, rock2: 6000,
+
+  // عشرات النسخ
+  personThobe: 9000, personAbaya: 9000, personChild: 8000, personStaff: 9000,
+  palm: 0, palm2: 0, lightPole: 5200,
+  suv: 0, sedan: 0, pickup: 0,
+
+  // نسخ معدودة: بلا تبسيط
+  tent: 0, dome: 0, kashta: 0, majlis: 0, campScreen: 0,
+  camel: 0, horse: 0, coach: 0, offRoader: 0, foodTruck: 0,
+  diningSet: 0, firePit: 0, lantern: 0, railing: 0, bollard: 0,
+  roadSign: 0, floodMast: 0, target: 0,
+  tensileCanopy: 0, shadeStructure: 0,
+  gate: 0, fuelStation: 0, workshop: 0, grocery: 0,
+  adminBlock: 0, privateVilla: 0, stableRow: 0,
+  playSet: 0, summitRestaurant: 0
+};
+
+/* دقة الخامة: أعلى لما يُرى عن قرب في المسار التعريفي، وأدنى لما يُنثر بالمئات */
+const TEXTURE = {
+  summitRestaurant: 2048, privateVilla: 2048, gate: 2048, fuelStation: 2048,
+  stableRow: 2048, tent: 2048, dome: 2048, kashta: 2048, majlis: 2048,
+  foodTruck: 2048, adminBlock: 2048, grocery: 2048, workshop: 2048, playSet: 2048,
+  suv: 2048, sedan: 2048,
+  shrub: 512, shrub2: 512, rock: 512, rock2: 512, bollard: 512
 };
 
 
@@ -94,7 +117,9 @@ async function main() {
   const args = process.argv.slice(2);
   const src = args[0];
   const slot = args[1];
-  const maxTexture = +((args[args.indexOf('--max-texture') + 1]) || 1024) || 1024;
+  const maxTexture = args.indexOf('--max-texture') > -1
+    ? +args[args.indexOf('--max-texture') + 1]
+    : (TEXTURE[slot] || 1024);
   const keep = args.includes('--keep');
 
   if (!src || !slot || !FILES[slot]) {

@@ -1,0 +1,56 @@
+name: نشر استوديو نيو ثمامة
+
+on:
+  push:
+    branches: [claude/neo-thamama-3d-upgrade-pzts6t, main]
+    paths: ['projects/new-thumamah/**', '.github/workflows/thumamah-pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+
+      # الفحوص تسبق النشر: لا يُنشر مخطط لا يجتاز تحقّق الحدود والمساحات
+      - name: تحقّق
+        working-directory: projects/new-thumamah
+        run: node tools/verify.cjs
+
+      # الموقع يعمل من مصدره مباشرة: صفحة وسكربتات ونماذج، بلا خطوة بناء
+      - name: تجميع الموقع
+        run: |
+          mkdir -p _site
+          cp -r projects/new-thumamah/index.html \
+                projects/new-thumamah/src \
+                projects/new-thumamah/vendor \
+                projects/new-thumamah/assets \
+                _site/
+          # ملف واحد مكتفٍ بذاته بجانب الموقع، لمن يريد نسخة بلا إنترنت
+          cd projects/new-thumamah && node tools/build.cjs && cd -
+          cp projects/new-thumamah/dist/index.html _site/offline.html
+          du -sh _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: _site }
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
