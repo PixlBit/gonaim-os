@@ -29,7 +29,8 @@ cp .env.example .env          # اضبط DATABASE_URL و ANTHROPIC_API_KEY
 createdb gonaim
 npm run migrate               # هجرات مرتّبة، مرة واحدة، بمجموع تحقّق
 
-npm run dev:api               # الخادم — المفتاح يعيش هنا وحده
+npm run dev:api               # الخادم — المفتاح يعيش هنا وحده، والدورة تشتغل فيه
+npm run cycle                 # أو دورة واحدة يدويًا (--history لسجل الدورات)
 npm run dev                   # الواجهة
 ```
 
@@ -103,6 +104,7 @@ JUDGMENT →  CORTEX: متى يصمت · متى يقترح · متى يحتاج 
 | `packages/security` | التنقيح — طبقتان، لا يُبطَّل بإعداد |
 | `packages/rules` | ثماني قواعد حتمية + بوابة التسجيل + ميزانية المقاطعة |
 | `packages/intake` | تطبيع، حل تواريخ، استخلاص، بوابة ربط المصدر |
+| `packages/db` — الدورة | تشغيل القواعد كل ساعة، كبت المتكرر، تطبيق الاحتفاظ |
 | `packages/db` | مشغّل هجرات، حفظ، قراءة، سجل تدقيق، تصدير |
 | `apps/api` | بوابة محلية — المفتاح لا يغادرها |
 | `apps/web` | DOSSIER والمدخل |

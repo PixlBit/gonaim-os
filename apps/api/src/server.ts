@@ -1,7 +1,8 @@
 import { createServer } from "node:http";
 import { extract } from "@gonaim/intake";
 import { connect, commitCandidates, loadSnapshot, exportMind, forget, listKnown,
-         ingestEvents, isBlackout, type ConfirmedCandidate } from "@gonaim/db";
+         ingestEvents, isBlackout, runCycle, recentCycles,
+         type ConfirmedCandidate } from "@gonaim/db";
 import { IngestBatch, toEvent } from "@gonaim/ingest";
 import { timingSafeEqual } from "node:crypto";
 import { ALL_RULES, runRules } from "@gonaim/rules";
@@ -24,6 +25,8 @@ const INGEST_TOKEN = process.env["INGEST_TOKEN"] ?? "";
 const LOCATION_PRECISION =
   (process.env["LOCATION_PRECISION"] ?? "city") as "city" | "area" | "exact";
 const BODY_RETENTION = (process.env["SMS_BODY_RETENTION"] ?? "drop") as "drop" | "redacted";
+/** فترة الدورة بالدقائق. 0 يوقف المؤقّت ويترك التشغيل يدويًا أو لـcron. */
+const CYCLE_MINUTES = Number(process.env["CYCLE_MINUTES"] ?? 60);
 const db = DB_URL ? connect({ url: DB_URL, ownerId: OWNER }) : null;
 
 const server = createServer(async (req, res) => {
@@ -63,6 +66,17 @@ const server = createServer(async (req, res) => {
     }
   }
 
+  // آخر الدورات — نظام يراقب حياتك ولا يُراقَب هو نفسه لا يُعتمد عليه
+  if (req.method === "GET" && req.url === "/api/cycles") {
+    if (!db) return json(res, 503, cors, { error: "no_database" });
+    try {
+      return json(res, 200, cors, { runs: await recentCycles(db, OWNER, 20) });
+    } catch (err) {
+      console.error("[cycles]", err);
+      return json(res, 502, cors, { error: "load_failed" });
+    }
+  }
+
   // ما تعرفه القاعدة عنك — شرط لأي حذف واعٍ
   if (req.method === "GET" && req.url === "/api/known") {
     if (!db) return json(res, 503, cors, { error: "no_database", message: "DATABASE_URL غير مضبوط." });
@@ -85,7 +99,7 @@ const server = createServer(async (req, res) => {
     }
   }
 
-  if (req.method !== "POST" || !["/api/extract", "/api/commit", "/api/forget", "/api/ingest"].includes(req.url ?? "")) {
+  if (req.method !== "POST" || !["/api/extract", "/api/commit", "/api/forget", "/api/ingest", "/api/cycle"].includes(req.url ?? "")) {
     return json(res, 404, cors, { error: "not_found" });
   }
 
@@ -98,7 +112,26 @@ const server = createServer(async (req, res) => {
   } catch { return json(res, 400, cors, { error: "read_failed" }); }
 
   let body: Record<string, unknown>;
-  try { body = JSON.parse(raw); } catch { return json(res, 400, cors, { error: "bad_json" }); }
+  // بعض المسارات لا تحتاج جسمًا (الدورة مثلًا). جسم فارغ ليس جسمًا فاسدًا.
+  if (raw.trim() === "") body = {};
+  else {
+    try { body = JSON.parse(raw) as Record<string, unknown>; }
+    catch { return json(res, 400, cors, { error: "bad_json" }); }
+  }
+
+  // تشغيل يدوي للدورة — نفس التوكن، فتصلح لـcron خارجي أو Shortcut
+  if (req.url === "/api/cycle") {
+    if (!db) return json(res, 503, cors, { error: "no_database" });
+    if (!INGEST_TOKEN || !sameToken(String(req.headers["x-gonaim-token"] ?? ""), INGEST_TOKEN)) {
+      return json(res, 401, cors, { error: "bad_token" });
+    }
+    try {
+      return json(res, 200, cors, await runCycle(db, OWNER));
+    } catch (err) {
+      console.error("[cycle]", err);
+      return json(res, 502, cors, { error: "cycle_failed" });
+    }
+  }
 
   if (req.url === "/api/ingest") {
     if (!db) return json(res, 503, cors, { error: "no_database" });
@@ -207,4 +240,28 @@ function json(res: import("node:http").ServerResponse, status: number,
   res.end(JSON.stringify(payload));
 }
 
-server.listen(PORT, () => console.log(`gonaim api → http://localhost:${PORT}`));
+server.listen(PORT, () => {
+  console.log(`gonaim api → http://localhost:${PORT}`);
+
+  if (!db || CYCLE_MINUTES <= 0) {
+    console.log("cycle: معطّلة (اضبط DATABASE_URL و CYCLE_MINUTES)");
+    return;
+  }
+
+  // فشل دورة لا يُسقط الخادم — الاستيعاب يظل يعمل، والفشل يُسجَّل ويُرى
+  const tick = async () => {
+    try {
+      const r = await runCycle(db, OWNER);
+      if (r.status === "skipped_blackout") console.log("cycle: blackout — تخطّي");
+      else console.log(`cycle: ${r.newSignals.length} جديدة · ${r.suppressed} مكبوتة · ${r.durationMs}ms`);
+    } catch (err) {
+      console.error("cycle failed:", err instanceof Error ? err.message : err);
+    }
+  };
+
+  const timer = setInterval(tick, CYCLE_MINUTES * 60_000);
+  // لا يمنع الخادم من الإغلاق
+  timer.unref?.();
+  void tick();
+  console.log(`cycle: كل ${CYCLE_MINUTES} دقيقة`);
+});

@@ -2,7 +2,7 @@ import type { Rule, RuleFinding } from "./types.js";
 import { daysSince } from "./dates.js";
 import { count, DAY, TIME, STORE, type ArabicNoun } from "@gonaim/domain";
 
-const VISIT: ArabicNoun = { one: "زيارة", two: "زيارتان", few: "زيارات", many: "زيارة" };
+const VISIT: ArabicNoun = { one: "زيارة", two: "زيارتان", twoOblique: "زيارتين", few: "زيارات", many: "زيارة" };
 
 const WATCHING = new Set(["want", "considering", "watching_price"]);
 const fmt = (n: number, c: string) => `${n.toLocaleString("en-US")} ${c}`;
@@ -29,7 +29,7 @@ export const revisitedRepeatedly: Rule = {
       const title = snapshot.entities.get(w.entityId)?.title ?? "عنصر";
       out.push({
         key: `${this.code}:${w.entityId}`,
-        headline: `${title} — رجعت له ${count(w.revisits30d, TIME)} من ${count(w.distinctStores, STORE)}`,
+        headline: `${title} — رجعت له ${count(w.revisits30d, TIME, "oblique")} من ${count(w.distinctStores, STORE, "oblique")}`,
         whyNow: `اهتمام متكرر منذ ${count(daysSince(w.firstSeenAt, snapshot.today), DAY)}. القرار مؤجَّل، لا محسوم.`,
         suggestedMove: w.targetPrice
           ? `تثبيت قاعدة: نبّهني تحت ${fmt(w.targetPrice, w.currency)}`

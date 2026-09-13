@@ -7,6 +7,16 @@ describe("تمييز العدد", () => {
     expect(count(2, DAY)).toBe("يومان");
   });
 
+  it("المثنى بعد حرف جر يتغير — وهو وحده ما يتغير بالإعراب", () => {
+    // "من متجران" خطأ؛ الصواب "من متجرين"
+    expect(count(2, STORE, "oblique")).toBe("متجرين");
+    expect(count(2, DAY, "oblique")).toBe("يومين");
+    // باقي الصيغ ثابتة
+    expect(count(3, DAY, "oblique")).toBe(count(3, DAY));
+    expect(count(1, DAY, "oblique")).toBe(count(1, DAY));
+    expect(count(20, DAY, "oblique")).toBe(count(20, DAY));
+  });
+
   it("٣–١٠ جمع", () => {
     expect(count(3, DAY)).toBe("3 أيام");
     expect(count(10, DAY)).toBe("10 أيام");

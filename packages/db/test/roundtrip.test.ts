@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import postgres from "postgres";
-import { migrate, commitCandidates, loadSnapshot, audit, exportMind, forget, type ConfirmedCandidate } from "../src/index.js";
+import { migrate, commitCandidates, loadSnapshot, audit, exportMind, forget, runCycle, recentCycles, type ConfirmedCandidate } from "../src/index.js";
 import { ALL_RULES, runRules } from "@gonaim/rules";
 import type { Sql } from "postgres";
 
@@ -297,5 +297,109 @@ d("Proof of Forgetting", () => {
     const id = await seed();
     await expect(forget(sql, OWNER, [id])).rejects.toThrow(/not_found/);
     await forget(sql, OWNER2, [id]);
+  });
+});
+
+d("الدورة", () => {
+  const OWNER3 = "00000000-0000-0000-0000-000000000003";
+  const TODAY3 = "2026-08-22";
+
+  beforeAll(async () => {
+    await sql`insert into users (id, email, display_name)
+              values (${OWNER3}, 'cycle@test', 'Cycle Test')
+              on conflict (id) do nothing`;
+    await sql`insert into entities (id, owner_id, type, title, sensitivity)
+              values ('00000000-0000-0000-0000-0000000000d1', ${OWNER3}, 'invoice',
+                      'فاتورة متأخرة', 'sensitive')`;
+    await sql`insert into invoices (entity_id, owner_id, direction, counterparty,
+                amount, currency, issued_on, typical_days, amount_source)
+              values ('00000000-0000-0000-0000-0000000000d1', ${OWNER3}, 'incoming',
+                      'عميل', 9000, 'SAR', date '2026-08-01', 14, 'manual')`;
+  });
+
+  it("التشغيل الأول يرصد ويخزّن", async () => {
+    const r = await runCycle(sql, OWNER3, { today: TODAY3 });
+    expect(r.status).toBe("ok");
+    expect(r.findings).toBeGreaterThan(0);
+    expect(r.newSignals.some((s) => s.ruleCode === "invoice.overdue_vs_typical")).toBe(true);
+  });
+
+  it("التشغيل الثاني لا يعيد ما عُرض — هذا سبب وجود الدورة", async () => {
+    const r = await runCycle(sql, OWNER3, { today: TODAY3 });
+    expect(r.newSignals).toHaveLength(0);
+    expect(r.suppressed).toBeGreaterThan(0);
+    // ورُصدت مرة أخرى، لكنها لم تُخزَّن مرتين
+    expect(r.findings).toBeGreaterThan(0);
+  });
+
+  it("لا تتكرر في القاعدة مهما تكرر التشغيل", async () => {
+    await runCycle(sql, OWNER3, { today: TODAY3 });
+    const rows = await sql<{ count: string }[]>`
+      select count(*)::text as count from signals
+      where owner_id = ${OWNER3} and rule_code = 'invoice.overdue_vs_typical'`;
+    expect(Number(rows[0]!.count)).toBe(1);
+  });
+
+  it("الميزانية تُحسب من المعروض فعلًا، لا من عدّاد منفصل", async () => {
+    const spent = await sql<{ count: string }[]>`
+      select count(*)::text as count from signals
+      where owner_id = ${OWNER3} and tier in ('nudge','interrupt')
+        and surfaced_at is not null`;
+    expect(Number(spent[0]!.count)).toBeGreaterThan(0);
+  });
+
+  it("كل دورة تُسجَّل — دورة متوقفة يجب أن تُرى", async () => {
+    const runs = await recentCycles(sql, OWNER3, 10);
+    expect(runs.length).toBeGreaterThanOrEqual(3);
+    expect(runs.every((r) => r.status === "ok")).toBe(true);
+    expect(runs[0]!.duration_ms).toBeGreaterThanOrEqual(0);
+  });
+
+  it("Blackout يوقف الاستنتاج كما يوقف الاستيعاب", async () => {
+    await sql`insert into events (owner_id, event_type, occurred_at, source, sensitivity,
+                observed_or_inferred, fingerprint)
+              values (${OWNER3}, 'system.blackout.activated', now(), 'manual', 'open',
+                      'observed', ${"fp_bo_" + OWNER3})`;
+    const r = await runCycle(sql, OWNER3, { today: TODAY3 });
+    expect(r.status).toBe("skipped_blackout");
+    expect(r.findings).toBe(0);
+
+    const [denied] = await sql<{ reason: string }[]>`
+      select reason from audit_log where owner_id = ${OWNER3}
+        and action = 'cycle' and outcome = 'denied' order by at desc limit 1`;
+    expect(denied?.reason).toContain("blackout");
+
+    await sql`insert into events (owner_id, event_type, occurred_at, source, sensitivity,
+                observed_or_inferred, fingerprint)
+              values (${OWNER3}, 'system.blackout.cleared', now(), 'manual', 'open',
+                      'observed', ${"fp_bc_" + OWNER3})`;
+  });
+
+  it("الاحتفاظ يحذف الخام القديم غير المرتبط", async () => {
+    await sql`insert into events (owner_id, event_type, occurred_at, source, sensitivity,
+                observed_or_inferred, fingerprint)
+              values (${OWNER3}, 'location.sampled', now() - interval '40 days', 'mobile',
+                      'private', 'observed', ${"fp_old_" + OWNER3})`;
+    const r = await runCycle(sql, OWNER3, { today: TODAY3 });
+    expect(r.purgedEvents).toBeGreaterThanOrEqual(1);
+  });
+
+  it("لكنه لا يمس حدثًا يسند حقيقة", async () => {
+    await sql`insert into events (owner_id, event_type, occurred_at, source, sensitivity,
+                observed_or_inferred, entity_ids, fingerprint)
+              values (${OWNER3}, 'manual.capture.created', now() - interval '90 days',
+                      'manual', 'private', 'observed',
+                      array['00000000-0000-0000-0000-0000000000d1'::uuid],
+                      ${"fp_anchor_" + OWNER3})`;
+    await runCycle(sql, OWNER3, { today: TODAY3 });
+    // حذفه يخلق حقيقة بلا مصدر — وهي حالة يمنعها ADR-0004
+    const left = await sql`select 1 from events where fingerprint = ${"fp_anchor_" + OWNER3}`;
+    expect(left).toHaveLength(1);
+  });
+
+  it("وأحداث النظام لا تُحذف بالاحتفاظ", async () => {
+    const left = await sql`select 1 from events where owner_id = ${OWNER3}
+                           and event_type = 'system.blackout.activated'`;
+    expect(left).toHaveLength(1);
   });
 });

@@ -59,8 +59,8 @@ export const cashWindow: Rule = {
     const finding: RuleFinding = {
       key: `${this.code}:${snapshot.today}`,
       headline: pressure
-        ? `نافذة ضغط سيولة خلال ${count(windowDays, DAY)} — ${Math.abs(net).toLocaleString("en-US")} SAR`
-        : `نافذة سيولة موجبة خلال ${count(windowDays, DAY)} — ${net.toLocaleString("en-US")} SAR`,
+        ? `نافذة ضغط سيولة خلال ${count(windowDays, DAY, "oblique")} — ${Math.abs(net).toLocaleString("en-US")} SAR`
+        : `نافذة سيولة موجبة خلال ${count(windowDays, DAY, "oblique")} — ${net.toLocaleString("en-US")} SAR`,
       whyNow: `${domains.size} مجالات تتقاطع في نفس النافذة: ${[...domains].join(" · ")}.`,
       suggestedMove: receivable > 0
         ? "متابعة المستحق قبل التجديد التلقائي"
