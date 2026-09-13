@@ -1,19 +1,33 @@
-# Downloads the 32 New Thumamah GLB models under their correct filenames.
-# Run from the project folder:
+# Downloads every New Thumamah GLB model under its correct filename.
+# Skips files that already exist, so re-running is safe.
 #   powershell -ExecutionPolicy Bypass -File tools\fetch-models.ps1
+#   powershell -ExecutionPolicy Bypass -File tools\fetch-models.ps1 -Force
 #
-# ASCII only on purpose: Windows PowerShell 5.1 reads .ps1 files in the
-# local ANSI codepage, so non-ASCII text here would break the parser.
+# ASCII only on purpose: Windows PowerShell 5.1 reads .ps1 in the local ANSI
+# codepage, so non-ASCII text here would break the parser before anything runs.
+
+param([switch]$Force)
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$ProgressPreference = "SilentlyContinue"   # much faster downloads on PS 5.1
+$ProgressPreference = "SilentlyContinue"   # much faster on PS 5.1
 
 $B   = "https://d8j0ntlcm91z4.cloudfront.net/user_2vXHpgEbsBHyI0PdTyrqG2LFUbp"
 $Out = Join-Path $PSScriptRoot "..\assets\models"
 New-Item -ItemType Directory -Force -Path $Out | Out-Null
 
-# Ordered so the report reads batch by batch.
 $Files = [ordered]@{
+  "tent.glb"              = "hf_20260913_130312_812094fc-6df9-4f37-b17d-a2eca1f59cde.glb"
+  "dome.glb"              = "hf_20260913_131902_f1c41628-5305-4ca9-886b-b9edf36da2d6.glb"
+  "gate.glb"              = "hf_20260913_131908_00549bef-edc1-4fc0-b0c3-569961b51395.glb"
+  "fuel-station.glb"      = "hf_20260913_131913_c9930267-95f7-4355-a7e9-da1d498c51f2.glb"
+  "food-truck.glb"        = "hf_20260913_131918_2b2a3b94-5b2b-421b-9268-58e650a6051c.glb"
+  "majlis.glb"            = "hf_20260913_131924_ead42eb1-6c4e-44e0-8f0e-ea5877f18ea3.glb"
+  "acacia.glb"            = "hf_20260913_130721_f74a45cc-6490-48a5-84f0-d69c7217d6d9.glb"
+  "rock.glb"              = "hf_20260913_130728_adf6cfdc-334e-483b-9aea-ec0c2a1fe89c.glb"
+  "shrub.glb"             = "hf_20260913_130734_79c95585-fe29-460e-9978-278b1c1c0f55.glb"
+  "camel.glb"             = "hf_20260913_130740_2f4d1a34-f75c-4ce6-835e-43f3eb8fde71.glb"
+  "horse.glb"             = "hf_20260913_130747_156f2728-5271-4b87-89fe-a1256590ef21.glb"
+  "light-pole.glb"        = "hf_20260913_130754_47d261ae-3532-4485-b20d-11415ce049d7.glb"
   "summit-restaurant.glb" = "hf_20260913_164440_895e31cb-0d0d-456b-91be-c1571d3debb5.glb"
   "private-villa.glb"     = "hf_20260913_164446_808d2030-3a0e-4c59-a557-d78f305897a5.glb"
   "stable-row.glb"        = "hf_20260913_164452_aa7a40be-9a64-457e-8bae-95525d2e8d49.glb"
@@ -48,22 +62,26 @@ $Files = [ordered]@{
   "shrub-2.glb"           = "hf_20260913_165508_5352fbbe-7849-49e2-b29a-8d24e93de1d3.glb"
 }
 
-$ok = 0; $fail = @()
+$ok = 0; $skip = 0; $fail = @()
 foreach ($name in $Files.Keys) {
   $dest = Join-Path $Out $name
+  if ((-not $Force) -and (Test-Path $dest) -and ((Get-Item $dest).Length -gt 0)) {
+    Write-Host ("{0,-24} already there" -f $name) -ForegroundColor DarkGray
+    $skip++; continue
+  }
   try {
-    Invoke-WebRequest -Uri "$B/$($Files[$name])" -OutFile $dest -UseBasicParsing -TimeoutSec 120
+    Invoke-WebRequest -Uri "$B/$($Files[$name])" -OutFile $dest -UseBasicParsing -TimeoutSec 180
     $kb = [math]::Round((Get-Item $dest).Length / 1KB)
     Write-Host ("{0,-24} OK   {1} KB" -f $name, $kb) -ForegroundColor Green
     $ok++
   } catch {
     Write-Host ("{0,-24} FAILED" -f $name) -ForegroundColor Red
+    Remove-Item $dest -ErrorAction SilentlyContinue
     $fail += $name
   }
 }
 
 Write-Host ""
-Write-Host ("Downloaded {0} of {1} into {2}" -f $ok, $Files.Count, $Out)
-if ($fail.Count -gt 0) {
-  Write-Host ("Failed: " + ($fail -join ", ")) -ForegroundColor Red
-}
+Write-Host ("Downloaded {0}, already there {1}, total {2}" -f $ok, $skip, $Files.Count)
+Write-Host ("Folder: {0}" -f $Out)
+if ($fail.Count -gt 0) { Write-Host ("Failed: " + ($fail -join ", ")) -ForegroundColor Red }
