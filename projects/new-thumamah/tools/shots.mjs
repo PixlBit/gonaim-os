@@ -38,7 +38,7 @@ await page.route('**://**', (route) => {
 
 await page.goto(base, { waitUntil: 'load' });
 await page.waitForFunction(() => window.NT && window.NT.app && window.NT.app.world, null, { timeout: 300000 });
-await page.waitForTimeout(9000);   // تحميل النماذج يستغرق وقتًا
+await page.waitForTimeout(25000);   // تحميل النماذج وبناء المشهد يستغرقان وقتًا
 // إخفاء واجهة الاستخدام حتى تبقى اللقطة للمشهد وحده
 await page.addStyleTag({ content: '.overlay,.labels,.loader,.attribution,.corners,.panel,.compass{display:none!important}' });
 await page.evaluate(() => window.dispatchEvent(new Event('resize')));

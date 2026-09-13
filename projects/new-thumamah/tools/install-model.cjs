@@ -23,22 +23,72 @@ const FILES = loadSlots();
 /* ميزانية المثلثات لكل خانة. الحاسم ليس حجم المبنى بل كم مرة يتكرر:
    نخلة بأحد عشر ألف مثلث مكررة مئة مرة تكلّف أكثر من مطعم القمة مرة واحدة.
    وما رقّ من البنى — الدرابزين والصواري والأعمدة — لا يُبسَّط لأنه ينهار. */
+
+/* سقف الخطأ المسموح في التبسيط. الافتراضي متحفّظ يحفظ الصورة الظاهرية،
+   لكن ما يُنثر بالمئات ويُرى من بعيد يحتمل خطأً أكبر بكثير: شجيرة واحدة
+   بخمسة آلاف مثلث مكررة ثلاثمئة مرة هي وحدها مليون ونصف مثلث. */
+const ERROR = {
+  shrub: 0.6, shrub2: 0.6, rock: 0.4, rock2: 0.4,
+  acacia: 0.35, acacia2: 0.35, palm: 0.3, palm2: 0.3,
+  lantern: 0.35, bollard: 0.3, firePit: 0.3, target: 0.3,
+  lightPole: 0.25, roadSign: 0.25, diningSet: 0.25
+};
+const DEFAULT_ERROR = 0.02;
+/* بنى رفيعة يهدمها التبسيط المتساهل: عمود الإنارة صار غليظًا بقاعدة ضخمة
+   حين مرّ عليه. تُبسَّط بالطريقة المحافظة فقط ولو بقيت فوق ميزانيتها. */
+const NO_SLOPPY = new Set(['lightPole', 'floodMast', 'railing', 'roadSign', 'bollard', 'target']);
+
 const BUDGET = {
   palm: 2600, palm2: 2600, acacia: 2600, acacia2: 2600,
   shrub: 900, shrub2: 900, rock: 1200, rock2: 1200,
   personThobe: 2600, personAbaya: 2600, personChild: 2200, personStaff: 2600,
   camel: 3200, horse: 3200,
   sedan: 4500, suv: 4500, pickup: 4500, coach: 5000, offRoader: 4500,
-  tent: 5000, dome: 5000, kashta: 5000, majlis: 4000, campScreen: 4500,
-  foodTruck: 5000, diningSet: 3000, firePit: 2000, lantern: 1500,
-  bollard: 800, roadSign: 1800, target: 1800,
-  lightPole: 2000, floodMast: 0, railing: 0,
-  tensileCanopy: 6000, shadeStructure: 5000,
+  tent: 5000, dome: 5000, kashta: 5000, majlis: 4000, campScreen: 2600,
+  foodTruck: 5000, diningSet: 1200, firePit: 800, lantern: 500,
+  bollard: 600, roadSign: 1200, target: 1200,
+  lightPole: 2200, floodMast: 3000, railing: 1800,
+  tensileCanopy: 3000, shadeStructure: 2200,
   gate: 9000, fuelStation: 9000, workshop: 7000, grocery: 7000,
   adminBlock: 7000, privateVilla: 9000, stableRow: 10000,
   playSet: 6000, summitRestaurant: 16000
 };
 
+
+
+/* ترتيب الوسائط: (فهارس، مواضع، خطوة، قفل الرؤوس، هدف الفهارس، سقف الخطأ)
+   — الوسيط الرابع قفلٌ لا هدف، وتمرير الهدف مكانه يُسقط المكتبة.
+   تبسيط متساهل: أوراق الشجر والشجيرات جزر هندسية منفصلة، والمبسّط
+   المحافظ على البنية لا يستطيع طيّها فيقف بعيدًا عن الميزانية مهما رفعنا
+   سقف الخطأ. simplifySloppy يتجاهل البنية ويبلغ الهدف — وهو مقبول هنا
+   لأن هذه العناصر تُنثر بالمئات وتُرى من بعيد. */
+async function sloppyTo(doc, target) {
+  const { MeshoptSimplifier } = require('meshoptimizer');
+  await MeshoptSimplifier.ready;
+  const prims = [];
+  for (const mesh of doc.getRoot().listMeshes()) for (const prim of mesh.listPrimitives()) prims.push(prim);
+  const totals = prims.map((p) => (p.getIndices() ? p.getIndices().getCount() : p.getAttribute('POSITION').getCount()));
+  const sum = totals.reduce((a, b) => a + b, 0);
+  if (!sum) return;
+
+  prims.forEach((prim, i) => {
+    const pos = prim.getAttribute('POSITION');
+    const idxAcc = prim.getIndices();
+    if (!pos) return;
+    const indices = idxAcc ? new Uint32Array(idxAcc.getArray()) : Uint32Array.from({ length: pos.getCount() }, (_, k) => k);
+    // الهدف بعدد الفهارس لا المثلثات، ويجب أن يكون من مضاعفات الثلاثة
+    let share = Math.round(target * 3 * (totals[i] / sum));
+    share = Math.max(9, share - (share % 3));
+    if (indices.length % 3 !== 0 || indices.length <= share) return;
+    const out = MeshoptSimplifier.simplifySloppy(
+      indices, new Float32Array(pos.getArray()), 3, null, share, 1.0
+    );
+    const kept = out[0];
+    if (!kept || kept.length >= indices.length) return;
+    if (idxAcc) idxAcc.setArray(new Uint32Array(kept));
+    else prim.setIndices(doc.createAccessor().setArray(new Uint32Array(kept)).setBuffer(doc.getRoot().listBuffers()[0]));
+  });
+}
 
 async function main() {
   const args = process.argv.slice(2);
@@ -93,10 +143,11 @@ async function main() {
     if (budget > 0 && s0.tris > budget) {
       const { MeshoptSimplifier } = require('meshoptimizer');
       await MeshoptSimplifier.ready;
-      steps.push(fn.simplify({ simplifier: MeshoptSimplifier, ratio: budget / s0.tris, error: 0.02, lockBorder: false }));
+      steps.push(fn.simplify({ simplifier: MeshoptSimplifier, ratio: budget / s0.tris, error: ERROR[slot] || DEFAULT_ERROR, lockBorder: false }));
     }
     steps.push(fn.textureCompress({ encoder: sharp, targetFormat: 'webp', resize: [maxTexture, maxTexture], quality: 82 }));
     await doc.transform(...steps);
+    if (budget > 0 && !NO_SLOPPY.has(slot) && stat().tris > budget * 1.25) await sloppyTo(doc, budget);
   }
 
   const dest = path.join(OUT, FILES[slot]);

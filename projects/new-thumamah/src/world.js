@@ -5,9 +5,13 @@
 
   const TIMES = {
     day: {
-      label: 'نهار', elevation: 56, azimuth: 162, turbidity: 2.4, rayleigh: 1.35, mie: 0.004, mieG: 0.76,
-      sun: 0xfff4e4, sunI: 3.1, hemiSky: 0xa8c8ea, hemiGround: 0xb09c74, hemiI: 0.17, ambient: 0.02, envI: 0.26,
-      exposure: 0.44, fog: 0xd8d1bf, fogNear: 2600, fogFar: 21000, emissive: 0, bloom: 0.1,
+      /* شمس منخفضة لا شمس ظهيرة: الضوء المائل هو ما يُظهر النسيج.
+         الشمس فوق الرأس تمحو الظلال فتبدو الأرض والمباني مسطّحة مهما
+         أتقنّا الخامات — وهذا ما كان يخفي تموّج الرمل وبروز الطرق.
+         ومعها ملء أخفّ حتى يبقى في الظل عمق، وتعريض أعلى يعوّضه. */
+      label: 'نهار', elevation: 29, azimuth: 138, turbidity: 2.9, rayleigh: 1.5, mie: 0.005, mieG: 0.78,
+      sun: 0xfff0d8, sunI: 3.4, hemiSky: 0x9cc0e8, hemiGround: 0xb5a077, hemiI: 0.13, ambient: 0.015, envI: 0.24,
+      exposure: 0.50, fog: 0xd9cfb6, fogNear: 2400, fogFar: 20000, emissive: 0, bloom: 0.1,
       cloud: 0xffffff, cloudOpacity: 0.72, bloomThreshold: 2.4
     },
     sunset: {
@@ -83,6 +87,21 @@
       g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
       g.setIndex(idx); g.computeVertexNormals();
       return g;
+    }
+
+    /* يوزّع نسخ عنصر على أشكاله المتاحة بدل تكرار شكل واحد.
+       صفٌّ من مئة نخلة متطابقة يقرأ مزيّفًا مهما أتقنّا النخلة الواحدة،
+       والتوزيع ثابت لا عشوائي في كل إطار حتى لا يقفز المشهد بين البناءات. */
+    function instancesVaried(name, matrices, userData) {
+      if (!matrices || !matrices.length) return;
+      const shapes = NT.models.variants(name, materials);
+      if (!shapes.length) return;
+      if (shapes.length === 1) { builder.instances(shapes[0], matrices, userData); return; }
+      const buckets = shapes.map(() => []);
+      for (let i = 0; i < matrices.length; i++) buckets[i % shapes.length].push(matrices[i]);
+      shapes.forEach((parts, i) => {
+        if (buckets[i].length) builder.instances(parts, buckets[i], userData);
+      });
     }
 
     /* أدوات البناء المتاحة لمولّدات المحتوى */
@@ -181,7 +200,10 @@
         return ctx;
       },
       /* أشخاص: توزيع بأحجام وملابس متنوعة */
-      model(name) { return NT.models.parts(name, materials); },
+      /* model('dome') بالمقاس الطبيعي، وmodel('shadeStructure', 26) ببصمة مخصّصة */
+      model(name, plan) { return NT.models.sized(name, plan, materials); },
+      /* شكل مختلف في كل نداء حين تتوفّر تنويعات — يمنع صفًّا من النسخ المتطابقة */
+      modelVariant(name) { return NT.models.pick(name, materials, rnd()); },
       people(list, options) {
         const opt = options || {};
         const groups = { thobe: [], abaya: [], staff: [], child: [] };
@@ -366,12 +388,12 @@
           if (!free(x, y)) continue;
           shrubs.push(at(x, y, rnd() * 6.28, 0.7 + rnd() * 0.8));
         }
-        if (acacias.length) builder.instances(NT.models.parts('acacia', materials), acacias, { pick: zone.id });
-        if (shrubs.length) builder.instances(NT.models.parts('shrub', materials), shrubs, { pick: zone.id });
+        instancesVaried('acacia', acacias, { pick: zone.id });
+        instancesVaried('shrub', shrubs, { pick: zone.id });
         return ctx;
       },
       palms(list) {
-        builder.instances(NT.models.parts('palm', materials), list.map((p) => at(p[0], p[1], rnd() * 6.28, 0.82 + rnd() * 0.4)));
+        instancesVaried('palm', list.map((p) => at(p[0], p[1], rnd() * 6.28, 0.82 + rnd() * 0.4)));
         for (const p of list) occupy(p[0], p[1], 4, 4);
         return ctx;
       },
@@ -383,7 +405,7 @@
           if (!free(px, py)) continue;
           list.push(at(px, py, rnd() * 6.28, 0.5 + rnd() * 1.5));
         }
-        if (list.length) builder.instances(NT.models.parts('rock', materials), list);
+        instancesVaried('rock', list);
         return ctx;
       },
       /* صفوف مواقف: 2.5 × 5 م لكل سيارة مع ممر 6 م */
@@ -594,7 +616,7 @@
           }
         }
       }
-      builder.instances(NT.models.parts('palm', materials), avenue);
+      instancesVaried('palm', avenue);
       ctx.lights(poles, 9, 1);
     }
 
@@ -608,7 +630,10 @@
     {
       const noise = NT.textures.valueNoise(991, 32);
       const acacias = [], shrubs = [], rocksList = [];
-      const budget = quality === 'low' ? { a: 160, s: 620, r: 320 } : { a: 560, s: 2000, r: 900 };
+      /* الصخور خُفّضت كثافتها إلى النصف تقريبًا: بضع مئات من الكتل الفاتحة
+         المتناثرة تقرأ كحبيبات فلّين لا كصحراء. والنبات يحتمل كثافة أعلى
+         لأنه داكن ومتغيّر الشكل فلا ينتظم في عين الناظر. */
+      const budget = quality === 'low' ? { a: 180, s: 680, r: 150 } : { a: 600, s: 2100, r: 420 };
       let guard = 0;
       while ((acacias.length < budget.a || shrubs.length < budget.s || rocksList.length < budget.r) && guard++ < 60000) {
         const x = rnd() * 1500, y = rnd() * 1500;
@@ -618,15 +643,15 @@
         const pick = rnd();
         if (pick < 0.14 && d > 0.52 && slope < 0.32 && acacias.length < budget.a) acacias.push(at(x, y, rnd() * 6.28, 0.7 + rnd() * 0.7));
         else if (pick < 0.74 && slope < 0.5 && shrubs.length < budget.s) shrubs.push(at(x, y, rnd() * 6.28, 0.55 + rnd() * 0.9));
-        else if (rocksList.length < budget.r) rocksList.push(at(x, y, rnd() * 6.28, 0.3 + rnd() * 0.9 + slope * 0.8));
+        else if (rocksList.length < budget.r) rocksList.push(at(x, y, rnd() * 6.28, 0.25 + Math.pow(rnd(), 2.2) * 2.1 + slope * 0.8));
       }
-      if (acacias.length) builder.instances(NT.models.parts('acacia', materials), acacias);
-      if (shrubs.length) builder.instances(NT.models.parts('shrub', materials), shrubs);
-      if (rocksList.length) builder.instances(NT.models.parts('rock', materials), rocksList);
+      instancesVaried('acacia', acacias);
+      instancesVaried('shrub', shrubs);
+      instancesVaried('rock', rocksList);
 
       // نتوءات صخرية على سفوح الجبل تعطيه طابع الحافة الصخرية
       const outcrops = [];
-      const target = quality === 'low' ? 220 : 620;
+      const target = quality === 'low' ? 120 : 320;
       let tries = 0;
       while (outcrops.length < target && tries++ < 40000) {
         const x = 120 + rnd() * 1360, y = 820 + rnd() * 660;
@@ -636,7 +661,7 @@
         if (slope < 0.32 || !free(x, y)) continue;
         outcrops.push(ctx.slopeMatrix(x, y, rnd() * 6.28, 0.45 + rnd() * 1.15 + slope * 0.7));
       }
-      if (outcrops.length) builder.instances(NT.models.parts('rock', materials), outcrops);
+      instancesVaried('rock', outcrops);
     }
 
     builder.flush();

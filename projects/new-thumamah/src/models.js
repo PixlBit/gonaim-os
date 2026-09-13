@@ -137,6 +137,42 @@
   }
   const has = (name) => loaded.has(name);
 
+  /* نسخة من الخانة ببصمة أرضية مختلفة.
+     عنصر كالمظلة يتكرر في المخطط بستة مقاسات؛ ربطه بنموذج واحد بمقاس
+     ثابت يجعلها كلها متطابقة، فنعيد تحجيم نسخة مستقلة ونحفظها. */
+  const sizedCache = new Map();
+  function sized(name, plan, materials) {
+    const slot = SLOTS[name];
+    if (!slot || !plan) return parts(name, materials);
+    const key = name + '@' + plan;
+    if (sizedCache.has(key)) return sizedCache.get(key);
+
+    const base = parts(name, materials);
+    if (!base || !base.length) return base;
+
+    const THREE = window.THREE;
+    const box = new THREE.Box3();
+    const tmp = new THREE.Box3();
+    for (const part of base) {
+      part.geometry.computeBoundingBox();
+      box.union(tmp.copy(part.geometry.boundingBox));
+    }
+    const size = new THREE.Vector3();
+    box.getSize(size);
+    const natural = Math.max(size.x, size.z, 0.0001);
+    const k = plan / natural;
+    if (Math.abs(k - 1) < 0.02) { sizedCache.set(key, base); return base; }
+
+    const m = new THREE.Matrix4().makeScale(k, k, k);
+    const out = base.map((part) => ({
+      geometry: part.geometry.clone().applyMatrix4(m),
+      material: part.material,
+      shadow: part.shadow
+    }));
+    sizedCache.set(key, out);
+    return out;
+  }
+
   /* كل الأشكال المتاحة لدور واحد: الأساسي وتنويعاته المحمّلة */
   function variants(name, materials) {
     const out = [];
@@ -155,5 +191,5 @@
     return list[Math.min(list.length - 1, Math.floor((r || 0) * list.length))];
   }
 
-  NT.models = { SLOTS, loadAll, parts, variants, pick, has, info, loaded };
+  NT.models = { SLOTS, loadAll, parts, sized, variants, pick, has, info, loaded };
 })(window.NT = window.NT || {});
