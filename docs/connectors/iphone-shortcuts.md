@@ -22,10 +22,15 @@
 
 ## ١. التوكن
 
-في `.env` على الخادم:
+`npm run setup` يولّده في `.env`. لقراءته:
 
 ```bash
-INGEST_TOKEN=$(openssl rand -hex 32)
+grep INGEST_TOKEN .env
+```
+
+ويمكن ضبط السقفين في نفس الملف:
+
+```bash
 LOCATION_PRECISION=area      # city · area · exact
 SMS_BODY_RETENTION=drop      # drop · redacted
 ```

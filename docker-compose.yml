@@ -1,0 +1,27 @@
+# قاعدة البيانات المحلية.
+#
+#   docker compose up -d
+#
+# صورة pgvector لأن المخطط يحتاج الامتداد (ADR-0002). تثبيته يدويًا على
+# ويندوز يعني بناءه من المصدر — وهذا يوفّر ذلك.
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: gonaim-db
+    environment:
+      POSTGRES_PASSWORD: gonaim
+      POSTGRES_USER: gonaim
+      POSTGRES_DB: gonaim
+    ports:
+      - "5432:5432"
+    volumes:
+      - gonaim-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gonaim"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  gonaim-data:

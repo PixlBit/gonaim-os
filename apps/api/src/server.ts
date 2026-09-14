@@ -1,4 +1,16 @@
 import { createServer } from "node:http";
+import { existsSync } from "node:fs";
+
+// يقرأ .env من جذر المشروع — بلا تصدير يدوي عند كل تشغيل.
+// متغيرات البيئة الحقيقية تفوز، فـCI والتشغيل المؤقت يعملان بلا تعديل.
+for (const p of [".env", "../../.env"]) {
+  if (existsSync(p)) {
+    const before = { ...process.env };
+    process.loadEnvFile(p);
+    for (const [k, v] of Object.entries(before)) if (v !== undefined) process.env[k] = v;
+    break;
+  }
+}
 import { extract } from "@gonaim/intake";
 import { connect, commitCandidates, loadSnapshot, exportMind, forget, listKnown,
          ingestEvents, isBlackout, runCycle, recentCycles,

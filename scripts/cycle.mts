@@ -2,6 +2,9 @@
 /** تشغيل دورة واحدة — لـcron خارجي أو للتشغيل اليدوي. */
 import postgres from "postgres";
 import { runCycle, recentCycles } from "../packages/db/src/index.js";
+import { loadEnv } from "./env.mts";
+
+loadEnv();
 
 const url = process.env["DATABASE_URL"];
 if (!url) { console.error("✗ DATABASE_URL غير مضبوط"); process.exit(1); }

@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 import postgres from "postgres";
 import { migrate } from "../packages/db/src/migrate.js";
+import { loadEnv } from "./env.mts";
+
+loadEnv();
 
 const url = process.env["DATABASE_URL"]
   ?? `postgres://${process.env["PGUSER"] ?? "postgres"}:${process.env["PGPASSWORD"] ?? ""}` +

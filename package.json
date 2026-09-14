@@ -15,7 +15,11 @@
     "scan": "node scripts/scan-bundle.mjs",
     "ci": "npx tsc -b --force && npx vitest run && npm run build && npm run scan",
     "migrate": "tsx scripts/migrate.mts",
-    "cycle": "tsx scripts/cycle.mts"
+    "cycle": "tsx scripts/cycle.mts",
+    "setup": "tsx scripts/setup.mts",
+    "doctor": "tsx scripts/doctor.mts",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",

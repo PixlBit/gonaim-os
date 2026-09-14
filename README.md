@@ -22,19 +22,42 @@ GONAIM//OS = Private Web OS + Browser Companion + Cloud Intelligence
 
 ## التشغيل
 
+تحتاج **Node 22+** و**Docker**. لا شيء غيرهما.
+
 ```bash
 npm ci
-cp .env.example .env          # اضبط DATABASE_URL و ANTHROPIC_API_KEY
-
-createdb gonaim
-npm run migrate               # هجرات مرتّبة، مرة واحدة، بمجموع تحقّق
-
-npm run dev:api               # الخادم — المفتاح يعيش هنا وحده، والدورة تشتغل فيه
-npm run cycle                 # أو دورة واحدة يدويًا (--history لسجل الدورات)
-npm run dev                   # الواجهة
+npm run db:up        # Postgres مع pgvector
+npm run setup        # .env · توكن · هجرات · المالك
+npm run doctor       # يقول ما ينقص وماذا يتوقف بسببه
 ```
 
-التحقق الكامل: `npm run ci` — أنواع، ٦٦ اختبارًا، بناء، وفحص أسرار في المخرَج.
+ثم في نافذتين:
+
+```bash
+npm run dev:api      # الخادم — المفتاح يعيش هنا وحده، والدورة تشتغل فيه
+npm run dev          # الواجهة → http://localhost:5173
+```
+
+`setup` قابل لإعادة التشغيل ولا يكتب فوق قيمة موجودة. والأدوات كلها تقرأ
+`.env` بنفسها — لا تصدير يدوي عند كل أمر.
+
+### المفتاح
+
+`ANTHROPIC_API_KEY` في `.env` يشغّل **المدخل المحادثي** وحده. بدونه كل شيء
+آخر يعمل: القواعد والدورة وبوابة الهاتف حتمية بالكامل ولا تحتاج نموذجًا.
+
+المفتاح لا يدخل المتصفح — `npm run scan` يفشّل البناء لو ظهر فيه.
+
+### أوامر أخرى
+
+```bash
+npm run cycle            # دورة واحدة يدويًا
+npm run cycle --history  # سجل آخر الدورات
+npm run doctor           # الحالة وما ينقص
+npm run ci               # أنواع · 125 اختبارًا · بناء · فحص أسرار
+npm run db:down          # إيقاف القاعدة (البيانات تبقى)
+```
+
 اختبارات القاعدة تحتاج `DATABASE_URL` وتُتخطّى بدونه.
 
 ---
