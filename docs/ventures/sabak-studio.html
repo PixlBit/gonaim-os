@@ -1,0 +1,2757 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="دراسة تشغيلية لبناء استوديو مقتنيات فاخرة في الرياض يديره شخص واحد — بميزانية 9,800 ريال ومرحلة تحقّق بـ700 ريال قبل شراء أي معدة.">
+<title>استوديو سَبَك</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* ============================================================
+   SABAK — luxury collectible studio study
+   Identity: foundry spec-sheet / certificate of authenticity
+   ============================================================ */
+
+:root{
+  color-scheme: light dark;
+  direction: rtl;
+
+  /* LIGHT palette — bone paper, graphite ink, oxidised bronze */
+  --bg:        #EFEAE1;
+  --bg-2:      #E4DED2;
+  --surface:   #F8F5EF;
+  --surface-2: #EAE4D9;
+  --line:      #D3C9B9;
+  --line-soft: #E3DBCD;
+  --fg:        #1A1613;
+  --fg-2:      #4B433A;
+  --muted:     #7B7164;
+  --bronze:    #8A5A1E;
+  --bronze-2:  #B9873F;
+  --bronze-dim:#D9C5A2;
+  --resin:     #57755F;
+  --danger:    #A33B2C;
+  --warn:      #8C6A12;
+  --ok:        #4C6E42;
+  --shadow:    0 1px 0 rgba(26,22,19,.06), 0 18px 40px -28px rgba(26,22,19,.35);
+  --grain:     rgba(26,22,19,.035);
+
+  --ff-display: "Reem Kufi", "Noto Kufi Arabic", system-ui, sans-serif;
+  --ff-body: "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif;
+  --ff-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --fs-display: clamp(2.5rem, 7.5vw, 5rem);
+  --fs-h2: clamp(1.5rem, 3.6vw, 2.25rem);
+  --fs-h3: clamp(1.05rem, 2vw, 1.25rem);
+  --fs-body: 1.0625rem;
+  --fs-sm: .875rem;
+  --fs-xs: .7rem;
+
+  --measure: 70ch;
+  --wide: 1200px;
+  --rail: 0px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:        #131110;
+    --bg-2:      #0C0B0A;
+    --surface:   #1A1715;
+    --surface-2: #211D1A;
+    --line:      #302A26;
+    --line-soft: #241F1C;
+    --fg:        #F0E9DE;
+    --fg-2:      #C7BEB1;
+    --muted:     #8D8275;
+    --bronze:    #D19E58;
+    --bronze-2:  #A2763C;
+    --bronze-dim:#4A3A24;
+    --resin:     #A3B9A7;
+    --danger:    #DB7462;
+    --warn:      #D9AC4D;
+    --ok:        #93B383;
+    --shadow:    0 1px 0 rgba(0,0,0,.4), 0 22px 50px -30px rgba(0,0,0,.9);
+    --grain:     rgba(240,233,222,.03);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:        #131110;
+  --bg-2:      #0C0B0A;
+  --surface:   #1A1715;
+  --surface-2: #211D1A;
+  --line:      #302A26;
+  --line-soft: #241F1C;
+  --fg:        #F0E9DE;
+  --fg-2:      #C7BEB1;
+  --muted:     #8D8275;
+  --bronze:    #D19E58;
+  --bronze-2:  #A2763C;
+  --bronze-dim:#4A3A24;
+  --resin:     #A3B9A7;
+  --danger:    #DB7462;
+  --warn:      #D9AC4D;
+  --ok:        #93B383;
+  --shadow:    0 1px 0 rgba(0,0,0,.4), 0 22px 50px -30px rgba(0,0,0,.9);
+  --grain:     rgba(240,233,222,.03);
+}
+
+
+/* skeleton-parity reset (the artifact host supplies these; kept here so the standalone file matches) */
+:root{
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+img{ max-width:100%; }
+[hidden]{ display:none !important; }
+
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* paper grain — the studio's uncoated board */
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.5;
+  background-image:
+    repeating-linear-gradient(0deg, var(--grain) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, var(--grain) 0 1px, transparent 1px 3px);
+  mix-blend-mode: normal;
+}
+
+h1,h2,h3,h4{ font-family: var(--ff-display); font-weight:600; line-height:1.35; text-wrap: balance; margin:0; letter-spacing:-.01em; }
+p{ margin:0; }
+a{ color: var(--bronze); text-decoration-thickness:1px; text-underline-offset:3px; }
+:focus-visible{ outline:2px solid var(--bronze); outline-offset:3px; border-radius:2px; }
+
+.wrap{ width:100%; max-width: var(--wide); margin-inline:auto; padding-inline: clamp(16px, 4vw, 40px); }
+.measure{ max-width: var(--measure); }
+
+/* ---------- utility type ---------- */
+.eyebrow{
+  font-family: var(--ff-mono); font-size: var(--fs-xs); letter-spacing:.22em;
+  text-transform: uppercase; color: var(--muted); direction:ltr; unicode-bidi:isolate;
+}
+.mono{ font-family: var(--ff-mono); font-variant-numeric: tabular-nums; direction:ltr; unicode-bidi:isolate; display:inline-block; }
+.num{ font-family: var(--ff-mono); font-variant-numeric: tabular-nums; letter-spacing:-.02em; }
+.lead{ font-size: clamp(1.05rem, 2.3vw, 1.3rem); color: var(--fg-2); line-height:1.7; }
+.small{ font-size: var(--fs-sm); color: var(--muted); line-height:1.65; }
+.hl{ color: var(--bronze); }
+.strike{ text-decoration: line-through; text-decoration-color: var(--danger); opacity:.6; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative; border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(120% 80% at 80% 0%, color-mix(in oklab, var(--bronze) 8%, transparent) 0%, transparent 60%),
+    var(--bg-2);
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid; gap: clamp(24px, 4vw, 56px);
+  grid-template-columns: 1fr;
+  padding-block: clamp(40px, 7vw, 88px) clamp(28px, 4vw, 48px);
+  align-items:center;
+}
+@media (min-width: 900px){ .hero-grid{ grid-template-columns: 1.15fr .85fr; } }
+
+.hero-mark{
+  display:flex; align-items:center; gap:14px; margin-bottom: clamp(20px,3vw,32px);
+}
+.hero-mark .stamp{
+  width:46px; height:46px; flex:none; border:1px solid var(--bronze); color:var(--bronze);
+  display:grid; place-items:center; font-family:var(--ff-display); font-size:1.15rem; font-weight:700;
+  transform: rotate(-4deg); position:relative;
+}
+.hero-mark .stamp::after{ content:""; position:absolute; inset:3px; border:1px solid color-mix(in oklab, var(--bronze) 35%, transparent); }
+
+h1.hero-title{ font-size: var(--fs-display); font-weight:700; letter-spacing:-.03em; line-height:1.16; }
+h1.hero-title .l2{ display:block; color: var(--bronze); }
+.hero-sub{ margin-top: clamp(16px,2.4vw,26px); max-width: 48ch; }
+
+.hero-facts{
+  margin-top: clamp(26px,4vw,40px); display:grid; gap:1px;
+  grid-template-columns: repeat(2, 1fr); background: var(--line-soft); border:1px solid var(--line-soft);
+}
+@media (min-width:620px){ .hero-facts{ grid-template-columns: repeat(4, 1fr); } }
+.fact{ background: var(--bg-2); padding:14px 16px; }
+.fact b{ display:block; font-family:var(--ff-mono); font-size: clamp(1.15rem,2.4vw,1.55rem); font-weight:600; color:var(--fg); letter-spacing:-.03em; white-space:nowrap; }
+.fact span{ display:block; font-size: var(--fs-xs); color:var(--muted); letter-spacing:.06em; margin-top:2px; }
+
+/* the print */
+.printer{
+  position:relative; aspect-ratio: 3/4; max-width:100%; width:100%;
+  border:1px solid var(--line); background:
+    linear-gradient(180deg, color-mix(in oklab, var(--surface) 70%, transparent), var(--bg-2));
+}
+.printer canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+.printer .plate-label{
+  position:absolute; inset-inline-start:10px; bottom:8px; font-family:var(--ff-mono);
+  font-size:.62rem; letter-spacing:.14em; color:var(--muted); direction:ltr;
+}
+.printer .z-label{
+  position:absolute; inset-inline-end:10px; top:10px; font-family:var(--ff-mono);
+  font-size:.62rem; letter-spacing:.1em; color:var(--bronze); direction:ltr; text-align:end;
+}
+.printer .corner{ position:absolute; width:10px; height:10px; border:1px solid var(--bronze); opacity:.55; }
+.printer .c1{ top:6px; inset-inline-start:6px; border-inline-end:0; border-bottom:0; }
+.printer .c2{ top:6px; inset-inline-end:6px; border-inline-start:0; border-bottom:0; }
+.printer .c3{ bottom:6px; inset-inline-start:6px; border-inline-end:0; border-top:0; }
+.printer .c4{ bottom:6px; inset-inline-end:6px; border-inline-start:0; border-top:0; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.topbar{
+  position:sticky; top: env(safe-area-inset-top, 0px); z-index:40;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: blur(12px) saturate(1.2);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{ display:flex; align-items:center; gap:14px; height:52px; }
+.topbar .brand{ font-family:var(--ff-display); font-weight:700; font-size:.95rem; letter-spacing:.02em; flex:none; }
+.topbar .brand i{ color:var(--bronze); font-style:normal; }
+.navscroll{ flex:1; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -ms-overflow-style:none; }
+.navscroll::-webkit-scrollbar{ display:none; }
+.navlist{ display:flex; gap:2px; list-style:none; margin:0; padding:0; }
+.navlist a{
+  display:block; white-space:nowrap; padding:6px 10px; font-size:.78rem; color:var(--muted);
+  text-decoration:none; border:1px solid transparent; transition: color .2s, border-color .2s, background .2s;
+}
+.navlist a:hover{ color:var(--fg); border-color:var(--line); }
+.navlist a.on{ color:var(--bronze); border-color: color-mix(in oklab, var(--bronze) 40%, transparent); background: color-mix(in oklab, var(--bronze) 8%, transparent); }
+.progressbar{ position:absolute; bottom:-1px; inset-inline-start:0; height:1px; background:var(--bronze); width:0; }
+.theme-btn{
+  flex:none; width:32px; height:32px; border:1px solid var(--line); background:transparent; color:var(--muted);
+  cursor:pointer; display:grid; place-items:center; font-size:.9rem; transition: color .2s, border-color .2s;
+}
+.theme-btn:hover{ color:var(--bronze); border-color:var(--bronze); }
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section.sec{ padding-block: clamp(48px, 7vw, 92px); border-bottom:1px solid var(--line-soft); position:relative; }
+section.sec:nth-of-type(even){ background: color-mix(in oklab, var(--surface) 45%, var(--bg)); }
+
+.sec-head{ display:flex; align-items:baseline; gap:16px; margin-bottom: clamp(20px,3vw,32px); flex-wrap:wrap; }
+.sec-no{
+  font-family:var(--ff-mono); font-size:.72rem; color:var(--bronze); letter-spacing:.14em;
+  border:1px solid var(--bronze-dim); padding:3px 8px; direction:ltr; flex:none;
+}
+.sec-head h2{ font-size: var(--fs-h2); flex:1 1 320px; }
+.sec-kicker{ width:100%; margin-top:2px; }
+
+.body-copy > * + *{ margin-top: 1.05em; }
+.body-copy h3{ font-size: var(--fs-h3); margin-top:2em; color:var(--fg); }
+.body-copy h3::before{ content:"▍"; color:var(--bronze); margin-inline-end:8px; font-size:.8em; }
+.body-copy ul, .body-copy ol{ margin:0; padding-inline-start:1.25em; display:grid; gap:.5em; }
+.body-copy li::marker{ color:var(--bronze); }
+.body-copy strong{ color: var(--fg); font-weight:600; }
+
+/* callouts — spent by role, not stamped everywhere */
+.verdict{
+  border-inline-start:2px solid var(--bronze); padding: 14px 18px; background: color-mix(in oklab, var(--bronze) 6%, transparent);
+}
+.verdict .eyebrow{ color: var(--bronze); display:block; margin-bottom:6px; }
+.warnbox{ border-inline-start:2px solid var(--danger); padding:14px 18px; background: color-mix(in oklab, var(--danger) 6%, transparent); }
+.warnbox .eyebrow{ color: var(--danger); display:block; margin-bottom:6px; }
+.notebox{ border:1px dashed var(--line); padding:14px 18px; }
+
+/* tables */
+.tablewrap{ overflow-x:auto; border:1px solid var(--line); background: var(--surface); }
+table{ border-collapse:collapse; width:100%; min-width:640px; font-size:.83rem; }
+th,td{ padding:9px 12px; text-align:start; border-bottom:1px solid var(--line-soft); vertical-align:top; }
+thead th{
+  position:sticky; top:0; background: var(--surface-2); font-family:var(--ff-mono); font-size:.66rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:500; white-space:nowrap; z-index:2;
+}
+tbody tr:hover{ background: color-mix(in oklab, var(--bronze) 5%, transparent); }
+tbody tr:last-child td{ border-bottom:0; }
+td.n, th.n{ font-family:var(--ff-mono); font-variant-numeric:tabular-nums; white-space:nowrap; direction:ltr; text-align:start; }
+.tot td{ background: var(--surface-2); font-weight:600; border-top:1px solid var(--line); }
+
+.pill{ display:inline-block; font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.08em; padding:2px 7px; border:1px solid currentColor; white-space:nowrap; }
+.p-yes{ color:var(--ok); } .p-no{ color:var(--danger); } .p-wait{ color:var(--warn); } .p-info{ color:var(--muted); }
+
+/* generic grid */
+.grid{ display:grid; gap: 1px; background: var(--line-soft); border:1px solid var(--line-soft); }
+.grid > *{ background: var(--bg); padding: clamp(16px,2.4vw,22px); }
+section.sec:nth-of-type(even) .grid > *{ background: color-mix(in oklab, var(--surface) 45%, var(--bg)); }
+.g2{ grid-template-columns:1fr; } @media(min-width:680px){ .g2{ grid-template-columns:repeat(2,1fr);} }
+.g3{ grid-template-columns:1fr; } @media(min-width:680px){ .g3{ grid-template-columns:repeat(2,1fr);} } @media(min-width:980px){ .g3{ grid-template-columns:repeat(3,1fr);} }
+.g4{ grid-template-columns:repeat(2,1fr); } @media(min-width:900px){ .g4{ grid-template-columns:repeat(4,1fr);} }
+
+/* scroll reveal — the cure */
+.rv{ opacity:0; transform: translateY(14px); filter: blur(6px); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1), filter .7s ease; }
+.rv.in{ opacity:1; transform:none; filter:none; }
+@media (prefers-reduced-motion: reduce){
+  .rv{ opacity:1; transform:none; filter:none; transition:none; }
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+}
+
+/* ============================================================
+   COMPONENTS
+   ============================================================ */
+
+/* --- model selector --- */
+.models{ display:grid; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); grid-template-columns:repeat(2,1fr); }
+@media(min-width:900px){ .models{ grid-template-columns:repeat(5,1fr);} }
+.model-btn{
+  background:var(--bg); border:0; border-top:2px solid transparent; padding:16px 14px; cursor:pointer;
+  text-align:start; font-family:inherit; color:var(--muted); transition: color .25s, background .25s, border-color .25s;
+}
+section.sec:nth-of-type(even) .model-btn{ background: color-mix(in oklab, var(--surface) 45%, var(--bg)); }
+.model-btn:hover{ color:var(--fg); }
+.model-btn[aria-selected="true"]{ color:var(--fg); border-top-color:var(--bronze); background: color-mix(in oklab, var(--bronze) 8%, var(--bg)); }
+.model-btn .k{ font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.14em; color:var(--bronze); display:block; direction:ltr; }
+.model-btn .t{ font-family:var(--ff-display); font-size:.98rem; font-weight:600; display:block; margin-top:4px; line-height:1.3; }
+.model-panel{ border:1px solid var(--line-soft); border-top:0; padding: clamp(18px,3vw,28px); background:var(--surface); }
+.scorelist{ display:grid; gap:9px; margin:0; padding:0; list-style:none; }
+.scorerow{ display:grid; grid-template-columns: 9.5rem 1fr 2.3rem; gap:10px; align-items:center; font-size:.8rem; }
+@media(max-width:520px){ .scorerow{ grid-template-columns: 7.5rem 1fr 2.1rem; font-size:.74rem; } }
+.bar{ height:6px; background: var(--line-soft); position:relative; overflow:hidden; }
+.bar i{ position:absolute; inset-block:0; inset-inline-start:0; width:0; background: var(--bronze); transition: width .8s cubic-bezier(.2,.8,.3,1); }
+.bar.neg i{ background: var(--danger); }
+.scorerow .v{ font-family:var(--ff-mono); font-size:.72rem; color:var(--muted); text-align:end; }
+
+/* --- product cards --- */
+.prod{ border:1px solid var(--line); background:var(--surface); display:flex; flex-direction:column; }
+.prod > summary{ list-style:none; cursor:pointer; padding: 18px 20px; display:grid; gap:6px; }
+.prod > summary::-webkit-details-marker{ display:none; }
+.prod-top{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+.prod h3{ font-size:1.12rem; }
+.prod .ar{ color:var(--muted); font-size:.82rem; font-family:var(--ff-body); font-weight:400; }
+.prod .price{ font-family:var(--ff-mono); font-size:1.05rem; color:var(--bronze); font-weight:600; white-space:nowrap; direction:ltr; }
+.prod .role{ font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.12em; color:var(--muted); text-transform:uppercase; direction:ltr; }
+.prod .openhint{ font-size:.7rem; color:var(--bronze); font-family:var(--ff-mono); }
+.prod[open] .openhint{ opacity:.4; }
+.prod-body{ padding: 0 20px 20px; border-top:1px dashed var(--line); margin-top:4px; padding-top:16px; }
+.spec{ display:grid; grid-template-columns:auto 1fr; gap:4px 14px; font-size:.79rem; margin-top:12px; }
+.spec dt{ color:var(--muted); font-family:var(--ff-mono); font-size:.68rem; letter-spacing:.06em; white-space:nowrap; padding-top:2px; }
+.spec dd{ margin:0; color:var(--fg-2); }
+.hourrate{ margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft); display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.hourrate b{ font-family:var(--ff-mono); font-size:1.2rem; color:var(--ok); }
+
+/* --- pipeline --- */
+.pipe{ display:grid; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); grid-template-columns:repeat(2,1fr); }
+@media(min-width:760px){ .pipe{ grid-template-columns:repeat(4,1fr);} }
+@media(min-width:1040px){ .pipe{ grid-template-columns:repeat(7,1fr);} }
+.node{
+  background:var(--bg); border:0; border-top:2px solid transparent; padding:12px 10px; cursor:pointer; text-align:start;
+  font-family:inherit; color:var(--muted); transition: background .25s, color .25s, border-color .25s; position:relative;
+}
+section.sec:nth-of-type(even) .node{ background: color-mix(in oklab, var(--surface) 45%, var(--bg)); }
+.node .i{ font-family:var(--ff-mono); font-size:.6rem; color:var(--bronze); letter-spacing:.1em; direction:ltr; display:block; }
+.node .n{ font-size:.78rem; display:block; margin-top:3px; line-height:1.35; }
+.node[data-who="ai"] .i{ color: var(--resin); }
+.node:hover{ color:var(--fg); }
+.node[aria-selected="true"]{ color:var(--fg); border-top-color:var(--bronze); background: color-mix(in oklab, var(--bronze) 9%, var(--bg)); }
+.node[data-who="ai"][aria-selected="true"]{ border-top-color: var(--resin); background: color-mix(in oklab, var(--resin) 10%, var(--bg)); }
+.pipe-panel{ border:1px solid var(--line-soft); border-top:0; padding:clamp(18px,3vw,26px); background:var(--surface); display:grid; gap:12px; }
+.pipe-panel .tags{ display:flex; gap:8px; flex-wrap:wrap; }
+.legend{ display:flex; gap:18px; flex-wrap:wrap; font-size:.74rem; color:var(--muted); margin-bottom:12px; }
+.legend i{ width:10px; height:10px; display:inline-block; margin-inline-end:6px; }
+
+/* --- budget tiers --- */
+.tiers{ display:flex; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); flex-wrap:wrap; }
+.tier-btn{
+  flex:1 1 140px; background:var(--bg); border:0; border-bottom:2px solid transparent; padding:14px 12px; cursor:pointer;
+  font-family:inherit; text-align:start; color:var(--muted); transition:.25s;
+}
+section.sec:nth-of-type(even) .tier-btn{ background: color-mix(in oklab, var(--surface) 45%, var(--bg)); }
+.tier-btn[aria-selected="true"]{ color:var(--fg); border-bottom-color:var(--bronze); background: color-mix(in oklab, var(--bronze) 8%, var(--bg)); }
+.tier-btn .amt{ font-family:var(--ff-mono); font-size:1.15rem; display:block; color:var(--fg); font-weight:600; direction:ltr; }
+.tier-btn[aria-selected="true"] .amt{ color:var(--bronze); }
+.tier-btn .nm{ font-size:.72rem; display:block; margin-top:2px; }
+.tier-loss{ margin-top:14px; }
+
+/* --- calculator --- */
+.calc{ display:grid; gap:0; grid-template-columns:1fr; border:1px solid var(--line); background:var(--surface); }
+@media(min-width:840px){ .calc{ grid-template-columns: 1fr 1fr; } }
+.calc-in{ padding: clamp(18px,3vw,26px); display:grid; gap:18px; align-content:start; }
+.calc-out{ padding: clamp(18px,3vw,26px); background: var(--surface-2); border-top:1px solid var(--line); display:grid; gap:14px; align-content:start; }
+@media(min-width:840px){ .calc-out{ border-top:0; border-inline-start:1px solid var(--line); } }
+.field label{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; font-size:.8rem; color:var(--fg-2); margin-bottom:7px; }
+.field label b{ font-family:var(--ff-mono); color:var(--bronze); font-size:.9rem; direction:ltr; }
+input[type=range]{
+  -webkit-appearance:none; appearance:none; width:100%; height:2px; background:var(--line); outline:none; margin:0; cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:16px; height:16px; background:var(--bronze); cursor:pointer;
+  border:3px solid var(--surface); box-shadow:0 0 0 1px var(--bronze);
+}
+input[type=range]::-moz-range-thumb{
+  width:16px; height:16px; background:var(--bronze); cursor:pointer; border:3px solid var(--surface); box-shadow:0 0 0 1px var(--bronze);
+}
+.readout{ display:grid; grid-template-columns: 1fr auto; gap:6px 12px; font-size:.82rem; }
+.readout dt{ color:var(--muted); }
+.readout dd{ margin:0; font-family:var(--ff-mono); font-variant-numeric:tabular-nums; text-align:end; direction:ltr; }
+.readout .sep{ grid-column:1/-1; height:1px; background:var(--line); margin:4px 0; }
+.readout .big{ display:contents; }
+.readout .big dt{ color:var(--fg); font-weight:600; }
+.readout .big dd{ color:var(--bronze); font-size:1.05rem; font-weight:600; }
+.gauge{ height:8px; background:var(--line); display:flex; overflow:hidden; }
+.gauge i{ display:block; transition: width .5s cubic-bezier(.2,.8,.3,1); }
+.gauge .mat{ background: var(--resin); } .gauge .lab{ background: var(--bronze-2); } .gauge .sell{ background: var(--muted); } .gauge .prof{ background: var(--bronze); }
+.gkey{ display:flex; gap:14px; flex-wrap:wrap; font-size:.68rem; color:var(--muted); font-family:var(--ff-mono); }
+.gkey i{ width:8px; height:8px; display:inline-block; margin-inline-end:5px; }
+.verdict-live{ font-size:.85rem; padding:10px 12px; border-inline-start:2px solid var(--bronze); background: color-mix(in oklab, var(--bronze) 7%, transparent); }
+.verdict-live.bad{ border-color:var(--danger); background: color-mix(in oklab, var(--danger) 8%, transparent); }
+.preset-row{ display:flex; gap:6px; flex-wrap:wrap; }
+.preset{ font-family:var(--ff-mono); font-size:.68rem; padding:4px 9px; border:1px solid var(--line); background:transparent; color:var(--muted); cursor:pointer; transition:.2s; }
+.preset:hover, .preset[aria-pressed="true"]{ border-color:var(--bronze); color:var(--bronze); }
+
+/* --- price ladder --- */
+.ladder{ display:grid; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); }
+.rung{
+  background:var(--bg); border:0; display:grid; grid-template-columns: 6.5rem 1fr auto; gap:14px; align-items:center;
+  padding:13px 16px; cursor:pointer; text-align:start; font-family:inherit; color:var(--fg-2); transition:.25s;
+}
+section.sec:nth-of-type(even) .rung{ background: color-mix(in oklab, var(--surface) 45%, var(--bg)); }
+.rung:hover{ background: color-mix(in oklab, var(--bronze) 6%, var(--bg)); }
+.rung[aria-expanded="true"]{ background: color-mix(in oklab, var(--bronze) 10%, var(--bg)); color:var(--fg); }
+.rung .pr{ font-family:var(--ff-mono); font-size:1rem; font-weight:600; direction:ltr; }
+.rung .zone{ font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; direction:ltr; }
+.z-commodity{ color:var(--danger);} .z-premium{ color:var(--bronze);} .z-luxury{ color:var(--resin);} .z-over{ color:var(--warn);}
+.rung-detail{ background: var(--surface); padding:0 16px; max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.2,.8,.3,1), padding .3s; font-size:.84rem; color:var(--fg-2); border-inline-start:2px solid var(--bronze); }
+.rung-detail.open{ max-height:340px; padding:14px 16px; }
+
+/* --- chart --- */
+.chartwrap{ border:1px solid var(--line); background:var(--surface); padding: clamp(16px,2.5vw,24px); }
+.chart-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+.scenarios{ display:flex; gap:1px; background:var(--line); border:1px solid var(--line); }
+.scen{ background:var(--surface); border:0; padding:7px 14px; font-family:var(--ff-mono); font-size:.72rem; color:var(--muted); cursor:pointer; transition:.2s; }
+.scen[aria-selected="true"]{ background:var(--bronze); color:var(--bg); }
+.bars{ display:grid; grid-auto-flow:column; grid-auto-columns:1fr; gap: clamp(3px,.9vw,8px); height:200px; align-items:end; }
+.barcol{ display:flex; flex-direction:column; justify-content:flex-end; gap:3px; height:100%; position:relative; }
+.barcol .b{ background: var(--bronze-2); transition: height .7s cubic-bezier(.2,.8,.3,1); height:0; flex:0 0 auto; width:100%; position:relative; }
+.barcol .b.b2b{ background: var(--resin); }
+.barcol:hover .b{ background: var(--bronze); }
+.barcol .m{ position:absolute; bottom:-20px; inset-inline-start:0; width:100%; text-align:center; font-family:var(--ff-mono); font-size:.58rem; color:var(--muted); direction:ltr; }
+.barcol .tip{
+  position:absolute; bottom:calc(100% + 6px); inset-inline-start:50%; transform:translateX(50%); white-space:nowrap;
+  background:var(--fg); color:var(--bg); font-family:var(--ff-mono); font-size:.62rem; padding:3px 7px; opacity:0; pointer-events:none;
+  transition:opacity .2s; direction:ltr; z-index:3;
+}
+.barcol:hover .tip{ opacity:1; }
+.chart-foot{ margin-top:32px; display:flex; gap:18px; flex-wrap:wrap; font-size:.7rem; color:var(--muted); font-family:var(--ff-mono); }
+.chart-foot i{ width:9px; height:9px; display:inline-block; margin-inline-end:6px; }
+
+/* --- risk matrix --- */
+.matrix{ display:grid; grid-template-columns: auto repeat(3,1fr); gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); font-size:.74rem; }
+.matrix > div{ background:var(--bg); padding:10px; min-height:84px; }
+section.sec:nth-of-type(even) .matrix > div{ background: color-mix(in oklab, var(--surface) 45%, var(--bg)); }
+.matrix .axis{ font-family:var(--ff-mono); font-size:.62rem; color:var(--muted); letter-spacing:.08em; min-height:0; display:flex; align-items:center; justify-content:center; text-align:center; }
+.cell{ display:flex; flex-wrap:wrap; gap:5px; align-content:flex-start; }
+.chip{
+  font-size:.68rem; padding:3px 8px; border:1px solid var(--line); background:transparent; cursor:pointer; color:var(--fg-2);
+  font-family:inherit; transition:.2s; line-height:1.4;
+}
+.chip:hover{ border-color:var(--bronze); color:var(--bronze); }
+.chip[aria-pressed="true"]{ background:var(--bronze); border-color:var(--bronze); color:var(--bg); }
+.chip.sev3{ border-inline-start:2px solid var(--danger); } .chip.sev2{ border-inline-start:2px solid var(--warn); } .chip.sev1{ border-inline-start:2px solid var(--ok); }
+.risk-panel{ border:1px solid var(--line); border-top:0; padding: clamp(16px,2.5vw,24px); background:var(--surface); display:grid; gap:10px; }
+
+/* --- timeline --- */
+.tl{ display:grid; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); }
+.tl details{ background:var(--bg); }
+section.sec:nth-of-type(even) .tl details{ background: color-mix(in oklab, var(--surface) 45%, var(--bg)); }
+.tl summary{ list-style:none; cursor:pointer; padding:14px 18px; display:grid; grid-template-columns: 5.2rem 1fr auto; gap:14px; align-items:baseline; }
+.tl summary::-webkit-details-marker{ display:none; }
+.tl summary:hover{ background: color-mix(in oklab, var(--bronze) 6%, transparent); }
+.tl .wk{ font-family:var(--ff-mono); font-size:.68rem; color:var(--bronze); letter-spacing:.1em; direction:ltr; }
+.tl .ttl{ font-family:var(--ff-display); font-size:.98rem; font-weight:600; }
+.tl .cost{ font-family:var(--ff-mono); font-size:.74rem; color:var(--muted); direction:ltr; }
+.tl .content{ padding: 2px 18px 18px; border-top:1px dashed var(--line); margin-top:2px; padding-top:14px; font-size:.86rem; }
+.tl details[open] summary{ background: color-mix(in oklab, var(--bronze) 8%, transparent); }
+.kpi{ display:inline-block; font-family:var(--ff-mono); font-size:.68rem; border:1px solid var(--bronze-dim); color:var(--bronze); padding:2px 7px; margin-top:8px; }
+
+/* --- names --- */
+.names{ display:flex; flex-wrap:wrap; gap:8px; }
+.name-btn{
+  border:1px solid var(--line); background:transparent; padding:8px 14px; cursor:pointer; font-family:var(--ff-display);
+  font-size:.95rem; color:var(--fg-2); transition:.22s;
+}
+.name-btn:hover{ border-color:var(--bronze); color:var(--bronze); transform: translateY(-2px); }
+.name-btn[aria-pressed="true"]{ background:var(--bronze); border-color:var(--bronze); color:var(--bg); }
+.name-detail{ margin-top:16px; border-inline-start:2px solid var(--bronze); padding:12px 16px; background: color-mix(in oklab, var(--bronze) 6%, transparent); min-height:76px; }
+
+/* --- options --- */
+.opt{ border:1px solid var(--line); background:var(--surface); padding: clamp(20px,3vw,28px); display:grid; gap:12px; align-content:start; position:relative; }
+.opt.pick{ border-color:var(--bronze); box-shadow: var(--shadow); }
+.opt .tag{ position:absolute; top:-1px; inset-inline-end:-1px; background:var(--bronze); color:var(--bg); font-family:var(--ff-mono); font-size:.6rem; letter-spacing:.1em; padding:3px 9px; }
+.opt h3{ font-size:1.15rem; }
+.opt .cost{ font-family:var(--ff-mono); font-size:1.5rem; color:var(--bronze); font-weight:600; direction:ltr; }
+.opt ul{ margin:0; padding-inline-start:1.1em; font-size:.84rem; display:grid; gap:.4em; color:var(--fg-2); }
+
+footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); border-top:1px solid var(--line); }
+.foot-grid{ display:grid; gap:24px; grid-template-columns:1fr; }
+@media(min-width:760px){ .foot-grid{ grid-template-columns: 1.4fr 1fr; } }
+.src{ font-size:.76rem; color:var(--muted); display:grid; gap:6px; }
+.src a{ color:var(--muted); }
+.src a:hover{ color:var(--bronze); }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-mark rv">
+        <span class="stamp">سَ</span>
+        <div>
+          <div class="eyebrow">Riyadh · Collectible Foundry · Study v2</div>
+          <div class="small" style="margin-top:2px">دراسة تشغيلية — إعادة بناء كاملة للفرضية الأولى</div>
+        </div>
+      </div>
+
+      <h1 class="hero-title rv">
+        لا تبيع طباعة.
+        <span class="l2">بِع شيئًا يريد الناس امتلاكه.</span>
+      </h1>
+
+      <p class="lead hero-sub rv">
+        مشروع استوديو مقتنيات فاخرة في الرياض، يديره شخص واحد، تكون فيه الطابعة
+        <b>آلة في الخلف</b> لا اسمًا على الواجهة. هذه الدراسة تُسقط الميزانية المقترحة سابقًا من
+        <span class="strike">١٥–١٦ ألف ريال</span> إلى <b class="hl">٩٬٨٠٠ ريال</b>، وتضع قبلها
+        مرحلة تحقّق بـ<b class="hl">٧٠٠ ريال</b> قبل شراء أي معدة.
+      </p>
+
+      <div class="hero-facts rv">
+        <div class="fact"><b class="num" data-count="700" data-suffix=" ﷼">٠</b><span>تكلفة التحقّق قبل CAPEX</span></div>
+        <div class="fact"><b class="num" data-count="9800" data-suffix=" ﷼">٠</b><span>الإعداد الموصى به</span></div>
+        <div class="fact"><b class="num" data-count="18500" data-suffix=" ﷼">٠</b><span>نقطة التعادل الشهرية</span></div>
+        <div class="fact"><b class="num" data-count="4" data-suffix=" أشهر">٠</b><span>استرداد رأس المال</span></div>
+      </div>
+    </div>
+
+    <div class="printer rv" aria-hidden="true">
+      <canvas id="build"></canvas>
+      <span class="corner c1"></span><span class="corner c2"></span>
+      <span class="corner c3"></span><span class="corner c4"></span>
+      <div class="z-label" id="zlab">Z 000.00 mm</div>
+      <div class="plate-label">MSLA · 0.05mm LAYER · TILT RELEASE</div>
+    </div>
+  </div>
+</header>
+
+<nav class="topbar" aria-label="أقسام الدراسة">
+  <div class="wrap topbar-in">
+    <span class="brand">سَبَك<i>//</i>STUDY</span>
+    <div class="navscroll">
+      <ul class="navlist" id="nav"></ul>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="تبديل السمة">◐</button>
+    <div class="progressbar" id="prog"></div>
+  </div>
+</nav>
+
+<main>
+
+<!-- 01 ============================================================ -->
+<section class="sec" id="s01">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">01 / 27</span>
+      <h2>الملخص التنفيذي</h2>
+      <p class="sec-kicker small">الخلاصة أولًا. التفاصيل تحتها.</p>
+    </div>
+
+    <div class="body-copy measure rv">
+      <p>الفكرة قابلة للتنفيذ، لكن <strong>الفرضية الأصلية بها خطأ اقتصادي واحد كبير</strong>: افترضت أن الاختناق هو الطباعة، والحقيقة أن الاختناق هو <strong>التشطيب اليدوي</strong>. تلوين مجسم ٢٤ سم بمستوى «لوكشري» يستهلك ٦–١٢ ساعة عمل ماهر. عند ٨٥ ريالًا للساعة، هذه ٥١٠–١٬٠٢٠ ريال عمالة داخل منتج تريد بيعه بـ١٬٢٩٠. هذا يأكل الهامش قبل أن تبدأ.</p>
+
+      <div class="verdict">
+        <span class="eyebrow">القرار المحوري</span>
+        <p>صمّم خط المنتجات بحيث تأتي الفخامة من <strong>الشكل والخامة والقاعدة والتغليف</strong> — لا من ساعات الفرشاة. لون واحد + طبقة حماية + عنصر بمادة مغايرة (ورق معدني، أكريليك، قاعدة محفورة). هذا يُنزل التشطيب من ٨ ساعات إلى ١٫٥–٤ ساعات، ويحوّل المشروع من «حرفة بطيئة» إلى «عمل له رافعة تشغيلية».</p>
+      </div>
+
+      <h3>الأرقام السبعة التي تحكم القرار</h3>
+      <ul>
+        <li><strong>٧٠٠ ريال</strong> تكفي لاختبار السوق بالكامل قبل شراء طابعة: رندرات CGI + صفحة هبوط + نموذج واحد مطبوع خارجيًا في الرياض.</li>
+        <li><strong>٦٬٠٠٠ ريال</strong> هي أرخص بداية إنتاجية حقيقية — لكن بطابعة مستعملة ومحطة غسل/تصليب يدوية الصنع.</li>
+        <li><strong>٩٬٨٠٠ ريال</strong> هي الإعداد الموصى به فعلًا. الفارق بينه وبين ١٦ ألفًا ليس جودة المنتج، بل معدات تُشترى في الشهر السادس لا الأول.</li>
+        <li><strong>١٥٪ كحد أقصى</strong> للخامات من سعر البيع. أي منتج يتجاوز ذلك مُصمَّم بشكل خاطئ.</li>
+        <li><strong>١٥٠ ريالًا/ساعة</strong> هي الحد الأدنى للمساهمة لكل ساعة تشطيب. القطعة التي تنزل تحته تُحذف من الخط.</li>
+        <li><strong>١٨٬٥٠٠ ريال شهريًا</strong> هي نقطة التعادل الحقيقية — أي التي تدفع لك راتبًا، لا التي تغطي الإيجار فقط.</li>
+        <li><strong>٤٨٧ ريالًا/ساعة</strong> هي مساهمة أصغر منتج في الخط (RELIC، ١٠ سم، بلا تلوين). أعلى من المجسم الرائد بثلاث مرات.</li>
+      </ul>
+
+      <h3>التوصية في ثلاثة أسطر</h3>
+      <ol>
+        <li>ابدأ بـ<strong>مرحلة تحقّق ٣٠ يومًا</strong> بـ٧٠٠ ريال: عالم شخصيات واحد، ثلاث رندرات، قائمة انتظار، وطلب مسبق.</li>
+        <li>اشترِ المعدات <strong>بعد</strong> ١٥ طلبًا مسبقًا مؤكدًا. الطلبات المسبقة تموّل الطابعة، لا العكس.</li>
+        <li>شغّل <strong>محركين للدخل بالتوازي</strong>: إصدارات مرقّمة B2C تبني الـIP، وجوائز/هدايا مؤسسية B2B تدفع الفواتير — والاثنان من نفس اللغة البصرية.</li>
+      </ol>
+
+      <div class="warnbox" style="margin-top:1.4em">
+        <span class="eyebrow">ما لن تنجح به</span>
+        <p>بيع مجسم غير معروف الهوية بـ١٬٩٩٠ ريالًا في الشهر الأول. وبيع «تمثال بصورتك» كمنتج أساسي — لأنه عمل خطّي بلا تراكم، ويستهلك دورات مراجعة لا تنتهي. وشراء طابعة كبيرة الحجم. الثلاثة مذكورة بالتفصيل في القسم ٢٦.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ============================================================ -->
+<section class="sec" id="s02">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">02 / 27</span>
+      <h2>إعادة صياغة المشروع</h2>
+      <p class="sec-kicker small">ما هو المشروع فعلًا، بعد حذف ما ليس منه.</p>
+    </div>
+
+    <div class="body-copy measure rv">
+      <p>المشروع ليس «خدمة طباعة». وليس «متجر مجسمات». هو:</p>
+
+      <div class="verdict">
+        <span class="eyebrow">التعريف العامل</span>
+        <p><strong>دار تصميم تُنتج مقتنيات نحتية بإصدارات محدودة، مبنية على ملكية فكرية أصلية، وتستخدم الذكاء الاصطناعي لضغط زمن التصميم، والطباعة بالريزن كطريقة تصنيع داخلية.</strong></p>
+      </div>
+
+      <p>الفرق ليس لغويًا. إنه يغيّر أربعة قرارات:</p>
+
+      <h3>١. الأصل الذي تبنيه ليس الطابعة — إنه الشخصية</h3>
+      <p>الطابعة تُستهلك وتُستبدل كل ٢٤ شهرًا. الشخصية المصمّمة التي بيع منها ٣٠ نسخة يمكن أن تُعاد إصدارها بألوان جديدة، وبمقاسات جديدة، وتُرخّص لعلامة تجارية، وتُباع كعمل فني بعد سنتين. <strong>القيمة تتراكم في الـIP، لا في العتاد.</strong> كل قرار في هذه الدراسة يُقاس بسؤال: هل يبني ملكية فكرية أم يشتري معدات؟</p>
+
+      <h3>٢. التكلفة الحقيقية للوحدة هي وقتك، لا الريزن</h3>
+      <p>الريزن في مجسم ٢٤ سم يساوي ٥٧ ريالًا. وقتك في نفس المجسم يساوي ٣٤٠ ريالًا. أي قرار تصميمي يوفّر ساعة تشطيب يساوي ستة أضعاف أي قرار يوفّر مئة جرام ريزن. <strong>لذلك: لا تُطارد رخص الريزن، طارد بساطة التشطيب.</strong></p>
+
+      <h3>٣. التصنيع الجزئي خارجيًا ليس تنازلًا</h3>
+      <p>القاعدة الأكريليك المقطوعة بالليزر والمحفورة برقم الإصدار تكلّف ٢٢ ريالًا من ورشة في الرياض، وترفع القيمة المُدركة أكثر مما ترفعها ست ساعات رسم على الوجه. الصندوق الصلب يُصنّع في الصين أو الرياض. القوالب السيليكون تُستخدم فوق ٥٠ نسخة. <strong>أنت مدير إنتاج، لا عامل يدوي.</strong></p>
+
+      <h3>٤. الطباعة سرّ صناعي، والذكاء الاصطناعي حكاية علنية</h3>
+      <p>لا تُسمِّ العلامة باسم فيه «3D» أو «Print». لكن أظهر رحلة <b class="hl">فكرة ← رندر ← معدن مطبوع ← كائن مصقول</b> في المحتوى. هذه هي الحكاية التسويقية الوحيدة التي لا يستطيع منافس تقليدي تقليدها، وهي مفصّلة في القسم ١٨.</p>
+
+      <h3>فرضيات ضعيفة في الطرح الأصلي — مصحّحة</h3>
+      <div class="tablewrap" style="margin-top:14px">
+        <table>
+          <thead><tr><th>الفرضية الأصلية</th><th>الحكم</th><th>التصحيح</th></tr></thead>
+          <tbody>
+            <tr><td>ميزانية ١٥–١٦ ألف ريال للإعداد الموصى به</td><td><span class="pill p-no">مبالغ فيها</span></td><td>٩٬٨٠٠ ريال. الفرق معدات تُؤجَّل للشهر ٦.</td></tr>
+            <tr><td>شراء المعدات ثم البحث عن منتج</td><td><span class="pill p-no">معكوس</span></td><td>تحقّق بـ٧٠٠ ريال، ثم طلب مسبق، ثم شراء.</td></tr>
+            <tr><td>Saturn 4 Ultra 16K هو الخيار</td><td><span class="pill p-wait">جزئيًا</span></td><td>نسخة 12K أوفر بـ٥٠٠ ريال، والفرق غير مرئي بعد البرايمر والطلاء.</td></tr>
+            <tr><td>ثلاثة محركات دخل من اليوم الأول</td><td><span class="pill p-no">غير ممكن</span></td><td>B2B مستحيل بلا بورتفوليو. التسلسل: إصدار ← تخصيص ← مؤسسي.</td></tr>
+            <tr><td>Wash &amp; Cure جهاز جاهز من البداية</td><td><span class="pill p-wait">يُؤجَّل</span></td><td>دلوان محكمان + مصباح UV بـ٢٨٠ ريالًا يؤديان نفس الغرض في الشهور الأولى.</td></tr>
+            <tr><td>Airbrush + كمبروسر ضمن الإعداد الأول</td><td><span class="pill p-wait">يُؤجَّل</span></td><td>خط منتجات «قليل التشطيب» لا يحتاجه قبل المنتج الثاني.</td></tr>
+            <tr><td>ABS-Like ريزن لكل شيء</td><td><span class="pill p-no">ناقص</span></td><td>ثلاثة أنواع لثلاث وظائف — القسم ٠٩.</td></tr>
+            <tr><td>ZBrush ضمن حزمة البرمجيات</td><td><span class="pill p-no">غير لازم</span></td><td>Blender يكفي تمامًا في هذا الحجم. وفّر ٤٬٠٠٠+ ريال.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ============================================================ -->
+<section class="sec" id="s03">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">03 / 27</span>
+      <h2>فرصة السوق — الرياض</h2>
+      <p class="sec-kicker small">أين يوجد المال فعلًا، ولماذا الآن.</p>
+    </div>
+
+    <div class="grid g4 rv" style="margin-bottom:26px">
+      <div><b class="num" style="font-size:1.5rem;display:block;color:var(--bronze)" data-count="1149" data-prefix="$" data-suffix="M">٠</b><span class="small">سوق الألعاب والمقتنيات السعودي ٢٠٢٥</span></div>
+      <div><b class="num" style="font-size:1.5rem;display:block;color:var(--bronze)" data-count="12" data-suffix="٪">٠</b><span class="small">نمو سنوي متوقع حتى ٢٠٣٠</span></div>
+      <div><b class="num" style="font-size:1.5rem;display:block;color:var(--bronze)" data-count="45" data-suffix="٪">٠</b><span class="small">ارتفاع طلبات الهدايا المؤسسية المُفصَّلة ٢٤→٢٦</span></div>
+      <div><b class="num" style="font-size:1.5rem;display:block;color:var(--resin)" data-count="1" data-suffix="">٠</b><span class="small">منطقة الرياض: الأعلى تفاعلًا مع المقتنيات في المملكة</span></div>
+    </div>
+
+    <div class="body-copy measure rv">
+      <h3>ثلاث إشارات حقيقية، لا تفاؤل</h3>
+      <ul>
+        <li><strong>ظاهرة Labubu أثبتت الطلب سلوكيًا.</strong> حين أُطلقت في السعودية، كانت منطقة الرياض الأعلى تفاعلًا. هذا ليس خبرًا عن دمية — هو دليل أن شريحة سعودية مستعدة للوقوف في طابور ودفع سعر مرتفع مقابل <strong>شخصية أصلية بإصدار محدود</strong>، وهو بالضبط النموذج المقترح هنا.</li>
+        <li><strong>الهدايا المؤسسية تتحول من «قلم وأجندة» إلى قطع تصميمية.</strong> الطلب على الهدايا المُفصّلة بالكامل في الخليج ارتفع ٤٥٪ بين ٢٠٢٤ و٢٠٢٦. في الرياض تحديدًا، حجم الفعاليات والمؤتمرات المرتبطة برؤية ٢٠٣٠ يخلق طلبًا متكررًا على <strong>الجوائز والتكريمات</strong> — وهي فئة يسيطر عليها موردون ضعفاء تصميميًا.</li>
+        <li><strong>السوق مستورد بالكامل تقريبًا.</strong> لا توجد علامة سعودية واحدة معروفة في فئة «art toy / designer collectible». هذه مساحة فارغة، وليست مساحة مزدحمة يجب اقتحامها.</li>
+      </ul>
+
+      <h3>لماذا الرياض تحديدًا</h3>
+      <p>كثافة الشركات ووكالات الفعاليات وصناديق التسويق أعلى من أي مدينة سعودية. عميل B2B واحد يعادل ٤٠ عميل تجزئة في الإيرادات وبثلث الجهد التسويقي. وقربك الجغرافي من ورش القص بالليزر والمطابع والحفر يعني أن سلسلة التوريد الخاصة بك داخل نصف قطر ٢٠ كم.</p>
+
+      <div class="notebox">
+        <p class="small"><strong>ملاحظة صدق:</strong> أرقام السوق أعلاه من تقارير قطاعية عامة (ألعاب وهدايا) وليست قياسًا لفئة «المقتنيات الفنية الراقية» التي لا يوجد لها تقرير مستقل في السعودية. استخدمها كإشارة اتجاه، لا كحجم سوق قابل للاستحواذ. القياس الحقيقي الوحيد هو اختبار الطلب المسبق في القسم ٢٤.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ============================================================ -->
+<section class="sec" id="s04">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">04 / 27</span>
+      <h2>بحث المنافسين</h2>
+      <p class="sec-kicker small">من يلعب في الرياض الآن، وأين الفجوة.</p>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>الفئة</th><th>أمثلة قائمة</th><th>ما يقدمونه</th><th>نطاق السعر</th><th>نقطة الضعف</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>خدمات طباعة ثلاثية الأبعاد</td>
+            <td>3DWorks · KSA3D · AMFUTURE · Voxel · Arkaki</td>
+            <td>طباعة بالجرام، نماذج أولية، قطع هندسية</td>
+            <td class="n">بالجرام / بالساعة</td>
+            <td>يبيعون <strong>عملية</strong> لا منتجًا. لا هوية، لا IP، لا تشطيب فني. لا يمكنهم بيع قطعة بـ١٬٢٩٠ ريالًا لأنهم سعّروا أنفسهم كمورّد.</td>
+          </tr>
+          <tr>
+            <td>موردو مواد وطابعات</td>
+            <td>CubicSky · Arkaki · Amazon.sa · noon</td>
+            <td>ريزن، فلامنت، قطع غيار</td>
+            <td class="n">تجزئة</td>
+            <td>هؤلاء <strong>موردوك</strong> لا منافسوك. علاقة جيدة معهم = قطع غيار أسرع.</td>
+          </tr>
+          <tr>
+            <td>متاجر المقتنيات وثقافة البوب</td>
+            <td>The Little Things وسلاسل مشابهة</td>
+            <td>مقتنيات مرخّصة مستوردة</td>
+            <td class="n">٩٩ – ٧٩٩ ﷼</td>
+            <td>مستورد بالكامل. لا شيء أصلي، ولا تخصيص، ولا إصدارات مرقّمة محليًا.</td>
+          </tr>
+          <tr>
+            <td>بيوت الهدايا المؤسسية</td>
+            <td>موردو الهدايا الترويجية التقليديون</td>
+            <td>أقلام، دروع أكريليك، أجندات، حقائب</td>
+            <td class="n">٤٠ – ٣٥٠ ﷼</td>
+            <td>ضعف تصميمي حاد. الدرع الأكريليك المحفور هو السقف الإبداعي. <strong>هنا أكبر فجوة في السوق.</strong></td>
+          </tr>
+          <tr>
+            <td>فنانون وحرفيون محليون</td>
+            <td>حسابات إنستقرام فردية</td>
+            <td>قطع يدوية، راتنج مصبوب، خط عربي</td>
+            <td class="n">١٥٠ – ٢٬٠٠٠ ﷼</td>
+            <td>قدرة إنتاج محدودة جدًا، بلا نظام إصدارات ولا تغليف ولا قدرة على تنفيذ طلب ٤٠ قطعة.</td>
+          </tr>
+          <tr>
+            <td>منصات عالمية</td>
+            <td>Etsy · متاجر designer toys أجنبية</td>
+            <td>مجسمات مطبوعة، art toys</td>
+            <td class="n">$40 – $600</td>
+            <td>شحن ٣–٦ أسابيع، جمارك، لا دفع بـmada، لا خدمة عربية، لا تخصيص محلي.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:26px">
+      <div class="verdict">
+        <span class="eyebrow">الفجوة القابلة للاستحواذ</span>
+        <p>لا يوجد في الرياض لاعب يجمع الأربعة معًا: <strong>ملكية فكرية أصلية + تشطيب بمستوى منتج + نظام إصدارات مرقّمة + قدرة على تنفيذ طلب مؤسسي من ٢٥–١٠٠ قطعة</strong>. كل منافس يملك واحدًا أو اثنين. هذا هو موقعك.</p>
+      </div>
+      <p class="small">تحقّق من وجود المنافسين: سبتمبر ٢٠٢٦. الأسعار تقديرية من الفئات المعروضة علنًا، وتحتاج تحقّقًا ميدانيًا (اتصال بثلاثة موردي هدايا مؤسسية وطلب عرض سعر لـ٥٠ درعًا — هذه مهمة الأسبوع الثاني).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ============================================================ -->
+<section class="sec" id="s05">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">05 / 27</span>
+      <h2>نموذج العمل</h2>
+      <p class="sec-kicker small">خمسة نماذج، مقيَّمة بأسباب تجارية. اضغط أي نموذج.</p>
+    </div>
+
+    <div class="rv">
+      <div class="models" role="tablist" id="modelTabs">
+        <button class="model-btn" role="tab" data-m="A" aria-selected="true"><span class="k">MODEL A</span><span class="t">إصدارات أصلية</span></button>
+        <button class="model-btn" role="tab" data-m="B" aria-selected="false"><span class="k">MODEL B</span><span class="t">منحوتات مخصّصة</span></button>
+        <button class="model-btn" role="tab" data-m="C" aria-selected="false"><span class="k">MODEL C</span><span class="t">مقتنيات مؤسسية</span></button>
+        <button class="model-btn" role="tab" data-m="D" aria-selected="false"><span class="k">MODEL D</span><span class="t">قطع ديكور راقية</span></button>
+        <button class="model-btn" role="tab" data-m="E" aria-selected="false"><span class="k">MODEL E</span><span class="t">الهجين المتسلسل</span></button>
+      </div>
+      <div class="model-panel" id="modelPanel"></div>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:30px">
+      <h3>الهيكل التشغيلي الموصى به</h3>
+      <p><strong>عالم ملكية فكرية واحد، وثلاثة أسطح بيع.</strong> نفس اللغة البصرية تُباع بثلاث طرق مختلفة، فلا تتشتت جهودك التصميمية:</p>
+      <ol>
+        <li><strong>إصدارات مرقّمة (B2C)</strong> — ٢٥ إلى ٦٠ نسخة لكل إصدار، طلب مسبق، تصنيع حسب الطلب. وظيفتها: بناء الـIP والدليل البصري.</li>
+        <li><strong>إصدارات مُكلَّفة (B2B)</strong> — نفس لغة الاستوديو مطبّقة على علامة العميل. تُباع كـ«إصدار فني» لا كـ«هدية دعائية». وظيفتها: التدفق النقدي.</li>
+        <li><strong>الشخصية المخصّصة (B2C مميّز)</strong> — سقف ٢–٣ طلبات شهريًا، بعقد صارم. وظيفتها: هامش مرتفع ومحتوى عاطفي قوي.</li>
+      </ol>
+      <p>التوزيع المستهدف للإيراد في الشهر ١٢: <span class="mono">35% Drops · 45% B2B · 20% Custom</span>.</p>
+
+      <div class="warnbox">
+        <span class="eyebrow">لماذا التسلسل إلزامي</span>
+        <p>لا يمكن بيع B2B بلا بورتفوليو. أول مدير تسويق سيسألك: «أرني ما صنعته». لذلك الإصدار الأول ليس مصدر دخل أساسًا — هو <strong>عيّنة بيع مموّلة من العملاء</strong>. هذه أذكى نقطة في النموذج كله: جمهور التجزئة يدفع ثمن بناء ملف أعمالك المؤسسي.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ============================================================ -->
+<section class="sec" id="s06">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">06 / 27</span>
+      <h2>استراتيجية المنتج — خط الـMVP</h2>
+      <p class="sec-kicker small">خمس قطع فقط. كل واحدة لها وظيفة اقتصادية مختلفة. اضغط للتفاصيل الكاملة.</p>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-bottom:22px">
+      <p>القاعدة الحاكمة لكل قطعة: <strong>التعقيد البصري يأتي من تباين المواد، لا من مهارة الرسم.</strong> جسم بلون واحد + عنصر واحد بمادة مغايرة + قاعدة محفورة = مظهر «دار تصميم» بربع وقت التشطيب.</p>
+    </div>
+
+    <div class="grid g2 rv" style="background:transparent;border:0;gap:14px">
+
+      <details class="prod">
+        <summary>
+          <span class="role">ENTRY · BATCH</span>
+          <div class="prod-top"><h3>MONOLITH <span class="ar">/ النَصْب</span></h3><span class="price">490 ﷼</span></div>
+          <p class="small">نصفي نحتي مجرّد ١٥ سم، قطعة واحدة، تشطيب حجري مطفي على قاعدة أكريليك محفورة.</p>
+          <span class="openhint">▾ المواصفات والتكلفة</span>
+        </summary>
+        <div class="prod-body">
+          <dl class="spec">
+            <dt>المقاس</dt><dd>14–16 سم ارتفاعًا، قطعة واحدة بلا تجميع</dd>
+            <dt>الخامة</dt><dd>ABS-Like رمادي، جدار 2.5 مم، مجوّف</dd>
+            <dt>الطباعة</dt><dd>MSLA · 0.05 مم · 4–6 قطع على اللوح الواحد</dd>
+            <dt>التشطيب</dt><dd>سنفرة 400→800 · برايمر معبّئ · لون واحد · كلير مطفي بمانع UV</dd>
+            <dt>التغليف</dt><dd>صندوق صلب متوسط + إسفنج + بطاقة إصدار</dd>
+            <dt>الريزن</dt><dd>130 جم مع الدعامات ≈ 20 ﷼</dd>
+            <dt>خامات كلية</dt><dd>65 ﷼ (13٪ من السعر ✓)</dd>
+            <dt>العمل</dt><dd>1.4 ساعة تشطيب × 85 ﷼ = 119 ﷼</dd>
+            <dt>إطفاء التصميم</dt><dd>900 ﷼ ÷ 40 نسخة = 22 ﷼</dd>
+            <dt>تكلفة البيع</dt><dd>بوابة دفع 11 + شحن 23 = 34 ﷼</dd>
+            <dt>التخصيص</dt><dd>لون مخصّص فقط (+150 ﷼)، لا تعديل شكلي</dd>
+          </dl>
+          <div class="hourrate"><span class="small">المساهمة</span><b>250 ﷼</b><span class="small">أي <span class="mono">179 ﷼/ساعة</span> — فوق الحد الأدنى ✓</span></div>
+        </div>
+      </details>
+
+      <details class="prod">
+        <summary>
+          <span class="role">FLAGSHIP · EDITION OF 50</span>
+          <div class="prod-top"><h3>SENTINEL <span class="ar">/ الحارس</span></h3><span class="price">1,290 ﷼</span></div>
+          <p class="small">الشخصية الرائدة، ٢٤ سم، متعددة الأجزاء، لونان + عنصر بورق معدني. إصدار مرقّم من ٥٠.</p>
+          <span class="openhint">▾ المواصفات والتكلفة</span>
+        </summary>
+        <div class="prod-body">
+          <dl class="spec">
+            <dt>المقاس</dt><dd>22–25 سم · رأس/جذع/ذراعان/قاعدة بمفاتيح تعشيق</dd>
+            <dt>الخامة</dt><dd>جسم ABS-Like · الأجزاء الرفيعة Tough resin</dd>
+            <dt>الطباعة</dt><dd>لوحان × 5–7 ساعات · دبابيس نحاس للأذرع</dd>
+            <dt>التشطيب</dt><dd>معجون → 400/600/800 مبلّلة → برايمر → لون → ورق معدني على عنصر واحد → كلير</dd>
+            <dt>التغليف</dt><dd>صندوق مغناطيسي + إسفنج EVA مفرّغ + شهادة مرقّمة + قماش</dd>
+            <dt>الريزن</dt><dd>380 جم مع الدعامات ≈ 57 ﷼</dd>
+            <dt>خامات كلية</dt><dd>153 ﷼ (12٪ من السعر ✓)</dd>
+            <dt>العمل</dt><dd>4.0 ساعات × 85 ﷼ = 340 ﷼</dd>
+            <dt>إطفاء التصميم</dt><dd>14 ساعة × 150 ﷼ ÷ 30 نسخة = 70 ﷼</dd>
+            <dt>التخصيص</dt><dd>لا. الإصدار المحدود يفقد قيمته إذا خُصّص.</dd>
+          </dl>
+          <div class="hourrate"><span class="small">المساهمة</span><b>673 ﷼</b><span class="small">أي <span class="mono">168 ﷼/ساعة</span> — يبني العلامة، لا يموّلها</span></div>
+        </div>
+      </details>
+
+      <details class="prod">
+        <summary>
+          <span class="role">PROFIT ENGINE · NO PAINT</span>
+          <div class="prod-top"><h3>RELIC <span class="ar">/ الأثر</span></h3><span class="price">340 ﷼</span></div>
+          <p class="small">قطعة ١٠ سم تُطبع بريزن ملوّن/لؤلؤي — بلا تلوين إطلاقًا. أربعة ألوان لكل إصدار.</p>
+          <span class="openhint">▾ المواصفات والتكلفة</span>
+        </summary>
+        <div class="prod-body">
+          <dl class="spec">
+            <dt>المقاس</dt><dd>9–11 سم · شكل مصمَّت بلا نتوءات رفيعة</dd>
+            <dt>الخامة</dt><dd>ريزن مصبوغ/لؤلؤي (اللون داخل المادة نفسها)</dd>
+            <dt>الطباعة</dt><dd>8–10 قطع على اللوح · 3 ساعات</dd>
+            <dt>التشطيب</dt><dd>غسل · تصليب · إزالة النتوءات · كلير ساتان. لا سنفرة عميقة، لا برايمر، لا طلاء.</dd>
+            <dt>التغليف</dt><dd>صندوق صغير + بطاقة حكاية + ملصق هولوغرافي</dd>
+            <dt>الريزن</dt><dd>55 جم ≈ 11 ﷼</dd>
+            <dt>خامات كلية</dt><dd>36 ﷼ (11٪ من السعر ✓)</dd>
+            <dt>العمل</dt><dd>0.45 ساعة × 85 ﷼ = 38 ﷼</dd>
+            <dt>إطفاء التصميم</dt><dd>1,200 ﷼ ÷ 80 نسخة = 15 ﷼</dd>
+            <dt>التخصيص</dt><dd>اختيار اللون فقط · مثالي كـ«نقطة دخول» ولهدايا الفعاليات</dd>
+          </dl>
+          <div class="hourrate"><span class="small">المساهمة</span><b>219 ﷼</b><span class="small">أي <span class="mono" style="color:var(--ok)">487 ﷼/ساعة</span> — أعلى ربح لكل ساعة في الخط كله</span></div>
+        </div>
+      </details>
+
+      <details class="prod">
+        <summary>
+          <span class="role">B2B · MOQ 25</span>
+          <div class="prod-top"><h3>MARK <span class="ar">/ الشاهد</span></h3><span class="price">850 ﷼ <span class="small" style="font-family:var(--ff-body)">/ قطعة</span></span></div>
+          <p class="small">جائزة نحتية ١٩ سم تترجم علامة العميل إلى لغة الاستوديو. رسم تصميم منفصل ٢٬٥٠٠ ﷼.</p>
+          <span class="openhint">▾ المواصفات والتكلفة</span>
+        </summary>
+        <div class="prod-body">
+          <dl class="spec">
+            <dt>المقاس</dt><dd>18–20 سم · شكل مجرّد + قاعدة محفورة باسم المكرَّم</dd>
+            <dt>الخامة</dt><dd>ABS-Like · تشطيب معدني أو حجري موحّد</dd>
+            <dt>الدفعة</dt><dd>25–100 قطعة · دفعة مقدمة 50٪ إلزامية</dd>
+            <dt>الريزن</dt><dd>200 جم ≈ 30 ﷼</dd>
+            <dt>خامات كلية</dt><dd>97 ﷼ شاملة القاعدة المحفورة والتغليف</dd>
+            <dt>العمل</dt><dd>1.6 ساعة × 85 ﷼ = 136 ﷼ (يقلّ مع الدفعة)</dd>
+            <dt>إطفاء التصميم</dt><dd>صفر — مغطّى برسم التصميم المدفوع مسبقًا</dd>
+            <dt>تكلفة البيع</dt><dd>تحويل بنكي + توصيل بالجملة ≈ 8 ﷼</dd>
+            <dt>شرط</dt><dd>يتطلب سجلًا تجاريًا وفاتورة ضريبية — القسم ٢١</dd>
+          </dl>
+          <div class="hourrate"><span class="small">المساهمة</span><b>613 ﷼</b><span class="small">أي <span class="mono" style="color:var(--ok)">383 ﷼/ساعة</span> — وطلب واحد = ٣٤ ألف ريال</span></div>
+        </div>
+      </details>
+
+      <details class="prod" style="grid-column:1/-1">
+        <summary>
+          <span class="role">CAPPED SERVICE · 2–3 / MONTH</span>
+          <div class="prod-top"><h3>ARCHETYPE <span class="ar">/ النمط — الشخصية المخصّصة بالذكاء الاصطناعي</span></h3><span class="price">1,890 ﷼</span></div>
+          <p class="small">العميل يرسل صورًا واهتماماته ومهنته — فنصنع له <strong>شخصية أصلية مستوحاة منه</strong>، لا تمثالًا بوجهه.</p>
+          <span class="openhint">▾ المواصفات والشروط التي تحميك</span>
+        </summary>
+        <div class="prod-body">
+          <p class="small">هذا المنتج مربح جدًا ومميت جدًا في آن. مربح لأن السعودية سوق إهداء ضخم وعاطفي. مميت لأنه بلا ضوابط يتحول إلى دورات مراجعة لا تنتهي تبتلع شهرك. الضوابط ليست اختيارية:</p>
+          <dl class="spec">
+            <dt>المقاس</dt><dd>18–20 سم · قاعدة محفورة بالاسم والتاريخ</dd>
+            <dt>الوعد</dt><dd>«شخصية مستوحاة منك» — وليس تشابهًا فوتوغرافيًا. مكتوب في الوصف والعقد.</dd>
+            <dt>المراجعات</dt><dd><strong>جولتان فقط</strong> على الرسم المفهومي، وصفر مراجعة بعد اعتماد النموذج ثلاثي الأبعاد.</dd>
+            <dt>الدفع</dt><dd>100٪ مقدمًا · غير قابل للاسترداد بعد اعتماد المفهوم (يُذكر صراحة — القسم ٢١)</dd>
+            <dt>المدة</dt><dd>21 يوم عمل · لا استعجال إلا برسم 30٪</dd>
+            <dt>الصور</dt><dd>تُعالَج محليًا على جهازك ولا تُرفع لأي خدمة سحابية — التزام بنظام حماية البيانات الشخصية، القسم ٢٢</dd>
+            <dt>العمل</dt><dd>7–9 ساعات شاملة التصميم · مساهمة ≈ 1,100 ﷼ ≈ <span class="mono">137 ﷼/ساعة</span></dd>
+            <dt>السقف</dt><dd>3 طلبات شهريًا كحد أقصى. الطلب الرابع يدخل قائمة انتظار الشهر التالي — والانتظار نفسه تسويق.</dd>
+          </dl>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:28px">
+      <div class="verdict">
+        <span class="eyebrow">القراءة الاقتصادية للخط</span>
+        <p>رتّب المنتجات بالمساهمة <strong>لكل ساعة عمل</strong> لا بالسعر: <span class="mono">RELIC 487</span> ← <span class="mono">MARK 383</span> ← <span class="mono">MONOLITH 179</span> ← <span class="mono">SENTINEL 168</span> ← <span class="mono">ARCHETYPE 137</span>. المجسم الرائد الأغلى هو <strong>الأقل ربحية لكل ساعة</strong> — ودوره بناء السمعة لا تمويلها. من يعكس هذا الترتيب يعمل ٦٠ ساعة أسبوعيًا مقابل دخل ضعيف.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 ============================================================ -->
+<section class="sec" id="s07">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">07 / 27</span>
+      <h2>خط إنتاج الذكاء الاصطناعي</h2>
+      <p class="sec-kicker small">أربع عشرة مرحلة. اضغط أي مرحلة لترى الأداة والزمن ومن يقوم بها فعلًا.</p>
+    </div>
+
+    <div class="legend rv">
+      <span><i style="background:var(--resin)"></i>الآلة تقوم بها</span>
+      <span><i style="background:var(--bronze)"></i>يدك تقوم بها — غير قابلة للأتمتة</span>
+    </div>
+
+    <div class="rv">
+      <div class="pipe" role="tablist" id="pipeTabs"></div>
+      <div class="pipe-panel" id="pipePanel"></div>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:30px">
+      <h3>فحص الواقع الإنتاجي — الإجابة الصريحة</h3>
+      <p>هل يمكن فعلًا الانتقال من <span class="mono">Image → AI 3D → Printable Collectible</span>؟ <strong>نعم، لكن ليس تلقائيًا.</strong> الأرقام الصادقة:</p>
+      <ul>
+        <li><strong>١٫٥ – ٣ ساعات</strong> عمل بشري إلزامي لتحويل أي مجسم مولَّد بالذكاء الاصطناعي إلى ملف قابل للطباعة بمقاس ٢٠ سم (فحص الإحكام، سماكة الجدران، المقياس، الهندسة المعطوبة).</li>
+        <li><strong>٢ – ٦ ساعات</strong> إضافية نحت يدوي إذا أردت أن تبدو القطعة <em>مصمَّمة</em> لا <em>مولَّدة</em>. هذه الساعات هي منتجك.</li>
+        <li><strong>٦٠٪</strong> تقريبًا هو ما يوفّره الذكاء الاصطناعي من زمن النمذجة — يحذف الصفحة البيضاء والكتلة الأولية، ولا يحذف الحرفة.</li>
+      </ul>
+
+      <h3>أوضاع الفشل التي ستقابلها فعليًا</h3>
+      <ul>
+        <li><strong>التفاصيل الموجودة في الخامة فقط (Texture) لا وجود لها في الهندسة</strong> — وهي غير مرئية تمامًا في الطباعة بالريزن. أخطر وأشيع فشل: رندر مبهر يعطي مجسمًا أملس.</li>
+        <li><strong>الأصابع واليدان</strong> — تخرج ملتحمة أو مشوّهة. صمّم شخصيات بقفازات أو أيدٍ مبسّطة.</li>
+        <li><strong>النتوءات الرفيعة</strong> (سيوف، قرون، أحزمة) تخرج أرفع من قابلية الطباعة. اعزلها كأجزاء منفصلة بخامة Tough.</li>
+        <li><strong>الالتحام</strong> بين الأطراف والجسم — يحتاج فصلًا يدويًا في Blender.</li>
+        <li><strong>انجراف المقياس والأصداف غير المُحكمة</strong> عند التقاطعات — يُعالَج بـ3D Print Toolbox.</li>
+      </ul>
+
+      <div class="verdict">
+        <span class="eyebrow">القاعدة التي تحمي جودتك</span>
+        <p>ولّد <strong>الظلال الخارجية (Silhouettes) أولًا</strong>، لا الرندرات المفصّلة. المقتنى يُقرأ من مترين بظلّه الخارجي، لا بتفاصيل وجهه. إذا كان الظل غير مميز، لن ينقذه أي تفصيل لاحق، وستكون قد أهدرت ست ساعات نحت على شكل ميت.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 ============================================================ -->
+<section class="sec" id="s08">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">08 / 27</span>
+      <h2>أدوات الذكاء الاصطناعي وحزمة البرمجيات</h2>
+      <p class="sec-kicker small">مقارنة موجّهة للطباعة، لا قائمة مزايا. الأسعار مُتحقَّق منها في سبتمبر ٢٠٢٦.</p>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>الأداة</th><th class="n">السعر</th><th>جودة الهندسة</th><th>الطوبولوجيا</th><th>ترخيص تجاري</th><th>صالحة للطباعة؟</th><th>التدخل اليدوي</th><th>الحكم</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Tripo</strong></td><td class="n">$19.9/شهر<br><span class="small">$13.93 سنويًا</span></td>
+            <td>عالية للشخصيات</td><td>Quad نظيفة — الأفضل</td>
+            <td>مدفوع فقط · <strong>المجاني = CC BY 4.0 غير تجاري</strong></td>
+            <td><span class="pill p-yes">نعم</span></td><td>متوسط</td>
+            <td><strong>الأساسي السحابي.</strong> أسرع وأنظف مخرج للكتل الأولية للشخصيات.</td>
+          </tr>
+          <tr>
+            <td><strong>Meshy</strong></td><td class="n">$20/شهر<br><span class="small">Studio $60</span></td>
+            <td>عالية</td><td>جيدة</td>
+            <td>مدفوع فقط · <strong>المجاني عام ويستطيع غيرك استخدام مجسمك</strong></td>
+            <td><span class="pill p-yes">الأفضل</span></td><td>منخفض</td>
+            <td>أعلى نسبة نجاح في التقطيع وتصدير 3MF. بديل ممتاز.</td>
+          </tr>
+          <tr>
+            <td><strong>Hunyuan3D 2.1</strong></td><td class="n">مجاني · مفتوح</td>
+            <td>عالية جدًا · PBR</td><td>متوسطة</td>
+            <td>مفتوح مع استثناءات إقليمية (الاتحاد الأوروبي/بريطانيا/كوريا) — <strong>السعودية غير مستثناة</strong></td>
+            <td><span class="pill p-yes">نعم</span></td><td>متوسط</td>
+            <td><strong>الأساسي المحلي</strong> إن توفّر RTX 4090. تكلفة حدية صفر.</td>
+          </tr>
+          <tr>
+            <td><strong>TRELLIS</strong></td><td class="n">مجاني · MIT</td>
+            <td>هندسة ممتازة</td><td>جيدة</td><td>MIT — الأوضح والأأمن</td>
+            <td><span class="pill p-yes">نعم</span></td><td>منخفض–متوسط</td>
+            <td>الأفضل للأشكال الصلبة والأجسام. ترخيصه الأنظف قانونيًا.</td>
+          </tr>
+          <tr>
+            <td><strong>Rodin / Hyper3D</strong></td><td class="n">$30 – $120/شهر</td>
+            <td>أجمل خامات</td><td>موجّهة للرندر</td><td>مدفوع</td>
+            <td><span class="pill p-no">إصلاح مطلوب</span></td><td>مرتفع</td>
+            <td><strong>تخطَّه للطباعة.</strong> تصديره يحتاج إصلاح حواف غير مُحكمة باستمرار.</td>
+          </tr>
+          <tr>
+            <td><strong>Stable Fast 3D / InstantMesh</strong></td><td class="n">مجاني</td>
+            <td>منخفضة</td><td>ضعيفة</td><td>مفتوح</td>
+            <td><span class="pill p-wait">اختبار فقط</span></td><td>مرتفع جدًا</td>
+            <td>مفيد لاختبار الظلال الخارجية بسرعة، لا لمنتج.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:28px">
+      <h3>محلي أم سحابي؟</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>المعيار</th><th>محلي (RTX 4090 · 64GB · Win 11)</th><th>سحابي</th></tr></thead>
+          <tbody>
+            <tr><td>التكلفة</td><td><span class="pill p-yes">صفر حدّي</span> بعد امتلاك الجهاز</td><td>75–300 ﷼/شهر</td></tr>
+            <tr><td>الزمن</td><td>10–25 ثانية للمجسم · Hunyuan3D على 24GB</td><td>مشابه، مع طوابير في الخطط الأدنى</td></tr>
+            <tr><td>عدد التكرارات</td><td><span class="pill p-yes">غير محدود</span> — وهذا الأهم فنيًا</td><td>محدود بالنقاط</td></tr>
+            <tr><td>الخصوصية</td><td><span class="pill p-yes">حاسم</span> — صور العملاء لا تغادر الغرفة</td><td>نقل بيانات شخصية خارج المملكة</td></tr>
+            <tr><td>سهولة الإعداد</td><td>متوسطة — ComfyUI أو المستودع الرسمي، يوم عمل</td><td><span class="pill p-yes">فوري</span></td></tr>
+            <tr><td>القابلية للتوسع</td><td>محدودة بجهاز واحد (والجهاز مشغول بالرندر)</td><td><span class="pill p-yes">مرنة</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="verdict" style="margin-top:16px">
+        <span class="eyebrow">القرار</span>
+        <p><strong>محلي كأساس + مقعد سحابي واحد كتأمين.</strong> والنقطة الخفية: معالجة صور العملاء محليًا تحوّل كرت الشاشة من «مصروف» إلى <strong>أصل امتثالي</strong> يحلّ مشكلة نقل البيانات الشخصية في منتج ARCHETYPE من جذورها.</p>
+      </div>
+
+      <h3>الحد الأدنى الاحترافي من البرمجيات</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>البرنامج</th><th class="n">التكلفة</th><th>الدور</th><th>القرار</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Blender</strong></td><td class="n">مجاني</td><td>نحت · إصلاح · تجويف · تقسيم · رندر · 3D Print Toolbox</td><td><span class="pill p-yes">اشترِ الوقت لتعلّمه</span> يغطي ٩٠٪</td></tr>
+            <tr><td><strong>Lychee / CHITUBOX</strong></td><td class="n">مجاني</td><td>التقطيع والدعامات</td><td><span class="pill p-yes">ابدأ بالمجاني</span> وارتقِ لـPro عند الدفعات الكبيرة</td></tr>
+            <tr><td><strong>Nomad Sculpt</strong></td><td class="n">≈ $20 مرة واحدة</td><td>نحت بالإصبع على iPad</td><td><span class="pill p-yes">اشترِه</span> إن كان لديك iPad — أسرع بكثير من الفأرة</td></tr>
+            <tr><td><strong>ZBrush</strong></td><td class="n">≈ 4,000+ ﷼</td><td>نحت احترافي</td><td><span class="pill p-no">لا تشترِ</span> Blender كافٍ في هذا الحجم. أعد النظر في الشهر ١٢</td></tr>
+            <tr><td><strong>Plasticity</strong></td><td class="n">≈ $149 مرة واحدة</td><td>أسطح صلبة دقيقة</td><td><span class="pill p-wait">مؤجّل</span> فقط إن أصبحت القطع المنتَجية خطًا مستقلًا</td></tr>
+            <tr><td><strong>Meshmixer وبدائله</strong></td><td class="n">مجاني</td><td>إصلاح الشبكات</td><td><span class="pill p-no">غير لازم</span> استُبدل بـBlender + أدوات الإصلاح في Lychee</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small" style="margin-top:12px"><strong>إجمالي إنفاق البرمجيات: صفر إلى ٣٥٠ ريالًا.</strong> هذا أحد أكبر مواضع التوفير مقارنة بالدراسة السابقة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ============================================================ -->
+<section class="sec" id="s09">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">09 / 27</span>
+      <h2>العتاد — الطابعة والحجم والخامات</h2>
+      <p class="sec-kicker small">ليس أعلى المواصفات. أفضل آلة عمل لاستوديو يديره شخص واحد.</p>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>الطابعة</th><th class="n">السعر التقريبي</th><th>حجم البناء</th><th>ما يهمّ تجاريًا</th><th>مخاطر التوقف</th><th>الحكم</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Elegoo Saturn 4 Ultra 12K</strong></td><td class="n">≈ 3,250 ﷼<br><span class="small">Amazon.sa</span></td><td class="n">218×122×220 مم</td>
+            <td>تحرير بالإمالة يخفض قوة النزع · حوض مُسخَّن · شاشة سلعة متوفرة (350–550 ﷼) · قطع غيار الأسهل إقليميًا · مجتمع ضخم = حلول أسرع</td>
+            <td><span class="pill p-yes">منخفض</span></td>
+            <td><strong>الاختيار الأول.</strong> الفرق 12K↔16K غير مرئي بعد البرايمر والطلاء على ٢٤ سم.</td>
+          </tr>
+          <tr>
+            <td>Elegoo Saturn 4 Ultra 16K</td><td class="n">≈ 3,750 ﷼</td><td class="n">211×118×220 مم</td>
+            <td>14×19 ميكرون · 150 مم/س · كاميرا AI للمراقبة · موثوقية موثّقة عبر 60,000+ دورة تحرير</td>
+            <td><span class="pill p-yes">منخفض</span></td>
+            <td>ممتازة — لكن ضع الـ٥٠٠ ريال فرقًا في <strong>التغليف</strong> بدلًا من الدقة.</td>
+          </tr>
+          <tr>
+            <td>Anycubic Photon Mono M7 Pro</td><td class="n">≈ $549–599</td><td class="n">كبير</td>
+            <td>14K · 170 مم/س · إضاءة COB منتظمة</td><td><span class="pill p-wait">متوسط</span></td>
+            <td>سريعة وجيدة، لكن دعم وقطع غيار Anycubic إقليميًا أضعف.</td>
+          </tr>
+          <tr>
+            <td>Phrozen Sonic Mighty Revo</td><td class="n">أعلى</td><td class="n">كبير</td>
+            <td>أعلى كثافة بكسل · استبدال الشاشة الأسهل · بنية متينة</td><td><span class="pill p-wait">متوسط</span></td>
+            <td>الأفضل للتفاصيل الدقيقة، لكن التوفّر المحلي أرق.</td>
+          </tr>
+          <tr>
+            <td>Formlabs Form 4</td><td class="n">15,000+ ﷼</td><td class="n">متوسط</td>
+            <td>أفضل موثوقية ودعم في السوق</td><td><span class="pill p-yes">الأدنى</span></td>
+            <td><span class="pill p-no">مرفوضة</span> الريزن الاحتكاري يكلّف ٥–٨ أضعاف ويقتل اقتصاديات الوحدة.</td>
+          </tr>
+          <tr>
+            <td>HeyGears · UniFormation · Creality</td><td class="n">متفاوت</td><td class="n">متفاوت</td>
+            <td>آلات جيدة تقنيًا</td><td><span class="pill p-no">مرتفع</span></td>
+            <td><span class="pill p-no">مرفوضة</span> بصمة خدمة ضعيفة في السعودية. التوقف أغلى من فرق السعر.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:28px">
+      <h3>استراتيجية الحجم — دراسة اقتصادية</h3>
+      <p>ثلاثة خيارات: طابعة متوسطة، أو كبيرة الحجم، أو اثنتان متوسطتان. الحساب حاسم:</p>
+      <ul>
+        <li><strong>مجسم ٢٤ سم يُقسَّم إلى أربعة أجزاء تدخل كلها في لوح ١٠ إنش.</strong> والتقسيم مطلوب أصلًا — للوصول بالفرشاة إلى المناطق الداخلية، ولتوجيه دعامات أنظف. أي أن القطع ليس تنازلًا، بل ممارسة إنتاجية صحيحة.</li>
+        <li><strong>الطابعة الكبيرة تكلّف ٢٫٥–٣ أضعاف، وفشلها يكلّف ٣ أضعاف الريزن.</strong> فشل واحد في لوح كبير قد يبتلع ٤٠٠ جرام.</li>
+        <li><strong>طابعتان متوسطتان تتفوقان على واحدة كبيرة</strong> في الإنتاجية وفي الاحتياط عند العطل — لكن فقط بعد وجود طاقة تشطيب تستوعب مخرجاتهما.</li>
+      </ul>
+      <div class="verdict">
+        <span class="eyebrow">الترتيب الصحيح</span>
+        <p>طابعة متوسطة واحدة ← <strong>شخص للتشطيب</strong> ← طابعة متوسطة ثانية. <strong>لا طابعة كبيرة الحجم في السنة الأولى إطلاقًا.</strong> السبب في القسم ١٥: الطابعة تنتج أضعاف ما تستطيع يداك تشطيبه.</p>
+      </div>
+
+      <h3>الخامات — ثلاثة أنواع لثلاث وظائف</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>النوع</th><th>الهشاشة</th><th>السنفرة والطلاء</th><th>التفاصيل</th><th class="n">السعر/كجم</th><th>الاستخدام في الخط</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ABS-Like</strong></td><td>منخفضة</td><td><span class="pill p-yes">ممتازة</span></td><td>عالية</td><td class="n">≈ 150 ﷼</td><td><strong>الجسم الأساسي</strong> لكل القطع</td></tr>
+            <tr><td><strong>Tough / Engineering</strong></td><td>الأدنى</td><td>جيدة</td><td>عالية</td><td class="n">≈ 200–260 ﷼</td><td><strong>الأجزاء الرفيعة</strong> والأذرع والعناصر المعرّضة للكسر في الشحن</td></tr>
+            <tr><td><strong>مصبوغ / لؤلؤي</strong></td><td>متوسطة</td><td>لا تُسنفر</td><td>عالية</td><td class="n">≈ 200 ﷼</td><td><strong>RELIC</strong> — اللون داخل المادة، بلا طلاء</td></tr>
+            <tr><td>قياسي (Standard)</td><td><span class="pill p-no">مرتفعة</span></td><td>متوسطة</td><td>عالية</td><td class="n">≈ 110 ﷼</td><td>اختبارات الطباعة فقط · يصفرّ ويتكسّر</td></tr>
+            <tr><td>قابل للغسل بالماء</td><td>مرتفعة</td><td>متوسطة</td><td>جيدة</td><td class="n">≈ 140 ﷼</td><td><span class="pill p-no">غير موصى به</span> يبدو أسهل، لكنه ينتج <strong>ماءً ملوّثًا</strong> التخلص منه في شقة أسوأ من الكحول</td></tr>
+            <tr><td>نباتي المصدر</td><td>متوسطة</td><td>جيدة</td><td>جيدة</td><td class="n">≈ 180 ﷼</td><td>خيار جيد للرائحة إن كانت الشقة ضيقة التهوية</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warnbox" style="margin-top:16px">
+        <span class="eyebrow">حقيقة تفرض قرارًا في الهوية</span>
+        <p><strong>كل الريزن يصفرّ تحت الأشعة فوق البنفسجية.</strong> لذلك: طبقة كلير بمانع UV إلزامية على كل قطعة تخرج من الاستوديو، والمنتجات البيضاء والكريمية <strong>مخاطرة</strong>. لوحة ألوان العلامة يجب أن تميل للدرجات المتوسطة والداكنة والمعدنية — <strong>هذا قرار خامات، لا قرار ذوق.</strong> وتخزين الريزن فوق ٣٠°م يفسده، وصيف الرياض يفرض خزانة باردة أو صندوق عازل.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ============================================================ -->
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">10 / 27</span>
+      <h2>المشتريات — التكلفة الواصلة</h2>
+      <p class="sec-kicker small">لا يُقال «هذا أرخص» إلا بعد جمع السعر + الشحن + الضريبة + الجمارك + رسوم الدفع.</p>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-bottom:20px">
+      <div class="warnbox">
+        <span class="eyebrow">شفافية المصادر — اقرأ هذا قبل الجدول</span>
+        <p>مواقع التجزئة السعودية (Amazon.sa وarkaki وغيرها) <strong>محجوبة عن أداة التصفح في هذه الجلسة</strong>، فلم أستطع فتح صفحات المنتجات مباشرة. الأسعار أدناه مستخرجة من نتائج بحث عامة بتاريخ <span class="mono">2026-09-17</span> وهي <strong>نطاقات للتخطيط لا عروض أسعار</strong>. تحقّق من كل سطر قبل الشراء — الفروقات تتحرك أسبوعيًا، والجمعة البيضاء ونهاية العام تُنزل أسعار الطابعات ١٥–٢٥٪.</p>
+      </div>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>البند</th><th>الموديل المحدد</th><th class="n">سعر السعودية</th><th class="n">أرخص بديل</th><th class="n">الشحن</th><th class="n">ض.ق.م</th><th>الضمان</th><th>المورّد</th><th>اشترِ الآن؟</th></tr></thead>
+        <tbody>
+          <tr><td>الطابعة</td><td>Elegoo Saturn 4 Ultra 12K</td><td class="n">≈ 3,250 ﷼</td><td class="n">مستعملة: 1,400–2,000 ﷼</td><td class="n">مجاني غالبًا</td><td class="n">مشمولة</td><td>سنة (المحلي)</td><td>Amazon.sa · Arkaki · Voxel</td><td><span class="pill p-wait">بعد ١٥ طلبًا مسبقًا</span></td></tr>
+          <tr><td>الطابعة (بديل)</td><td>Saturn 4 Ultra 16K</td><td class="n">≈ 3,750 ﷼</td><td class="n">—</td><td class="n">مجاني غالبًا</td><td class="n">مشمولة</td><td>سنة</td><td>Amazon.sa</td><td><span class="pill p-no">لا — الفرق غير مرئي</span></td></tr>
+          <tr><td>غسل وتصليب</td><td>ELEGOO Mercury Plus 3.0</td><td class="n">≈ 700–950 ﷼</td><td class="n">بديل يدوي: 280 ﷼</td><td class="n">مجاني</td><td class="n">مشمولة</td><td>سنة</td><td>Amazon.sa</td><td><span class="pill p-wait">Tier 2</span></td></tr>
+          <tr><td>بديل الغسل اليدوي</td><td>دلوان 5 لتر محكمان + خلاط مغناطيسي + مصباح UV 54W 405nm + قرص دوّار</td><td class="n">≈ 280 ﷼</td><td class="n">—</td><td class="n">محلي</td><td class="n">مشمولة</td><td>—</td><td>SACO · AliExpress · متاجر محلية</td><td><span class="pill p-yes">نعم — Tier 1</span></td></tr>
+          <tr><td>ريزن أساسي</td><td>ELEGOO ABS-Like 3.0+ رمادي 1kg</td><td class="n">≈ 150 ﷼/كجم</td><td class="n">استيراد بالجملة 4kg+</td><td class="n">محلي</td><td class="n">مشمولة</td><td>—</td><td>Amazon.sa · CubicSky · Arkaki</td><td><span class="pill p-yes">2 كجم فقط</span></td></tr>
+          <tr><td>ريزن متين</td><td>Siraya Tech Blu / Elegoo Tough</td><td class="n">≈ 200–260 ﷼/كجم</td><td class="n">—</td><td class="n">محلي</td><td class="n">مشمولة</td><td>—</td><td>CubicSky · Amazon.sa</td><td><span class="pill p-wait">1 كجم عند المنتج الثاني</span></td></tr>
+          <tr><td>كحول IPA 99٪</td><td>5 لتر</td><td class="n">≈ 110–140 ﷼</td><td class="n">موردون صناعيون بالبرميل</td><td class="n">محلي</td><td class="n">مشمولة</td><td>—</td><td>موردون كيميائيون · متاجر صناعية بالرياض</td><td><span class="pill p-yes">نعم</span></td></tr>
+          <tr><td>شفط وتهوية</td><td>مروحة إنلاين 150 مم + مجرى + لوح نافذة</td><td class="n">≈ 350 ﷼</td><td class="n">—</td><td class="n">محلي</td><td class="n">مشمولة</td><td>—</td><td>SACO · متاجر التكييف · AliExpress</td><td><span class="pill p-yes">إلزامي</span></td></tr>
+          <tr><td>كمامة أبخرة</td><td>3M 6200 + خراطيش 6001 عضوية</td><td class="n">≈ 180–220 ﷼</td><td class="n">—</td><td class="n">محلي</td><td class="n">مشمولة</td><td>—</td><td>موردو السلامة بالرياض · Amazon.sa</td><td><span class="pill p-yes">إلزامي</span></td></tr>
+          <tr><td>قفازات نتريل</td><td>علبة 100 · مقاس L</td><td class="n">≈ 45 ﷼</td><td class="n">—</td><td class="n">محلي</td><td class="n">مشمولة</td><td>—</td><td>صيدليات · موردو السلامة</td><td><span class="pill p-yes">نعم — وليس لاتكس</span></td></tr>
+          <tr><td>خيمة عزل</td><td>Grow tent 60×60×120</td><td class="n">≈ 230 ﷼</td><td class="n">كرتون كبير مبطّن: 0 ﷼</td><td class="n">محلي/AliExpress</td><td class="n">مشمولة</td><td>—</td><td>AliExpress · noon</td><td><span class="pill p-wait">Tier 2</span></td></tr>
+          <tr><td>أدوات تشطيب</td><td>قصّافات · مشرط 11 · مبارد · إسفنج سنفرة 400–2000 · معجون</td><td class="n">≈ 450 ﷼</td><td class="n">—</td><td class="n">محلي</td><td class="n">مشمولة</td><td>—</td><td>SACO · محلات الهوايات · AliExpress</td><td><span class="pill p-yes">نعم</span></td></tr>
+          <tr><td>بخاخات</td><td>برايمر معبّئ + لون + كلير مطفي بمانع UV</td><td class="n">≈ 35–55 ﷼/علبة</td><td class="n">علب السيارات المحلية أرخص</td><td class="n">محلي</td><td class="n">مشمولة</td><td>—</td><td>موردو دهانات السيارات بالرياض</td><td><span class="pill p-yes">نعم</span></td></tr>
+          <tr><td>إيربرش + كمبروسر</td><td>0.3mm dual-action + كمبروسر بخزان وفاصل رطوبة</td><td class="n">≈ 450–650 ﷼</td><td class="n">Fengda/Timbertech من AliExpress</td><td class="n">14–25 يومًا</td><td class="n">15٪ عند الاستيراد</td><td>محدود</td><td>AliExpress · Amazon.sa</td><td><span class="pill p-wait">Tier 2 — ليس الآن</span></td></tr>
+          <tr><td>قواعد أكريليك</td><td>قص ليزر + حفر رقم الإصدار</td><td class="n">≈ 14–30 ﷼/قطعة</td><td class="n">—</td><td class="n">استلام مباشر</td><td class="n">15٪</td><td>—</td><td>ورش القص بالليزر — الصناعية بالرياض</td><td><span class="pill p-yes">تصنيع خارجي</span></td></tr>
+          <tr><td>التغليف</td><td>صندوق صلب مغناطيسي + إسفنج EVA + شهادة</td><td class="n">≈ 40–60 ﷼ محليًا</td><td class="n">≈ 22–35 ﷼ من الصين عند 100–300</td><td class="n">بحري 30–45 يومًا</td><td class="n">15٪ + جمارك</td><td>—</td><td>مطابع الرياض · Alibaba</td><td><span class="pill p-wait">25 وحدة محليًا أولًا</span></td></tr>
+          <tr><td>قطع غيار</td><td>فيلم FEP ×3 · شاشة LCD احتياطية</td><td class="n">≈ 45 ﷼ + 350–550 ﷼</td><td class="n">AliExpress أرخص ٤٠٪</td><td class="n">14–25 يومًا</td><td class="n">15٪</td><td>—</td><td>Amazon.sa · AliExpress</td><td><span class="pill p-yes">FEP نعم · الشاشة لاحقًا</span></td></tr>
+          <tr><td>المتجر</td><td>سلة — باقة النمو</td><td class="n">149 ﷼/شهر</td><td class="n">إنستقرام + فاتورة يدوية: 0 ﷼</td><td class="n">—</td><td class="n">15٪</td><td>—</td><td>salla.sa</td><td><span class="pill p-wait">عند أول ١٠ طلبات</span></td></tr>
+          <tr><td>الذكاء الاصطناعي</td><td>Tripo Professional — سنوي</td><td class="n">≈ 540 ﷼/سنة</td><td class="n">محلي على 4090: 0 ﷼</td><td class="n">—</td><td class="n">—</td><td>—</td><td>tripo3d.ai</td><td><span class="pill p-yes">شهر واحد للاختبار</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:24px">
+      <h3>قاعدة التكلفة الواصلة</h3>
+      <p>قطعة بـ١٠٠ ريال من AliExpress ليست أرخص من قطعة بـ١٣٠ ريالًا من Amazon.sa. الحساب الكامل: <span class="mono">100 + شحن 25 + ض.ق.م 15٪ عند الإدخال + رسوم دفع 2٪ + مخاطرة ضمان (لا استبدال محلي) + انتظار 21 يومًا</span>. النتيجة الفعلية ≈ ١٤٥ ريالًا <em>ومعها احتمال توقف الإنتاج ثلاثة أسابيع</em>.</p>
+      <div class="verdict">
+        <span class="eyebrow">قاعدة الشراء</span>
+        <p><strong>محليًا:</strong> الطابعة، الريزن، الكحول، معدات السلامة، أي شيء يوقف الإنتاج إذا تعطّل. <strong>استيرادًا:</strong> ما يُشترى مرة واحدة وليس حرجًا — الإيربرش، الخيمة، أغلفة FEP الاحتياطية، التغليف بالجملة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 ============================================================ -->
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">11 / 27</span>
+      <h2>ميزانية البداية — أربعة مستويات</h2>
+      <p class="sec-kicker small">اضغط أي مستوى لترى بنوده بالتفصيل، وما الذي تخسره عنده تحديدًا.</p>
+    </div>
+
+    <div class="rv">
+      <div class="tiers" role="tablist" id="tierTabs">
+        <button class="tier-btn" role="tab" data-t="0" aria-selected="false"><span class="amt">700 ﷼</span><span class="nm">TIER 0 — تحقّق قبل الشراء</span></button>
+        <button class="tier-btn" role="tab" data-t="1" aria-selected="false"><span class="amt">6,050 ﷼</span><span class="nm">TIER 1 — أقل استوديو عامل</span></button>
+        <button class="tier-btn" role="tab" data-t="2" aria-selected="true"><span class="amt">9,800 ﷼</span><span class="nm">TIER 2 — الموصى به ★</span></button>
+        <button class="tier-btn" role="tab" data-t="3" aria-selected="false"><span class="amt">24,500 ﷼</span><span class="nm">TIER 3 — التوسّع</span></button>
+      </div>
+      <div class="tablewrap" style="border-top:0">
+        <table id="tierTable"><thead><tr><th>البند</th><th class="n">التكلفة</th><th>ملاحظة القرار</th></tr></thead><tbody id="tierBody"></tbody></table>
+      </div>
+      <div class="tier-loss" id="tierLoss"></div>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:30px">
+      <h3>الحكم على سؤال «هل أحتاج فعلًا ١٥–١٦ ألفًا؟»</h3>
+      <p><strong>لا.</strong> الفارق بين ٩٬٨٠٠ و١٦٬٠٠٠ ليس جودة المنتج النهائي — إنه أربعة بنود تُشترى في الشهر السادس لا الأول:</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>البند المؤجَّل</th><th class="n">التوفير</th><th>متى يصبح شراؤه منطقيًا</th></tr></thead>
+          <tbody>
+            <tr><td>Wash &amp; Cure جاهز</td><td class="n">≈ 650 ﷼</td><td>عند تجاوز ٣٠ قطعة شهريًا — حين يصبح الغسل اليدوي مضيعة وقت لا توفيرًا</td></tr>
+            <tr><td>إيربرش + كمبروسر</td><td class="n">≈ 600 ﷼</td><td>عند إطلاق المنتج الثاني الذي يحتاج تدرجات لونية</td></tr>
+            <tr><td>مخزون ريزن كبير</td><td class="n">≈ 900 ﷼</td><td>أبدًا بالكميات الكبيرة — الريزن له عمر تخزيني وحرارة الرياض تفسده</td></tr>
+            <tr><td>حد أدنى تغليف ٣٠٠ صندوق</td><td class="n">≈ 2,400 ﷼</td><td>بعد بيع ٥٠ قطعة والتأكد من المقاس النهائي للصندوق</td></tr>
+            <tr><td>ZBrush</td><td class="n">≈ 4,000 ﷼</td><td>الشهر ١٢، وغالبًا أبدًا</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="verdict" style="margin-top:16px">
+        <span class="eyebrow">الحد الأدنى المعقول</span>
+        <p><strong>٦٬٠٥٠ ريالًا</strong> هو الحد الأدنى الذي يُنتج منتجًا قابلًا للبيع بسعر ٤٩٠–١٬٢٩٠ ريالًا. وتحته، أنت لا توفّر مالًا — أنت تشتري منتجًا لا يستحق سعره. و<strong>٩٬٨٠٠</strong> هو الرقم الذي أوصي به فعلًا لأنه يشتري <em>الوقت</em>: تشطيبًا أسرع وتغليفًا يبرّر السعر.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 ============================================================ -->
+<section class="sec" id="s12">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">12 / 27</span>
+      <h2>اقتصاديات الوحدة</h2>
+      <p class="sec-kicker small">حرّك المقابض. وقتك ليس مجانيًا — وهو داخل الحساب.</p>
+    </div>
+
+    <div class="calc rv">
+      <div class="calc-in">
+        <div class="preset-row">
+          <button class="preset" data-preset="relic" type="button">RELIC 10cm</button>
+          <button class="preset" data-preset="monolith" type="button">MONOLITH 15cm</button>
+          <button class="preset" data-preset="sentinel" type="button" aria-pressed="true">SENTINEL 24cm</button>
+          <button class="preset" data-preset="mark" type="button">MARK B2B</button>
+        </div>
+
+        <div class="field">
+          <label for="cPrice">سعر البيع <b><span id="vPrice">1290</span> ﷼</b></label>
+          <input type="range" id="cPrice" min="240" max="2600" step="10" value="1290">
+        </div>
+        <div class="field">
+          <label for="cResin">الريزن شاملًا الدعامات <b><span id="vResin">380</span> جم</b></label>
+          <input type="range" id="cResin" min="30" max="700" step="5" value="380">
+        </div>
+        <div class="field">
+          <label for="cResinKg">سعر الريزن <b><span id="vResinKg">150</span> ﷼/كجم</b></label>
+          <input type="range" id="cResinKg" min="100" max="280" step="5" value="150">
+        </div>
+        <div class="field">
+          <label for="cHours">ساعات التشطيب والتجميع <b><span id="vHours">4.0</span> ساعة</b></label>
+          <input type="range" id="cHours" min="0.25" max="10" step="0.25" value="4">
+        </div>
+        <div class="field">
+          <label for="cRate">أجر ساعتك <b><span id="vRate">85</span> ﷼</b></label>
+          <input type="range" id="cRate" min="0" max="200" step="5" value="85">
+        </div>
+        <div class="field">
+          <label for="cPack">التغليف والقاعدة <b><span id="vPack">54</span> ﷼</b></label>
+          <input type="range" id="cPack" min="8" max="140" step="2" value="54">
+        </div>
+        <div class="field">
+          <label for="cDesign">إطفاء التصميم على الإصدار <b><span id="vDesign">70</span> ﷼</b></label>
+          <input type="range" id="cDesign" min="0" max="220" step="5" value="70">
+        </div>
+        <div class="field">
+          <label for="cFail">مخصّص الطباعات الفاشلة <b><span id="vFail">10</span>٪</b></label>
+          <input type="range" id="cFail" min="0" max="30" step="1" value="10">
+        </div>
+      </div>
+
+      <div class="calc-out">
+        <div class="eyebrow">UNIT P&amp;L · per piece</div>
+        <dl class="readout">
+          <dt>ريزن + الفاشل</dt><dd id="oResin">—</dd>
+          <dt>مستهلكات · كحول · قفازات · سنفرة</dt><dd id="oCons">—</dd>
+          <dt>برايمر · طلاء · كلير</dt><dd id="oPaint">—</dd>
+          <dt>تغليف وقاعدة</dt><dd id="oPack">—</dd>
+          <dt>كهرباء · FEP · شاشة · إهلاك الآلة</dt><dd id="oMach">—</dd>
+          <dt><strong>مجموع الخامات</strong></dt><dd id="oMat">—</dd>
+          <div class="sep"></div>
+          <dt>عمالتك</dt><dd id="oLabor">—</dd>
+          <dt>إطفاء التصميم</dt><dd id="oDesign">—</dd>
+          <dt>بوابة الدفع والتوصيل</dt><dd id="oSell">—</dd>
+          <div class="sep"></div>
+          <dt><strong>تكلفة البضاعة المباعة</strong></dt><dd id="oCogs">—</dd>
+          <div class="big"><dt>المساهمة</dt><dd id="oProfit">—</dd></div>
+          <dt>الهامش</dt><dd id="oMargin">—</dd>
+          <dt>المساهمة لكل ساعة عمل</dt><dd id="oPerHour">—</dd>
+          <dt>الخامات كنسبة من السعر</dt><dd id="oMatPct">—</dd>
+        </dl>
+
+        <div class="gauge" aria-hidden="true">
+          <i class="mat" id="gMat" style="width:12%"></i>
+          <i class="lab" id="gLab" style="width:26%"></i>
+          <i class="sell" id="gSell" style="width:4%"></i>
+          <i class="prof" id="gProf" style="width:58%"></i>
+        </div>
+        <div class="gkey">
+          <span><i style="background:var(--resin)"></i>خامات</span>
+          <span><i style="background:var(--bronze-2)"></i>عمالة+تصميم</span>
+          <span><i style="background:var(--muted)"></i>بيع</span>
+          <span><i style="background:var(--bronze)"></i>مساهمة</span>
+        </div>
+
+        <div class="verdict-live" id="oVerdict">—</div>
+      </div>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:34px">
+      <h3>أجر الساعة — لماذا ٨٥ ريالًا</h3>
+      <p>السوق السعودي يسعّر الحرفي المستقل المتخصص عند <span class="mono">150–300 ﷼/ساعة</span>. لكنك في السنة الأولى تبني أصلًا (علامة + ملكية فكرية + بورتفوليو)، لا تبيع ساعات. لذلك: <strong>٨٥ ريالًا للساعة لعمل الإنتاج</strong> (تشطيب، تجميع، تغليف) و<strong>١٥٠ ريالًا للساعة لعمل التصميم</strong> الذي يُطفأ على الإصدار كله. اضبط المقبض على صفر لترى «الربح النقدي» — لكن لا تخدع نفسك: الصفر ليس تكلفتك الحقيقية.</p>
+
+      <h3>سلّم التسعير — متى يصبح المنتج سلعة ومتى يصبح فخامة</h3>
+      <p class="small">اضغط أي سعر.</p>
+    </div>
+
+    <div class="ladder rv" id="ladder" style="margin-top:14px"></div>
+
+    <div class="body-copy measure rv" style="margin-top:26px">
+      <div class="verdict">
+        <span class="eyebrow">قاعدتا التسعير</span>
+        <p>١. <strong>لا تنزل المساهمة لكل ساعة تشطيب تحت ١٥٠ ريالًا</strong> — وإلا احذف المنتج أو أعد تصميمه. ٢. <strong>الخامات ≤ ١٥٪ من سعر البيع</strong> — تجاوزها يعني أن القطعة كبيرة أكثر من اللازم أو مسعّرة أقل من اللازم.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 ============================================================ -->
+<section class="sec" id="s13">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">13 / 27</span>
+      <h2>النموذج المالي — ١٢ شهرًا</h2>
+      <p class="sec-kicker small">ثلاثة سيناريوهات. بدّل بينها وشاهد الأشهر تتغير.</p>
+    </div>
+
+    <div class="chartwrap rv">
+      <div class="chart-head">
+        <div>
+          <div class="eyebrow">MONTHLY REVENUE · SAR</div>
+          <div style="font-family:var(--ff-mono);font-size:1.7rem;font-weight:600;color:var(--bronze);direction:ltr" id="totalRev">—</div>
+          <div class="small" id="totalNote">—</div>
+        </div>
+        <div class="scenarios" role="tablist" id="scenTabs">
+          <button class="scen" role="tab" data-s="cons" aria-selected="false">متحفّظ</button>
+          <button class="scen" role="tab" data-s="base" aria-selected="true">أساسي</button>
+          <button class="scen" role="tab" data-s="grow" aria-selected="false">طلب قوي</button>
+        </div>
+      </div>
+      <div class="bars" id="bars"></div>
+      <div class="chart-foot">
+        <span><i style="background:var(--bronze-2)"></i>تجزئة وتخصيص</span>
+        <span><i style="background:var(--resin)"></i>مؤسسي B2B</span>
+        <span>مرّر المؤشر على أي عمود</span>
+      </div>
+    </div>
+
+    <div class="tablewrap rv" style="margin-top:24px">
+      <table>
+        <thead><tr><th>المؤشر</th><th class="n">متحفّظ</th><th class="n">أساسي</th><th class="n">طلب قوي</th></tr></thead>
+        <tbody>
+          <tr><td>الوحدات شهريًا (متوسط)</td><td class="n">14</td><td class="n">24</td><td class="n">38</td></tr>
+          <tr><td>الإيراد السنوي</td><td class="n">133,000 ﷼</td><td class="n">222,000 ﷼</td><td class="n">388,000 ﷼</td></tr>
+          <tr><td>تكلفة البضاعة (خامات + بيع)</td><td class="n">33,300 ﷼</td><td class="n">53,300 ﷼</td><td class="n">93,100 ﷼</td></tr>
+          <tr><td>الربح الإجمالي</td><td class="n">99,700 ﷼</td><td class="n">168,700 ﷼</td><td class="n">294,900 ﷼</td></tr>
+          <tr><td>الهامش الإجمالي</td><td class="n">75٪</td><td class="n">76٪</td><td class="n">76٪</td></tr>
+          <tr><td>التكاليف الثابتة السنوية</td><td class="n">12,600 ﷼</td><td class="n">15,900 ﷼</td><td class="n">39,400 ﷼<br><span class="small">شامل مشطِّب بدوام جزئي</span></td></tr>
+          <tr><td>الربح التشغيلي <em>قبل</em> راتبك</td><td class="n">87,100 ﷼</td><td class="n">152,800 ﷼</td><td class="n">255,500 ﷼</td></tr>
+          <tr><td>ساعاتك في السنة</td><td class="n">≈ 1,400</td><td class="n">≈ 1,800</td><td class="n">≈ 2,100</td></tr>
+          <tr><td><strong>عائدك الفعلي للساعة</strong></td><td class="n" style="color:var(--danger)">62 ﷼</td><td class="n" style="color:var(--warn)">85 ﷼</td><td class="n" style="color:var(--ok)">122 ﷼</td></tr>
+          <tr><td>نقطة التعادل النقدية</td><td class="n">الشهر 4</td><td class="n">الشهر 3</td><td class="n">الشهر 3</td></tr>
+          <tr><td>استرداد رأس المال (9,800 ﷼)</td><td class="n">الشهر 6</td><td class="n">الشهر 4</td><td class="n">الشهر 4</td></tr>
+          <tr class="tot"><td>تسجيل ض.ق.م إلزامي؟</td><td class="n">لا</td><td class="n">طوعي عند B2B</td><td class="n">نعم — تجاوز 375,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:28px">
+      <h3>الحقيقة غير المريحة في السيناريو الأساسي</h3>
+      <div class="warnbox">
+        <span class="eyebrow">اقرأ هذا مرتين</span>
+        <p>الربح التشغيلي ١٥٢٬٨٠٠ ريال يبدو ممتازًا — <strong>حتى تحسب أن ساعاتك الـ١٬٨٠٠ بسعر ٨٥ ريالًا تساوي ١٥٣٬٠٠٠ ريال</strong>. أي أن <strong>السنة الأولى في السيناريو الأساسي تدفع لك أجر حرفي بدوام كامل وتستردّ رأس المال — ولا تولّد فائضًا.</strong> الفائض الحقيقي يبدأ حين ترتفع نسبة B2B وحين يقوم غيرك بالتشطيب.</p>
+      </div>
+      <p>هذه ليست نتيجة سيئة — هي نتيجة <em>صادقة</em>. مشروع يدفع راتبك من الشهر الرابع ويسترد رأسماله ويبني أصلًا (ملكية فكرية + قائمة عملاء + ملف أعمال مؤسسي) هو مشروع ناجح في سنته الأولى. لكن من يبيعك حلم «أرباح صافية ١٥٠ ألفًا في السنة الأولى» يحذف أجرك من المعادلة.</p>
+
+      <h3>نقطة التعادل — الرقم الوحيد الذي تحتاج حفظه</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>الحساب</th><th class="n">القيمة</th></tr></thead>
+          <tbody>
+            <tr><td>تكاليف ثابتة شهرية (متجر + AI + إعلان + مرافق + إهلاك)</td><td class="n">≈ 1,324 ﷼</td></tr>
+            <tr><td>هامش المساهمة (بعد الخامات وتكاليف البيع)</td><td class="n">76٪</td></tr>
+            <tr><td>تعادل يغطي المصاريف فقط</td><td class="n">≈ 1,742 ﷼/شهر</td></tr>
+            <tr><td>عمالتك عند 150 ساعة شهريًا × 85 ﷼</td><td class="n">12,750 ﷼</td></tr>
+            <tr class="tot"><td><strong>التعادل الذي يدفع لك راتبًا</strong></td><td class="n"><strong>≈ 18,500 ﷼/شهر ≈ 30 قطعة</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 ============================================================ -->
+<section class="sec" id="s14">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">14 / 27</span>
+      <h2>التشغيل — السلامة وخط التشطيب</h2>
+      <p class="sec-kicker small">إعداد يناسب غرفة عمل في شقة بالرياض. ما هو إلزامي وما هو رفاهية.</p>
+    </div>
+
+    <div class="grid g2 rv" style="margin-bottom:28px">
+      <div>
+        <div class="eyebrow" style="color:var(--danger)">MUST HAVE — لا تشغّل الطابعة بدونها</div>
+        <ul class="small" style="margin-top:12px;padding-inline-start:1.1em;display:grid;gap:.5em">
+          <li><strong>شفط يخرج إلى النافذة</strong> — مروحة إنلاين 150 مم، 200–400 م³/س. المكيّف يعيد تدوير الهواء، فالشفط يجب أن يخرج <em>خارج المبنى</em> لا داخل الغرفة.</li>
+          <li><strong>قفازات نتريل دائمًا</strong> — لا لاتكس، الريزن يخترقه.</li>
+          <li><strong>كمامة أبخرة عضوية</strong> (3M 6200 + 6001) عند الصبّ والغسل ولمس غير المُصلَّب.</li>
+          <li><strong>كحول مخزَّن محكمًا بعيدًا عن الحرارة</strong> · ممنوع أي لهب مكشوف · طفاية ABC في الغرفة.</li>
+          <li><strong>صلّب كل النفايات قبل رميها</strong> — القفازات والمناديل وبقايا الريزن تُعرَّض للـUV حتى تتصلّب.</li>
+          <li><strong>ممنوع منعًا باتًا</strong> سكب الريزن أو الكحول في المجاري.</li>
+          <li><strong>محطة التصليب بعيدة عن غرفة النوم</strong> · طقم امتصاص انسكابات جاهز.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow" style="color:var(--resin)">NICE TO HAVE — عند التوسّع</div>
+        <ul class="small" style="margin-top:12px;padding-inline-start:1.1em;display:grid;gap:.5em">
+          <li>خيمة عزل تحتوي الطابعة ومحطة الغسل معًا (تحسّن كفاءة الشفط كثيرًا).</li>
+          <li>فلتر كربون نشط — الأنظمة الصغيرة بكفاءة ٤٠–٦٠٪ فقط، فلا تعتمد عليها بديلًا عن الشفط.</li>
+          <li>جهاز قياس VOC للتأكد لا للطمأنة.</li>
+          <li>منقّي هواء بفلتر كربوني للغرفة المجاورة.</li>
+          <li>غرفة مستقلة — وهي أفضل استثمار سلامة على الإطلاق إن توفّرت.</li>
+        </ul>
+        <p class="small" style="margin-top:12px;color:var(--muted)">قياسات منشورة: إبعاد مصدر الانبعاث من نصف متر إلى مترين، أو استخدام غطاء شفط بفلتر كربون وHEPA، يخفض التعرّض للمركبات العضوية المتطايرة بنسبة <span class="mono">71–84٪</span>.</p>
+      </div>
+    </div>
+
+    <div class="body-copy measure rv">
+      <h3>خط التشطيب — بالأرقام والمنتجات</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th class="n">#</th><th>المرحلة</th><th>الأداة / المنتج</th><th class="n">الزمن</th><th>نقطة الفشل</th></tr></thead>
+          <tbody>
+            <tr><td class="n">1</td><td>الغسل</td><td>حوضان كحول — متسخ ثم نظيف · 3 دقائق لكل حوض</td><td class="n">6 د</td><td>حوض واحد فقط = بقايا لزجة تفسد البرايمر</td></tr>
+            <tr><td class="n">2</td><td>التجفيف والتصليب</td><td>هواء مضغوط ثم UV 405nm · 3–6 دقائق</td><td class="n">8 د</td><td><strong>الإفراط في التصليب يجعل القطعة هشة</strong> — أشيع خطأ المبتدئين</td></tr>
+            <tr><td class="n">3</td><td>إزالة الدعامات</td><td>قصّافة مستوية + مشرط #11 + مبارد</td><td class="n">10–25 د</td><td>النزع قبل التصليب أفضل — القطعة أطرى</td></tr>
+            <tr><td class="n">4</td><td>المعجون</td><td>معجون بلاستيك (Tamiya/Vallejo) أو معجون سيارات نقطي</td><td class="n">5 د + تجفيف</td><td>طبقة سميكة تنكمش وتظهر لاحقًا</td></tr>
+            <tr><td class="n">5</td><td>السنفرة</td><td>400 → 600 → 800 (مبلّلة)</td><td class="n">15–45 د</td><td>القفز فوق درجة يترك خدوشًا يكشفها البرايمر</td></tr>
+            <tr><td class="n">6</td><td>البرايمر</td><td>برايمر معبّئ · طبقتان خفيفتان بفاصل 10 دقائق</td><td class="n">10 د</td><td>طبقة واحدة ثقيلة تُغرق التفاصيل</td></tr>
+            <tr><td class="n">7</td><td>الفحص</td><td>ضوء مائل — يكشف كل عيب خفي</td><td class="n">3 د</td><td>تخطّي هذه الخطوة يعني اكتشاف العيب بعد الطلاء</td></tr>
+            <tr><td class="n">8</td><td>سنفرة مبلّلة نهائية</td><td>1000 → 1500</td><td class="n">10 د</td><td>—</td></tr>
+            <tr><td class="n">9</td><td>اللون الأساسي</td><td>بخاخ أو إيربرش · 3 طبقات رفيعة</td><td class="n">15 د</td><td>الرطوبة في خط الهواء تُنتج بقعًا — فاصل رطوبة إلزامي</td></tr>
+            <tr><td class="n">10</td><td>العنصر المغاير</td><td>ورق معدني · قناع Tamiya · أو جزء منفصل</td><td class="n">15–30 د</td><td>هنا تأتي «الفخامة» — لا من رسم الوجه</td></tr>
+            <tr><td class="n">11</td><td>الكلير</td><td>مطفي أو ساتان <strong>بمانع UV</strong> · طبقتان</td><td class="n">8 د</td><td>بدونه تصفرّ القطعة خلال أشهر</td></tr>
+            <tr><td class="n">12</td><td>التجميع</td><td>غراء CA + مسرّع · إيبوكسي للمفاصل الحاملة · دبابيس نحاس للأذرع</td><td class="n">10–20 د</td><td>CA وحده على مفصل حامل يفشل في الشحن</td></tr>
+            <tr><td class="n">13</td><td>القاعدة والفحص النهائي</td><td>تثبيت · رقم الإصدار · شهادة · تغليف</td><td class="n">10 د</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="verdict" style="margin-top:18px">
+        <span class="eyebrow">قاعدة الانضباط التشغيلي</span>
+        <p>لكل منتج <strong>سقف زمني</strong>: RELIC ≤ ٣٠ دقيقة · MONOLITH ≤ ٩٠ دقيقة · SENTINEL ≤ ٤ ساعات. إذا تجاوزت القطعة سقفها مرتين، <strong>المشكلة في التصميم لا في جدولك — غيّر التصميم.</strong> هذه القاعدة وحدها تفصل بين مشروع قابل للنمو ومشروع يبتلع صاحبه.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 ============================================================ -->
+<section class="sec" id="s15">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">15 / 27</span>
+      <h2>الطاقة الإنتاجية والاختناقات</h2>
+      <p class="sec-kicker small">شخص واحد، ٤٥ ساعة منتجة أسبوعيًا. أين تذهب فعلًا.</p>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>النشاط</th><th class="n">ساعات/أسبوع</th><th>قابل للتفويض؟</th><th>ملاحظة</th></tr></thead>
+        <tbody>
+          <tr><td><strong>التشطيب والتجميع</strong></td><td class="n">18</td><td><span class="pill p-yes">نعم — أولًا</span></td><td><strong>الاختناق رقم ١.</strong> كل شيء آخر ينتظره.</td></tr>
+          <tr><td>التصميم والنحت وهندسة الطباعة</td><td class="n">8</td><td><span class="pill p-no">لا</span></td><td>هذا أنت. هذا الأصل الذي تبنيه.</td></tr>
+          <tr><td>المحتوى والتصوير</td><td class="n">6</td><td><span class="pill p-wait">جزئيًا</span></td><td>التصوير نعم، الحكاية لا.</td></tr>
+          <tr><td>المبيعات وخدمة العملاء والإدارة</td><td class="n">5</td><td><span class="pill p-wait">لاحقًا</span></td><td>ترتفع بحدة مع طلبات التخصيص.</td></tr>
+          <tr><td>تجهيز الطباعة والإشراف</td><td class="n">4</td><td><span class="pill p-yes">نعم</span></td><td>الآلة تعمل بلا إشراف — الوقت هنا للتجهيز فقط.</td></tr>
+          <tr><td>التغليف والشحن</td><td class="n">4</td><td><span class="pill p-yes">نعم</span></td><td>—</td></tr>
+          <tr class="tot"><td>الإجمالي</td><td class="n">45</td><td></td><td>بدوام كامل. بدوام جزئي (٢٠ ساعة) اقسم الناتج على ٢٫٢.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:26px">
+      <h3>السقف الواقعي</h3>
+      <p>بـ<strong>١٨ ساعة تشطيب أسبوعيًا</strong>، المزيج الواقعي: ٦ قطع RELIC (٢٫٧ ساعة) + قطعتا MONOLITH (٢٫٨ ساعة) + قطعتا SENTINEL (٨ ساعات) ≈ ١٣٫٥ ساعة، والباقي هامش أمان للفشل وإعادة العمل.</p>
+      <div class="grid g3" style="margin-top:16px">
+        <div><b class="num" style="display:block;font-size:1.6rem;color:var(--bronze)">10</b><span class="small">قطع أسبوعيًا — السقف الواقعي لشخص واحد</span></div>
+        <div><b class="num" style="display:block;font-size:1.6rem;color:var(--bronze)">40</b><span class="small">قطعة شهريًا كحد أقصى مستدام</span></div>
+        <div><b class="num" style="display:block;font-size:1.6rem;color:var(--bronze)">22,400</b><span class="small">ريال — سقف الإيراد الشهري بلا B2B وبلا مساعد</span></div>
+      </div>
+
+      <h3>لماذا الطابعة ليست الاختناق</h3>
+      <p>لوح الطابعة يُنتج ٤–٨ قطع في ٥–٧ ساعات، ويمكن تشغيل لوحين يوميًا. أي ما يعادل <strong>أضعاف</strong> ما تستوعبه ١٨ ساعة تشطيب. لذلك:</p>
+      <div class="verdict">
+        <span class="eyebrow">ترتيب التوظيف والشراء</span>
+        <p><strong>١. مشطِّب بالساعة (٤٠–٦٠ ﷼/ساعة) — قبل أي معدة.</strong> سنفرة وبرايمر فقط، وهما ٦٠٪ من وقتك. ٢. مصنّع خارجي للقواعد والحفر. ٣. طابعة ثانية — فقط بعد وجود المشطِّب. ٤. نحّات مستقل عند تراكم طلبات التخصيص. ٥. دعم تغليف وشحن في موسم الذروة.</p>
+      </div>
+
+      <div class="warnbox">
+        <span class="eyebrow">اختناق خفي: طلب B2B واحد يُجمّد التجزئة</span>
+        <p>طلب ٤٠ قطعة MARK = ٦٤ ساعة تشطيب = <strong>ثلاثة أسابيع ونصف من طاقتك كاملة</strong>. لذلك تُجدول طلبات B2B كـ«حملات» تُوقف الإصدارات مؤقتًا، أو تُنفَّذ بمساعد مؤقت. تسليم موعد B2B متأخر يكلّفك العميل والسمعة معًا.</p>
+      </div>
+
+      <h3>نقطة تحوّل إنتاجية مهمة</h3>
+      <p class="small">فوق <strong>٥٠ نسخة من نفس الجزء</strong>، يصبح الصبّ من قالب سيليكون أرخص من الطباعة: ثلث تكلفة المادة تقريبًا وخُمس زمن الآلة. هذا يفتح طلبات B2B من ١٠٠ قطعة فأكثر دون شراء طابعة ثانية. لا تحتاجه في السنة الأولى، لكن اعرف أنه موجود قبل أن ترفض طلبًا كبيرًا.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16 ============================================================ -->
+<section class="sec" id="s16">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">16 / 27</span>
+      <h2>التغليف وتجربة الفتح</h2>
+      <p class="sec-kicker small">الصندوق هو أول ما يلمسه العميل. وهو أرخص وسيلة لتبرير السعر.</p>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>العنصر</th><th class="n">التكلفة/وحدة</th><th>الأثر على القيمة المُدركة</th><th>الحكم</th></tr></thead>
+        <tbody>
+          <tr><td>صندوق صلب بإغلاق مغناطيسي</td><td class="n">22–35 ﷼ (الصين، 100+)<br>40–60 ﷼ (الرياض)</td><td>مرتفع جدًا</td><td><span class="pill p-yes">أساسي</span></td></tr>
+          <tr><td>إسفنج EVA مفرّغ حسب القطعة</td><td class="n">8–14 ﷼</td><td>مرتفع — ويمنع كسر الشحن</td><td><span class="pill p-yes">أساسي</span></td></tr>
+          <tr><td>شهادة أصالة مرقّمة يدويًا</td><td class="n">2–4 ﷼</td><td><strong>الأعلى عائدًا على التكلفة في القائمة كلها</strong></td><td><span class="pill p-yes">أساسي</span></td></tr>
+          <tr><td>رقم تسلسلي محفور على القاعدة</td><td class="n">داخل تكلفة القاعدة</td><td>مرتفع — يحوّل النسخة إلى «قطعة»</td><td><span class="pill p-yes">أساسي</span></td></tr>
+          <tr><td>بطاقة حكاية الشخصية</td><td class="n">1.5–3 ﷼</td><td>مرتفع — تبني عالم الـIP</td><td><span class="pill p-yes">أساسي</span></td></tr>
+          <tr><td>ملصق ختم + ملصق هولوغرافي</td><td class="n">1–2 ﷼</td><td>متوسط — طقس فتح</td><td><span class="pill p-yes">رخيص وفعّال</span></td></tr>
+          <tr><td>قماش تغليف داخلي</td><td class="n">3–6 ﷼</td><td>متوسط</td><td><span class="pill p-wait">للقطعة الرائدة فقط</span></td></tr>
+          <tr><td>طباعة فويل / نقش بارز</td><td class="n">+6–12 ﷼ · حد أدنى 300</td><td>مرتفع</td><td><span class="pill p-wait">بعد ٥٠ مبيعة</span></td></tr>
+          <tr><td>رمز QR لصفحة القطعة</td><td class="n">≈ 0 ﷼</td><td>متوسط — يربط المادي بالرقمي</td><td><span class="pill p-yes">مجاني، افعله</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:24px">
+      <p><strong>الميزانية المستهدفة:</strong> ٣٠–٤٥ ريالًا للقطعة الرائدة (٢٫٥–٣٫٥٪ من سعر ١٬٢٩٠) و١٢–١٨ ريالًا للقطعة الصغيرة. أي تجاوز لهذه النسب هو إنفاق على الكرتون بدل النحت.</p>
+      <h3>المورّدون</h3>
+      <ul>
+        <li><strong>الرياض:</strong> مطابع متخصصة في الصناديق الفاخرة تقبل كميات صغيرة — تسليم ٥–١٠ أيام، سعر أعلى ٤٠–٦٠٪، وميزة ضبط المقاس بالتجربة. <strong>ابدأ هنا لأول ٢٥–٥٠ وحدة.</strong></li>
+        <li><strong>الصين (Alibaba):</strong> حد أدنى شائع ٥٠٠–١٬٠٠٠ صندوق لدى المصانع الكبيرة، لكن موردين كثيرين يقبلون ١٠٠–٣٠٠ بسعر أعلى قليلًا. شحن بحري ٣٠–٤٥ يومًا + ١٥٪ ضريبة + جمارك. <strong>انتقل هنا بعد تثبيت المقاس نهائيًا.</strong></li>
+        <li><strong>الإسفنج المفرّغ:</strong> ورش القص بالليزر ذاتها التي تقص القواعد تقص الـEVA — مورّد واحد لبندين.</li>
+      </ul>
+      <div class="warnbox">
+        <span class="eyebrow">خطأ مكلف شائع</span>
+        <p>طلب ٣٠٠ صندوق قبل تثبيت مقاس المنتج النهائي. تغيير ارتفاع المجسم سنتيمترين يجعل ٣٠٠ صندوق نفاية بـ٦٬٦٠٠ ريال. <strong>ثبّت المقاس بخمس عينات محلية أولًا.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17 ============================================================ -->
+<section class="sec" id="s17">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">17 / 27</span>
+      <h2>العلامة — الاسم والهوية والملكية الفكرية</h2>
+      <p class="sec-kicker small">اضغط أي اسم لترى منطقه، لا مجرد وقعه.</p>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-bottom:18px">
+      <p>القيد: لا <span class="mono">3D</span> ولا <span class="mono">Print</span> ولا <span class="mono">Resin</span> ولا <span class="mono">Models</span>. الاتجاهات الستة أدناه مبنية على <strong>حقول معنى</strong>، لا على أصوات جميلة.</p>
+    </div>
+
+    <div class="names rv" id="names"></div>
+    <div class="name-detail rv" id="nameDetail">اختر اسمًا.</div>
+
+    <div class="body-copy measure rv" style="margin-top:30px">
+      <div class="verdict">
+        <span class="eyebrow">الترشيح</span>
+        <p><strong>سَبَك / SABAK</strong> — الفعل العربي لصهر المعدن وصبّه في قالب. يصف العملية دون ذكر التقنية، ينطق بالعربية والإنجليزية بنفس السهولة، ويحمل ثقل الحرفة لا خفّة التقنية. البديلان: <strong>حَجَر / HAJAR</strong> و<strong>TUFF</strong>.</p>
+      </div>
+      <div class="warnbox">
+        <span class="eyebrow">قبل أي إنفاق على الهوية</span>
+        <p>ابحث عن الاسم في سجل العلامات التجارية لدى <strong>الهيئة السعودية للملكية الفكرية</strong>، وتحقّق من توفّر النطاق والحسابات. اسم مأخوذ يعني إعادة بناء الهوية والتغليف من الصفر بعد ستة أشهر.</p>
+      </div>
+
+      <h3>بناء الملكية الفكرية الأصلية</h3>
+      <ul>
+        <li><strong>عالم واحد، لا شخصيات متفرقة.</strong> مكان أو أسطورة واحدة تنتمي إليها كل الشخصيات، فيصبح المقتنى الثاني امتدادًا للأول بدل أن يكون منتجًا جديدًا يحتاج إقناعًا من الصفر.</li>
+        <li><strong>ظلّ خارجي توقيعي:</strong> عنصر شكلي واحد يتكرر في كل شخصية (غطاء رأس، انحناءة كتف، قاعدة بزاوية ثابتة). هذا ما يجعل الناس يتعرفون على عملك قبل قراءة الاسم.</li>
+        <li><strong>إصدارات مرقّمة:</strong> «٠١٧ / ٠٥٠» بالحفر على القاعدة وباليد على الشهادة. الندرة مُصمَّمة لا مُدَّعاة — وإذا قلت ٥٠ فلا تطبع ٥١ أبدًا.</li>
+        <li><strong>إصدارات موسمية (Drops):</strong> أربع مرات سنويًا. الإيقاع نفسه يصنع الترقّب.</li>
+        <li><strong>تنويعات لونية:</strong> أرخص طريقة لإعادة بيع نفس الملف — تصميم صفر، إيراد كامل.</li>
+        <li><strong>تعاونات مع فنانين:</strong> فنان تشكيلي أو خطّاط سعودي يعيد تفسير شخصيتك في إصدار من ٢٥. يُقاسم الجمهور ويبني المصداقية الفنية.</li>
+      </ul>
+      <div class="notebox">
+        <p class="small"><strong>الابتعاد عن الترخيص:</strong> لا Marvel ولا DC ولا Pokémon ولا Disney ولا أي IP لأنمي أو ألعاب. ليس تحفّظًا قانونيًا فقط — بل لأن بيع نسخة من شخصية شخص آخر يبقيك بائع سلعة إلى الأبد. ملكيتك الفكرية هي الفرق بين مشروع له قيمة بيعية ومشروع يتوقف حين تتوقف أنت.</p>
+      </div>
+
+      <h3>الهوية البصرية</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>العنصر</th><th>الاتجاه</th><th>ما يجب تجنّبه</th></tr></thead>
+          <tbody>
+            <tr><td>الخطوط</td><td>خط كوفي حديث للعناوين (نحتي، هندسي) + خط سانس تقني للمتن + خط أحادي المسافة للأرقام والمواصفات</td><td>خطوط مزخرفة · خطوط ألعاب · Inter لكل شيء</td></tr>
+            <tr><td>الألوان</td><td>جرافيت دافئ · عظمي · برونز مؤكسد · أخضر رمادي (لون الريزن الخام)</td><td>RGB · نيون · تدرّجات بنفسجية-زرقاء</td></tr>
+            <tr><td>الشعار</td><td>ختم صانع — حرف واحد داخل إطار، يبدو مطبوعًا بالضغط لا مرسومًا</td><td>أيقونة مكعب ثلاثي الأبعاد · طابعة مرسومة</td></tr>
+            <tr><td>التغليف</td><td>ورق غير مصقول · نقش غائر بلا حبر · طباعة بلون واحد</td><td>لمعان · سيلوفان · ألوان متعددة</td></tr>
+            <tr><td>التصوير</td><td>مصدر ضوء قاسٍ واحد · ظل عميق · خلفية داكنة · لقطة ماكرو للسطح تُظهر الخامة</td><td>إضاءة مسطحة · خلفية بيضاء · صور المنتج الشائعة</td></tr>
+            <tr><td>CGI</td><td>دوران على خلفية فارغة · نفس زاوية الإضاءة في كل إصدار</td><td>مؤثرات · جسيمات · انفجارات</td></tr>
+            <tr><td>الموقع</td><td>داكن · تحكمه الطباعة النصية · صور كبيرة · واجهة بأقل عناصر ممكنة</td><td>سلايدر · نوافذ منبثقة · شارات خصم</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 ============================================================ -->
+<section class="sec" id="s18">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">18 / 27</span>
+      <h2>التسويق والمحتوى</h2>
+      <p class="sec-kicker small">الحكاية التي لا يستطيع منافس تقليدي روايتها.</p>
+    </div>
+
+    <div class="body-copy measure rv">
+      <div class="verdict">
+        <span class="eyebrow">الخطاف المركزي</span>
+        <p><strong>«من فكرة إلى شيء تستطيع حمله».</strong> اعرض الرحلة كاملة أمام الجمهور: <span class="mono">فكرة ← رسم ← مجسم رقمي ← لوح طباعة ← قطعة رمادية خام ← يد تصنفر ← لون ← الكائن النهائي</span>. كل إصدار = سلسلة محتوى من هذه المراحل. هذه ليست «كواليس» — إنها <strong>المنتج الإعلامي نفسه</strong>، وهي ما يجعل السعر مفهومًا قبل أن تذكره.</p>
+      </div>
+
+      <h3>القنوات — أين العميل فعلًا</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>المنصة</th><th>الدور</th><th>الأولوية</th><th>السبب</th></tr></thead>
+          <tbody>
+            <tr><td><strong>إنستقرام</strong></td><td>الواجهة الأساسية · كتالوج · إعلانات · اكتشاف B2B</td><td><span class="pill p-yes">١</span></td><td>مديرو التسويق ووكالات الفعاليات يبحثون هنا. الحساب هو ملف أعمالك.</td></tr>
+            <tr><td><strong>تيك توك</strong></td><td>محتوى العملية · وصول عضوي واسع</td><td><span class="pill p-yes">٢</span></td><td>مقاطع السنفرة والتلوين والكشف أعلى المحتوى انتشارًا في هذه الفئة عالميًا.</td></tr>
+            <tr><td><strong>سناب شات</strong></td><td>إعلانات مدفوعة موجّهة للرياض</td><td><span class="pill p-wait">٣ — إعلان فقط</span></td><td>انتشاره في السعودية استثنائي، لكن لا تبنِ عليه محتوى عضويًا. استخدمه كقناة وصول محلية مدفوعة.</td></tr>
+            <tr><td><strong>إكس</strong></td><td>مصداقية B2B · مجتمع التصميم السعودي</td><td><span class="pill p-wait">٤</span></td><td>منشور واحد جيد أسبوعيًا. هنا تُبنى السمعة المهنية لا المبيعات.</td></tr>
+            <tr><td>بينترست</td><td>—</td><td><span class="pill p-no">تخطَّه</span></td><td>جمهوره ليس هنا، والوقت أثمن.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>أعمدة المحتوى — دوران أسبوعي</h3>
+      <ul>
+        <li><strong>الصنع:</strong> مقطع ٣٠ ثانية من مرحلة واحدة. الأسهل إنتاجًا والأعلى تفاعلًا.</li>
+        <li><strong>من AI إلى واقع:</strong> شاشة منقسمة — الرندر مقابل القطعة في اليد. أقوى مقطع في الترسانة.</li>
+        <li><strong>النحت:</strong> تسريع لجلسة نحت — يثبت أن هناك يدًا بشرية، وهذا اعتراض مسبق تقتله قبل أن يُطرح.</li>
+        <li><strong>الكشف:</strong> القطعة النهائية بإضاءة الاستوديو. مرة لكل إصدار.</li>
+        <li><strong>الإصدار المحدود:</strong> عدّ تنازلي · «بقي ٧ من ٥٠».</li>
+        <li><strong>شخصية العميل:</strong> رحلة طلب مخصّص كاملة (بإذنه) — أقوى دافع مبيعات لمنتج ARCHETYPE.</li>
+        <li><strong>التغليف:</strong> فتح الصندوق · الشهادة · الترقيم.</li>
+        <li><strong>الطباعات الفاشلة:</strong> يبني الثقة والشفافية، ويشرح لماذا السعر ليس رخيصًا.</li>
+        <li><strong>الاستوديو:</strong> الأدوات، المكان، الفوضى المنظّمة. يصنع العلاقة الشخصية.</li>
+      </ul>
+      <p class="small"><strong>إيقاع واقعي:</strong> ٣–٤ منشورات أسبوعيًا من ست ساعات محتوى فقط. صوّر كل شيء أثناء العمل الفعلي — لا تخصّص يومًا للتصوير، فذلك يوم إنتاج ضائع.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 19 ============================================================ -->
+<section class="sec" id="s19">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">19 / 27</span>
+      <h2>الموقع — هندسة المعلومات</h2>
+      <p class="sec-kicker small">تسع صفحات. لا أكثر.</p>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>الصفحة</th><th>وظيفتها الوحيدة</th><th>العنصر الحاسم</th></tr></thead>
+        <tbody>
+          <tr><td><strong>الرئيسية</strong></td><td>إثبات أن هذه ليست طباعة ثلاثية الأبعاد</td><td>قطعة واحدة، صورة واحدة كبيرة، جملة واحدة. لا سلايدر.</td></tr>
+          <tr><td><strong>المتجر</strong></td><td>البيع</td><td>سعر ظاهر · عدد النسخ المتبقية · مدة التصنيع بوضوح</td></tr>
+          <tr><td><strong>الإصدارات المحدودة</strong></td><td>خلق الإلحاح</td><td>عدّاد تنازلي · «٠١٧/٠٥٠» · قائمة انتظار للإصدار القادم</td></tr>
+          <tr><td><strong>التخصيص</strong></td><td>تصفية العملاء قبل المحادثة</td><td>السعر والمدة وعدد المراجعات <strong>معلنة</strong> — تحذف ٨٠٪ من الاستفسارات غير الجادة</td></tr>
+          <tr><td><strong>للشركات</strong></td><td>التقاط B2B</td><td>أمثلة جوائز · حد أدنى للكمية · نموذج طلب عرض سعر · تنويه بالفاتورة الضريبية</td></tr>
+          <tr><td><strong>الأرشيف</strong></td><td>إثبات التاريخ والندرة</td><td>إصدارات نفدت مع «SOLD OUT» — أقوى دليل اجتماعي مجاني</td></tr>
+          <tr><td><strong>العملية</strong></td><td>تبرير السعر</td><td>المراحل الأربع عشرة بصورها. الصفحة التي تحوّل المتردد إلى مشترٍ.</td></tr>
+          <tr><td><strong>عن الاستوديو</strong></td><td>الوجه الإنساني</td><td>أنت، وسبب وجود هذا العمل. بلا لغة شركاتية.</td></tr>
+          <tr><td><strong>تواصل / الشروط</strong></td><td>الامتثال والثقة</td><td>سياسة الإرجاع بالعربية · رقم السجل · الرقم الضريبي · معروف</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small rv" style="margin-top:14px;max-width:var(--measure)">المتطلبات: سريع · الجوال أولًا · داكن · صور كبيرة · بلا نوافذ منبثقة. <strong>٧٠٪+ من الزيارات ستأتي من الجوال عبر إنستقرام.</strong> إن لم تكن تجربة الجوال ممتازة، فلا يهم شكل النسخة المكتبية.</p>
+  </div>
+</section>
+
+<!-- 20 ============================================================ -->
+<section class="sec" id="s20">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">20 / 27</span>
+      <h2>التجارة الإلكترونية والشحن</h2>
+      <p class="sec-kicker small">أسعار مُتحقَّق منها في سبتمبر ٢٠٢٦.</p>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>المنصة</th><th class="n">التكلفة</th><th>mada / Apple Pay</th><th>العربية والفاتورة الضريبية</th><th>الحكم لشخص واحد</th></tr></thead>
+        <tbody>
+          <tr><td><strong>سلة</strong></td><td class="n">149 ﷼/شهر (النمو)<br>399 ﷼ (الاحترافية)</td><td><span class="pill p-yes">مدمج</span> + تابي وتمارا</td><td><span class="pill p-yes">أصلية</span> وفوترة متوافقة مع هيئة الزكاة</td><td><span class="pill p-yes">ابدأ هنا</span> إعداد في أقل من ساعة، والامتثال الضريبي جاهز</td></tr>
+          <tr><td>زد</td><td class="n">349–799 ﷼/شهر</td><td><span class="pill p-yes">مدمج</span></td><td><span class="pill p-yes">أصلية</span></td><td><span class="pill p-wait">لاحقًا</span> يستحق بعد ١٠٠ طلب شهريًا — تحليلات ومخزون متعدد</td></tr>
+          <tr><td>Shopify</td><td class="n">$29–299/شهر</td><td>عبر بوابة خارجية</td><td>ترجمة، وفوترة تحتاج تطبيقات</td><td><span class="pill p-no">لا الآن</span> <strong>رسوم إضافية ٠٫٥–٢٪</strong> لعدم توفّر Shopify Payments في السعودية</td></tr>
+          <tr><td>ووكومرس</td><td class="n">استضافة + وقتك</td><td>عبر ميسر/تاب</td><td>يدوي بالكامل</td><td><span class="pill p-no">لا</span> تكلفته الحقيقية ساعاتك، وهي أغلى بند لديك</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:24px">
+      <h3>بوابات الدفع</h3>
+      <ul>
+        <li><strong>ميسر:</strong> mada بنحو <span class="mono">1.5–1.95٪ + 1 ﷼</span>.</li>
+        <li><strong>تاب:</strong> mada بنحو <span class="mono">2.50٪ + 1 ﷼</span>.</li>
+        <li>الفرق على قطعة بـ١٬٢٩٠ ريالًا ≈ ٧–١٣ ريالًا. غير حاسم في البداية — اختر الأسهل ربطًا بسلة.</li>
+      </ul>
+
+      <h3>الشحن — والقطع قابلة للكسر</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>الناقل</th><th>الأنسب لـ</th><th class="n">مرجع سعري</th><th>ملاحظة</th></tr></thead>
+          <tbody>
+            <tr><td><strong>سمسا</strong></td><td>بين المدن · الأسرع</td><td class="n">≈ 110 ﷼ للكيلو (الرياض→جدة، خدمة اليوم التالي)</td><td>الأعلى موثوقية داخليًا. الأسعار المتعاقدة عبر سلة أقل كثيرًا من سعر التجزئة.</td></tr>
+            <tr><td>أرامكس</td><td>بين المدن · دولي</td><td class="n">مشابه لسمسا</td><td>تغطية دولية إن فتحت الخليج لاحقًا.</td></tr>
+            <tr><td><strong>J&amp;T</strong></td><td>داخل المملكة بكثافة</td><td class="n">الأقل للطرود المحلية</td><td>مناسب لتقليل تكلفة الطرد في الطلبات الداخلية.</td></tr>
+            <tr><td>توصيل داخل الرياض</td><td>نفس اليوم</td><td class="n">20–40 ﷼</td><td><strong>ميزة بيعية حقيقية</strong> — «استلمها اليوم» يغلق صفقات الهدايا.</td></tr>
+            <tr><td>ريدبوكس ونقاط الاستلام</td><td>خفض تكلفة التوصيل</td><td class="n">الأقل</td><td>مناسب للقطع الصغيرة فقط.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="warnbox" style="margin-top:16px">
+        <span class="eyebrow">قاعدة التغليف للشحن</span>
+        <p>القطعة داخل إسفنج مفرّغ داخل الصندوق الفاخر، والصندوق الفاخر <strong>داخل صندوق شحن خارجي</strong> مع ٣ سم حشو من كل جهة. الصندوق الفاخر لا يلمس يد المندوب أبدًا. تكلفة الصندوق الخارجي ٦–٩ ريالات، وتكلفة عدم وجوده هي قطعة مكسورة وعميل غاضب وسمعة على إنستقرام. <strong>وثّق كل قطعة بصورة قبل الإغلاق</strong> — دليلك في نزاع الشحن.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 21 ============================================================ -->
+<section class="sec" id="s21">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">21 / 27</span>
+      <h2>الوضع النظامي في السعودية</h2>
+      <p class="sec-kicker small">ما يلزمك فعلًا، ومتى. مراجَع سبتمبر ٢٠٢٦ — تحقّق قبل التنفيذ.</p>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>المتطلب</th><th>متى يلزم</th><th class="n">التكلفة</th><th>التفاصيل</th></tr></thead>
+        <tbody>
+          <tr><td><strong>وثيقة العمل الحر</strong></td><td>من اليوم الأول</td><td class="n">مجانية</td><td>تصدر فوريًا من وزارة الموارد البشرية والتنمية الاجتماعية. كافية للبيع للأفراد وبناء بداية نظامية بلا تكاليف.</td></tr>
+          <tr><td><strong>السجل التجاري</strong></td><td>عند أول عميل مؤسسي</td><td class="n">رسوم سنوية</td><td>معظم بوابات المشتريات في الشركات لا تسجّل مورّدًا بلا سجل تجاري ورقم ضريبي. هذا هو البند الذي يفتح محرك B2B.</td></tr>
+          <tr><td><strong>التسجيل في معروف</strong></td><td>مع إطلاق المتجر</td><td class="n">مجاني</td><td>يرفع الثقة، ومطلوب عمليًا للمتاجر الإلكترونية.</td></tr>
+          <tr><td><strong>متطلبات التجارة الإلكترونية</strong></td><td>مع إطلاق المتجر</td><td class="n">—</td><td>إظهار رقم السجل والرقم الضريبي وبيانات التواصل، وشروط وأحكام وسياسة إرجاع <strong>بالعربية</strong>، وتفاصيل التوصيل.</td></tr>
+          <tr><td><strong>ضريبة القيمة المضافة</strong></td><td>إلزامي فوق 375,000 ﷼ سنويًا<br>طوعي فوق 187,500 ﷼</td><td class="n">15٪</td><td><strong>سجّل طوعًا عند بدء B2B</strong> — العميل المؤسسي يحتاج فاتورة ضريبية لخصمها. هذه ليست تكلفة، بل شرط دخول.</td></tr>
+          <tr><td><strong>الفوترة الإلكترونية (فاتورة)</strong></td><td>مع تسجيل الضريبة</td><td class="n">داخل سلة</td><td>المرحلة الثانية وصلت إلى شريحة ٣٧٥٬٠٠٠ ريال بموعد ربط ٣٠ يونيو ٢٠٢٦. اختيار منصة متوافقة أصلًا يوفّر عليك المشكلة كليًا.</td></tr>
+          <tr><td><strong>المنتجات المُصنَّعة حسب الطلب</strong></td><td>في الشروط والأحكام</td><td class="n">—</td><td>القطع المخصّصة عادةً خارج نطاق حق الإرجاع العام — لكن <strong>يجب النص على ذلك صراحة ومسبقًا</strong>، وإلا سقط الاستثناء.</td></tr>
+          <tr><td><strong>العلامة التجارية</strong></td><td>قبل إنفاق كبير على الهوية</td><td class="n">رسوم تسجيل</td><td>الهيئة السعودية للملكية الفكرية. ابحث أولًا، ثم سجّل.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:22px">
+      <div class="verdict">
+        <span class="eyebrow">التسلسل النظامي الأمثل</span>
+        <p><strong>الشهر ١:</strong> وثيقة عمل حر (مجانية) — تبيع بها نظاميًا للأفراد. <strong>الشهر ٤–٦:</strong> سجل تجاري + معروف عند اقتراب أول صفقة مؤسسية. <strong>الشهر ٦–٨:</strong> تسجيل ضريبي طوعي مع أول فاتورة B2B. <strong>لا تفتح سجلًا تجاريًا في الشهر الأول</strong> — رسوم والتزامات بلا مقابل قبل وجود إيراد.</p>
+      </div>
+      <p class="small">هذه قراءة عامة للأنظمة المنشورة، وليست استشارة قانونية. الأنظمة تتغير — راجع المصادر الحكومية الرسمية (وزارة الموارد البشرية، هيئة الزكاة والضريبة والجمارك، وزارة التجارة، الهيئة السعودية للملكية الفكرية) قبل أي خطوة تنفيذية.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 22 ============================================================ -->
+<section class="sec" id="s22">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">22 / 27</span>
+      <h2>الملكية الفكرية وتراخيص الذكاء الاصطناعي</h2>
+      <p class="sec-kicker small">أهم تطور نظامي في ٢٠٢٦، وأثره المباشر على طريقة عملك اليومية.</p>
+    </div>
+
+    <div class="body-copy measure rv">
+      <div class="warnbox">
+        <span class="eyebrow">القاعدة التي تحكم كل شيء</span>
+        <p>أصدرت الهيئة السعودية للملكية الفكرية إرشادات تفيد بأن <strong>المخرجات المولَّدة بالذكاء الاصطناعي بشكل مستقل تمامًا وبلا تدخل بشري لا تتمتع بحماية حق المؤلف</strong>، لأن الأصالة في النظام السعودي مرتبطة بالإبداع البشري. أما <strong>الأعمال المُعانة بالذكاء الاصطناعي فتُحمى إذا عكست مساهمة بشرية كافية</strong> — كالتوجيه التفصيلي والتعديل التكراري والتحرير.</p>
+      </div>
+
+      <div class="verdict">
+        <span class="eyebrow">الأثر التشغيلي المباشر</span>
+        <p>إذا ولّدت شخصية بضغطة زر وبِعتها كما هي، <strong>فقد لا تملكها أصلًا</strong> — وأي شخص يستطيع نسخها. ساعات النحت اليدوي التي تضيفها ليست تحسينًا جماليًا فقط: <strong>هي ما يحوّل المخرج إلى ملكية قابلة للحماية.</strong> ولذلك:</p>
+      </div>
+
+      <h3>بروتوكول توثيق الملكية — اجعله عادة</h3>
+      <ul>
+        <li>احفظ <strong>ملفات كل مرحلة</strong> لكل شخصية: الرسوم المفهومية، المخرج الأولي من الذكاء الاصطناعي، وملفات النحت المتعاقبة (v1, v2, v3…).</li>
+        <li>التقط <strong>لقطات شاشة أثناء النحت</strong> — وهي نفسها محتوى تسويقي ودليل مساهمة بشرية في آن واحد.</li>
+        <li>احتفظ بسجل تواريخ. هذا الملف هو دليلك في أي نزاع، ومحتواك على تيك توك، وسردك أمام العميل. <strong>ثلاث فوائد من عادة واحدة.</strong></li>
+      </ul>
+
+      <h3>تراخيص الأدوات — الفخاخ</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>الأداة</th><th>الفخ</th><th>الإجراء الصحيح</th></tr></thead>
+          <tbody>
+            <tr><td>Meshy — المستوى المجاني</td><td>المجسمات <strong>عامة</strong> بترخيص CC BY 4.0 — أي يستطيع أي شخص استخدام مجسمك، وعليك النسب</td><td>لا تستخدم المستوى المجاني في أي شيء يُباع. الاشتراك المدفوع يمنح ملكية خاصة.</td></tr>
+            <tr><td>Tripo — المستوى المجاني</td><td><strong>غير تجاري صراحة</strong></td><td>الخطة الاحترافية هي أول خطة تسمح بالاستخدام التجاري والملكية الخاصة.</td></tr>
+            <tr><td>Hunyuan3D</td><td>استثناءات إقليمية في الترخيص (الاتحاد الأوروبي وبريطانيا وكوريا الجنوبية)</td><td>السعودية غير مستثناة. راجع نص الترخيص عند كل إصدار جديد — الشروط تتغير بين النسخ.</td></tr>
+            <tr><td>TRELLIS</td><td>لا فخّ يُذكر — ترخيص MIT</td><td>الخيار الأنظف قانونيًا للاستخدام التجاري.</td></tr>
+            <tr><td>صور العملاء</td><td>نقل بيانات شخصية إلى خدمات سحابية خارج المملكة</td><td><strong>عالجها محليًا.</strong> واحصل على موافقة صريحة، وحدّد مدة الاحتفاظ، واحذفها بعد التسليم.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>بنود تحمي مشروعك — ضعها في الشروط والأحكام</h3>
+      <ul>
+        <li><strong>ملكية التصميم:</strong> الاستوديو يحتفظ بكامل حقوق التصميم والملف الرقمي. العميل يشتري <strong>الكائن المادي</strong>، لا الملف ولا حق إعادة الإنتاج.</li>
+        <li><strong>حق العرض:</strong> للاستوديو حق تصوير أي قطعة ونشرها تسويقيًا ما لم يطلب العميل خلاف ذلك كتابيًا.</li>
+        <li><strong>الطلبات المخصّصة:</strong> جولتا مراجعة على المفهوم، وصفر مراجعة بعد اعتماد النموذج ثلاثي الأبعاد، ولا استرداد بعد بدء التنفيذ. <strong>مكتوب قبل الدفع لا بعده.</strong></li>
+        <li><strong>الصور المرفوعة:</strong> العميل يقرّ بأنه يملك حق استخدامها ويُعوّض الاستوديو عن أي مطالبة.</li>
+        <li><strong>حدود الوعد:</strong> «شخصية مستوحاة» لا «تشابه دقيق» — يمنع أكثر نزاعات هذا المجال شيوعًا.</li>
+        <li><strong>الاختلاف الطبيعي:</strong> كل قطعة تُشطَّب يدويًا، وتباين بسيط في اللون والسطح جزء من طبيعة العمل لا عيب فيه.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 23 ============================================================ -->
+<section class="sec" id="s23">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">23 / 27</span>
+      <h2>مصفوفة المخاطر</h2>
+      <p class="sec-kicker small">اضغط أي خطر لترى الاحتمال والأثر المالي وطريقة التخفيف.</p>
+    </div>
+
+    <div class="rv">
+      <div class="matrix" id="matrix"></div>
+      <div class="risk-panel" id="riskPanel"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 24 ============================================================ -->
+<section class="sec" id="s24">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">24 / 27</span>
+      <h2>خطة التسعين يومًا</h2>
+      <p class="sec-kicker small">أسبوعًا بأسبوع. افتح أي أسبوع لترى المُخرجات ومؤشر القياس.</p>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-bottom:20px">
+      <div class="verdict">
+        <span class="eyebrow">القاعدة الحاكمة للخطة</span>
+        <p><strong>لا تُشترى الطابعة قبل الأسبوع الخامس، ولا تُشترى إلا بعد ١٥ طلبًا مسبقًا مؤكدًا.</strong> الأسابيع الأربعة الأولى تكلّف ٧٠٠ ريال وتجيب على السؤال الوحيد المهم: هل يدفع أحد؟</p>
+      </div>
+    </div>
+
+    <div class="tl rv" id="timeline"></div>
+
+    <div class="body-copy measure rv" style="margin-top:26px">
+      <h3>طرق التحقّق قبل الإنفاق</h3>
+      <ul>
+        <li><strong>رندرات CGI:</strong> صمّم الشخصية، ولّد المجسم، رندره في Blender بجودة استوديو. <strong>تكلفة صفر، ولا أحد يستطيع التمييز بين الرندر والصورة.</strong> هذا هو أكبر سلاح لديك.</li>
+        <li><strong>صفحة هبوط + قائمة انتظار:</strong> قِس عدد من يترك بريده. أقل من ٥٠ مسجَّلًا في ٣٠ يومًا = إشارة ضعف في المفهوم لا في التسويق.</li>
+        <li><strong>اختبار إنستقرام:</strong> ٣٠٠ ريال إعلانات موجّهة للرياض. قِس تكلفة التسجيل في القائمة.</li>
+        <li><strong>الطلب المسبق هو الاختبار الحقيقي الوحيد:</strong> افتح ٢٠ مكانًا بعربون ٢٥٠ ريالًا مسترد. <strong>الاهتمام مجاني، والعربون حقيقة.</strong></li>
+        <li><strong>نموذج أولي خارجي:</strong> اطبع أول قطعة لدى خدمة في الرياض بـ١٥٠–٤٠٠ ريال. تحمل القطعة في يدك، وتصوّرها، وتعرف حجم التشطيب الفعلي — قبل أن تدفع ٣٬٢٥٠ ريالًا.</li>
+      </ul>
+      <div class="verdict">
+        <span class="eyebrow">متى يصبح شراء الطابعة منطقيًا</span>
+        <p>عندما تجتمع الثلاثة: <strong>(١)</strong> ١٥+ طلبًا مسبقًا بعربون مدفوع · <strong>(٢)</strong> نموذج أولي مطبوع خارجيًا اختبرت تشطيبه بيدك · <strong>(٣)</strong> سعر بيع تؤكد الحسابات أنه يحقق ١٥٠+ ريالًا لكل ساعة عمل. قبل ذلك، الطابعة قطعة أثاث باهظة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 25 ============================================================ -->
+<section class="sec" id="s25">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">25 / 27</span>
+      <h2>قائمة الشراء — بالترتيب الزمني</h2>
+      <p class="sec-kicker small">لا تشترِ سطرًا قبل استيفاء شرطه.</p>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th class="n">المرحلة</th><th>البند</th><th class="n">التكلفة</th><th>الشرط الذي يسبقه</th></tr></thead>
+        <tbody>
+          <tr><td class="n">الأسبوع 1</td><td>نطاق + استضافة صفحة هبوط</td><td class="n">60 ﷼</td><td>لا شرط — ابدأ اليوم</td></tr>
+          <tr><td class="n">الأسبوع 1</td><td>Tripo Professional — شهر واحد</td><td class="n">75 ﷼</td><td>لا شرط (أو مجانًا محليًا على 4090)</td></tr>
+          <tr><td class="n">الأسبوع 3</td><td>نموذج أولي مطبوع لدى خدمة بالرياض</td><td class="n">150–400 ﷼</td><td>اكتمال أول تصميم</td></tr>
+          <tr><td class="n">الأسبوع 4</td><td>اختبار إعلاني على إنستقرام وسناب</td><td class="n">300 ﷼</td><td>وجود ٣ رندرات وصفحة هبوط</td></tr>
+          <tr class="tot"><td class="n">إجمالي التحقّق</td><td>—</td><td class="n">≈ 700 ﷼</td><td>القرار: استمر أو غيّر المفهوم</td></tr>
+
+          <tr><td class="n">الأسبوع 5</td><td>الطابعة — Saturn 4 Ultra 12K</td><td class="n">3,250 ﷼</td><td><strong>١٥ طلبًا مسبقًا بعربون مدفوع</strong></td></tr>
+          <tr><td class="n">الأسبوع 5</td><td>الشفط والتهوية</td><td class="n">350 ﷼</td><td>يُركَّب <em>قبل</em> أول تشغيل</td></tr>
+          <tr><td class="n">الأسبوع 5</td><td>معدات الوقاية — كمامة وقفازات ونظارات</td><td class="n">265 ﷼</td><td>يُشترى مع الطابعة، لا بعدها</td></tr>
+          <tr><td class="n">الأسبوع 5</td><td>ريزن ABS-Like ×2 كجم</td><td class="n">300 ﷼</td><td>لا تشترِ أكثر — الحرارة تفسده</td></tr>
+          <tr><td class="n">الأسبوع 5</td><td>كحول IPA 5 لتر</td><td class="n">120 ﷼</td><td>—</td></tr>
+          <tr><td class="n">الأسبوع 5</td><td>محطة غسل وتصليب يدوية</td><td class="n">280 ﷼</td><td>الجهاز الجاهز يُؤجَّل للشهر ٦</td></tr>
+          <tr><td class="n">الأسبوع 5</td><td>أدوات التشطيب والبخاخات</td><td class="n">450 ﷼</td><td>—</td></tr>
+          <tr><td class="n">الأسبوع 6</td><td>أغلفة FEP احتياطية ×3</td><td class="n">135 ﷼</td><td>قبل أن تحتاجها لا بعد</td></tr>
+          <tr><td class="n">الأسبوع 7</td><td>قواعد أكريليك محفورة ×25</td><td class="n">550 ﷼</td><td>بعد تثبيت مقاس القطعة</td></tr>
+          <tr><td class="n">الأسبوع 8</td><td>تغليف ×25 محليًا</td><td class="n">1,100 ﷼</td><td>بعد تثبيت المقاس النهائي</td></tr>
+          <tr><td class="n">الأسبوع 9</td><td>سلة — ٣ أشهر</td><td class="n">447 ﷼</td><td>عند اقتراب أول ١٠ طلبات</td></tr>
+          <tr><td class="n">الأسبوع 9</td><td>إضاءة ومستلزمات تصوير</td><td class="n">450 ﷼</td><td>نافذة + عاكس أبيض يكفيان قبلها</td></tr>
+          <tr><td class="n">الأسبوع 10</td><td>رأس مال عامل واحتياطي</td><td class="n">1,400 ﷼</td><td><strong>لا تبدأ برصيد صفر</strong></td></tr>
+          <tr class="tot"><td class="n">الإجمالي</td><td>Tier 2 — الإعداد الموصى به</td><td class="n">≈ 9,800 ﷼</td><td>موزّع على ١٠ أسابيع لا دفعة واحدة</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small rv" style="max-width:var(--measure);margin-top:14px">لاحظ أن الإنفاق <strong>موزّع على عشرة أسابيع</strong>، وأن ٧٬٧٠٠ ريالًا منه تأتي <em>بعد</em> وجود طلبات مدفوعة. مخاطرتك النقدية الحقيقية قبل أي دليل على الطلب: <strong>٧٠٠ ريال.</strong></p>
+  </div>
+</section>
+
+<!-- 26 ============================================================ -->
+<section class="sec" id="s26">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">26 / 27</span>
+      <h2>لا تشترِ هذا الآن</h2>
+      <p class="sec-kicker small">كل بند هنا مغرٍ، ومكلف، وغير ضروري في أول ٣–٦ أشهر.</p>
+    </div>
+
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th>البند</th><th class="n">الوفر</th><th>لماذا يبدو ضروريًا</th><th>لماذا ليس كذلك</th></tr></thead>
+        <tbody>
+          <tr><td><strong>طابعة كبيرة الحجم</strong></td><td class="n">6,000+ ﷼</td><td>«لأصنع مجسمات كبيرة»</td><td>المجسم الكبير يُقسَّم أصلًا لأسباب إنتاجية. وفشل واحد يبتلع ٤٠٠ جرام ريزن.</td></tr>
+          <tr><td><strong>طابعة ثانية</strong></td><td class="n">3,250 ﷼</td><td>«لمضاعفة الإنتاج»</td><td>الطابعة الأولى تنتج أضعاف ما تشطّبه يداك. ستضاعف المخزون غير المكتمل لا المبيعات.</td></tr>
+          <tr><td><strong>ماسح ضوئي ثلاثي الأبعاد</strong></td><td class="n">2,000–8,000 ﷼</td><td>«للتماثيل الشخصية»</td><td>نموذجك ليس تماثيل فوتوغرافية. والمسح يعطي شبكات فوضوية تحتاج عملًا أكثر من النحت.</td></tr>
+          <tr><td><strong>غرفة رش صناعية</strong></td><td class="n">3,000+ ﷼</td><td>«للسلامة والاحتراف»</td><td>الشفط للنافذة + كمامة مناسبة يكفيان تمامًا في هذا الحجم.</td></tr>
+          <tr><td><strong>ZBrush</strong></td><td class="n">4,000+ ﷼</td><td>«معيار الصناعة»</td><td>Blender يغطي كل احتياجك في هذا المقياس. أعد النظر في الشهر ١٢، وغالبًا لن تحتاجه.</td></tr>
+          <tr><td><strong>مخزون ريزن كبير (10 كجم+)</strong></td><td class="n">1,200+ ﷼</td><td>«خصم الكمية»</td><td>للريزن عمر تخزيني، وصيف الرياض يفسده. الخصم أقل من قيمة ما سيتلف.</td></tr>
+          <tr><td><strong>حد أدنى تغليف 500 صندوق</strong></td><td class="n">4,000+ ﷼</td><td>«سعر الوحدة أرخص»</td><td>قبل تثبيت مقاس المنتج، هذه نفايات بانتظار التوصيل.</td></tr>
+          <tr><td><strong>إيربرش من الفئة العليا</strong></td><td class="n">800+ ﷼</td><td>«جودة التشطيب»</td><td>إيربرش بـ٢٠٠ ريال يؤدي نفس الغرض على هذا المقياس. الفرق في يدك لا في الأداة.</td></tr>
+          <tr><td><strong>محل أو مساحة عمل مستأجرة</strong></td><td class="n">2,000+ ﷼/شهر</td><td>«احترافية»</td><td>تكلفة ثابتة تقتل التدفق النقدي، وعملاؤك يشترون أونلاين ولن يزوروك.</td></tr>
+          <tr><td><strong>طابعة فلامنت</strong></td><td class="n">1,200 ﷼</td><td>«للنماذج السريعة»</td><td>مسار مختلف تمامًا ويشتّت تركيزك. النماذج تُطبع بالريزن نفسه.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:26px">
+      <h3>ما يجب تصنيعه خارجيًا بدل شرائه</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>العمل</th><th>لماذا خارجيًا</th><th class="n">التكلفة التقريبية</th></tr></thead>
+          <tbody>
+            <tr><td>القواعد الأكريليك والخشبية + الحفر</td><td>معدات القص بالليزر تكلف عشرات الآلاف، والورشة القريبة تنفّذها بريالات</td><td class="n">14–30 ﷼/قطعة</td></tr>
+            <tr><td>تصنيع الصناديق الصلبة</td><td>لا يمكن صنعها بجودة تجارية يدويًا</td><td class="n">22–60 ﷼/وحدة</td></tr>
+            <tr><td>القوالب السيليكون والصبّ</td><td>يصبح أرخص من الطباعة فوق ٥٠ نسخة من نفس الجزء</td><td class="n">حسب الحجم</td></tr>
+            <tr><td>القطع المعدنية والنحاسية</td><td>خارج نطاق الريزن كليًا، وترفع القيمة المُدركة كثيرًا</td><td class="n">ورش الخراطة</td></tr>
+            <tr><td>النحت المعقّد عند الذروة</td><td>نحّات مستقل أرخص من تأخير طلب مدفوع</td><td class="n">$150–400/شخصية</td></tr>
+            <tr><td>الطباعة الاختبارية قبل شراء الطابعة</td><td>يوفّر ٣٬٢٥٠ ريالًا حتى يثبت الطلب</td><td class="n">150–400 ﷼</td></tr>
+            <tr><td>تنفيذ الشعار النهائي</td><td>الاتجاه منك، والتنفيذ الاحترافي أسرع بكثير من تعلّمه</td><td class="n">400–1,200 ﷼</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 27 ============================================================ -->
+<section class="sec" id="s27">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">27 / 27</span>
+      <h2>القرار النهائي</h2>
+      <p class="sec-kicker small">ثلاثة مسارات. واحد منها موصى به.</p>
+    </div>
+
+    <div class="grid g3 rv" style="background:transparent;border:0;gap:14px">
+
+      <div class="opt">
+        <div class="eyebrow">OPTION 1</div>
+        <h3>ابدأ الآن</h3>
+        <div class="cost">9,800 ﷼</div>
+        <p class="small">تشتري كل شيء هذا الشهر وتبدأ الإنتاج فورًا.</p>
+        <ul>
+          <li>طابعة 12K + شفط + وقاية + ريزن + تشطيب + تغليف ٢٥ وحدة</li>
+          <li>أول منتج في السوق خلال ٥–٦ أسابيع</li>
+          <li><strong>المخاطرة:</strong> ٩٬٨٠٠ ريال تحت افتراض غير مُختبَر بأن أحدًا سيشتري</li>
+          <li><strong>مناسب إذا:</strong> لديك جمهور جاهز أو التزام مؤسسي مبدئي بيدك</li>
+        </ul>
+      </div>
+
+      <div class="opt pick">
+        <span class="tag">RECOMMENDED</span>
+        <div class="eyebrow" style="color:var(--bronze)">OPTION 2</div>
+        <h3>تحقّق أولًا</h3>
+        <div class="cost">700 ﷼ <span class="small" style="font-family:var(--ff-body);color:var(--muted)">ثم 9,100</span></div>
+        <p class="small">ثلاثون يومًا من الأدلة قبل أي معدة.</p>
+        <ul>
+          <li>عالم شخصيات + ٣ رندرات CGI + صفحة هبوط + اختبار إعلاني + نموذج أولي خارجي</li>
+          <li>افتح ٢٠ طلبًا مسبقًا بعربون ٢٥٠ ريالًا</li>
+          <li><strong>١٥ عربونًا = ٣٬٧٥٠ ريالًا تدفع أكثر من ثمن الطابعة</strong></li>
+          <li><strong>المخاطرة الحقيقية: ٧٠٠ ريال.</strong> أقل من ١٠٪ من الخيار الأول</li>
+          <li><strong>مناسب إذا:</strong> تبدأ من الصفر — وهذه حالتك</li>
+        </ul>
+      </div>
+
+      <div class="opt">
+        <div class="eyebrow">OPTION 3</div>
+        <h3>الأقل تكلفة ممكنة</h3>
+        <div class="cost">6,050 ﷼</div>
+        <p class="small">إنتاج حقيقي بأقل رأس مال، مع خسائر محسوبة.</p>
+        <ul>
+          <li>طابعة مستعملة من حراج (١٬٤٠٠–٢٬٠٠٠) + غسل يدوي + تغليف ١٥ وحدة</li>
+          <li><strong>ما تخسره:</strong> ضمان، وتشطيب أبطأ ٣٠٪، وتغليف أقل إقناعًا، وقدرة أقل على تحمّل عطل</li>
+          <li><strong>لا تنزل تحت هذا الرقم.</strong> تحته تصنع منتجًا لا يستحق سعره — وهذا أسوأ من عدم البدء</li>
+          <li><strong>مناسب إذا:</strong> السيولة هي القيد الملزم الوحيد</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="body-copy measure rv" style="margin-top:34px">
+      <h3>الإعداد النهائي الموصى به</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>القرار</th><th>الاختيار</th></tr></thead>
+          <tbody>
+            <tr><td>نموذج العمل</td><td>هجين متسلسل — إصدارات B2C تبني الملكية الفكرية، ثم B2B يموّل النمو</td></tr>
+            <tr><td>خط المنتجات</td><td>٤ منتجات + خدمة واحدة مسقوفة · مصمَّمة لتشطيب قليل</td></tr>
+            <tr><td>الذكاء الاصطناعي</td><td>Hunyuan3D / TRELLIS محليًا + Tripo Pro كتأمين · ولّد الظلال الخارجية أولًا</td></tr>
+            <tr><td>البرمجيات</td><td>Blender + Lychee مجانًا · لا ZBrush</td></tr>
+            <tr><td>الطابعة</td><td>Elegoo Saturn 4 Ultra 12K واحدة · لا كبيرة الحجم · لا ثانية قبل وجود مشطِّب</td></tr>
+            <tr><td>الخامات</td><td>ABS-Like للجسم · Tough للرفيع · مصبوغ للقطعة الصغيرة · كلير بمانع UV دائمًا</td></tr>
+            <tr><td>الميزانية</td><td>٧٠٠ ﷼ تحقّقًا ← ٩٬٨٠٠ ﷼ إعدادًا، موزّعة على ١٠ أسابيع</td></tr>
+            <tr><td>التسعير</td><td>340 / 490 / 850 / 1,290 / 1,890 ﷼ — مربوطة بـ١٥٠ ﷼ للساعة كحد أدنى</td></tr>
+            <tr><td>المتجر</td><td>سلة · ميسر · سمسا وJ&amp;T · معروف</td></tr>
+            <tr><td>النظامي</td><td>وثيقة عمل حر الآن ← سجل تجاري عند أول عميل مؤسسي ← ضريبة طوعية معه</td></tr>
+            <tr><td>الاسم</td><td>سَبَك / SABAK — بعد التحقق من توفّره لدى الهيئة السعودية للملكية الفكرية</td></tr>
+            <tr class="tot"><td>الخطوة التالية اليوم</td><td>اكتب فقرة واحدة عن عالم شخصياتك. لا تشترِ شيئًا.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="verdict" style="margin-top:22px">
+        <span class="eyebrow">الخلاصة</span>
+        <p>الفرق بين «شخص لديه طابعة يبحث عمّا يطبعه» و«علامة لديها منتجات يريد الناس امتلاكها» ليس في المعدات. إنه في الترتيب: <strong>الشخصية أولًا، ثم الجمهور، ثم الطلب، ثم الآلة.</strong> كل قرار في هذه الدراسة يخدم هذا الترتيب.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="hero-mark" style="margin-bottom:14px">
+        <span class="stamp">سَ</span>
+        <div>
+          <div class="eyebrow">SABAK · STUDY v2</div>
+          <div class="small">دراسة تشغيلية — الرياض</div>
+        </div>
+      </div>
+      <p class="small" style="max-width:56ch">
+        الأسعار والأنظمة تم التحقق منها في <strong class="mono">2026-09-17</strong> من مصادر عامة. مواقع التجزئة السعودية كانت محجوبة عن أداة التصفح في هذه الجلسة، لذا فأسعار المشتريات <strong>نطاقات تخطيطية لا عروض أسعار</strong> — تحقّق من كل سطر قبل الشراء. هذه ليست استشارة قانونية أو ضريبية.
+      </p>
+    </div>
+    <div class="src">
+      <div class="eyebrow" style="margin-bottom:6px">المصادر</div>
+      <a href="https://www.amazon.sa/-/en/ELEGOO-16K-Saturn-WiFi-Transfer-211-68x118-37x220/dp/B0DT99F529">Amazon.sa — Elegoo Saturn 4 Ultra 16K</a>
+      <a href="https://www.fauxhammer.com/reviews/the-best-resin-printers-of-2026-the-ultimate-buyers-guide-for-miniatures-statues-and-more/">FauxHammer — Resin Printer Buyer's Guide 2026</a>
+      <a href="https://www.tripo3d.ai/pricing">Tripo AI — Pricing</a>
+      <a href="https://www.meshy.ai/blog/best-ai-tools-for-3d-printing">Meshy — AI tools for 3D printing</a>
+      <a href="https://trellis3d.net/models/hunyuan3d-2-1">Hunyuan3D 2.1 — model card</a>
+      <a href="https://www.hrsd.gov.sa/en/ministry-services/services/1065686">وزارة الموارد البشرية — وثيقة العمل الحر</a>
+      <a href="https://expandway.sa/vat-in-saudi-arabia/">ض.ق.م في السعودية — حدود التسجيل</a>
+      <a href="https://www.sabaip.com/saudi-arabia-guidelines-on-copyright-principles-for-ai-related-works/">SAIP — إرشادات حق المؤلف للأعمال المرتبطة بالذكاء الاصطناعي</a>
+      <a href="https://www.bakermckenzie.com/en/insight/publications/2026/07/saudi-arabia-new-copyright-law-modernises-ksa-ip-framework">نظام حق المؤلف السعودي الجديد 2026</a>
+      <a href="https://www.isnaad.ai/en/salla-vs-zid-vs-shopify-comparison">سلة · زد · Shopify — مقارنة</a>
+      <a href="https://inventoryflow.co/mena-courier-rates-uae-saudi-arabia/">أسعار الشحن — السعودية والإمارات 2026</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12848961/">دراسة انبعاثات VOC من طابعات الريزن</a>
+      <a href="https://www.imarcgroup.com/saudi-arabia-toys-games-market">سوق الألعاب والمقتنيات السعودي</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  document.documentElement.setAttribute("dir","rtl");
+  document.documentElement.setAttribute("lang","ar");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fmt = function(n){ return Math.round(n).toLocaleString("en-US"); };
+  var fmt1 = function(n){ return (Math.round(n*10)/10).toLocaleString("en-US",{minimumFractionDigits:1,maximumFractionDigits:1}); };
+
+  /* ---------- theme ---------- */
+  var tbtn = document.getElementById("themeBtn");
+  var stored = null;
+  try{ stored = localStorage.getItem("sabak-theme"); }catch(e){}
+  if(stored === "dark" || stored === "light") document.documentElement.setAttribute("data-theme", stored);
+  tbtn.addEventListener("click", function(){
+    var cur = document.documentElement.getAttribute("data-theme");
+    var isDark = cur ? cur === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var next = isDark ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try{ localStorage.setItem("sabak-theme", next); }catch(e){}
+  });
+
+  /* ---------- hero: MSLA layer build ---------- */
+  var cvs = document.getElementById("build");
+  if(cvs){
+    var ctx = cvs.getContext("2d"), off = document.createElement("canvas"), octx = off.getContext("2d");
+    var W=0, H=0, dpr = Math.min(window.devicePixelRatio||1, 2);
+    var zlab = document.getElementById("zlab");
+
+    function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+    function silhouette(c, w, h){
+      // a standing sentinel: plinth, flared robe, torso, shoulder mantle, crested head, staff
+      var cx = w*0.5, base = h*0.90, top = h*0.13, span = base-top;
+      c.clearRect(0,0,w,h);
+      c.fillStyle = "#fff";
+      // plinth
+      c.beginPath();
+      c.rect(cx-w*0.155, base-span*0.055, w*0.31, span*0.055);
+      c.fill();
+      // robe
+      c.beginPath();
+      c.moveTo(cx-w*0.135, base-span*0.055);
+      c.bezierCurveTo(cx-w*0.125, base-span*0.30, cx-w*0.085, base-span*0.42, cx-w*0.075, base-span*0.50);
+      c.lineTo(cx+w*0.075, base-span*0.50);
+      c.bezierCurveTo(cx+w*0.085, base-span*0.42, cx+w*0.125, base-span*0.30, cx+w*0.135, base-span*0.055);
+      c.closePath(); c.fill();
+      // torso
+      c.beginPath();
+      c.moveTo(cx-w*0.075, base-span*0.50);
+      c.bezierCurveTo(cx-w*0.082, base-span*0.60, cx-w*0.10, base-span*0.66, cx-w*0.105, base-span*0.72);
+      c.lineTo(cx+w*0.105, base-span*0.72);
+      c.bezierCurveTo(cx+w*0.10, base-span*0.66, cx+w*0.082, base-span*0.60, cx+w*0.075, base-span*0.50);
+      c.closePath(); c.fill();
+      // shoulder mantle — the signature silhouette
+      c.beginPath();
+      c.moveTo(cx-w*0.105, base-span*0.72);
+      c.bezierCurveTo(cx-w*0.20, base-span*0.745, cx-w*0.215, base-span*0.80, cx-w*0.16, base-span*0.815);
+      c.lineTo(cx-w*0.048, base-span*0.815);
+      c.lineTo(cx+w*0.048, base-span*0.815);
+      c.lineTo(cx+w*0.16, base-span*0.815);
+      c.bezierCurveTo(cx+w*0.215, base-span*0.80, cx+w*0.20, base-span*0.745, cx+w*0.105, base-span*0.72);
+      c.closePath(); c.fill();
+      // neck + head
+      c.beginPath(); c.rect(cx-w*0.033, base-span*0.855, w*0.066, span*0.045); c.fill();
+      c.beginPath();
+      c.ellipse(cx, base-span*0.895, w*0.052, span*0.048, 0, 0, Math.PI*2);
+      c.fill();
+      // crest
+      c.beginPath();
+      c.moveTo(cx-w*0.050, base-span*0.905);
+      c.bezierCurveTo(cx-w*0.030, base-span*0.985, cx+w*0.030, base-span*0.985, cx+w*0.050, base-span*0.905);
+      c.closePath(); c.fill();
+      // staff
+      c.beginPath(); c.rect(cx+w*0.185, base-span*0.86, w*0.016, span*0.80); c.fill();
+      c.beginPath(); c.ellipse(cx+w*0.193, base-span*0.875, w*0.030, span*0.028, 0, 0, Math.PI*2); c.fill();
+    }
+
+    function resize(){
+      var r = cvs.getBoundingClientRect();
+      W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
+      cvs.width = W*dpr; cvs.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+      off.width = W*dpr; off.height = H*dpr; octx.setTransform(dpr,0,0,dpr,0,0);
+      silhouette(octx, W, H);
+    }
+
+    var prog = 0, dir = 1, last = 0;
+    function frame(t){
+      if(!last) last = t;
+      var dt = Math.min(64, t-last); last = t;
+      if(dir === 1){ prog += dt/7000; if(prog >= 1){ prog = 1; dir = 0; setTimeout(function(){ dir = -1; }, 1600); } }
+      else if(dir === -1){ prog -= dt/700; if(prog <= 0){ prog = 0; dir = 1; } }
+
+      var bronze = css("--bronze") || "#D19E58";
+      var line = css("--line") || "#302A26";
+      var muted = css("--muted") || "#8D8275";
+      var baseY = H*0.90, topY = H*0.13, span = baseY-topY;
+      var frontY = baseY - span*prog;
+
+      ctx.clearRect(0,0,W,H);
+
+      // vat + plate rails
+      ctx.strokeStyle = line; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(W*0.10, baseY+0.5); ctx.lineTo(W*0.90, baseY+0.5); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(W*0.5, baseY); ctx.lineTo(W*0.5, H*0.965); ctx.stroke();
+
+      // layer ticks on the z axis
+      ctx.strokeStyle = line;
+      for(var i=0;i<=20;i++){
+        var y = baseY - span*(i/20);
+        var long = i%5===0;
+        ctx.globalAlpha = long ? .85 : .4;
+        ctx.beginPath(); ctx.moveTo(W*0.895, y); ctx.lineTo(W*(long?0.935:0.918), y); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      // the printed body: silhouette clipped below the build front
+      ctx.save();
+      ctx.beginPath(); ctx.rect(0, frontY, W, baseY-frontY+1); ctx.clip();
+      ctx.globalCompositeOperation = "source-over";
+      ctx.drawImage(off, 0, 0, W, H);
+      // tint it bronze
+      ctx.globalCompositeOperation = "source-in";
+      var g = ctx.createLinearGradient(0, topY, 0, baseY);
+      g.addColorStop(0, bronze);
+      g.addColorStop(1, muted);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+      ctx.restore();
+
+      // horizontal layer striations across the printed body
+      ctx.save();
+      ctx.beginPath(); ctx.rect(0, frontY, W, baseY-frontY+1); ctx.clip();
+      ctx.globalAlpha = .16; ctx.strokeStyle = css("--bg") || "#131110"; ctx.lineWidth = 1;
+      for(var y2 = baseY; y2 > frontY; y2 -= 3){
+        ctx.beginPath(); ctx.moveTo(0, y2+0.5); ctx.lineTo(W, y2+0.5); ctx.stroke();
+      }
+      ctx.restore();
+
+      // exposure line at the build front
+      if(prog > 0 && prog < 1){
+        ctx.save();
+        ctx.globalAlpha = .9; ctx.strokeStyle = bronze; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(W*0.17, frontY); ctx.lineTo(W*0.83, frontY); ctx.stroke();
+        ctx.globalAlpha = .14;
+        ctx.fillStyle = bronze; ctx.fillRect(W*0.17, frontY-6, W*0.66, 6);
+        ctx.restore();
+      }
+      if(zlab) zlab.textContent = "Z " + (prog*220).toFixed(2).padStart(6,"0") + " mm";
+
+      if(!reduce) requestAnimationFrame(frame);
+    }
+
+    resize();
+    window.addEventListener("resize", function(){ resize(); });
+    if(reduce){ prog = 1; dir = 0; frame(0); } else { requestAnimationFrame(frame); }
+  }
+
+  /* ---------- nav ---------- */
+  var titles = ["الملخص","إعادة الصياغة","السوق","المنافسون","النموذج","المنتجات","خط AI","الأدوات","العتاد","المشتريات","الميزانية","اقتصاديات الوحدة","المالي","التشغيل","الطاقة","التغليف","العلامة","التسويق","الموقع","التجارة","النظامي","الملكية الفكرية","المخاطر","٩٠ يومًا","قائمة الشراء","لا تشترِ","القرار"];
+  var nav = document.getElementById("nav");
+  titles.forEach(function(t,i){
+    var id = "s" + String(i+1).padStart(2,"0");
+    var li = document.createElement("li");
+    li.innerHTML = '<a href="#'+id+'" data-id="'+id+'">'+String(i+1).padStart(2,"0")+' '+t+'</a>';
+    nav.appendChild(li);
+  });
+
+  var links = Array.prototype.slice.call(nav.querySelectorAll("a"));
+  var secs = links.map(function(a){ return document.getElementById(a.dataset.id); });
+  var bar = document.getElementById("prog");
+  function onScroll(){
+    var y = window.scrollY + window.innerHeight*0.34, active = -1;
+    for(var i=0;i<secs.length;i++){ if(secs[i] && secs[i].offsetTop <= y) active = i; }
+    links.forEach(function(a,i){ a.classList.toggle("on", i===active); });
+    if(active >= 0){
+      var a = links[active];
+      var box = a.getBoundingClientRect(), par = a.closest(".navscroll").getBoundingClientRect();
+      if(box.left < par.left || box.right > par.right) a.scrollIntoView({block:"nearest", inline:"center"});
+    }
+    var h = document.body.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (window.scrollY/h)*100 : 0) + "%";
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+
+  /* ---------- reveal + counters ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add("in");
+      io.unobserve(e.target);
+      Array.prototype.forEach.call(e.target.querySelectorAll("[data-count]"), count);
+    });
+  }, {rootMargin:"0px 0px -8% 0px", threshold:0.08});
+  Array.prototype.forEach.call(document.querySelectorAll(".rv"), function(el){ io.observe(el); });
+
+  function count(el){
+    if(el.dataset.done) return; el.dataset.done = "1";
+    var target = parseFloat(el.dataset.count), pre = el.dataset.prefix||"", suf = el.dataset.suffix||"";
+    if(reduce){ el.textContent = pre+fmt(target)+suf; return; }
+    var t0 = performance.now(), dur = 1100;
+    (function step(t){
+      var p = Math.min(1, (t-t0)/dur), e = 1-Math.pow(1-p, 3);
+      el.textContent = pre + fmt(target*e) + suf;
+      if(p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+
+  /* ---------- business models ---------- */
+  var MODELS = {
+    A:{ name:"إصدارات أصلية — Original Designer Collectibles",
+      s:[["الطلب المتوقع",55],["سهولة البيع",35],["هامش الربح",85],["سهولة الإنتاج",60],["رأس المال",70],["قابلية التوسّع",90],["شدة المنافسة",30,1],["المهارة الفنية",85,1],["تكرار الطلب",70],["يديرها شخص واحد",80]],
+      v:"<strong>النموذج الوحيد الذي يملك رافعة تشغيلية حقيقية.</strong> تصميم واحد يُطفأ على ٣٠–٥٠ نسخة، فتنخفض تكلفة التصميم لكل وحدة كلما بعت أكثر. عيبه الوحيد وهو قاتل في البداية: إقناع غريب بدفع ٨٩٠ ريالًا لشخصية لم يسمع بها. الحل: طلب مسبق + إصدار محدود + سرد العملية.",
+      r:"محرك بناء الأصل. ابدأ به، ولا تتوقع منه تمويل نفسك في الشهور الأولى." },
+    B:{ name:"منحوتات مخصّصة — Custom Personalized",
+      s:[["الطلب المتوقع",90],["سهولة البيع",85],["هامش الربح",55],["سهولة الإنتاج",35],["رأس المال",90],["قابلية التوسّع",15,1],["شدة المنافسة",60,1],["المهارة الفنية",80,1],["تكرار الطلب",20,1],["يديرها شخص واحد",40,1]],
+      v:"طلب مرتفع جدًا — ثقافة الإهداء في السعودية ضخمة. لكن <strong>كل وحدة تصميم جديد ودورات مراجعة</strong>، فالعمل خطّي بلا تراكم: تتوقف عن العمل، يتوقف الدخل. والأخطر أنه يبتلع ساعات التصميم التي يُفترض أن تبني ملكيتك الفكرية.",
+      r:"سيولة ممتازة، رافعة معدومة. اسقفه بـ٢–٣ طلبات شهريًا وسعّره ١٬٨٩٠+ حتى لا يصير فخًا." },
+    C:{ name:"مقتنيات مؤسسية — B2B / Corporate",
+      s:[["الطلب المتوقع",75],["سهولة البيع",45],["هامش الربح",70],["سهولة الإنتاج",75],["رأس المال",60],["قابلية التوسّع",75],["شدة المنافسة",45,1],["المهارة الفنية",50,1],["تكرار الطلب",90],["يديرها شخص واحد",55]],
+      v:"<strong>أعلى ربح لكل ساعة عمل في الخط كله (٣٨٣ ﷼).</strong> السبب: رسم التصميم يُدفع منفصلًا، ولا تكلفة بيع لكل وحدة، والدفعة الواحدة توزّع الوقت على عشرات القطع. دورة البيع ٤–١٢ أسبوعًا، وتتطلب سجلًا تجاريًا وفاتورة ضريبية، ودفعة مقدمة ٥٠٪ تحل مشكلة التدفق النقدي كليًا.",
+      r:"محرك التمويل. لكنه مستحيل بلا بورتفوليو — لذلك يأتي ثانيًا لا أولًا." },
+    D:{ name:"قطع ديكور راقية — Premium Interior",
+      s:[["الطلب المتوقع",50],["سهولة البيع",40],["هامش الربح",45],["سهولة الإنتاج",25],["رأس المال",40],["قابلية التوسّع",35],["شدة المنافسة",20,1],["المهارة الفنية",55,1],["تكرار الطلب",25,1],["يديرها شخص واحد",35,1]],
+      v:"<strong>الأضعف لإعداد بالريزن.</strong> القطع الكبيرة تعني أزمنة طباعة طويلة واستهلاك ريزن ضخمًا ومخاطر فشل مرتفعة، وشحنًا ضخمًا وقابلًا للكسر. وتنافس ديكورًا مستوردًا يُباع بربع تكلفتك.",
+      r:"<span style='color:var(--danger)'>مرفوض كنموذج أساسي.</span> أبقِه كقطعة عرض واحدة كبيرة للتصوير وتكليفات اللوبيات المؤسسية." },
+    E:{ name:"الهجين المتسلسل — Sequenced Hybrid",
+      s:[["الطلب المتوقع",80],["سهولة البيع",65],["هامش الربح",78],["سهولة الإنتاج",65],["رأس المال",70],["قابلية التوسّع",85],["شدة المنافسة",35,1],["المهارة الفنية",75,1],["تكرار الطلب",80],["يديرها شخص واحد",70]],
+      v:"<strong>الموصى به.</strong> ليس «افعل كل شيء» — بل ترتيب زمني: إصدار B2C يبني الملكية الفكرية والبورتفوليو ← التخصيص المسقوف يوفّر سيولة ← B2B يموّل النمو. عالم شخصيات واحد يغذّي الثلاثة، فلا تتشتت ساعات التصميم.",
+      r:"التوزيع المستهدف في الشهر ١٢: <span class='mono'>35% Drops · 45% B2B · 20% Custom</span>." }
+  };
+  var mPanel = document.getElementById("modelPanel");
+  function renderModel(k){
+    var m = MODELS[k];
+    var rows = m.s.map(function(s){
+      return '<li class="scorerow"><span>'+s[0]+'</span><span class="bar'+(s[2]?" neg":"")+'"><i data-w="'+s[1]+'"></i></span><span class="v">'+s[1]+'</span></li>';
+    }).join("");
+    mPanel.innerHTML = '<div class="eyebrow" style="margin-bottom:12px">'+m.name+'</div>'+
+      '<div class="grid g2" style="background:transparent;border:0;gap:22px;padding:0">'+
+      '<div style="padding:0"><ul class="scorelist">'+rows+'</ul>'+
+      '<p class="small" style="margin-top:12px;color:var(--muted)">الأشرطة الحمراء = كلما ارتفع الرقم كان أسوأ لك.</p></div>'+
+      '<div style="padding:0"><p style="font-size:.9rem">'+m.v+'</p>'+
+      '<div class="verdict" style="margin-top:14px"><span class="eyebrow">الدور في المشروع</span><p style="font-size:.86rem">'+m.r+'</p></div></div></div>';
+    requestAnimationFrame(function(){
+      Array.prototype.forEach.call(mPanel.querySelectorAll(".bar i"), function(i){ i.style.width = i.dataset.w+"%"; });
+    });
+  }
+  var mTabs = document.getElementById("modelTabs");
+  mTabs.addEventListener("click", function(e){
+    var b = e.target.closest(".model-btn"); if(!b) return;
+    Array.prototype.forEach.call(mTabs.children, function(x){ x.setAttribute("aria-selected", String(x===b)); });
+    renderModel(b.dataset.m);
+  });
+  renderModel("A");
+
+  /* ---------- AI pipeline ---------- */
+  var PIPE = [
+    {n:"الفكرة والنمط",who:"you",t:"20 دقيقة",tool:"نموذج لغوي + دفترك",d:"حدّد الأرشيتايب ودوره في عالمك: حارس؟ رحّالة؟ شاهد؟ قبل أي صورة. الشخصية بلا دور في العالم تصبح شكلًا جميلًا بلا سبب لاقتنائه.",x:"لا تبدأ بالتوليد. ابدأ بجملة تصف من هي الشخصية ولماذا توجد."},
+    {n:"الرسم المفهومي",who:"ai",t:"40 دقيقة",tool:"نموذج توليد صور",d:"ولّد <strong>ظلالًا خارجية</strong> أولًا، لا رندرات مفصّلة. عشرون ظلًا بالأسود على أبيض تكشف أيها له حضور من مسافة.",x:"المقتنى يُقرأ من مترين بظله لا بتفاصيل وجهه."},
+    {n:"ورقة المناظير",who:"ai",t:"30 دقيقة",tool:"توليد صور بتحكم بالمنظور",d:"أمامي · جانبي · خلفي · ثلاثة أرباع. توقّع اتساقًا بحدود ٧٠٪ فقط — عالج الباقي بالنحت لاحقًا.",x:"الاتساق الكامل بين المناظير لا يزال خارج قدرة هذه الأدوات."},
+    {n:"توليد المجسم",who:"ai",t:"2–10 دقائق",tool:"Hunyuan3D محليًا · TRELLIS · Tripo Pro",d:"على RTX 4090 تستغرق العملية ١٠–٢٥ ثانية. المخرج كتلة أولية بجودة ٦٠–٧٠٪، لا منتجًا.",x:"هذه أسرع مرحلة في الخط كله — وأقلها أهمية."},
+    {n:"فرز الشبكة",who:"you",t:"30–60 دقيقة",tool:"Blender + 3D Print Toolbox",d:"فحص الإحكام، والحواف غير المنتظمة، والأوجه المقلوبة، والمقياس الحقيقي بالمليمتر.",x:"<strong>غير قابلة للأتمتة.</strong> تخطّيها يعني اكتشاف الخطأ بعد ٦ ساعات طباعة."},
+    {n:"النحت",who:"you",t:"2–6 ساعات",tool:"Blender Sculpt · Nomad Sculpt",d:"هنا يتحول المولَّد إلى مصمَّم: شدّ الظل الخارجي، تنظيف التقاطعات، إضافة التفاصيل <strong>في الهندسة لا في الخامة</strong>.",x:"<strong>هذه المرحلة هي منتجك.</strong> وهي أيضًا ما يجعل عملك قابلًا للحماية نظاميًا — القسم ٢٢."},
+    {n:"هندسة الطباعة",who:"you",t:"1–2 ساعة",tool:"Blender · Boolean · مفاتيح تعشيق",d:"تقسيم لأجزاء، مفاتيح ودبابيس، تجويف بجدار ٢٫٥–٣ مم، وفتحتا تصريف ٣٫٥ مم على الأقل.",x:"فتحة تصريف واحدة تخلق تأثير مصّاصة يفصل القطعة عن اللوح."},
+    {n:"التقطيع",who:"ai",t:"20 دقيقة",tool:"Lychee · CHITUBOX",d:"توجيه بزاوية ٢٥–٣٥° · دعامات آلية ثم <strong>مراجعة يدوية</strong> للوجه والتفاصيل الحساسة.",x:"الدعامات الآلية ممتازة، ما عدا على الوجوه — راجعها دائمًا."},
+    {n:"النموذج الأولي",who:"ai",t:"5–8 ساعات آلة",tool:"الطابعة",d:"اطبع نسخة واحدة قبل الدفعة. اختبر تعشيق الأجزاء والسنفرة وسمك الجدار.",x:"القفز للدفعة مباشرة هو أغلى خطأ ممكن — فشل ×٣٠."},
+    {n:"فحص الجودة",who:"you",t:"20 دقيقة",tool:"ضوء مائل · قدمة قياس",d:"اختبار التركيب والوزن والتوازن على القاعدة. صوّر العيوب وعدّل الملف قبل الإنتاج.",x:"العيب المكتشَف هنا يكلّف ساعة. المكتشَف بعد الدفعة يكلّف أسبوعًا."},
+    {n:"الإنتاج",who:"ai",t:"5–7 ساعات/لوح",tool:"الطابعة",d:"لوحان يوميًا ممكنان عمليًا. رتّب الطباعة ليلًا حتى يكون الصباح للتشطيب.",x:"الطابعة ليست اختناقك — القسم ١٥."},
+    {n:"التشطيب",who:"you",t:"0.5–4 ساعات",tool:"١٣ خطوة — القسم ١٤",d:"غسل · تصليب · نزع دعامات · معجون · سنفرة · برايمر · لون · عنصر مغاير · كلير · تجميع.",x:"<strong>الاختناق الحقيقي.</strong> كل قرار تصميمي يجب أن يخدم تقصير هذه المرحلة."},
+    {n:"التصوير و CGI",who:"ai",t:"1–2 ساعة",tool:"Blender Cycles + كاميرا",d:"ارندر نفس المجسم الذي ستطبعه. رندرات بجودة استوديو <strong>قبل وجود القطعة ماديًا</strong>.",x:"<strong>هذا سلاح الطلب المسبق:</strong> تبيع قبل أن تطبع، فيموّل العميل الإنتاج."},
+    {n:"التسويق",who:"you",t:"مستمر",tool:"إنستقرام · تيك توك · سناب",d:"كل مرحلة أعلاه كانت تُصوَّر أثناء حدوثها. لا يوم تصوير منفصل.",x:"المحتوى ناتج ثانوي للإنتاج، لا مشروع مستقل."}
+  ];
+  var pTabs = document.getElementById("pipeTabs"), pPanel = document.getElementById("pipePanel");
+  PIPE.forEach(function(s,i){
+    var b = document.createElement("button");
+    b.className = "node"; b.type = "button"; b.setAttribute("role","tab");
+    b.dataset.i = i; b.dataset.who = s.who;
+    b.setAttribute("aria-selected", i===0 ? "true" : "false");
+    b.innerHTML = '<span class="i">'+String(i+1).padStart(2,"0")+'</span><span class="n">'+s.n+'</span>';
+    pTabs.appendChild(b);
+  });
+  function renderPipe(i){
+    var s = PIPE[i];
+    pPanel.innerHTML =
+      '<div class="tags"><span class="pill '+(s.who==="ai"?"p-info":"p-wait")+'">'+(s.who==="ai"?"الآلة":"يدك")+'</span>'+
+      '<span class="pill p-info">'+s.t+'</span><span class="pill p-info">'+s.tool+'</span></div>'+
+      '<h3 style="font-family:var(--ff-display);font-size:1.1rem">'+String(i+1).padStart(2,"0")+' — '+s.n+'</h3>'+
+      '<p style="font-size:.9rem">'+s.d+'</p>'+
+      '<p class="small" style="border-inline-start:2px solid var(--bronze);padding-inline-start:12px">'+s.x+'</p>';
+  }
+  pTabs.addEventListener("click", function(e){
+    var b = e.target.closest(".node"); if(!b) return;
+    Array.prototype.forEach.call(pTabs.children, function(x){ x.setAttribute("aria-selected", String(x===b)); });
+    renderPipe(+b.dataset.i);
+  });
+  renderPipe(0);
+
+  /* ---------- budget tiers ---------- */
+  var TIERS = {
+    "0":{ total:700, loss:"<div class='verdict'><span class='eyebrow'>ما تحصل عليه</span><p>إجابة على السؤال الوحيد المهم — هل يدفع أحد؟ — مقابل أقل من ١٪ من ميزانية الدراسة الأصلية. <strong>لا تتخطَّ هذا المستوى مهما كنت متحمسًا.</strong></p></div>",
+      rows:[["نطاق + صفحة هبوط",60,"صفحة واحدة بنموذج قائمة انتظار"],["Tripo Professional — شهر",75,"أو صفر إن ولّدت محليًا على RTX 4090"],["نموذج أولي مطبوع لدى خدمة بالرياض",265,"تحمله بيدك وتصوّره قبل شراء أي آلة"],["اختبار إعلاني — إنستقرام وسناب",300,"قِس تكلفة التسجيل في القائمة، لا الإعجابات"]] },
+    "1":{ total:6050, loss:"<div class='warnbox'><span class='eyebrow'>ما تخسره عند هذا المستوى</span><p><strong>الضمان</strong> (طابعة مستعملة) · <strong>٣٠٪ بطء إضافي</strong> في الغسل والتصليب اليدوي · <strong>تغليف أقل إقناعًا</strong> يحدّ سقف سعرك عند ٨٩٠ ريالًا تقريبًا · <strong>لا احتياطي</strong> لعطل مفاجئ. مقبول تمامًا إن كانت السيولة هي القيد الملزم — لكن لا تنزل تحته.</p></div>",
+      rows:[["طابعة مستعملة — Saturn/Mars من حراج",1700,"افحصها مشغّلة وبطباعة اختبار أمامك قبل الدفع"],["محطة غسل وتصليب يدوية",280,"دلوان محكمان + خلاط مغناطيسي + مصباح UV"],["ريزن ABS-Like ×2 كجم",300,"لا تزد — الحرارة تفسد المخزون"],["كحول IPA 5 لتر",120,"تخزين محكم بعيدًا عن الحرارة"],["معدات الوقاية",265,"كمامة أبخرة + نتريل + نظارات — إلزامي"],["الشفط والتهوية",350,"إلزامي · يُركَّب قبل أول تشغيل"],["أدوات التشطيب والبخاخات",450,"سنفرة · معجون · برايمر · كلير بمانع UV"],["تغليف ×15 محليًا",700,"بسيط ونظيف · شهادة مرقّمة"],["قواعد أكريليك محفورة ×15",330,"ورشة ليزر بالرياض"],["أغلفة FEP احتياطية",135,"قبل أن تحتاجها"],["مرحلة التحقّق (مُدرجة)",700,"لا تتخطاها"],["رأس مال عامل",720,"لا تبدأ برصيد صفر"]] },
+    "2":{ total:9800, loss:"<div class='verdict'><span class='eyebrow'>لماذا هذا هو الموصى به</span><p>الفارق عن Tier 1 هو ٣٬٧٥٠ ريالًا تشتري بها <strong>الوقت وسقف السعر</strong>: طابعة جديدة بضمان، وتغليف يبرّر ١٬٢٩٠ ريالًا بدل ٨٩٠، ومخزون قطع غيار يمنع توقفًا بأسبوعين. <strong>وهو أقل بـ٦٬٢٠٠ ريال من الميزانية المقترحة سابقًا، بلا أي تنازل عن جودة المنتج.</strong></p></div>",
+      rows:[["الطابعة — Saturn 4 Ultra 12K جديدة",3250,"بضمان · الفرق عن 16K غير مرئي بعد الطلاء"],["محطة غسل وتصليب يدوية",280,"الجهاز الجاهز يُؤجَّل للشهر ٦"],["ريزن — ABS-Like ×2 + Tough ×1",560,"ثلاث وظائف مختلفة"],["كحول IPA 5 لتر",120,"—"],["معدات الوقاية الكاملة",265,"غير قابلة للتفاوض"],["الشفط + التهوية",350,"إلى خارج المبنى لا داخل الغرفة"],["أدوات التشطيب والبخاخات",450,"—"],["قواعد أكريليك محفورة ×25",550,"ترفع القيمة المُدركة أكثر من ٦ ساعات رسم"],["تغليف ×25 محليًا",1100,"ثبّت المقاس قبل أي طلب بالجملة"],["سلة — ٣ أشهر",447,"فوترة متوافقة مع هيئة الزكاة جاهزة"],["إضاءة ومستلزمات تصوير",450,"الصورة تبيع قبل القطعة"],["قطع غيار — FEP ×3",135,"يمنع توقفًا بأسبوعين"],["مرحلة التحقّق (مُدرجة)",700,"—"],["رأس مال عامل واحتياطي",1143,"—"]] },
+    "3":{ total:24500, loss:"<div class='warnbox'><span class='eyebrow'>شرط الدخول لهذا المستوى</span><p>لا تصرف ريالًا منه قبل <strong>ثلاثة أشهر متتالية فوق ١٨٬٥٠٠ ريال مبيعات</strong> وطلب B2B واحد مكتمل. الإنفاق هنا قبل إثبات الطلب هو الطريقة الأسرع لتحويل مشروع رابح إلى خسارة.</p></div>",
+      rows:[["طابعة ثانية متوسطة",3250,"<strong>بعد</strong> توظيف المشطِّب لا قبله"],["مشطِّب بالساعة — ٣ أشهر",9000,"٤٠–٦٠ ﷼/ساعة · يحرّر ٦٠٪ من وقتك"],["Wash &amp; Cure جاهز",800,"يستحق فوق ٣٠ قطعة شهريًا"],["إيربرش + كمبروسر بخزان",600,"عند إطلاق منتج يحتاج تدرجات لونية"],["تغليف بالجملة ×300 من الصين",7500,"بعد تثبيت المقاس نهائيًا"],["سجل تجاري + تسجيل ضريبي",1500,"يفتح بوابات المشتريات المؤسسية"],["مخزون ريزن موسّع",1200,"بحدود شهرين استهلاك فقط"],["ميزانية إعلانات",650,"—"]] }
+  };
+  var tBody = document.getElementById("tierBody"), tLoss = document.getElementById("tierLoss"), tTabs = document.getElementById("tierTabs");
+  function renderTier(k){
+    var t = TIERS[k];
+    tBody.innerHTML = t.rows.map(function(r){
+      return '<tr><td>'+r[0]+'</td><td class="n">'+fmt(r[1])+' ﷼</td><td class="small">'+r[2]+'</td></tr>';
+    }).join("") + '<tr class="tot"><td>الإجمالي</td><td class="n">'+fmt(t.total)+' ﷼</td><td></td></tr>';
+    tLoss.innerHTML = t.loss;
+  }
+  tTabs.addEventListener("click", function(e){
+    var b = e.target.closest(".tier-btn"); if(!b) return;
+    Array.prototype.forEach.call(tTabs.children, function(x){ x.setAttribute("aria-selected", String(x===b)); });
+    renderTier(b.dataset.t);
+  });
+  renderTier("2");
+
+  /* ---------- unit economics calculator ---------- */
+  var C = {
+    price:document.getElementById("cPrice"), resin:document.getElementById("cResin"),
+    kg:document.getElementById("cResinKg"), hours:document.getElementById("cHours"),
+    rate:document.getElementById("cRate"), pack:document.getElementById("cPack"),
+    design:document.getElementById("cDesign"), fail:document.getElementById("cFail")
+  };
+  var O = {};
+  ["oResin","oCons","oPaint","oPack","oMach","oMat","oLabor","oDesign","oSell","oCogs","oProfit","oMargin","oPerHour","oMatPct","oVerdict","gMat","gLab","gSell","gProf"]
+    .forEach(function(id){ O[id] = document.getElementById(id); });
+  var V = {};
+  ["vPrice","vResin","vResinKg","vHours","vRate","vPack","vDesign","vFail"].forEach(function(id){ V[id] = document.getElementById(id); });
+
+  var PRESETS = {
+    relic:    {price:340,  resin:55,  kg:200, hours:0.45, rate:85, pack:14, design:15, fail:10},
+    monolith: {price:490,  resin:130, kg:150, hours:1.4,  rate:85, pack:36, design:22, fail:10},
+    sentinel: {price:1290, resin:380, kg:150, hours:4,    rate:85, pack:54, design:70, fail:10},
+    mark:     {price:850,  resin:200, kg:150, hours:1.6,  rate:85, pack:55, design:0,  fail:8}
+  };
+
+  function calc(){
+    var price=+C.price.value, grams=+C.resin.value, kg=+C.kg.value, hours=+C.hours.value,
+        rate=+C.rate.value, pack=+C.pack.value, design=+C.design.value, fail=+C.fail.value;
+
+    V.vPrice.textContent = fmt(price);
+    V.vResin.textContent = fmt(grams);
+    V.vResinKg.textContent = fmt(kg);
+    V.vHours.textContent = fmt1(hours);
+    V.vRate.textContent = fmt(rate);
+    V.vPack.textContent = fmt(pack);
+    V.vDesign.textContent = fmt(design);
+    V.vFail.textContent = fmt(fail);
+
+    var resin = grams/1000*kg;
+    var failC = resin*(fail/100);
+    var cons  = 3 + hours*2.5;
+    var paint = 2 + hours*2.5;
+    var mach  = 4 + grams*0.015;
+    var mat   = resin + failC + cons + paint + pack + mach;
+    var labor = hours*rate;
+    var sell  = price*0.0195 + 1 + 26;
+    var cogs  = mat + labor + design;
+    var prof  = price - cogs - sell;
+    var margin = price>0 ? prof/price*100 : 0;
+    var perHour = hours>0 ? prof/hours : 0;
+    var matPct = price>0 ? mat/price*100 : 0;
+
+    O.oResin.textContent  = fmt(resin+failC)+" ﷼";
+    O.oCons.textContent   = fmt(cons)+" ﷼";
+    O.oPaint.textContent  = fmt(paint)+" ﷼";
+    O.oPack.textContent   = fmt(pack)+" ﷼";
+    O.oMach.textContent   = fmt(mach)+" ﷼";
+    O.oMat.textContent    = fmt(mat)+" ﷼";
+    O.oLabor.textContent  = fmt(labor)+" ﷼";
+    O.oDesign.textContent = fmt(design)+" ﷼";
+    O.oSell.textContent   = fmt(sell)+" ﷼";
+    O.oCogs.textContent   = fmt(cogs)+" ﷼";
+    O.oProfit.textContent = fmt(prof)+" ﷼";
+    O.oMargin.textContent = fmt(margin)+"٪";
+    O.oPerHour.textContent = fmt(perHour)+" ﷼/س";
+    O.oMatPct.textContent = fmt(matPct)+"٪";
+
+    var pos = Math.max(1, price);
+    O.gMat.style.width  = Math.max(0,Math.min(100, mat/pos*100))+"%";
+    O.gLab.style.width  = Math.max(0,Math.min(100,(labor+design)/pos*100))+"%";
+    O.gSell.style.width = Math.max(0,Math.min(100, sell/pos*100))+"%";
+    O.gProf.style.width = Math.max(0,Math.min(100, Math.max(0,prof)/pos*100))+"%";
+
+    var msg, bad = false;
+    if(prof <= 0){ bad = true; msg = "<strong>خسارة.</strong> بهذه المدخلات تدفع من جيبك مقابل كل قطعة تبيعها."; }
+    else if(perHour < 150){ bad = true; msg = "<strong>تحت الحد الأدنى.</strong> "+fmt(perHour)+" ﷼ للساعة أقل من ١٥٠. ارفع السعر، أو اختصر ساعة تشطيب، أو احذف هذا المنتج من الخط."; }
+    else if(matPct > 15){ bad = true; msg = "<strong>الخامات "+fmt(matPct)+"٪ من السعر</strong> — فوق سقف ١٥٪. القطعة أكبر من اللازم أو مسعّرة أقل من اللازم."; }
+    else if(perHour > 380){ msg = "<strong>ممتاز.</strong> "+fmt(perHour)+" ﷼ للساعة. هذا منتج يستحق أن يتصدر خط الإنتاج — أعطه أولوية الطباعة والمحتوى."; }
+    else { msg = "<strong>سليم.</strong> "+fmt(perHour)+" ﷼ للساعة وخامات "+fmt(matPct)+"٪. ضمن حدود الأمان."; }
+    O.oVerdict.innerHTML = msg;
+    O.oVerdict.classList.toggle("bad", bad);
+  }
+  Object.keys(C).forEach(function(k){ C[k].addEventListener("input", calc); });
+  var presets = document.querySelectorAll(".preset");
+  Array.prototype.forEach.call(presets, function(b){
+    b.addEventListener("click", function(){
+      var p = PRESETS[b.dataset.preset];
+      C.price.value=p.price; C.resin.value=p.resin; C.kg.value=p.kg; C.hours.value=p.hours;
+      C.rate.value=p.rate; C.pack.value=p.pack; C.design.value=p.design; C.fail.value=p.fail;
+      Array.prototype.forEach.call(presets, function(x){ x.setAttribute("aria-pressed", String(x===b)); });
+      calc();
+    });
+  });
+  calc();
+
+  /* ---------- price ladder ---------- */
+  var LADDER = [
+    {p:490, z:"ENTRY", c:"z-premium", t:"نقطة دخول سليمة — بشرط المقاس",
+      d:"عند ١٤–١٦ سم بتشطيب نظيف وقاعدة محفورة، يقرأ العميل «قطعة مصمَّمة». <strong>لكن نفس السعر على مجسم ٢٤ سم يقتلك</strong>: يقول إن القطعة رخيصة التصنيع، ويحرق سقف سعرك لاحقًا. القاعدة: ٤٩٠ ريالًا للصغير فقط."},
+    {p:690, z:"GIFT ZONE", c:"z-premium", t:"أسهل نقطة بيع في الرياض",
+      d:"منطقة الهدية المريحة: أعلى من الهدية العادية بما يكفي ليبدو مميزًا، وأقل من حاجز التفكير الطويل. مثالية لطلبات B2B الصغيرة وهدايا المناسبات. <strong>إن أردت حجم مبيعات سريعًا، هنا تجده.</strong>"},
+    {p:890, z:"PREMIUM", c:"z-premium", t:"يتطلب تغليفًا يبرّره",
+      d:"فوق ٨٩٠ ريالًا يتوقع المشتري صندوقًا صلبًا وشهادة ورقمًا تسلسليًا. <strong>الصندوق الكرتوني البسيط عند هذا السعر يُنتج طلب إرجاع.</strong> التغليف هنا ليس ترفًا — هو جزء من المنتج."},
+    {p:1290, z:"LUXURY", c:"z-luxury", t:"موقع القطعة الرائدة",
+      d:"يتطلب الأربعة كلها: إصدار مرقّم محدود · ٢٢ سم+ · تشطيب متعدد المواد · تغليف كامل بشهادة. <strong>هذا هو موقع SENTINEL.</strong> وهو السعر الذي تبدأ عنده العلامة في أن تُؤخذ على محمل الجد."},
+    {p:1490, z:"LUXURY", c:"z-luxury", t:"يحتاج ندرة حقيقية",
+      d:"الفارق عن ١٬٢٩٠ ليس ماديًا بل سرديًا: إصدار من ٢٥ بدل ٥٠، أو تعاون مع فنان، أو تنويعة لونية محدودة. <strong>بلا سبب معلن للندرة، هذا السعر يُقرأ كجشع.</strong>"},
+    {p:1990, z:"HARD SELL", c:"z-over", t:"أصعب بيعة في السلّم",
+      d:"<strong>بيع قطعة غير مخصّصة لعلامة غير معروفة بـ١٬٩٩٠ ريالًا هو أصعب ما ستحاوله.</strong> لا تجرّبه في السنة الأولى إلا في حالتين: إصدار من ١٥ نسخة أو أقل، أو تعاون مع فنان له جمهوره. خارج ذلك — رفض متكرر وضرر بالسمعة."},
+    {p:2490, z:"COMMISSION", c:"z-over", t:"تكليف فقط، لا منتج رف",
+      d:"فوق ٢٬٠٠٠ ريال، البيع يكون بالعلاقة لا بالصفحة. مجاله الطبيعي: التخصيص المعقّد، وتكليفات الشركات، وقطع اللوبيات، والجوائز الكبرى. <strong>لا تضع هذا السعر في المتجر</strong> — ضعه في عرض سعر."},
+    {p:340, z:"COMMODITY RISK", c:"z-commodity", t:"الحد الأدنى المطلق",
+      d:"يعمل <strong>فقط</strong> للقطعة الصغيرة بلا تلوين (RELIC). تحت ٢٩٠ ريالًا تدخل منطقة السلعة: تنافس المستورد على السعر وتخسر، لأن تكلفة ساعتك لا يمكن أن تنافس مصنعًا صينيًا. <strong>لا تنزل تحت ٢٩٠ أبدًا.</strong>"}
+  ];
+  var lad = document.getElementById("ladder");
+  LADDER.sort(function(a,b){ return a.p-b.p; }).forEach(function(r,i){
+    var wrap = document.createElement("div");
+    wrap.innerHTML =
+      '<button class="rung" type="button" aria-expanded="false" aria-controls="rd'+i+'">'+
+      '<span class="pr">'+fmt(r.p)+' ﷼</span><span>'+r.t+'</span><span class="zone '+r.c+'">'+r.z+'</span></button>'+
+      '<div class="rung-detail" id="rd'+i+'">'+r.d+'</div>';
+    lad.appendChild(wrap.firstChild);
+    lad.appendChild(wrap.firstChild);
+  });
+  lad.addEventListener("click", function(e){
+    var b = e.target.closest(".rung"); if(!b) return;
+    var open = b.getAttribute("aria-expanded") === "true";
+    Array.prototype.forEach.call(lad.querySelectorAll(".rung"), function(x){ x.setAttribute("aria-expanded","false"); });
+    Array.prototype.forEach.call(lad.querySelectorAll(".rung-detail"), function(x){ x.classList.remove("open"); });
+    if(!open){ b.setAttribute("aria-expanded","true"); document.getElementById(b.getAttribute("aria-controls")).classList.add("open"); }
+  });
+
+  /* ---------- financial model ---------- */
+  var SCEN = {
+    cons:{ label:"متحفّظ", total:133000,
+      note:"يدفع لك ٦٢ ﷼ للساعة — تحت السوق. المشروع حيّ لكنه لا يعوّض وقتك بعد.",
+      m:[[0,0],[0,0],[4200,0],[6200,0],[7800,0],[9800,0],[11200,0],[6000,18000],[12600,0],[13400,0],[7200,22000],[14600,0]] },
+    base:{ label:"أساسي", total:222000,
+      note:"يدفع لك أجر حرفي بدوام كامل ويسترد رأس المال — بلا فائض في السنة الأولى.",
+      m:[[0,0],[0,0],[7800,0],[10080,0],[12760,0],[18780,0],[19640,0],[7200,28000],[21140,0],[22380,0],[8400,36500],[29320,0]] },
+    grow:{ label:"طلب قوي", total:388000,
+      note:"يتجاوز حد ٣٧٥٬٠٠٠ ﷼ فيصبح تسجيل ض.ق.م إلزاميًا. ويستدعي مشطِّبًا بدوام جزئي من الشهر ٨.",
+      m:[[0,0],[0,0],[14000,0],[18500,0],[22000,0],[28000,0],[31000,0],[12000,42000],[34000,0],[42000,0],[14000,62000],[48500,20000]] }
+  };
+  var barsEl = document.getElementById("bars"), totalRev = document.getElementById("totalRev"), totalNote = document.getElementById("totalNote");
+  function renderChart(k){
+    var s = SCEN[k];
+    var max = 0;
+    s.m.forEach(function(p){ max = Math.max(max, p[0]+p[1]); });
+    barsEl.innerHTML = s.m.map(function(p,i){
+      var tot = p[0]+p[1];
+      return '<div class="barcol">'+
+        '<span class="tip">M'+(i+1)+' · '+fmt(tot)+' SAR</span>'+
+        (p[1] ? '<span class="b b2b" data-h="'+(p[1]/max*100)+'"></span>' : '')+
+        (p[0] ? '<span class="b" data-h="'+(p[0]/max*100)+'"></span>' : '')+
+        '<span class="m">'+(i+1)+'</span></div>';
+    }).join("");
+    totalRev.textContent = fmt(s.total) + " SAR";
+    totalNote.textContent = s.note;
+    requestAnimationFrame(function(){
+      Array.prototype.forEach.call(barsEl.querySelectorAll(".b"), function(b){ b.style.height = b.dataset.h+"%"; });
+    });
+  }
+  var sTabs = document.getElementById("scenTabs");
+  sTabs.addEventListener("click", function(e){
+    var b = e.target.closest(".scen"); if(!b) return;
+    Array.prototype.forEach.call(sTabs.children, function(x){ x.setAttribute("aria-selected", String(x===b)); });
+    renderChart(b.dataset.s);
+  });
+  renderChart("base");
+
+  /* ---------- risk matrix ---------- */
+  var RISKS = [
+    {n:"طباعات فاشلة", p:3, i:1, sev:1, cost:"٥٠–٢٠٠ ﷼ للحادثة", d:"طبيعي في هذا المجال. معدل ٨–١٢٪ متوقع ومحسوب داخل اقتصاديات الوحدة.", mit:"مخصّص ١٠٪ في التسعير · طباعة نموذج واحد قبل كل دفعة · طباعة ليلية حتى لا يضيع يوم عمل · سجل لأسباب الفشل."},
+    {n:"تشقق الريزن", p:2, i:2, sev:2, cost:"إعادة تصنيع + تأخير", d:"الإفراط في التصليب والريزن القياسي يجعلان القطعة هشة، فتتكسر عند التجميع أو الشحن.", mit:"وقت تصليب محسوب (٣–٦ دقائق لا أكثر) · ريزن Tough للأجزاء الرفيعة · دبابيس نحاس في المفاصل الحاملة · إيبوكسي لا CA وحده."},
+    {n:"تلف الشحن", p:2, i:3, sev:3, cost:"قيمة القطعة + الشحن + السمعة", d:"القطع الراتنجية قابلة للكسر، ومندوبو التوصيل لا يقرأون ملصق «قابل للكسر».", mit:"إسفنج EVA مفرّغ + صندوق شحن خارجي بحشو ٣ سم + تصوير كل قطعة قبل الإغلاق + تأمين على الشحنة."},
+    {n:"طلب ضعيف", p:2, i:3, sev:3, cost:"المشروع كله", d:"الخطر الأكبر على الإطلاق: أن تبني كل شيء ثم لا يشتري أحد.", mit:"<strong>هذا ما تحلّه مرحلة التحقّق بـ٧٠٠ ريال.</strong> طلب مسبق بعربون قبل شراء أي معدة. أقل من ١٥ عربونًا = غيّر المفهوم، لا تشترِ طابعة."},
+    {n:"مقاومة السعر", p:3, i:2, sev:2, cost:"دورة مبيعات أطول", d:"«ليش غالي؟ هذي طباعة!» — الاعتراض المتوقع رقم واحد.", mit:"صفحة العملية · محتوى الصنع · تغليف يبرّر · إصدار مرقّم · <strong>لا تنافس بالسعر أبدًا</strong> — من يشتري بالسعر يغادر بالسعر."},
+    {n:"التدفق النقدي", p:2, i:3, sev:3, cost:"توقف الإنتاج", d:"شراء الخامات والتغليف قبل وصول الإيراد يستنزف السيولة.", mit:"<strong>الطلب المسبق يموّل الإنتاج</strong> · دفعة ٥٠٪ مقدمًا في B2B · لا مخزون مسبق · رأس مال عامل ١٬١٠٠ ﷼ لا يُمس."},
+    {n:"عطل الشاشة", p:2, i:2, sev:2, cost:"٣٥٠–٥٥٠ ﷼ + توقف", d:"شاشة LCD تستهلك ١٬٥٠٠–٢٬٠٠٠ ساعة تشغيل ثم تحتاج استبدالًا.", mit:"تتبّع ساعات التشغيل · شاشة احتياطية في المخزون من الشهر ٤ · اختيار طابعة شاشتها سلعة متوفرة محليًا — وهذا سبب اختيار Elegoo."},
+    {n:"عطل الطابعة", p:1, i:3, sev:2, cost:"توقف أسبوعين", d:"عطل ميكانيكي كامل يوقف الإنتاج بالكامل لأنك بلا احتياطي.", mit:"شراء محلي بضمان · علاقة مع مورّد بالرياض · خدمة طباعة خارجية كخطة بديلة لطلب عاجل · مخزون FEP وقطع الاستهلاك."},
+    {n:"تأخر التشطيب", p:3, i:2, sev:2, cost:"تأخر التسليم", d:"الاختناق رقم ١. يبدأ بتأخير يومين وينتهي بمواعيد محروقة وعملاء غاضبين.", mit:"سقف زمني لكل منتج · تصميم يقلّل التشطيب · <strong>وعود تسليم مع هامش ٣٠٪</strong> · مشطِّب بالساعة عند الذروة."},
+    {n:"شبكات AI معطوبة", p:3, i:1, sev:1, cost:"ساعات ضائعة", d:"مخرجات غير مُحكمة، أو تفاصيل في الخامة لا في الهندسة، أو أصابع ملتحمة.", mit:"فرز إلزامي في Blender قبل أي عمل · توليد ظلال خارجية أولًا · تصميم شخصيات بأيدٍ مبسّطة أو مقفّزة."},
+    {n:"حقوق الملكية", p:1, i:3, sev:2, cost:"إزالة منتج · نزاع", d:"اقتراب غير مقصود من شخصية مرخّصة، أو مخرج AI بلا مساهمة بشرية كافية لحمايته.", mit:"ملكية فكرية أصلية حصرًا · <strong>توثيق مراحل النحت لكل شخصية</strong> · بحث في سجل العلامات قبل التسمية · شروط وأحكام واضحة."},
+    {n:"التعرّض للمواد", p:2, i:3, sev:3, cost:"صحتك", d:"حساسية جلدية وتهيّج تنفسي من التعرّض المتكرر للريزن غير المُصلَّب وأبخرته.", mit:"<strong>غير قابل للتفاوض:</strong> شفط للخارج + نتريل دائمًا + كمامة أبخرة عند كل تعامل + تصليب كل النفايات + لا سكب في المجاري."},
+    {n:"مراجعات التخصيص", p:3, i:2, sev:2, cost:"ساعات بلا مقابل", d:"عميل يطلب تعديلًا سابعًا على وجه لن يرضيه أبدًا لأنه توقع تشابهًا فوتوغرافيًا.", mit:"<strong>جولتا مراجعة مكتوبتان قبل الدفع</strong> · «مستوحاة منك» لا «تشبهك» · اعتماد كتابي للمفهوم · سقف ٣ طلبات شهريًا."},
+    {n:"تبعية عميل B2B واحد", p:2, i:2, sev:2, cost:"انهيار الإيراد", d:"عميل مؤسسي واحد يشكّل ٥٠٪ من دخلك ثم يغيّر ميزانيته.", mit:"استمرار الإصدارات B2C مهما انشغلت · ثلاثة عملاء مؤسسيين كحد أدنى قبل الاعتماد على القناة · عقود سنوية للجوائز المتكررة."}
+  ];
+  var mx = document.getElementById("matrix"), rp = document.getElementById("riskPanel");
+  function buildMatrix(){
+    var html = '<div class="axis">الاحتمال ↓ / الأثر ←</div><div class="axis">أثر منخفض</div><div class="axis">أثر متوسط</div><div class="axis">أثر مرتفع</div>';
+    [3,2,1].forEach(function(p){
+      html += '<div class="axis">'+(p===3?"مرتفع":p===2?"متوسط":"منخفض")+'</div>';
+      [1,2,3].forEach(function(i){
+        var items = RISKS.filter(function(r){ return r.p===p && r.i===i; });
+        html += '<div class="cell">' + items.map(function(r){
+          return '<button class="chip sev'+r.sev+'" type="button" aria-pressed="false" data-n="'+r.n+'">'+r.n+'</button>';
+        }).join("") + '</div>';
+      });
+    });
+    mx.innerHTML = html;
+  }
+  function renderRisk(name){
+    var r = RISKS.filter(function(x){ return x.n===name; })[0]; if(!r) return;
+    var lv = function(v){ return v===3?"مرتفع":v===2?"متوسط":"منخفض"; };
+    rp.innerHTML = '<div class="tags" style="display:flex;gap:8px;flex-wrap:wrap">'+
+      '<span class="pill '+(r.p===3?"p-no":r.p===2?"p-wait":"p-yes")+'">الاحتمال: '+lv(r.p)+'</span>'+
+      '<span class="pill '+(r.i===3?"p-no":r.i===2?"p-wait":"p-yes")+'">الأثر: '+lv(r.i)+'</span>'+
+      '<span class="pill p-info">'+r.cost+'</span></div>'+
+      '<h3 style="font-family:var(--ff-display);font-size:1.1rem">'+r.n+'</h3>'+
+      '<p style="font-size:.9rem">'+r.d+'</p>'+
+      '<div class="verdict"><span class="eyebrow">التخفيف</span><p style="font-size:.86rem">'+r.mit+'</p></div>';
+  }
+  buildMatrix();
+  mx.addEventListener("click", function(e){
+    var c = e.target.closest(".chip"); if(!c) return;
+    Array.prototype.forEach.call(mx.querySelectorAll(".chip"), function(x){ x.setAttribute("aria-pressed", String(x===c)); });
+    renderRisk(c.dataset.n);
+  });
+  renderRisk("طلب ضعيف");
+  mx.querySelector('.chip[data-n="طلب ضعيف"]').setAttribute("aria-pressed","true");
+
+  /* ---------- 90-day timeline ---------- */
+  var WEEKS = [
+    {w:"W 1–2", t:"العالم والهوية", cost:"135 ﷼", open:true,
+      d:"<ul><li>اكتب صفحة واحدة عن عالم الشخصيات: المكان، القاعدة، لماذا توجد هذه الكائنات.</li><li>ولّد ٢٠ ظلًا خارجيًا واختر ثلاثة.</li><li>ثبّت اسم العلامة وابحث عنه في سجل العلامات لدى الهيئة السعودية للملكية الفكرية.</li><li>احجز النطاق وأنشئ حسابي إنستقرام وتيك توك.</li><li>أصدر وثيقة العمل الحر (مجانية).</li></ul>",
+      k:"KPI · ٣ ظلال معتمدة + اسم متاح مؤكد"},
+    {w:"W 3–4", t:"التصميم والدليل البصري", cost:"340 ﷼", open:false,
+      d:"<ul><li>ولّد المجسم ثلاثي الأبعاد لأول شخصية، ثم افرزه وانحته في Blender.</li><li>ارندر ٣ صور بجودة استوديو — <strong>لا أحد يستطيع التمييز بينها وبين الصور الحقيقية.</strong></li><li>اطلب نموذجًا أوليًا مطبوعًا من خدمة في الرياض واحمله بيدك.</li><li>ابنِ صفحة هبوط بنموذج قائمة انتظار.</li><li>انشر أول ٦ مقاطع عن العملية.</li></ul>",
+      k:"KPI · ٥٠ مسجَّلًا في قائمة الانتظار"},
+    {w:"W 5–6", t:"اختبار الطلب — قبل أي معدة", cost:"300 ﷼", open:false,
+      d:"<ul><li>افتح ٢٠ مكانًا للطلب المسبق بعربون ٢٥٠ ﷼ قابل للاسترداد.</li><li>شغّل ٣٠٠ ﷼ إعلانات موجّهة للرياض على إنستقرام وسناب.</li><li>اتصل بثلاثة موردي هدايا مؤسسية واطلب عرض سعر لـ٥٠ درعًا — لتعرف أسعار السوق من الداخل.</li></ul><div class='warnbox' style='margin-top:10px'><span class='eyebrow'>بوابة القرار</span><p><strong>١٥+ عربونًا ← اشترِ الطابعة.</strong> أقل من ذلك ← غيّر المفهوم وأعد الاختبار. لا تشترِ معدات لتثبت لنفسك أنك جادّ.</p></div>",
+      k:"KPI · ١٥ عربونًا مدفوعًا = ٣٬٧٥٠ ﷼"},
+    {w:"W 7", t:"الشراء والتركيب", cost:"5,265 ﷼", open:false,
+      d:"<ul><li>اشترِ الطابعة والريزن والكحول ومعدات الوقاية والتشطيب.</li><li><strong>ركّب الشفط قبل أول تشغيل، لا بعده.</strong></li><li>اطبع نماذج المعايرة: اختبار التعريض، واختبار التفاصيل، واختبار سمك الجدار.</li><li>وثّق كل خطأ في دفتر — ستحتاجه.</li></ul>",
+      k:"KPI · ٣ طباعات ناجحة متتالية"},
+    {w:"W 8", t:"إتقان التشطيب", cost:"550 ﷼", open:false,
+      d:"<ul><li>شطّب خمس قطع بالكامل وقِس زمن كل مرحلة بالدقيقة.</li><li>قارن الزمن الفعلي بالسقف المستهدف — وعدّل <strong>التصميم</strong> إن تجاوزته.</li><li>اطلب القواعد الأكريليك المحفورة من ورشة الليزر.</li><li>صوّر كل مرحلة — هذا محتوى شهر كامل.</li></ul>",
+      k:"KPI · قطعة رائدة ≤ ٤ ساعات تشطيب"},
+    {w:"W 9", t:"التغليف والمتجر", cost:"1,997 ﷼", open:false,
+      d:"<ul><li>اطلب ٢٥ صندوقًا محليًا بعد تثبيت المقاس النهائي بخمس عينات.</li><li>صمّم شهادة الأصالة وبطاقة الحكاية ونظام الترقيم.</li><li>افتح متجر سلة واربط ميسر وسمسا.</li><li>اكتب الشروط والأحكام وسياسة الإرجاع بالعربية — القسمان ٢١ و٢٢.</li></ul>",
+      k:"KPI · متجر يقبل طلبًا حقيقيًا من الجوال"},
+    {w:"W 10", t:"إطلاق هادئ", cost:"0 ﷼", open:false,
+      d:"<ul><li>سلّم أصحاب الطلبات المسبقة أولًا — <strong>هم شهودك.</strong></li><li>اطلب من كل واحد صورة أو مقطع فتح صندوق.</li><li>انشر سلسلة «من الفكرة إلى الشيء» كاملة.</li><li>اجمع الاعتراضات الحقيقية وعدّل الصفحات بناءً عليها.</li></ul>",
+      k:"KPI · ١٥ تسليمًا + ٨ شهادات عملاء"},
+    {w:"W 11–12", t:"الإصدار الأول والباب المؤسسي", cost:"650 ﷼", open:false,
+      d:"<ul><li>افتح الإصدار الرسمي: ٥٠ نسخة مرقّمة، عدّاد تنازلي معلن.</li><li>ابنِ ملف أعمال مؤسسيًا من أول ١٥ تسليمًا وأرسله لعشر جهات: وكالات فعاليات، وفرق تسويق، ومنظمي جوائز.</li><li>افتح صفحة «للشركات» بحد أدنى ٢٥ قطعة.</li><li>راجع الأرقام الفعلية مقابل هذه الدراسة وعدّل التسعير.</li></ul>",
+      k:"KPI · ٢٥ مبيعة + ٣ محادثات B2B جادة"}
+  ];
+  var tl = document.getElementById("timeline");
+  WEEKS.forEach(function(w){
+    var d = document.createElement("details");
+    if(w.open) d.open = true;
+    d.innerHTML = '<summary><span class="wk">'+w.w+'</span><span class="ttl">'+w.t+'</span><span class="cost">'+w.cost+'</span></summary>'+
+      '<div class="content">'+w.d+'<div class="kpi">'+w.k+'</div></div>';
+    tl.appendChild(d);
+  });
+
+  /* ---------- naming ---------- */
+  var NAMES = [
+    {n:"SABAK / سَبَك", g:"مفردات السباكة والصبّ", r:"الفعل العربي لصهر المعدن وصبّه في قالب. يصف عملية التصنيع دون ذكر أي تقنية، وينطق بنفس السهولة بالعربية والإنجليزية. <strong>الترشيح الأول</strong> — يحمل ثقل الحرفة لا خفّة التقنية."},
+    {n:"HAJAR / حَجَر", g:"مفردات الخامة والجيولوجيا", r:"حجر. بسيط، قابل للتذكر، يوحي بالصلابة والدوام — وهو ما تبيعه فعلًا: شيء يبقى. <strong>الترشيح الثاني.</strong>"},
+    {n:"TUFF", g:"مفردات الخامة والجيولوجيا", r:"صخر بركاني متكوّن من رماد متصلّب — استعارة دقيقة للريزن السائل الذي يتصلّب. قصير، لاتيني، سهل النطاق. <strong>الترشيح الثالث.</strong>"},
+    {n:"RAKHAM / رُخام", g:"مفردات الخامة", r:"رخام. يحمل ترف النحت الكلاسيكي مباشرة، لكنه قد يقيّدك بصريًا بالأبيض والحجري."},
+    {n:"BASALT", g:"مفردات الخامة", r:"البازلت — حجر بركاني داكن. يتوافق تمامًا مع لوحة ألوان داكنة تفرضها مشكلة اصفرار الريزن."},
+    {n:"ONYX ATELIER", g:"مفردات الخامة + دار تصميم", r:"يوضّح فئة العمل صراحةً («أتيليه»)، لكن كلمة Onyx مستهلكة في أسماء العلامات."},
+    {n:"THE CAST", g:"مفردات المسبك", r:"لعب لغوي مزدوج: الصبّ في قالب، وطاقم الشخصيات. ذكي — لكن البحث عنه في جوجل كابوس."},
+    {n:"FOUNDRY 11", g:"مفردات المسبك", r:"مسبك برقم. يوحي بالإنتاج الصناعي المنضبط. الرقم يمنح خصوصية لكلمة عامة."},
+    {n:"MAHFOUZ / مَحفوظ", g:"مفردات الأرشيف والإصدار", r:"محفوظ — مصان، مُرقّم، موثّق. يتوافق مباشرة مع نظام الإصدارات المرقّمة والشهادات."},
+    {n:"EDITION NOIR", g:"مفردات الأرشيف والإصدار", r:"يعلن نموذج العمل في الاسم نفسه: إصدارات محدودة. لكن الفرنسية تبعده عن الجذر السعودي."},
+    {n:"SERIES ONE", g:"مفردات الأرشيف والإصدار", r:"واضح ومباشر، لكنه يصبح محرجًا عند إطلاق السلسلة الثانية."},
+    {n:"ARCHIVE SA", g:"مفردات الأرشيف والإصدار", r:"يربط بالسعودية ويشير للأرشفة. عملي، لكن بلا شحنة عاطفية."},
+    {n:"NAJD / نجد", g:"مفردات المكان والأسطورة", r:"الهضبة التي تقع فيها الرياض. جذر مكاني قوي وفخور، لكنه مستخدم كثيرًا في أسماء تجارية محلية."},
+    {n:"SAHM / سَهْم", g:"مفردات المكان والأسطورة", r:"سهم — حاد، موجّه، أحادي المقطع. يصلح شعارًا بصريًا بسهولة (شكل السهم نفسه)."},
+    {n:"QAWS / قَوس", g:"مفردات المكان والأسطورة", r:"قوس — شكل ومعنى في آن. يصلح كعنصر بصري متكرر في التغليف والقواعد."},
+    {n:"OBSKUR", g:"مفردات مجرّدة مملوكة", r:"تحريف مقصود لـobscure. فارغ المعنى تمامًا، فيمتلئ بما تضعه فيه — وهذا ميزة لعلامة فاخرة. والنطاقات متاحة غالبًا."},
+    {n:"VESSL", g:"مفردات مجرّدة مملوكة", r:"وعاء بحرف محذوف. يوحي بالاحتواء والحمل — والمقتنى وعاء لقصة."},
+    {n:"KIRA", g:"مفردات مجرّدة مملوكة", r:"قصير وناعم وعالمي النطق، لكنه محايد جدًا ولا يحمل أي إشارة للحرفة."},
+    {n:"STUDIO 0/1", g:"مفردات التسلسل والترقيم", r:"يشير لثنائية الرقمي والمادي — وهي حكاية علامتك بالضبط. لكن الرموز تصعّب النطق الشفهي."},
+    {n:"UNIT-9", g:"مفردات التسلسل والترقيم", r:"لغة تصنيعية باردة تتناقض جيدًا مع دفء الحرفة اليدوية. مناسب لعلامة ذات لغة بصرية تقنية."}
+  ];
+  var namesEl = document.getElementById("names"), nameDetail = document.getElementById("nameDetail");
+  NAMES.forEach(function(x,i){
+    var b = document.createElement("button");
+    b.className = "name-btn"; b.type = "button"; b.dataset.i = i;
+    b.setAttribute("aria-pressed", i===0 ? "true" : "false");
+    b.textContent = x.n;
+    namesEl.appendChild(b);
+  });
+  function renderName(i){
+    var x = NAMES[i];
+    nameDetail.innerHTML = '<div class="eyebrow" style="color:var(--bronze)">'+x.g+'</div>'+
+      '<p style="font-size:.9rem;margin-top:6px">'+x.r+'</p>';
+  }
+  namesEl.addEventListener("click", function(e){
+    var b = e.target.closest(".name-btn"); if(!b) return;
+    Array.prototype.forEach.call(namesEl.children, function(x){ x.setAttribute("aria-pressed", String(x===b)); });
+    renderName(+b.dataset.i);
+  });
+  renderName(0);
+
+  onScroll();
+})();
+</script>
+</body>
+</html>
