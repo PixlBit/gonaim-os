@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="دراسة تشغيلية لبناء استوديو مقتنيات فاخرة في الرياض يديره شخص واحد — بميزانية 9,800 ريال ومرحلة تحقّق بـ700 ريال قبل شراء أي معدة.">
-<title>استوديو سَبَك</title>
+<meta name="description" content="دراسة تشغيلية لمقيم موظف في الرياض يبني استوديو مقتنيات مخصّصة بالمساء — الوضع النظامي أولًا، ثم كتالوج أنماط بدل التصميم من الصفر.">
+<title>مشغل المساء</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -508,34 +508,33 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
   <div class="wrap hero-grid">
     <div>
       <div class="hero-mark rv">
-        <span class="stamp">سَ</span>
+        <span class="stamp">م</span>
         <div>
-          <div class="eyebrow">Riyadh · Collectible Foundry · Study v2</div>
-          <div class="small" style="margin-top:2px">دراسة تشغيلية — إعادة بناء كاملة للفرضية الأولى</div>
+          <div class="eyebrow">Riyadh · Evenings Only · Study v3</div>
+          <div class="small">نسخة معاد بناؤها بعد ثلاث حقائق جديدة</div>
         </div>
       </div>
 
       <h1 class="hero-title rv">
-        لا تبيع طباعة.
-        <span class="l2">بِع شيئًا يريد الناس امتلاكه.</span>
+        وظيفتك تدفع الإيجار.
+        <span class="l2">الاستوديو يشتغل بالليل.</span>
       </h1>
 
       <p class="lead hero-sub rv">
-        مشروع استوديو مقتنيات فاخرة في الرياض، يديره شخص واحد، تكون فيه الطابعة
-        <b>آلة في الخلف</b> لا اسمًا على الواجهة. هذه الدراسة تُسقط الميزانية المقترحة سابقًا من
-        <span class="strike">١٥–١٦ ألف ريال</span> إلى <b class="hl">٩٬٨٠٠ ريال</b>، وتضع قبلها
-        مرحلة تحقّق بـ<b class="hl">٧٠٠ ريال</b> قبل شراء أي معدة.
+        إنت <b>مقيم مصري موظف بشركة في الرياض</b>، والشغل ده هواية عايز تفتحها بزنس.
+        الحقيقة دي بتغيّر الدراسة من جذورها: <b class="hl">الوضع النظامي</b> بقى أول عائق مش الفلوس،
+        و<b class="hl">١٦ ساعة في الأسبوع</b> بقت السقف الحقيقي، و<b class="hl">كتالوج الأنماط</b>
+        هو الطريقة الوحيدة اللي تخلّي الشغل المخصّص يراكم أصلًا بدل ما يفضل شغل بالقطعة.
       </p>
 
       <div class="hero-facts rv">
-        <div class="fact"><b class="num" data-count="700" data-suffix=" ﷼">٠</b><span>تكلفة التحقّق قبل CAPEX</span></div>
-        <div class="fact"><b class="num" data-count="9800" data-suffix=" ﷼">٠</b><span>الإعداد الموصى به</span></div>
-        <div class="fact"><b class="num" data-count="18500" data-suffix=" ﷼">٠</b><span>نقطة التعادل الشهرية</span></div>
-        <div class="fact"><b class="num" data-count="4" data-suffix=" أشهر">٠</b><span>استرداد رأس المال</span></div>
+        <div class="fact"><b class="num" data-count="0" data-suffix=" ﷼">٠</b><span>تكلفة التحقّق النظامي</span></div>
+        <div class="fact"><b class="num" data-count="16" data-suffix=" س/أسبوع">٠</b><span>سقف وقتك الحقيقي</span></div>
+        <div class="fact"><b class="num" data-count="131" data-suffix=" ﷼/س">٠</b><span>عائد ساعة السهر — السيناريو الأساسي</span></div>
+        <div class="fact"><b class="num" data-count="6" data-suffix=" أنماط">٠</b><span>الأصل الوحيد اللي بيتراكم</span></div>
       </div>
-    </div>
 
-    <div class="printer rv" aria-hidden="true">
+      <div class="printer rv" aria-hidden="true">
       <canvas id="build"></canvas>
       <span class="corner c1"></span><span class="corner c2"></span>
       <span class="corner c3"></span><span class="corner c4"></span>
@@ -547,7 +546,7 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
 
 <nav class="topbar" aria-label="أقسام الدراسة">
   <div class="wrap topbar-in">
-    <span class="brand">سَبَك<i>//</i>STUDY</span>
+    <span class="brand">مشغل<i>//</i>المساء</span>
     <div class="navscroll">
       <ul class="navlist" id="nav"></ul>
     </div>
@@ -564,38 +563,48 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
     <div class="sec-head rv">
       <span class="sec-no">01 / 27</span>
       <h2>الملخص التنفيذي</h2>
-      <p class="sec-kicker small">الخلاصة أولًا. التفاصيل تحتها.</p>
+      <p class="sec-kicker small">اتغيّرت ثلاث حقائق، فاتغيّرت الدراسة. ده اللي فضل صحيح وده اللي اتقلب.</p>
     </div>
 
     <div class="body-copy measure rv">
-      <p>الفكرة قابلة للتنفيذ، لكن <strong>الفرضية الأصلية بها خطأ اقتصادي واحد كبير</strong>: افترضت أن الاختناق هو الطباعة، والحقيقة أن الاختناق هو <strong>التشطيب اليدوي</strong>. تلوين مجسم ٢٤ سم بمستوى «لوكشري» يستهلك ٦–١٢ ساعة عمل ماهر. عند ٨٥ ريالًا للساعة، هذه ٥١٠–١٬٠٢٠ ريال عمالة داخل منتج تريد بيعه بـ١٬٢٩٠. هذا يأكل الهامش قبل أن تبدأ.</p>
-
-      <div class="verdict">
-        <span class="eyebrow">القرار المحوري</span>
-        <p>صمّم خط المنتجات بحيث تأتي الفخامة من <strong>الشكل والخامة والقاعدة والتغليف</strong> — لا من ساعات الفرشاة. لون واحد + طبقة حماية + عنصر بمادة مغايرة (ورق معدني، أكريليك، قاعدة محفورة). هذا يُنزل التشطيب من ٨ ساعات إلى ١٫٥–٤ ساعات، ويحوّل المشروع من «حرفة بطيئة» إلى «عمل له رافعة تشغيلية».</p>
+      <h3>الحقائق الثلاث الجديدة وأثر كل واحدة</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>الحقيقة</th><th>الأثر</th><th>القسم</th></tr></thead>
+          <tbody>
+            <tr><td><strong>مقيم مصري — مش سعودي</strong></td><td><strong>ده أخطر تغيير.</strong> مفيش سجل تجاري للمقيم إلا عن طريق وزارة الاستثمار، ووثيقة العمل الحر مصادرها متضاربة. والتستر التجاري = سجن ٥ سنين وغرامة ٥ مليون وإبعاد نهائي.</td><td class="n">21</td></tr>
+            <tr><td><strong>موظف بدوام كامل</strong></td><td>وقتك نزل من ٤٥ لـ<strong>١٦ ساعة أسبوعيًا</strong>. الطاقة الإنتاجية والنموذج المالي اتبنوا من الأول. لكن — وده مهم — <strong>راتبك بيشيل عنك ضغط إن المشروع يعيّشك في السنة الأولى</strong>، وده بيقلل المخاطرة جدًا.</td><td class="n">15 · 13</td></tr>
+            <tr><td><strong>الشغل مخصّص بأنماط مختلفة</strong></td><td>الشغل المخصّص بطبيعته خطّي وبلا تراكم. الحل الوحيد اللي يديك رافعة: <strong>الأنماط تبقى هي الملكية الفكرية</strong>، مش الشخصيات.</td><td class="n">05 · 06</td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <h3>الأرقام السبعة التي تحكم القرار</h3>
+      <div class="verdict">
+        <span class="eyebrow">الفكرة المحورية في النسخة دي</span>
+        <p><strong>النمط هو المنتج، مش القطعة.</strong> ابنِ ستة أنماط بصرية ثابتة، كل نمط تشتغل عليه مرة واحدة ويتباع مئة مرة. العميل يجيب الموضوع (شخص، حيوان أليف، شعار، مناسبة) وإنت تطبّق عليه النمط. كده بتاخد سيولة الشغل المخصّص <em>و</em> تراكم الإصدارات الأصلية في نفس الوقت — وده الشيء الوحيد اللي بيخلي شغل الأوردرات يستحق إنه يبقى بزنس مش خدمة.</p>
+      </div>
+
+      <h3>الأرقام اللي بتحكم القرار دلوقتي</h3>
       <ul>
-        <li><strong>٧٠٠ ريال</strong> تكفي لاختبار السوق بالكامل قبل شراء طابعة: رندرات CGI + صفحة هبوط + نموذج واحد مطبوع خارجيًا في الرياض.</li>
-        <li><strong>٦٬٠٠٠ ريال</strong> هي أرخص بداية إنتاجية حقيقية — لكن بطابعة مستعملة ومحطة غسل/تصليب يدوية الصنع.</li>
-        <li><strong>٩٬٨٠٠ ريال</strong> هي الإعداد الموصى به فعلًا. الفارق بينه وبين ١٦ ألفًا ليس جودة المنتج، بل معدات تُشترى في الشهر السادس لا الأول.</li>
-        <li><strong>١٥٪ كحد أقصى</strong> للخامات من سعر البيع. أي منتج يتجاوز ذلك مُصمَّم بشكل خاطئ.</li>
-        <li><strong>١٥٠ ريالًا/ساعة</strong> هي الحد الأدنى للمساهمة لكل ساعة تشطيب. القطعة التي تنزل تحته تُحذف من الخط.</li>
-        <li><strong>١٨٬٥٠٠ ريال شهريًا</strong> هي نقطة التعادل الحقيقية — أي التي تدفع لك راتبًا، لا التي تغطي الإيجار فقط.</li>
-        <li><strong>٤٨٧ ريالًا/ساعة</strong> هي مساهمة أصغر منتج في الخط (RELIC، ١٠ سم، بلا تلوين). أعلى من المجسم الرائد بثلاث مرات.</li>
+        <li><strong>صفر ريال</strong> هي تكلفة الخطوة الأولى: تفتح أبشر وتحاول تصدر وثيقة العمل الحر. النظام هيقبل أو هيرفض — والإجابة دي بتحدد كل اللي بعدها. عشر دقائق ومجانية.</li>
+        <li><strong>١٦ ساعة أسبوعيًا</strong> — أربع ليالٍ × ساعتين + عشر ساعات في الويك إند. اللي يقول لك غير كده بيبيع لك وهم.</li>
+        <li><strong>١٠ إلى ١٤ قطعة شهريًا</strong> هو سقفك الواقعي. مش ٤٠.</li>
+        <li><strong>١٣١ ريالًا لكل ساعة سهر</strong> في السيناريو الأساسي. ده المقياس الوحيد اللي يهمك — مش الإيراد السنوي.</li>
+        <li><strong>١٣٤٬٠٠٠ ريال</strong> إيراد السنة الأولى في السيناريو الأساسي، بدوام جزئي. أقل من النسخة السابقة بـ٤٠٪ — وده طبيعي ومنطقي.</li>
+        <li><strong>٦٠٬٠٠٠ ريال</strong> هو الرقم اللي ممكن يقتل المشروع: رسوم اشتراك وزارة الاستثمار السنوية لو وقعت في الشريحة العادية بدل شريحة رائد الأعمال. تحقّق قبل ما تلتزم — القسم ٢١.</li>
       </ul>
 
-      <h3>التوصية في ثلاثة أسطر</h3>
+      <h3>الترتيب الصحيح للخطوات</h3>
       <ol>
-        <li>ابدأ بـ<strong>مرحلة تحقّق ٣٠ يومًا</strong> بـ٧٠٠ ريال: عالم شخصيات واحد، ثلاث رندرات، قائمة انتظار، وطلب مسبق.</li>
-        <li>اشترِ المعدات <strong>بعد</strong> ١٥ طلبًا مسبقًا مؤكدًا. الطلبات المسبقة تموّل الطابعة، لا العكس.</li>
-        <li>شغّل <strong>محركين للدخل بالتوازي</strong>: إصدارات مرقّمة B2C تبني الـIP، وجوائز/هدايا مؤسسية B2B تدفع الفواتير — والاثنان من نفس اللغة البصرية.</li>
+        <li><strong>وضوح نظامي</strong> — قبل أي معدة وقبل أي ريال. أسبوع واحد.</li>
+        <li><strong>مرحلة الهواية المعلنة</strong> — تصمّم وتنشر وتبني جمهور <em>من غير ما تبيع</em>. ده قانوني ١٠٠٪ وبيبني السوق في نفس الوقت.</li>
+        <li><strong>أول بيعة</strong> — بعد ما يبقى عندك أساس نظامي واضح مكتوب.</li>
+        <li><strong>المعدات</strong> — بعد ١٠ طلبات مدفوعة، مش قبلها.</li>
       </ol>
 
-      <div class="warnbox" style="margin-top:1.4em">
-        <span class="eyebrow">ما لن تنجح به</span>
-        <p>بيع مجسم غير معروف الهوية بـ١٬٩٩٠ ريالًا في الشهر الأول. وبيع «تمثال بصورتك» كمنتج أساسي — لأنه عمل خطّي بلا تراكم، ويستهلك دورات مراجعة لا تنتهي. وشراء طابعة كبيرة الحجم. الثلاثة مذكورة بالتفصيل في القسم ٢٦.</p>
+      <div class="warnbox">
+        <span class="eyebrow">خط أحمر واحد مفيش حواليه نقاش</span>
+        <p><strong>ما تفتحش السجل باسم صاحب سعودي وتشتغل إنت.</strong> ده اسمه التستر التجاري: السجن لخمس سنين، وغرامة توصل خمسة ملايين ريال، ومصادرة الأرباح، والإبعاد عن المملكة ومنع الدخول نهائيًا. مفيش مبلغ في الدراسة دي يستاهل المخاطرة دي، ومفيش «كله بيعمل كده» يحميك منها.</p>
       </div>
     </div>
   </div>
@@ -606,45 +615,62 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">02 / 27</span>
-      <h2>إعادة صياغة المشروع</h2>
-      <p class="sec-kicker small">ما هو المشروع فعلًا، بعد حذف ما ليس منه.</p>
+      <h2>إعادة الصياغة — النمط هو المنتج</h2>
+      <p class="sec-kicker small">إزاي تخلي الشغل المخصّص يراكم أصلًا بدل ما يفضل شغل بالقطعة.</p>
     </div>
 
     <div class="body-copy measure rv">
-      <p>المشروع ليس «خدمة طباعة». وليس «متجر مجسمات». هو:</p>
+      <h3>المشكلة الحقيقية في الشغل المخصّص</h3>
+      <p>الشغل المخصّص بيبان مغريًا: الطلب عالي، البيع سهل، السعر محترم. لكن فيه عيب هيكلي واحد بيقتله على المدى الطويل — <strong>هو خطّي تمامًا</strong>. كل قطعة تصميم جديد من الصفر، وكل عميل دورة مراجعات جديدة، وكل شهر بيبدأ من الصفر. تقف تشتغل، يقف الدخل. وبعد سنتين تبقى عندك مئة قطعة اتباعت و<strong>صفر أصل تملكه</strong>.</p>
 
       <div class="verdict">
-        <span class="eyebrow">التعريف العامل</span>
-        <p><strong>دار تصميم تُنتج مقتنيات نحتية بإصدارات محدودة، مبنية على ملكية فكرية أصلية، وتستخدم الذكاء الاصطناعي لضغط زمن التصميم، والطباعة بالريزن كطريقة تصنيع داخلية.</strong></p>
+        <span class="eyebrow">الحل: كتالوج الأنماط</span>
+        <p>بدل ما تصمم من الصفر لكل عميل، إنت بتبني <strong>ستة أنماط بصرية ثابتة</strong>. النمط ده منظومة كاملة: نِسَب، وطريقة تبسيط، ولغة سطح، ولوحة ألوان، وشكل قاعدة. العميل بيجيب <em>الموضوع</em> — شخص، قطة، شعار شركة، ذكرى — وإنت بتطبّق عليه <em>النمط</em>.</p>
       </div>
 
-      <p>الفرق ليس لغويًا. إنه يغيّر أربعة قرارات:</p>
-
-      <h3>١. الأصل الذي تبنيه ليس الطابعة — إنه الشخصية</h3>
-      <p>الطابعة تُستهلك وتُستبدل كل ٢٤ شهرًا. الشخصية المصمّمة التي بيع منها ٣٠ نسخة يمكن أن تُعاد إصدارها بألوان جديدة، وبمقاسات جديدة، وتُرخّص لعلامة تجارية، وتُباع كعمل فني بعد سنتين. <strong>القيمة تتراكم في الـIP، لا في العتاد.</strong> كل قرار في هذه الدراسة يُقاس بسؤال: هل يبني ملكية فكرية أم يشتري معدات؟</p>
-
-      <h3>٢. التكلفة الحقيقية للوحدة هي وقتك، لا الريزن</h3>
-      <p>الريزن في مجسم ٢٤ سم يساوي ٥٧ ريالًا. وقتك في نفس المجسم يساوي ٣٤٠ ريالًا. أي قرار تصميمي يوفّر ساعة تشطيب يساوي ستة أضعاف أي قرار يوفّر مئة جرام ريزن. <strong>لذلك: لا تُطارد رخص الريزن، طارد بساطة التشطيب.</strong></p>
-
-      <h3>٣. التصنيع الجزئي خارجيًا ليس تنازلًا</h3>
-      <p>القاعدة الأكريليك المقطوعة بالليزر والمحفورة برقم الإصدار تكلّف ٢٢ ريالًا من ورشة في الرياض، وترفع القيمة المُدركة أكثر مما ترفعها ست ساعات رسم على الوجه. الصندوق الصلب يُصنّع في الصين أو الرياض. القوالب السيليكون تُستخدم فوق ٥٠ نسخة. <strong>أنت مدير إنتاج، لا عامل يدوي.</strong></p>
-
-      <h3>٤. الطباعة سرّ صناعي، والذكاء الاصطناعي حكاية علنية</h3>
-      <p>لا تُسمِّ العلامة باسم فيه «3D» أو «Print». لكن أظهر رحلة <b class="hl">فكرة ← رندر ← معدن مطبوع ← كائن مصقول</b> في المحتوى. هذه هي الحكاية التسويقية الوحيدة التي لا يستطيع منافس تقليدي تقليدها، وهي مفصّلة في القسم ١٨.</p>
-
-      <h3>فرضيات ضعيفة في الطرح الأصلي — مصحّحة</h3>
-      <div class="tablewrap" style="margin-top:14px">
+      <p>الفرق ده مش تفصيلة تشغيلية. هو اللي بيحوّل المشروع:</p>
+      <div class="tablewrap">
         <table>
-          <thead><tr><th>الفرضية الأصلية</th><th>الحكم</th><th>التصحيح</th></tr></thead>
+          <thead><tr><th>البُعد</th><th>تصميم من الصفر لكل عميل</th><th>كتالوج أنماط</th></tr></thead>
           <tbody>
-            <tr><td>ميزانية ١٥–١٦ ألف ريال للإعداد الموصى به</td><td><span class="pill p-no">مبالغ فيها</span></td><td>٩٬٨٠٠ ريال. الفرق معدات تُؤجَّل للشهر ٦.</td></tr>
-            <tr><td>شراء المعدات ثم البحث عن منتج</td><td><span class="pill p-no">معكوس</span></td><td>تحقّق بـ٧٠٠ ريال، ثم طلب مسبق، ثم شراء.</td></tr>
-            <tr><td>Saturn 4 Ultra 16K هو الخيار</td><td><span class="pill p-wait">جزئيًا</span></td><td>نسخة 12K أوفر بـ٥٠٠ ريال، والفرق غير مرئي بعد البرايمر والطلاء.</td></tr>
-            <tr><td>ثلاثة محركات دخل من اليوم الأول</td><td><span class="pill p-no">غير ممكن</span></td><td>B2B مستحيل بلا بورتفوليو. التسلسل: إصدار ← تخصيص ← مؤسسي.</td></tr>
-            <tr><td>Wash &amp; Cure جهاز جاهز من البداية</td><td><span class="pill p-wait">يُؤجَّل</span></td><td>دلوان محكمان + مصباح UV بـ٢٨٠ ريالًا يؤديان نفس الغرض في الشهور الأولى.</td></tr>
-            <tr><td>Airbrush + كمبروسر ضمن الإعداد الأول</td><td><span class="pill p-wait">يُؤجَّل</span></td><td>خط منتجات «قليل التشطيب» لا يحتاجه قبل المنتج الثاني.</td></tr>
-            <tr><td>ABS-Like ريزن لكل شيء</td><td><span class="pill p-no">ناقص</span></td><td>ثلاثة أنواع لثلاث وظائف — القسم ٠٩.</td></tr>
-            <tr><td>ZBrush ضمن حزمة البرمجيات</td><td><span class="pill p-no">غير لازم</span></td><td>Blender يكفي تمامًا في هذا الحجم. وفّر ٤٬٠٠٠+ ريال.</td></tr>
+            <tr><td>وقت التصميم للقطعة</td><td class="n">3–6 ساعات</td><td class="n">0.5–1 ساعة</td></tr>
+            <tr><td>هل الشغل بيتراكم؟</td><td><span class="pill p-no">لا</span></td><td><span class="pill p-yes">نعم — النمط بيتباع مئة مرة</span></td></tr>
+            <tr><td>العميل بيشوف إيه قبل ما يدفع</td><td>كلام ووعد</td><td><strong>أمثلة حقيقية للنمط</strong> — بيقفل البيعة لوحده</td></tr>
+            <tr><td>جولات المراجعة</td><td>مفتوحة — «مش حاسس إنه هو»</td><td>محدودة — النمط متفق عليه من الأول</td></tr>
+            <tr><td>ثبات الجودة</td><td>متذبذب حسب مزاجك</td><td>ثابت — بتنفّذ منظومة مش ارتجال</td></tr>
+            <tr><td>الهوية البصرية</td><td>مفيش — كل قطعة شكل</td><td><strong>موجودة</strong> — الناس تعرف شغلك من غير لوجو</td></tr>
+            <tr><td>التسعير</td><td>تفاوض كل مرة</td><td>قائمة أسعار معلنة</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>إزاي تختار الستة أنماط</h3>
+      <p>مش ستة أذواق — ستة <strong>حلول لطلبات مختلفة</strong>. كل نمط لازم يكون واضح إنه مختلف من مسافة مترين:</p>
+      <ul>
+        <li><strong>مبسّط هندسي</strong> — أشكال نظيفة، بلا ملامح، لون واحد. أسرع تشطيب وأعلى ربح للساعة. ده نمط الدخول.</li>
+        <li><strong>واقعي منمنم</strong> — نِسب مقاربة للواقع بتفاصيل مختصرة. الأقرب لتوقع العميل العادي، والأغلى في الوقت.</li>
+        <li><strong>كارتوني بنِسب مبالغة</strong> — رأس كبير وجسم صغير. الأسهل بيعًا كهدية والأسرع في التقبّل.</li>
+        <li><strong>نحتي مجرّد</strong> — الشخص كشكل لا كوجه. الأرقى بصريًا والأنسب للشركات والديكور.</li>
+        <li><strong>خط ورمز</strong> — الاسم أو الحرف العربي كعنصر نحتي مع الموضوع. <strong>ده النمط اللي محدش بيعمله صح</strong>، وأقوى تمايز محلي ممكن تملكه.</li>
+        <li><strong>أثري/منحوت</strong> — سطح حجري وحواف مأكولة كأنه مستخرج من موقع. أعلى قيمة مُدركة مقابل جهد تشطيب متوسط.</li>
+      </ul>
+
+      <div class="notebox">
+        <p class="small"><strong>ملاحظة على الذكاء الاصطناعي:</strong> إنت قلت هتولّد بالـAI وتدخّل على برنامج الثري دي — وده صح تمامًا وهو أسرع مسار متاح. بس خد بالك: النمط هو اللي بيخلي المخرج <em>شغلك إنت</em>. لو الـAI بيولّد والنتيجة بتتطبع زي ما هي، المنتج قابل للتقليد في دقيقتين، و<strong>احتمال ما يكونش محميًا أصلًا</strong> حسب إرشادات الهيئة السعودية للملكية الفكرية — القسم ٢٢. النمط اللي إنت بنيته بإيدك هو الحاجز.</p>
+      </div>
+
+      <h3>فرضيات من النسخة السابقة اتغيرت</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>الفرضية</th><th>الحكم</th><th>التصحيح</th></tr></thead>
+          <tbody>
+            <tr><td>التخصيص خدمة مسقوفة بـ٢–٣ طلبات شهريًا</td><td><span class="pill p-no">اتقلبت</span></td><td>التخصيص بقى <strong>المحرك الأساسي</strong> — لكن بكتالوج أنماط لا بتصميم من الصفر.</td></tr>
+            <tr><td>إصدارات مرقّمة B2C هي محرك بناء الأصل</td><td><span class="pill p-wait">اتأجلت</span></td><td>محتاجة وقت وجمهور — والاتنين مش متوفرين بدوام جزئي في السنة الأولى.</td></tr>
+            <tr><td>٤٥ ساعة منتجة أسبوعيًا</td><td><span class="pill p-no">غلط</span></td><td><strong>١٦ ساعة.</strong> كل الطاقة الإنتاجية والمالية اتحسبت من الأول.</td></tr>
+            <tr><td>وثيقة العمل الحر مجانية وفورية</td><td><span class="pill p-no">مش مؤكد لك</span></td><td>المصادر متضاربة بخصوص المقيمين. <strong>ده أول شيء تتحقق منه.</strong></td></tr>
+            <tr><td>سجل تجاري عند أول عميل مؤسسي</td><td><span class="pill p-no">أصعب بكتير</span></td><td>المقيم بيحتاج ترخيص وزارة الاستثمار — مسار مختلف وتكلفة مختلفة تمامًا.</td></tr>
+            <tr><td>نقطة تعادل ١٨٬٥٠٠ ﷼ شهريًا</td><td><span class="pill p-wait">اتغيرت</span></td><td>نزلت لـ<strong>٩٬٥٠٠ ﷼</strong> — لأن راتبك بيغطي معيشتك والمشروع مش مطالب يعيّشك.</td></tr>
+            <tr><td>الميزانية ٩٬٨٠٠ ﷼</td><td><span class="pill p-yes">فضلت صحيحة</span></td><td>وبقت أسهل — عندك دخل ثابت يموّلها بدل ما تستنزف مدخراتك.</td></tr>
           </tbody>
         </table>
       </div>
@@ -761,33 +787,32 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
     <div class="sec-head rv">
       <span class="sec-no">05 / 27</span>
       <h2>نموذج العمل</h2>
-      <p class="sec-kicker small">خمسة نماذج، مقيَّمة بأسباب تجارية. اضغط أي نموذج.</p>
+      <p class="sec-kicker small">خمسة نماذج مقيَّمة على وضعك إنت: موظف، ١٦ ساعة، شغل مخصّص. اضغط أي واحد.</p>
     </div>
 
     <div class="rv">
       <div class="models" role="tablist" id="modelTabs">
-        <button class="model-btn" role="tab" data-m="A" aria-selected="true"><span class="k">MODEL A</span><span class="t">إصدارات أصلية</span></button>
-        <button class="model-btn" role="tab" data-m="B" aria-selected="false"><span class="k">MODEL B</span><span class="t">منحوتات مخصّصة</span></button>
-        <button class="model-btn" role="tab" data-m="C" aria-selected="false"><span class="k">MODEL C</span><span class="t">مقتنيات مؤسسية</span></button>
-        <button class="model-btn" role="tab" data-m="D" aria-selected="false"><span class="k">MODEL D</span><span class="t">قطع ديكور راقية</span></button>
-        <button class="model-btn" role="tab" data-m="E" aria-selected="false"><span class="k">MODEL E</span><span class="t">الهجين المتسلسل</span></button>
+        <button class="model-btn" role="tab" data-m="A" aria-selected="false"><span class="k">MODEL A</span><span class="t">تصميم من الصفر</span></button>
+        <button class="model-btn" role="tab" data-m="B" aria-selected="true"><span class="k">MODEL B</span><span class="t">كتالوج أنماط ★</span></button>
+        <button class="model-btn" role="tab" data-m="C" aria-selected="false"><span class="k">MODEL C</span><span class="t">إصدارات مرقّمة</span></button>
+        <button class="model-btn" role="tab" data-m="D" aria-selected="false"><span class="k">MODEL D</span><span class="t">جوائز وهدايا مؤسسية</span></button>
+        <button class="model-btn" role="tab" data-m="E" aria-selected="false"><span class="k">MODEL E</span><span class="t">كتالوج + مؤسسي</span></button>
       </div>
       <div class="model-panel" id="modelPanel"></div>
     </div>
 
     <div class="body-copy measure rv" style="margin-top:30px">
-      <h3>الهيكل التشغيلي الموصى به</h3>
-      <p><strong>عالم ملكية فكرية واحد، وثلاثة أسطح بيع.</strong> نفس اللغة البصرية تُباع بثلاث طرق مختلفة، فلا تتشتت جهودك التصميمية:</p>
-      <ol>
-        <li><strong>إصدارات مرقّمة (B2C)</strong> — ٢٥ إلى ٦٠ نسخة لكل إصدار، طلب مسبق، تصنيع حسب الطلب. وظيفتها: بناء الـIP والدليل البصري.</li>
-        <li><strong>إصدارات مُكلَّفة (B2B)</strong> — نفس لغة الاستوديو مطبّقة على علامة العميل. تُباع كـ«إصدار فني» لا كـ«هدية دعائية». وظيفتها: التدفق النقدي.</li>
-        <li><strong>الشخصية المخصّصة (B2C مميّز)</strong> — سقف ٢–٣ طلبات شهريًا، بعقد صارم. وظيفتها: هامش مرتفع ومحتوى عاطفي قوي.</li>
-      </ol>
-      <p>التوزيع المستهدف للإيراد في الشهر ١٢: <span class="mono">35% Drops · 45% B2B · 20% Custom</span>.</p>
+      <h3>الهيكل الموصى به</h3>
+      <p><strong>كتالوج أنماط للأفراد، ونفس الأنماط للشركات.</strong> ستة أنماط، وأربعة مقاسات، وقائمة أسعار معلنة. الشركة اللي عايزة ٢٥ جائزة بتختار من نفس الكتالوج — فما بتبنيش خطين إنتاج، بتبيع نفس الشغل لجمهورين.</p>
+      <ul>
+        <li><strong>الأفراد</strong> — هدايا مناسبات، أزواج، حيوانات أليفة، ذكريات. بيع مستمر طول السنة وبيقفز في المواسم.</li>
+        <li><strong>الشركات</strong> — تكريم موظفين، جوائز فعاليات، هدايا كبار العملاء. دفعة واحدة = شهر كامل من إيراد الأفراد، وبدفعة مقدمة ٥٠٪.</li>
+      </ul>
+      <p>التوزيع المستهدف في الشهر ١٢: <span class="mono">65% Individuals · 35% Corporate</span>. ومع دوام كامل في الشغل، النسبة دي بالظبط هي اللي بتمنع إن طلب مؤسسي واحد يجمّد كل حاجة تانية.</p>
 
-      <div class="warnbox">
-        <span class="eyebrow">لماذا التسلسل إلزامي</span>
-        <p>لا يمكن بيع B2B بلا بورتفوليو. أول مدير تسويق سيسألك: «أرني ما صنعته». لذلك الإصدار الأول ليس مصدر دخل أساسًا — هو <strong>عيّنة بيع مموّلة من العملاء</strong>. هذه أذكى نقطة في النموذج كله: جمهور التجزئة يدفع ثمن بناء ملف أعمالك المؤسسي.</p>
+      <div class="verdict">
+        <span class="eyebrow">ليه مش الإصدارات المرقّمة الأول</span>
+        <p>الإصدارات المحدودة محتاجة <strong>جمهور موجود مسبقًا</strong> وقدرة على إطلاق متزامن ورد فعل سريع — وده اللي الدوام الجزئي بيمنعه. الشغل المخصّص عكسه تمامًا: <strong>العميل بيجي بطلب في إيده</strong>، فمش محتاج تقنعه بشخصية ما يعرفهاش. ابدأ من حيث الطلب موجود، وارجع للإصدارات في السنة التانية لما يبقى عندك قائمة عملاء.</p>
       </div>
     </div>
   </div>
@@ -798,131 +823,117 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">06 / 27</span>
-      <h2>استراتيجية المنتج — خط الـMVP</h2>
-      <p class="sec-kicker small">خمس قطع فقط. كل واحدة لها وظيفة اقتصادية مختلفة. اضغط للتفاصيل الكاملة.</p>
+      <h2>الكتالوج — أربعة مقاسات × ستة أنماط</h2>
+      <p class="sec-kicker small">قائمة أسعار معلنة بدل تفاوض كل مرة. اضغط أي بند.</p>
     </div>
 
     <div class="body-copy measure rv" style="margin-bottom:22px">
-      <p>القاعدة الحاكمة لكل قطعة: <strong>التعقيد البصري يأتي من تباين المواد، لا من مهارة الرسم.</strong> جسم بلون واحد + عنصر واحد بمادة مغايرة + قاعدة محفورة = مظهر «دار تصميم» بربع وقت التشطيب.</p>
+      <p>الكتالوج ده هو كل عرضك. عميل بيدخل، يختار <strong>نمط</strong> و<strong>مقاس</strong>، يبعت الصور والتفاصيل، يدفع، ويستلم بعد ٣ أسابيع. مفيش تفاوض، ومفيش «قولّي رأيك»، ومفيش عروض أسعار مخصّصة. <strong>الوضوح ده هو اللي بيخلي الشغل المخصّص ممكن لواحد بيشتغل بالليل.</strong></p>
     </div>
 
     <div class="grid g2 rv" style="background:transparent;border:0;gap:14px">
 
       <details class="prod">
         <summary>
-          <span class="role">ENTRY · BATCH</span>
-          <div class="prod-top"><h3>MONOLITH <span class="ar">/ النَصْب</span></h3><span class="price">490 ﷼</span></div>
-          <p class="small">نصفي نحتي مجرّد ١٥ سم، قطعة واحدة، تشطيب حجري مطفي على قاعدة أكريليك محفورة.</p>
+          <span class="role">ENTRY · 1.6 HRS</span>
+          <div class="prod-top"><h3>صغير <span class="ar">/ 12–14 سم</span></h3><span class="price">690 ﷼</span></div>
+          <p class="small">شخص واحد أو حيوان أليف، بنمط واحد، لون واحد، على قاعدة محفورة بالاسم.</p>
           <span class="openhint">▾ المواصفات والتكلفة</span>
         </summary>
         <div class="prod-body">
           <dl class="spec">
-            <dt>المقاس</dt><dd>14–16 سم ارتفاعًا، قطعة واحدة بلا تجميع</dd>
-            <dt>الخامة</dt><dd>ABS-Like رمادي، جدار 2.5 مم، مجوّف</dd>
-            <dt>الطباعة</dt><dd>MSLA · 0.05 مم · 4–6 قطع على اللوح الواحد</dd>
-            <dt>التشطيب</dt><dd>سنفرة 400→800 · برايمر معبّئ · لون واحد · كلير مطفي بمانع UV</dd>
-            <dt>التغليف</dt><dd>صندوق صلب متوسط + إسفنج + بطاقة إصدار</dd>
-            <dt>الريزن</dt><dd>130 جم مع الدعامات ≈ 20 ﷼</dd>
-            <dt>خامات كلية</dt><dd>65 ﷼ (13٪ من السعر ✓)</dd>
-            <dt>العمل</dt><dd>1.4 ساعة تشطيب × 85 ﷼ = 119 ﷼</dd>
-            <dt>إطفاء التصميم</dt><dd>900 ﷼ ÷ 40 نسخة = 22 ﷼</dd>
-            <dt>تكلفة البيع</dt><dd>بوابة دفع 11 + شحن 23 = 34 ﷼</dd>
-            <dt>التخصيص</dt><dd>لون مخصّص فقط (+150 ﷼)، لا تعديل شكلي</dd>
+            <dt>الأنماط المتاحة</dt><dd>الستة كلهم · المبسّط الهندسي هو الأسرع والأنسب لسعر الدخول</dd>
+            <dt>الخامة</dt><dd>ABS-Like · جدار 2.5 مم · مجوّف</dd>
+            <dt>الريزن</dt><dd>110 جم ≈ 17 ﷼</dd>
+            <dt>خامات كلية</dt><dd>68 ﷼ (10٪ من السعر ✓)</dd>
+            <dt>العمل</dt><dd>1.6 ساعة شاملة تطبيق النمط × 85 ﷼ = 136 ﷼</dd>
+            <dt>إطفاء بناء النمط</dt><dd>1,500 ﷼ ÷ 25 استخدامًا = 60 ﷼</dd>
+            <dt>المدة للعميل</dt><dd>٣ أسابيع · تُعلَن بوضوح قبل الدفع</dd>
+            <dt>المراجعات</dt><dd>جولة واحدة على الرسم المفهومي</dd>
           </dl>
-          <div class="hourrate"><span class="small">المساهمة</span><b>250 ﷼</b><span class="small">أي <span class="mono">179 ﷼/ساعة</span> — فوق الحد الأدنى ✓</span></div>
+          <div class="hourrate"><span class="small">المساهمة</span><b>390 ﷼</b><span class="small">أي <span class="mono" style="color:var(--ok)">244 ﷼/ساعة</span></span></div>
         </div>
       </details>
 
       <details class="prod">
         <summary>
-          <span class="role">FLAGSHIP · EDITION OF 50</span>
-          <div class="prod-top"><h3>SENTINEL <span class="ar">/ الحارس</span></h3><span class="price">1,290 ﷼</span></div>
-          <p class="small">الشخصية الرائدة، ٢٤ سم، متعددة الأجزاء، لونان + عنصر بورق معدني. إصدار مرقّم من ٥٠.</p>
+          <span class="role">CORE · 3.0 HRS</span>
+          <div class="prod-top"><h3>قياسي <span class="ar">/ 18–20 سم</span></h3><span class="price">1,190 ﷼</span></div>
+          <p class="small">المنتج الأساسي. شخص بنمط مختار، لونان + عنصر بمادة مغايرة، قاعدة محفورة بالاسم والتاريخ.</p>
           <span class="openhint">▾ المواصفات والتكلفة</span>
         </summary>
         <div class="prod-body">
           <dl class="spec">
-            <dt>المقاس</dt><dd>22–25 سم · رأس/جذع/ذراعان/قاعدة بمفاتيح تعشيق</dd>
             <dt>الخامة</dt><dd>جسم ABS-Like · الأجزاء الرفيعة Tough resin</dd>
-            <dt>الطباعة</dt><dd>لوحان × 5–7 ساعات · دبابيس نحاس للأذرع</dd>
-            <dt>التشطيب</dt><dd>معجون → 400/600/800 مبلّلة → برايمر → لون → ورق معدني على عنصر واحد → كلير</dd>
-            <dt>التغليف</dt><dd>صندوق مغناطيسي + إسفنج EVA مفرّغ + شهادة مرقّمة + قماش</dd>
-            <dt>الريزن</dt><dd>380 جم مع الدعامات ≈ 57 ﷼</dd>
-            <dt>خامات كلية</dt><dd>153 ﷼ (12٪ من السعر ✓)</dd>
-            <dt>العمل</dt><dd>4.0 ساعات × 85 ﷼ = 340 ﷼</dd>
-            <dt>إطفاء التصميم</dt><dd>14 ساعة × 150 ﷼ ÷ 30 نسخة = 70 ﷼</dd>
-            <dt>التخصيص</dt><dd>لا. الإصدار المحدود يفقد قيمته إذا خُصّص.</dd>
+            <dt>الطباعة</dt><dd>قطعتان أو ثلاث بمفاتيح تعشيق · 5 ساعات آلة بالليل</dd>
+            <dt>الريزن</dt><dd>230 جم ≈ 35 ﷼</dd>
+            <dt>خامات كلية</dt><dd>103 ﷼ (8.7٪ من السعر ✓)</dd>
+            <dt>العمل</dt><dd>3.0 ساعات × 85 ﷼ = 255 ﷼</dd>
+            <dt>إطفاء بناء النمط</dt><dd>60 ﷼</dd>
+            <dt>تكلفة البيع</dt><dd>بوابة دفع 24 + شحن 26 = 50 ﷼</dd>
+            <dt>المراجعات</dt><dd>جولتان على الرسم · صفر بعد اعتماد المجسم</dd>
           </dl>
-          <div class="hourrate"><span class="small">المساهمة</span><b>673 ﷼</b><span class="small">أي <span class="mono">168 ﷼/ساعة</span> — يبني العلامة، لا يموّلها</span></div>
+          <div class="hourrate"><span class="small">المساهمة</span><b>705 ﷼</b><span class="small">أي <span class="mono" style="color:var(--ok)">235 ﷼/ساعة</span> — ده اللي بيدفع كل حاجة</span></div>
         </div>
       </details>
 
       <details class="prod">
         <summary>
-          <span class="role">PROFIT ENGINE · NO PAINT</span>
-          <div class="prod-top"><h3>RELIC <span class="ar">/ الأثر</span></h3><span class="price">340 ﷼</span></div>
-          <p class="small">قطعة ١٠ سم تُطبع بريزن ملوّن/لؤلؤي — بلا تلوين إطلاقًا. أربعة ألوان لكل إصدار.</p>
+          <span class="role">PREMIUM · 5.0 HRS</span>
+          <div class="prod-top"><h3>كبير <span class="ar">/ 24–26 سم</span></h3><span class="price">1,890 ﷼</span></div>
+          <p class="small">قطعة حضور. متعددة الأجزاء، تشطيب متعدد المواد، صندوق كامل بشهادة.</p>
           <span class="openhint">▾ المواصفات والتكلفة</span>
         </summary>
         <div class="prod-body">
           <dl class="spec">
-            <dt>المقاس</dt><dd>9–11 سم · شكل مصمَّت بلا نتوءات رفيعة</dd>
-            <dt>الخامة</dt><dd>ريزن مصبوغ/لؤلؤي (اللون داخل المادة نفسها)</dd>
-            <dt>الطباعة</dt><dd>8–10 قطع على اللوح · 3 ساعات</dd>
-            <dt>التشطيب</dt><dd>غسل · تصليب · إزالة النتوءات · كلير ساتان. لا سنفرة عميقة، لا برايمر، لا طلاء.</dd>
-            <dt>التغليف</dt><dd>صندوق صغير + بطاقة حكاية + ملصق هولوغرافي</dd>
-            <dt>الريزن</dt><dd>55 جم ≈ 11 ﷼</dd>
-            <dt>خامات كلية</dt><dd>36 ﷼ (11٪ من السعر ✓)</dd>
-            <dt>العمل</dt><dd>0.45 ساعة × 85 ﷼ = 38 ﷼</dd>
-            <dt>إطفاء التصميم</dt><dd>1,200 ﷼ ÷ 80 نسخة = 15 ﷼</dd>
-            <dt>التخصيص</dt><dd>اختيار اللون فقط · مثالي كـ«نقطة دخول» ولهدايا الفعاليات</dd>
+            <dt>الخامة</dt><dd>ABS-Like + Tough · دبابيس نحاس في المفاصل</dd>
+            <dt>الريزن</dt><dd>400 جم ≈ 60 ﷼</dd>
+            <dt>خامات كلية</dt><dd>168 ﷼ (8.9٪ ✓)</dd>
+            <dt>العمل</dt><dd>5.0 ساعات × 85 ﷼ = 425 ﷼</dd>
+            <dt>سقف زمني</dt><dd><strong>٥ ساعات.</strong> تجاوزته مرتين؟ غيّر تصميم النمط، مش الجدول.</dd>
+            <dt>الأنماط المناسبة</dt><dd>النحتي المجرّد والأثري — التفاصيل الصغيرة بتضيع في المقاس ده</dd>
           </dl>
-          <div class="hourrate"><span class="small">المساهمة</span><b>219 ﷼</b><span class="small">أي <span class="mono" style="color:var(--ok)">487 ﷼/ساعة</span> — أعلى ربح لكل ساعة في الخط كله</span></div>
+          <div class="hourrate"><span class="small">المساهمة</span><b>1,080 ﷼</b><span class="small">أي <span class="mono">216 ﷼/ساعة</span></span></div>
         </div>
       </details>
 
       <details class="prod">
         <summary>
-          <span class="role">B2B · MOQ 25</span>
-          <div class="prod-top"><h3>MARK <span class="ar">/ الشاهد</span></h3><span class="price">850 ﷼ <span class="small" style="font-family:var(--ff-body)">/ قطعة</span></span></div>
-          <p class="small">جائزة نحتية ١٩ سم تترجم علامة العميل إلى لغة الاستوديو. رسم تصميم منفصل ٢٬٥٠٠ ﷼.</p>
-          <span class="openhint">▾ المواصفات والتكلفة</span>
+          <span class="role">GIFT PEAK · 5.5 HRS</span>
+          <div class="prod-top"><h3>ثنائي <span class="ar">/ زوجان أو عائلة</span></h3><span class="price">1,990 ﷼</span></div>
+          <p class="small">شخصان على قاعدة واحدة. أقوى منتج هدايا في السوق السعودي — خطوبة، زواج، ذكرى سنوية، مولود.</p>
+          <span class="openhint">▾ ليه ده أهم بند في الكتالوج</span>
         </summary>
         <div class="prod-body">
+          <p class="small">الإهداء في السعودية <strong>مناسباتي وعاطفي وسخي</strong>، والهدية المشتركة بتتباع أسهل من هدية الشخص الواحد لأن المشتري بيشتري <em>ذكرى</em> مش تمثال. وده كمان المنتج اللي بيتصوّر أحسن وبينتشر أكتر — كل عميل بيبقى إعلان.</p>
           <dl class="spec">
-            <dt>المقاس</dt><dd>18–20 سم · شكل مجرّد + قاعدة محفورة باسم المكرَّم</dd>
-            <dt>الخامة</dt><dd>ABS-Like · تشطيب معدني أو حجري موحّد</dd>
-            <dt>الدفعة</dt><dd>25–100 قطعة · دفعة مقدمة 50٪ إلزامية</dd>
-            <dt>الريزن</dt><dd>200 جم ≈ 30 ﷼</dd>
-            <dt>خامات كلية</dt><dd>97 ﷼ شاملة القاعدة المحفورة والتغليف</dd>
-            <dt>العمل</dt><dd>1.6 ساعة × 85 ﷼ = 136 ﷼ (يقلّ مع الدفعة)</dd>
-            <dt>إطفاء التصميم</dt><dd>صفر — مغطّى برسم التصميم المدفوع مسبقًا</dd>
-            <dt>تكلفة البيع</dt><dd>تحويل بنكي + توصيل بالجملة ≈ 8 ﷼</dd>
-            <dt>شرط</dt><dd>يتطلب سجلًا تجاريًا وفاتورة ضريبية — القسم ٢١</dd>
+            <dt>الريزن</dt><dd>460 جم ≈ 69 ﷼</dd>
+            <dt>خامات كلية</dt><dd>185 ﷼ (9.3٪ ✓)</dd>
+            <dt>العمل</dt><dd>5.5 ساعات × 85 ﷼ = 468 ﷼</dd>
+            <dt>الموسمية</dt><dd>ذروة واضحة في مواسم الزواج ونهاية السنة · <strong>اقفل الطلبات قبل الموسم بشهر</strong> عشان تسلّم في وقتها</dd>
           </dl>
-          <div class="hourrate"><span class="small">المساهمة</span><b>613 ﷼</b><span class="small">أي <span class="mono" style="color:var(--ok)">383 ﷼/ساعة</span> — وطلب واحد = ٣٤ ألف ريال</span></div>
+          <div class="hourrate"><span class="small">المساهمة</span><b>1,150 ﷼</b><span class="small">أي <span class="mono">209 ﷼/ساعة</span></span></div>
         </div>
       </details>
 
       <details class="prod" style="grid-column:1/-1">
         <summary>
-          <span class="role">CAPPED SERVICE · 2–3 / MONTH</span>
-          <div class="prod-top"><h3>ARCHETYPE <span class="ar">/ النمط — الشخصية المخصّصة بالذكاء الاصطناعي</span></h3><span class="price">1,890 ﷼</span></div>
-          <p class="small">العميل يرسل صورًا واهتماماته ومهنته — فنصنع له <strong>شخصية أصلية مستوحاة منه</strong>، لا تمثالًا بوجهه.</p>
-          <span class="openhint">▾ المواصفات والشروط التي تحميك</span>
+          <span class="role">B2B · MOQ 10 · 1.4 HRS EACH</span>
+          <div class="prod-top"><h3>دفعة مؤسسية <span class="ar">/ تكريم وجوائز وهدايا كبار العملاء</span></h3><span class="price">790 ﷼ <span class="small" style="font-family:var(--ff-body)">/ قطعة</span></span></div>
+          <p class="small">نفس الأنماط، مطبّقة على موظفي الشركة أو شعارها. ١٠ قطع كحد أدنى، دفعة مقدمة ٥٠٪.</p>
+          <span class="openhint">▾ التفاصيل وشروط الحماية</span>
         </summary>
         <div class="prod-body">
-          <p class="small">هذا المنتج مربح جدًا ومميت جدًا في آن. مربح لأن السعودية سوق إهداء ضخم وعاطفي. مميت لأنه بلا ضوابط يتحول إلى دورات مراجعة لا تنتهي تبتلع شهرك. الضوابط ليست اختيارية:</p>
           <dl class="spec">
-            <dt>المقاس</dt><dd>18–20 سم · قاعدة محفورة بالاسم والتاريخ</dd>
-            <dt>الوعد</dt><dd>«شخصية مستوحاة منك» — وليس تشابهًا فوتوغرافيًا. مكتوب في الوصف والعقد.</dd>
-            <dt>المراجعات</dt><dd><strong>جولتان فقط</strong> على الرسم المفهومي، وصفر مراجعة بعد اعتماد النموذج ثلاثي الأبعاد.</dd>
-            <dt>الدفع</dt><dd>100٪ مقدمًا · غير قابل للاسترداد بعد اعتماد المفهوم (يُذكر صراحة — القسم ٢١)</dd>
-            <dt>المدة</dt><dd>21 يوم عمل · لا استعجال إلا برسم 30٪</dd>
-            <dt>الصور</dt><dd>تُعالَج محليًا على جهازك ولا تُرفع لأي خدمة سحابية — التزام بنظام حماية البيانات الشخصية، القسم ٢٢</dd>
-            <dt>العمل</dt><dd>7–9 ساعات شاملة التصميم · مساهمة ≈ 1,100 ﷼ ≈ <span class="mono">137 ﷼/ساعة</span></dd>
-            <dt>السقف</dt><dd>3 طلبات شهريًا كحد أقصى. الطلب الرابع يدخل قائمة انتظار الشهر التالي — والانتظار نفسه تسويق.</dd>
+            <dt>ليه أعلى ربح للساعة</dt><dd>نمط واحد × عشرين شخص = تكرار، مش عشرين تصميم. والتشطيب بيتسرّع جدًا مع التكرار.</dd>
+            <dt>الريزن</dt><dd>190 جم ≈ 29 ﷼</dd>
+            <dt>خامات كلية</dt><dd>97 ﷼</dd>
+            <dt>العمل</dt><dd>1.4 ساعة/قطعة × 85 ﷼ = 119 ﷼</dd>
+            <dt>الجدولة</dt><dd><strong>دفعة ٢٥ قطعة = ٣٥ ساعة تشطيب = شهرين من مسائك.</strong> اقبل الطلب بمدة تسليم صادقة، أو استعن بمساعد بالساعة.</dd>
+            <dt>الشرط النظامي</dt><dd>الشركات بتطلب فاتورة ضريبية وأساس نظامي واضح — القسم ٢١ قبل أي عرض سعر</dd>
+            <dt>الدفع</dt><dd>٥٠٪ مقدمًا · والباقي قبل التسليم · بيحل مشكلة التدفق النقدي كليًا</dd>
           </dl>
+          <div class="hourrate"><span class="small">المساهمة</span><b>530 ﷼</b><span class="small">أي <span class="mono" style="color:var(--ok)">378 ﷼/ساعة</span> — وطلب واحد = ١٣ ألف ريال</span></div>
         </div>
       </details>
 
@@ -930,8 +941,12 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
 
     <div class="body-copy measure rv" style="margin-top:28px">
       <div class="verdict">
-        <span class="eyebrow">القراءة الاقتصادية للخط</span>
-        <p>رتّب المنتجات بالمساهمة <strong>لكل ساعة عمل</strong> لا بالسعر: <span class="mono">RELIC 487</span> ← <span class="mono">MARK 383</span> ← <span class="mono">MONOLITH 179</span> ← <span class="mono">SENTINEL 168</span> ← <span class="mono">ARCHETYPE 137</span>. المجسم الرائد الأغلى هو <strong>الأقل ربحية لكل ساعة</strong> — ودوره بناء السمعة لا تمويلها. من يعكس هذا الترتيب يعمل ٦٠ ساعة أسبوعيًا مقابل دخل ضعيف.</p>
+        <span class="eyebrow">قراءة الكتالوج</span>
+        <p>كل بند فوق الحد الأدنى (١٥٠ ﷼/ساعة) — وده مقصود، مش صدفة. الترتيب بالمساهمة لكل ساعة: <span class="mono">B2B 378</span> ← <span class="mono">صغير 244</span> ← <span class="mono">قياسي 235</span> ← <span class="mono">كبير 216</span> ← <span class="mono">ثنائي 209</span>. لاحظ إن <strong>الفروق ضيقة</strong> — وده بالظبط اللي بيعمله كتالوج الأنماط: بيرفع أرضية الربحية بدل ما يسيب بندًا واحدًا يشيل المشروع.</p>
+      </div>
+      <div class="warnbox">
+        <span class="eyebrow">البند الوحيد اللي ممكن يوقعك</span>
+        <p><strong>«ممكن تعمللي حاجة زي دي بس...»</strong> — الطلب الخارج عن الكتالوج. إنت شغّال بالليل وما عندكش هامش للمفاجآت. الرد الثابت: <em>«الكتالوج ده كل اللي بنعمله حاليًا»</em>. كل استثناء بتعمله بيتحوّل لسابقة، وكل سابقة بتاكل ليلة.</p>
       </div>
     </div>
   </div>
@@ -1273,39 +1288,40 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
     <div class="calc rv">
       <div class="calc-in">
         <div class="preset-row">
-          <button class="preset" data-preset="relic" type="button">RELIC 10cm</button>
-          <button class="preset" data-preset="monolith" type="button">MONOLITH 15cm</button>
-          <button class="preset" data-preset="sentinel" type="button" aria-pressed="true">SENTINEL 24cm</button>
-          <button class="preset" data-preset="mark" type="button">MARK B2B</button>
+          <button class="preset" data-preset="small" type="button">صغير 13cm</button>
+          <button class="preset" data-preset="core" type="button" aria-pressed="true">قياسي 19cm</button>
+          <button class="preset" data-preset="large" type="button">كبير 25cm</button>
+          <button class="preset" data-preset="pair" type="button">ثنائي</button>
+          <button class="preset" data-preset="b2b" type="button">دفعة مؤسسية</button>
         </div>
 
         <div class="field">
-          <label for="cPrice">سعر البيع <b><span id="vPrice">1290</span> ﷼</b></label>
-          <input type="range" id="cPrice" min="240" max="2600" step="10" value="1290">
+          <label for="cPrice">سعر البيع <b><span id="vPrice">1190</span> ﷼</b></label>
+          <input type="range" id="cPrice" min="240" max="2600" step="10" value="1190">
         </div>
         <div class="field">
-          <label for="cResin">الريزن شاملًا الدعامات <b><span id="vResin">380</span> جم</b></label>
-          <input type="range" id="cResin" min="30" max="700" step="5" value="380">
+          <label for="cResin">الريزن شاملًا الدعامات <b><span id="vResin">230</span> جم</b></label>
+          <input type="range" id="cResin" min="30" max="700" step="5" value="230">
         </div>
         <div class="field">
           <label for="cResinKg">سعر الريزن <b><span id="vResinKg">150</span> ﷼/كجم</b></label>
           <input type="range" id="cResinKg" min="100" max="280" step="5" value="150">
         </div>
         <div class="field">
-          <label for="cHours">ساعات التشطيب والتجميع <b><span id="vHours">4.0</span> ساعة</b></label>
-          <input type="range" id="cHours" min="0.25" max="10" step="0.25" value="4">
+          <label for="cHours">ساعات الشغل على القطعة <b><span id="vHours">3.0</span> ساعة</b></label>
+          <input type="range" id="cHours" min="0.25" max="10" step="0.25" value="3">
         </div>
         <div class="field">
-          <label for="cRate">أجر ساعتك <b><span id="vRate">85</span> ﷼</b></label>
+          <label for="cRate">أجر ساعة مسائك <b><span id="vRate">85</span> ﷼</b></label>
           <input type="range" id="cRate" min="0" max="200" step="5" value="85">
         </div>
         <div class="field">
-          <label for="cPack">التغليف والقاعدة <b><span id="vPack">54</span> ﷼</b></label>
-          <input type="range" id="cPack" min="8" max="140" step="2" value="54">
+          <label for="cPack">التغليف والقاعدة <b><span id="vPack">40</span> ﷼</b></label>
+          <input type="range" id="cPack" min="8" max="140" step="2" value="40">
         </div>
         <div class="field">
-          <label for="cDesign">إطفاء التصميم على الإصدار <b><span id="vDesign">70</span> ﷼</b></label>
-          <input type="range" id="cDesign" min="0" max="220" step="5" value="70">
+          <label for="cDesign">إطفاء بناء النمط <b><span id="vDesign">60</span> ﷼</b></label>
+          <input type="range" id="cDesign" min="0" max="220" step="5" value="60">
         </div>
         <div class="field">
           <label for="cFail">مخصّص الطباعات الفاشلة <b><span id="vFail">10</span>٪</b></label>
@@ -1375,8 +1391,8 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">13 / 27</span>
-      <h2>النموذج المالي — ١٢ شهرًا</h2>
-      <p class="sec-kicker small">ثلاثة سيناريوهات. بدّل بينها وشاهد الأشهر تتغير.</p>
+      <h2>النموذج المالي — ١٢ شهرًا بدوام جزئي</h2>
+      <p class="sec-kicker small">بدّل السيناريو وشوف الأشهر تتغير.</p>
     </div>
 
     <div class="chartwrap rv">
@@ -1394,8 +1410,8 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
       </div>
       <div class="bars" id="bars"></div>
       <div class="chart-foot">
-        <span><i style="background:var(--bronze-2)"></i>تجزئة وتخصيص</span>
-        <span><i style="background:var(--resin)"></i>مؤسسي B2B</span>
+        <span><i style="background:var(--bronze-2)"></i>أفراد</span>
+        <span><i style="background:var(--resin)"></i>دفعات مؤسسية</span>
         <span>مرّر المؤشر على أي عمود</span>
       </div>
     </div>
@@ -1404,42 +1420,48 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
       <table>
         <thead><tr><th>المؤشر</th><th class="n">متحفّظ</th><th class="n">أساسي</th><th class="n">طلب قوي</th></tr></thead>
         <tbody>
-          <tr><td>الوحدات شهريًا (متوسط)</td><td class="n">14</td><td class="n">24</td><td class="n">38</td></tr>
-          <tr><td>الإيراد السنوي</td><td class="n">133,000 ﷼</td><td class="n">222,000 ﷼</td><td class="n">388,000 ﷼</td></tr>
-          <tr><td>تكلفة البضاعة (خامات + بيع)</td><td class="n">33,300 ﷼</td><td class="n">53,300 ﷼</td><td class="n">93,100 ﷼</td></tr>
-          <tr><td>الربح الإجمالي</td><td class="n">99,700 ﷼</td><td class="n">168,700 ﷼</td><td class="n">294,900 ﷼</td></tr>
-          <tr><td>الهامش الإجمالي</td><td class="n">75٪</td><td class="n">76٪</td><td class="n">76٪</td></tr>
-          <tr><td>التكاليف الثابتة السنوية</td><td class="n">12,600 ﷼</td><td class="n">15,900 ﷼</td><td class="n">39,400 ﷼<br><span class="small">شامل مشطِّب بدوام جزئي</span></td></tr>
-          <tr><td>الربح التشغيلي <em>قبل</em> راتبك</td><td class="n">87,100 ﷼</td><td class="n">152,800 ﷼</td><td class="n">255,500 ﷼</td></tr>
-          <tr><td>ساعاتك في السنة</td><td class="n">≈ 1,400</td><td class="n">≈ 1,800</td><td class="n">≈ 2,100</td></tr>
-          <tr><td><strong>عائدك الفعلي للساعة</strong></td><td class="n" style="color:var(--danger)">62 ﷼</td><td class="n" style="color:var(--warn)">85 ﷼</td><td class="n" style="color:var(--ok)">122 ﷼</td></tr>
-          <tr><td>نقطة التعادل النقدية</td><td class="n">الشهر 4</td><td class="n">الشهر 3</td><td class="n">الشهر 3</td></tr>
-          <tr><td>استرداد رأس المال (9,800 ﷼)</td><td class="n">الشهر 6</td><td class="n">الشهر 4</td><td class="n">الشهر 4</td></tr>
-          <tr class="tot"><td>تسجيل ض.ق.م إلزامي؟</td><td class="n">لا</td><td class="n">طوعي عند B2B</td><td class="n">نعم — تجاوز 375,000</td></tr>
+          <tr><td>القطع شهريًا (متوسط)</td><td class="n">5</td><td class="n">10</td><td class="n">15</td></tr>
+          <tr><td>الإيراد السنوي</td><td class="n">79,500 ﷼</td><td class="n">134,100 ﷼</td><td class="n">208,000 ﷼</td></tr>
+          <tr><td>تكلفة البضاعة (خامات + بيع)</td><td class="n">19,100 ﷼</td><td class="n">32,200 ﷼</td><td class="n">49,900 ﷼</td></tr>
+          <tr><td>الربح الإجمالي</td><td class="n">60,400 ﷼</td><td class="n">101,900 ﷼</td><td class="n">158,100 ﷼</td></tr>
+          <tr><td>الهامش الإجمالي</td><td class="n">76٪</td><td class="n">76٪</td><td class="n">76٪</td></tr>
+          <tr><td>التكاليف الثابتة السنوية</td><td class="n">9,800 ﷼</td><td class="n">9,800 ﷼</td><td class="n">30,000 ﷼<br><span class="small">شامل مشطِّب بالساعة</span></td></tr>
+          <tr><td><strong>الربح قبل احتساب وقتك</strong></td><td class="n">50,600 ﷼</td><td class="n">92,100 ﷼</td><td class="n">128,100 ﷼</td></tr>
+          <tr><td>ساعات مسائك في السنة</td><td class="n">≈ 528</td><td class="n">≈ 704</td><td class="n">≈ 920</td></tr>
+          <tr class="tot"><td><strong>عائد ساعة السهر</strong></td><td class="n" style="color:var(--warn)">96 ﷼</td><td class="n" style="color:var(--ok)">131 ﷼</td><td class="n" style="color:var(--ok)">139 ﷼</td></tr>
+          <tr><td>استرداد رأس المال (9,800 ﷼)</td><td class="n">الشهر 7</td><td class="n">الشهر 5</td><td class="n">الشهر 4</td></tr>
+          <tr><td>تسجيل ض.ق.م</td><td class="n">لا</td><td class="n">لا</td><td class="n">طوعي — تجاوز 187,500</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="body-copy measure rv" style="margin-top:28px">
-      <h3>الحقيقة غير المريحة في السيناريو الأساسي</h3>
-      <div class="warnbox">
-        <span class="eyebrow">اقرأ هذا مرتين</span>
-        <p>الربح التشغيلي ١٥٢٬٨٠٠ ريال يبدو ممتازًا — <strong>حتى تحسب أن ساعاتك الـ١٬٨٠٠ بسعر ٨٥ ريالًا تساوي ١٥٣٬٠٠٠ ريال</strong>. أي أن <strong>السنة الأولى في السيناريو الأساسي تدفع لك أجر حرفي بدوام كامل وتستردّ رأس المال — ولا تولّد فائضًا.</strong> الفائض الحقيقي يبدأ حين ترتفع نسبة B2B وحين يقوم غيرك بالتشطيب.</p>
+      <h3>المقياس الوحيد اللي يهمك</h3>
+      <div class="verdict">
+        <span class="eyebrow">عائد ساعة السهر</span>
+        <p>إنت مش محتاج المشروع يعيّشك — <strong>راتبك بيعمل كده</strong>. فالسؤال مش «هل ده بيغطي مصاريفي؟» السؤال هو: <strong>هل الساعة اللي بتاخدها من راحتك تستاهل ١٣١ ريالًا؟</strong> ده الرقم اللي تقارنه بقيمة وقتك، وهو اللي يقول لك تكمّل ولا تقف. والحلو فيه إنه بيعلى مع الوقت: بيبدأ ٦٠–٨٠ في أول أربع شهور وإنت بتتعلم، وبيوصل ١٨٠+ في السنة التانية لما الأنماط تنضج والتشطيب يتسرّع.</p>
       </div>
-      <p>هذه ليست نتيجة سيئة — هي نتيجة <em>صادقة</em>. مشروع يدفع راتبك من الشهر الرابع ويسترد رأسماله ويبني أصلًا (ملكية فكرية + قائمة عملاء + ملف أعمال مؤسسي) هو مشروع ناجح في سنته الأولى. لكن من يبيعك حلم «أرباح صافية ١٥٠ ألفًا في السنة الأولى» يحذف أجرك من المعادلة.</p>
 
-      <h3>نقطة التعادل — الرقم الوحيد الذي تحتاج حفظه</h3>
+      <p>وده كمان بيفسّر ليه وضعك <strong>أقل مخاطرة</strong> من واحد متفرغ: مفيش شهر واحد فيه بتاكل من مدخراتك، والمشروع ما بيضغطش عليك تقبل طلب وحش عشان محتاج فلوس. <strong>الصبر ده ميزة تنافسية حقيقية</strong> في سوق معظم اللي فيه بيقبل أي شغل بأي سعر.</p>
+
+      <h3>نقطة التعادل</h3>
       <div class="tablewrap">
         <table>
           <thead><tr><th>الحساب</th><th class="n">القيمة</th></tr></thead>
           <tbody>
-            <tr><td>تكاليف ثابتة شهرية (متجر + AI + إعلان + مرافق + إهلاك)</td><td class="n">≈ 1,324 ﷼</td></tr>
-            <tr><td>هامش المساهمة (بعد الخامات وتكاليف البيع)</td><td class="n">76٪</td></tr>
-            <tr><td>تعادل يغطي المصاريف فقط</td><td class="n">≈ 1,742 ﷼/شهر</td></tr>
-            <tr><td>عمالتك عند 150 ساعة شهريًا × 85 ﷼</td><td class="n">12,750 ﷼</td></tr>
-            <tr class="tot"><td><strong>التعادل الذي يدفع لك راتبًا</strong></td><td class="n"><strong>≈ 18,500 ﷼/شهر ≈ 30 قطعة</strong></td></tr>
+            <tr><td>تكاليف ثابتة شهرية (متجر + AI + إعلان + إهلاك)</td><td class="n">≈ 817 ﷼</td></tr>
+            <tr><td>هامش المساهمة بعد الخامات وتكاليف البيع</td><td class="n">76٪</td></tr>
+            <tr><td>تعادل يغطي المصاريف فقط</td><td class="n">≈ 1,075 ﷼/شهر — قطعة واحدة</td></tr>
+            <tr><td>وقتك: 64 ساعة × 100 ﷼ (حد أدنى تعتبره مستحقًا)</td><td class="n">6,400 ﷼</td></tr>
+            <tr class="tot"><td><strong>التعادل اللي يخلّي السهر يستاهل</strong></td><td class="n"><strong>≈ 9,500 ﷼/شهر ≈ 10 قطع</strong></td></tr>
           </tbody>
         </table>
+      </div>
+      <p class="small">قطعة واحدة في الشهر بتغطي كل مصاريفك الثابتة. ده معناه إن <strong>المشروع ما بيخسرش تقريبًا أبدًا</strong> — أسوأ حالاته إنه بيدفع لك قليل مقابل وقتك. المخاطرة المالية الحقيقية محصورة في الـ٩٬٨٠٠ ريال CAPEX، ودي مستردة في الشهر الخامس.</p>
+
+      <div class="warnbox">
+        <span class="eyebrow">البند اللي مش داخل في الجداول دي</span>
+        <p><strong>تكلفة المسار النظامي.</strong> لو وثيقة العمل الحر اتاحت لك، التكلفة صفر والأرقام فوق صحيحة زي ما هي. لو اضطريت لمسار وزارة الاستثمار، اطرح <strong>١٢٬٠٠٠–٢٠٬٠٠٠ ريال من السنة الأولى</strong> — يعني عائد الساعة في السيناريو الأساسي بينزل لحدود ١٠٤ ﷼. لسه منطقي، بس بيغيّر الحسبة. ولو الرسم السنوي طلع من الشريحة العالية، المشروع بالحجم ده <strong>ما يستحملهاش</strong>. القسم ٢١.</p>
       </div>
     </div>
   </div>
@@ -1516,48 +1538,66 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">15 / 27</span>
-      <h2>الطاقة الإنتاجية والاختناقات</h2>
-      <p class="sec-kicker small">شخص واحد، ٤٥ ساعة منتجة أسبوعيًا. أين تذهب فعلًا.</p>
+      <h2>الطاقة الإنتاجية — ١٦ ساعة في الأسبوع</h2>
+      <p class="sec-kicker small">إنت موظف. ده السقف الحقيقي، ومن غير تجميل.</p>
     </div>
 
     <div class="tablewrap rv">
       <table>
-        <thead><tr><th>النشاط</th><th class="n">ساعات/أسبوع</th><th>قابل للتفويض؟</th><th>ملاحظة</th></tr></thead>
+        <thead><tr><th>الوقت</th><th class="n">ساعات</th><th>بيتعمل فيه إيه</th></tr></thead>
         <tbody>
-          <tr><td><strong>التشطيب والتجميع</strong></td><td class="n">18</td><td><span class="pill p-yes">نعم — أولًا</span></td><td><strong>الاختناق رقم ١.</strong> كل شيء آخر ينتظره.</td></tr>
-          <tr><td>التصميم والنحت وهندسة الطباعة</td><td class="n">8</td><td><span class="pill p-no">لا</span></td><td>هذا أنت. هذا الأصل الذي تبنيه.</td></tr>
-          <tr><td>المحتوى والتصوير</td><td class="n">6</td><td><span class="pill p-wait">جزئيًا</span></td><td>التصوير نعم، الحكاية لا.</td></tr>
-          <tr><td>المبيعات وخدمة العملاء والإدارة</td><td class="n">5</td><td><span class="pill p-wait">لاحقًا</span></td><td>ترتفع بحدة مع طلبات التخصيص.</td></tr>
-          <tr><td>تجهيز الطباعة والإشراف</td><td class="n">4</td><td><span class="pill p-yes">نعم</span></td><td>الآلة تعمل بلا إشراف — الوقت هنا للتجهيز فقط.</td></tr>
-          <tr><td>التغليف والشحن</td><td class="n">4</td><td><span class="pill p-yes">نعم</span></td><td>—</td></tr>
-          <tr class="tot"><td>الإجمالي</td><td class="n">45</td><td></td><td>بدوام كامل. بدوام جزئي (٢٠ ساعة) اقسم الناتج على ٢٫٢.</td></tr>
+          <tr><td>أربع ليالٍ × ساعتين</td><td class="n">8</td><td>تشطيب وسنفرة وطلاء — الشغل اللي بيتقطّع ويتكمّل</td></tr>
+          <tr><td>الويك إند × ٥ ساعات</td><td class="n">10</td><td>تصميم وتطبيق أنماط وتجميع وتصوير وتغليف</td></tr>
+          <tr><td>هامش الإرهاق والحياة</td><td class="n">−2</td><td><strong>خصمه من الأول.</strong> اللي بيخطط على ١٨ ساعة بيصحى بعد شهرين كاره الشغل</td></tr>
+          <tr class="tot"><td>الصافي القابل للتخطيط</td><td class="n">16</td><td>≈ 64 ساعة شهريًا</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="body-copy measure rv" style="margin-top:26px">
-      <h3>السقف الواقعي</h3>
-      <p>بـ<strong>١٨ ساعة تشطيب أسبوعيًا</strong>، المزيج الواقعي: ٦ قطع RELIC (٢٫٧ ساعة) + قطعتا MONOLITH (٢٫٨ ساعة) + قطعتا SENTINEL (٨ ساعات) ≈ ١٣٫٥ ساعة، والباقي هامش أمان للفشل وإعادة العمل.</p>
-      <div class="grid g3" style="margin-top:16px">
-        <div><b class="num" style="display:block;font-size:1.6rem;color:var(--bronze)">10</b><span class="small">قطع أسبوعيًا — السقف الواقعي لشخص واحد</span></div>
-        <div><b class="num" style="display:block;font-size:1.6rem;color:var(--bronze)">40</b><span class="small">قطعة شهريًا كحد أقصى مستدام</span></div>
-        <div><b class="num" style="display:block;font-size:1.6rem;color:var(--bronze)">22,400</b><span class="small">ريال — سقف الإيراد الشهري بلا B2B وبلا مساعد</span></div>
+    <div class="body-copy measure rv" style="margin-top:24px">
+      <h3>توزيع الـ١٦ ساعة</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>النشاط</th><th class="n">ساعات/أسبوع</th><th>ملاحظة</th></tr></thead>
+          <tbody>
+            <tr><td><strong>التشطيب والتجميع</strong></td><td class="n">7</td><td>الاختناق. كل قرار تصميمي لازم يخدم تقصيره.</td></tr>
+            <tr><td>التصميم وتطبيق النمط</td><td class="n">4</td><td>بينزل كل ما الكتالوج ينضج — ده الفرق اللي بيعمله النمط</td></tr>
+            <tr><td>المحتوى والتصوير</td><td class="n">2</td><td>صوّر وإنت بتشتغل. ما تخصّصش يوم تصوير — ده يوم إنتاج ضايع.</td></tr>
+            <tr><td>العملاء والإدارة</td><td class="n">2</td><td><strong>ردّ في وقت محدد يوميًا</strong> — مش طول اليوم من الشغل</td></tr>
+            <tr><td>التغليف والشحن</td><td class="n">1</td><td>جمّعه في يوم واحد أسبوعيًا</td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <h3>لماذا الطابعة ليست الاختناق</h3>
-      <p>لوح الطابعة يُنتج ٤–٨ قطع في ٥–٧ ساعات، ويمكن تشغيل لوحين يوميًا. أي ما يعادل <strong>أضعاف</strong> ما تستوعبه ١٨ ساعة تشطيب. لذلك:</p>
       <div class="verdict">
-        <span class="eyebrow">ترتيب التوظيف والشراء</span>
-        <p><strong>١. مشطِّب بالساعة (٤٠–٦٠ ﷼/ساعة) — قبل أي معدة.</strong> سنفرة وبرايمر فقط، وهما ٦٠٪ من وقتك. ٢. مصنّع خارجي للقواعد والحفر. ٣. طابعة ثانية — فقط بعد وجود المشطِّب. ٤. نحّات مستقل عند تراكم طلبات التخصيص. ٥. دعم تغليف وشحن في موسم الذروة.</p>
+        <span class="eyebrow">الميزة الخفية في الدوام الجزئي</span>
+        <p><strong>الطابعة بتشتغل وإنت في الشغل وإنت نايم.</strong> لوح كامل بياخد ٥–٧ ساعات بدون إشراف. تشغّل الصبح قبل ما تنزل، وتلاقيه جاهز بالليل، وتشغّل تاني قبل ما تنام. يعني <strong>طاقة الطباعة عندك بتساوي طاقة واحد متفرغ</strong> — الفرق كله في إيديك وقت التشطيب.</p>
+      </div>
+
+      <h3>السقف الواقعي</h3>
+      <div class="grid g3" style="margin-top:16px">
+        <div><b class="num" style="display:block;font-size:1.6rem;color:var(--bronze)">3</b><span class="small">قطع أسبوعيًا في المتوسط</span></div>
+        <div><b class="num" style="display:block;font-size:1.6rem;color:var(--bronze)">10–14</b><span class="small">قطعة شهريًا — السقف المستدام</span></div>
+        <div><b class="num" style="display:block;font-size:1.6rem;color:var(--bronze)">13,800</b><span class="small">ريال — سقف الإيراد الشهري بدون مساعد</span></div>
+      </div>
+
+      <h3>ترتيب الاختناقات ومتى تفكّها</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th class="n">#</th><th>الاختناق</th><th>العلامة</th><th>الحل ومتى</th></tr></thead>
+          <tbody>
+            <tr><td class="n">1</td><td><strong>ساعات التشطيب</strong></td><td>طلبات متأخرة ومواعيد بتتأجل</td><td><strong>مشطِّب بالساعة (٤٠–٦٠ ﷼).</strong> سنفرة وبرايمر بس — دول ٦٠٪ من وقتك. أول توظيف، قبل أي معدة.</td></tr>
+            <tr><td class="n">2</td><td>الرد على العملاء</td><td>رسايل بتتراكم وإنت في الشغل</td><td>نموذج طلب منظّم + ردود جاهزة + <strong>وقت رد معلن مرة واحدة يوميًا</strong>. حله مجاني وفوري.</td></tr>
+            <tr><td class="n">3</td><td>بناء الأنماط</td><td>كل عميل بيطلب حاجة برّه الستة</td><td>ابنِ نمط جديد كل شهرين — مش لكل عميل</td></tr>
+            <tr><td class="n">4</td><td>الطابعة</td><td>ما بتوصلش له قبل السنة التانية</td><td>طابعة تانية <strong>بعد</strong> المشطِّب، مش قبله</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="warnbox">
-        <span class="eyebrow">اختناق خفي: طلب B2B واحد يُجمّد التجزئة</span>
-        <p>طلب ٤٠ قطعة MARK = ٦٤ ساعة تشطيب = <strong>ثلاثة أسابيع ونصف من طاقتك كاملة</strong>. لذلك تُجدول طلبات B2B كـ«حملات» تُوقف الإصدارات مؤقتًا، أو تُنفَّذ بمساعد مؤقت. تسليم موعد B2B متأخر يكلّفك العميل والسمعة معًا.</p>
+        <span class="eyebrow">الخطر الحقيقي على واحد بيشتغل بالمساء</span>
+        <p>مش إنك ما تكسبش — إنك <strong>تحرق نفسك</strong>. أربعين ساعة شغل + ستاشر ساعة استوديو = ٥٦ ساعة أسبوعيًا. ده ممكن لسنة، مش لخمسة. عشان كده: <strong>سقف الطلبات معلن، ومدة التسليم ٣ أسابيع من الأول، وأسبوع إجازة كل ثلاثة شهور مقفول في الكاليندر.</strong> الطلب اللي ما تقدرش عليه بيتأجل للشهر اللي بعده — والانتظار نفسه بيرفع القيمة.</p>
       </div>
-
-      <h3>نقطة تحوّل إنتاجية مهمة</h3>
-      <p class="small">فوق <strong>٥٠ نسخة من نفس الجزء</strong>، يصبح الصبّ من قالب سيليكون أرخص من الطباعة: ثلث تكلفة المادة تقريبًا وخُمس زمن الآلة. هذا يفتح طلبات B2B من ١٠٠ قطعة فأكثر دون شراء طابعة ثانية. لا تحتاجه في السنة الأولى، لكن اعرف أنه موجود قبل أن ترفض طلبًا كبيرًا.</p>
     </div>
   </div>
 </section>
@@ -1614,7 +1654,7 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
     </div>
 
     <div class="body-copy measure rv" style="margin-bottom:18px">
-      <p>القيد: لا <span class="mono">3D</span> ولا <span class="mono">Print</span> ولا <span class="mono">Resin</span> ولا <span class="mono">Models</span>. الاتجاهات الستة أدناه مبنية على <strong>حقول معنى</strong>، لا على أصوات جميلة.</p>
+      <p>إنت قلت هتغيّر الاسم، فالاقتراحات دي مبنية من الأول على التموضع الجديد: <strong>شغل مخصّص، بأنماط متعددة، لناس بتشتري ذكرى</strong>. القيد باقٍ: لا <span class="mono">3D</span> ولا <span class="mono">Print</span> ولا <span class="mono">Resin</span> ولا <span class="mono">Models</span>. والاتجاهات مبنية على <strong>حقول معنى</strong> مش على أصوات حلوة.</p>
     </div>
 
     <div class="names rv" id="names"></div>
@@ -1623,16 +1663,16 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
     <div class="body-copy measure rv" style="margin-top:30px">
       <div class="verdict">
         <span class="eyebrow">الترشيح</span>
-        <p><strong>سَبَك / SABAK</strong> — الفعل العربي لصهر المعدن وصبّه في قالب. يصف العملية دون ذكر التقنية، ينطق بالعربية والإنجليزية بنفس السهولة، ويحمل ثقل الحرفة لا خفّة التقنية. البديلان: <strong>حَجَر / HAJAR</strong> و<strong>TUFF</strong>.</p>
+        <p><strong>صِلة / SILA</strong> — رابطة. القطعة المخصّصة في جوهرها رابطة اتجسّدت، وده بالظبط اللي العميل بيدفع عشانه. البديلان: <strong>نَمَط / NAMAT</strong> (نموذج شغلك في كلمة) و<strong>مساء / MASA</strong> (قصتك الحقيقية).</p>
       </div>
       <div class="warnbox">
         <span class="eyebrow">قبل أي إنفاق على الهوية</span>
-        <p>ابحث عن الاسم في سجل العلامات التجارية لدى <strong>الهيئة السعودية للملكية الفكرية</strong>، وتحقّق من توفّر النطاق والحسابات. اسم مأخوذ يعني إعادة بناء الهوية والتغليف من الصفر بعد ستة أشهر.</p>
+        <p>ابحث عن الاسم في سجل العلامات التجارية لدى <strong>الهيئة السعودية للملكية الفكرية</strong>، وتحقّق من توفّر النطاق والحسابات. اسم مأخوذ يعني إعادة بناء الهوية والتغليف من الصفر بعد ستة شهور. وخد بالك: <strong>تسجيل العلامة التجارية له متطلباته الخاصة للمقيم</strong> — اسأل عنها في نفس ساعة الاستشارة القانونية بتاعة الأسبوع الأول.</p>
       </div>
 
       <h3>بناء الملكية الفكرية الأصلية</h3>
       <ul>
-        <li><strong>عالم واحد، لا شخصيات متفرقة.</strong> مكان أو أسطورة واحدة تنتمي إليها كل الشخصيات، فيصبح المقتنى الثاني امتدادًا للأول بدل أن يكون منتجًا جديدًا يحتاج إقناعًا من الصفر.</li>
+        <li><strong>الأنماط هي ملكيتك الفكرية، مش الشخصيات.</strong> في شغل مخصّص، كل قطعة بتروح لعميل واحد — فاللي بيفضل معاك هو <em>النمط</em> اللي اتعملت بيه. ستة أنماط مكتوبة القواعد ومتسقة التنفيذ = أصل حقيقي تملكه وتقدر تبيعه أو ترخّصه.</li>
         <li><strong>ظلّ خارجي توقيعي:</strong> عنصر شكلي واحد يتكرر في كل شخصية (غطاء رأس، انحناءة كتف، قاعدة بزاوية ثابتة). هذا ما يجعل الناس يتعرفون على عملك قبل قراءة الاسم.</li>
         <li><strong>إصدارات مرقّمة:</strong> «٠١٧ / ٠٥٠» بالحفر على القاعدة وباليد على الشهادة. الندرة مُصمَّمة لا مُدَّعاة — وإذا قلت ٥٠ فلا تطبع ٥١ أبدًا.</li>
         <li><strong>إصدارات موسمية (Drops):</strong> أربع مرات سنويًا. الإيقاع نفسه يصنع الترقّب.</li>
@@ -1792,32 +1832,85 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-no">21 / 27</span>
-      <h2>الوضع النظامي في السعودية</h2>
-      <p class="sec-kicker small">ما يلزمك فعلًا، ومتى. مراجَع سبتمبر ٢٠٢٦ — تحقّق قبل التنفيذ.</p>
+      <h2>وضعك النظامي كمقيم — أهم قسم في الدراسة</h2>
+      <p class="sec-kicker small">ده مش قسم إجرائي. ده القسم اللي بيحدد إذا كان المشروع ممكن أصلًا.</p>
     </div>
 
-    <div class="tablewrap rv">
-      <table>
-        <thead><tr><th>المتطلب</th><th>متى يلزم</th><th class="n">التكلفة</th><th>التفاصيل</th></tr></thead>
-        <tbody>
-          <tr><td><strong>وثيقة العمل الحر</strong></td><td>من اليوم الأول</td><td class="n">مجانية</td><td>تصدر فوريًا من وزارة الموارد البشرية والتنمية الاجتماعية. كافية للبيع للأفراد وبناء بداية نظامية بلا تكاليف.</td></tr>
-          <tr><td><strong>السجل التجاري</strong></td><td>عند أول عميل مؤسسي</td><td class="n">رسوم سنوية</td><td>معظم بوابات المشتريات في الشركات لا تسجّل مورّدًا بلا سجل تجاري ورقم ضريبي. هذا هو البند الذي يفتح محرك B2B.</td></tr>
-          <tr><td><strong>التسجيل في معروف</strong></td><td>مع إطلاق المتجر</td><td class="n">مجاني</td><td>يرفع الثقة، ومطلوب عمليًا للمتاجر الإلكترونية.</td></tr>
-          <tr><td><strong>متطلبات التجارة الإلكترونية</strong></td><td>مع إطلاق المتجر</td><td class="n">—</td><td>إظهار رقم السجل والرقم الضريبي وبيانات التواصل، وشروط وأحكام وسياسة إرجاع <strong>بالعربية</strong>، وتفاصيل التوصيل.</td></tr>
-          <tr><td><strong>ضريبة القيمة المضافة</strong></td><td>إلزامي فوق 375,000 ﷼ سنويًا<br>طوعي فوق 187,500 ﷼</td><td class="n">15٪</td><td><strong>سجّل طوعًا عند بدء B2B</strong> — العميل المؤسسي يحتاج فاتورة ضريبية لخصمها. هذه ليست تكلفة، بل شرط دخول.</td></tr>
-          <tr><td><strong>الفوترة الإلكترونية (فاتورة)</strong></td><td>مع تسجيل الضريبة</td><td class="n">داخل سلة</td><td>المرحلة الثانية وصلت إلى شريحة ٣٧٥٬٠٠٠ ريال بموعد ربط ٣٠ يونيو ٢٠٢٦. اختيار منصة متوافقة أصلًا يوفّر عليك المشكلة كليًا.</td></tr>
-          <tr><td><strong>المنتجات المُصنَّعة حسب الطلب</strong></td><td>في الشروط والأحكام</td><td class="n">—</td><td>القطع المخصّصة عادةً خارج نطاق حق الإرجاع العام — لكن <strong>يجب النص على ذلك صراحة ومسبقًا</strong>، وإلا سقط الاستثناء.</td></tr>
-          <tr><td><strong>العلامة التجارية</strong></td><td>قبل إنفاق كبير على الهوية</td><td class="n">رسوم تسجيل</td><td>الهيئة السعودية للملكية الفكرية. ابحث أولًا، ثم سجّل.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="body-copy measure rv" style="margin-top:22px">
-      <div class="verdict">
-        <span class="eyebrow">التسلسل النظامي الأمثل</span>
-        <p><strong>الشهر ١:</strong> وثيقة عمل حر (مجانية) — تبيع بها نظاميًا للأفراد. <strong>الشهر ٤–٦:</strong> سجل تجاري + معروف عند اقتراب أول صفقة مؤسسية. <strong>الشهر ٦–٨:</strong> تسجيل ضريبي طوعي مع أول فاتورة B2B. <strong>لا تفتح سجلًا تجاريًا في الشهر الأول</strong> — رسوم والتزامات بلا مقابل قبل وجود إيراد.</p>
+    <div class="body-copy measure rv">
+      <div class="warnbox">
+        <span class="eyebrow">شفافية قبل أي كلام</span>
+        <p>مواقع الجهات الحكومية (<span class="mono">hrsd.gov.sa</span> و<span class="mono">freelance.sa</span>) <strong>محجوبة عن أداة التصفح في الجلسة دي</strong>، فما قدرتش أفتح النص الرسمي. واللي أخطر: المصادر غير الرسمية <strong>بتتناقض مع بعضها</strong> في نقطة واحدة حاسمة — هل المقيم يقدر يستخرج وثيقة العمل الحر ولا لأ. فيه مصادر بتقول أيوه بشرط الإقامة، وفيه مصادر بتقول لأ والجنسية السعودية شرط أساسي مع استثناء لحاملي الإقامة المميزة. <strong>ما تبنيش قرار على أي من الاتنين — تحقّق بنفسك، وده مجاني وبياخد عشر دقايق.</strong></p>
       </div>
-      <p class="small">هذه قراءة عامة للأنظمة المنشورة، وليست استشارة قانونية. الأنظمة تتغير — راجع المصادر الحكومية الرسمية (وزارة الموارد البشرية، هيئة الزكاة والضريبة والجمارك، وزارة التجارة، الهيئة السعودية للملكية الفكرية) قبل أي خطوة تنفيذية.</p>
+
+      <h3>المسارات الأربعة — والحكم على كل واحد</h3>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>المسار</th><th class="n">التكلفة</th><th>المتاح لك؟</th><th>التفاصيل</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>أ — وثيقة العمل الحر</strong></td>
+              <td class="n">مجانية</td>
+              <td><span class="pill p-wait">تحقّق فورًا</span></td>
+              <td>لو اتاحت لك، هي أرخص وأسرع أساس نظامي. بتغطي مهنًا محددة (٨٠–١٤٠ مهنة) من ضمنها <strong>الحرف اليدوية والأسر المنتجة</strong> — وده قريب من طبيعة شغلك. لكنها <strong>ما بتغطيش</strong> محلًا تجاريًا ولا استيرادًا وتخليصًا جمركيًا ولا نشاطًا تجاريًا موسّعًا.</td>
+            </tr>
+            <tr>
+              <td><strong>ب — رخصة ريادي من وزارة الاستثمار</strong></td>
+              <td class="n">12,000–20,000 ﷼<br><span class="small">السنة الأولى</span></td>
+              <td><span class="pill p-yes">متاح</span></td>
+              <td>ملكية أجنبية ١٠٠٪ بدون شريك سعودي، و<strong>بدون حد أدنى لرأس المال</strong>، ورسم الترخيص الحكومي موقوف حاليًا. بس عليه رسوم اشتراك علاقات مستثمرين، وسجل تجاري، وغرفة تجارية، وعنوان وطني. وغالبًا بيطلب <strong>خطاب دعم من حاضنة أو مسرّعة أعمال</strong>.</td>
+            </tr>
+            <tr>
+              <td><strong>ج — سجل باسم شريك سعودي</strong></td>
+              <td class="n" style="color:var(--danger)">سجن + 5 مليون ﷼</td>
+              <td><span class="pill p-no">ممنوع تمامًا</span></td>
+              <td><strong>ده التستر التجاري.</strong> العقوبة سجن يوصل خمس سنين، وغرامة توصل خمسة ملايين ريال، ومصادرة الأرباح، والإبعاد عن المملكة ومنع الدخول نهائيًا، ومنع من أي نشاط تجاري لخمس سنين.</td>
+            </tr>
+            <tr>
+              <td><strong>د — مرحلة الهواية المعلنة</strong></td>
+              <td class="n">مجانية</td>
+              <td><span class="pill p-yes">ابدأ بيه النهاردة</span></td>
+              <td>تصمّم، وتطبع، وتنشر، وتبني جمهور وقائمة انتظار — <strong>من غير ما تبيع</strong>. قانوني ١٠٠٪، وبيبني بالظبط الأصل اللي محتاجه: بورتفوليو وطلب مثبت.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>نقطتان بتخصّك إنت تحديدًا كموظف</h3>
+      <ul>
+        <li><strong>مهنة الإقامة لازم تطابق شغلك الفعلي</strong>، والتشديد على ده نشط حاليًا. أي نشاط تجاري مسجّل لازم يتسق مع وضعك، مش يتناقض معاه.</li>
+        <li><strong>وزارة الاستثمار بتطلب خطاب عدم ممانعة من صاحب العمل الحالي</strong> لو إنت على إقامة شركة. يعني موافقة شركتك مش تفصيلة — هي بوابة المسار (ب) كله. واقرا عقدك: فيه شركات بتحط بند منع منافسة أو منع عمل إضافي.</li>
+      </ul>
+
+      <div class="verdict">
+        <span class="eyebrow">خطة الأسبوع الأول — بالترتيب</span>
+        <ol style="font-size:.9rem;margin-top:8px">
+          <li><strong>افتح أبشر وجرّب تصدر وثيقة العمل الحر.</strong> مجاني، عشر دقايق، والنظام هيجاوبك بقبول أو رفض. <strong>الإجابة دي بتحدد كل اللي بعدها.</strong></li>
+          <li><strong>احجز ساعة استشارة مع محامي شركات سعودي</strong> (٥٠٠–١٬٥٠٠ ﷼). دي أرخص بوليصة تأمين في الدراسة كلها — تكلفتها أقل من عُشر الميزانية وبتمنع خطأ ممكن ينهي إقامتك.</li>
+          <li><strong>اقرا عقد شغلك</strong> وشوف بنود العمل الإضافي والمنافسة، واسأل الموارد البشرية بشكل غير رسمي.</li>
+          <li><strong>ابدأ مرحلة الهواية فورًا</strong> — مش محتاجة أي إذن، وبتشتغل بالتوازي مع كل اللي فوق.</li>
+        </ol>
+      </div>
+
+      <div class="warnbox">
+        <span class="eyebrow">الفخ المالي في مسار وزارة الاستثمار</span>
+        <p>فيه تقارير إن اشتراك وزارة الاستثمار السنوي بيقفز لحدود <strong>٦٠٬٠٠٠ ريال من السنة التانية</strong> في الشرائح العادية، بينما شريحة <strong>رائد الأعمال</strong> بتفضل في حدود ٢٬٠٠٠ ريال سنويًا. عند إيراد ١٣٤٬٠٠٠ ريال، رسم ٦٠ ألف = <strong>٤٥٪ من إيرادك</strong> — ده بيقتل المشروع. <strong>اسأل صراحةً عن رسوم السنة التانية والتالتة قبل ما تدفع أي حاجة</strong>، واطلبها مكتوبة.</p>
+      </div>
+
+      <h3>باقي المتطلبات — لو وصلت لمرحلة البيع</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>المتطلب</th><th>الحالة</th></tr></thead>
+          <tbody>
+            <tr><td>توثيق المتجر</td><td>وزارة التجارة بتوجّه أصحاب المتاجر الفردية للتوثيق في <strong>منصة الأعمال</strong> بدل معروف، وده شرط لفتح حساب بنكي للمتجر.</td></tr>
+            <tr><td>ضريبة القيمة المضافة</td><td>إلزامية فوق ٣٧٥٬٠٠٠ ﷼ · طوعية فوق ١٨٧٬٥٠٠ ﷼. سيناريو الطلب القوي (٢٠٨٬٠٠٠) بيدخّلك منطقة التسجيل الطوعي — والعميل المؤسسي هيطلب فاتورة ضريبية.</td></tr>
+            <tr><td>الفوترة الإلكترونية</td><td>المرحلة التانية وصلت شريحة ٣٧٥٬٠٠٠ ﷼ بموعد ربط ٣٠ يونيو ٢٠٢٦. منصة زي سلة بتتكفّل بده.</td></tr>
+            <tr><td>المنتجات المُصنَّعة حسب الطلب</td><td>عادةً خارج نطاق حق الإرجاع العام — <strong>بشرط النص على ده صراحة ومسبقًا</strong>، وإلا بيسقط الاستثناء. ده مهم جدًا في شغل مخصّص بالكامل.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="small">ده قراءة عامة لمصادر منشورة بتاريخ <span class="mono">2026-09-17</span>، ومش استشارة قانونية. الأنظمة بتتغير، والوضع بتاعك فيه تفاصيل شخصية (نوع الإقامة، المهنة المسجلة، بنود عقدك) ما ينفعش أي دراسة تحسمها من بعيد. <strong>الساعة الاستشارية دي مش رفاهية.</strong></p>
     </div>
   </div>
 </section>
@@ -1898,30 +1991,32 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
     <div class="sec-head rv">
       <span class="sec-no">24 / 27</span>
       <h2>خطة التسعين يومًا</h2>
-      <p class="sec-kicker small">أسبوعًا بأسبوع. افتح أي أسبوع لترى المُخرجات ومؤشر القياس.</p>
+      <p class="sec-kicker small">مبنية على مساءات وويك إندات، مش على تفرّغ. افتح أي أسبوع.</p>
     </div>
 
     <div class="body-copy measure rv" style="margin-bottom:20px">
       <div class="verdict">
-        <span class="eyebrow">القاعدة الحاكمة للخطة</span>
-        <p><strong>لا تُشترى الطابعة قبل الأسبوع الخامس، ولا تُشترى إلا بعد ١٥ طلبًا مسبقًا مؤكدًا.</strong> الأسابيع الأربعة الأولى تكلّف ٧٠٠ ريال وتجيب على السؤال الوحيد المهم: هل يدفع أحد؟</p>
+        <span class="eyebrow">قاعدتان بتحكموا الخطة</span>
+        <p><strong>الأولى:</strong> الأسبوع الأول نظامي بالكامل — لا تصميم ولا شراء. <strong>التانية:</strong> الطابعة ما تتشتريش قبل الأسبوع التاسع، ولا تتشترى إلا بعد <strong>١٠ طلبات مدفوعة</strong>. أول تمن أسابيع تكلفتهم أقل من ٤٠٠ ريال، وبيجاوبوا على السؤالين الوحيدين المهمين: <em>هل أقدر قانونًا؟</em> و<em>هل حد هيدفع؟</em></p>
       </div>
     </div>
 
     <div class="tl rv" id="timeline"></div>
 
     <div class="body-copy measure rv" style="margin-top:26px">
-      <h3>طرق التحقّق قبل الإنفاق</h3>
+      <h3>ليه مرحلة «الهواية المعلنة» أقوى مما تبدو</h3>
+      <p>في أول شهرين إنت بتنشر شغل حقيقي من غير ما تبيع. ده مش تسويف — ده بيحقق أربع حاجات في نفس الوقت:</p>
       <ul>
-        <li><strong>رندرات CGI:</strong> صمّم الشخصية، ولّد المجسم، رندره في Blender بجودة استوديو. <strong>تكلفة صفر، ولا أحد يستطيع التمييز بين الرندر والصورة.</strong> هذا هو أكبر سلاح لديك.</li>
-        <li><strong>صفحة هبوط + قائمة انتظار:</strong> قِس عدد من يترك بريده. أقل من ٥٠ مسجَّلًا في ٣٠ يومًا = إشارة ضعف في المفهوم لا في التسويق.</li>
-        <li><strong>اختبار إنستقرام:</strong> ٣٠٠ ريال إعلانات موجّهة للرياض. قِس تكلفة التسجيل في القائمة.</li>
-        <li><strong>الطلب المسبق هو الاختبار الحقيقي الوحيد:</strong> افتح ٢٠ مكانًا بعربون ٢٥٠ ريالًا مسترد. <strong>الاهتمام مجاني، والعربون حقيقة.</strong></li>
-        <li><strong>نموذج أولي خارجي:</strong> اطبع أول قطعة لدى خدمة في الرياض بـ١٥٠–٤٠٠ ريال. تحمل القطعة في يدك، وتصوّرها، وتعرف حجم التشطيب الفعلي — قبل أن تدفع ٣٬٢٥٠ ريالًا.</li>
+        <li><strong>قانوني ١٠٠٪</strong> — مفيش نشاط تجاري، فمفيش أي تعرّض.</li>
+        <li><strong>بيبني البورتفوليو</strong> اللي من غيره مفيش عميل مؤسسي هيكلّمك.</li>
+        <li><strong>بيختبر الأنماط الستة على جمهور حقيقي</strong> قبل ما تستثمر فيهم. النمط اللي محدش يعلّق عليه، احذفه.</li>
+        <li><strong>بيبني قائمة انتظار</strong> — فأول يوم تقدر تبيع فيه يبقى عندك طلبات مستنية، مش بتبدأ من الصفر.</li>
       </ul>
+      <p class="small">والرندرات مجانية: <strong>Blender بيديك صور بجودة استوديو قبل ما القطعة توجد ماديًا</strong>. يعني تقدر تعرض كتالوج الأنماط كامل وإنت لسه ما اشتريتش طابعة.</p>
+
       <div class="verdict">
-        <span class="eyebrow">متى يصبح شراء الطابعة منطقيًا</span>
-        <p>عندما تجتمع الثلاثة: <strong>(١)</strong> ١٥+ طلبًا مسبقًا بعربون مدفوع · <strong>(٢)</strong> نموذج أولي مطبوع خارجيًا اختبرت تشطيبه بيدك · <strong>(٣)</strong> سعر بيع تؤكد الحسابات أنه يحقق ١٥٠+ ريالًا لكل ساعة عمل. قبل ذلك، الطابعة قطعة أثاث باهظة.</p>
+        <span class="eyebrow">إمتى تشتري الطابعة</span>
+        <p>لما تجتمع التلاتة: <strong>(١)</strong> أساس نظامي واضح ومكتوب · <strong>(٢)</strong> ١٠ طلبات مدفوعة بعربون · <strong>(٣)</strong> نموذج أولي مطبوع خارجيًا في الرياض شطّبته بإيدك وعرفت بياخد كام ساعة فعلًا. قبل كده الطابعة قطعة أثاث غالية.</p>
       </div>
     </div>
   </div>
@@ -2020,49 +2115,49 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
     <div class="sec-head rv">
       <span class="sec-no">27 / 27</span>
       <h2>القرار النهائي</h2>
-      <p class="sec-kicker small">ثلاثة مسارات. واحد منها موصى به.</p>
+      <p class="sec-kicker small">تلات مسارات. واحد منهم موصى به لوضعك بالتحديد.</p>
     </div>
 
     <div class="grid g3 rv" style="background:transparent;border:0;gap:14px">
 
       <div class="opt">
         <div class="eyebrow">OPTION 1</div>
-        <h3>ابدأ الآن</h3>
-        <div class="cost">9,800 ﷼</div>
-        <p class="small">تشتري كل شيء هذا الشهر وتبدأ الإنتاج فورًا.</p>
+        <h3>الالتزام الكامل</h3>
+        <div class="cost">21,800 ﷼</div>
+        <p class="small">ترخيص وزارة الاستثمار + الإعداد الكامل، في شهر واحد.</p>
         <ul>
-          <li>طابعة 12K + شفط + وقاية + ريزن + تشطيب + تغليف ٢٥ وحدة</li>
-          <li>أول منتج في السوق خلال ٥–٦ أسابيع</li>
-          <li><strong>المخاطرة:</strong> ٩٬٨٠٠ ريال تحت افتراض غير مُختبَر بأن أحدًا سيشتري</li>
-          <li><strong>مناسب إذا:</strong> لديك جمهور جاهز أو التزام مؤسسي مبدئي بيدك</li>
+          <li>رخصة ريادي (~12,000 ﷼ السنة الأولى) + معدات (9,800 ﷼)</li>
+          <li>تقدر تتعامل مع الشركات من اليوم الأول وتصدر فواتير ضريبية</li>
+          <li><strong>المخاطرة:</strong> ٢١٬٨٠٠ ريال على طلب لسه ما اتثبتش، ورسوم سنوية مستمرة</li>
+          <li><strong>مناسب لو:</strong> عندك التزام مؤسسي مبدئي في إيدك بالفعل</li>
         </ul>
       </div>
 
       <div class="opt pick">
         <span class="tag">RECOMMENDED</span>
         <div class="eyebrow" style="color:var(--bronze)">OPTION 2</div>
-        <h3>تحقّق أولًا</h3>
-        <div class="cost">700 ﷼ <span class="small" style="font-family:var(--ff-body);color:var(--muted)">ثم 9,100</span></div>
-        <p class="small">ثلاثون يومًا من الأدلة قبل أي معدة.</p>
+        <h3>المسار المرحلي</h3>
+        <div class="cost">0 ﷼ <span class="small" style="font-family:var(--ff-body);color:var(--muted)">أول ٦٠ يومًا</span></div>
+        <p class="small">وضوح نظامي، ثم هواية معلنة، ثم طلبات، ثم معدات.</p>
         <ul>
-          <li>عالم شخصيات + ٣ رندرات CGI + صفحة هبوط + اختبار إعلاني + نموذج أولي خارجي</li>
-          <li>افتح ٢٠ طلبًا مسبقًا بعربون ٢٥٠ ريالًا</li>
-          <li><strong>١٥ عربونًا = ٣٬٧٥٠ ريالًا تدفع أكثر من ثمن الطابعة</strong></li>
-          <li><strong>المخاطرة الحقيقية: ٧٠٠ ريال.</strong> أقل من ١٠٪ من الخيار الأول</li>
-          <li><strong>مناسب إذا:</strong> تبدأ من الصفر — وهذه حالتك</li>
+          <li><strong>أسبوع ١:</strong> جرّب وثيقة العمل الحر (مجاني) + ساعة استشارة محامي + اقرا عقدك</li>
+          <li><strong>أسابيع ٢–٨:</strong> ابنِ ٣ أنماط، انشر رندرات، اجمع قائمة انتظار — بتكلفة تحت ٤٠٠ ﷼</li>
+          <li><strong>أسبوع ٩:</strong> ١٠ طلبات مدفوعة ← اشترِ المعدات (9,800 ﷼)</li>
+          <li><strong>المخاطرة الفعلية قبل أي دليل: أقل من ٤٠٠ ريال</strong></li>
+          <li><strong>مناسب لو:</strong> عندك راتب ووقتك محدود ومحتاج تتأكد قبل ما تلتزم — يعني حالتك</li>
         </ul>
       </div>
 
       <div class="opt">
         <div class="eyebrow">OPTION 3</div>
-        <h3>الأقل تكلفة ممكنة</h3>
+        <h3>الأقل تكلفة</h3>
         <div class="cost">6,050 ﷼</div>
-        <p class="small">إنتاج حقيقي بأقل رأس مال، مع خسائر محسوبة.</p>
+        <p class="small">طابعة مستعملة وغسل يدوي، لو السيولة هي القيد.</p>
         <ul>
-          <li>طابعة مستعملة من حراج (١٬٤٠٠–٢٬٠٠٠) + غسل يدوي + تغليف ١٥ وحدة</li>
-          <li><strong>ما تخسره:</strong> ضمان، وتشطيب أبطأ ٣٠٪، وتغليف أقل إقناعًا، وقدرة أقل على تحمّل عطل</li>
-          <li><strong>لا تنزل تحت هذا الرقم.</strong> تحته تصنع منتجًا لا يستحق سعره — وهذا أسوأ من عدم البدء</li>
-          <li><strong>مناسب إذا:</strong> السيولة هي القيد الملزم الوحيد</li>
+          <li>طابعة مستعملة من حراج (1,400–2,000 ﷼) + محطة غسل يدوية</li>
+          <li><strong>اللي بتخسره:</strong> ضمان، وتشطيب أبطأ ٣٠٪، وسقف سعر أقل، وصفر احتياطي لعطل</li>
+          <li><strong>ما تنزلش تحت الرقم ده</strong> — تحته بتعمل منتج ما يستاهلش سعره</li>
+          <li><strong>مناسب لو:</strong> عايز تبدأ بأقل مبلغ ممكن ومستعد تعوّض بالوقت</li>
         </ul>
       </div>
     </div>
@@ -2073,25 +2168,25 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
         <table>
           <thead><tr><th>القرار</th><th>الاختيار</th></tr></thead>
           <tbody>
-            <tr><td>نموذج العمل</td><td>هجين متسلسل — إصدارات B2C تبني الملكية الفكرية، ثم B2B يموّل النمو</td></tr>
-            <tr><td>خط المنتجات</td><td>٤ منتجات + خدمة واحدة مسقوفة · مصمَّمة لتشطيب قليل</td></tr>
-            <tr><td>الذكاء الاصطناعي</td><td>Hunyuan3D / TRELLIS محليًا + Tripo Pro كتأمين · ولّد الظلال الخارجية أولًا</td></tr>
+            <tr><td>أول خطوة</td><td><strong>أبشر — جرّب تصدر وثيقة العمل الحر.</strong> مجاني، عشر دقايق، وبيحدد كل اللي بعده</td></tr>
+            <tr><td>النموذج</td><td>كتالوج أنماط للأفراد، ونفس الأنماط للشركات — <span class="mono">65% / 35%</span></td></tr>
+            <tr><td>المنتج</td><td>٦ أنماط × ٤ مقاسات · 690 / 1,190 / 1,890 / 1,990 ﷼ · و790 ﷼ للدفعة المؤسسية</td></tr>
+            <tr><td>الأصل اللي بتبنيه</td><td><strong>الأنماط، مش القطع.</strong> نمط واحد بيتباع مئة مرة</td></tr>
+            <tr><td>الذكاء الاصطناعي</td><td>توليد محلي على كرت قوي لو متاح + Tripo Pro احتياطيًا · والنمط اللي بإيدك هو الحاجز</td></tr>
             <tr><td>البرمجيات</td><td>Blender + Lychee مجانًا · لا ZBrush</td></tr>
-            <tr><td>الطابعة</td><td>Elegoo Saturn 4 Ultra 12K واحدة · لا كبيرة الحجم · لا ثانية قبل وجود مشطِّب</td></tr>
-            <tr><td>الخامات</td><td>ABS-Like للجسم · Tough للرفيع · مصبوغ للقطعة الصغيرة · كلير بمانع UV دائمًا</td></tr>
-            <tr><td>الميزانية</td><td>٧٠٠ ﷼ تحقّقًا ← ٩٬٨٠٠ ﷼ إعدادًا، موزّعة على ١٠ أسابيع</td></tr>
-            <tr><td>التسعير</td><td>340 / 490 / 850 / 1,290 / 1,890 ﷼ — مربوطة بـ١٥٠ ﷼ للساعة كحد أدنى</td></tr>
-            <tr><td>المتجر</td><td>سلة · ميسر · سمسا وJ&amp;T · معروف</td></tr>
-            <tr><td>النظامي</td><td>وثيقة عمل حر الآن ← سجل تجاري عند أول عميل مؤسسي ← ضريبة طوعية معه</td></tr>
-            <tr><td>الاسم</td><td>سَبَك / SABAK — بعد التحقق من توفّره لدى الهيئة السعودية للملكية الفكرية</td></tr>
-            <tr class="tot"><td>الخطوة التالية اليوم</td><td>اكتب فقرة واحدة عن عالم شخصياتك. لا تشترِ شيئًا.</td></tr>
+            <tr><td>الطابعة</td><td>Elegoo Saturn 4 Ultra 12K واحدة · بتشتغل وإنت في الشغل وإنت نايم</td></tr>
+            <tr><td>الوقت</td><td>١٦ ساعة أسبوعيًا · ١٠–١٤ قطعة شهريًا · مدة تسليم ٣ أسابيع معلنة</td></tr>
+            <tr><td>المقياس</td><td><strong>عائد ساعة السهر</strong> — مش الإيراد. الهدف ١٣١ ﷼ وبيعلى مع الوقت</td></tr>
+            <tr><td>أول توظيف</td><td>مشطِّب بالساعة (٤٠–٦٠ ﷼) — قبل الطابعة التانية بكتير</td></tr>
+            <tr><td>الخط الأحمر</td><td><strong>مفيش سجل باسم حد تاني. أبدًا.</strong></td></tr>
+            <tr class="tot"><td>الخطوة النهاردة</td><td>افتح أبشر. وبعدين اكتب وصف أول نمط في سطرين. ما تشتريش حاجة.</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="verdict" style="margin-top:22px">
         <span class="eyebrow">الخلاصة</span>
-        <p>الفرق بين «شخص لديه طابعة يبحث عمّا يطبعه» و«علامة لديها منتجات يريد الناس امتلاكها» ليس في المعدات. إنه في الترتيب: <strong>الشخصية أولًا، ثم الجمهور، ثم الطلب، ثم الآلة.</strong> كل قرار في هذه الدراسة يخدم هذا الترتيب.</p>
+        <p>وضعك — موظف بدخل ثابت، وقت محدود، وهواية بتحبها — <strong>مش عائق، ده أحسن وضع تبدأ منه</strong>. مفيش ضغط سيولة يخليك تقبل شغل وحش، ومفيش شهر بتاكل فيه من مدخراتك. القيد الحقيقي الوحيد هو <strong>ساعات مسائك</strong>، وكل قرار في الدراسة دي مبني على حمايتها: كتالوج بدل تفاوض، وأنماط بدل تصميم من الصفر، وتشطيب خفيف بدل ساعات فرشاة، وسقف طلبات معلن. <strong>ابنِ حاجة تحتمل إنك تسيبها أسبوع وترجع لها.</strong></p>
       </div>
     </div>
   </div>
@@ -2103,10 +2198,10 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
   <div class="wrap foot-grid">
     <div>
       <div class="hero-mark" style="margin-bottom:14px">
-        <span class="stamp">سَ</span>
+        <span class="stamp">م</span>
         <div>
-          <div class="eyebrow">SABAK · STUDY v2</div>
-          <div class="small">دراسة تشغيلية — الرياض</div>
+          <div class="eyebrow">EVENING WORKSHOP · STUDY v3</div>
+          <div class="small">دراسة تشغيلية — مقيم موظف بالرياض</div>
         </div>
       </div>
       <p class="small" style="max-width:56ch">
@@ -2290,7 +2385,7 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
   }
 
   /* ---------- nav ---------- */
-  var titles = ["الملخص","إعادة الصياغة","السوق","المنافسون","النموذج","المنتجات","خط AI","الأدوات","العتاد","المشتريات","الميزانية","اقتصاديات الوحدة","المالي","التشغيل","الطاقة","التغليف","العلامة","التسويق","الموقع","التجارة","النظامي","الملكية الفكرية","المخاطر","٩٠ يومًا","قائمة الشراء","لا تشترِ","القرار"];
+  var titles = ["الملخص","إعادة الصياغة","السوق","المنافسون","النموذج","الكتالوج","خط AI","الأدوات","العتاد","المشتريات","الميزانية","اقتصاديات الوحدة","المالي","التشغيل","وقتك","التغليف","العلامة","التسويق","الموقع","التجارة","وضعك النظامي","الملكية الفكرية","المخاطر","٩٠ يومًا","قائمة الشراء","لا تشترِ","القرار"];
   var nav = document.getElementById("nav");
   titles.forEach(function(t,i){
     var id = "s" + String(i+1).padStart(2,"0");
@@ -2341,26 +2436,26 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
 
   /* ---------- business models ---------- */
   var MODELS = {
-    A:{ name:"إصدارات أصلية — Original Designer Collectibles",
-      s:[["الطلب المتوقع",55],["سهولة البيع",35],["هامش الربح",85],["سهولة الإنتاج",60],["رأس المال",70],["قابلية التوسّع",90],["شدة المنافسة",30,1],["المهارة الفنية",85,1],["تكرار الطلب",70],["يديرها شخص واحد",80]],
-      v:"<strong>النموذج الوحيد الذي يملك رافعة تشغيلية حقيقية.</strong> تصميم واحد يُطفأ على ٣٠–٥٠ نسخة، فتنخفض تكلفة التصميم لكل وحدة كلما بعت أكثر. عيبه الوحيد وهو قاتل في البداية: إقناع غريب بدفع ٨٩٠ ريالًا لشخصية لم يسمع بها. الحل: طلب مسبق + إصدار محدود + سرد العملية.",
-      r:"محرك بناء الأصل. ابدأ به، ولا تتوقع منه تمويل نفسك في الشهور الأولى." },
-    B:{ name:"منحوتات مخصّصة — Custom Personalized",
-      s:[["الطلب المتوقع",90],["سهولة البيع",85],["هامش الربح",55],["سهولة الإنتاج",35],["رأس المال",90],["قابلية التوسّع",15,1],["شدة المنافسة",60,1],["المهارة الفنية",80,1],["تكرار الطلب",20,1],["يديرها شخص واحد",40,1]],
-      v:"طلب مرتفع جدًا — ثقافة الإهداء في السعودية ضخمة. لكن <strong>كل وحدة تصميم جديد ودورات مراجعة</strong>، فالعمل خطّي بلا تراكم: تتوقف عن العمل، يتوقف الدخل. والأخطر أنه يبتلع ساعات التصميم التي يُفترض أن تبني ملكيتك الفكرية.",
-      r:"سيولة ممتازة، رافعة معدومة. اسقفه بـ٢–٣ طلبات شهريًا وسعّره ١٬٨٩٠+ حتى لا يصير فخًا." },
-    C:{ name:"مقتنيات مؤسسية — B2B / Corporate",
-      s:[["الطلب المتوقع",75],["سهولة البيع",45],["هامش الربح",70],["سهولة الإنتاج",75],["رأس المال",60],["قابلية التوسّع",75],["شدة المنافسة",45,1],["المهارة الفنية",50,1],["تكرار الطلب",90],["يديرها شخص واحد",55]],
-      v:"<strong>أعلى ربح لكل ساعة عمل في الخط كله (٣٨٣ ﷼).</strong> السبب: رسم التصميم يُدفع منفصلًا، ولا تكلفة بيع لكل وحدة، والدفعة الواحدة توزّع الوقت على عشرات القطع. دورة البيع ٤–١٢ أسبوعًا، وتتطلب سجلًا تجاريًا وفاتورة ضريبية، ودفعة مقدمة ٥٠٪ تحل مشكلة التدفق النقدي كليًا.",
-      r:"محرك التمويل. لكنه مستحيل بلا بورتفوليو — لذلك يأتي ثانيًا لا أولًا." },
-    D:{ name:"قطع ديكور راقية — Premium Interior",
-      s:[["الطلب المتوقع",50],["سهولة البيع",40],["هامش الربح",45],["سهولة الإنتاج",25],["رأس المال",40],["قابلية التوسّع",35],["شدة المنافسة",20,1],["المهارة الفنية",55,1],["تكرار الطلب",25,1],["يديرها شخص واحد",35,1]],
-      v:"<strong>الأضعف لإعداد بالريزن.</strong> القطع الكبيرة تعني أزمنة طباعة طويلة واستهلاك ريزن ضخمًا ومخاطر فشل مرتفعة، وشحنًا ضخمًا وقابلًا للكسر. وتنافس ديكورًا مستوردًا يُباع بربع تكلفتك.",
-      r:"<span style='color:var(--danger)'>مرفوض كنموذج أساسي.</span> أبقِه كقطعة عرض واحدة كبيرة للتصوير وتكليفات اللوبيات المؤسسية." },
-    E:{ name:"الهجين المتسلسل — Sequenced Hybrid",
-      s:[["الطلب المتوقع",80],["سهولة البيع",65],["هامش الربح",78],["سهولة الإنتاج",65],["رأس المال",70],["قابلية التوسّع",85],["شدة المنافسة",35,1],["المهارة الفنية",75,1],["تكرار الطلب",80],["يديرها شخص واحد",70]],
-      v:"<strong>الموصى به.</strong> ليس «افعل كل شيء» — بل ترتيب زمني: إصدار B2C يبني الملكية الفكرية والبورتفوليو ← التخصيص المسقوف يوفّر سيولة ← B2B يموّل النمو. عالم شخصيات واحد يغذّي الثلاثة، فلا تتشتت ساعات التصميم.",
-      r:"التوزيع المستهدف في الشهر ١٢: <span class='mono'>35% Drops · 45% B2B · 20% Custom</span>." }
+    A:{ name:"تصميم من الصفر لكل عميل — Full Bespoke",
+      s:[["الطلب المتوقع",90],["سهولة البيع",80],["هامش الربح",50],["سهولة الإنتاج",30],["رأس المال",90],["قابلية التوسّع",10,1],["شدة المنافسة",55,1],["المهارة الفنية",90,1],["تكرار الطلب",20,1],["يناسب موظف بالمساء",25,1]],
+      v:"الطلب عليه عالي فعلًا، لكنه <strong>خطّي تمامًا</strong>: كل قطعة تصميم جديد ودورة مراجعات جديدة. وأخطر حاجة فيه إنه بيستهلك ساعات مسائك في شغل <strong>ما بيتراكمش</strong> — بعد سنتين عندك مئة قطعة اتباعت وصفر أصل تملكه. وبدوام كامل في الشغل، دورات المراجعة دي هتلاحقك في وقت الشغل.",
+      r:"<span style='color:var(--danger)'>مرفوض كنموذج أساسي</span> — مش لأنه ما بيكسبش، لكن لأنه بياكل الوقت اللي المفروض يبني الأصل." },
+    B:{ name:"كتالوج أنماط — Style Catalog ★",
+      s:[["الطلب المتوقع",85],["سهولة البيع",85],["هامش الربح",78],["سهولة الإنتاج",75],["رأس المال",85],["قابلية التوسّع",70],["شدة المنافسة",35,1],["المهارة الفنية",60,1],["تكرار الطلب",55],["يناسب موظف بالمساء",85]],
+      v:"<strong>الموصى به.</strong> نفس طلب الشغل المخصّص، لكن بوقت تصميم ٠٫٥–١ ساعة بدل ٣–٦، وبجودة ثابتة، وبقائمة أسعار معلنة تلغي التفاوض. والأهم: <strong>كل نمط بتبنيه بيفضل معاك ويتباع مئة مرة</strong> — يعني الشغل بيتراكم رغم إنه مخصّص.",
+      r:"سيولة الشغل المخصّص + تراكم الإصدارات الأصلية. ستة أنماط × أربع مقاسات = كل عرضك." },
+    C:{ name:"إصدارات مرقّمة أصلية — Numbered Drops",
+      s:[["الطلب المتوقع",45],["سهولة البيع",30,1],["هامش الربح",85],["سهولة الإنتاج",60],["رأس المال",65],["قابلية التوسّع",90],["شدة المنافسة",30,1],["المهارة الفنية",85,1],["تكرار الطلب",65],["يناسب موظف بالمساء",35,1]],
+      v:"أعلى نموذج من حيث بناء الأصل، لكنه محتاج <strong>جمهور موجود مسبقًا</strong> وإطلاق متزامن ورد فعل سريع — وده اللي الدوام الجزئي بيمنعه. وإقناع غريب يدفع ٨٩٠ ريالًا لشخصية ما سمعش عنها هو أصعب بيعة ممكن تحاولها وإنت لسه في الأول.",
+      r:"<span style='color:var(--warn)'>مؤجَّل للسنة التانية</span> — لما يبقى عندك قائمة عملاء اشتروا منك قبل كده." },
+    D:{ name:"جوائز وهدايا مؤسسية — Corporate",
+      s:[["الطلب المتوقع",75],["سهولة البيع",50],["هامش الربح",80],["سهولة الإنتاج",85],["رأس المال",60],["قابلية التوسّع",70],["شدة المنافسة",40,1],["المهارة الفنية",45,1],["تكرار الطلب",85],["يناسب موظف بالمساء",50]],
+      v:"<strong>أعلى ربح للساعة في الكتالوج كله (٣٧٨ ﷼).</strong> السبب: نمط واحد × عشرين شخص = تكرار مش عشرين تصميم، وتكلفة البيع لكل وحدة تقريبًا صفر، ودفعة مقدمة ٥٠٪ بتحل التدفق النقدي. القيد الحقيقي مش البيع — هو <strong>الجدولة</strong>: دفعة ٢٥ قطعة = شهرين من مساءاتك.",
+      r:"محرك الدخل. بس بيتطلب أساسًا نظاميًا وفاتورة ضريبية — القسم ٢١ قبل أي عرض سعر." },
+    E:{ name:"كتالوج + مؤسسي — Catalog & Corporate",
+      s:[["الطلب المتوقع",85],["سهولة البيع",75],["هامش الربح",80],["سهولة الإنتاج",80],["رأس المال",80],["قابلية التوسّع",78],["شدة المنافسة",35,1],["المهارة الفنية",60,1],["تكرار الطلب",75],["يناسب موظف بالمساء",78]],
+      v:"<strong>الهيكل النهائي.</strong> نفس الستة أنماط بتتباع لجمهورين: الأفراد بيدّوك دخلًا مستمرًا ومحتوى وحكايات، والشركات بتدّيك دفعات كبيرة بدفعة مقدمة. وما بتبنيش خطين إنتاج — بتبيع نفس الشغل مرتين.",
+      r:"التوزيع المستهدف في الشهر ١٢: <span class='mono'>65% Individuals · 35% Corporate</span> — والنسبة دي بالظبط بتمنع إن طلب مؤسسي يجمّد كل حاجة." }
   };
   var mPanel = document.getElementById("modelPanel");
   function renderModel(k){
@@ -2384,16 +2479,16 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
     Array.prototype.forEach.call(mTabs.children, function(x){ x.setAttribute("aria-selected", String(x===b)); });
     renderModel(b.dataset.m);
   });
-  renderModel("A");
+  renderModel("B");
 
   /* ---------- AI pipeline ---------- */
   var PIPE = [
-    {n:"الفكرة والنمط",who:"you",t:"20 دقيقة",tool:"نموذج لغوي + دفترك",d:"حدّد الأرشيتايب ودوره في عالمك: حارس؟ رحّالة؟ شاهد؟ قبل أي صورة. الشخصية بلا دور في العالم تصبح شكلًا جميلًا بلا سبب لاقتنائه.",x:"لا تبدأ بالتوليد. ابدأ بجملة تصف من هي الشخصية ولماذا توجد."},
+    {n:"استلام الطلب",who:"you",t:"15 دقيقة",tool:"نموذج طلب منظّم",d:"العميل بيختار <strong>نمطًا ومقاسًا</strong> ويرفع الصور والتفاصيل. نموذج منظّم بيمنع خمس محادثات ذهاب وإياب وإنت في شغلك.",x:"النمط متحدَّد من البداية = مفيش «مش حاسس إنه هو» بعدين."},
     {n:"الرسم المفهومي",who:"ai",t:"40 دقيقة",tool:"نموذج توليد صور",d:"ولّد <strong>ظلالًا خارجية</strong> أولًا، لا رندرات مفصّلة. عشرون ظلًا بالأسود على أبيض تكشف أيها له حضور من مسافة.",x:"المقتنى يُقرأ من مترين بظله لا بتفاصيل وجهه."},
     {n:"ورقة المناظير",who:"ai",t:"30 دقيقة",tool:"توليد صور بتحكم بالمنظور",d:"أمامي · جانبي · خلفي · ثلاثة أرباع. توقّع اتساقًا بحدود ٧٠٪ فقط — عالج الباقي بالنحت لاحقًا.",x:"الاتساق الكامل بين المناظير لا يزال خارج قدرة هذه الأدوات."},
     {n:"توليد المجسم",who:"ai",t:"2–10 دقائق",tool:"Hunyuan3D محليًا · TRELLIS · Tripo Pro",d:"على RTX 4090 تستغرق العملية ١٠–٢٥ ثانية. المخرج كتلة أولية بجودة ٦٠–٧٠٪، لا منتجًا.",x:"هذه أسرع مرحلة في الخط كله — وأقلها أهمية."},
     {n:"فرز الشبكة",who:"you",t:"30–60 دقيقة",tool:"Blender + 3D Print Toolbox",d:"فحص الإحكام، والحواف غير المنتظمة، والأوجه المقلوبة، والمقياس الحقيقي بالمليمتر.",x:"<strong>غير قابلة للأتمتة.</strong> تخطّيها يعني اكتشاف الخطأ بعد ٦ ساعات طباعة."},
-    {n:"النحت",who:"you",t:"2–6 ساعات",tool:"Blender Sculpt · Nomad Sculpt",d:"هنا يتحول المولَّد إلى مصمَّم: شدّ الظل الخارجي، تنظيف التقاطعات، إضافة التفاصيل <strong>في الهندسة لا في الخامة</strong>.",x:"<strong>هذه المرحلة هي منتجك.</strong> وهي أيضًا ما يجعل عملك قابلًا للحماية نظاميًا — القسم ٢٢."},
+    {n:"تطبيق النمط",who:"you",t:"0.5–1 ساعة",tool:"Blender Sculpt · Nomad Sculpt",d:"بتطبّق قواعد النمط على المخرج: النِّسب، والتبسيط، ولغة السطح. <strong>ده اللي نزل من ٣–٦ ساعات لساعة واحدة</strong> لأن القواعد متعرّفة سلفًا.",x:"<strong>دي المرحلة اللي بتخلي المخرج شغلك إنت</strong> — وبتخليه قابلًا للحماية نظاميًا. القسم ٢٢."},
     {n:"هندسة الطباعة",who:"you",t:"1–2 ساعة",tool:"Blender · Boolean · مفاتيح تعشيق",d:"تقسيم لأجزاء، مفاتيح ودبابيس، تجويف بجدار ٢٫٥–٣ مم، وفتحتا تصريف ٣٫٥ مم على الأقل.",x:"فتحة تصريف واحدة تخلق تأثير مصّاصة يفصل القطعة عن اللوح."},
     {n:"التقطيع",who:"ai",t:"20 دقيقة",tool:"Lychee · CHITUBOX",d:"توجيه بزاوية ٢٥–٣٥° · دعامات آلية ثم <strong>مراجعة يدوية</strong> للوجه والتفاصيل الحساسة.",x:"الدعامات الآلية ممتازة، ما عدا على الوجوه — راجعها دائمًا."},
     {n:"النموذج الأولي",who:"ai",t:"5–8 ساعات آلة",tool:"الطابعة",d:"اطبع نسخة واحدة قبل الدفعة. اختبر تعشيق الأجزاء والسنفرة وسمك الجدار.",x:"القفز للدفعة مباشرة هو أغلى خطأ ممكن — فشل ×٣٠."},
@@ -2468,10 +2563,11 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
   ["vPrice","vResin","vResinKg","vHours","vRate","vPack","vDesign","vFail"].forEach(function(id){ V[id] = document.getElementById(id); });
 
   var PRESETS = {
-    relic:    {price:340,  resin:55,  kg:200, hours:0.45, rate:85, pack:14, design:15, fail:10},
-    monolith: {price:490,  resin:130, kg:150, hours:1.4,  rate:85, pack:36, design:22, fail:10},
-    sentinel: {price:1290, resin:380, kg:150, hours:4,    rate:85, pack:54, design:70, fail:10},
-    mark:     {price:850,  resin:200, kg:150, hours:1.6,  rate:85, pack:55, design:0,  fail:8}
+    small: {price:690,  resin:110, kg:150, hours:1.6, rate:85, pack:30, design:60, fail:10},
+    core:  {price:1190, resin:230, kg:150, hours:3.0, rate:85, pack:40, design:60, fail:10},
+    large: {price:1890, resin:400, kg:150, hours:5.0, rate:85, pack:58, design:60, fail:10},
+    pair:  {price:1990, resin:460, kg:150, hours:5.5, rate:85, pack:62, design:60, fail:10},
+    b2b:   {price:790,  resin:190, kg:150, hours:1.4, rate:85, pack:44, design:0,  fail:8}
   };
 
   function calc(){
@@ -2546,22 +2642,20 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
 
   /* ---------- price ladder ---------- */
   var LADDER = [
-    {p:490, z:"ENTRY", c:"z-premium", t:"نقطة دخول سليمة — بشرط المقاس",
-      d:"عند ١٤–١٦ سم بتشطيب نظيف وقاعدة محفورة، يقرأ العميل «قطعة مصمَّمة». <strong>لكن نفس السعر على مجسم ٢٤ سم يقتلك</strong>: يقول إن القطعة رخيصة التصنيع، ويحرق سقف سعرك لاحقًا. القاعدة: ٤٩٠ ريالًا للصغير فقط."},
-    {p:690, z:"GIFT ZONE", c:"z-premium", t:"أسهل نقطة بيع في الرياض",
-      d:"منطقة الهدية المريحة: أعلى من الهدية العادية بما يكفي ليبدو مميزًا، وأقل من حاجز التفكير الطويل. مثالية لطلبات B2B الصغيرة وهدايا المناسبات. <strong>إن أردت حجم مبيعات سريعًا، هنا تجده.</strong>"},
-    {p:890, z:"PREMIUM", c:"z-premium", t:"يتطلب تغليفًا يبرّره",
-      d:"فوق ٨٩٠ ريالًا يتوقع المشتري صندوقًا صلبًا وشهادة ورقمًا تسلسليًا. <strong>الصندوق الكرتوني البسيط عند هذا السعر يُنتج طلب إرجاع.</strong> التغليف هنا ليس ترفًا — هو جزء من المنتج."},
-    {p:1290, z:"LUXURY", c:"z-luxury", t:"موقع القطعة الرائدة",
-      d:"يتطلب الأربعة كلها: إصدار مرقّم محدود · ٢٢ سم+ · تشطيب متعدد المواد · تغليف كامل بشهادة. <strong>هذا هو موقع SENTINEL.</strong> وهو السعر الذي تبدأ عنده العلامة في أن تُؤخذ على محمل الجد."},
-    {p:1490, z:"LUXURY", c:"z-luxury", t:"يحتاج ندرة حقيقية",
-      d:"الفارق عن ١٬٢٩٠ ليس ماديًا بل سرديًا: إصدار من ٢٥ بدل ٥٠، أو تعاون مع فنان، أو تنويعة لونية محدودة. <strong>بلا سبب معلن للندرة، هذا السعر يُقرأ كجشع.</strong>"},
-    {p:1990, z:"HARD SELL", c:"z-over", t:"أصعب بيعة في السلّم",
-      d:"<strong>بيع قطعة غير مخصّصة لعلامة غير معروفة بـ١٬٩٩٠ ريالًا هو أصعب ما ستحاوله.</strong> لا تجرّبه في السنة الأولى إلا في حالتين: إصدار من ١٥ نسخة أو أقل، أو تعاون مع فنان له جمهوره. خارج ذلك — رفض متكرر وضرر بالسمعة."},
-    {p:2490, z:"COMMISSION", c:"z-over", t:"تكليف فقط، لا منتج رف",
-      d:"فوق ٢٬٠٠٠ ريال، البيع يكون بالعلاقة لا بالصفحة. مجاله الطبيعي: التخصيص المعقّد، وتكليفات الشركات، وقطع اللوبيات، والجوائز الكبرى. <strong>لا تضع هذا السعر في المتجر</strong> — ضعه في عرض سعر."},
-    {p:340, z:"COMMODITY RISK", c:"z-commodity", t:"الحد الأدنى المطلق",
-      d:"يعمل <strong>فقط</strong> للقطعة الصغيرة بلا تلوين (RELIC). تحت ٢٩٠ ريالًا تدخل منطقة السلعة: تنافس المستورد على السعر وتخسر، لأن تكلفة ساعتك لا يمكن أن تنافس مصنعًا صينيًا. <strong>لا تنزل تحت ٢٩٠ أبدًا.</strong>"}
+    {p:490, z:"COMMODITY RISK", c:"z-commodity", t:"الحد الأدنى المطلق",
+      d:"شغل مخصّص تحت ٤٩٠ ريالًا <strong>ما يستحملش تكلفة وقتك</strong>. قطعة ١٣ سم بساعة ونص شغل عند ٤٩٠ بتديك ٢٥٠ ﷼ مساهمة — أي ١٦٦ ﷼ للساعة، وده على الحافة. تحت كده إنت بتدفع من وقتك عشان تشتغل."},
+    {p:690, z:"ENTRY", c:"z-premium", t:"نقطة الدخول — قطعة صغيرة بنمط واحد",
+      d:"المكان الصح للمقاس الصغير. المشتري بيجرّب علامة ما يعرفهاش، والسعر ده أقل من حاجز التفكير الطويل. <strong>وده بيشتغل كـقُمع:</strong> اللي بيشتري بـ٦٩٠ ويعجبه بيرجع للقياسي في المناسبة اللي بعدها."},
+    {p:990, z:"GIFT ZONE", c:"z-premium", t:"أسهل نقطة بيع في السوق السعودي",
+      d:"منطقة الهدية المريحة. لو محتاج تسريع المبيعات في أول شهرين، سعّر القياسي هنا مؤقتًا كـ<strong>سعر إطلاق معلن لأول ٢٠ طلبًا</strong> — ليه؟ عشان يبقى رفع السعر بعدها مبرَّرًا وليس تراجعًا عن وعد."},
+    {p:1190, z:"CORE", c:"z-luxury", t:"سعر المنتج الأساسي",
+      d:"<strong>ده مكان القياسي ١٩ سم.</strong> بيديك ٢٣٥ ﷼ لكل ساعة شغل — وده الرقم اللي بيخلي المشروع يستاهل السهر. يتطلب: نمط واضح، قاعدة محفورة، صندوق محترم، وشهادة."},
+    {p:1490, z:"LUXURY", c:"z-luxury", t:"يحتاج سببًا مرئيًا",
+      d:"الفرق عن ١٬١٩٠ لازم يكون <strong>ملموسًا في الصندوق</strong>: مقاس أكبر، أو مادة تانية، أو عنصر معدني. لو الفرق مجرد كلام، العميل بيحسه ويتردد."},
+    {p:1890, z:"PREMIUM", c:"z-luxury", t:"القطعة الكبيرة والثنائي",
+      d:"مقبول تمامًا للمقاس ٢٥ سم وللقطع الثنائية — <strong>لأن المشتري هنا بيشتري مناسبة</strong> (زواج، ذكرى، مولود) وميزانية المناسبة أوسع من ميزانية الديكور بكتير."},
+    {p:2490, z:"COMMISSION", c:"z-over", t:"تكليف بالعلاقة، مش سعر في المتجر",
+      d:"فوق ٢٬٠٠٠ ريال البيع بيحصل بالمحادثة مش بصفحة المنتج. مجاله: تكليفات الشركات الكبيرة، والمجموعات العائلية، والقطع الاحتفالية. <strong>ما تحطّش السعر ده في الكتالوج</strong> — حطّه في عرض سعر."}
   ];
   var lad = document.getElementById("ladder");
   LADDER.sort(function(a,b){ return a.p-b.p; }).forEach(function(r,i){
@@ -2583,15 +2677,15 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
 
   /* ---------- financial model ---------- */
   var SCEN = {
-    cons:{ label:"متحفّظ", total:133000,
-      note:"يدفع لك ٦٢ ﷼ للساعة — تحت السوق. المشروع حيّ لكنه لا يعوّض وقتك بعد.",
-      m:[[0,0],[0,0],[4200,0],[6200,0],[7800,0],[9800,0],[11200,0],[6000,18000],[12600,0],[13400,0],[7200,22000],[14600,0]] },
-    base:{ label:"أساسي", total:222000,
-      note:"يدفع لك أجر حرفي بدوام كامل ويسترد رأس المال — بلا فائض في السنة الأولى.",
-      m:[[0,0],[0,0],[7800,0],[10080,0],[12760,0],[18780,0],[19640,0],[7200,28000],[21140,0],[22380,0],[8400,36500],[29320,0]] },
-    grow:{ label:"طلب قوي", total:388000,
-      note:"يتجاوز حد ٣٧٥٬٠٠٠ ﷼ فيصبح تسجيل ض.ق.م إلزاميًا. ويستدعي مشطِّبًا بدوام جزئي من الشهر ٨.",
-      m:[[0,0],[0,0],[14000,0],[18500,0],[22000,0],[28000,0],[31000,0],[12000,42000],[34000,0],[42000,0],[14000,62000],[48500,20000]] }
+    cons:{ label:"متحفّظ", total:79550,
+      note:"٩٦ ﷼ لساعة السهر. المشروع بيغطي نفسه ويدفع لك شوية — بس لسه ما يستاهلش الوقت بالكامل.",
+      m:[[0,0],[0,0],[2300,0],[3450,0],[4600,0],[5750,0],[6900,0],[5750,7900],[6900,0],[8050,0],[6900,11850],[9200,0]] },
+    base:{ label:"أساسي", total:134100,
+      note:"١٣١ ﷼ لساعة السهر، ورأس المال مسترد في الشهر الخامس. ده الهدف الواقعي للسنة الأولى.",
+      m:[[0,0],[0,0],[4600,0],[6900,0],[9200,0],[10350,0],[11500,0],[9200,11850],[11500,0],[12650,0],[10350,19750],[16250,0]] },
+    grow:{ label:"طلب قوي", total:208250,
+      note:"بيتجاوز ١٨٧٬٥٠٠ ﷼ فيدخل منطقة التسجيل الطوعي للضريبة — وبيستدعي مشطِّبًا بالساعة من الشهر ٨.",
+      m:[[0,0],[0,0],[6900,0],[10350,0],[13800,0],[16100,0],[17250,0],[13800,23700],[17250,0],[18400,0],[16100,31600],[23000,0]] }
   };
   var barsEl = document.getElementById("bars"), totalRev = document.getElementById("totalRev"), totalNote = document.getElementById("totalNote");
   function renderChart(k){
@@ -2622,10 +2716,13 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
 
   /* ---------- risk matrix ---------- */
   var RISKS = [
+    {n:"الوضع النظامي", p:2, i:3, sev:3, cost:"المشروع كله · وإقامتك", d:"إنك تبيع من غير أساس نظامي واضح كمقيم. والأسوأ: إنك تستخدم سجل حد تاني — ده تستر تجاري، عقوبته سجن يوصل خمس سنين وغرامة توصل خمسة ملايين ريال ومصادرة الأرباح والإبعاد النهائي.", mit:"<strong>الأسبوع الأول نظامي بالكامل:</strong> جرّب وثيقة العمل الحر (مجاني) · ساعة محامي شركات (٥٠٠–١٬٥٠٠ ﷼) · اقرا عقد شغلك · ابدأ بمرحلة الهواية المعلنة اللي مفيهاش أي بيع. <strong>ولا سجل باسم حد تاني أبدًا.</strong>"},
+    {n:"الاحتراق الشخصي", p:3, i:3, sev:3, cost:"توقف المشروع كليًا", d:"٤٠ ساعة شغل + ١٦ ساعة استوديو = ٥٦ ساعة أسبوعيًا. ده ممكن لسنة، مش لخمسة. وأغلب المشاريع الجانبية بتموت من ده مش من قلة الطلب.", mit:"سقف طلبات معلن · مدة تسليم ٣ أسابيع من الأول (مش أسبوع) · <strong>أسبوع إجازة كل ٣ شهور مقفول في الكاليندر</strong> · ورفض الطلبات الخارجة عن الكتالوج بجملة ثابتة."},
+    {n:"رسوم الترخيص", p:2, i:3, sev:3, cost:"12,000–60,000 ﷼ سنويًا", d:"لو وقعت في شريحة اشتراك وزارة الاستثمار العادية بدل شريحة رائد الأعمال، الرسم السنوي ممكن يوصل ٦٠ ألف ريال — يعني ٤٥٪ من إيرادك المتوقع.", mit:"<strong>اسأل صراحةً عن رسوم السنة التانية والتالتة قبل ما تدفع، واطلبها مكتوبة.</strong> ولو ما فيش شريحة منخفضة متاحة لك، أجّل الترخيص لحد ما الإيراد يبرّره."},
     {n:"طباعات فاشلة", p:3, i:1, sev:1, cost:"٥٠–٢٠٠ ﷼ للحادثة", d:"طبيعي في هذا المجال. معدل ٨–١٢٪ متوقع ومحسوب داخل اقتصاديات الوحدة.", mit:"مخصّص ١٠٪ في التسعير · طباعة نموذج واحد قبل كل دفعة · طباعة ليلية حتى لا يضيع يوم عمل · سجل لأسباب الفشل."},
     {n:"تشقق الريزن", p:2, i:2, sev:2, cost:"إعادة تصنيع + تأخير", d:"الإفراط في التصليب والريزن القياسي يجعلان القطعة هشة، فتتكسر عند التجميع أو الشحن.", mit:"وقت تصليب محسوب (٣–٦ دقائق لا أكثر) · ريزن Tough للأجزاء الرفيعة · دبابيس نحاس في المفاصل الحاملة · إيبوكسي لا CA وحده."},
     {n:"تلف الشحن", p:2, i:3, sev:3, cost:"قيمة القطعة + الشحن + السمعة", d:"القطع الراتنجية قابلة للكسر، ومندوبو التوصيل لا يقرأون ملصق «قابل للكسر».", mit:"إسفنج EVA مفرّغ + صندوق شحن خارجي بحشو ٣ سم + تصوير كل قطعة قبل الإغلاق + تأمين على الشحنة."},
-    {n:"طلب ضعيف", p:2, i:3, sev:3, cost:"المشروع كله", d:"الخطر الأكبر على الإطلاق: أن تبني كل شيء ثم لا يشتري أحد.", mit:"<strong>هذا ما تحلّه مرحلة التحقّق بـ٧٠٠ ريال.</strong> طلب مسبق بعربون قبل شراء أي معدة. أقل من ١٥ عربونًا = غيّر المفهوم، لا تشترِ طابعة."},
+    {n:"طلب ضعيف", p:2, i:3, sev:3, cost:"المشروع كله", d:"الخطر الأكبر على الإطلاق: أن تبني كل شيء ثم لا يشتري أحد.", mit:"<strong>ده اللي بتحلّه مرحلة الهواية المعلنة.</strong> انشر رندرات وابنِ قائمة انتظار قبل أي معدة. ١٠ عرابين مدفوعة = اشترِ. أقل من كده = عدّل النمط وأعد الاختبار."},
     {n:"مقاومة السعر", p:3, i:2, sev:2, cost:"دورة مبيعات أطول", d:"«ليش غالي؟ هذي طباعة!» — الاعتراض المتوقع رقم واحد.", mit:"صفحة العملية · محتوى الصنع · تغليف يبرّر · إصدار مرقّم · <strong>لا تنافس بالسعر أبدًا</strong> — من يشتري بالسعر يغادر بالسعر."},
     {n:"التدفق النقدي", p:2, i:3, sev:3, cost:"توقف الإنتاج", d:"شراء الخامات والتغليف قبل وصول الإيراد يستنزف السيولة.", mit:"<strong>الطلب المسبق يموّل الإنتاج</strong> · دفعة ٥٠٪ مقدمًا في B2B · لا مخزون مسبق · رأس مال عامل ١٬١٠٠ ﷼ لا يُمس."},
     {n:"عطل الشاشة", p:2, i:2, sev:2, cost:"٣٥٠–٥٥٠ ﷼ + توقف", d:"شاشة LCD تستهلك ١٬٥٠٠–٢٬٠٠٠ ساعة تشغيل ثم تحتاج استبدالًا.", mit:"تتبّع ساعات التشغيل · شاشة احتياطية في المخزون من الشهر ٤ · اختيار طابعة شاشتها سلعة متوفرة محليًا — وهذا سبب اختيار Elegoo."},
@@ -2634,7 +2731,7 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
     {n:"شبكات AI معطوبة", p:3, i:1, sev:1, cost:"ساعات ضائعة", d:"مخرجات غير مُحكمة، أو تفاصيل في الخامة لا في الهندسة، أو أصابع ملتحمة.", mit:"فرز إلزامي في Blender قبل أي عمل · توليد ظلال خارجية أولًا · تصميم شخصيات بأيدٍ مبسّطة أو مقفّزة."},
     {n:"حقوق الملكية", p:1, i:3, sev:2, cost:"إزالة منتج · نزاع", d:"اقتراب غير مقصود من شخصية مرخّصة، أو مخرج AI بلا مساهمة بشرية كافية لحمايته.", mit:"ملكية فكرية أصلية حصرًا · <strong>توثيق مراحل النحت لكل شخصية</strong> · بحث في سجل العلامات قبل التسمية · شروط وأحكام واضحة."},
     {n:"التعرّض للمواد", p:2, i:3, sev:3, cost:"صحتك", d:"حساسية جلدية وتهيّج تنفسي من التعرّض المتكرر للريزن غير المُصلَّب وأبخرته.", mit:"<strong>غير قابل للتفاوض:</strong> شفط للخارج + نتريل دائمًا + كمامة أبخرة عند كل تعامل + تصليب كل النفايات + لا سكب في المجاري."},
-    {n:"مراجعات التخصيص", p:3, i:2, sev:2, cost:"ساعات بلا مقابل", d:"عميل يطلب تعديلًا سابعًا على وجه لن يرضيه أبدًا لأنه توقع تشابهًا فوتوغرافيًا.", mit:"<strong>جولتا مراجعة مكتوبتان قبل الدفع</strong> · «مستوحاة منك» لا «تشبهك» · اعتماد كتابي للمفهوم · سقف ٣ طلبات شهريًا."},
+    {n:"مراجعات التخصيص", p:3, i:2, sev:2, cost:"ساعات بلا مقابل", d:"عميل يطلب تعديلًا سابعًا على وجه لن يرضيه أبدًا لأنه توقع تشابهًا فوتوغرافيًا.", mit:"<strong>جولتا مراجعة مكتوبتان قبل الدفع</strong> · «مستوحاة منك» لا «تشبهك» · النمط متفق عليه من الأول فالتوقع مضبوط · اعتماد كتابي للمجسم قبل الطباعة."},
     {n:"تبعية عميل B2B واحد", p:2, i:2, sev:2, cost:"انهيار الإيراد", d:"عميل مؤسسي واحد يشكّل ٥٠٪ من دخلك ثم يغيّر ميزانيته.", mit:"استمرار الإصدارات B2C مهما انشغلت · ثلاثة عملاء مؤسسيين كحد أدنى قبل الاعتماد على القناة · عقود سنوية للجوائز المتكررة."}
   ];
   var mx = document.getElementById("matrix"), rp = document.getElementById("riskPanel");
@@ -2668,35 +2765,36 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
     Array.prototype.forEach.call(mx.querySelectorAll(".chip"), function(x){ x.setAttribute("aria-pressed", String(x===c)); });
     renderRisk(c.dataset.n);
   });
-  renderRisk("طلب ضعيف");
-  mx.querySelector('.chip[data-n="طلب ضعيف"]').setAttribute("aria-pressed","true");
+  renderRisk("الوضع النظامي");
+  var dflt = mx.querySelector('.chip[data-n="الوضع النظامي"]');
+  if(dflt) dflt.setAttribute("aria-pressed","true");
 
   /* ---------- 90-day timeline ---------- */
   var WEEKS = [
-    {w:"W 1–2", t:"العالم والهوية", cost:"135 ﷼", open:true,
-      d:"<ul><li>اكتب صفحة واحدة عن عالم الشخصيات: المكان، القاعدة، لماذا توجد هذه الكائنات.</li><li>ولّد ٢٠ ظلًا خارجيًا واختر ثلاثة.</li><li>ثبّت اسم العلامة وابحث عنه في سجل العلامات لدى الهيئة السعودية للملكية الفكرية.</li><li>احجز النطاق وأنشئ حسابي إنستقرام وتيك توك.</li><li>أصدر وثيقة العمل الحر (مجانية).</li></ul>",
-      k:"KPI · ٣ ظلال معتمدة + اسم متاح مؤكد"},
-    {w:"W 3–4", t:"التصميم والدليل البصري", cost:"340 ﷼", open:false,
-      d:"<ul><li>ولّد المجسم ثلاثي الأبعاد لأول شخصية، ثم افرزه وانحته في Blender.</li><li>ارندر ٣ صور بجودة استوديو — <strong>لا أحد يستطيع التمييز بينها وبين الصور الحقيقية.</strong></li><li>اطلب نموذجًا أوليًا مطبوعًا من خدمة في الرياض واحمله بيدك.</li><li>ابنِ صفحة هبوط بنموذج قائمة انتظار.</li><li>انشر أول ٦ مقاطع عن العملية.</li></ul>",
-      k:"KPI · ٥٠ مسجَّلًا في قائمة الانتظار"},
-    {w:"W 5–6", t:"اختبار الطلب — قبل أي معدة", cost:"300 ﷼", open:false,
-      d:"<ul><li>افتح ٢٠ مكانًا للطلب المسبق بعربون ٢٥٠ ﷼ قابل للاسترداد.</li><li>شغّل ٣٠٠ ﷼ إعلانات موجّهة للرياض على إنستقرام وسناب.</li><li>اتصل بثلاثة موردي هدايا مؤسسية واطلب عرض سعر لـ٥٠ درعًا — لتعرف أسعار السوق من الداخل.</li></ul><div class='warnbox' style='margin-top:10px'><span class='eyebrow'>بوابة القرار</span><p><strong>١٥+ عربونًا ← اشترِ الطابعة.</strong> أقل من ذلك ← غيّر المفهوم وأعد الاختبار. لا تشترِ معدات لتثبت لنفسك أنك جادّ.</p></div>",
-      k:"KPI · ١٥ عربونًا مدفوعًا = ٣٬٧٥٠ ﷼"},
-    {w:"W 7", t:"الشراء والتركيب", cost:"5,265 ﷼", open:false,
-      d:"<ul><li>اشترِ الطابعة والريزن والكحول ومعدات الوقاية والتشطيب.</li><li><strong>ركّب الشفط قبل أول تشغيل، لا بعده.</strong></li><li>اطبع نماذج المعايرة: اختبار التعريض، واختبار التفاصيل، واختبار سمك الجدار.</li><li>وثّق كل خطأ في دفتر — ستحتاجه.</li></ul>",
-      k:"KPI · ٣ طباعات ناجحة متتالية"},
-    {w:"W 8", t:"إتقان التشطيب", cost:"550 ﷼", open:false,
-      d:"<ul><li>شطّب خمس قطع بالكامل وقِس زمن كل مرحلة بالدقيقة.</li><li>قارن الزمن الفعلي بالسقف المستهدف — وعدّل <strong>التصميم</strong> إن تجاوزته.</li><li>اطلب القواعد الأكريليك المحفورة من ورشة الليزر.</li><li>صوّر كل مرحلة — هذا محتوى شهر كامل.</li></ul>",
-      k:"KPI · قطعة رائدة ≤ ٤ ساعات تشطيب"},
-    {w:"W 9", t:"التغليف والمتجر", cost:"1,997 ﷼", open:false,
-      d:"<ul><li>اطلب ٢٥ صندوقًا محليًا بعد تثبيت المقاس النهائي بخمس عينات.</li><li>صمّم شهادة الأصالة وبطاقة الحكاية ونظام الترقيم.</li><li>افتح متجر سلة واربط ميسر وسمسا.</li><li>اكتب الشروط والأحكام وسياسة الإرجاع بالعربية — القسمان ٢١ و٢٢.</li></ul>",
-      k:"KPI · متجر يقبل طلبًا حقيقيًا من الجوال"},
-    {w:"W 10", t:"إطلاق هادئ", cost:"0 ﷼", open:false,
-      d:"<ul><li>سلّم أصحاب الطلبات المسبقة أولًا — <strong>هم شهودك.</strong></li><li>اطلب من كل واحد صورة أو مقطع فتح صندوق.</li><li>انشر سلسلة «من الفكرة إلى الشيء» كاملة.</li><li>اجمع الاعتراضات الحقيقية وعدّل الصفحات بناءً عليها.</li></ul>",
-      k:"KPI · ١٥ تسليمًا + ٨ شهادات عملاء"},
-    {w:"W 11–12", t:"الإصدار الأول والباب المؤسسي", cost:"650 ﷼", open:false,
-      d:"<ul><li>افتح الإصدار الرسمي: ٥٠ نسخة مرقّمة، عدّاد تنازلي معلن.</li><li>ابنِ ملف أعمال مؤسسيًا من أول ١٥ تسليمًا وأرسله لعشر جهات: وكالات فعاليات، وفرق تسويق، ومنظمي جوائز.</li><li>افتح صفحة «للشركات» بحد أدنى ٢٥ قطعة.</li><li>راجع الأرقام الفعلية مقابل هذه الدراسة وعدّل التسعير.</li></ul>",
-      k:"KPI · ٢٥ مبيعة + ٣ محادثات B2B جادة"}
+    {w:"W 1", t:"الوضوح النظامي — قبل أي حاجة", cost:"0–1,500 ﷼", open:true,
+      d:"<ul><li><strong>افتح أبشر وجرّب تصدر وثيقة العمل الحر.</strong> مجاني، عشر دقايق. النظام هيقبل أو هيرفض — والإجابة دي بتحدد المسار كله.</li><li>احجز ساعة مع محامي شركات سعودي (٥٠٠–١٬٥٠٠ ﷼) واسأل بالتحديد: إيه أرخص أساس نظامي لمقيم موظف يبيع قطع مصنوعة يدويًا؟ وإيه رسوم السنة التانية والتالتة في مسار وزارة الاستثمار؟</li><li>اقرا عقد شغلك: بنود العمل الإضافي والمنافسة.</li><li><strong>ما تشتريش أي حاجة الأسبوع ده.</strong></li></ul>",
+      k:"KPI · إجابة مكتوبة على: أقدر أبيع قانونًا بأي صفة؟"},
+    {w:"W 2–3", t:"أول نمطين", cost:"75 ﷼", open:false,
+      d:"<ul><li>اختار نمطين من الستة — ابدأ بـ<strong>المبسّط الهندسي</strong> (أسرع تشطيب) و<strong>الكارتوني</strong> (أسهل بيعًا).</li><li>لكل نمط: اكتب قواعده في خمس نقاط (النِّسب، التبسيط، السطح، الألوان، القاعدة). النمط اللي ما ينفعش يتكتب في خمس نقاط مش نمط.</li><li>طبّق كل نمط على ٣ مواضيع مختلفة بالـAI ثم نظّفه في Blender.</li><li>ارندر في Blender — <strong>صور بجودة استوديو قبل ما توجد أي قطعة</strong>.</li></ul>",
+      k:"KPI · ٦ رندرات · نمطان بقواعد مكتوبة"},
+    {w:"W 4–5", t:"الهواية المعلنة", cost:"60 ﷼", open:false,
+      d:"<ul><li>افتح إنستقرام وتيك توك وانشر الرندرات وعملية بنائها.</li><li>احجز نطاق وابنِ صفحة هبوط بسيطة بنموذج قائمة انتظار.</li><li><strong>ما تبيعش.</strong> اكتب صراحة: «الطلبات تفتح قريبًا — سجّل اهتمامك».</li><li>راقب: أنهي نمط بيجيب تعليقات وحفظ أكتر؟ ده بياناتك.</li></ul>",
+      k:"KPI · ٤٠ مسجَّلًا في قائمة الانتظار"},
+    {w:"W 6–7", t:"نموذج أولي واختبار حقيقي", cost:"265 ﷼", open:false,
+      d:"<ul><li>اطبع قطعة واحدة عند خدمة طباعة في الرياض (١٥٠–٤٠٠ ﷼).</li><li>شطّبها بإيدك <strong>وقيس الوقت بالدقيقة</strong> — ده أهم رقم في الدراسة كلها بالنسبة لك، لأن كل حساباتك مبنية عليه.</li><li>صوّرها ونزّلها: «أول قطعة حقيقية».</li><li>لو التشطيب طلع أطول من التقديرات، بسّط النمط — مش تزوّد الساعات.</li></ul>",
+      k:"KPI · زمن تشطيب فعلي مقيس + أول صورة حقيقية"},
+    {w:"W 8", t:"الكتالوج والأسعار", cost:"0 ﷼", open:false,
+      d:"<ul><li>اكتب الكتالوج: ٢ نمط × ٤ مقاسات بأسعار معلنة.</li><li>اكتب الشروط: مدة ٣ أسابيع، جولتا مراجعة، لا استرداد بعد اعتماد المجسم، «مستوحاة منك» لا تشابه فوتوغرافي.</li><li>اكتب سياسة الإرجاع للمنتجات المصنوعة حسب الطلب — <strong>لازم تكون معلنة قبل الدفع</strong>.</li><li>جهّز نموذج طلب منظّم (صور + مناسبة + نمط + مقاس) عشان ما تضيّعش وقتك في محادثات.</li></ul>",
+      k:"KPI · كتالوج وشروط جاهزة للنشر"},
+    {w:"W 9", t:"فتح الطلبات وشراء المعدات", cost:"5,265 ﷼", open:false,
+      d:"<ul><li>افتح ١٠ أماكن فقط بعربون. العدد القليل مقصود — بيخلق إلحاحًا ويحميك من التزام أكبر من وقتك.</li><li><strong>١٠ طلبات مدفوعة ← اشترِ الطابعة.</strong> أقل من كده، ارجع للنمط وعدّل.</li><li>ركّب الشفط <em>قبل</em> أول تشغيل.</li><li>اطبع نماذج المعايرة: تعريض، تفاصيل، سمك جدار.</li></ul>",
+      k:"KPI · ١٠ عرابين ≈ ٣٬٠٠٠ ﷼ + ٣ طباعات ناجحة"},
+    {w:"W 10–11", t:"التسليم الأول", cost:"1,650 ﷼", open:false,
+      d:"<ul><li>سلّم العشرة بالترتيب. <strong>دول شهودك</strong> — اطلب من كل واحد صورة أو مقطع فتح صندوق.</li><li>اطلب القواعد المحفورة والصناديق (٢٥ وحدة محليًا) بعد تثبيت المقاس.</li><li>سجّل كل خطوة: كل تسليم = محتوى أسبوع.</li><li>اجمع الاعتراضات الحقيقية وعدّل الصفحة.</li></ul>",
+      k:"KPI · ١٠ تسليمات في موعدها + ٦ شهادات عملاء"},
+    {w:"W 12", t:"الباب المؤسسي", cost:"0 ﷼", open:false,
+      d:"<ul><li>ابنِ ملف أعمال من أول عشر قطع وابعته لعشر جهات: وكالات فعاليات، وفرق موارد بشرية (هدايا تكريم الموظفين)، ومنظمي جوائز.</li><li>افتح صفحة «للشركات» بحد أدنى ١٠ قطع.</li><li><strong>راجع أرقامك الفعلية مقابل الدراسة دي</strong> — خصوصًا زمن التشطيب — وعدّل الأسعار على أساس الواقع مش التقدير.</li><li>ابنِ النمط التالت.</li></ul>",
+      k:"KPI · ٣ محادثات B2B جادة + أرقام حقيقية بدل التقديرات"}
   ];
   var tl = document.getElementById("timeline");
   WEEKS.forEach(function(w){
@@ -2709,26 +2807,24 @@ footer.foot{ padding-block: clamp(36px,5vw,64px); background: var(--bg-2); borde
 
   /* ---------- naming ---------- */
   var NAMES = [
-    {n:"SABAK / سَبَك", g:"مفردات السباكة والصبّ", r:"الفعل العربي لصهر المعدن وصبّه في قالب. يصف عملية التصنيع دون ذكر أي تقنية، وينطق بنفس السهولة بالعربية والإنجليزية. <strong>الترشيح الأول</strong> — يحمل ثقل الحرفة لا خفّة التقنية."},
-    {n:"HAJAR / حَجَر", g:"مفردات الخامة والجيولوجيا", r:"حجر. بسيط، قابل للتذكر، يوحي بالصلابة والدوام — وهو ما تبيعه فعلًا: شيء يبقى. <strong>الترشيح الثاني.</strong>"},
-    {n:"TUFF", g:"مفردات الخامة والجيولوجيا", r:"صخر بركاني متكوّن من رماد متصلّب — استعارة دقيقة للريزن السائل الذي يتصلّب. قصير، لاتيني، سهل النطاق. <strong>الترشيح الثالث.</strong>"},
-    {n:"RAKHAM / رُخام", g:"مفردات الخامة", r:"رخام. يحمل ترف النحت الكلاسيكي مباشرة، لكنه قد يقيّدك بصريًا بالأبيض والحجري."},
-    {n:"BASALT", g:"مفردات الخامة", r:"البازلت — حجر بركاني داكن. يتوافق تمامًا مع لوحة ألوان داكنة تفرضها مشكلة اصفرار الريزن."},
-    {n:"ONYX ATELIER", g:"مفردات الخامة + دار تصميم", r:"يوضّح فئة العمل صراحةً («أتيليه»)، لكن كلمة Onyx مستهلكة في أسماء العلامات."},
-    {n:"THE CAST", g:"مفردات المسبك", r:"لعب لغوي مزدوج: الصبّ في قالب، وطاقم الشخصيات. ذكي — لكن البحث عنه في جوجل كابوس."},
-    {n:"FOUNDRY 11", g:"مفردات المسبك", r:"مسبك برقم. يوحي بالإنتاج الصناعي المنضبط. الرقم يمنح خصوصية لكلمة عامة."},
-    {n:"MAHFOUZ / مَحفوظ", g:"مفردات الأرشيف والإصدار", r:"محفوظ — مصان، مُرقّم، موثّق. يتوافق مباشرة مع نظام الإصدارات المرقّمة والشهادات."},
-    {n:"EDITION NOIR", g:"مفردات الأرشيف والإصدار", r:"يعلن نموذج العمل في الاسم نفسه: إصدارات محدودة. لكن الفرنسية تبعده عن الجذر السعودي."},
-    {n:"SERIES ONE", g:"مفردات الأرشيف والإصدار", r:"واضح ومباشر، لكنه يصبح محرجًا عند إطلاق السلسلة الثانية."},
-    {n:"ARCHIVE SA", g:"مفردات الأرشيف والإصدار", r:"يربط بالسعودية ويشير للأرشفة. عملي، لكن بلا شحنة عاطفية."},
-    {n:"NAJD / نجد", g:"مفردات المكان والأسطورة", r:"الهضبة التي تقع فيها الرياض. جذر مكاني قوي وفخور، لكنه مستخدم كثيرًا في أسماء تجارية محلية."},
-    {n:"SAHM / سَهْم", g:"مفردات المكان والأسطورة", r:"سهم — حاد، موجّه، أحادي المقطع. يصلح شعارًا بصريًا بسهولة (شكل السهم نفسه)."},
-    {n:"QAWS / قَوس", g:"مفردات المكان والأسطورة", r:"قوس — شكل ومعنى في آن. يصلح كعنصر بصري متكرر في التغليف والقواعد."},
-    {n:"OBSKUR", g:"مفردات مجرّدة مملوكة", r:"تحريف مقصود لـobscure. فارغ المعنى تمامًا، فيمتلئ بما تضعه فيه — وهذا ميزة لعلامة فاخرة. والنطاقات متاحة غالبًا."},
-    {n:"VESSL", g:"مفردات مجرّدة مملوكة", r:"وعاء بحرف محذوف. يوحي بالاحتواء والحمل — والمقتنى وعاء لقصة."},
-    {n:"KIRA", g:"مفردات مجرّدة مملوكة", r:"قصير وناعم وعالمي النطق، لكنه محايد جدًا ولا يحمل أي إشارة للحرفة."},
-    {n:"STUDIO 0/1", g:"مفردات التسلسل والترقيم", r:"يشير لثنائية الرقمي والمادي — وهي حكاية علامتك بالضبط. لكن الرموز تصعّب النطق الشفهي."},
-    {n:"UNIT-9", g:"مفردات التسلسل والترقيم", r:"لغة تصنيعية باردة تتناقض جيدًا مع دفء الحرفة اليدوية. مناسب لعلامة ذات لغة بصرية تقنية."}
+    {n:"صِلة / SILA", g:"حقل الرابطة والذكرى", r:"رابطة، وصل. القطعة المخصّصة في جوهرها <strong>رابطة اتجسّدت</strong> — بين اتنين، أو بينك وبين ذكرى. قصيرة، تنطق بالعربي والإنجليزي بنفس السهولة، ودقيقة عاطفيًا لسوق إهداء. <strong>الترشيح الأول.</strong>"},
+    {n:"نَمَط / NAMAT", g:"حقل النمط والطراز", r:"نمط، طراز. <strong>نموذج شغلك كله في كلمة واحدة</strong> — إنت بتبيع أنماطًا لا قطعًا. واضح، مملوك، ومفيش فيه أي إشارة لتقنية. <strong>الترشيح التاني.</strong>"},
+    {n:"أثر / ATHAR", g:"حقل الرابطة والذكرى", r:"أثر، بقيّة، علامة باقية. بتقول اللي المقتنى بيعمله بالظبط: يخلّي حاجة عابرة تفضل. <strong>الترشيح التالت</strong> — بس الكلمة شائعة في أسماء تجارية فتحقّق كويس."},
+    {n:"طِراز / TIRAZ", g:"حقل النمط والطراز", r:"طراز — وكمان اسم تطريز تاريخي كان بيتحط على الأقمشة الملكية. طبقة معنى مزدوجة: نمط + حرفة راقية."},
+    {n:"قالِب / QALIB", g:"حقل الصناعة والقالب", r:"قالب. بيشير للتكرار والصبّ من غير ما يذكر تقنية. بس ممكن يوحي بالتنميط السلبي — سلاح ذو حدين."},
+    {n:"صَنعة / SANAA", g:"حقل الحرفة العربية", r:"الحرفة والمهارة. بتموضعك كصانع مش كمورّد، وده بالظبط الفرق اللي عايز توصله."},
+    {n:"مَشغل / MASHGHAL", g:"حقل الحرفة العربية", r:"مشغل — ورشة. بسيطة وصادقة وبتوصف المكان اللي الشغل بيحصل فيه فعلًا. مريحة وقابلة للنمو."},
+    {n:"مساء / MASA", g:"حقل الوقت والظرف", r:"مساء. <strong>اسم بيحكي قصتك الحقيقية</strong>: شغل بيتعمل بعد الدوام. صادق ومميز، وبيبني تعاطفًا فوريًا مع كل حد بيشتغل على حلمه بالليل."},
+    {n:"تُحفة / TUHFA", g:"حقل الاقتناء", r:"تحفة، طُرفة نادرة. مباشرة في التموضع الفاخر، بس شائعة الاستخدام لدرجة إنها فقدت حدّتها."},
+    {n:"مَقام / MAQAM", g:"حقل الاقتناء والمنزلة", r:"مقام — مكانة، ومقام موسيقي كمان. بتشتغل كويس للجوائز والتكريم المؤسسي تحديدًا."},
+    {n:"كَفّ / KAFF", g:"حقل الحجم والحميمية", r:"كف اليد — الحجم اللي بيتمسك. قصيرة جدًا، وبتوصف حميمية القطعة الصغيرة."},
+    {n:"حَيّز / HAYYIZ", g:"حقل المساحة والشكل", r:"حيّز — المساحة اللي الجسم بيشغلها. كلمة نحتية بالمعنى الحرفي، ومش مستهلكة تجاريًا."},
+    {n:"سِيَر / SIYAR", g:"حقل الحكاية", r:"سِيَر — جمع سيرة. كل قطعة مخصّصة هي سيرة شخص. بتدعم سرد المحتوى بقوة."},
+    {n:"OBJET", g:"حقل دار التصميم", r:"كلمة فرنسية شائعة في عالم التصميم (objet d\u2019art). راقية بس بعيدة عن جذرك العربي، وصعبة النطق محليًا."},
+    {n:"STUDIO NAMAT", g:"حقل دار التصميم", r:"اسم عربي + كلمة دولية. حل وسط عملي لو عايز تشتغل مع شركات متعددة الجنسيات في الرياض."},
+    {n:"OMRA", g:"حقل الأسماء المجرّدة المملوكة", r:"صوت مجرّد بلا معنى محدد، فبيمتلئ باللي إنت تحطه فيه. النطاقات متاحة غالبًا — <strong>بس انتبه للتشابه اللفظي مع لفظ ديني</strong>، وده سبب كافٍ لتجنّبه."},
+    {n:"VESSA", g:"حقل الأسماء المجرّدة المملوكة", r:"مجرّد ودولي وسهل النطق بالعربي. محايد تمامًا — ميزة لو عايز حرية كاملة، وعيب لو عايز الاسم يشتغل لصالحك."},
+    {n:"NOON OBJECTS", g:"حقل الحرف العربي", r:"حرف النون كعنصر بصري + كلمة توصيفية. بيشتغل حلو بصريًا (شكل النون وعاء)، بس الاسم المركّب أصعب في التذكّر."}
   ];
   var namesEl = document.getElementById("names"), nameDetail = document.getElementById("nameDetail");
   NAMES.forEach(function(x,i){
