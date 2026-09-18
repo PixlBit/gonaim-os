@@ -18,6 +18,15 @@
     },
     {
       "path": "./packages/db"
+    },
+    {
+      "path": "./packages/couple"
+    },
+    {
+      "path": "./packages/couple-db"
+    },
+    {
+      "path": "./packages/oracle"
     }
   ]
 }

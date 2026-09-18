@@ -1,5 +1,4 @@
 
-!.env.example
 *.key
 *.log
 *.pem
@@ -20,3 +19,9 @@ dist/
 node_modules/
 src-tauri/target/
 target/
+
+# مخزَن مساحة إحنا — بيانات شخصية وبصمات كلمات سر. لا يُرفع أبدًا.
+.ehna/
+
+# ملف المثال يُرفع رغم قاعدة .env.* أعلاه — والاستثناء لازم يجي بعدها
+!.env.example
