@@ -215,6 +215,35 @@ describe("الصور", () => {
     expect(r.status).toBe(415);
   });
 
+  it("صورة الذكرى المحذوفة بتتشال من القرص", async () => {
+    const up = await call(him, "/api/photo", {
+      method: "POST", headers: { "content-type": "application/octet-stream" }, body: PNG,
+    });
+    const { id } = await up.json();
+
+    await act(him, { type: "memory.add", date: "2026-02-01", title: "يوم", photos: [id] });
+    const state = await (await call(him, "/api/state")).json();
+    const memory = state.space.memories.find((m: { photos: string[] }) => m.photos.includes(id));
+    expect(memory).toBeTruthy();
+    expect((await call(him, `/api/photo/${id}`)).status).toBe(200);
+
+    await act(him, { type: "memory.remove", id: memory.id });
+    expect((await call(him, `/api/photo/${id}`)).status).toBe(404);
+  });
+
+  it("الصورة المرفوعة لسه مش متربطة بتفضل — حذف ذكرى تانية مايشيلهاش", async () => {
+    const pending = await (await call(him, "/api/photo", {
+      method: "POST", headers: { "content-type": "application/octet-stream" }, body: PNG,
+    })).json();
+
+    await act(him, { type: "memory.add", date: "2026-02-02", title: "ذكرى تانية" });
+    const state = await (await call(him, "/api/state")).json();
+    const other = state.space.memories.find((m: { title: string }) => m.title === "ذكرى تانية");
+    await act(him, { type: "memory.remove", id: other.id });
+
+    expect((await call(him, `/api/photo/${pending.id}`)).status).toBe(200);
+  });
+
   it("الصورة تُرفع وتُقرأ، ولا تُقرأ بلا جلسة", async () => {
     const up = await call(him, "/api/photo", {
       method: "POST", headers: { "content-type": "application/octet-stream" }, body: PNG,

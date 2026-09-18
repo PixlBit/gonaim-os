@@ -104,8 +104,8 @@ export function Oracle({ kind, targetId, title }: {
               {saved ? "اتحفظت في «بينا»" : "احفظها كرسالة"}
             </button>
             {brief && (
-              <button className="btn ghost tiny" onClick={() => { setText(null); }}>
-                شوف اللي اتبعت
+              <button className="btn ghost tiny" onClick={() => setText(null)}>
+                رجّعني لللي اتبعت
               </button>
             )}
             <span className="label" style={{ alignSelf: "center" }}>

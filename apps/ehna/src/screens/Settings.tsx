@@ -14,6 +14,7 @@ import { Confirm, Field, Sheet } from "../ui/bits.js";
 export function Settings() {
   const { space, me, sessions, act, busy } = useSpace();
   const { refresh, setState } = useApp();
+  const [problem, setProblem] = useState<string | null>(null);
   const [password, setPassword] = useState(false);
   const [clearing, setClearing] = useState(false);
 
@@ -148,12 +149,16 @@ export function Settings() {
                   {s.key === me && !s.current && (
                     <button
                       className="btn tiny danger"
-                      onClick={async () => setState(await api.revoke(s.id))}
+                      onClick={() => {
+                        // فشل الطلب يُعرَض ولا يُسقط الشاشة بوعد مرفوض بلا ماسك
+                        void api.revoke(s.id).then(setState, (err: ApiError) => setProblem(err.message));
+                      }}
                     >اقفله</button>
                   )}
                 </div>
               ))}
             </div>
+            {problem && <div className="err">{problem}</div>}
             <p className="label" style={{ marginTop: 14, lineHeight: 1.9 }}>
               كل واحد بيقفل أجهزته هو. تغيير كلمة السر بيقفل باقي أجهزتك تلقائيًا.
             </p>

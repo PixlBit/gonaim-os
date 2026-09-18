@@ -72,12 +72,40 @@ export function createApp(cfg: AppConfig): Server {
   const site = new Static(cfg.staticRoot);
   const clock = cfg.now ?? (() => new Date());
   const attempts = new Map<string, { n: number; until: number }>();
+  /**
+   * الصور المرفوعة للتو ولم تُربَط بذكرى بعد. الكنس يتخطّاها ساعتين —
+   * وإلا حذف حذفُ ذكرى من جهاز الطرف الآخر صورةً أنت في نصف رفعها.
+   */
+  const fresh = new Map<string, number>();
+  const GRACE_MS = 2 * 3600_000;
 
   function throttled(ip: string, atMs: number): boolean {
+    // خريطة تنمو بلا حد على خادم يعمل شهورًا — تُقلَّم حين تكبر
+    if (attempts.size > 500) {
+      for (const [key, rec] of attempts) if (rec.until < atMs) attempts.delete(key);
+    }
     const rec = attempts.get(ip);
     if (!rec || rec.until < atMs) { attempts.set(ip, { n: 1, until: atMs + ATTEMPT_WINDOW }); return false; }
     rec.n += 1;
     return rec.n > ATTEMPT_LIMIT;
+  }
+
+  /**
+   * كنس الصور التي لم تعد أي ذكرى تشير إليها.
+   *
+   * حذف الذكرى وحده لا يكفي: الصورة تبقى على القرص إلى الأبد، وهي أثقل ما
+   * في المخزَن. والكنس يعمل على ما لا يشير إليه شيء فقط، ويترك ما رُفع في
+   * آخر ساعتين — فلا يحذف صورة بين رفعها وحفظ ذكرتها.
+   */
+  async function sweepPhotos(space: Space, atMs: number): Promise<void> {
+    const used = new Set(space.memories.flatMap((m) => m.photos));
+    for (const id of await store.listPhotos()) {
+      if (used.has(id)) { fresh.delete(id); continue; }
+      const born = fresh.get(id);
+      if (born !== undefined && atMs - born < GRACE_MS) continue;
+      await store.removePhoto(id);
+      fresh.delete(id);
+    }
   }
 
   async function jsonBody(req: IncomingMessage, res: ServerResponse): Promise<Record<string, unknown> | null> {
@@ -259,6 +287,15 @@ export function createApp(cfg: AppConfig): Server {
         }
         try {
           const saved = await store.write(vault, vault.rev);
+          // الصور ثقيلة، والكنس يمر على القرص — فلا يُشغَّل إلا حين يتغير ما يشير إليها
+          // `memory.add` تدخل الكنس أيضًا: الصورة تخرج من قائمة "المرفوع للتو"
+          // ساعة ما ترتبط بذكرى، فحذف الذكرى بعدها يحذفها فورًا لا بعد ساعتين.
+          if (parsed.data.type.startsWith("memory.")) {
+            await sweepPhotos(saved.space, now.getTime()).catch((err: unknown) => {
+              // فشل الكنس لا يُفشِل الكتابة: الذكرى حُفظت، وبقاء ملف زائد ليس خطأ للمستخدم
+              console.error("[sweep]", err);
+            });
+          }
           return json(res, 200, state(saved, me.session, now));
         } catch (err) {
           if (!(err instanceof ConflictError)) throw err;
@@ -273,7 +310,9 @@ export function createApp(cfg: AppConfig): Server {
       catch { return json(res, 413, { error: "too_large", message: "الصورة أكبر من 8 ميجا." }); }
       const mime = sniffImage(bytes);
       if (!mime) return json(res, 415, { error: "not_image", message: "الملف ده مش صورة." });
-      return json(res, 200, { id: await store.putPhoto({ bytes, mime }) });
+      const id = await store.putPhoto({ bytes, mime });
+      fresh.set(id, now.getTime());
+      return json(res, 200, { id });
     }
 
     if (path.startsWith("/api/photo/") && req.method === "GET") {

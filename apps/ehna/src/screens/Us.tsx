@@ -63,7 +63,12 @@ function Wishes() {
 
   return (
     <>
-      <div className="row" style={{ justifyContent: "flex-end", marginBottom: 12 }}>
+      <div className="row" style={{ justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+        <p className="sub" style={{ margin: 0, flex: 1 }}>
+          {list.length > 0
+            ? `${list.filter((w) => w.status === "done").length} من ${list.length} عملتوها.`
+            : "حاجات صغيرة وكبيرة، مش لازم تكون كلها كبيرة."}
+        </p>
         <button className="btn primary" style={{ flex: "0 0 auto" }} onClick={() => setAdding(true)}>+ حاجة نعملها</button>
       </div>
 
@@ -267,7 +272,9 @@ function Capsules() {
           {list.map((c) => {
             const ready = c.openAt <= t;
             const opened = Boolean(c.openedAt);
-            const readable = opened || (ready && c.from === me) || (c.from === me && !c.sealed);
+            // الخادم لا يرسل نص المقفولة أصلًا؛ وما وصل يُعرَض لكاتبه أو بعد فتحها.
+            // الجاهزة غير المفتوحة تبقى مقفولة في الشاشة عمدًا — تُفتح مرة واحدة، سوا.
+            const readable = opened || c.from === me;
             return (
               <div key={c.id} className={`panel capsule${ready ? "" : " locked"}`} style={{ marginBottom: 10 }}>
                 <h4>{c.title}</h4>

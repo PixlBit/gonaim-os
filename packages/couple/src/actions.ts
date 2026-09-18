@@ -233,8 +233,8 @@ export function apply(space: Space, action: Action, ctx: ActContext): Space {
       );
       // اللصق المكرر لا يضاعف الكشف — نفس الاسم في نفس الغرفة يُتجاهَل
       const fresh = action.names.filter((n) => !seen.has(n.trim()) && seen.add(n.trim()));
-      const made: Item[] = fresh.map((name, i) => ({
-        id: newId(`item${i}`, ctx.now), roomId: action.roomId, name,
+      const made: Item[] = fresh.map((name) => ({
+        id: newId("item", ctx.now), roomId: action.roomId, name,
         status: "needed", priority: 2, qty: 1, addedBy: ctx.by, createdAt: at,
       }));
       next.items = [...made, ...space.items];
