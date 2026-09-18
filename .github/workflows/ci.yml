@@ -111,3 +111,10 @@ jobs:
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/gonaim_test
         run: npx vitest run packages/db
+
+      # مسار Postgres لمساحة إحنا. المسار الافتراضي ملف، وهذا ما يعمل عند
+      # النشر — ولا يكفي أن يُترجم: لا بد أن يُثبت أنه يعطي نفس الضمانات.
+      - name: EHNA store on Postgres
+        env:
+          EHNA_DATABASE_URL: postgres://postgres:postgres@localhost:5432/gonaim_test
+        run: npx vitest run packages/couple-db
