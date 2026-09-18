@@ -96,6 +96,7 @@ a{ color: var(--signal-cyan); text-decoration-thickness:1px; text-underline-offs
 .bar .spacer{ flex:1; }
 .state{ display:flex; align-items:center; gap:7px; font-family:var(--mono); font-size:10px; color:var(--dust); letter-spacing:.1em; }
 .dot{ width:6px; height:6px; border-radius:50%; background:var(--success-green); }
+.dot.observing{ background:var(--signal-cyan); }
 .progline{ position:absolute; bottom:-1px; inset-inline-start:0; height:1px; background:var(--electric-yellow); width:0; }
 
 /* ── Hero ───────────────────────────────────────── */
@@ -286,7 +287,7 @@ footer{ padding-block: clamp(30px,5vw,54px); background:var(--carbon); }
     <span class="brand"><b>GONAIM</b><span>//</span>KIT</span>
     <span class="screen">studio kit</span>
     <span class="spacer"></span>
-    <span class="state"><i class="dot"></i> VERIFIED 18.09.26</span>
+    <span class="state"><i class="dot observing" style="background:var(--signal-cyan)"></i> 21 SOURCES PENDING</span>
     <div class="progline" id="prog"></div>
   </div>
 </nav>
@@ -534,7 +535,21 @@ footer{ padding-block: clamp(30px,5vw,54px); background:var(--carbon); }
         <li><strong>استخدام الحاسوب.</strong> يشغّل البرامج بنفسه. أقوى وأبطأ وأغلى — <strong>سيبه للآخر</strong>.</li>
       </ol>
 
-      <div class="card y">
+      <h3>تركيب Blender MCP — خطوة بخطوة</h3>
+      <p class="small">دي الطريقة التانية (الأقوى عمليًا). الخطوات دي مجمّعة من أدلة منشورة — <strong>الأوامر الحرفية لسه محتاجة تأكيد من المستودع الرسمي</strong> (بند ١٥ و١٦ في قائمة الجلب).</p>
+      <ol>
+        <li><strong>جهّز المتطلبات.</strong> Blender إصدار <span class="mono">3.0</span> أو أحدث، وPython <span class="mono">3.10</span> أو أحدث، ومدير الحزم <span class="mono">uv</span>. وعميل MCP يقدر يشغّل عملية <span class="mono">stdio</span>.</li>
+        <li><strong>ركّب الإضافة في Blender.</strong> <span class="mono">Edit ← Preferences ← Add-ons ← Install</span> واختار ملف الإضافة <span class="mono">.zip</span>، وبعدين فعّلها بعلامة صح.</li>
+        <li><strong>شغّل الخادم من جوه Blender.</strong> في نافذة العرض اضغط <span class="mono">N</span> عشان تفتح اللوحة الجانبية، وروح لتبويب <span class="mono">MCP</span>. المفروض تشوف <span class="mono">Listening on 127.0.0.1:9876</span>. <strong>لو ما ظهرتش، الإضافة مش شغالة — ما تكمّلش.</strong></li>
+        <li><strong>اربط العميل.</strong> ضيف الخادم الوسيط في ملف إعدادات عميل MCP عندك.</li>
+        <li><strong>اختبر بأمر بسيط.</strong> جرّب: <span class="mono">«اقرا لي المشهد الحالي وقول لي كام كائن فيه وأسماءهم»</span>. لو رجّع إجابة صحيحة، الربط شغال.</li>
+      </ol>
+      <div class="card c" style="margin-top:14px">
+        <span class="label">ليه ده أحسن من النسخ واللصق</span>
+        <p class="small">في النسخ واللصق، النموذج <strong>بيكتب أعمى</strong> — ما بيشوفش مشهدك. مع MCP بيقدر <strong>يقرا الكائنات ويقيس ويشوف النتيجة ويصلّح نفسه</strong>. الفرق بيبان بوضوح في الشغل المتكرر: لو طلبت تجويف وطلع غلط، بيقدر يقيس ويعدّل لوحده بدل ما تروح وتيجي.</p>
+      </div>
+
+      <div class="card y" style="margin-top:14px">
         <span class="label">أهم فكرة في القسم ده</span>
         <p style="font-size:14px"><strong>حوّل كل «نمط» من أنماطك الستة إلى كود.</strong></p>
         <p style="font-size:14px;margin-top:9px">النمط عندك مجموعة قواعد: نِسب، ودرجة تبسيط، وشكل قاعدة، وسماكة جدار، وزاوية توجيه. لو سبتها في دماغك، كل قطعة هتطلع مختلفة شوية وهتفضل تعيد نفس الشغل. لو حوّلتها لـ<strong>سكربت Blender</strong> بمتغيّرات، تبقى:</p>
@@ -562,6 +577,54 @@ footer{ padding-block: clamp(30px,5vw,54px); background:var(--carbon); }
       <div><span class="idx">08</span><div><h4>فحص بصري</h4><p>تصوّر القطعة المطبوعة وتبعتها لـAstra: «قارن دي بالرندر وقول لي إيه الفرق». <strong>عين تانية ما بتتعبش.</strong></p></div><span class="who ai">ASTRA</span></div>
       <div><span class="idx">09</span><div><h4>التقطيع والطباعة</h4><p>Lychee للدعامات، UVTools للفحص، وبعدين الطابعة. <strong>سيب التقطيع يدوي</strong> — الحكم البصري على الدعامات لسه أحسن من الأتمتة.</p></div><span class="who you">إنت</span></div>
       <div><span class="idx">10</span><div><h4>المحتوى</h4><p>Astra بيكتب نص المنشور بالعربي وبالإنجليزي من صور العملية. <strong>وقت نشر أقل = وقت شغل أكتر.</strong></p></div><span class="who ai">ASTRA</span></div>
+    </div>
+
+    <div class="copy measure rv" style="margin-top:30px">
+      <h3>مثال كامل — قطعة واحدة من الطلب للتسليم</h3>
+      <p class="small">عشان الكلام ما يفضلش نظري. قطعة «قياسي ١٩ سم»، نمط كارتوني، هدية خطوبة.</p>
+      <div class="tw" style="margin-top:12px">
+        <table>
+          <thead><tr><th>اليوم</th><th>الخطوة</th><th>مين</th><th>الوقت</th></tr></thead>
+          <tbody>
+            <tr><td class="n">الأحد</td><td>العميل يملأ نموذج الطلب: صور + نمط + مقاس + مناسبة</td><td>العميل</td><td class="n">—</td></tr>
+            <tr><td class="n">الأحد ليلًا</td><td>Astra يحوّل الطلب لمواصفة مكتوبة (أمر ٠١)</td><td class="cy">آلة</td><td class="n">5 د</td></tr>
+            <tr><td class="n">الاثنين</td><td>ورقة ظلال ٣×٣ (أمر ٠٢) — تختار واحد وتبعته للعميل يعتمده</td><td class="cy">آلة</td><td class="n">15 د</td></tr>
+            <tr><td class="n">الثلاثاء</td><td>رسم مفهومي نهائي بثلاث مناظير (أمر ٠٣)</td><td class="cy">آلة</td><td class="n">10 د</td></tr>
+            <tr><td class="n">الثلاثاء</td><td>توليد المجسم — Tripo أو Hunyuan محليًا</td><td class="cy">آلة</td><td class="n">5 د</td></tr>
+            <tr><td class="n">الأربعاء</td><td>فحص الشبكة (أمر ٠٤) — إحكام ومقياس وسماكة</td><td class="cy">آلة</td><td class="n">3 د</td></tr>
+            <tr><td class="n">الأربعاء</td><td><strong>النحت وتطبيق النمط</strong></td><td class="hl">إنت</td><td class="n">50 د</td></tr>
+            <tr><td class="n">الخميس</td><td>سكربت النمط + التجويف + الخروم + التقسيم + التوجيه (أوامر ٠٥–٠٧، ٠٩)</td><td class="cy">آلة</td><td class="n">8 د</td></tr>
+            <tr><td class="n">الخميس</td><td>رندر للعميل (أمر ٠٨) — <strong>واعتماد نهائي قبل الطباعة</strong></td><td class="cy">آلة</td><td class="n">10 د</td></tr>
+            <tr><td class="n">الخميس ليلًا</td><td>تقطيع في Lychee + فحص UVTools</td><td class="hl">إنت</td><td class="n">15 د</td></tr>
+            <tr><td class="n">الجمعة فجرًا</td><td>الطباعة — <strong>وإنت نايم</strong></td><td>الآلة</td><td class="n">0 د</td></tr>
+            <tr><td class="n">الجمعة</td><td>غسل وتصليب ونزع دعامات</td><td class="hl">إنت</td><td class="n">25 د</td></tr>
+            <tr><td class="n">السبت</td><td>سنفرة + Zenithal + Slapchop + كلير</td><td class="hl">إنت</td><td class="n">55 د</td></tr>
+            <tr><td class="n">السبت</td><td>تجميع + قاعدة محفورة + تغليف + صورة توثيق</td><td class="hl">إنت</td><td class="n">20 د</td></tr>
+            <tr><td class="n">السبت</td><td>منشور من صور العملية (أمر ١٢)</td><td class="cy">آلة</td><td class="n">5 د</td></tr>
+            <tr style="background:var(--gunmetal)"><td class="n">الإجمالي</td><td><strong>ساعتان و٤٥ دقيقة من وقتك</strong> — والباقي آلة</td><td></td><td class="n"><strong>2:45</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small" style="margin-top:12px">لاحظ حاجتين: <strong>الطباعة ما أخدتش من وقتك ولا دقيقة</strong> لأنها بالليل. و<strong>النحت وحده ثلث وقتك</strong> — وده الجزء الوحيد اللي مينفعش يتفوّض. كل اللي حواليه اتقلّص بالسكربتات.</p>
+
+      <h3>تشريح سكربت النمط</h3>
+      <p class="small">السكربت اللي هيطلع من أمر ٠٩ المفروض يبدأ بكتلة متغيّرات زي دي. <strong>غيّر الأرقام دي بس، وما تلمسش باقي الكود:</strong></p>
+      <div class="tw" style="margin-top:12px">
+        <table>
+          <thead><tr><th>المتغيّر</th><th>مثال</th><th>بيتحكم في إيه</th></tr></thead>
+          <tbody>
+            <tr><td class="n">TARGET_HEIGHT_MM</td><td class="n">190</td><td>المقاس النهائي — بيربط كل الباقي بيه</td></tr>
+            <tr><td class="n">HEAD_BODY_RATIO</td><td class="n">0.25</td><td>نسبة الرأس للجسم — <strong>ده اللي بيميّز النمط أكتر من أي حاجة</strong></td></tr>
+            <tr><td class="n">SIMPLIFY_RATIO</td><td class="n">0.4</td><td>درجة التبسيط — كل ما قلّ، بقى الشكل أنعم وأبسط</td></tr>
+            <tr><td class="n">WALL_MM</td><td class="n">2.5</td><td>سماكة الجدار بعد التجويف</td></tr>
+            <tr><td class="n">DRAIN_MM</td><td class="n">3.5</td><td>قطر خرم التصريف</td></tr>
+            <tr><td class="n">BASE_D_MM / BASE_H_MM</td><td class="n">60 / 8</td><td>مقاس القاعدة — ثابت عبر النمط كله</td></tr>
+            <tr><td class="n">TILT_X / TILT_Y</td><td class="n">30 / 15</td><td>زاوية التوجيه للطباعة</td></tr>
+            <tr><td class="n">KEY_D_MM / KEY_CLEARANCE</td><td class="n">4 / 0.15</td><td>قطر مفتاح التعشيق والخلوص</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small" style="margin-top:12px"><strong>احفظ سكربت لكل نمط باسمه</strong> في مجلد واحد. بعد ستة أنماط، يبقى عندك مكتبة إنتاج — وده أصل تملكه فعلًا، مش مجرد ملفات.</p>
     </div>
 
     <div class="card rv" style="margin-top:18px">
