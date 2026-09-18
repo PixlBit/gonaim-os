@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="عدّة الاستوديو: من أين تشتري وبكم بالتكلفة الواصلة، حزمة البرمجيات، خط إنتاج GPT-6 Astra مع 12 أمرًا جاهزًا، الإعدادات المرجعية، والتشطيب السريع.">
+<title>عدّة الاستوديو</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+
+/* ============================================================
+   GONAIM//OS design system — tokens.css + app.css
+   الأصفر هو هوية غنيم. الأحمر إشارة نادرة، لا لون زخرفي.
+   ============================================================ */
+:root{
+  color-scheme: dark;
+  direction: rtl;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+
+  --void-950:        #050606;
+  --carbon:          #080B0C;
+  --graphite-900:    #0B0E10;
+  --steel-800:       #161B1E;
+  --gunmetal:        #141A1C;
+  --bone-100:        #F1EEE6;
+  --muted-400:       #899397;
+  --dust:            #7E898D;
+  --signal-cyan:     #38D7DF;
+  --electric-yellow: #F2C94C;
+  --alert-red:       #EF574E;
+  --success-green:   #35C78A;
+  --evidence-paper:  #B9AD91;
+
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --ar:   "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --ui:   "Inter", system-ui, sans-serif;
+
+  --wide: 1080px;
+}
+
+*{ box-sizing: border-box; }
+img{ max-width:100%; }
+[hidden]{ display:none !important; }
+
+body{
+  margin:0;
+  background: var(--void-950);
+  color: var(--bone-100);
+  font-family: var(--ar);
+  font-size: 15px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Film grain خفيف جدًا على الخلفية فقط */
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1,h2,h3,h4{ margin:0; font-family: var(--ui); font-weight:600; letter-spacing:-.01em; line-height:1.35; text-wrap:balance; }
+:lang(ar) h2, h2, h3{ font-family: var(--ar); }
+p{ margin:0; }
+a{ color: var(--signal-cyan); text-decoration-thickness:1px; text-underline-offset:3px; }
+:focus-visible{ outline:2px solid var(--electric-yellow); outline-offset:3px; }
+
+.wrap{ width:100%; max-width:var(--wide); margin-inline:auto; padding-inline: clamp(16px,4vw,32px); position:relative; z-index:1; }
+.measure{ max-width: 68ch; }
+
+.label{
+  font-family: var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  color: var(--dust); direction:ltr; unicode-bidi:isolate; display:inline-block;
+}
+.mono{ font-family: var(--mono); font-variant-numeric:tabular-nums; direction:ltr; unicode-bidi:isolate; display:inline-block; }
+.small{ font-size:13px; color: var(--muted-400); line-height:1.7; }
+.hl{ color: var(--electric-yellow); }
+.cy{ color: var(--signal-cyan); }
+.rd{ color: var(--alert-red); }
+.gr{ color: var(--success-green); }
+
+/* ── Top Signal Bar ─────────────────────────────── */
+.bar{
+  position:sticky; top: env(safe-area-inset-top, 0px); z-index:40;
+  background: color-mix(in oklab, var(--carbon) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--steel-800);
+}
+.bar-in{ display:flex; align-items:center; gap:14px; height:52px; }
+.brand{ font-family:var(--mono); font-size:13px; letter-spacing:.08em; flex:none; direction:ltr; }
+.brand b{ font-weight:500; } .brand span{ color: var(--electric-yellow); }
+.bar .screen{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; color:var(--electric-yellow); text-transform:uppercase; }
+.bar .spacer{ flex:1; }
+.state{ display:flex; align-items:center; gap:7px; font-family:var(--mono); font-size:10px; color:var(--dust); letter-spacing:.1em; }
+.dot{ width:6px; height:6px; border-radius:50%; background:var(--success-green); }
+.progline{ position:absolute; bottom:-1px; inset-inline-start:0; height:1px; background:var(--electric-yellow); width:0; }
+
+/* ── Hero ───────────────────────────────────────── */
+.hero{ border-bottom:1px solid var(--steel-800); background: var(--carbon); position:relative; overflow:hidden; }
+.hero::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(90% 60% at 82% 0%, rgba(242,201,76,.07), transparent 62%);
+}
+.hero-grid{ display:grid; gap: clamp(22px,4vw,48px); grid-template-columns:1fr; padding-block: clamp(34px,6vw,64px) clamp(26px,4vw,44px); align-items:center; }
+@media(min-width:880px){ .hero-grid{ grid-template-columns: 1.1fr .9fr; } }
+h1.htitle{ font-size: clamp(2rem,5.5vw,3.4rem); font-weight:700; line-height:1.15; font-family:var(--ar); letter-spacing:-.02em; }
+h1.htitle span{ color: var(--electric-yellow); display:block; }
+.hsub{ margin-top:18px; font-size: clamp(15px,2vw,17px); color:var(--muted-400); max-width:46ch; line-height:1.8; }
+
+.chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:24px; }
+.chip{
+  font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  border:1px solid var(--steel-800); color:var(--dust); padding:5px 10px; direction:ltr;
+}
+.chip.on{ color:var(--electric-yellow); border-color:rgba(242,201,76,.35); background:rgba(242,201,76,.05); }
+
+.viz{ position:relative; aspect-ratio:1/1; border:1px solid var(--steel-800); background:var(--graphite-900); }
+.viz canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+.viz .rd-lbl{ position:absolute; font-family:var(--mono); font-size:10px; letter-spacing:.12em; color:var(--dust); direction:ltr; }
+.viz .l-tr{ top:10px; inset-inline-end:12px; color:var(--electric-yellow); }
+.viz .l-bl{ bottom:10px; inset-inline-start:12px; }
+
+/* ── Stage sections ─────────────────────────────── */
+section.stage{ padding-block: clamp(40px,6vw,72px); border-bottom:1px solid var(--steel-800); position:relative; }
+.stage-head{ display:flex; gap:16px; align-items:flex-start; margin-bottom:26px; }
+.stage-ico{
+  width:44px; height:44px; flex:none; border:1px solid var(--steel-800); display:grid; place-items:center;
+  color:var(--electric-yellow); background:var(--graphite-900);
+}
+.stage-ico svg{ width:22px; height:22px; }
+.stage-head h2{ font-size: clamp(1.35rem,3vw,1.85rem); }
+.stage-head .label{ display:block; margin-bottom:4px; }
+.stage-head .kick{ color:var(--muted-400); font-size:14px; margin-top:6px; }
+
+.copy > * + *{ margin-top:1.05em; }
+.copy h3{ font-size:17px; margin-top:2em; display:flex; align-items:center; gap:9px; }
+.copy h3::before{ content:"◈"; color:var(--electric-yellow); font-size:11px; }
+.copy ul, .copy ol{ margin:0; padding-inline-start:1.2em; display:grid; gap:.5em; }
+.copy li::marker{ color:var(--electric-yellow); }
+.copy strong{ font-weight:600; color:var(--bone-100); }
+
+/* ── Cards (evidence card pattern) ──────────────── */
+.card{ background:var(--graphite-900); border:1px solid var(--steel-800); border-inline-start:2px solid var(--steel-800); padding:16px 18px; }
+.card.y{ border-inline-start-color:var(--electric-yellow); }
+.card.c{ border-inline-start-color:var(--signal-cyan); }
+.card.r{ border-inline-start-color:var(--alert-red); }
+.card.g{ border-inline-start-color:var(--success-green); }
+.card .label{ display:block; margin-bottom:7px; }
+.card.y .label{ color:var(--electric-yellow); }
+.card.r .label{ color:var(--alert-red); }
+.card.c .label{ color:var(--signal-cyan); }
+.card.g .label{ color:var(--success-green); }
+
+.grid{ display:grid; gap:12px; grid-template-columns:1fr; }
+@media(min-width:680px){ .g2{ grid-template-columns:repeat(2,1fr); } }
+@media(min-width:680px){ .g3{ grid-template-columns:repeat(2,1fr); } }
+@media(min-width:980px){ .g3{ grid-template-columns:repeat(3,1fr); } }
+
+/* ── Tables ─────────────────────────────────────── */
+.tw{ overflow-x:auto; border:1px solid var(--steel-800); background:var(--graphite-900); }
+table{ border-collapse:collapse; width:100%; min-width:620px; font-size:13px; }
+th,td{ padding:10px 13px; text-align:start; border-bottom:1px solid var(--steel-800); vertical-align:top; }
+thead th{ background:var(--gunmetal); font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--dust); font-weight:500; white-space:nowrap; }
+tbody tr:hover{ background:rgba(242,201,76,.035); }
+tbody tr:last-child td{ border-bottom:0; }
+td.n{ font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap; direction:ltr; }
+.tag{ font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase; padding:2px 6px; border:1px solid var(--steel-800); color:var(--dust); white-space:nowrap; direction:ltr; display:inline-block; }
+.tag.ok{ color:var(--success-green); border-color:rgba(53,199,138,.32); }
+.tag.no{ color:var(--alert-red); border-color:rgba(239,87,78,.32); }
+.tag.y{ color:var(--electric-yellow); border-color:rgba(242,201,76,.32); }
+
+/* ── Mini calculator ────────────────────────────── */
+.calc{ border:1px solid var(--steel-800); background:var(--graphite-900); display:grid; grid-template-columns:1fr; }
+@media(min-width:760px){ .calc{ grid-template-columns:1fr 1fr; } }
+.calc-in{ padding:20px; display:grid; gap:17px; align-content:start; }
+.calc-out{ padding:20px; background:var(--carbon); border-top:1px solid var(--steel-800); display:grid; gap:11px; align-content:start; }
+@media(min-width:760px){ .calc-out{ border-top:0; border-inline-start:1px solid var(--steel-800); } }
+.fld label{ display:flex; justify-content:space-between; gap:10px; font-size:13px; color:var(--muted-400); margin-bottom:8px; }
+.fld label b{ font-family:var(--mono); color:var(--electric-yellow); direction:ltr; }
+input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; height:2px; background:var(--steel-800); outline:none; margin:0; cursor:pointer; }
+input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:14px; height:14px; background:var(--electric-yellow); cursor:pointer; }
+input[type=range]::-moz-range-thumb{ width:14px; height:14px; background:var(--electric-yellow); cursor:pointer; border:0; }
+.row{ display:flex; justify-content:space-between; gap:12px; font-size:13px; }
+.row span:last-child{ font-family:var(--mono); direction:ltr; }
+.row.sep{ border-top:1px solid var(--steel-800); padding-top:11px; margin-top:2px; }
+.row.big span:first-child{ color:var(--bone-100); font-weight:600; }
+.row.big span:last-child{ color:var(--electric-yellow); font-size:19px; font-weight:600; }
+.verdict{ font-size:13px; padding:11px 13px; border-inline-start:2px solid var(--electric-yellow); background:rgba(242,201,76,.05); color:var(--muted-400); }
+.verdict.bad{ border-color:var(--alert-red); background:rgba(239,87,78,.06); }
+
+/* ── Reveal ─────────────────────────────────────── */
+.rv{ opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.8,.3,1); }
+.rv.in{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  .rv{ opacity:1; transform:none; transition:none; }
+  *,*::before,*::after{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+
+footer{ padding-block: clamp(30px,5vw,54px); background:var(--carbon); }
+
+/* ── Toolkit-specific components ────────────────── */
+.secnav{ display:grid; gap:1px; background:var(--steel-800); border:1px solid var(--steel-800); grid-template-columns:repeat(2,1fr); }
+@media(min-width:760px){ .secnav{ grid-template-columns:repeat(3,1fr); } }
+@media(min-width:1040px){ .secnav{ grid-template-columns:repeat(6,1fr); } }
+.secnav a{ background:var(--carbon); padding:13px 12px; text-decoration:none; color:inherit; display:grid; gap:6px; border-top:2px solid transparent; transition:.25s; }
+.secnav a:hover{ background:var(--gunmetal); border-top-color:var(--electric-yellow); }
+.secnav .n{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; color:var(--electric-yellow); direction:ltr; }
+.secnav .t{ font-size:13.5px; font-weight:600; line-height:1.4; }
+.secnav svg{ width:19px; height:19px; color:var(--muted-400); }
+.secnav a:hover svg{ color:var(--electric-yellow); }
+
+/* landed-cost calculator */
+.lc{ border:1px solid var(--steel-800); background:var(--graphite-900); display:grid; grid-template-columns:1fr; }
+@media(min-width:800px){ .lc{ grid-template-columns:1fr 1fr; } }
+.lc-in{ padding:20px; display:grid; gap:16px; align-content:start; }
+.lc-out{ padding:20px; background:var(--carbon); border-top:1px solid var(--steel-800); display:grid; gap:14px; align-content:start; }
+@media(min-width:800px){ .lc-out{ border-top:0; border-inline-start:1px solid var(--steel-800); } }
+.vs{ display:grid; gap:1px; background:var(--steel-800); border:1px solid var(--steel-800); }
+.vs > div{ background:var(--graphite-900); padding:12px 14px; display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+.vs .amt{ font-family:var(--mono); font-variant-numeric:tabular-nums; direction:ltr; font-size:17px; font-weight:600; }
+.vs .win{ background:rgba(242,201,76,.07); }
+.vs .win .amt{ color:var(--electric-yellow); }
+.vs small{ display:block; color:var(--dust); font-size:11px; font-family:var(--mono); direction:ltr; margin-top:3px; }
+
+/* prompt blocks */
+.pr{ border:1px solid var(--steel-800); background:var(--graphite-900); border-inline-start:2px solid var(--signal-cyan); margin-bottom:12px; }
+.pr-h{ display:flex; align-items:center; gap:10px; padding:11px 15px; border-bottom:1px solid var(--steel-800); flex-wrap:wrap; }
+.pr-h .label{ color:var(--signal-cyan); }
+.pr-h .spacer{ flex:1; }
+.cpy{ font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; background:transparent;
+  border:1px solid var(--steel-800); color:var(--dust); padding:4px 10px; cursor:pointer; transition:.2s; direction:ltr; }
+.cpy:hover{ color:var(--electric-yellow); border-color:rgba(242,201,76,.4); }
+.cpy.done{ color:var(--success-green); border-color:rgba(53,199,138,.4); }
+.pr pre{ margin:0; padding:14px 15px; font-family:var(--mono); font-size:12px; line-height:1.85; color:var(--bone-100);
+  white-space:pre-wrap; word-break:break-word; direction:rtl; text-align:start; overflow-x:auto; }
+.pr pre .v{ color:var(--electric-yellow); }
+
+/* settings reference */
+.set{ display:grid; gap:1px; background:var(--steel-800); border:1px solid var(--steel-800); grid-template-columns:1fr; }
+@media(min-width:620px){ .set{ grid-template-columns:repeat(2,1fr); } }
+@media(min-width:980px){ .set{ grid-template-columns:repeat(3,1fr); } }
+.set > div{ background:var(--carbon); padding:15px 16px; }
+.set .k{ font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--dust); direction:ltr; display:block; margin-bottom:7px; }
+.set .v{ font-family:var(--mono); font-size:19px; color:var(--electric-yellow); font-weight:600; direction:ltr; display:block; }
+.set .why{ font-size:12.5px; color:var(--muted-400); margin-top:7px; line-height:1.65; }
+
+/* pipeline rail */
+.rail{ display:grid; gap:1px; background:var(--steel-800); border:1px solid var(--steel-800); }
+.rail > div{ background:var(--carbon); display:grid; grid-template-columns:auto 1fr auto; gap:14px; padding:15px 17px; align-items:start; }
+.rail .idx{ font-family:var(--mono); font-size:11px; color:var(--electric-yellow); width:2.2rem; direction:ltr; padding-top:3px; }
+.rail h4{ font-size:14.5px; font-weight:600; font-family:var(--ar); margin-bottom:4px; }
+.rail p{ font-size:13px; color:var(--muted-400); line-height:1.7; }
+.rail .who{ font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase; padding:3px 7px; border:1px solid var(--steel-800); color:var(--dust); white-space:nowrap; direction:ltr; height:fit-content; }
+.rail .who.ai{ color:var(--signal-cyan); border-color:rgba(56,215,223,.3); }
+.rail .who.you{ color:var(--electric-yellow); border-color:rgba(242,201,76,.3); }
+@media(max-width:560px){ .rail > div{ grid-template-columns:auto 1fr; } .rail .who{ grid-column:2; justify-self:start; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ic-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 4h2.2l2.3 11h10l2.2-8H6.3"/><circle cx="9" cy="19" r="1.4"/><circle cx="17.5" cy="19" r="1.4"/>
+  </symbol>
+  <symbol id="ic-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/>
+  </symbol>
+  <symbol id="ic-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/><path d="M18 16.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/>
+  </symbol>
+  <symbol id="ic-slider" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 7h10M18 7h2M4 12h4M12 12h8M4 17h12M20 17h0"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="17" r="2"/>
+  </symbol>
+  <symbol id="ic-brush2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 3.5l3.5 3.5-8 8-3.5-3.5z"/><path d="M9 11.5c-2 0-3.5 1.5-3.5 3.5 0 1.4-.6 2.4-1.5 3 1.2.8 2.6 1.2 4 1.2 2.5 0 4.5-2 4.5-4.5"/>
+  </symbol>
+  <symbol id="ic-coins" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="12" cy="6.5" rx="7" ry="3"/><path d="M5 6.5v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/><path d="M5 11.5v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/>
+  </symbol>
+</svg>
+
+<nav class="bar" aria-label="شريط">
+  <div class="wrap bar-in">
+    <span class="brand"><b>GONAIM</b><span>//</span>KIT</span>
+    <span class="screen">studio kit</span>
+    <span class="spacer"></span>
+    <span class="state"><i class="dot"></i> VERIFIED 18.09.26</span>
+    <div class="progline" id="prog"></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="label rv">المشتريات · البرمجيات · خط GPT-6 Astra · الإعدادات · التشطيب</span>
+      <h1 class="htitle rv" style="margin-top:14px">
+        عدّة الاستوديو.
+        <span>وخط إنتاج بيشتغل معاك.</span>
+      </h1>
+      <p class="hsub rv">
+        دي الطبقة التانية تحت الدليل: <b class="hl">من فين تشتري بالظبط وبكام</b>، وأنهي برامج تستخدمها فعلًا،
+        وإزاي تخلّي <b class="cy">GPT-6 Astra</b> جزء شغّال من المصنع مش مجرد شات.
+        كل رقم هنا مصدره مذكور، وكل توصية معاها السبب.
+      </p>
+      <div class="chips rv">
+        <span class="chip on">تكلفة واصلة محسوبة</span>
+        <span class="chip">Blender MCP</span>
+        <span class="chip">١٢ أمر جاهز</span>
+        <span class="chip">إعدادات مرجعية</span>
+      </div>
+    </div>
+    <div class="viz rv" aria-hidden="true">
+      <canvas id="viz"></canvas>
+      <span class="rd-lbl l-tr" id="zl">PIPELINE</span>
+      <span class="rd-lbl l-bl">ASTRA · BLENDER · MSLA</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" style="padding-block:clamp(24px,4vw,36px)">
+  <div class="secnav rv">
+    <a href="#k1"><svg><use href="#ic-cart"/></svg><span class="n">01</span><span class="t">من فين تشتري</span></a>
+    <a href="#k2"><svg><use href="#ic-code"/></svg><span class="n">02</span><span class="t">البرمجيات</span></a>
+    <a href="#k3"><svg><use href="#ic-spark"/></svg><span class="n">03</span><span class="t">خط Astra</span></a>
+    <a href="#k4"><svg><use href="#ic-spark"/></svg><span class="n">04</span><span class="t">أوامر جاهزة</span></a>
+    <a href="#k5"><svg><use href="#ic-slider"/></svg><span class="n">05</span><span class="t">الإعدادات</span></a>
+    <a href="#k6"><svg><use href="#ic-brush2"/></svg><span class="n">06</span><span class="t">التشطيب السريع</span></a>
+  </div>
+</div>
+
+<!-- 01 PROCUREMENT ============================================== -->
+<section class="stage" id="k1">
+  <div class="wrap">
+    <div class="stage-head rv">
+      <div class="stage-ico"><svg><use href="#ic-cart"/></svg></div>
+      <div>
+        <span class="label">01 · المشتريات</span>
+        <h2>من فين تشتري — وبكام فعلًا</h2>
+        <p class="kick">أهم اكتشاف في البحث ده: فيه فرق سعر كبير جدًا على نفس الطابعة.</p>
+      </div>
+    </div>
+
+    <div class="card y rv" style="margin-bottom:20px">
+      <span class="label">الاكتشاف</span>
+      <p style="font-size:14px">نفس الطابعة — <strong>Elegoo Saturn 4 Ultra</strong> — سعرها في متجر Elegoo الأمريكي وصل <span class="mono">$409</span> بكود خصم، وعلى أمازون الأمريكي <span class="mono">$494</span> بعد خصم ٢٤٪. يعني حوالي <strong>١٬٥٣٠–١٬٨٥٠ ريال</strong>.</p>
+      <p style="font-size:14px;margin-top:10px">والإشارة الوحيدة اللي قدرت أوصلها لسعر أمازون السعودية كانت من خيار التقسيط: <span class="mono">270.83 ﷼ × 12</span> للـ12K و<span class="mono">312.50 ﷼ × 12</span> للـ16K — يعني حوالي <strong>٣٬٢٥٠ و٣٬٧٥٠ ريال</strong>. <b class="rd">ده ضعف السعر تقريبًا.</b></p>
+      <p class="small" style="margin-top:10px"><strong>بس ما تستعجلش.</strong> السعر المعروض مش هو التكلفة الواصلة. احسبها بنفسك تحت.</p>
+    </div>
+
+    <div class="lc rv">
+      <div class="lc-in">
+        <span class="label">حاسبة التكلفة الواصلة</span>
+        <div class="fld">
+          <label for="lP">سعر الجهاز بره <b>$<span id="lvP">450</span></b></label>
+          <input type="range" id="lP" min="300" max="900" step="10" value="450">
+        </div>
+        <div class="fld">
+          <label for="lS">الشحن الدولي <b><span id="lvS">300</span> ﷼</b></label>
+          <input type="range" id="lS" min="0" max="800" step="25" value="300">
+        </div>
+        <div class="fld">
+          <label for="lL">السعر المحلي في السعودية <b><span id="lvL">3250</span> ﷼</b></label>
+          <input type="range" id="lL" min="1500" max="4500" step="50" value="3250">
+        </div>
+        <p class="small">الحساب بيضيف <strong>٥٪ رسوم جمركية</strong> + <strong>١٥٪ ضريبة قيمة مضافة على القيمة الكلية شاملة الجمارك</strong> + رسوم تخليص تقديرية ١٠٠ ﷼. سعر الصرف <span class="mono">3.75</span>.</p>
+        <p class="small">الشحنات الشخصية بقيمة ١٬٠٠٠ ﷼ أو أقل معفاة من الرسوم الجمركية — <strong>بس الضريبة ١٥٪ بتفضل مطبّقة</strong>، والطابعة أغلى من الحد ده أصلًا.</p>
+      </div>
+      <div class="lc-out">
+        <span class="label">النتيجة</span>
+        <div class="vs">
+          <div><span>استيراد — التكلفة الواصلة</span><span class="amt" id="lOut">—</span></div>
+          <div><span>شراء محلي</span><span class="amt" id="lLoc">—</span></div>
+          <div class="win"><span>الفرق<small id="lPct">—</small></span><span class="amt" id="lDiff">—</span></div>
+        </div>
+        <div class="verdict" id="lV">—</div>
+      </div>
+    </div>
+
+    <div class="copy measure rv" style="margin-top:30px">
+      <h3>الحكم — ومش اللي متوقعه</h3>
+      <p>الفرق حقيقي، بس بعد الجمارك والضريبة والشحن <strong>بيتآكل لحد النص تقريبًا</strong>. واللي بتخسره مقابله كبير: <strong>ضمان محلي</strong> على أهم آلة عندك، وإمكانية إنك تروح للمورّد لو فيه عطل. جهاز ١٢ كيلو هش لو وصل مكسور، إرجاعه دوليًا كابوس.</p>
+      <div class="card y">
+        <span class="label">القاعدة</span>
+        <p style="font-size:14px"><strong>اشترِ الطابعة محليًا — بس استنى تخفيض.</strong> Elegoo بتعمل تخفيضات متكررة (Elegoo Day وموسم نهاية السنة والجمعة البيضا)، والتخفيض بيوصل ٢٤٪ فأكتر. تخفيض ٢٠٪ محلي بيديك <strong>معظم التوفير بصفر مخاطرة</strong>. حط تنبيه سعر واستنى ٣–٦ أسابيع — إنت أصلًا في مرحلة الهواية ومش مستعجل.</p>
+      </div>
+    </div>
+
+    <div class="copy measure rv" style="margin-top:28px">
+      <h3>قاعدة الاستيراد الذكي</h3>
+      <p>الاستيراد مش قرار واحد — هو قرار لكل صنف:</p>
+    </div>
+
+    <div class="tw rv" style="margin-top:14px">
+      <table>
+        <thead><tr><th>الصنف</th><th>من فين</th><th>ليه</th></tr></thead>
+        <tbody>
+          <tr><td><strong>الطابعة</strong></td><td class="gr">محلي — مع انتظار تخفيض</td><td>الضمان أهم من الفرق. وهي اللي لو وقفت، وقف كل شيء.</td></tr>
+          <tr><td><strong>الريزن</strong></td><td class="gr">محلي — دايمًا</td><td>تقيل (شحن غالي) + مادة كيميائية (قيود شحن) + بيتلف بالحرارة في الشحن الطويل. CubicSky وArkaki وأمازون السعودية بيوفّروه.</td></tr>
+          <tr><td><strong>الكحول IPA</strong></td><td class="gr">محلي — دايمًا</td><td>سائل قابل للاشتعال، ما بيتشحنش جوًا أصلًا.</td></tr>
+          <tr><td><strong>معدات السلامة</strong></td><td class="gr">محلي</td><td>محتاجها في نفس يوم وصول الطابعة، مش بعدها بأسبوعين.</td></tr>
+          <tr><td><strong>أفلام FEP · قطع غيار</strong></td><td class="cy">استيراد — بالجملة</td><td>خفيفة ورخيصة ومش حرجة. اطلب ٥ مرة واحدة وتحت حد الـ١٬٠٠٠ ﷼ تتجنب الجمارك.</td></tr>
+          <tr><td><strong>أدوات التشطيب · إيربرش</strong></td><td class="cy">استيراد</td><td>فرق السعر كبير والمخاطرة صفر. مفيش ضمان بتحتاجه على مبرد أو إسفنجة سنفرة.</td></tr>
+          <tr><td><strong>قواعد أكريليك · حفر</strong></td><td class="gr">ورشة ليزر بالرياض</td><td>أرخص وأسرع من أي استيراد، وتقدر تعدّل بالتجربة.</td></tr>
+          <tr><td><strong>التغليف</strong></td><td class="hl">محلي أول ٢٥ · صيني بعد كده</td><td>ثبّت المقاس محليًا الأول، وبعدين اطلب بالجملة من الصين.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="copy measure rv" style="margin-top:26px">
+      <h3>الموردون في الرياض</h3>
+      <div class="tw" style="margin-top:12px">
+        <table>
+          <thead><tr><th>المورّد</th><th>بيبيع إيه</th><th>الرابط</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Amazon.sa</strong></td><td>الطابعات · الريزن · الإكسسوارات · تقسيط ٠٪</td><td><a href="https://www.amazon.sa/-/en/ELEGOO-16K-Saturn-WiFi-Transfer-211-68x118-37x220/dp/B0DT99F529">Saturn 4 Ultra 16K</a> · <a href="https://www.amazon.sa/-/en/ELEGOO-Automatic-Intelligent-WiFi-Transfer-8-62x4-84x8-66/dp/B0D12Q82KC">12K</a></td></tr>
+            <tr><td><strong>CubicSky</strong></td><td>ريزن متخصص — Siraya Tech وAnycubic وSUNLU وeSun. موزّع رسمي.</td><td><a href="https://cubicsky.sa/en/">cubicsky.sa</a></td></tr>
+            <tr><td><strong>ARK 3D (Arkaki)</strong></td><td>طابعات وريزن وقطع غيار وماسحات</td><td><a href="https://arkaki.com/shop/">arkaki.com</a></td></tr>
+            <tr><td><strong>Voxel</strong></td><td>طابعات وإكسسوارات وقطع غيار</td><td><a href="https://voxelsa.com/">voxelsa.com</a></td></tr>
+            <tr><td><strong>noon</strong></td><td>متجر Elegoo رسمي في السعودية</td><td><a href="https://www.noon.com/saudi-en/elegoo/">noon.com/elegoo</a></td></tr>
+            <tr><td><strong>3DWorks · KSA3D</strong></td><td><strong>خدمة طباعة</strong> — لنموذجك الأولي قبل ما تشتري</td><td><a href="https://3dworksme.com/3d-printing-riyadh/">3dworksme.com</a> · <a href="https://ksa3d.com/">ksa3d.com</a></td></tr>
+            <tr><td><strong>Elegoo Official</strong></td><td>للمقارنة السعرية ولأكواد الخصم</td><td><a href="https://us.elegoo.com/pages/elegoo-day-sale">us.elegoo.com</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small" style="margin-top:12px"><strong>ملاحظة صدق مهمة:</strong> المتاجر السعودية والمواقع الحكومية <strong>محجوبة عن أداة التصفح عندي</strong>، فما قدرتش أفتح صفحات المنتجات وأقرا السعر النقدي مباشرة. الأرقام فوق من نتائج بحث ومن خيارات التقسيط. <strong>افتح الروابط بنفسك وقارن قبل ما تدفع</strong> — خصوصًا سعر أمازون السعودية النقدي، لأنه هو اللي هيحدد إذا كان فرق الضعف ده حقيقي ولا لأ.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 SOFTWARE ================================================= -->
+<section class="stage" id="k2">
+  <div class="wrap">
+    <div class="stage-head rv">
+      <div class="stage-ico"><svg><use href="#ic-code"/></svg></div>
+      <div>
+        <span class="label">02 · البرمجيات</span>
+        <h2>الحزمة الاحترافية</h2>
+        <p class="kick">أربعة برامج بتغطي ٩٥٪ من الشغل، وتلاتة منهم مجانيين.</p>
+      </div>
+    </div>
+
+    <div class="tw rv">
+      <table>
+        <thead><tr><th>البرنامج</th><th>التكلفة</th><th>دوره</th><th>الحكم</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Blender</strong></td><td class="n gr">مجاني</td>
+            <td>النحت · الإصلاح · التجويف · تقسيم الأجزاء · الرندر · إضافة 3D Print Toolbox. وكمان بيرندرلك صور المنتج قبل ما القطعة توجد.</td>
+            <td><span class="tag ok">العمود الفقري</span></td>
+          </tr>
+          <tr>
+            <td><strong>Lychee Slicer</strong></td><td class="n gr">مجاني · Pro اختياري</td>
+            <td>التقطيع والدعامات الذكية. طابور طباعة واستيراد دفعات — بيوفّر وقت في الإنتاج المتكرر.</td>
+            <td><span class="tag ok">المقطّع الأساسي</span></td>
+          </tr>
+          <tr>
+            <td><strong>UVTools</strong></td><td class="n gr">مجاني · مفتوح</td>
+            <td><strong>الإضافة الاحترافية اللي أغلب المبتدئين ما يعرفوهاش.</strong> بيكشف «الجزر» (أجزاء طايرة في الهوا بلا دعم) قبل الطباعة، وبيصلّح «قدم الفيل» في الطبقات السفلية.</td>
+            <td><span class="tag ok">نزّله اليوم</span></td>
+          </tr>
+          <tr>
+            <td><strong>Nomad Sculpt</strong></td><td class="n">≈ $15 iPad<br><span class="small">$35 كمبيوتر</span></td>
+            <td>نحت بالإصبع/القلم. أسرع بكتير من الفأرة للأشكال العضوية.</td>
+            <td><span class="tag y">اشتريه لو عندك iPad</span></td>
+          </tr>
+          <tr>
+            <td><strong>CHITUBOX</strong></td><td class="n gr">مجاني · ٣ مستويات</td>
+            <td>منافس Lychee. أقوى في التحكم الدقيق بالتعريض والتنعيم. بقى تطبيق واحد بتلات مستويات وصول بدل برنامجين.</td>
+            <td><span class="tag">بديل — جرّب الاتنين</span></td>
+          </tr>
+          <tr>
+            <td><strong>ZBrush</strong></td><td class="n">$9.99/شهر على iPad</td>
+            <td>معيار الصناعة للنحت التفصيلي.</td>
+            <td><span class="tag no">مؤجَّل</span> — Blender كافٍ في مقاسك. ولو حبيت تجرّبه، نسخة الآيباد أرخص مدخل بكتير من الديسكتوب.</td>
+          </tr>
+          <tr>
+            <td><strong>Plasticity</strong></td><td class="n">$149 مرة واحدة</td>
+            <td>أسطح صلبة دقيقة (منتجات، قواعد هندسية).</td>
+            <td><span class="tag no">مؤجَّل</span> — بس لو الأشكال الهندسية بقت خط مستقل</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card c rv" style="margin-top:18px">
+      <span class="label">سير العمل الاحترافي — تلات خطوات</span>
+      <p style="font-size:14px"><span class="mono">Lychee</span> (دعامات ذكية) <b class="hl">←</b> <span class="mono">UVTools</span> (فحص الجزر) <b class="hl">←</b> <span class="mono">Print</span></p>
+      <p class="small" style="margin-top:9px">مش لازم تعدّي كل ملف على UVTools. <strong>عدّي ملف أو اتنين من كل دفعة</strong> للتأكد إن مفيش عيوب مخفية. الخطوة دي بتوفّر عليك طباعات فاشلة بساعات.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ASTRA =================================================== -->
+<section class="stage" id="k3">
+  <div class="wrap">
+    <div class="stage-head rv">
+      <div class="stage-ico" style="color:var(--signal-cyan);border-color:rgba(56,215,223,.3)"><svg><use href="#ic-spark"/></svg></div>
+      <div>
+        <span class="label" style="color:var(--signal-cyan)">03 · GPT-6 ASTRA</span>
+        <h2>خط الإنتاج بالذكاء الاصطناعي</h2>
+        <p class="kick">مش شات بتسأله. ده عامل في الورشة ليه إيدين على جهازك.</p>
+      </div>
+    </div>
+
+    <div class="card r rv" style="margin-bottom:22px">
+      <span class="label">أول حاجة لازم تعرفها — عشان ما تضيّعش وقتك</span>
+      <p style="font-size:14px"><strong>Astra ما بيطلّعش مجسمات ثلاثية الأبعاد.</strong> هو بياخد نص وصور، وبيطلّع <strong>نص</strong>. يعني مستحيل تقوله «اعملي مجسم» ويديك ملف STL.</p>
+      <p style="font-size:14px;margin-top:10px">قيمته الحقيقية أكبر من كده بكتير: هو بيكتب <strong>كود Blender وينفّذه</strong>، وبيشغّل البرامج على جهازك زي ما إنت بتشغّلها، وبيبصّ على الرندر ويقول لك إيه الغلط. <b class="cy">يعني هو مش الفنان — هو مساعد الإنتاج اللي بيعمل الشغل المكرر كله.</b></p>
+    </div>
+
+    <div class="copy measure rv">
+      <h3>الحقائق — سبتمبر ٢٠٢٦</h3>
+      <div class="tw" style="margin-top:12px">
+        <table>
+          <thead><tr><th>البند</th><th>التفاصيل</th></tr></thead>
+          <tbody>
+            <tr><td>الإطلاق</td><td>٣ سبتمبر ٢٠٢٦ · متاح لمشتركي ChatGPT Plus وPro وBusiness وللـAPI</td></tr>
+            <tr><td>المدخلات والمخرجات</td><td>نص + صور <span class="hl">←</span> نص. نافذة سياق <span class="mono">1,050,000</span> رمز</td></tr>
+            <tr><td>استخدام الحاسوب</td><td><strong>بيشغّل البرامج على جهازك زي الإنسان</strong> — يفتح، يضغط، يكتب</td></tr>
+            <tr><td>Blender</td><td>OpenAI عرضت رسميًا نمذجة بيت في Blender وتحويله لمشهد Unreal Engine 5</td></tr>
+            <tr><td>السعر (API)</td><td><span class="mono">$10</span> لكل مليون رمز دخل · <span class="mono">$50</span> خرج · وضع Batch وFlex بنص السعر</td></tr>
+            <tr><td>الصور</td><td><strong>GPT Image 2.5</strong> (٨ سبتمبر ٢٠٢٦): <span class="mono">Flare</span> سريع و<span class="mono">Sunburst</span> أدق — <strong>وبنفس السعر بالظبط</strong>. من <span class="mono">$0.006</span> للصورة (جودة منخفضة) لـ<span class="mono">$0.211</span> (أقصى جودة)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>إزاي تربطه بـBlender</h3>
+      <p>فيه تلات طرق، ابدأ بالأولى:</p>
+      <ol>
+        <li><strong>نسخ ولصق (صفر إعداد).</strong> تقوله اكتبلي كود Python لـBlender، وتنسخه في تبويب Scripting وتشغّله. <b class="hl">ابدأ هنا — بيغطي ٨٠٪ من الفايدة بصفر تعقيد.</b></li>
+        <li><strong>Blender MCP.</strong> إضافة جوه Blender بتفتح منفذ محلي، فالنموذج بيقدر <em>يقرا</em> المشهد وينفّذ كود فيه مباشرة ويشوف النتيجة. التركيب حوالي عشر دقايق: إضافة في Blender + خادم وسيط + إعداد العميل. متطلباته: Blender 3.0+ وPython 3.10+ ومدير حزم <span class="mono">uv</span>.</li>
+        <li><strong>استخدام الحاسوب.</strong> يشغّل البرامج بنفسه. أقوى وأبطأ وأغلى — <strong>سيبه للآخر</strong>.</li>
+      </ol>
+
+      <div class="card y">
+        <span class="label">أهم فكرة في القسم ده</span>
+        <p style="font-size:14px"><strong>حوّل كل «نمط» من أنماطك الستة إلى كود.</strong></p>
+        <p style="font-size:14px;margin-top:9px">النمط عندك مجموعة قواعد: نِسب، ودرجة تبسيط، وشكل قاعدة، وسماكة جدار، وزاوية توجيه. لو سبتها في دماغك، كل قطعة هتطلع مختلفة شوية وهتفضل تعيد نفس الشغل. لو حوّلتها لـ<strong>سكربت Blender</strong> بمتغيّرات، تبقى:</p>
+        <ul style="font-size:13.5px;margin-top:9px;padding-inline-start:1.1em;display:grid;gap:5px;color:var(--muted-400)">
+          <li>كل قطعة بنفس النِّسب بالظبط — <strong>ثبات بصري يخلي شغلك يتعرف</strong></li>
+          <li>التجويف وخروم التصريف وتقسيم الأجزاء بيتعملوا بضغطة واحدة بدل ٤٠ دقيقة</li>
+          <li>ولما تغيّر النمط، تغيّر رقم في السكربت — مش تعيد ٢٥ قطعة</li>
+        </ul>
+        <p style="font-size:14px;margin-top:10px"><b class="cy">ده اللي بيحوّل «واحد بيستخدم AI» لـ«واحد عنده خط إنتاج».</b></p>
+      </div>
+    </div>
+
+    <div class="copy measure rv" style="margin-top:30px">
+      <h3>الخط كامل — ومين بيعمل إيه</h3>
+    </div>
+
+    <div class="rail rv" style="margin-top:14px">
+      <div><span class="idx">01</span><div><h4>تحويل طلب العميل لمواصفة</h4><p>بتدّي Astra صور العميل + النمط المختار، وهو بيطلّع مواصفة مكتوبة: الوقفة، والنِّسب، والعناصر المميزة، والمقاس. <strong>مواصفة مكتوبة = مرجع وقت الخلاف.</strong></p></div><span class="who ai">ASTRA</span></div>
+      <div><span class="idx">02</span><div><h4>الرسم المفهومي</h4><p>GPT Image 2.5 — استخدم <span class="mono">Flare</span> للتجارب السريعة و<span class="mono">Sunburst</span> للنسخة اللي هتعتمدها. <strong>ولّد الظل الخارجي بالأسود أولًا</strong> قبل أي تفاصيل.</p></div><span class="who ai">IMAGE 2.5</span></div>
+      <div><span class="idx">03</span><div><h4>توليد المجسم</h4><p>هنا Astra <em>مش</em> الأداة. استخدم نموذج صورة-لمجسم مخصص: <strong>Tripo</strong> أو <strong>Hunyuan3D</strong> محليًا. المخرج كتلة أولية ٦٠–٧٠٪.</p></div><span class="who ai">TRIPO / HUNYUAN</span></div>
+      <div><span class="idx">04</span><div><h4>الفرز الآلي</h4><p>Astra بيكتب سكربت Blender بيفحص: الإحكام، والأوجه المقلوبة، وسماكة الجدار، والمقياس الحقيقي. <strong>ثلاث دقايق بدل نص ساعة.</strong></p></div><span class="who ai">ASTRA</span></div>
+      <div><span class="idx">05</span><div><h4>النحت وتطبيق النمط</h4><p><strong>دي إيدك، ومفيش بديل.</strong> هنا القطعة بتبقى مصمَّمة مش مولَّدة — وهنا كمان بيتحقق شرط الحماية النظامية للمساهمة البشرية.</p></div><span class="who you">إنت</span></div>
+      <div><span class="idx">06</span><div><h4>هندسة الطباعة</h4><p>سكربت واحد بيعمل: تجويف بسماكة محددة، وخرمين تصريف، وتقسيم بمفاتيح تعشيق، وتوجيه بالزاوية الصح. <strong>أكبر توفير وقت في الخط كله.</strong></p></div><span class="who ai">ASTRA</span></div>
+      <div><span class="idx">07</span><div><h4>الرندر للعميل</h4><p>سكربت بيظبط إضاءة وكاميرا ثابتة لكل القطع. <strong>نفس الزاوية ونفس الإضاءة في كل إصدار = صفحة منتجات متسقة.</strong> وبتبيع قبل ما تطبع.</p></div><span class="who ai">ASTRA</span></div>
+      <div><span class="idx">08</span><div><h4>فحص بصري</h4><p>تصوّر القطعة المطبوعة وتبعتها لـAstra: «قارن دي بالرندر وقول لي إيه الفرق». <strong>عين تانية ما بتتعبش.</strong></p></div><span class="who ai">ASTRA</span></div>
+      <div><span class="idx">09</span><div><h4>التقطيع والطباعة</h4><p>Lychee للدعامات، UVTools للفحص، وبعدين الطابعة. <strong>سيب التقطيع يدوي</strong> — الحكم البصري على الدعامات لسه أحسن من الأتمتة.</p></div><span class="who you">إنت</span></div>
+      <div><span class="idx">10</span><div><h4>المحتوى</h4><p>Astra بيكتب نص المنشور بالعربي وبالإنجليزي من صور العملية. <strong>وقت نشر أقل = وقت شغل أكتر.</strong></p></div><span class="who ai">ASTRA</span></div>
+    </div>
+
+    <div class="card rv" style="margin-top:18px">
+      <span class="label">كام هيكلفك شهريًا</span>
+      <p class="small">اشتراك ChatGPT Plus بيغطي الاستخدام اليومي. لو استخدمت الـAPI في الأتمتة، الحجم اللي محتاجه (٥٠–١٠٠ قطعة شهريًا) بيدخل في <strong>عشرات الريالات</strong> مش مئات — خصوصًا مع وضع Batch بنص السعر. <strong>والصور أرخص مما تتوقع:</strong> ٢٠ رندر بجودة متوسطة تقريبًا بدولار واحد.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PROMPTS ================================================= -->
+<section class="stage" id="k4">
+  <div class="wrap">
+    <div class="stage-head rv">
+      <div class="stage-ico" style="color:var(--signal-cyan);border-color:rgba(56,215,223,.3)"><svg><use href="#ic-spark"/></svg></div>
+      <div>
+        <span class="label" style="color:var(--signal-cyan)">04 · مكتبة الأوامر</span>
+        <h2>اثنا عشر أمرًا جاهزًا</h2>
+        <p class="kick">انسخ، غيّر اللي بالأصفر، الصق. مكتوبة لشغلك إنت مش أمثلة عامة.</p>
+      </div>
+    </div>
+
+    <div class="rv">
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">01 · من طلب العميل لمواصفة</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>إنت مدير إنتاج في استوديو مقتنيات. مرفق صور عميل.
+النمط المختار: [<span class="v">اسم النمط</span>] — قواعده: [<span class="v">الصق قواعد النمط الخمسة</span>]
+المقاس: [<span class="v">19</span>] سم.
+
+اطلع لي مواصفة تنفيذ مكتوبة فيها:
+1. الوقفة والزاوية العامة
+2. النِّسب (نسبة الرأس للجسم، عرض الكتفين)
+3. أهم ثلاث سمات مميزة من الصور — لا أكثر
+4. العناصر اللي لازم تتبسّط أو تتشال عشان تنفع للطباعة
+5. الأجزاء اللي هتتطبع منفصلة
+6. اللي أنا محتاج أسأل العميل عنه قبل ما أبدأ
+
+اكتبها كقائمة قصيرة أقدر أرجع لها وقت أي خلاف. متفلسفش.</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">02 · ورقة الظلال الخارجية</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>ولّد لي شبكة 3×3 من الظلال الخارجية بالأسود الصلب على خلفية بيضاء.
+الموضوع: [<span class="v">وصف الشخصية</span>] بنمط [<span class="v">النمط</span>].
+تسعة اختلافات في الوقفة وشكل الكتلة العامة.
+
+قيود صارمة:
+- ظلال مصمتة فقط، بلا أي تفاصيل داخلية ولا ملامح ولا خطوط
+- كل شكل لازم يبان مميز ومتعرَّف عليه من مسافة مترين
+- بلا نتوءات أرفع من 4 مم على مقاس 19 سم
+- أيدي مبسّطة أو مقفّزة، من غير أصابع منفصلة</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">03 · الرسم المفهومي المعتمد</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>خد الظل رقم [<span class="v">4</span>] وحوّله لرسم مفهومي نهائي بجودة عالية.
+استخدم Sunburst.
+
+- ثلاثة مناظير في صورة واحدة: أمامي، جانبي، ثلاثة أرباع
+- إضاءة محايدة مسطّحة، بلا ظلال درامية تخفي الشكل
+- خلفية رمادية فاتحة سادة
+- التفاصيل لازم تكون في الشكل نفسه — نتوء أو غائر — مش في اللون أو الخامة
+  (أي تفصيل موجود في اللون بس هيختفي تمامًا في الطباعة)
+- لون واحد + عنصر واحد بخامة مغايرة، لا أكثر</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">04 · فحص الشبكة قبل أي شغل</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>اكتب لي سكربت Python لـBlender (bpy) يشتغل على الكائن المحدد ويطبع تقرير:
+- هل الشبكة محكمة (watertight)؟ وإن لأ، كام حافة مفتوحة وفين
+- عدد الأوجه المقلوبة
+- المقياس الحقيقي بالمليمتر على المحاور الثلاثة
+- أنحف جزء في الشبكة — وحذّرني لو أنحف من 1.5 مم
+- عدد الأجزاء المنفصلة (هل فيه هندسة طايرة)
+- عدد المضلعات
+
+اطبع التقرير في الكونسول بالعربي. متعدّلش أي حاجة في الملف — فحص بس.</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">05 · التجويف وخروم التصريف</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>اكتب سكربت bpy يعمل على الكائن المحدد:
+1. تجويف بسماكة جدار [<span class="v">2.5</span>] مم
+2. خرمين تصريف قطر [<span class="v">3.5</span>] مم على الأقل، في أعلى نقطتين في الشكل
+   بعد ما أميّله [<span class="v">30</span>] درجة — عشان الهوا يطلع والريزن يصرّف
+3. يتأكد إن الخرمين متصلين بالتجويف الداخلي فعلًا
+4. يطبع حجم الريزن الموفَّر بالمليلتر
+
+خلي السماكة وقطر الخرم متغيّرات في أول السكربت عشان أعدّلهم بسهولة.</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">06 · تقسيم الأجزاء بمفاتيح تعشيق</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>اكتب سكربت bpy يقسّم الكائن المحدد عند الإحداثي Z = [<span class="v">القيمة</span>]
+ويضيف مفتاح تعشيق أسطواني:
+- نتوء قطر [<span class="v">4</span>] مم وطول [<span class="v">6</span>] مم في النص السفلي
+- تجويف مقابل بخلوص [<span class="v">0.15</span>] مم في النص العلوي (عشان يدخل بدون شدّ)
+- المفتاح يكون خارج المركز شوية عشان ما ينفعش يتركّب بالمقلوب
+
+سمّي الأجزاء part_bottom وpart_top واعملهم مجموعة واحدة.</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">07 · التوجيه الأمثل للطباعة</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>اكتب سكربت bpy يوجّه الكائن للطباعة بالريزن:
+- يميّله [<span class="v">30</span>] درجة حوالين المحور X و[<span class="v">15</span>] درجة حوالين Y
+- يتأكد إن الوش مايل لبعيد عن منصة البناء (عشان ما تجيش عليه دعامات)
+- يحسب أكبر مساحة مقطع أفقي بعد الإمالة ويطبعها
+  (كل ما المساحة قلّت، قوة النزع قلّت والفشل قلّ)
+- يحذّرني من أي سطح متدلي بزاوية أكبر من 30 درجة من غير دعم
+
+اطبع النتيجة بالعربي.</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">08 · استوديو رندر ثابت</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>اكتب سكربت bpy يبني إعداد رندر ثابت أستخدمه لكل قطعة:
+- خلفية داكنة سادة، بلا أرضية ولا انعكاسات
+- ضوء مفتاح قاسي من أعلى يمين + ضوء حافة خفيف من الشمال الخلفي
+- كاميرا على ارتفاع نص القطعة، بعد ثابت، عدسة 85 مم
+- إخراج مربع 2048×2048، محرّك Cycles
+- خامة رمادية مطفية على القطعة
+
+خلي كل الأرقام دي متغيّرات في أول السكربت، واحفظه كملف أقدر أستدعيه
+لكل قطعة جديدة. عايز نفس الزاوية ونفس الإضاءة في كل صور المتجر.</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">09 · حوّل النمط لكود — الأهم</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>عايز أحوّل نمطي البصري لسكربت أقدر أطبّقه على أي مجسم بضغطة.
+
+النمط اسمه: [<span class="v">اسم النمط</span>]
+قواعده:
+- نسبة الرأس للجسم: [<span class="v">1:4</span>]
+- درجة التبسيط: [<span class="v">وصف — مثلًا: بلا ملامح وجه، الأطراف كتل ناعمة</span>]
+- لغة السطح: [<span class="v">مثلًا: أوجه مستوية بحواف حادة</span>]
+- شكل القاعدة: [<span class="v">أسطوانة قطر 60 مم ارتفاع 8 مم</span>]
+- المقاس الافتراضي: [<span class="v">19</span>] سم
+
+اكتب لي سكربت bpy بمتغيّرات في أوله ينفّذ الآتي على الكائن المحدد:
+1. يقيس النِّسب الحالية ويقول لي قد إيه بعيدة عن قواعد النمط
+2. يضبط المقياس الكلي على المقاس المطلوب
+3. يضيف القاعدة بالمواصفات ويلحمها بالمجسم
+4. يطبّق التبسيط المطلوب (decimate أو smooth بالقيم المناسبة)
+
+واشرح لي بالعربي كل متغيّر بيعمل إيه عشان أعدّله بنفسي بعدين.</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">10 · فحص بصري — الرندر مقابل الواقع</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>مرفق صورتين: الأولى الرندر، والتانية القطعة المطبوعة والمشطّبة.
+
+قارنهم وقول لي:
+1. أهم ثلاث فروق واضحة
+2. أي فرق منهم سببه الطباعة وأيهم سببه التشطيب
+3. إيه اللي أقدر أعدّله في التصميم نفسه عشان الفرق ده يقل المرة الجاية
+4. لو أنا العميل، هحس إني استلمت اللي اتفقنا عليه؟ جاوب بصراحة
+
+ما تجاملنيش. أنا محتاج أعرف العيب مش أسمع كلام حلو.</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">11 · تشخيص طباعة فاشلة</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>مرفق صورة طباعة فشلت. البيانات:
+- الريزن: [<span class="v">النوع</span>] · حرارة الغرفة: [<span class="v">24</span>]°م
+- ارتفاع الطبقة: [<span class="v">0.05</span>] مم · تعريض: [<span class="v">2.4</span>] ث · تعريض القاع: [<span class="v">25</span>] ث
+- سرعة الرفع: [<span class="v">60</span>] مم/د · الميل: [<span class="v">30</span>] درجة
+- عمر فيلم FEP: [<span class="v">20</span>] طباعة
+
+رتّب لي أرجح ثلاث أسباب من الأقوى للأضعف، ولكل سبب:
+- الدليل عليه في الصورة بالظبط
+- التعديل المحدد بالرقم
+- اختبار سريع يأكد السبب قبل ما أضيّع لوح كامل</pre>
+      </div>
+
+      <div class="pr">
+        <div class="pr-h"><span class="label">12 · منشور من صور العملية</span><span class="spacer"></span><button class="cpy" type="button">نسخ</button></div>
+        <pre>مرفق صور من مراحل شغل قطعة.
+
+اكتب لي منشور إنستقرام:
+- بالعامية السعودية، قصير، بلا مبالغة ولا كلام تسويقي فاضي
+- يحكي المرحلة اللي في الصور، مش يمدح المنتج
+- ينتهي بسطر واحد بس عن إن الطلبات مفتوحة/مقفولة
+- من غير إيموجي كتير ومن غير هاشتاقات كتير — بحد أقصى ثلاثة
+
+وبعدين اكتب نسخة إنجليزية مختصرة تحتها.</pre>
+      </div>
+
+    </div>
+
+    <div class="card y rv" style="margin-top:18px">
+      <span class="label">قاعدة استخدام</span>
+      <p class="small">أي سكربت بيتولّد — <strong>شغّله على نسخة مش على ملفك الأصلي</strong>، واحفظ قبل التشغيل. النماذج بتكتب كود ممتاز ٩٠٪ من الوقت، والـ١٠٪ الباقية ممكن تمسح شغل ساعتين. <span class="mono">Ctrl+S</span> قبل كل <span class="mono">Run Script</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SETTINGS ================================================ -->
+<section class="stage" id="k5">
+  <div class="wrap">
+    <div class="stage-head rv">
+      <div class="stage-ico"><svg><use href="#ic-slider"/></svg></div>
+      <div>
+        <span class="label">05 · الإعدادات</span>
+        <h2>الأرقام المرجعية</h2>
+        <p class="kick">مجمّعة من أدلة منشورة ومن إجماع مجتمع الريزن. نقطة بداية مش وحي.</p>
+      </div>
+    </div>
+
+    <div class="set rv">
+      <div><span class="k">Layer Height</span><span class="v">0.05 mm</span><p class="why">القياسي للمجسمات. <span class="mono">0.03</span> لقطع العرض (بيزوّد الوقت ٦٥٪)، و<span class="mono">0.02</span> للتصوير بس.</p></div>
+      <div><span class="k">Bottom Exposure</span><span class="v">6–10×</span><p class="why">مضروب في التعريض العادي. ده اللي بيلزّق القطعة على المنصة. قليل = القطعة تقع، كتير = قدم فيل.</p></div>
+      <div><span class="k">Bottom Lift Speed</span><span class="v">5 mm/min</span><p class="why">بطيء جدًا بشكل مقصود — الطبقات الأولى أحرج لحظة في الطباعة كلها.</p></div>
+      <div><span class="k">Lift Speed</span><span class="v">40–60 mm/min</span><p class="why">السرعة العادية بعد الطبقات السفلية.</p></div>
+      <div><span class="k">Support Tip</span><span class="v">0.3 mm</span><p class="why">النطاق <span class="mono">0.1–0.3</span>. الرفيع أوي بيسيب أثر أقل بس القطعة بتقع منه. ابدأ بـ<span class="mono">0.3</span>.</p></div>
+      <div><span class="k">Tilt Angle</span><span class="v">30–45°</span><p class="why">نقطة بداية مش قاعدة ثابتة. القطع الطويلة الثقيلة من فوق ممكن توصل <span class="mono">50°</span>.</p></div>
+      <div><span class="k">Max Overhang</span><span class="v">30°</span><p class="why">أي سطح متدلي أكتر من كده بلا دعم هيترهّل. ده أكتر سبب للفشل.</p></div>
+      <div><span class="k">Hollow Above</span><span class="v">50 mm</span><p class="why">تحت ٥٠ مم <strong>ما تجوّفش</strong> — الريزن الموفَّر ما يستاهلش تشوّه القشرة في المقاس الصغير.</p></div>
+      <div><span class="k">Wall Thickness</span><span class="v">1–4 mm</span><p class="why">رفيع للقطع الصغيرة، تقيل للكبيرة. <span class="mono">2.5</span> رقم آمن للمقاسات المتوسطة.</p></div>
+      <div><span class="k">Drain Holes</span><span class="v">2 × 3.5 mm</span><p class="why">في أعلى نقطة <strong>بعد الإمالة</strong>. واحد بس بيعمل مصّاصة بتفصل القطعة.</p></div>
+      <div><span class="k">Resin Temp</span><span class="v">20–28 °C</span><p class="why">أبرد = الريزن تقيل ونتايج متذبذبة. في الرياض المشكلة عكسية — <strong>خزّنه بعيد عن الحر</strong>.</p></div>
+      <div><span class="k">Wash · Cure</span><span class="v">3+3 · 3–6 min</span><p class="why">حوضين كحول ٣ دقايق لكل واحد، وتصليب <span class="mono">3–6</span> دقايق. <strong>الزيادة بتكسّر القطعة.</strong></p></div>
+    </div>
+
+    <div class="copy measure rv" style="margin-top:30px">
+      <h3>معايرة التعريض — مرة واحدة لكل ريزن</h3>
+      <p>نزّل نموذج معايرة مجاني وجرّب عليه. الأشهر: <span class="mono">AmeraLabs Town</span> و<span class="mono">Cones of Calibration</span> و<span class="mono">Validation Matrix</span>. ابدأ بالتعريض اللي المصنّع كاتبه، وعدّل <strong>نص ثانية في كل مرة</strong>.</p>
+
+      <h3>جدول تشخيص الأعطال</h3>
+      <div class="tw" style="margin-top:12px">
+        <table>
+          <thead><tr><th>العرض</th><th>السبب</th><th>الحل</th></tr></thead>
+          <tbody>
+            <tr><td><strong>قدم فيل</strong> — القاعدة منفوشة وأعرض</td><td>الريزن بيتعصر لما المنصة تنزل، والتعريض السفلي زيادة</td><td>قلّل تعريض القاع · أو استخدم تصحيح قدم الفيل في <strong>UVTools</strong></td></tr>
+            <tr><td><strong>القطعة وقعت</strong> من نص الطباعة</td><td>مصّاصة (خرم تصريف ناقص) · أو دعامات ضعيفة · أو منصة مش مستوية</td><td>خرمين تصريف · زوّد سُمك رأس الدعامة · أعد التسوية</td></tr>
+            <tr><td><strong>أجزاء طايرة ناقصة</strong></td><td>«جزر» — هندسة بتبدأ في الهوا بلا دعم تحتها</td><td>مرّر الملف على <strong>UVTools ← Island Detection</strong> قبل الطباعة</td></tr>
+            <tr><td><strong>تفاصيل مطموسة</strong></td><td>تعريض زيادة</td><td>قلّل نص ثانية وأعد اختبار المعايرة</td></tr>
+            <tr><td><strong>طبقات ناقصة أو القطعة طرية</strong></td><td>تعريض قليل · أو ريزن بارد</td><td>زوّد نص ثانية · دفّي الريزن للنطاق <span class="mono">20–28°</span></td></tr>
+            <tr><td><strong>خطوط أفقية متكررة</strong></td><td>اهتزاز الطاولة · أو مشكلة في حركة المحور</td><td>طاولة تقيلة ثابتة · شدّ المسمار الرأسي</td></tr>
+            <tr><td><strong>القطعة بتتكسر بعد التشطيب</strong></td><td><strong>إفراط في التصليب</strong> — أشيع غلط</td><td>ارجع لـ<span class="mono">3–4</span> دقايق · واستخدم ريزن Tough للأجزاء الرفيعة</td></tr>
+            <tr><td><strong>الدهان بيتقشّر</strong></td><td>بقايا ريزن لزجة — غسيل بحوض واحد</td><td>حوضين: متسخ ثم نظيف · وجفّف كويس قبل البرايمر</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 FINISHING =============================================== -->
+<section class="stage" id="k6">
+  <div class="wrap">
+    <div class="stage-head rv">
+      <div class="stage-ico"><svg><use href="#ic-brush2"/></svg></div>
+      <div>
+        <span class="label">06 · التشطيب</span>
+        <h2>أعلى جودة لكل ساعة</h2>
+        <p class="kick">أهم تقنية في البحث كله بالنسبة لك. وهي مجانية.</p>
+      </div>
+    </div>
+
+    <div class="card y rv" style="margin-bottom:22px">
+      <span class="label">ليه دي أهم حاجة في الصفحة</span>
+      <p style="font-size:14px">إنت بتشتغل بالمساء، وساعة التشطيب أغلى تكلفة عندك. فيه تقنية اسمها <strong>Zenithal + Slapchop</strong> بتديك <strong>ظلال وإضاءة طبيعية في جزء بسيط من وقت التلوين التقليدي</strong> — من غير ما تكون رسام محترف.</p>
+      <p style="font-size:14px;margin-top:10px">الفكرة ببساطة: <b class="hl">تخلي الضوء والظل يتعملوا بالرش مش بالفرشاة</b>، وبعدين تحط لون شفاف فوقهم فيسيب الغامق غامق والفاتح فاتح لوحده.</p>
+    </div>
+
+    <div class="rail rv">
+      <div><span class="idx">01</span><div><h4>برايمر أسود على القطعة كلها</h4><p>تغطية كاملة. دي الظلال بتاعتك جاهزة.</p></div><span class="who you">5 د</span></div>
+      <div><span class="idx">02</span><div><h4>رش رمادي فاتح من فوق فقط</h4><p>من زاوية علوية، زي ما الشمس تنوّر. المناطق الغائرة هتفضل غامقة والبارزة هتفتح. <strong>دي اسمها Zenithal</strong> — وبتعمل لك خريطة إضاءة حقيقية في دقيقتين.</p></div><span class="who you">3 د</span></div>
+      <div><span class="idx">03</span><div><h4>فرشاة جافة بالأبيض على الحواف</h4><p>فرشاة شبه ناشفة، مسحة خفيفة على الحواف البارزة بس. دي الإضاءات العالية.</p></div><span class="who you">5 د</span></div>
+      <div><span class="idx">04</span><div><h4>طبقة واحدة من لون شفاف</h4><p>ألوان Contrast أو Speedpaint أو Xpress. أتخن من الغسول وأرفع من الدهان العادي: بتتجمّع في الغائر وتسيب البارز فاتح. <strong>طبقة واحدة بس — واللون والظل بيطلعوا مع بعض.</strong></p></div><span class="who you">8 د</span></div>
+      <div><span class="idx">05</span><div><h4>العنصر المميّز + كلير</h4><p>ورق معدني أو لون تاني على جزء واحد، وبعدين كلير مطفي بمانع UV.</p></div><span class="who you">12 د</span></div>
+    </div>
+
+    <div class="grid g2 rv" style="margin-top:18px">
+      <div class="card g">
+        <span class="label">اللي بتكسبه</span>
+        <p class="small"><strong>ظلال طبيعية بلا مهارة رسم.</strong> النتيجة بتبان محترفة لأن الإضاءة حقيقية مش مرسومة. ومتكررة — نفس النتيجة كل مرة، وده اللي بيخلي الكتالوج متسق.</p>
+      </div>
+      <div class="card c">
+        <span class="label">اللي لازم تعرفه</span>
+        <p class="small">مش مناسبة لكل نمط — بتلمع أوي مع الأسطح اللي فيها تفاصيل وغائر. النمط <strong>المبسّط الهندسي</strong> بأسطحه الملسا محتاج طريقة تانية (لون مسطّح + كلير)، وده أصلًا أسرع.</p>
+      </div>
+    </div>
+
+    <div class="copy measure rv" style="margin-top:28px">
+      <h3>جدول التوفير الحقيقي</h3>
+      <p class="small">فين الفلوس بتتوفّر فعلًا — مرتبة بالأثر:</p>
+      <div class="tw" style="margin-top:12px">
+        <table>
+          <thead><tr><th>القرار</th><th>التوفير</th><th>على حساب إيه</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Blender بدل ZBrush</strong></td><td class="n gr">4,000+ ﷼</td><td>منحنى تعلّم أطول شوية. ومفيش خسارة جودة في مقاسك.</td></tr>
+            <tr><td><strong>Zenithal + Slapchop بدل التلوين التقليدي</strong></td><td class="n gr">ساعتين لكل قطعة</td><td>مفيش — النتيجة أحسن وأسرع وأثبت</td></tr>
+            <tr><td><strong>استنى تخفيض على الطابعة</strong></td><td class="n gr">600–900 ﷼</td><td>٣–٦ أسابيع انتظار. وإنت مش مستعجل أصلًا.</td></tr>
+            <tr><td><strong>غسل وتصليب يدوي أول ٦ شهور</strong></td><td class="n gr">520 ﷼</td><td>خمس دقايق زيادة لكل دفعة</td></tr>
+            <tr><td><strong>سكربتات Astra للتجويف والتقسيم</strong></td><td class="n gr">30–40 دقيقة لكل قطعة</td><td>يوم إعداد في الأول</td></tr>
+            <tr><td><strong>قواعد من ورشة ليزر محلية</strong></td><td class="n gr">أرخص من أي استيراد</td><td>مفيش</td></tr>
+            <tr><td><strong>UVTools مجانًا بدل طباعات فاشلة</strong></td><td class="n gr">لوح ريزن كل شهر تقريبًا</td><td>دقيقتين فحص</td></tr>
+            <tr><td><strong>رندر Blender بدل تصوير منتجات</strong></td><td class="n gr">لا تصوير قبل البيع أصلًا</td><td>مفيش — وبتبيع قبل ما تطبع</td></tr>
+            <tr style="background:var(--gunmetal)"><td><strong>الإجمالي في السنة الأولى</strong></td><td class="n"><strong>5,000+ ﷼ ومئات الساعات</strong></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card rv" style="margin-top:26px">
+      <span class="label">عن المصادر</span>
+      <p class="small">أرقام الإعدادات مجمّعة من أدلة منشورة (AmeraLabs وResin &amp; Rolls وDreaming3D وAge of Miniatures) ومن إجماع مجتمع طباعة الريزن. معلومات GPT-6 Astra وGPT Image 2.5 من تغطية الإطلاق وصفحات المطوّرين، بتاريخ <span class="mono">2026-09-18</span>. الأسعار نطاقات للتخطيط — <strong>المتاجر السعودية كانت محجوبة عن أداة التصفح، فراجع كل سعر بنفسك قبل الشراء.</strong></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand" style="font-size:12px"><b>GONAIM</b><span>//</span>KIT</span>
+    <p class="small" style="margin-top:10px;max-width:60ch">الطبقة التنفيذية فوق <strong>دليل أول قطعة</strong>. الاتنين بيشتغلوا مع بعض: الدليل بيقول تعمل إيه بالترتيب، والعدّة دي بتقول بأنهي أدوات وبكام.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  document.documentElement.setAttribute("dir","rtl");
+  document.documentElement.setAttribute("lang","ar");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fmt = function(n){ return Math.round(n).toLocaleString("en-US"); };
+
+  /* ---------- hero: signal moving down the production line ---------- */
+  var cv = document.getElementById("viz");
+  if(cv){
+    var ctx = cv.getContext("2d"), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+    var zl = document.getElementById("zl");
+    var YELLOW="#F2C94C", CYAN="#38D7DF", STEEL="#161B1E", DUST="#7E898D";
+    var NODES = ["BRIEF","IMAGE","MESH","SCRIPT","PRINT","FINISH"];
+
+    function resize(){
+      var r = cv.getBoundingClientRect();
+      W=Math.max(1,Math.round(r.width)); H=Math.max(1,Math.round(r.height));
+      cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+
+    var t0=0, pulse=0;
+    function frame(t){
+      if(!t0) t0=t;
+      pulse = ((t-t0)/9000) % 1;
+
+      ctx.clearRect(0,0,W,H);
+      var padT=H*0.13, padB=H*0.13, span=H-padT-padB;
+      var x = W*0.30;
+
+      // spine
+      ctx.strokeStyle=STEEL; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(x, padT); ctx.lineTo(x, padT+span); ctx.stroke();
+
+      // travelled portion of the spine
+      var py = padT + span*pulse;
+      ctx.strokeStyle="rgba(242,201,76,.5)"; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(x, padT); ctx.lineTo(x, py); ctx.stroke();
+
+      // nodes
+      NODES.forEach(function(name,i){
+        var ny = padT + span*(i/(NODES.length-1));
+        var passed = py >= ny - 2;
+        var near = Math.abs(py-ny) < span*0.06;
+
+        ctx.beginPath(); ctx.arc(x, ny, near?6:4, 0, Math.PI*2);
+        ctx.fillStyle = passed ? YELLOW : STEEL;
+        ctx.fill();
+        if(near){
+          ctx.beginPath(); ctx.arc(x, ny, 12, 0, Math.PI*2);
+          ctx.strokeStyle="rgba(242,201,76,.35)"; ctx.lineWidth=1; ctx.stroke();
+        }
+
+        // tick + label running to the right of the spine (visual left in RTL layout)
+        ctx.strokeStyle = passed ? "rgba(242,201,76,.3)" : STEEL; ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(x+10, ny); ctx.lineTo(x+26, ny); ctx.stroke();
+
+        ctx.font = '500 10px "IBM Plex Mono", monospace';
+        ctx.textAlign = "left"; ctx.textBaseline = "middle";
+        ctx.fillStyle = near ? YELLOW : (passed ? DUST : STEEL);
+        ctx.fillText(name, x+32, ny);
+
+        // the two AI-driven stages carry a cyan mark
+        if(i===1 || i===3){
+          ctx.beginPath(); ctx.arc(x-12, ny, 2, 0, Math.PI*2);
+          ctx.fillStyle = passed ? CYAN : STEEL; ctx.fill();
+        }
+      });
+
+      // head of the pulse
+      ctx.beginPath(); ctx.arc(x, py, 3, 0, Math.PI*2);
+      ctx.fillStyle="#F1EEE6"; ctx.fill();
+      ctx.beginPath(); ctx.arc(x, py, 9, 0, Math.PI*2);
+      ctx.strokeStyle="rgba(241,238,230,.25)"; ctx.lineWidth=1; ctx.stroke();
+
+      if(zl){
+        var idx = Math.min(NODES.length-1, Math.floor(pulse*NODES.length));
+        zl.textContent = NODES[idx];
+      }
+      if(!reduce) requestAnimationFrame(frame);
+    }
+    resize(); window.addEventListener("resize", resize);
+    if(reduce){ pulse=1; frame(0); } else { requestAnimationFrame(frame); }
+  }
+
+  /* ---------- reveal + scroll bar ---------- */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {rootMargin:"0px 0px -6% 0px", threshold:0.05});
+  Array.prototype.forEach.call(document.querySelectorAll(".rv"), function(el){ io.observe(el); });
+
+  var progEl = document.getElementById("prog");
+  window.addEventListener("scroll", function(){
+    if(!progEl) return;
+    var h = document.body.scrollHeight - window.innerHeight;
+    progEl.style.width = (h>0 ? (window.scrollY/h)*100 : 0) + "%";
+  }, {passive:true});
+
+  /* ---------- landed cost ---------- */
+  var L={P:document.getElementById("lP"),S:document.getElementById("lS"),L:document.getElementById("lL")};
+  var LV={P:document.getElementById("lvP"),S:document.getElementById("lvS"),L:document.getElementById("lvL")};
+  var LO={out:document.getElementById("lOut"),loc:document.getElementById("lLoc"),diff:document.getElementById("lDiff"),
+          pct:document.getElementById("lPct"),v:document.getElementById("lV")};
+
+  function landed(){
+    if(!L.P) return;
+    var usd=+L.P.value, ship=+L.S.value, local=+L.L.value;
+    LV.P.textContent=fmt(usd); LV.S.textContent=fmt(ship); LV.L.textContent=fmt(local);
+
+    var goods = usd*3.75;
+    var duty  = (goods+ship)*0.05;          // 5% standard rate, above the 1,000 SAR personal threshold
+    var vat   = (goods+ship+duty)*0.15;     // VAT is charged on the landed value including duty
+    var clear = 100;                        // broker / clearance, estimated
+    var total = goods+ship+duty+vat+clear;
+    var diff  = local-total;
+
+    LO.out.textContent = fmt(total)+" ﷼";
+    LO.loc.textContent = fmt(local)+" ﷼";
+    // the label underneath carries saving-vs-loss, so the figure itself stays unsigned
+    LO.diff.textContent = fmt(Math.abs(diff))+" ﷼";
+    LO.pct.textContent = local>0 ? (diff>=0? "توفير " : "خسارة ") + Math.round(Math.abs(diff)/local*100) + "%" : "";
+
+    var msg, bad=false;
+    if(diff <= 0){
+      bad=true;
+      msg="<b>الاستيراد أغلى.</b> اشترِ محليًا بلا تفكير — بتكسب الضمان مجانًا.";
+    } else if(diff < 500){
+      msg="<b>الفرق "+fmt(diff)+" ﷼ بس.</b> ما يستاهلش تتنازل عن الضمان على أهم آلة عندك. <b class='hl'>اشترِ محليًا.</b>";
+    } else if(diff < 1000){
+      msg="<b>فرق معتبر ("+fmt(diff)+" ﷼) بس مش كفاية.</b> تخفيض محلي ٢٠٪ هيديك نفس الرقم تقريبًا بصفر مخاطرة. <b class='hl'>استنى التخفيض.</b>";
+    } else {
+      msg="<b>الفرق كبير ("+fmt(diff)+" ﷼).</b> يستاهل تفكير — بس تأكد من جهد الإرجاع لو وصلت مكسورة، ومن توفّر قطع الغيار محليًا بعد كده.";
+    }
+    LO.v.innerHTML = msg; LO.v.classList.toggle("bad", bad);
+  }
+  Object.keys(L).forEach(function(k){ if(L[k]) L[k].addEventListener("input", landed); });
+  landed();
+
+  /* ---------- copy buttons ---------- */
+  document.addEventListener("click", function(e){
+    var b = e.target.closest(".cpy"); if(!b) return;
+    var pre = b.closest(".pr").querySelector("pre");
+    if(!pre) return;
+    var text = pre.innerText;
+    var done = function(){
+      var old = b.textContent;
+      b.textContent = "تم النسخ"; b.classList.add("done");
+      setTimeout(function(){ b.textContent = old; b.classList.remove("done"); }, 1600);
+    };
+    var manual = function(){
+      // clipboard blocked — select the text so it can be copied by hand
+      try{
+        var r = document.createRange(); r.selectNodeContents(pre);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        b.textContent = "محدد — انسخه";
+        setTimeout(function(){ b.textContent = "نسخ"; }, 2200);
+      }catch(err){}
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(manual);
+    } else { manual(); }
+  });
+})();
+</script>
+</body>
+</html>
