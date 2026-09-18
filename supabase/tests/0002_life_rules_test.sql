@@ -1,6 +1,9 @@
 \set QUIET on
 \set uid '''00000000-0000-0000-0000-000000000001'''
-insert into users (id,email,display_name) values (:uid,'ahmgonaim@gmail.com','Ahmed Gonaim');
+-- المالك قد يكون مسجَّلًا بالفعل: هذا الملف يعمل بعد اختبار القيود على نفس
+-- القاعدة في CI. سطر تهيئة يفشل على صف موجود يوقف الاختبار قبل أن يبدأ.
+insert into users (id,email,display_name) values (:uid,'ahmgonaim@gmail.com','Ahmed Gonaim')
+on conflict (id) do nothing;
 
 -- اشتراك: مستهلك كريدت قليل ويجدد قريب
 insert into entities (id,owner_id,type,title,sensitivity) values

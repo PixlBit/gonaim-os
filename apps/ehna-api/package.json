@@ -1,0 +1,15 @@
+{
+  "name": "@gonaim/ehna-api",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts"
+  },
+  "dependencies": {
+    "@gonaim/couple": "*",
+    "@gonaim/couple-db": "*",
+    "@gonaim/oracle": "*"
+  }
+}

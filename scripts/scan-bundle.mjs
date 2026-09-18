@@ -9,7 +9,7 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const ROOTS = ["apps/web/dist"];
+const ROOTS = ["apps/web/dist", "apps/ehna/dist"];
 const TEXT = /\.(js|mjs|cjs|css|html|json|map)$/;
 
 const PATTERNS = [
