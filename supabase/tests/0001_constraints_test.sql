@@ -1,7 +1,8 @@
 \set ON_ERROR_STOP off
 \set QUIET on
 insert into users (id, email, display_name)
-values ('00000000-0000-0000-0000-000000000001','ahmgonaim@gmail.com','Ahmed Gonaim');
+values ('00000000-0000-0000-0000-000000000001','ahmgonaim@gmail.com','Ahmed Gonaim')
+on conflict (id) do nothing;
 
 \echo '--- 1. حدث مرصود ومعه confidence  => لازم يترفض'
 insert into events (owner_id,event_type,occurred_at,source,sensitivity,observed_or_inferred,confidence,fingerprint)
@@ -19,17 +20,22 @@ values ('00000000-0000-0000-0000-000000000001','browser.tab.focused',now(),'lens
 insert into events (owner_id,event_type,occurred_at,source,sensitivity,observed_or_inferred,fingerprint)
 values ('00000000-0000-0000-0000-000000000001','browser.tab.focused',now(),'lens','private','observed','fp_ok');
 
+-- المتجه لا بد أن يكون 1024 بُعدًا مثل العمود (vector(1024)).
+-- بأقل من ذلك يرفض pgvector السطر على البُعد قبل أن يصل إلى القيد، فيمر
+-- الاختبار وقد رُفض لسبب آخر — والقيد الذي يمنع تسريب الحساس لم يُختبر أصلًا.
+\set emb '(array_fill(0.1::real, array[1024])::vector)'
+
 \echo '--- 5. ذاكرة sensitive ومعها embedding سحابي  => لازم يترفض'
 insert into memories (owner_id,kind,statement,confidence,confidence_reason,sensitivity,embedding,created_by)
-values ('00000000-0000-0000-0000-000000000001','sensitive','رصيد الحساب',0.9,'مصدر واحد','sensitive','[0.1]','cortex');
+values ('00000000-0000-0000-0000-000000000001','sensitive','رصيد الحساب',0.9,'مصدر واحد','sensitive',:emb,'cortex');
 
 \echo '--- 6. ذاكرة vaulted ومعها embedding  => لازم يترفض'
 insert into memories (owner_id,kind,statement,confidence,confidence_reason,sensitivity,embedding,created_by)
-values ('00000000-0000-0000-0000-000000000001','identity','رقم الإقامة',0.9,'وثيقة','vaulted','[0.1]','manual');
+values ('00000000-0000-0000-0000-000000000001','identity','رقم الإقامة',0.9,'وثيقة','vaulted',:emb,'manual');
 
 \echo '--- 7. ذاكرة private ومعها embedding  => لازم ينجح'
 insert into memories (id,owner_id,kind,statement,confidence,confidence_reason,sensitivity,embedding,created_by)
-values ('00000000-0000-0000-0000-0000000000aa','00000000-0000-0000-0000-000000000001','preference','لا Neon زائد',0.85,'تكرر في ٣ مراجعات','private','[0.1]','cortex');
+values ('00000000-0000-0000-0000-0000000000aa','00000000-0000-0000-0000-000000000001','preference','لا Neon زائد',0.85,'تكرر في ٣ مراجعات','private',:emb,'cortex');
 
 \echo '--- 8. memory_source بلا أي ربط  => لازم يترفض'
 insert into memory_sources (memory_id) values ('00000000-0000-0000-0000-0000000000aa');
