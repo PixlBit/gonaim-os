@@ -33,15 +33,15 @@
 /* اسم المساحة في أعلى الشريط. الاسم `brand` لا `mark` لأن `mark` مستعمل
    في الجدول الزمني — وتصادم الأسماء كان يورّث الخط الأحادي للفرح وحده. */
 .brand {
-  font-family: var(--mono);
+  font-family: var(--ar);
   font-size: 11px;
-  letter-spacing: 0.1em;
   color: var(--violet-hi);
   text-align: center;
   margin-bottom: 14px;
   animation: flicker 7s infinite;
 }
 .brand b { display: block; font-size: 15px; color: var(--bone); font-weight: 600; }
+.brand .os { font-family: var(--mono); letter-spacing: 0.1em; }
 
 .rail button {
   width: 56px;
@@ -57,7 +57,7 @@
   transition: color 0.2s, background 0.2s;
 }
 .rail button i { font-style: normal; font-size: 17px; line-height: 1; }
-.rail button span { font-size: 9.5px; letter-spacing: 0.02em; }
+.rail button span { font-size: 10.5px; font-weight: 500; }
 .rail button:hover { color: var(--bone); background: rgba(168, 85, 247, 0.07); }
 .rail button[aria-current="true"] { color: var(--violet-hi); background: rgba(168, 85, 247, 0.12); }
 .rail button[aria-current="true"]::before {
@@ -94,11 +94,14 @@
   backdrop-filter: blur(14px);
 }
 .topbar .screen-name {
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  font-family: var(--ar);
+  font-size: 13.5px;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--violet-hi);
+}
+.topbar .screen-name:lang(en) {
+  font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: 0.22em;
 }
 .topbar .spacer { flex: 1; }
 .topbar .who {
@@ -113,9 +116,9 @@
 h1.title {
   font-size: 27px;
   font-weight: 600;
-  letter-spacing: -0.01em;
   margin: 0 0 4px;
 }
+h1.title:lang(en) { letter-spacing: -0.01em; }
 p.sub { color: var(--muted); margin: 0 0 22px; font-size: 13.5px; }
 
 section.block { margin-bottom: 30px; }
@@ -151,7 +154,7 @@ section.block > .head hr {
   filter: drop-shadow(0 0 26px rgba(168, 85, 247, 0.35));
   direction: ltr;
 }
-.hero .count small { font-size: 0.26em; letter-spacing: 0.2em; color: var(--muted); -webkit-text-fill-color: var(--muted); }
+.hero .count small { font-family: var(--ar); font-size: 0.24em; color: var(--muted); -webkit-text-fill-color: var(--muted); }
 .hero .for { font-size: 15px; color: var(--bone); margin-top: 8px; }
 .hero .for b { color: var(--violet-hi); font-weight: 600; }
 .hero .since { color: var(--dust); font-size: 12.5px; margin-top: 3px; }
@@ -160,7 +163,8 @@ section.block > .head hr {
 
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(178px, 1fr)); gap: 12px; }
 .tile { padding: 15px 16px; }
-.tile .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dust); }
+.tile .k { font-family: var(--ar); font-size: 11px; font-weight: 500; text-transform: uppercase; color: var(--dust); }
+.tile .k:lang(en) { font-family: var(--mono); font-size: 9.5px; font-weight: 400; letter-spacing: 0.15em; }
 .tile .v {
   font-family: var(--mono);
   font-size: 25px;
@@ -263,7 +267,7 @@ section.block > .head hr {
 .room { padding: 16px; text-align: start; border: 1px solid var(--line); border-radius: var(--r); background: linear-gradient(160deg, rgba(23,16,44,.9), rgba(12,7,24,.9)); }
 .room .g { font-size: 20px; color: var(--violet-hi); }
 .room .n { font-size: 15px; font-weight: 600; margin-top: 6px; }
-.room .c { color: var(--dust); font-size: 12px; font-family: var(--mono); margin-top: 2px; }
+.room .c { color: var(--dust); font-size: 12px; margin-top: 2px; }
 .room.sel { border-color: var(--violet); box-shadow: var(--glow-v); }
 
 .meter { height: 4px; background: rgba(42, 23, 71, 0.9); border-radius: 4px; overflow: hidden; margin-top: 11px; }
@@ -286,7 +290,7 @@ section.block > .head hr {
   font-family: var(--mono);
 }
 .ring .mid b { display: block; font-size: 23px; font-weight: 400; }
-.ring .mid span { font-size: 9px; letter-spacing: 0.14em; color: var(--dust); }
+.ring .mid span { font-family: var(--ar); font-size: 10px; color: var(--dust); }
 
 /* ── الرسوم ───────────────────────────────────────── */
 
@@ -300,7 +304,7 @@ section.block > .head hr {
 
 .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 10px; }
 .legend i { width: 9px; height: 9px; border-radius: 2px; display: inline-block; margin-inline-end: 6px; }
-.legend span { font-size: 11.5px; color: var(--muted); font-family: var(--mono); }
+.legend span { font-size: 12px; color: var(--muted); }
 
 /* ── الجدول الزمني ────────────────────────────────── */
 
@@ -334,7 +338,7 @@ section.block > .head hr {
 .mem .shot.empty { display: grid; place-items: center; color: var(--line-hot); font-size: 30px; }
 .mem .body { padding: 13px 15px 15px; }
 .mem .body h4 { margin: 0 0 4px; font-size: 15px; }
-.mem .body .d { font-family: var(--mono); font-size: 10.5px; color: var(--violet-hi); letter-spacing: 0.06em; }
+.mem .body .d { font-size: 11.5px; color: var(--violet-hi); }
 .mem .body p { margin: 7px 0 0; font-size: 13px; color: var(--muted); white-space: pre-wrap; }
 
 .shots { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
@@ -366,7 +370,7 @@ section.block > .head hr {
   border: 1px solid rgba(244, 114, 182, 0.28);
   border-end-start-radius: 4px;
 }
-.bubble .meta { font-family: var(--mono); font-size: 9.5px; color: var(--dust); margin-top: 6px; display: flex; gap: 8px; align-items: center; }
+.bubble .meta { font-size: 11px; color: var(--dust); margin-top: 6px; display: flex; gap: 8px; align-items: center; }
 .thread { display: flex; flex-direction: column; gap: 9px; }
 
 .capsule {
@@ -375,7 +379,7 @@ section.block > .head hr {
 }
 .capsule.locked { border-inline-start-color: var(--line-hot); }
 .capsule h4 { margin: 0 0 5px; font-size: 15px; }
-.capsule .when { font-family: var(--mono); font-size: 11px; color: var(--violet-hi); }
+.capsule .when { font-size: 12px; color: var(--violet-hi); }
 .capsule .sealed { color: var(--dust); font-size: 13px; margin-top: 9px; display: flex; align-items: center; gap: 8px; }
 .capsule .text { margin-top: 10px; white-space: pre-wrap; font-size: 14px; line-height: 1.85; }
 
@@ -441,7 +445,8 @@ section.block > .head hr {
   filter: drop-shadow(0 0 22px rgba(192, 132, 252, 0.45));
   animation: flicker 6s infinite;
 }
-.gate .tag { color: var(--dust); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; margin-bottom: 26px; }
+.gate .tag { color: var(--dust); font-size: 11.5px; margin-bottom: 26px; }
+.gate .tag:lang(en) { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; }
 .gate form { text-align: start; }
 .gate .pair { display: flex; gap: 14px; justify-content: center; margin-bottom: 24px; }
 .gate .pair .gate-orb {
@@ -551,7 +556,7 @@ section.block > .head hr {
 .brief-box .label:first-child { margin-top: 0; }
 .brief-box pre {
   margin: 0; white-space: pre-wrap; word-break: break-word;
-  font-family: var(--mono); font-size: 11.5px; line-height: 1.9;
+  font-family: var(--ar); font-size: 13px; line-height: 1.95;
   color: var(--muted); max-height: 260px; overflow-y: auto;
 }
 .brief-box ul { margin: 0; padding-inline-start: 18px; color: var(--dust); font-size: 12px; line-height: 1.9; }
@@ -576,4 +581,135 @@ section.block > .head hr {
 }
 .weeks .w.hot .bar { background: linear-gradient(to top, #B91C1C, #FB4D6D); }
 .weeks .w.calm .bar { background: linear-gradient(to top, #0F766E, #34D399); }
-.weeks .w .cap { font-family: var(--mono); font-size: 9px; color: var(--dust); }
+.weeks .w .cap { font-size: 10px; color: var(--dust); }
+
+/* ── ليلتنا ───────────────────────────────────────
+   البطاقة الوحيدة في المنصة التي لا تطلب شيئًا. لونها مختلف عمدًا: كل شيء
+   آخر بنفسجي (التجهيز)، وهذه تميل للمَجنتا (هما). */
+
+.night {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 26px;
+  padding: 24px 26px;
+  margin-bottom: 30px;
+  border-color: rgba(244, 114, 182, 0.34);
+  background:
+    radial-gradient(120% 140% at 88% -10%, rgba(244, 114, 182, 0.16), transparent 58%),
+    linear-gradient(160deg, rgba(31, 17, 46, 0.94), rgba(14, 8, 26, 0.94));
+  box-shadow: 0 24px 60px -34px rgba(244, 114, 182, 0.7);
+}
+.night::before { background: linear-gradient(to left, transparent, rgba(244, 114, 182, 0.6), transparent); }
+
+.night .tagline {
+  font-size: 12px;
+  color: var(--magenta);
+  margin-bottom: 4px;
+}
+.night .when {
+  font-size: clamp(24px, 4.4vw, 34px);
+  font-weight: 600;
+  line-height: 1.25;
+  background: linear-gradient(120deg, var(--bone), #FBCFE8);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.night .wish { margin: 8px 0 0; font-size: 15.5px; color: var(--bone); }
+.night .wish.quiet { color: var(--muted); font-size: 14px; }
+
+.night-act { display: flex; gap: 10px; align-items: center; margin-top: 18px; flex-wrap: wrap; }
+.night-act .btn { flex: 0 0 auto; }
+.night-act .btn.primary { background: linear-gradient(120deg, var(--magenta), var(--violet)); }
+
+.night-why {
+  margin: 0;
+  padding-inline-start: 18px;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 2;
+}
+.night-why li::marker { color: var(--magenta); }
+
+/* في الشاشة الضيقة يصير الاثنان عمودًا واحدًا: الدعوة أولًا ثم دليلها. */
+@media (max-width: 860px) {
+  .night { grid-template-columns: 1fr; gap: 18px; }
+}
+
+.night.done { grid-template-columns: 1fr; border-color: rgba(52, 211, 153, 0.35); }
+.night.done .when { background: linear-gradient(120deg, var(--bone), #6EE7B7); -webkit-background-clip: text; background-clip: text; }
+
+/* ── التفتُّح ─────────────────────────────────────── */
+
+.bloom {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 34px;
+  width: 0; height: 0;
+  pointer-events: none;
+}
+.bloom .petal {
+  position: absolute;
+  width: 7px; height: 7px;
+  border-radius: 50% 50% 50% 0;
+  opacity: 0;
+  animation: petal-out 1.5s var(--ease) forwards;
+}
+.bloom .petal.h0 { background: var(--magenta); box-shadow: 0 0 12px var(--magenta); }
+.bloom .petal.h1 { background: var(--violet-hi); box-shadow: 0 0 12px var(--violet); }
+.bloom .petal.h2 { background: #FBCFE8; }
+
+/* البتلة تخرج من مركزها في اتجاه دورانها — `rotate` مضبوط في الـJSX،
+   و`translate` هنا يدفعها للأمام في ذلك الاتجاه. */
+@keyframes petal-out {
+  0%   { opacity: 0; translate: 0 0; scale: 0.4; }
+  18%  { opacity: 1; }
+  100% { opacity: 0; translate: 0 92px; scale: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bloom { display: none; }
+}
+
+/* ── التحية و«في مثل النهارده» ─────────────────────
+   سطر التحية أول ما تقع عليه العين، فهو أهدأ شيء في الشاشة: بلا إطار ولا
+   لوح. الاسم يُنادى، ثم تبدأ الأرقام. */
+
+.hello {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.hello .h { font-size: 16px; color: var(--bone); font-weight: 500; }
+.hello .ann { font-size: 12.5px; color: var(--magenta); }
+
+.onthisday {
+  padding: 14px 17px;
+  margin-bottom: 16px;
+  border-color: rgba(192, 132, 252, 0.28);
+  background: linear-gradient(160deg, rgba(29, 19, 56, 0.9), rgba(12, 7, 24, 0.9));
+}
+.otd-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: var(--r-s);
+  background: transparent;
+  text-align: start;
+  transition: background 0.2s;
+}
+.otd-line:hover { background: rgba(168, 85, 247, 0.1); }
+.otd-line .y {
+  flex: none;
+  font-size: 11px;
+  color: var(--violet-hi);
+  border: 1px solid var(--line-hot);
+  border-radius: 999px;
+  padding: 2px 9px;
+}
+.otd-line .t { flex: 1; font-size: 13.5px; color: var(--bone); }
+.otd-line .a { color: var(--dust); font-size: 12px; }

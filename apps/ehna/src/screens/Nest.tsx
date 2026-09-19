@@ -50,7 +50,7 @@ export function Nest() {
       <p className="sub">
         {space.settings.address.label
           ? `${space.settings.address.label}${space.settings.address.area ? ` — ${space.settings.address.area}` : ""}`
-          : "العنوان لسه مش مكتوب — تلاقوه في الإعدادات."}
+          : "العنوان لسه مش مكتوب — تلاقوه في الضبط."}
       </p>
 
       <section className="block">

@@ -23,7 +23,7 @@ export function Signal() {
 
   return (
     <>
-      <h1 className="title">التحليل</h1>
+      <h1 className="title">المرصد</h1>
       <p className="sub">
         كل رقم هنا محسوب من اللي كتبتوه دلوقتي — مفيش حاجة مخزّنة ولا مقدّرة.
         آخر تحديث {arDate(report.today)}.

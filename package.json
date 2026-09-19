@@ -24,7 +24,9 @@
     "ehna:dev": "npm run dev -w @gonaim/ehna-api",
     "ehna:web": "npm run dev -w @gonaim/ehna",
     "ehna:build": "npm run build -w @gonaim/ehna",
-    "ehna:setup": "tsx scripts/ehna-setup.mts"
+    "ehna:setup": "tsx scripts/ehna-setup.mts",
+    "ehna:backup": "tsx scripts/ehna-backup.mts",
+    "ehna:restore": "tsx scripts/ehna-restore.mts"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",

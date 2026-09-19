@@ -30,11 +30,11 @@ export function Money() {
 
   return (
     <>
-      <h1 className="title">الفلوس</h1>
+      <h1 className="title">الميزان</h1>
       <p className="sub">
         {space.settings.budget > 0
           ? `الميزانية ${fmt(space.settings.budget)} ${space.settings.currency} · ${m.gap > 0 ? `المتوقع أعلى منها بـ${short(m.gap)}` : `المتوقع جوّاها بـ${short(-m.gap)}`}`
-          : "الميزانية لسه مش متحددة — حدّدوها من الإعدادات."}
+          : "الميزانية لسه مش متحددة — حدّدوها من الضبط."}
       </p>
 
       <section className="block">

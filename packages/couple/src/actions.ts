@@ -89,6 +89,14 @@ export function apply(space: Space, action: Action, ctx: ActContext): Space {
       break;
     }
 
+    case "lang.set": {
+      const me = space.people[ctx.by];
+      next.people = { ...space.people, [ctx.by]: { ...me, lang: action.lang } };
+      // السطر بالعربية كبقية السجل: السجل ذاكرة المساحة لا واجهة قارئ.
+      summary = action.lang === "ar" ? "رجع للعربي" : "بدّل للإنجليزي";
+      break;
+    }
+
     case "persona.set": {
       const me = space.people[ctx.by];
       const traits = withPatch(me.traits ?? {}, { ...action.traits, updatedAt: at });

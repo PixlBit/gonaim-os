@@ -3,6 +3,7 @@ import { arDate, SEED_COUNTS } from "@gonaim/couple";
 import { api, type ApiError } from "../api.js";
 import { useApp, useSpace } from "../store.js";
 import { Confirm, Field, Sheet } from "../ui/bits.js";
+import { useTongue } from "../lang.js";
 
 /**
  * الإعدادات.
@@ -14,6 +15,7 @@ import { Confirm, Field, Sheet } from "../ui/bits.js";
 export function Settings() {
   const { space, me, sessions, act, busy } = useSpace();
   const { refresh, setState } = useApp();
+  const { lang, t, set: setLang } = useTongue();
   const [problem, setProblem] = useState<string | null>(null);
   const [password, setPassword] = useState(false);
   const [clearing, setClearing] = useState(false);
@@ -40,7 +42,7 @@ export function Settings() {
 
   return (
     <>
-      <h1 className="title">الإعدادات</h1>
+      <h1 className="title">{t("الضبط", "Config")}</h1>
       <p className="sub">{space.settings.title} · نسخة المساحة {space.version}</p>
 
       <div className="row" style={{ alignItems: "flex-start", gap: 14 }}>
@@ -68,7 +70,7 @@ export function Settings() {
                 budget: budget.trim() === "" ? 0 : Number(budget),
                 together: together || null,
               })}
-            >احفظ</button>
+            >{t("احفظ", "Save")}</button>
           </div>
         </section>
 
@@ -96,7 +98,7 @@ export function Settings() {
                     floor: floor || null, mapUrl: mapUrl || null, note: addressNote || null,
                   },
                 })}
-              >احفظ</button>
+              >{t("احفظ", "Save")}</button>
               {a.mapUrl && (
                 <a className="btn ghost" href={a.mapUrl} target="_blank" rel="noreferrer" style={{ textAlign: "center" }}>
                   افتح الخريطة ↗
@@ -109,25 +111,48 @@ export function Settings() {
 
       <div className="row" style={{ alignItems: "flex-start", gap: 14 }}>
         <section className="block" style={{ flex: "1 1 320px" }}>
-          <div className="head"><span className="label">أنت</span><hr /></div>
+          <div className="head"><span className="label">{t("أنت", "You")}</span><hr /></div>
           <div className="panel" style={{ padding: 18 }}>
-            <Field label="اسمك"><input value={name} onChange={(e) => setName(e.target.value)} /></Field>
-            <Field label="لونك">
+            <Field label={t("اسمك", "Your name")}><input value={name} onChange={(e) => setName(e.target.value)} /></Field>
+            <Field label={t("لونك", "Your colour")}>
               <div className="row" style={{ gap: 8, alignItems: "center" }}>
                 <input type="color" value={accent} onChange={(e) => setAccent(e.target.value)} style={{ width: 54, padding: 3, flex: "0 0 auto" }} />
                 <span className="num" style={{ color: accent }}>{accent}</span>
               </div>
             </Field>
-            <Field label="جملتك">
-              <input value={line} onChange={(e) => setLine(e.target.value)} placeholder="حاجة تحب تفتكرها" />
+            <Field label={t("جملتك", "Your line")}>
+              <input value={line} onChange={(e) => setLine(e.target.value)}
+                     placeholder={t("حاجة تحب تفتكرها", "Something you want to remember")} />
+            </Field>
+
+            {/* اللغة هنا لا في «المساحة»: التفضيل يخصّ القارئ، فلو عاش في
+                إعدادات المساحة صار اختيار أحدهما فرضًا على الآخر. */}
+            <Field label={t("اللغة اللي بتقرا بيها", "The language you read in")}>
+              <div className="row" style={{ gap: 8 }}>
+                <button
+                  className={`btn${lang === "ar" ? " primary" : " ghost"}`}
+                  disabled={busy || lang === "ar"}
+                  onClick={() => void setLang("ar")}
+                >العربية</button>
+                <button
+                  className={`btn${lang === "en" ? " primary" : " ghost"}`}
+                  disabled={busy || lang === "en"}
+                  lang="en"
+                  onClick={() => void setLang("en")}
+                >English</button>
+              </div>
+              <p className="sub" style={{ margin: "8px 0 0", fontSize: 12 }}>
+                {t("ده اختيارك إنت لوحدك — الطرف التاني بيفضل يقرا بلغته.",
+                   "This is yours alone — the other of you keeps reading in theirs.")}
+              </p>
             </Field>
             <div className="row">
               <button
                 className="btn primary"
                 disabled={busy}
                 onClick={() => void act({ type: "person.update", key: me, name, accent, line: line || null })}
-              >احفظ</button>
-              <button className="btn ghost" onClick={() => setPassword(true)}>غيّر كلمة السر</button>
+              >{t("احفظ", "Save")}</button>
+              <button className="btn ghost" onClick={() => setPassword(true)}>{t("غيّر كلمة السر", "Change password")}</button>
             </div>
           </div>
         </section>

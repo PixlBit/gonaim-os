@@ -45,7 +45,7 @@ export function Gate({ note }: { note?: string | undefined }) {
   return (
     <div className="gate">
       <div className="panel hot box rise">
-        <div className="logo">EHNA//OS</div>
+        <div className="logo" lang="en">EHNA//OS</div>
         <div className="tag">مساحة خاصة · لاتنين بس</div>
 
         <div className="pair" aria-hidden="true">

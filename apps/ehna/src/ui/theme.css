@@ -45,8 +45,17 @@
   --glow-m:    0 0 24px rgba(244, 114, 182, 0.35);
   --glow-c:    0 0 20px rgba(34, 211, 238, 0.30);
 
+  /* ── الخطوط ────────────────────────────────────────
+     `--mono` للأرقام والتسميات اللاتينية. وهي **لا** تُستعمل لنصّ عربي،
+     ولو بدت مناسبة: IBM Plex Mono بلا حرف عربي، فيسقط العربي على خط
+     النظام الأحادي — Courier غالبًا — أو يُخلط بخطين في الكلمة الواحدة.
+     والخلط عطب دقيق يصعب تشخيصه: الحروف تأتي من Plex Sans Arabic
+     و**المسافة** من Plex Mono، ومسافة الأحادي أعرض، فتظهر «كلمة  السر»
+     بفجوة مضاعفة بلا سبب ظاهر في النص.
+     ولهذا العربي في السلسلة احتياطًا فقط (رقم داخل تسمية عربية)، والقاعدة
+     أن التسميات العربية تُكتب بـ`--ar` والإنجليزية بـ`--mono`. */
   --ar:   "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  --mono: "IBM Plex Mono", "IBM Plex Sans Arabic", ui-monospace, "SFMono-Regular", monospace;
 
   --rail: 76px;
   --bar: 58px;
@@ -116,13 +125,26 @@ body {
 
 /* ── ذرّات مشتركة ─────────────────────────────────── */
 
+/* المسافة بين الحروف لاتينية، لا عربية.
+   `letter-spacing` في اللاتيني أناقة: حروف منفصلة أصلًا، فزيادة المسافة
+   تعطي التسمية هيبة. وفي العربي **عطب**: الحروف موصولة، والمسافة تشقّ
+   الوصلة نفسها فتخرج «المواعيد» م و ا ع ي د — كلمة ممزّقة لا مُنسَّقة.
+   ولا يُصلحها تقليل المقدار، لأن العيب في النوع لا في الكمية.
+
+   فالقاعدة هنا: التتبّع يُكتب تحت `:lang(en)` دائمًا. والصفحة العربية
+   `lang="ar"` فلا يمسّها، والإنجليزية `lang="en"` فيعود التتبّع كاملًا
+   بلا سطر شرط واحد في الكود — تبديل اللغة وحده يشغّله ويطفئه. وما بقي
+   لاتينيًا داخل الصفحة العربية (الاسم، الأرقام) يُعلَّم `lang="en"` عنده. */
+
+
 .label {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-family: var(--ar);
+  font-size: 10.5px;
+  font-weight: 500;
   text-transform: uppercase;
   color: var(--dust);
 }
+.label:lang(en) { font-family: var(--mono); font-size: 10px; font-weight: 400; letter-spacing: 0.16em; }
 
 .ltr { direction: ltr; unicode-bidi: isolate; font-family: var(--mono); }
 .num { font-family: var(--mono); font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; display: inline-block; }
@@ -171,9 +193,9 @@ button:disabled { cursor: not-allowed; opacity: 0.45; }
 a.btn { text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
 
 .btn {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
+  font-family: var(--ar);
+  font-size: 12.5px;
+  font-weight: 500;
   text-transform: uppercase;
   padding: 9px 16px;
   border-radius: var(--r-s);
@@ -182,6 +204,7 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; justif
   color: var(--bone);
   transition: background 0.2s, box-shadow 0.2s, transform 0.15s var(--ease);
 }
+.btn:lang(en) { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0.12em; }
 .btn:hover:not(:disabled) { background: rgba(168, 85, 247, 0.16); box-shadow: var(--glow-v); }
 .btn:active:not(:disabled) { transform: translateY(1px); }
 
@@ -204,13 +227,14 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; justif
 .field { display: block; margin-bottom: 12px; }
 .field > span {
   display: block;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-family: var(--ar);
+  font-size: 11px;
+  font-weight: 500;
   text-transform: uppercase;
   color: var(--dust);
   margin-bottom: 5px;
 }
+.field > span:lang(en) { font-family: var(--mono); font-size: 10px; font-weight: 400; letter-spacing: 0.14em; }
 
 input, textarea, select {
   width: 100%;
@@ -242,15 +266,15 @@ option { background: var(--panel); }
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  padding: 3px 8px;
+  font-family: var(--ar);
+  font-size: 11px;
+  padding: 3px 9px;
   border-radius: 999px;
   border: 1px solid var(--line);
   color: var(--muted);
   white-space: nowrap;
 }
+.chip:lang(en) { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; }
 .chip.him { color: var(--him); border-color: rgba(168, 85, 247, 0.4); background: rgba(168, 85, 247, 0.08); }
 .chip.her { color: var(--her); border-color: rgba(244, 114, 182, 0.4); background: rgba(244, 114, 182, 0.08); }
 .chip.both { color: var(--cyan); border-color: rgba(34, 211, 238, 0.35); background: rgba(34, 211, 238, 0.07); }

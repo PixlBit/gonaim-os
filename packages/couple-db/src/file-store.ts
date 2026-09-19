@@ -90,6 +90,14 @@ export class FileStore implements Store {
     return id;
   }
 
+  async putPhotoAs(id: string, photo: Photo): Promise<boolean> {
+    if (!safeId(id)) throw new Error("bad_id");
+    const target = join(this.dir, PHOTOS, id);
+    if (existsSync(target)) return false;
+    await writeFile(target, photo.bytes, { mode: 0o600 });
+    return true;
+  }
+
   async getPhoto(id: string): Promise<Photo | null> {
     if (!safeId(id)) return null;
     const ext = id.slice(id.lastIndexOf(".") + 1);

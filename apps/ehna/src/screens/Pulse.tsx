@@ -1,6 +1,7 @@
-import { arDate, arDayDate, arSpan, arTime, short } from "@gonaim/couple";
+import { arDate, arDayDate, arSpan, arTime, greeting, short } from "@gonaim/couple";
 import { useSpace } from "../store.js";
 import { Empty, Money, Ring, Tile } from "../ui/bits.js";
+import { Night } from "../ui/night.js";
 import type { ScreenId } from "../App.js";
 
 /**
@@ -12,11 +13,34 @@ import type { ScreenId } from "../App.js";
  */
 export function Pulse({ go }: { go: (id: ScreenId) => void }) {
   const { space, report, you, them } = useSpace();
-  const { countdown, money, nest, missions, life, attention } = report;
+  const { countdown, money, nest, missions, life, attention, night } = report;
+  // الساعة من جهاز القارئ: الخادم قد يكون في منطقة زمنية أخرى، ومن يفتح
+  // المنصة الساعة ١١ مساءً لا يليق أن تُقال له «صباح الخير».
+  const hello = greeting(space, report.viewer, new Date().getHours());
   const next = countdown.next ?? countdown.wedding;
 
   return (
     <>
+      <div className="hello rise">
+        <span className="h">{hello.text.ar}</span>
+        {report.anniversary && <span className="ann">{report.anniversary.line.ar}</span>}
+      </div>
+
+      {report.onThisDay.length > 0 && (
+        <section className="panel onthisday rise">
+          <div className="label">في مثل النهارده</div>
+          <div className="rows" style={{ gap: 6, marginTop: 8 }}>
+            {report.onThisDay.map((m) => (
+              <button key={m.id} className="otd-line" onClick={() => go("memories")}>
+                <span className="y">{m.years === 1 ? "سنة" : m.years === 2 ? "سنتين" : `${m.years} سنين`}</span>
+                <span className="t">{m.title}</span>
+                <span className="a">↖</span>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="panel hot hero rise">
         <div>
           <div className="label">{next ? next.title : "لسه مفيش تاريخ"}</div>
@@ -74,6 +98,8 @@ export function Pulse({ go }: { go: (id: ScreenId) => void }) {
           />
         )}
       </section>
+
+      {night && <Night plan={night} />}
 
       <section className="block">
         <div className="head"><span className="label">الأرقام</span><hr /></div>
