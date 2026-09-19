@@ -1,5 +1,6 @@
 import type { Space } from "./types.js";
 import { addDays, arDayDate, day, daysBetween, weekKey } from "./dates.js";
+import { T, enCount, enDayDate, type Text } from "./text.js";
 
 /**
  * الإيقاع — الأسابيع الجاية، ونبض العلاقة.
@@ -22,15 +23,15 @@ import { addDays, arDayDate, day, daysBetween, weekKey } from "./dates.js";
 export interface WeekLoad {
   /** إثنين الأسبوع — YYYY-MM-DD. */
   week: string;
-  label: string;
+  label: Text;
   /** 0..100 نسبةً إلى سعتكم المقاسة. */
   score: number;
   appointments: number;
   tasksDue: number;
   criticalDue: number;
   milestones: string[];
-  /** ما يغلب على الأسبوع، بجملة. */
-  note: string;
+  /** ما يغلب على الأسبوع، بجملة — باللغتين. */
+  note: Text;
 }
 
 export interface Forecast {
@@ -80,7 +81,8 @@ export function forecast(space: Space, todayStr: string, velocity: number): Fore
 
     weeks.push({
       week: start,
-      label: arDayDate(start).replace(/^\S+\s/, ""),
+      // بلا اسم اليوم: كلها إثنين، فذكره في ثمانية صفوف حشو
+      label: T(arDayDate(start).replace(/^\S+\s/, ""), enDayDate(start).replace(/^\S+\s/, "")),
       score,
       appointments,
       tasksDue: due.length,
@@ -100,13 +102,18 @@ export function forecast(space: Space, todayStr: string, velocity: number): Fore
   return { weeks, peak: peak && peak.score >= 60 ? peak : null, calm, backlog, capacity };
 }
 
-function noteFor(w: { appointments: number; due: number; milestones: string[]; backlog: number }): string {
-  if (w.milestones.length > 0) return w.milestones.join(" · ");
-  const bits: string[] = [];
-  if (w.appointments > 0) bits.push(`${w.appointments} ميعاد`);
-  if (w.due > 0) bits.push(`${w.due} مهمة`);
-  if (w.backlog > 0) bits.push(`${w.backlog} متأخرة`);
-  return bits.length > 0 ? bits.join(" · ") : "فاضي";
+function noteFor(w: { appointments: number; due: number; milestones: string[]; backlog: number }): Text {
+  // المحطة تبتلع الأسبوع، فاسمها وحده أصدق من عدّ ما حولها
+  if (w.milestones.length > 0) {
+    const joined = w.milestones.join(" · ");
+    return T(joined, joined);
+  }
+  const ar: string[] = [];
+  const en: string[] = [];
+  if (w.appointments > 0) { ar.push(`${w.appointments} ميعاد`); en.push(enCount(w.appointments, "appointment")); }
+  if (w.due > 0) { ar.push(`${w.due} مهمة`); en.push(enCount(w.due, "task")); }
+  if (w.backlog > 0) { ar.push(`${w.backlog} متأخرة`); en.push(`${w.backlog} overdue`); }
+  return ar.length > 0 ? T(ar.join(" · "), en.join(" · ")) : T("فاضي", "clear");
 }
 
 /* ── نبض العلاقة ──────────────────────────────────── */
@@ -120,7 +127,7 @@ export interface Heartbeat {
   /** أطول فترة بين ذكريتين متتاليتين — بالأيام. */
   longestGap: number | null;
   verdict: "warm" | "busy" | "cold" | "unknown";
-  line: string;
+  line: Text;
 }
 
 export function heartbeat(space: Space, todayStr: string): Heartbeat {
@@ -174,11 +181,17 @@ export function heartbeat(space: Space, todayStr: string): Heartbeat {
       : careShare >= 35 ? "warm"
         : careShare >= 15 ? "busy" : "cold";
 
-  const line =
-    verdict === "unknown" ? "لسه مفيش نشاط كفاية عشان يتقاس."
-      : verdict === "warm" ? `${careShare}٪ من نشاطكم الشهرين دول كان ليكم إنتوا، مش للتجهيز.`
-        : verdict === "busy" ? `${careShare}٪ بس من نشاطكم كان شخصي — الباقي كله تجهيز.`
-          : `${careShare}٪ بس من نشاطكم كان شخصي. التجهيز واخد المساحة كلها.`;
+  const line: Text =
+    verdict === "unknown"
+      ? T("لسه مفيش نشاط كفاية عشان يتقاس.", "Not enough activity yet to measure.")
+      : verdict === "warm"
+        ? T(`${careShare}٪ من نشاطكم الشهرين دول كان ليكم إنتوا، مش للتجهيز.`,
+            `${careShare}% of the last two months was for the two of you, not the preparations.`)
+        : verdict === "busy"
+          ? T(`${careShare}٪ بس من نشاطكم كان شخصي — الباقي كله تجهيز.`,
+              `Only ${careShare}% of your activity was personal — the rest was all preparation.`)
+          : T(`${careShare}٪ بس من نشاطكم كان شخصي. التجهيز واخد المساحة كلها.`,
+              `Only ${careShare}% of your activity was personal. The preparations have taken all the room.`);
 
   return { weeks, careShare, sinceCare, longestGap, verdict, line };
 }

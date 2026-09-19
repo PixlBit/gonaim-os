@@ -1,5 +1,6 @@
 import type { PersonKey, Space, Traits } from "./types.js";
 import { day, daysBetween } from "./dates.js";
+import { T, enCount, type Text } from "./text.js";
 
 /**
  * أنماط الشخصية.
@@ -30,13 +31,13 @@ export type AxisId =
 
 export interface Axis {
   id: AxisId;
-  name: string;
+  name: Text;
   /** 0..100 — أو `null` حين لا تكفي البيانات. الصفر ليس بديلًا عن المجهول. */
   score: number | null;
   /** حجم العيّنة التي بُني عليها الرقم. */
   n: number;
   /** جملة تقول من أين جاء الرقم — بلا هذه الجملة الرقم ادّعاء. */
-  evidence: string;
+  evidence: Text;
 }
 
 export interface Persona {
@@ -49,7 +50,7 @@ export interface Persona {
   /** الساعة التي يظهر فيها أكثر من غيرها، أو `null`. */
   peakHour: number | null;
   /** أبرز ما يميّزه عن الطرف الآخر، بلغة الوصف لا الحكم. */
-  signature: string | null;
+  signature: Text | null;
   traits: Traits;
   /** عدد الأفعال المسجَّلة له — أساس الثقة في كل ما سبق. */
   actions: number;
@@ -58,16 +59,16 @@ export interface Persona {
 /** أقل عيّنة يُقبل عندها رقم. أقل من ذلك وصف حظ لا نمط. */
 const MIN = 4;
 
-const NAMES: Record<AxisId, string> = {
-  initiative: "المبادرة",
-  followThrough: "الإقفال",
-  spending: "الإنفاق",
-  responsiveness: "الرد",
-  care: "الرعاية",
-  planning: "التخطيط",
+const NAMES: Record<AxisId, Text> = {
+  initiative:     T("المبادرة", "Initiative"),
+  followThrough:  T("الإقفال",  "Follow-through"),
+  spending:       T("الإنفاق",  "Spending"),
+  responsiveness: T("الرد",     "Responsiveness"),
+  care:           T("الرعاية",  "Care"),
+  planning:       T("التخطيط",  "Planning"),
 };
 
-function axis(id: AxisId, score: number | null, n: number, evidence: string): Axis {
+function axis(id: AxisId, score: number | null, n: number, evidence: Text): Axis {
   return { id, name: NAMES[id], score: score === null ? null : clamp(score), n, evidence };
 }
 
@@ -148,47 +149,62 @@ export function readPersona(space: Space, key: PersonKey): Persona {
   // أسبوعان أو أكثر = 100، ونفس اليوم = 0
   const planScore = medianHorizon === null ? null : Math.min(medianHorizon, 14) / 14 * 100;
 
+  const openedAll = mineCreated + theirsCreated;
+  const closedAll = mineClosed + theirsClosed;
+  const careAll = careActs + logisticActs;
+
   const axes: Axis[] = [
-    axis("initiative", share(mineCreated, theirsCreated), mineCreated + theirsCreated,
-      mineCreated + theirsCreated === 0
-        ? "لسه محدش زوّد حاجة."
-        : `فتح ${mineCreated} سطر من ${mineCreated + theirsCreated}.`),
+    axis("initiative", share(mineCreated, theirsCreated), openedAll,
+      openedAll === 0
+        ? T("لسه محدش زوّد حاجة.", "Nobody has added anything yet.")
+        : T(`فتح ${mineCreated} سطر من ${openedAll}.`,
+            `Opened ${mineCreated} of ${openedAll} lines.`)),
 
     axis("followThrough",
-      mineClosed + theirsClosed < MIN ? null : share(mineClosed, theirsClosed),
-      mineClosed + theirsClosed,
-      mineClosed + theirsClosed < MIN
-        ? `${mineClosed + theirsClosed} مهمة مقفولة بس — لسه بدري على نمط.`
-        : `قفل ${mineClosed} مهمة من ${mineClosed + theirsClosed}` +
-          (medianLag === null ? "." : `، ومتوسط ${Math.round(medianLag)} يوم من الفتح للإقفال.`)),
+      closedAll < MIN ? null : share(mineClosed, theirsClosed),
+      closedAll,
+      closedAll < MIN
+        ? T(`${closedAll} مهمة مقفولة بس — لسه بدري على نمط.`,
+            `Only ${enCount(closedAll, "task")} closed — too early for a pattern.`)
+        : T(`قفل ${mineClosed} مهمة من ${closedAll}` +
+              (medianLag === null ? "." : `، ومتوسط ${Math.round(medianLag)} يوم من الفتح للإقفال.`),
+            `Closed ${mineClosed} of ${closedAll}` +
+              (medianLag === null ? "." : `, a median of ${enCount(Math.round(medianLag), "day")} from open to close.`))),
 
     axis("spending", paid.length < 3 ? null : spendScore, paid.length,
       paid.length < 3
-        ? `${paid.length} حاجة بسعر متوقع ومدفوع — محتاج تلاتة عالأقل.`
-        : avgDrift === null ? ""
+        ? T(`${paid.length} حاجة بسعر متوقع ومدفوع — محتاج تلاتة عالأقل.`,
+            `${enCount(paid.length, "item")} with both an estimate and a price — three is the minimum.`)
+        : avgDrift === null ? T("", "")
         : avgDrift > 0.02
-          ? `بيدفع أعلى من تقديره بـ${Math.round(avgDrift * 100)}٪ في المتوسط.`
+          ? T(`بيدفع أعلى من تقديره بـ${Math.round(avgDrift * 100)}٪ في المتوسط.`,
+              `Pays ${Math.round(avgDrift * 100)}% above their own estimate on average.`)
           : avgDrift < -0.02
-            ? `بينزل عن تقديره بـ${Math.round(Math.abs(avgDrift) * 100)}٪ في المتوسط.`
-            : "بيدفع تقريبًا زي ما قدّر."),
+            ? T(`بينزل عن تقديره بـ${Math.round(Math.abs(avgDrift) * 100)}٪ في المتوسط.`,
+                `Comes in ${Math.round(Math.abs(avgDrift) * 100)}% under their own estimate on average.`)
+            : T("بيدفع تقريبًا زي ما قدّر.", "Pays about what they estimated.")),
 
     axis("responsiveness", waits.length < 3 ? null : replyScore, waits.length,
       waits.length < 3
-        ? "لسه مفيش رسايل مقروءة كفاية."
-        : medianWait === null ? ""
-        : medianWait < 2 ? "بيقرا في أقل من ساعتين."
-        : `متوسط ${Math.round(medianWait)} ساعة لحد ما يقرا.`),
+        ? T("لسه مفيش رسايل مقروءة كفاية.", "Not enough notes have been read yet.")
+        : medianWait === null ? T("", "")
+        : medianWait < 2
+          ? T("بيقرا في أقل من ساعتين.", "Reads within two hours.")
+          : T(`متوسط ${Math.round(medianWait)} ساعة لحد ما يقرا.`,
+              `A median of ${enCount(Math.round(medianWait), "hour")} before reading.`)),
 
-    axis("care", careActs + logisticActs < MIN ? null : careScore, careActs + logisticActs,
-      careActs + logisticActs < MIN
-        ? "نشاط قليل لسه."
-        : `${careActs} من ${careActs + logisticActs} من نشاطه كان ذكرى أو رسالة أو حاجة نعملها.`),
+    axis("care", careAll < MIN ? null : careScore, careAll,
+      careAll < MIN
+        ? T("نشاط قليل لسه.", "Not much activity yet.")
+        : T(`${careActs} من ${careAll} من نشاطه كان ذكرى أو رسالة أو حاجة نعملها.`,
+            `${careActs} of ${careAll} of their activity was a memory, a note or a wish.`)),
 
     axis("planning", horizons.length < 3 ? null : planScore, horizons.length,
       horizons.length < 3
-        ? "مفيش مواعيد كفاية بتاريخ."
-        : medianHorizon === null ? ""
-        : `بيحدد المواعيد قبلها بـ${Math.round(medianHorizon)} يوم في المتوسط.`),
+        ? T("مفيش مواعيد كفاية بتاريخ.", "Not enough dated plans yet.")
+        : medianHorizon === null ? T("", "")
+        : T(`بيحدد المواعيد قبلها بـ${Math.round(medianHorizon)} يوم في المتوسط.`,
+            `Sets dates a median of ${enCount(Math.round(medianHorizon), "day")} ahead.`)),
   ];
 
   const hours = new Array<number>(24).fill(0);
@@ -217,21 +233,42 @@ export function readPersona(space: Space, key: PersonKey): Persona {
 }
 
 /** أبرز محور خرج عن التعادل بوضوح — وصفًا لا حكمًا. */
-function signatureOf(axes: Axis[]): string | null {
+function signatureOf(axes: Axis[]): Text | null {
   const scored = axes.filter((a): a is Axis & { score: number } => a.score !== null);
   if (scored.length === 0) return null;
   const top = scored.reduce((best, a) =>
     Math.abs(a.score - 50) > Math.abs(best.score - 50) ? a : best);
-  if (Math.abs(top.score - 50) < 12) return "متوازن في كل المحاور تقريبًا.";
+  if (Math.abs(top.score - 50) < 12) {
+    return T("متوازن في كل المحاور تقريبًا.", "Close to balanced on every axis.");
+  }
 
   const high = top.score > 50;
-  const lines: Record<AxisId, [string, string]> = {
-    initiative: ["بيفتح أغلب اللي بيتكتب هنا.", "بيبني على اللي الطرف التاني بيفتحه."],
-    followThrough: ["أغلب اللي بيتقفل بيتقفل على إيده.", "بيفتح أكتر مما بيقفل."],
-    spending: ["بيدفع فوق تقديره غالبًا.", "بيدفع تحت تقديره غالبًا."],
-    responsiveness: ["بيرد بسرعة.", "بياخد وقته قبل ما يرد."],
-    care: ["أغلب نشاطه في الجانب الشخصي مش التجهيز.", "أغلب نشاطه تجهيز ولوجستيات."],
-    planning: ["بيحجز المواعيد بدري.", "بيقرر قرب الميعاد."],
+  // الإنجليزية بضمير they/them: المنصة لا تعرف ضمير أحد، ولا تخمّنه من اسم.
+  const lines: Record<AxisId, [Text, Text]> = {
+    initiative: [
+      T("بيفتح أغلب اللي بيتكتب هنا.", "Opens most of what gets written here."),
+      T("بيبني على اللي الطرف التاني بيفتحه.", "Builds on what the other one opens."),
+    ],
+    followThrough: [
+      T("أغلب اللي بيتقفل بيتقفل على إيده.", "Most of what closes, closes with them."),
+      T("بيفتح أكتر مما بيقفل.", "Opens more than they close."),
+    ],
+    spending: [
+      T("بيدفع فوق تقديره غالبًا.", "Usually pays above their own estimate."),
+      T("بيدفع تحت تقديره غالبًا.", "Usually pays below their own estimate."),
+    ],
+    responsiveness: [
+      T("بيرد بسرعة.", "Replies quickly."),
+      T("بياخد وقته قبل ما يرد.", "Takes their time before replying."),
+    ],
+    care: [
+      T("أغلب نشاطه في الجانب الشخصي مش التجهيز.", "Most of their activity is personal, not logistics."),
+      T("أغلب نشاطه تجهيز ولوجستيات.", "Most of their activity is preparation and logistics."),
+    ],
+    planning: [
+      T("بيحجز المواعيد بدري.", "Books well ahead."),
+      T("بيقرر قرب الميعاد.", "Decides close to the day."),
+    ],
   };
   const pair = lines[top.id];
   return high ? pair[0] : pair[1];
@@ -250,45 +287,70 @@ function median(values: number[]): number | null {
 
 export const TRAIT_LABELS = {
   loveLanguage: {
-    label: "بحس بالحب لما",
+    label: T("بحس بالحب لما", "I feel loved when"),
     options: {
-      words: "يتقال لي كلام حلو",
-      time: "ناخد وقت لوحدنا",
-      gifts: "يجيب لي حاجة",
-      acts: "يعمل لي حاجة",
-      touch: "نقرب من بعض",
+      words:  T("يتقال لي كلام حلو", "I'm told something kind"),
+      time:   T("ناخد وقت لوحدنا", "we get time alone"),
+      gifts:  T("يجيب لي حاجة", "they bring me something"),
+      acts:   T("يعمل لي حاجة", "they do something for me"),
+      touch:  T("نقرب من بعض", "we're close"),
     },
   },
   decisionStyle: {
-    label: "بقرر",
-    options: { fast: "بسرعة", research: "بعد ما أبحث", consult: "بعد ما أستشير", avoid: "بأجّل القرار" },
+    label: T("بقرر", "I decide"),
+    options: {
+      fast:     T("بسرعة", "quickly"),
+      research: T("بعد ما أبحث", "after I research"),
+      consult:  T("بعد ما أستشير", "after I ask someone"),
+      avoid:    T("بأجّل القرار", "by putting it off"),
+    },
   },
   stressStyle: {
-    label: "لما أتضايق محتاج",
-    options: { talk: "أتكلم", space: "مساحة", fix: "حل عملي", distract: "أغيّر جو" },
+    label: T("لما أتضايق محتاج", "When I'm upset I need"),
+    options: {
+      talk:     T("أتكلم", "to talk"),
+      space:    T("مساحة", "space"),
+      fix:      T("حل عملي", "a practical fix"),
+      distract: T("أغيّر جو", "a change of scene"),
+    },
   },
   energyTime: {
-    label: "أحسن وقت عندي",
-    options: { morning: "الصبح", day: "بالنهار", night: "بالليل" },
+    label: T("أحسن وقت عندي", "My best hours are"),
+    options: {
+      morning: T("الصبح", "the morning"),
+      day:     T("بالنهار", "the day"),
+      night:   T("بالليل", "the night"),
+    },
   },
   conflict: {
-    label: "في الخلاف",
-    options: { direct: "بقولها في وشه", soft: "بقولها بهدوء", delay: "بسكت وأقولها بعدين" },
+    label: T("في الخلاف", "In an argument"),
+    options: {
+      direct: T("بقولها في وشه", "I say it to their face"),
+      soft:   T("بقولها بهدوء", "I say it gently"),
+      delay:  T("بسكت وأقولها بعدين", "I go quiet and say it later"),
+    },
   },
   planning: {
-    label: "مع الخطط",
-    options: { planner: "بخطط", flow: "بمشي مع الموج" },
+    label: T("مع الخطط", "With plans"),
+    options: {
+      planner: T("بخطط", "I plan"),
+      flow:    T("بمشي مع الموج", "I go with the flow"),
+    },
   },
   money: {
-    label: "مع الفلوس",
-    options: { saver: "بقتصد", balanced: "متوازن", spender: "بصرف" },
+    label: T("مع الفلوس", "With money"),
+    options: {
+      saver:    T("بقتصد", "I save"),
+      balanced: T("متوازن", "I'm balanced"),
+      spender:  T("بصرف", "I spend"),
+    },
   },
 } as const;
 
 export type ChoiceTrait = keyof typeof TRAIT_LABELS;
 
-export function traitText(trait: ChoiceTrait, value: string | undefined): string | null {
+export function traitText(trait: ChoiceTrait, value: string | undefined): Text | null {
   if (!value) return null;
-  const options = TRAIT_LABELS[trait].options as Record<string, string>;
+  const options = TRAIT_LABELS[trait].options as Record<string, Text>;
   return options[value] ?? null;
 }

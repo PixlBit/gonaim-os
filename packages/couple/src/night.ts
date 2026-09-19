@@ -1,7 +1,7 @@
 import type { PersonKey, Space, Wish } from "./types.js";
 import type { Forecast, Heartbeat } from "./rhythm.js";
 import { addDays, arDayDate, arSpan, day, daysBetween, weekKey } from "./dates.js";
-import { T, enDayDate, enSpan, type Text } from "./text.js";
+import { T, bdi, enDayDate, enSpan, type Text } from "./text.js";
 
 /**
  * ليلتنا.
@@ -103,7 +103,8 @@ export function nightPlan(
   }
 
   if (wish) {
-    const who = space.people[wish.by].name;
+    // الاسم يُعزَل: قد يكون بالعربية داخل جملة إنجليزية أو العكس
+    const who = bdi(space.people[wish.by].name);
     why.push(T(`${who} كاتباها من ${arSpan(wish.waitingDays)} ولسه ما اتعملتش.`,
                `${who} wrote it ${enSpan(wish.waitingDays)} ago and it is still waiting.`));
   }
@@ -113,6 +114,8 @@ export function nightPlan(
     when: T(arDayDate(date), enDayDate(date)),
     at: `${date}T20:00`,
     wish,
+    // العنوان يذهب إلى حقل الميعاد كما هو (بيانات)، فلا يُعزَل هنا —
+    // العزل للجمل التي تحيط باسم، لا للاسم وحده في حقله.
     title: wish
       ? T(wish.title, wish.title)
       : T("ليلتنا", "Our night"),

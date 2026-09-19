@@ -1,6 +1,6 @@
 import type { PersonKey, Space } from "./types.js";
 import { arDate, daysBetween } from "./dates.js";
-import { T, enDate, enSpan, type Text } from "./text.js";
+import { T, bdi, enDate, enSpan, type Text } from "./text.js";
 import { arSpan } from "./dates.js";
 
 /**
@@ -33,7 +33,7 @@ export interface Greeting {
  * أخرى، ومن يفتح المنصة الساعة ١١ مساءً لا يليق أن تقول له «صباح الخير».
  */
 export function greeting(space: Space, viewer: PersonKey, localHour: number): Greeting {
-  const name = space.people[viewer].name;
+  const name = bdi(space.people[viewer].name);
   const h = Math.max(0, Math.min(23, Math.trunc(localHour)));
 
   if (h < 5)  return { part: "night",   text: T(`لسه صاحي يا ${name}؟`, `Still up, ${name}?`) };
@@ -73,8 +73,8 @@ export function onThisDay(space: Space, todayStr: string): OnThisDay[] {
         date: m.date,
         years,
         line: T(
-          `في مثل النهارده من ${arYears(years)}: ${m.title}`,
-          `On this day ${years === 1 ? "a year" : `${years} years`} ago: ${m.title}`,
+          `في مثل النهارده من ${arYears(years)}: ${bdi(m.title)}`,
+          `On this day ${years === 1 ? "a year" : `${years} years`} ago: ${bdi(m.title)}`,
         ),
       };
     })
@@ -114,8 +114,8 @@ export function nextAnniversary(
   return {
     ...best,
     line: T(
-      `كمان ${arSpan(best.daysAway)} تبقى ${arYears(best.years)} على «${best.title}» — ${arDate(best.date)}.`,
-      `In ${enSpan(best.daysAway)} it is ${best.years === 1 ? "a year" : `${best.years} years`} since “${best.title}” — ${enDate(best.date)}.`,
+      `كمان ${arSpan(best.daysAway)} تبقى ${arYears(best.years)} على «${bdi(best.title)}» — ${arDate(best.date)}.`,
+      `In ${enSpan(best.daysAway)} it is ${best.years === 1 ? "a year" : `${best.years} years`} since “${bdi(best.title)}” — ${enDate(best.date)}.`,
     ),
   };
 }

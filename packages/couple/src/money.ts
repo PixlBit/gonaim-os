@@ -25,6 +25,20 @@ export function short(n: number): string {
   return fmt(n);
 }
 
+/**
+ * نفسها بالإنجليزية: "128.5k" · "1.2M".
+ *
+ * والعتبة واحدة في اللغتين عمدًا (عشرة آلاف، لا ألف): لو اختلفت لرأى
+ * أحدهما رقمًا مختصرًا والآخر كاملًا في نفس البطاقة، وهما ينظران إلى
+ * نفس الشاشة أحيانًا.
+ */
+export function shortEn(n: number): string {
+  const v = Math.abs(n);
+  if (v >= 1_000_000) return `${trim(n / 1_000_000)}M`;
+  if (v >= 10_000) return `${trim(n / 1000)}k`;
+  return fmt(n);
+}
+
 function trim(x: number): string {
   const r = Math.round(x * 10) / 10;
   return Number.isInteger(r) ? String(r) : r.toFixed(1);

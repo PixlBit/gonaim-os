@@ -1,10 +1,11 @@
 import { useState } from "react";
 import {
-  arDate, arSpan, day, daysBetween, fmt, today,
-  type Capsule, type Decision, type Wish, type WishKind, type WishStatus,
+  arDate, arSpan, day, daysBetween, enDate, enSpan, fmt, today,
+  type Capsule, type Decision, type Text, type Wish, type WishKind, type WishStatus,
 } from "@gonaim/couple";
 import { useSpace } from "../store.js";
 import { Confirm, Empty, Field, Sheet, Tabs } from "../ui/bits.js";
+import { useTongue } from "../lang.js";
 
 /**
  * إحنا.
@@ -16,31 +17,32 @@ import { Confirm, Empty, Field, Sheet, Tabs } from "../ui/bits.js";
 
 type Tab = "wishes" | "notes" | "capsules" | "decisions";
 
-const KINDS: Array<{ id: WishKind; name: string; glyph: string }> = [
-  { id: "date", name: "خروجة", glyph: "◈" },
-  { id: "travel", name: "سفر", glyph: "✈" },
-  { id: "experience", name: "تجربة", glyph: "✦" },
-  { id: "habit", name: "عادة", glyph: "◉" },
-  { id: "buy", name: "حاجة نشتريها", glyph: "◇" },
+const KINDS: Array<{ id: WishKind; name: Text; glyph: string }> = [
+  { id: "date",       name: { ar: "خروجة",         en: "A night out" },    glyph: "◈" },
+  { id: "travel",     name: { ar: "سفر",           en: "Travel" },         glyph: "✈" },
+  { id: "experience", name: { ar: "تجربة",         en: "An experience" },  glyph: "✦" },
+  { id: "habit",      name: { ar: "عادة",          en: "A habit" },        glyph: "◉" },
+  { id: "buy",        name: { ar: "حاجة نشتريها",  en: "Something to buy" }, glyph: "◇" },
 ];
 
 export function Us() {
   const { report } = useSpace();
   const [tab, setTab] = useState<Tab>("wishes");
+  const { t } = useTongue();
 
   return (
     <>
-      <h1 className="title">إحنا</h1>
-      <p className="sub">المساحة اللي مش ليها حساب.</p>
+      <h1 className="title">{t("إحنا", "Us")}</h1>
+      <p className="sub">{t("المساحة اللي مش ليها حساب.", "The part of this that nothing is counting.")}</p>
 
       <Tabs
         value={tab}
         onChange={setTab}
         options={[
-          { id: "wishes", label: "حاجاتنا", count: report.life.wishes.someday + report.life.wishes.planned },
-          { id: "notes", label: "رسايل", count: report.life.unreadForMe || undefined },
-          { id: "capsules", label: "للمستقبل", count: report.life.capsulesSealed || undefined },
-          { id: "decisions", label: "قرارات", count: report.life.openDecisions || undefined },
+          { id: "wishes", label: t("حاجاتنا", "Our list"), count: report.life.wishes.someday + report.life.wishes.planned },
+          { id: "notes", label: t("رسايل", "Notes"), count: report.life.unreadForMe || undefined },
+          { id: "capsules", label: t("للمستقبل", "For later"), count: report.life.capsulesSealed || undefined },
+          { id: "decisions", label: t("قرارات", "Decisions"), count: report.life.openDecisions || undefined },
         ]}
       />
 
@@ -56,6 +58,8 @@ export function Us() {
 
 function Wishes() {
   const { space, act, busy } = useSpace();
+  const { lang, t, s } = useTongue();
+  const date = (d: string) => (lang === "ar" ? arDate(d) : enDate(d));
   const [adding, setAdding] = useState(false);
   const [kill, setKill] = useState<Wish | null>(null);
   const order: WishStatus[] = ["planned", "someday", "done"];
@@ -66,10 +70,14 @@ function Wishes() {
       <div className="row" style={{ justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <p className="sub" style={{ margin: 0, flex: 1 }}>
           {list.length > 0
-            ? `${list.filter((w) => w.status === "done").length} من ${list.length} عملتوها.`
-            : "حاجات صغيرة وكبيرة، مش لازم تكون كلها كبيرة."}
+            ? t(`${list.filter((w) => w.status === "done").length} من ${list.length} عملتوها.`,
+                `${list.filter((w) => w.status === "done").length} of ${list.length} done.`)
+            : t("حاجات صغيرة وكبيرة، مش لازم تكون كلها كبيرة.",
+                "Small things and big ones — they do not all have to be big.")}
         </p>
-        <button className="btn primary" style={{ flex: "0 0 auto" }} onClick={() => setAdding(true)}>+ حاجة نعملها</button>
+        <button className="btn primary" style={{ flex: "0 0 auto" }} onClick={() => setAdding(true)}>
+          + {t("حاجة نعملها", "Something to do")}
+        </button>
       </div>
 
       {list.length > 0 ? (
@@ -85,19 +93,19 @@ function Wishes() {
                     type: "wish.update", id: w.id,
                     patch: { status: w.status === "done" ? "someday" : "done" },
                   })}
-                  aria-label="عملناها"
+                  aria-label={t("عملناها", "We did it")}
                 >✓</button>
                 <span style={{ color: "var(--violet-hi)" }}>{kind?.glyph}</span>
                 <div className="grow">
                   <div className="t">
-                    {w.title}
-                    {w.status === "planned" && <span className="chip warn">متخططة</span>}
+                    <bdi>{w.title}</bdi>
+                    {w.status === "planned" && <span className="chip warn">{t("متخططة", "planned")}</span>}
                     {w.cost !== undefined && <span className="chip">{fmt(w.cost)} {space.settings.currency}</span>}
                   </div>
                   <div className="m">
-                    {kind?.name}
-                    {w.plannedFor ? ` · ${arDate(w.plannedFor)}` : ""}
-                    {w.doneAt ? ` · عملناها ${arDate(w.doneAt)}` : ""}
+                    {kind && s(kind.name)}
+                    {w.plannedFor ? ` · ${date(w.plannedFor)}` : ""}
+                    {w.doneAt ? t(` · عملناها ${arDate(w.doneAt)}`, ` · done ${enDate(w.doneAt)}`) : ""}
                     {w.note ? ` · ${w.note}` : ""}
                   </div>
                 </div>
@@ -110,26 +118,29 @@ function Wishes() {
                       patch: { status: w.status === "planned" ? "someday" : "planned" },
                     })}
                   >
-                    {w.status === "planned" ? "رجّعها" : "خطّطها"}
+                    {w.status === "planned" ? t("رجّعها", "Unplan") : t("خطّطها", "Plan it")}
                   </button>
                 )}
-                <button className="iconbtn danger" onClick={() => setKill(w)} aria-label="امسح">✕</button>
+                <button className="iconbtn danger" onClick={() => setKill(w)} aria-label={t("امسح", "Delete")}>✕</button>
               </div>
             );
           })}
         </div>
       ) : (
         <Empty
-          title="القائمة فاضية"
-          note="حاجات صغيرة وكبيرة: فطار في مكان جديد، رحلة، عادة نمشي عليها كل أسبوع."
-          action={<button className="btn primary" onClick={() => setAdding(true)}>زوّدوا أول حاجة</button>}
+          title={t("القائمة فاضية", "The list is empty")}
+          note={t("حاجات صغيرة وكبيرة: فطار في مكان جديد، رحلة، عادة نمشي عليها كل أسبوع.",
+                  "Small things and big ones: breakfast somewhere new, a trip, a habit you keep every week.")}
+          action={<button className="btn primary" onClick={() => setAdding(true)}>
+            {t("زوّدوا أول حاجة", "Add the first one")}
+          </button>}
         />
       )}
 
       {adding && <WishSheet onClose={() => setAdding(false)} />}
       {kill && (
         <Confirm
-          text={`هتشيل «${kill.title}» من القائمة.`}
+          text={t(`هتشيل «${kill.title}» من القائمة.`, `“${kill.title}” will come off the list.`)}
           onNo={() => setKill(null)}
           onYes={() => { void act({ type: "wish.remove", id: kill.id }); setKill(null); }}
         />
@@ -140,6 +151,7 @@ function Wishes() {
 
 function WishSheet({ onClose }: { onClose: () => void }) {
   const { space, act, busy } = useSpace();
+  const { t, s } = useTongue();
   const [title, setTitle] = useState("");
   const [kind, setKind] = useState<WishKind>("experience");
   const [note, setNote] = useState("");
@@ -147,28 +159,29 @@ function WishSheet({ onClose }: { onClose: () => void }) {
   const [cost, setCost] = useState("");
 
   return (
-    <Sheet title="حاجة نعملها مع بعض" onClose={onClose}>
-      <Field label="إيه هي">
-        <input value={title} onChange={(e) => setTitle(e.target.value)} autoFocus placeholder="نطلع البحر لوحدنا" />
+    <Sheet title={t("حاجة نعملها مع بعض", "Something to do together")} onClose={onClose}>
+      <Field label={t("إيه هي", "What is it")}>
+        <input value={title} onChange={(e) => setTitle(e.target.value)} autoFocus
+               placeholder={t("نطلع البحر لوحدنا", "Go to the sea, just us")} />
       </Field>
       <div className="row">
-        <Field label="النوع">
+        <Field label={t("النوع", "Kind")}>
           <select value={kind} onChange={(e) => setKind(e.target.value as WishKind)}>
-            {KINDS.map((k) => <option key={k.id} value={k.id}>{k.name}</option>)}
+            {KINDS.map((k) => <option key={k.id} value={k.id}>{s(k.name)}</option>)}
           </select>
         </Field>
-        <Field label="ميعاد مبدئي">
+        <Field label={t("ميعاد مبدئي", "A rough date")}>
           <input type="date" value={plannedFor} onChange={(e) => setPlannedFor(e.target.value)} dir="ltr" />
         </Field>
-        <Field label={`تكلفة تقريبية (${space.settings.currency})`}>
+        <Field label={t(`تكلفة تقريبية (${space.settings.currency})`, `Rough cost (${space.settings.currency})`)}>
           <input value={cost} onChange={(e) => setCost(e.target.value)} inputMode="numeric" dir="ltr" placeholder="—" />
         </Field>
       </div>
-      <Field label="تفاصيل">
+      <Field label={t("تفاصيل", "Details")}>
         <textarea value={note} onChange={(e) => setNote(e.target.value)} />
       </Field>
       <div className="row" style={{ marginTop: 6 }}>
-        <button className="btn ghost" onClick={onClose}>إلغاء</button>
+        <button className="btn ghost" onClick={onClose}>{t("إلغاء", "Cancel")}</button>
         <button
           className="btn primary"
           disabled={busy || !title.trim()}
@@ -181,7 +194,7 @@ function WishSheet({ onClose }: { onClose: () => void }) {
             });
             if (ok) onClose();
           }}
-        >زوّد</button>
+        >{t("زوّد", "Add")}</button>
       </div>
     </Sheet>
   );
@@ -191,6 +204,7 @@ function WishSheet({ onClose }: { onClose: () => void }) {
 
 function Notes() {
   const { space, me, act, busy } = useSpace();
+  const { lang, t } = useTongue();
   const [body, setBody] = useState("");
   const notes = [...space.notes].sort((a, b) => a.at.localeCompare(b.at));
 
@@ -198,7 +212,7 @@ function Notes() {
     <>
       <div className="panel" style={{ padding: 16, marginBottom: 16 }}>
         <div className="thread" style={{ maxHeight: 460, overflowY: "auto", paddingInlineEnd: 4 }}>
-          {notes.length === 0 && <p className="sub" style={{ margin: 0 }}>مفيش رسايل لسه. اكتب حاجة.</p>}
+          {notes.length === 0 && <p className="sub" style={{ margin: 0 }}>{t("مفيش رسايل لسه. اكتب حاجة.", "No notes yet. Write something.")}</p>}
           {notes.map((n) => {
             const mine = n.from === me;
             return (
@@ -206,22 +220,22 @@ function Notes() {
                 {n.body}
                 <div className="meta">
                   <span>{space.people[n.from].name}</span>
-                  <span>{arDate(n.at)}</span>
-                  {mine && <span>{n.readAt ? "اتقرت" : "لسه"}</span>}
+                  <span>{lang === "ar" ? arDate(n.at) : enDate(n.at)}</span>
+                  {mine && <span>{n.readAt ? t("اتقرت", "read") : t("لسه", "unread")}</span>}
                   {!mine && !n.readAt && (
                     <button
                       className="btn tiny ghost"
                       style={{ padding: "2px 8px" }}
                       disabled={busy}
                       onClick={() => void act({ type: "note.read", id: n.id })}
-                    >علّم مقروءة</button>
+                    >{t("علّم مقروءة", "Mark read")}</button>
                   )}
                   {mine && (
                     <button
                       className="iconbtn danger"
                       style={{ padding: "0 4px" }}
                       onClick={() => void act({ type: "note.remove", id: n.id })}
-                      aria-label="امسح"
+                      aria-label={t("امسح", "Delete")}
                     >✕</button>
                   )}
                 </div>
@@ -235,7 +249,7 @@ function Notes() {
         <textarea
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          placeholder="اكتب حاجة تفضل مكتوبة…"
+          placeholder={t("اكتب حاجة تفضل مكتوبة…", "Write something that stays written…")}
           style={{ minHeight: 70, flex: "1 1 320px" }}
         />
         <button
@@ -243,7 +257,7 @@ function Notes() {
           style={{ flex: "0 0 auto", alignSelf: "flex-end" }}
           disabled={busy || !body.trim()}
           onClick={async () => { if (await act({ type: "note.send", body })) setBody(""); }}
-        >ابعت</button>
+        >{t("ابعت", "Send")}</button>
       </div>
     </>
   );
@@ -254,39 +268,55 @@ function Notes() {
 function Capsules() {
   const { space, me, report, act, busy } = useSpace();
   const [writing, setWriting] = useState(false);
-  const t = today();
+  const { lang, t } = useTongue();
+  const todayStr = today();
+  const date = (d: string) => (lang === "ar" ? arDate(d) : enDate(d));
+  const span = (n: number) => (lang === "ar" ? arSpan(n) : enSpan(n));
   const list = [...space.capsules].sort((a, b) => a.openAt.localeCompare(b.openAt));
 
   return (
     <>
       <div className="row" style={{ justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <p className="sub" style={{ margin: 0, flex: 1 }}>
-          رسالة تتكتب النهارده وتتقفل لحد يوم تختاره.
-          {report.life.nextCapsule && ` أقرب واحدة بعد ${arSpan(report.life.nextCapsule.daysAway)}.`}
+          {t("رسالة تتكتب النهارده وتتقفل لحد يوم تختاره.",
+             "A letter written today and sealed until a day you choose.")}
+          {report.life.nextCapsule
+            && t(` أقرب واحدة بعد ${arSpan(report.life.nextCapsule.daysAway)}.`,
+                 ` The next one opens in ${enSpan(report.life.nextCapsule.daysAway)}.`)}
         </p>
-        <button className="btn primary" style={{ flex: "0 0 auto" }} onClick={() => setWriting(true)}>+ رسالة</button>
+        <button className="btn primary" style={{ flex: "0 0 auto" }} onClick={() => setWriting(true)}>
+          + {t("رسالة", "Letter")}
+        </button>
       </div>
 
       {list.length > 0 ? (
         <div className="stagger">
           {list.map((c) => {
-            const ready = c.openAt <= t;
+            const ready = c.openAt <= todayStr;
             const opened = Boolean(c.openedAt);
             // الخادم لا يرسل نص المقفولة أصلًا؛ وما وصل يُعرَض لكاتبه أو بعد فتحها.
             // الجاهزة غير المفتوحة تبقى مقفولة في الشاشة عمدًا — تُفتح مرة واحدة، سوا.
             const readable = opened || c.from === me;
             return (
               <div key={c.id} className={`panel capsule${ready ? "" : " locked"}`} style={{ marginBottom: 10 }}>
-                <h4>{c.title}</h4>
+                <h4><bdi>{c.title}</bdi></h4>
                 <div className="when">
-                  {opened ? `اتفتحت ${arDate(c.openedAt ?? "")}` : ready ? "جه ميعادها" : `بتتفتح ${arDate(c.openAt)} — بعد ${arSpan(daysBetween(t, c.openAt))}`}
-                  {` · من ${space.people[c.from].name}`}
+                  {opened
+                    ? t(`اتفتحت ${arDate(c.openedAt ?? "")}`, `Opened ${enDate(c.openedAt ?? "")}`)
+                    : ready
+                      ? t("جه ميعادها", "Due to open")
+                      : t(`بتتفتح ${arDate(c.openAt)} — بعد ${arSpan(daysBetween(todayStr, c.openAt))}`,
+                          `Opens ${enDate(c.openAt)} — in ${enSpan(daysBetween(todayStr, c.openAt))}`)}
+                  {t(` · من ${space.people[c.from].name}`, ` · from ${space.people[c.from].name}`)}
                 </div>
 
                 {readable && c.body ? (
                   <div className="text">{c.body}</div>
                 ) : (
-                  <div className="sealed">🔒 مقفولة — نصّها مش موجود على جهازك أصلًا.</div>
+                  <div className="sealed">
+                    🔒 {t("مقفولة — نصّها مش موجود على جهازك أصلًا.",
+                          "Sealed — its text is not on your device at all.")}
+                  </div>
                 )}
 
                 <div className="row" style={{ marginTop: 12, gap: 7 }}>
@@ -296,7 +326,7 @@ function Capsules() {
                       style={{ flex: "0 0 auto" }}
                       disabled={busy}
                       onClick={() => void act({ type: "capsule.open", id: c.id })}
-                    >افتحها</button>
+                    >{t("افتحها", "Open it")}</button>
                   )}
                   {c.from === me && (
                     <button
@@ -304,7 +334,7 @@ function Capsules() {
                       style={{ flex: "0 0 auto" }}
                       disabled={busy}
                       onClick={() => void act({ type: "capsule.remove", id: c.id })}
-                    >امسحها</button>
+                    >{t("امسحها", "Delete it")}</button>
                   )}
                 </div>
               </div>
@@ -313,9 +343,11 @@ function Capsules() {
         </div>
       ) : (
         <Empty
-          title="مفيش رسايل مقفولة"
-          note="اكتب واحدة لأول سنة جواز، وسيبها."
-          action={<button className="btn primary" onClick={() => setWriting(true)}>اكتب واحدة</button>}
+          title={t("مفيش رسايل مقفولة", "No sealed letters")}
+          note={t("اكتب واحدة لأول سنة جواز، وسيبها.", "Write one for your first anniversary, and leave it.")}
+          action={<button className="btn primary" onClick={() => setWriting(true)}>
+            {t("اكتب واحدة", "Write one")}
+          </button>}
         />
       )}
 
@@ -326,31 +358,34 @@ function Capsules() {
 
 function CapsuleSheet({ onClose }: { onClose: () => void }) {
   const { act, busy } = useSpace();
+  const { t } = useTongue();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [openAt, setOpenAt] = useState("");
 
   return (
-    <Sheet title="رسالة للمستقبل" onClose={onClose}>
-      <Field label="العنوان">
-        <input value={title} onChange={(e) => setTitle(e.target.value)} autoFocus placeholder="لأول سنة جواز" />
+    <Sheet title={t("رسالة للمستقبل", "A letter to the future")} onClose={onClose}>
+      <Field label={t("العنوان", "Title")}>
+        <input value={title} onChange={(e) => setTitle(e.target.value)} autoFocus
+               placeholder={t("لأول سنة جواز", "For our first anniversary")} />
       </Field>
-      <Field label="تتفتح إمتى">
+      <Field label={t("تتفتح إمتى", "Opens on")}>
         <input type="date" value={openAt} onChange={(e) => setOpenAt(e.target.value)} dir="ltr" />
       </Field>
-      <Field label="الرسالة">
+      <Field label={t("الرسالة", "The letter")}>
         <textarea value={body} onChange={(e) => setBody(e.target.value)} style={{ minHeight: 200 }} placeholder="…" />
       </Field>
-      <p className="label" style={{ lineHeight: 1.9 }}>
-        قبل اليوم ده، النص مش هيتبعت للطرف التاني من الخادم أصلًا — مش مخفي في الشاشة، مش موجود.
+      <p className="footnote" style={{ lineHeight: 1.9 }}>
+        {t("قبل اليوم ده، النص مش هيتبعت للطرف التاني من الخادم أصلًا — مش مخفي في الشاشة، مش موجود.",
+           "Until that day the server does not send the text to the other of you at all — not hidden on the screen; not there.")}
       </p>
       <div className="row" style={{ marginTop: 10 }}>
-        <button className="btn ghost" onClick={onClose}>إلغاء</button>
+        <button className="btn ghost" onClick={onClose}>{t("إلغاء", "Cancel")}</button>
         <button
           className="btn primary"
           disabled={busy || !title.trim() || !body.trim() || !openAt}
           onClick={async () => { if (await act({ type: "capsule.write", title, body, openAt })) onClose(); }}
-        >اقفلها</button>
+        >{t("اقفلها", "Seal it")}</button>
       </div>
     </Sheet>
   );
@@ -360,6 +395,9 @@ function CapsuleSheet({ onClose }: { onClose: () => void }) {
 
 function Decisions() {
   const { space, me, act, busy } = useSpace();
+  const { lang, t } = useTongue();
+  const date = (d: string) => (lang === "ar" ? arDate(d) : enDate(d));
+  const span = (n: number) => (lang === "ar" ? arSpan(n) : enSpan(n));
   const [asking, setAsking] = useState(false);
   const other = me === "him" ? "her" : "him";
   const list = [...space.decisions].sort((a, b) => Number(Boolean(a.resolvedAt)) - Number(Boolean(b.resolvedAt)));
@@ -368,9 +406,12 @@ function Decisions() {
     <>
       <div className="row" style={{ justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <p className="sub" style={{ margin: 0, flex: 1 }}>
-          القرار مش بيتقفل إلا لما الاتنين يختاروا نفس الحاجة. مفيش أغلبية في اتنين.
+          {t("القرار مش بيتقفل إلا لما الاتنين يختاروا نفس الحاجة. مفيش أغلبية في اتنين.",
+             "A decision only closes when you both pick the same thing. There is no majority in a pair.")}
         </p>
-        <button className="btn primary" style={{ flex: "0 0 auto" }} onClick={() => setAsking(true)}>+ قرار</button>
+        <button className="btn primary" style={{ flex: "0 0 auto" }} onClick={() => setAsking(true)}>
+          + {t("قرار", "Decision")}
+        </button>
       </div>
 
       {list.length > 0 ? (
@@ -378,14 +419,17 @@ function Decisions() {
           {list.map((d) => (
             <div key={d.id} className="panel" style={{ padding: 18, marginBottom: 12 }}>
               <div style={{ display: "flex", gap: 10, alignItems: "baseline" }}>
-                <h3 style={{ margin: 0, fontSize: 16, flex: 1 }}>{d.question}</h3>
+                <h3 style={{ margin: 0, fontSize: 16, flex: 1 }}><bdi>{d.question}</bdi></h3>
                 {d.resolvedAt
-                  ? <span className="chip on">اتفقنا</span>
-                  : <span className="chip warn">مفتوح من {arSpan(daysBetween(day(d.createdAt), today()))}</span>}
+                  ? <span className="chip on">{t("اتفقنا", "agreed")}</span>
+                  : <span className="chip warn">
+                      {t(`مفتوح من ${arSpan(daysBetween(day(d.createdAt), today()))}`,
+                         `open for ${enSpan(daysBetween(day(d.createdAt), today()))}`)}
+                    </span>}
                 <button
                   className="iconbtn danger"
                   onClick={() => void act({ type: "decision.remove", id: d.id })}
-                  aria-label="امسح"
+                  aria-label={t("امسح", "Delete")}
                 >✕</button>
               </div>
 
@@ -414,21 +458,24 @@ function Decisions() {
                 })}
               </div>
 
-              <p className="label" style={{ marginTop: 12 }}>
+              <p className="footnote" style={{ marginTop: 12 }}>
                 {d.resolvedAt
-                  ? `اتحسم ${arDate(d.resolvedAt)}`
+                  ? t(`اتحسم ${arDate(d.resolvedAt)}`, `Settled ${enDate(d.resolvedAt)}`)
                   : d.votes[me]
-                    ? `صوّتّ. مستنيين ${space.people[other].name}.`
-                    : "لسه مصوّتش."}
+                    ? t(`صوّتّ. مستنيين ${space.people[other].name}.`, `You voted. Waiting on ${space.people[other].name}.`)
+                    : t("لسه مصوّتش.", "You have not voted yet.")}
               </p>
             </div>
           ))}
         </div>
       ) : (
         <Empty
-          title="مفيش قرارات مفتوحة"
-          note="القاعة ولا الحديقة؟ الشقة في المعادي ولا المقطم؟ اكتبوه هنا بدل ما يفضل يتقال ويتنسي."
-          action={<button className="btn primary" onClick={() => setAsking(true)}>اسأل سؤال</button>}
+          title={t("مفيش قرارات مفتوحة", "No open decisions")}
+          note={t("القاعة ولا الحديقة؟ الشقة في المعادي ولا المقطم؟ اكتبوه هنا بدل ما يفضل يتقال ويتنسي.",
+                  "The hall or the garden? Maadi or Mokattam? Write it here instead of saying it and forgetting it.")}
+          action={<button className="btn primary" onClick={() => setAsking(true)}>
+            {t("اسأل سؤال", "Ask a question")}
+          </button>}
         />
       )}
 
@@ -439,6 +486,7 @@ function Decisions() {
 
 function DecisionSheet({ onClose }: { onClose: () => void }) {
   const { space, act, busy } = useSpace();
+  const { t } = useTongue();
   const [question, setQuestion] = useState("");
   const [rows, setRows] = useState([{ label: "", cost: "" }, { label: "", cost: "" }]);
 
@@ -447,19 +495,20 @@ function DecisionSheet({ onClose }: { onClose: () => void }) {
     .map((r) => ({ label: r.label, cost: r.cost.trim() === "" ? null : Number(r.cost) }));
 
   return (
-    <Sheet title="قرار محتاج الاتنين" onClose={onClose}>
-      <Field label="السؤال">
-        <input value={question} onChange={(e) => setQuestion(e.target.value)} autoFocus placeholder="فين شهر العسل؟" />
+    <Sheet title={t("قرار محتاج الاتنين", "A decision that needs both of you")} onClose={onClose}>
+      <Field label={t("السؤال", "The question")}>
+        <input value={question} onChange={(e) => setQuestion(e.target.value)} autoFocus
+               placeholder={t("فين شهر العسل؟", "Where for the honeymoon?")} />
       </Field>
       {rows.map((r, i) => (
         <div className="row" key={i}>
-          <Field label={`الخيار ${i + 1}`}>
+          <Field label={t(`الخيار ${i + 1}`, `Option ${i + 1}`)}>
             <input
               value={r.label}
               onChange={(e) => setRows((all) => all.map((x, j) => (j === i ? { ...x, label: e.target.value } : x)))}
             />
           </Field>
-          <Field label={`تكلفته (${space.settings.currency})`}>
+          <Field label={t(`تكلفته (${space.settings.currency})`, `Its cost (${space.settings.currency})`)}>
             <input
               value={r.cost}
               inputMode="numeric"
@@ -472,16 +521,16 @@ function DecisionSheet({ onClose }: { onClose: () => void }) {
       ))}
       {rows.length < 6 && (
         <button className="btn ghost tiny" onClick={() => setRows((all) => [...all, { label: "", cost: "" }])}>
-          + خيار
+          + {t("خيار", "option")}
         </button>
       )}
       <div className="row" style={{ marginTop: 14 }}>
-        <button className="btn ghost" onClick={onClose}>إلغاء</button>
+        <button className="btn ghost" onClick={onClose}>{t("إلغاء", "Cancel")}</button>
         <button
           className="btn primary"
           disabled={busy || !question.trim() || options.length < 2}
           onClick={async () => { if (await act({ type: "decision.ask", question, options })) onClose(); }}
-        >اسأل</button>
+        >{t("اسأل", "Ask")}</button>
       </div>
     </Sheet>
   );

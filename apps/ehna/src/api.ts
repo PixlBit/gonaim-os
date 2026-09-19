@@ -1,5 +1,33 @@
 import type { Action, FullReport, PersonKey, Space } from "@gonaim/couple";
 
+/**
+ * رسائل الشبكة بلغة القارئ.
+ *
+ * هذا الملف ليس مكوّن React، فلا `useTongue` فيه. واللغة موجودة أصلًا على
+ * `<html lang>` — يكتبها `useDocumentLang` عند كل تبديل — فتُقرأ من هناك:
+ * مصدر واحد للحقيقة، وبلا سياق يُمرَّر عبر أربع طبقات لأجل ثلاث جمل.
+ */
+function say(ar: string, en: string): string {
+  return typeof document !== "undefined" && document.documentElement.lang === "en" ? en : ar;
+}
+
+/**
+ * رسالة جاءت من الخادم.
+ *
+ * الخادم يرسل `{ar, en}` منذ صارت رسائله ثنائية، وقد يرسل نصًّا واحدًا
+ * (خطأ قديم، أو نصّ من مزوّد خارجي لا لغة له عندنا). الشكلان مقبولان هنا
+ * حتى لا يتحوّل اختلافٌ في الشكل إلى شاشة بلا رسالة — وهو أسوأ ما يحدث
+ * في مسار خطأ.
+ */
+function fromServer(value: unknown): string | null {
+  if (typeof value === "string") return value;
+  if (value && typeof value === "object") {
+    const pair = value as { ar?: unknown; en?: unknown };
+    if (typeof pair.ar === "string" && typeof pair.en === "string") return say(pair.ar, pair.en);
+  }
+  return null;
+}
+
 export interface Brief {
   kind: OracleKind;
   system: string;
@@ -52,14 +80,14 @@ async function call<T>(path: string, init?: RequestInit): Promise<T> {
       headers: { ...(init?.body ? { "content-type": "application/json" } : {}), ...init?.headers },
     });
   } catch {
-    throw new ApiError(0, "offline", "الخادم مش رادّ. اتأكد إنه شغّال.");
+    throw new ApiError(0, "offline", say("الخادم مش رادّ. اتأكد إنه شغّال.", "The server is not answering. Check that it is running."));
   }
 
   const text = await res.text();
   const body = text ? safeJson(text) : {};
   if (!res.ok) {
     const code = typeof body["error"] === "string" ? body["error"] : "failed";
-    const message = typeof body["message"] === "string" ? body["message"] : fallbackMessage(res.status);
+    const message = fromServer(body["message"]) ?? fallbackMessage(res.status);
     throw new ApiError(res.status, code, message);
   }
   return body as T;
@@ -71,9 +99,9 @@ function safeJson(text: string): Record<string, unknown> {
 }
 
 function fallbackMessage(status: number): string {
-  if (status === 401) return "الجلسة انتهت.";
-  if (status === 429) return "محاولات كتير. استنى شوية.";
-  return "حصل خطأ.";
+  if (status === 401) return say("الجلسة انتهت.", "Your session has ended.");
+  if (status === 429) return say("محاولات كتير. استنى شوية.", "Too many attempts. Wait a moment.");
+  return say("حصل خطأ.", "Something went wrong.");
 }
 
 export const api = {
@@ -119,7 +147,7 @@ export const api = {
     const body = safeJson(await res.text());
     if (!res.ok) {
       throw new ApiError(res.status, String(body["error"] ?? "failed"),
-        String(body["message"] ?? "الصورة مرفعتش."));
+        fromServer(body["message"]) ?? say("الصورة مرفعتش.", "The photo did not upload."));
     }
     return String(body["id"]);
   },

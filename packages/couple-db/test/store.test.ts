@@ -142,8 +142,10 @@ describe("الدخول", () => {
   });
 
   it("كلمة سر ضعيفة تُرفض عند الإعداد", () => {
-    expect(passwordProblem("12345678901")).toMatch(/أرقام/);
-    expect(passwordProblem("short")).toMatch(/10/);
+    expect(passwordProblem("12345678901")?.ar).toMatch(/أرقام/);
+    expect(passwordProblem("12345678901")?.en).toMatch(/[Dd]igits/);
+    expect(passwordProblem("short")?.ar).toMatch(/10/);
+    expect(passwordProblem("short")?.en).toMatch(/10/);
     expect(passwordProblem("noor-w-gonaim")).toBeNull();
   });
 });

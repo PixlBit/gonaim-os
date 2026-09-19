@@ -146,6 +146,20 @@ body {
 }
 .label:lang(en) { font-family: var(--mono); font-size: 10px; font-weight: 400; letter-spacing: 0.16em; }
 
+/* الحاشية — جملة تحت رقم أو رسم تقول ما لا يقوله الرقم.
+   كانت تستعير `.label`، وهذا لا يضرّ بالعربية (لا حالة أحرف فيها) لكنه
+   في الإنجليزية يحوّل فقرة كاملة إلى صياح: THIS IS NOT A SETTLING OF
+   ACCOUNTS — سطران بحروف كبيرة متباعدة لا يقرأهما أحد. فصار لها صنفها:
+   نفس الحجم والهدوء، بلا تحويل حالة ولا تتبّع. */
+.footnote {
+  font-family: var(--ar);
+  font-size: 12px;
+  line-height: 1.95;
+  color: var(--dust);
+  margin: 14px 0 0;
+}
+.footnote:lang(en) { font-family: inherit; font-size: 12.5px; }
+
 .ltr { direction: ltr; unicode-bidi: isolate; font-family: var(--mono); }
 .num { font-family: var(--mono); font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; display: inline-block; }
 

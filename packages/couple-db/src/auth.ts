@@ -1,6 +1,6 @@
 import { randomBytes, scrypt as scryptCb, timingSafeEqual, createHmac } from "node:crypto";
 import { promisify } from "node:util";
-import type { PersonKey } from "@gonaim/couple";
+import { T, type PersonKey, type Text } from "@gonaim/couple";
 import type { Account, Session, Vault } from "./vault.js";
 
 const scrypt = promisify(scryptCb) as (
@@ -49,9 +49,14 @@ export async function checkPassword(password: string, account: Account): Promise
   return timingSafeEqual(buf, known);
 }
 
-export function passwordProblem(password: string): string | null {
-  if (password.length < MIN_PASSWORD) return `كلمة السر لازم تكون ${MIN_PASSWORD} حروف على الأقل.`;
-  if (/^\d+$/.test(password)) return "أرقام بس سهلة التخمين — زوّد حروف.";
+export function passwordProblem(password: string): Text | null {
+  if (password.length < MIN_PASSWORD) {
+    return T(`كلمة السر لازم تكون ${MIN_PASSWORD} حروف على الأقل.`,
+             `A password needs at least ${MIN_PASSWORD} characters.`);
+  }
+  if (/^\d+$/.test(password)) {
+    return T("أرقام بس سهلة التخمين — زوّد حروف.", "Digits alone are easy to guess — add letters.");
+  }
   return null;
 }
 

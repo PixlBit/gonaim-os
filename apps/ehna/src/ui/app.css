@@ -154,7 +154,16 @@ section.block > .head hr {
   filter: drop-shadow(0 0 26px rgba(168, 85, 247, 0.35));
   direction: ltr;
 }
-.hero .count small { font-family: var(--ar); font-size: 0.24em; color: var(--muted); -webkit-text-fill-color: var(--muted); }
+/* `letter-spacing` بالـem يُحسب على حجم الأب لا الابن: الرقم الضخم يحمل
+   ‎-0.03em ≈ ‎-2.5px، فترث الكلمة الصغيرة نفس الـ2.5px فتلتصق حروفها
+   («days to go» تُرسم «daystogo»). فتُعاد إلى الطبيعي صراحةً. */
+.hero .count small {
+  font-family: var(--ar);
+  font-size: 0.24em;
+  letter-spacing: normal;
+  color: var(--muted);
+  -webkit-text-fill-color: var(--muted);
+}
 .hero .for { font-size: 15px; color: var(--bone); margin-top: 8px; }
 .hero .for b { color: var(--violet-hi); font-weight: 600; }
 .hero .since { color: var(--dust); font-size: 12.5px; margin-top: 3px; }

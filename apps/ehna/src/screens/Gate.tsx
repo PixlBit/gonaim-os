@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useApp } from "../store.js";
 import type { ApiError } from "../api.js";
+import { useTongue } from "../lang.js";
 
 /**
  * الباب.
@@ -17,6 +18,7 @@ const REMEMBER = "ehna.handle";
 
 export function Gate({ note }: { note?: string | undefined }) {
   const { signIn, busy } = useApp();
+  const { t } = useTongue();
   const [handle, setHandle] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(note ?? null);
@@ -46,7 +48,7 @@ export function Gate({ note }: { note?: string | undefined }) {
     <div className="gate">
       <div className="panel hot box rise">
         <div className="logo" lang="en">EHNA//OS</div>
-        <div className="tag">مساحة خاصة · لاتنين بس</div>
+        <div className="tag">{t("مساحة خاصة · لاتنين بس", "A private space · for two, only")}</div>
 
         <div className="pair" aria-hidden="true">
           <div className="gate-orb him"><span className="orb" /></div>
@@ -55,7 +57,7 @@ export function Gate({ note }: { note?: string | undefined }) {
 
         <form onSubmit={(e) => void submit(e)}>
           <label className="field">
-            <span>المعرّف</span>
+            <span>{t("المعرّف", "Handle")}</span>
             <input
               value={handle}
               onChange={(e) => setHandle(e.target.value)}
@@ -66,7 +68,7 @@ export function Gate({ note }: { note?: string | undefined }) {
             />
           </label>
           <label className="field">
-            <span>كلمة السر</span>
+            <span>{t("كلمة السر", "Password")}</span>
             <input
               ref={pw}
               type="password"
@@ -81,14 +83,15 @@ export function Gate({ note }: { note?: string | undefined }) {
           {error && <div className="err">{error}</div>}
 
           <button className="btn primary" style={{ width: "100%", marginTop: 14 }} disabled={busy}>
-            {busy ? "بيفتح…" : "ادخل"}
+            {busy ? t("بيفتح…", "Opening…") : t("ادخل", "Enter")}
           </button>
         </form>
 
         <div className="foot">
-          مفيش تسجيل هنا. الحسابان اتعملا مرة واحدة من الخادم،
+          {t("مفيش تسجيل هنا. الحسابان اتعملا مرة واحدة من الخادم،",
+             "There is no sign-up here. The two accounts were made once, from the server,")}
           <br />
-          ومفيش طريق تالت للدخول.
+          {t("ومفيش طريق تالت للدخول.", "and there is no third way in.")}
         </div>
       </div>
     </div>

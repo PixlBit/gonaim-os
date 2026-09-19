@@ -1,8 +1,9 @@
-import { arDate, arSpan, fmt, short } from "@gonaim/couple";
+import { arDate, arSpan, enDate, enSpan, fmt, short, shortEn } from "@gonaim/couple";
 import { useSpace } from "../store.js";
 import { Meter, Ring, Tile } from "../ui/bits.js";
 import { Bars, colorFor, Split } from "../ui/charts.js";
 import { Oracle } from "../ui/oracle.js";
+import { useTongue } from "../lang.js";
 
 /**
  * التحليل.
@@ -13,6 +14,10 @@ import { Oracle } from "../ui/oracle.js";
  */
 export function Signal() {
   const { space, report } = useSpace();
+  const { lang, t, s } = useTongue();
+  const span = (n: number) => (lang === "ar" ? arSpan(n) : enSpan(n));
+  const brief = (n: number) => (lang === "ar" ? short(n) : shortEn(n));
+  const pct = t("٪", "%");
   const { money, nest, missions, life, countdown, attention, forecast, heartbeat } = report;
   const wedding = countdown.wedding && !countdown.wedding.past ? countdown.wedding : null;
   const weeksLeft = wedding ? wedding.daysAway / 7 : null;
@@ -23,41 +28,45 @@ export function Signal() {
 
   return (
     <>
-      <h1 className="title">المرصد</h1>
+      <h1 className="title">{t("المرصد", "Signal")}</h1>
       <p className="sub">
-        كل رقم هنا محسوب من اللي كتبتوه دلوقتي — مفيش حاجة مخزّنة ولا مقدّرة.
-        آخر تحديث {arDate(report.today)}.
+        {t(`كل رقم هنا محسوب من اللي كتبتوه دلوقتي — مفيش حاجة مخزّنة ولا مقدّرة. آخر تحديث ${arDate(report.today)}.`,
+           `Every number here is computed from what you have written, right now — nothing stored, nothing guessed. As of ${enDate(report.today)}.`)}
       </p>
 
       <section className="block">
-        <div className="head"><span className="label">الحكم</span><hr /></div>
+        <div className="head"><span className="label">{t("الحكم", "The verdict")}</span><hr /></div>
         <div className="tiles stagger">
           <Tile
-            k="الجاهزية الكلية"
-            v={`${nest.readiness}٪`}
-            n={`${nest.bought} من ${nest.total} حاجة`}
+            k={t("الجاهزية الكلية", "Overall readiness")}
+            v={`${nest.readiness}${pct}`}
+            n={t(`${nest.bought} من ${nest.total} حاجة`, `${nest.bought} of ${nest.total} items`)}
             tone="hot"
           />
           <Tile
-            k="إيقاع الإنجاز"
+            k={t("إيقاع الإنجاز", "Pace")}
             v={missions.velocity.toFixed(1)}
-            n="مهمة في الأسبوع — متوسط آخر ٦ أسابيع"
+            n={t("مهمة في الأسبوع — متوسط آخر ٦ أسابيع", "tasks a week — median of the last six")}
             tone={missions.velocity > 0 ? "up" : "warn"}
           />
           <Tile
-            k="الوصول للتاريخ"
-            v={pace === "ok" ? "مريح" : pace === "behind" ? "متأخر" : "؟"}
+            k={t("الوصول للتاريخ", "Reaching the date")}
+            v={pace === "ok" ? t("مريح", "Comfortable") : pace === "behind" ? t("متأخر", "Behind") : "؟"}
             n={
-              pace === "unknown" ? "محتاج تاريخ فرح وسرعة إنجاز"
-                : missions.finishInWeeks === null ? "مفيش إنجاز يتقاس عليه"
-                : `محتاجين ${Math.round(missions.finishInWeeks)} أسبوع · فاضل ${Math.round(weeksLeft ?? 0)}`
+              pace === "unknown" ? t("محتاج تاريخ فرح وسرعة إنجاز", "Needs a wedding date and a measured pace")
+                : missions.finishInWeeks === null ? t("مفيش إنجاز يتقاس عليه", "Nothing closed yet to measure")
+                : t(`محتاجين ${Math.round(missions.finishInWeeks)} أسبوع · فاضل ${Math.round(weeksLeft ?? 0)}`,
+                    `${Math.round(missions.finishInWeeks)} weeks needed · ${Math.round(weeksLeft ?? 0)} left`)
             }
             tone={pace === "ok" ? "up" : pace === "behind" ? "down" : "warn"}
           />
           <Tile
-            k="انضباط الأسعار"
-            v={money.driftPct === 0 ? "—" : `${money.driftPct > 0 ? "+" : ""}${money.driftPct}٪`}
-            n={money.drift === 0 ? "مفيش مقارنة كفاية" : `فرق ${fmt(Math.abs(money.drift))} ${space.settings.currency} عن المتوقع`}
+            k={t("انضباط الأسعار", "Price discipline")}
+            v={money.driftPct === 0 ? "—" : `${money.driftPct > 0 ? "+" : ""}${money.driftPct}${pct}`}
+            n={money.drift === 0
+              ? t("مفيش مقارنة كفاية", "Not enough to compare")
+              : t(`فرق ${fmt(Math.abs(money.drift))} ${space.settings.currency} عن المتوقع`,
+                  `${fmt(Math.abs(money.drift))} ${space.settings.currency} away from estimate`)}
             tone={money.driftPct > 10 ? "down" : money.driftPct < 0 ? "up" : undefined}
           />
         </div>
@@ -65,54 +74,58 @@ export function Signal() {
 
       <div className="row" style={{ alignItems: "flex-start", gap: 14 }}>
         <section className="block" style={{ flex: "1 1 360px" }}>
-          <div className="head"><span className="label">جاهزية الغرف</span><hr /></div>
+          <div className="head"><span className="label">{t("جاهزية الغرف", "Room by room")}</span><hr /></div>
           <div className="panel" style={{ padding: 18 }}>
             {nest.rooms.length > 0 ? nest.rooms.map((r) => (
               <div key={r.roomId} style={{ marginBottom: 13 }}>
                 <div style={{ display: "flex", gap: 8, alignItems: "baseline", marginBottom: 5 }}>
                   <span style={{ color: "var(--violet-hi)" }}>{r.glyph}</span>
                   <span style={{ flex: 1, fontSize: 13.5 }}>{r.name}</span>
-                  <span className="num" style={{ fontSize: 12, color: "var(--dust)" }}>
-                    {r.bought}/{r.items}{r.unpriced > 0 ? ` · ${r.unpriced} بلا سعر` : ""}
+                  {/* الأرقام وحدها في `.num` (خط أحادي)، والكلمات خارجه —
+                      وإلا جاءت المسافة من Plex Mono وهي أعرض، فبان الفراغ مضاعفًا */}
+                  <span style={{ fontSize: 12, color: "var(--dust)" }}>
+                    <span className="num">{r.bought}/{r.items}</span>
+                    {r.unpriced > 0 && <> · <span className="num">{r.unpriced}</span> {t("بلا سعر", "unpriced")}</>}
                   </span>
-                  <span className="num" style={{ fontSize: 13 }}>{r.readiness}٪</span>
+                  <span className="num" style={{ fontSize: 13 }}>{r.readiness}{pct}</span>
                 </div>
                 <Meter value={r.readiness} tone={r.readiness < 30 ? "warn" : undefined} />
               </div>
-            )) : <p className="sub">مفيش غرف لسه.</p>}
-            <p className="label" style={{ marginTop: 16, lineHeight: 1.9 }}>
-              الأقل جاهزية فوق. الترتيب ده مقصود: الغرفة اللي مش بتتعمل هي اللي
-              محتاجة تتشاف الأول.
+            )) : <p className="sub">{t("مفيش غرف لسه.", "No rooms yet.")}</p>}
+            <p className="footnote" style={{ marginTop: 16, lineHeight: 1.9 }}>
+              {t("الأقل جاهزية فوق. الترتيب ده مقصود: الغرفة اللي مش بتتعمل هي اللي محتاجة تتشاف الأول.",
+                 "Least ready first. That order is deliberate: the room nobody is working on is the one that needs to be seen.")}
             </p>
           </div>
         </section>
 
         <section className="block" style={{ flex: "1 1 320px" }}>
-          <div className="head"><span className="label">توزيع الحِمل</span><hr /></div>
+          <div className="head"><span className="label">{t("توزيع الحِمل", "How the load sits")}</span><hr /></div>
           <div className="panel" style={{ padding: 18 }}>
-            <span className="label">المهام المفتوحة</span>
+            <span className="label">{t("المهام المفتوحة", "Open tasks")}</span>
             <div style={{ marginTop: 8 }}>
               <Split
                 parts={[
                   { label: space.people.him.name, value: missions.byOwner.him.open, color: space.people.him.accent },
                   { label: space.people.her.name, value: missions.byOwner.her.open, color: space.people.her.accent },
-                  { label: "إحنا", value: missions.byOwner.both.open, color: "#22D3EE" },
+                  { label: t("إحنا", "Us"), value: missions.byOwner.both.open, color: "#22D3EE" },
                 ]}
               />
             </div>
-            <span className="label" style={{ display: "block", marginTop: 20 }}>اللي اتدفع</span>
+            <span className="label" style={{ display: "block", marginTop: 20 }}>{t("اللي اتدفع", "Who paid")}</span>
             <div style={{ marginTop: 8 }}>
               <Split
                 parts={[
                   { label: space.people.him.name, value: money.paid.him, color: space.people.him.accent },
                   { label: space.people.her.name, value: money.paid.her, color: space.people.her.accent },
-                  { label: "إحنا", value: money.paid.both, color: "#22D3EE" },
+                  { label: t("إحنا", "Us"), value: money.paid.both, color: "#22D3EE" },
                 ]}
-                unit={(n) => short(n)}
+                unit={brief}
               />
             </div>
-            <p className="label" style={{ marginTop: 18, lineHeight: 1.9 }}>
-              ده مش ميزان حساب — ده عشان تشوفوا لو واحد شايل لوحده من غير ما ياخد باله.
+            <p className="footnote" style={{ marginTop: 18, lineHeight: 1.9 }}>
+              {t("ده مش ميزان حساب — ده عشان تشوفوا لو واحد شايل لوحده من غير ما ياخد باله.",
+                 "This is not a settling of accounts — it is so you can see if one of you is carrying it alone without noticing.")}
             </p>
           </div>
         </section>
@@ -120,17 +133,17 @@ export function Signal() {
 
       <div className="row" style={{ alignItems: "flex-start", gap: 14 }}>
         <section className="block" style={{ flex: "1 1 340px" }}>
-          <div className="head"><span className="label">الإنفاق شهريًا</span><hr /></div>
+          <div className="head"><span className="label">{t("الإنفاق شهريًا", "Spending by month")}</span><hr /></div>
           <div className="panel" style={{ padding: "18px 16px 12px" }}>
             <Bars
               data={money.byMonth.map((x) => ({ label: x.month.slice(2), value: x.amount }))}
-              unit={(n) => `${short(n)} ${space.settings.currency}`}
+              unit={(n) => `${brief(n)} ${space.settings.currency}`}
             />
           </div>
         </section>
 
         <section className="block" style={{ flex: "1 1 340px" }}>
-          <div className="head"><span className="label">مهام مخلّصة كل أسبوع</span><hr /></div>
+          <div className="head"><span className="label">{t("مهام مخلّصة كل أسبوع", "Tasks closed per week")}</span><hr /></div>
           <div className="panel" style={{ padding: "18px 16px 12px" }}>
             <Bars data={missions.doneByWeek.map((x) => ({ label: x.week.slice(5), value: x.count }))} />
           </div>
@@ -138,19 +151,20 @@ export function Signal() {
       </div>
 
       <section className="block">
-        <div className="head"><span className="label">الحياة، مش التجهيز بس</span><hr /></div>
+        <div className="head"><span className="label">{t("الحياة، مش التجهيز بس", "Life, not just logistics")}</span><hr /></div>
         <div className="row" style={{ alignItems: "stretch", gap: 14 }}>
           <div className="panel" style={{ padding: "18px 16px 12px", flex: "2 1 400px" }}>
-            <span className="label">ذكريات متسجّلة كل شهر</span>
+            <span className="label">{t("ذكريات متسجّلة كل شهر", "Memories logged per month")}</span>
             <div style={{ marginTop: 10 }}>
               <Bars data={life.memoriesByMonth.map((x) => ({ label: x.month.slice(2), value: x.count }))} />
             </div>
-            <p className="label" style={{ marginTop: 14, lineHeight: 1.9 }}>
+            <p className="footnote" style={{ marginTop: 14, lineHeight: 1.9 }}>
               {life.lastMemoryDaysAgo === null
-                ? "لسه مفيش ذكرى واحدة متسجّلة."
+                ? t("لسه مفيش ذكرى واحدة متسجّلة.", "Not one memory logged yet.")
                 : life.lastMemoryDaysAgo === 0
-                  ? "آخر ذكرى اتسجّلت النهارده."
-                  : `آخر ذكرى من ${arSpan(life.lastMemoryDaysAgo)}.`}
+                  ? t("آخر ذكرى اتسجّلت النهارده.", "The last memory was logged today.")
+                  : t(`آخر ذكرى من ${arSpan(life.lastMemoryDaysAgo)}.`,
+                      `The last memory was ${enSpan(life.lastMemoryDaysAgo)} ago.`)}
             </p>
           </div>
           <div className="panel" style={{ padding: 18, flex: "1 1 240px" }}>
@@ -175,35 +189,39 @@ export function Signal() {
       </section>
 
       <section className="block">
-        <div className="head"><span className="label">الأسابيع الجاية — ضغط متوقَّع</span><hr /></div>
+        <div className="head"><span className="label">{t("الأسابيع الجاية — ضغط متوقَّع", "The weeks ahead — projected load")}</span><hr /></div>
         <div className="panel" style={{ padding: 18 }}>
           <div className="weeks">
             {forecast.weeks.map((w) => (
               <div
                 key={w.week}
                 className={`w${w.score >= 80 ? " hot" : forecast.calm?.week === w.week ? " calm" : ""}`}
-                title={`${w.label}: ${w.note}`}
+                title={`${s(w.label)}: ${s(w.note)}`}
               >
                 <div className="bar" style={{ height: `${Math.max(4, w.score)}%` }} />
-                <div className="cap">{w.label.split(" ")[0]}</div>
+                <div className="cap">{s(w.label).split(" ")[0]}</div>
               </div>
             ))}
           </div>
           <p className="sub" style={{ margin: "18px 0 0" }}>
-            الضغط محسوب على سعتكم الحقيقية: {Math.round(forecast.capacity)} حاجة في الأسبوع،
-            من سرعة إنجازكم نفسها. المواعيد والمهام والمحطات المكتوبة بس — مفيش تخمين.
+            {t(`الضغط محسوب على سعتكم الحقيقية: ${Math.round(forecast.capacity)} حاجة في الأسبوع، من سرعة إنجازكم نفسها. المواعيد والمهام والمحطات المكتوبة بس — مفيش تخمين.`,
+               `Load is measured against your real capacity: ${Math.round(forecast.capacity)} things a week, taken from your own pace. Written appointments, tasks and milestones only — no guessing.`)}
           </p>
           <div className="row" style={{ gap: 12, marginTop: 14 }}>
             {forecast.peak && (
               <div className="panel attn soon" style={{ flex: "1 1 260px", margin: 0 }}>
-                <h3>أضغط أسبوع: {forecast.peak.label}</h3>
-                <p>{forecast.peak.note} — {forecast.peak.score}/100.</p>
+                <h3>{t("أضغط أسبوع", "Heaviest week")}: {s(forecast.peak.label)}</h3>
+                <p>{s(forecast.peak.note)} — {forecast.peak.score}/100.</p>
               </div>
             )}
             {forecast.calm && (
               <div className="panel attn watch" style={{ flex: "1 1 260px", margin: 0 }}>
-                <h3>أهدى أسبوع: {forecast.calm.label}</h3>
-                <p>{forecast.calm.note}. احجزوا فيه ليلة ليكم قبل ما حاجة تاخده.</p>
+                <h3>{t("أهدى أسبوع", "Calmest week")}: {s(forecast.calm.label)}</h3>
+                <p>
+                  {s(forecast.calm.note)}.{" "}
+                  {t("احجزوا فيه ليلة ليكم قبل ما حاجة تاخده.",
+                     "Book a night for yourselves in it before something else takes it.")}
+                </p>
               </div>
             )}
           </div>
@@ -211,14 +229,14 @@ export function Signal() {
       </section>
 
       <section className="block">
-        <div className="head"><span className="label">نبض العلاقة</span><hr /></div>
+        <div className="head"><span className="label">{t("نبض العلاقة", "Relationship heartbeat")}</span><hr /></div>
         <div className="row" style={{ alignItems: "stretch", gap: 14 }}>
           <div className="panel" style={{ padding: 18, flex: "2 1 380px" }}>
             <div className="weeks" style={{ height: 96 }}>
               {heartbeat.weeks.map((w) => {
                 const total = Math.max(1, ...heartbeat.weeks.map((x) => x.care + x.logistics));
                 return (
-                  <div key={w.week} className="w" title={`${w.care} شخصي · ${w.logistics} تجهيز`}>
+                  <div key={w.week} className="w" title={t(`${w.care} شخصي · ${w.logistics} تجهيز`, `${w.care} personal · ${w.logistics} logistics`)}>
                     <div className="bar" style={{
                       height: `${(w.care / total) * 100}%`,
                       background: "linear-gradient(to top, #BE185D, #F472B6)",
@@ -232,24 +250,26 @@ export function Signal() {
               })}
             </div>
             <div className="legend" style={{ marginTop: 14 }}>
-              <span><i style={{ background: "#F472B6" }} />شخصي — ذكريات ورسايل وحاجات عملتوها</span>
-              <span><i style={{ background: "rgba(110,92,144,.6)" }} />تجهيز — مشتريات ومصاريف ومهام</span>
+              <span><i style={{ background: "#F472B6" }} />{t("شخصي — ذكريات ورسايل وحاجات عملتوها", "Personal — memories, notes, things you did")}</span>
+              <span><i style={{ background: "rgba(110,92,144,.6)" }} />{t("تجهيز — مشتريات ومصاريف ومهام", "Logistics — purchases, expenses, tasks")}</span>
             </div>
           </div>
           <div className="panel" style={{ padding: 18, flex: "1 1 240px" }}>
-            <div className="k label">النبض</div>
+            <div className="k label">{t("النبض", "Pulse")}</div>
             <div className="v" style={{
               fontFamily: "var(--mono)", fontSize: 34, marginTop: 8,
               color: heartbeat.verdict === "warm" ? "var(--green)"
                 : heartbeat.verdict === "busy" ? "var(--amber)" : "var(--red)",
             }}>
-              {heartbeat.careShare === null ? "—" : `${heartbeat.careShare}٪`}
+              {heartbeat.careShare === null ? "—" : `${heartbeat.careShare}${pct}`}
             </div>
-            <p className="sub" style={{ marginTop: 10 }}>{heartbeat.line}</p>
+            <p className="sub" style={{ marginTop: 10 }}>{s(heartbeat.line)}</p>
             {heartbeat.sinceCare !== null && (
-              <p className="label" style={{ lineHeight: 1.9 }}>
-                آخر حاجة شخصية اتسجّلت من {arSpan(heartbeat.sinceCare)}.
-                {heartbeat.longestGap !== null && ` أطول فترة بين ذكريتين: ${arSpan(heartbeat.longestGap)}.`}
+              <p className="footnote" style={{ lineHeight: 1.9 }}>
+                {t(`آخر حاجة شخصية اتسجّلت من ${arSpan(heartbeat.sinceCare)}.`,
+                   `The last personal thing logged was ${enSpan(heartbeat.sinceCare)} ago.`)}
+                {heartbeat.longestGap !== null && t(` أطول فترة بين ذكريتين: ${arSpan(heartbeat.longestGap)}.`,
+                                                    ` Longest gap between memories: ${enSpan(heartbeat.longestGap)}.`)}
               </p>
             )}
           </div>
@@ -257,47 +277,56 @@ export function Signal() {
       </section>
 
       <section className="block">
-        <div className="head"><span className="label">كل الملاحظات — {attention.length}</span><hr /></div>
+        <div className="head"><span className="label">{t("كل الملاحظات", "Every note")} — {attention.length}</span><hr /></div>
         {attention.length > 0 ? (
           <div className="attn-grid">
             {attention.map((a) => (
               <div key={a.code} className={`panel attn ${a.level}`}>
-                <h3>{a.title}</h3>
-                <p>{a.why}</p>
-                {a.move && <div className="move">{a.move}</div>}
+                <h3>{s(a.title)}</h3>
+                <p>{s(a.why)}</p>
+                {a.move && <div className="move">{s(a.move)}</div>}
               </div>
             ))}
           </div>
         ) : (
-          <div className="silent"><strong>مفيش ملاحظة واحدة</strong>الأرقام كلها في مكانها.</div>
+          <div className="silent">
+            <strong>{t("مفيش ملاحظة واحدة", "Not one note")}</strong>
+            {t("الأرقام كلها في مكانها.", "Every number is where it should be.")}
+          </div>
         )}
       </section>
 
       <section className="block">
-        <div className="head"><span className="label">خد الأرقام دي واعمل بيها خطة</span><hr /></div>
-        <Oracle kind="week" title="ترتيب الأسبوع" />
+        <div className="head"><span className="label">{t("خد الأرقام دي واعمل بيها خطة", "Turn these numbers into a plan")}</span><hr /></div>
+        <Oracle kind="week" title={t("ترتيب الأسبوع", "Ordering the week")} />
       </section>
 
       {/* أهم لوحة في الشاشة: حدود ما تعرفه الأرقام */}
       <section className="block">
-        <div className="head"><span className="label">اللي الأرقام دي معرفهوش</span><hr /></div>
+        <div className="head"><span className="label">{t("اللي الأرقام دي معرفهوش", "What these numbers do not know")}</span><hr /></div>
         <div className="panel" style={{ padding: 20 }}>
           <ul style={{ margin: 0, paddingInlineStart: 18, color: "var(--muted)", lineHeight: 2.1, fontSize: 13.5 }}>
             <li>
-              <b style={{ color: money.unpriced > 0 ? "var(--amber)" : "var(--bone)" }}>{money.unpriced}</b> حاجة
-              من غير سعر — المتوقع الكلي أقل من الحقيقة بقيمتها.
+              <b style={{ color: money.unpriced > 0 ? "var(--amber)" : "var(--bone)" }}>{money.unpriced}</b>{" "}
+              {t("حاجة من غير سعر — المتوقع الكلي أقل من الحقيقة بقيمتها.",
+                 "items with no price — the projected total is short by exactly their value.")}
             </li>
             <li>
-              المصاريف اللي مش مكتوبة هنا مش موجودة في أي رقم. المنصة بتحسب اللي بتقولوه بس.
+              {t("المصاريف اللي مش مكتوبة هنا مش موجودة في أي رقم. المنصة بتحسب اللي بتقولوه بس.",
+                 "Spending that is not written here exists in no number. The platform counts only what you tell it.")}
             </li>
             <li>
-              معدّل الصرف محسوب على آخر ٨ أسابيع. لو التجهيز لسه في أوله، المعدل ده هيتغير.
+              {t("معدّل الصرف محسوب على آخر ٨ أسابيع. لو التجهيز لسه في أوله، المعدل ده هيتغير.",
+                 "The burn rate covers the last eight weeks. Early in the preparations, that rate will change.")}
             </li>
             <li>
-              سرعة الإنجاز على آخر ٦ أسابيع — أسبوع سفر أو شغل بيخلّيها تبان أقل من الحقيقة.
+              {t("سرعة الإنجاز على آخر ٦ أسابيع — أسبوع سفر أو شغل بيخلّيها تبان أقل من الحقيقة.",
+                 "Pace covers the last six weeks — a week of travel or work makes it read lower than the truth.")}
             </li>
-            {!wedding && <li>مفيش تاريخ فرح، فكل توقع مبني على الوقت مش موجود أصلًا.</li>}
-            {space.settings.budget <= 0 && <li>الميزانية بصفر، فمفيش سقف يتقاس عليه.</li>}
+            {!wedding && <li>{t("مفيش تاريخ فرح، فكل توقع مبني على الوقت مش موجود أصلًا.",
+                                "There is no wedding date, so every time-based projection does not exist at all.")}</li>}
+            {space.settings.budget <= 0 && <li>{t("الميزانية بصفر، فمفيش سقف يتقاس عليه.",
+                                                  "The budget is zero, so there is no ceiling to measure against.")}</li>}
           </ul>
         </div>
       </section>
