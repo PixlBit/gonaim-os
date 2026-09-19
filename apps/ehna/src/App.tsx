@@ -66,7 +66,7 @@ function useHashScreen(): [ScreenId, (id: ScreenId) => void] {
 export function App() {
   const { phase, busy, problem, clearProblem, signOut } = useApp();
   const [screen, go] = useHashScreen();
-  const { lang, t } = useTongue();
+  const { lang, t, set: setLang } = useTongue();
   useDocumentLang(lang);
 
   const sky = (
@@ -144,6 +144,18 @@ export function App() {
               <i className="dotcolor" style={{ color: you.accent }} />
               {you.name}
             </div>
+            {/* تبديل اللغة زرّ واحد في الشريط لا قسمًا في الضبط: التبديل
+                حاجة عادية تُعمل بضغطة، لا إعدادًا يُفتح له مكان. والزر يكتب
+                اللغة **الأخرى** — العُرف المتعارف عليه، ولا يحتاج شرحًا. */}
+            <button
+              className="iconbtn lang-swap"
+              disabled={busy}
+              onClick={() => void setLang(lang === "ar" ? "en" : "ar")}
+              title={lang === "ar" ? "بدّل للإنجليزي" : "Switch to Arabic"}
+              lang={lang === "ar" ? "en" : "ar"}
+            >
+              {lang === "ar" ? "EN" : "ع"}
+            </button>
             <i className={`beat${busy ? " busy" : ""}`} title={busy ? t("بيتحفظ", "Saving") : t("متصل", "Connected")} />
             <button className="iconbtn" onClick={() => void signOut()} title={t("اقفل الجلسة", "Sign out")}>⏻</button>
           </header>

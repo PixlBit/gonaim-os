@@ -126,9 +126,11 @@ export function Settings() {
                      placeholder={t("حاجة تحب تفتكرها", "Something you want to remember")} />
             </Field>
 
-            {/* اللغة هنا لا في «المساحة»: التفضيل يخصّ القارئ، فلو عاش في
-                إعدادات المساحة صار اختيار أحدهما فرضًا على الآخر. */}
-            <Field label={t("اللغة اللي بتقرا بيها", "The language you read in")}>
+            {/* اللغة تُخزَّن على `Person` لا على `Settings`، لا لأنها ميزة
+                بل لأن العكس **قيد**: إعداد واحد للمساحة يفرض اختيار أحدهما
+                على الآخر بلا سبب. وهكذا لو اختارا نفس اللغة — وهو الغالب —
+                لا يكلّف ذلك شيئًا، ولو اختلفا يومًا فالمنصة تحتمله. */}
+            <Field label={t("اللغة", "Language")}>
               <div className="row" style={{ gap: 8 }}>
                 <button
                   className={`btn${lang === "ar" ? " primary" : " ghost"}`}
@@ -142,10 +144,6 @@ export function Settings() {
                   onClick={() => void setLang("en")}
                 >English</button>
               </div>
-              <p className="sub" style={{ margin: "8px 0 0", fontSize: 12 }}>
-                {t("ده اختيارك إنت لوحدك — الطرف التاني بيفضل يقرا بلغته.",
-                   "This is yours alone — the other of you keeps reading in theirs.")}
-              </p>
             </Field>
             <div className="row">
               <button

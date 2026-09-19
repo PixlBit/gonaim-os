@@ -722,3 +722,16 @@ section.block > .head hr {
 }
 .otd-line .t { flex: 1; font-size: 13.5px; color: var(--bone); }
 .otd-line .a { color: var(--dust); font-size: 12px; }
+
+/* زر تبديل اللغة — أصغر ما في الشريط، وبإطار خفيف يفصله عن الأيقونات. */
+.iconbtn.lang-swap {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 9px;
+  color: var(--dust);
+  min-width: 34px;
+}
+.iconbtn.lang-swap:hover:not(:disabled) { color: var(--bone); border-color: var(--line-hot); }
