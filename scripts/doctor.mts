@@ -88,45 +88,6 @@ cycleMinutes > 0
   ? add("ok", `الدورة كل ${cycleMinutes} دقيقة`)
   : add("warn", "الدورة", "المؤقّت موقوف (CYCLE_MINUTES=0). شغّلها بـnpm run cycle");
 
-// ── مساحة إحنا ──────────────────────────────────────
-// منفصلة تمامًا عن القاعدة أعلاه: تعمل بملف على القرص ما لم يُضبط
-// EHNA_DATABASE_URL، فغياب Postgres لا يعطّلها.
-let ehna: { accounts: number; items: number; tasks: number; memories: number; rev: number } | null = null;
-const ehnaPg = process.env["EHNA_DATABASE_URL"];
-const ehnaDir = process.env["EHNA_DIR"] ?? ".ehna";
-const secret = process.env["EHNA_SECRET"] ?? "";
-
-if (ehnaPg) {
-  add("ok", "مخزَن إحنا: Postgres", "تأكد من تطبيق الهجرات (npm run migrate)");
-} else {
-  const { existsSync, readFileSync } = await import("node:fs");
-  const vaultPath = `${ehnaDir}/vault.json`;
-  if (!existsSync(vaultPath)) {
-    add("warn", "مساحة إحنا", "مش متعملة. شغّل npm run ehna:setup");
-  } else {
-    try {
-      const v = JSON.parse(readFileSync(vaultPath, "utf8"));
-      ehna = {
-        accounts: v.accounts?.length ?? 0,
-        items: v.space?.items?.length ?? 0,
-        tasks: v.space?.tasks?.length ?? 0,
-        memories: v.space?.memories?.length ?? 0,
-        rev: v.rev ?? 0,
-      };
-      add("ok", `مخزَن إحنا: ${vaultPath}`);
-    } catch {
-      add("fail", "مخزَن إحنا", `${vaultPath} موجود لكنه غير مقروء`);
-    }
-  }
-}
-
-if (secret.length >= 32) add("ok", "EHNA_SECRET");
-else if (ehna || ehnaPg) {
-  add("fail", "EHNA_SECRET", "ناقص أو قصير — الخادم سيرفض كل طلب. شغّل npm run ehna:setup");
-} else {
-  add("warn", "EHNA_SECRET", "غير مضبوط. يُولَّد مع npm run ehna:setup");
-}
-
 // ── العرض ───────────────────────────────────────────
 console.log();
 for (const l of lines) {
@@ -141,13 +102,6 @@ if (counts) {
   if (counts["entities"] === 0) {
     console.log("     فارغة — افتح الواجهة واستخدم capture");
   }
-}
-
-if (ehna) {
-  console.log("\n  مساحة إحنا:");
-  console.log(`     ${ehna.accounts} حساب · ${ehna.items} عنصر · ` +
-              `${ehna.tasks} مهمة · ${ehna.memories} ذكرى · نسخة ${ehna.rev}`);
-  if (ehna.memories === 0) console.log("     مفيش ذكريات لسه — الفترة دي هي اللي هتتفتكر");
 }
 
 if (cycles.length > 0) {
