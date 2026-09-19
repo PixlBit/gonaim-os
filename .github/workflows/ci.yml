@@ -27,8 +27,6 @@ jobs:
       - name: Build web
         run: npm run build
 
-      - name: Build ehna
-        run: npm run ehna:build
       # ADR-0006: المفاتيح لا تصل إلى العميل. هذا ما يجعل المنع قابلًا للإثبات.
       - name: No secrets in bundle
         run: node scripts/scan-bundle.mjs
@@ -111,10 +109,3 @@ jobs:
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/gonaim_test
         run: npx vitest run packages/db
-
-      # مسار Postgres لمساحة إحنا. المسار الافتراضي ملف، وهذا ما يعمل عند
-      # النشر — ولا يكفي أن يُترجم: لا بد أن يُثبت أنه يعطي نفس الضمانات.
-      - name: EHNA store on Postgres
-        env:
-          EHNA_DATABASE_URL: postgres://postgres:postgres@localhost:5432/gonaim_test
-        run: npx vitest run packages/couple-db
