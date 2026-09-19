@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { api, type ApiError, type Brief, type OracleKind } from "../api.js";
+import type { Text } from "@gonaim/couple";
 import { useSpace } from "../store.js";
+import { useTongue } from "../lang.js";
 
 /**
  * الطبقة الاختيارية.
@@ -15,18 +17,24 @@ import { useSpace } from "../store.js";
  *     عليها إنها حتمية. الطبقة دي زيادة، مش شرط.
  */
 
-const HINTS: Record<OracleKind, string> = {
-  letter: "بياخد سجل آخر شهر ويكتب منه رسالة قصيرة تتقري بعد سنين.",
-  advice: "بيقرا الفروق اللي كتبتوها عن نفسكم + الأرقام، ويطلع بـ٣ خطوات.",
-  gift: "بيقرا ملف الطرف التاني وقايمة حاجاته، ويقترح أفكار.",
-  week: "بيرتب الأسبوع الجاي من المهام والمواعيد المكتوبة.",
-  story: "بيحوّل الذكرى لحكاية قصيرة من تفاصيلها هي بس.",
+const HINTS: Record<OracleKind, Text> = {
+  letter: { ar: "بياخد سجل آخر شهر ويكتب منه رسالة قصيرة تتقري بعد سنين.",
+            en: "Takes the last month's log and writes a short letter to be read years from now." },
+  advice: { ar: "بيقرا الفروق اللي كتبتوها عن نفسكم + الأرقام، ويطلع بـ٣ خطوات.",
+            en: "Reads the differences you declared plus the numbers, and returns three steps." },
+  gift:   { ar: "بيقرا ملف الطرف التاني وقايمة حاجاته، ويقترح أفكار.",
+            en: "Reads the other's profile and their list, and suggests ideas." },
+  week:   { ar: "بيرتب الأسبوع الجاي من المهام والمواعيد المكتوبة.",
+            en: "Orders the week ahead from the tasks and appointments already written." },
+  story:  { ar: "بيحوّل الذكرى لحكاية قصيرة من تفاصيلها هي بس.",
+            en: "Turns a memory into a short story, from its own details only." },
 };
 
 export function Oracle({ kind, targetId, title }: {
   kind: OracleKind; targetId?: string; title?: string;
 }) {
   const { features, act, busy } = useSpace();
+  const { t, s } = useTongue();
   const [brief, setBrief] = useState<Brief | null>(null);
   const [text, setText] = useState<string | null>(null);
   const [isOffline, setOffline] = useState(false);
@@ -50,7 +58,7 @@ export function Oracle({ kind, targetId, title }: {
       setText(res.text);
       setOffline(Boolean(res.offline));
       setBrief(res.brief);
-      if (res.offline && features.oracle) setNote("النموذج مردّش — دي الوقايع زي ما هي.");
+      if (res.offline && features.oracle) setNote(t("النموذج مردّش — دي الوقايع زي ما هي.", "The model did not answer — these are the facts as they are."));
     } catch (err) { setNote((err as ApiError).message); }
     finally { setWorking(false); }
   }
@@ -64,19 +72,19 @@ export function Oracle({ kind, targetId, title }: {
   return (
     <div className="panel oracle">
       <div className="oracle-head">
-        <span className="label">{title ?? "طبقة اختيارية"}</span>
+        <span className="label">{title ?? t("طبقة اختيارية", "Optional layer")}</span>
         <span className={`chip ${features.oracle ? "on" : ""}`}>
-          {features.oracle ? "شغّالة" : "مقفولة — بترجّع الوقايع بس"}
+          {features.oracle ? t("شغّالة", "on") : t("مقفولة — بترجّع الوقايع بس", "off — facts only")}
         </span>
       </div>
-      <p className="hint">{HINTS[kind]}</p>
+      <p className="hint">{s(HINTS[kind])}</p>
 
       <div className="row" style={{ gap: 8 }}>
         <button className="btn ghost" disabled={working} onClick={() => void preview()}>
-          شوف اللي هيتبعت
+          {t("شوف اللي هيتبعت", "See what would be sent")}
         </button>
         <button className="btn primary" disabled={working} onClick={() => void send()}>
-          {working ? "…" : features.oracle ? "ابعت" : "اعرض الوقايع"}
+          {working ? "…" : features.oracle ? t("ابعت", "Send") : t("اعرض الوقايع", "Show the facts")}
         </button>
       </div>
 
@@ -84,11 +92,11 @@ export function Oracle({ kind, targetId, title }: {
 
       {brief && !text && (
         <div className="brief-box">
-          <span className="label">التعليمات</span>
+          <span className="label">{t("التعليمات", "The instructions")}</span>
           <pre>{brief.system}</pre>
-          <span className="label">الوقايع اللي بتتبعت</span>
+          <span className="label">{t("الوقايع اللي بتتبعت", "The facts that would be sent")}</span>
           <pre>{brief.text}</pre>
-          <span className="label">اللي عمره ما بيتبعت</span>
+          <span className="label">{t("اللي عمره ما بيتبعت", "What is never sent")}</span>
           <ul>{brief.withheld.map((w) => <li key={w}>{w}</li>)}</ul>
         </div>
       )}
@@ -98,18 +106,20 @@ export function Oracle({ kind, targetId, title }: {
           <div className="text">{text}</div>
           <div className="row" style={{ gap: 8, marginTop: 12 }}>
             <button className="btn ghost tiny" onClick={() => { setText(null); setBrief(null); }}>
-              امسحها
+              {t("امسحها", "Discard")}
             </button>
             <button className="btn ghost tiny" disabled={busy || saved} onClick={() => void keep()}>
-              {saved ? "اتحفظت في «بينا»" : "احفظها كرسالة"}
+              {saved ? t("اتحفظت في «بينا»", "Saved to “Between us”") : t("احفظها كرسالة", "Save it as a note")}
             </button>
             {brief && (
               <button className="btn ghost tiny" onClick={() => setText(null)}>
-                رجّعني لللي اتبعت
+                {t("رجّعني لللي اتبعت", "Back to what was sent")}
               </button>
             )}
             <span className="label" style={{ alignSelf: "center" }}>
-              {isOffline ? "صيغة حتمية — بلا نموذج" : "اقتراح — مش محفوظ لحد ما تحفظه"}
+              {isOffline
+                ? t("صيغة حتمية — بلا نموذج", "Deterministic — no model involved")
+                : t("اقتراح — مش محفوظ لحد ما تحفظه", "A suggestion — not saved until you save it")}
             </span>
           </div>
         </div>

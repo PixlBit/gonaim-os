@@ -1,12 +1,14 @@
 import { useEffect, type ReactNode } from "react";
 import type { Actor, PersonKey, Space } from "@gonaim/couple";
 import { money as fmtMoney } from "@gonaim/couple";
+import { useTongue } from "../lang.js";
 
 /** قطع صغيرة تتكرر في كل شاشة. كل واحدة تفعل شيئًا واحدًا. */
 
 export function Sheet({ title, onClose, children, wide }: {
   title: string; onClose: () => void; children: ReactNode; wide?: boolean;
 }) {
+  const { t } = useTongue();
   // Escape يقفل: نافذة لا تُقفَل بالكيبورد تحبس من يكتب بسرعة
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
@@ -19,7 +21,7 @@ export function Sheet({ title, onClose, children, wide }: {
       <div className={`panel hot sheet${wide ? " wide" : ""}`} role="dialog" aria-modal="true">
         <header>
           <h3>{title}</h3>
-          <button className="iconbtn" onClick={onClose} aria-label="اقفل">✕</button>
+          <button className="iconbtn" onClick={onClose} aria-label={t("اقفل", "Close")}>✕</button>
         </header>
         {children}
       </div>
@@ -35,6 +37,8 @@ export function Field({ label, children }: { label: string; children: ReactNode 
 export function Ring({ value, size = 96, caption, tone = "hot" }: {
   value: number; size?: number; caption?: string | undefined; tone?: "hot" | "cool" | "warm" | undefined;
 }) {
+  // ٪ في العربية و% في الإنجليزية: نفس المعنى، ورمزان مختلفان لا يُخلطان
+  const pct = useTongue().t("٪", "%");
   const stroke = 7;
   const r = (size - stroke) / 2;
   const len = 2 * Math.PI * r;
@@ -71,7 +75,7 @@ export function Ring({ value, size = 96, caption, tone = "hot" }: {
         />
       </svg>
       <div className="mid">
-        <b>{value}<span style={{ fontSize: 12 }}>٪</span></b>
+        <b>{value}<span style={{ fontSize: 12 }}>{pct}</span></b>
         {caption ? <span>{caption}</span> : null}
       </div>
     </div>
@@ -101,12 +105,19 @@ export function Tile({ k, v, n, tone }: {
 const ACTOR_CLASS: Record<Actor, string> = { him: "him", her: "her", both: "both" };
 
 export function Who({ actor, space }: { actor: Actor; space: Space }) {
-  const name = actor === "both" ? "إحنا" : space.people[actor].name;
+  const { t } = useTongue();
+  const name = actor === "both" ? t("إحنا", "Us") : space.people[actor].name;
   return <span className={`chip ${ACTOR_CLASS[actor]}`}>{name}</span>;
 }
 
-export function actorName(actor: Actor, space: Space): string {
-  return actor === "both" ? "إحنا" : space.people[actor].name;
+/**
+ * نسخة الدالة — لمن يحتاج الاسم نصًّا لا عنصرًا.
+ *
+ * تأخذ `us` بدل أن تنادي `useTongue`: تُستدعى داخل `map` و`sort` وأماكن
+ * ليست مكوّنات، وقاعدة الخطّافات في React تمنع ذلك.
+ */
+export function actorName(actor: Actor, space: Space, us = "إحنا"): string {
+  return actor === "both" ? us : space.people[actor].name;
 }
 
 export function personColor(key: PersonKey, space: Space): string {
@@ -149,12 +160,13 @@ export function Tabs<T extends string>({ value, onChange, options }: {
 
 /** تأكيد قبل حذف. الحذف هنا نهائي، فالسؤال ليس ترفًا. */
 export function Confirm({ text, onYes, onNo }: { text: string; onYes: () => void; onNo: () => void }) {
+  const { t } = useTongue();
   return (
-    <Sheet title="متأكد؟" onClose={onNo}>
+    <Sheet title={t("متأكد؟", "Are you sure?")} onClose={onNo}>
       <p style={{ color: "var(--muted)" }}>{text}</p>
       <div className="row" style={{ marginTop: 18 }}>
-        <button className="btn ghost" onClick={onNo}>لأ، سيبه</button>
-        <button className="btn danger" onClick={onYes}>أيوه، امسحه</button>
+        <button className="btn ghost" onClick={onNo}>{t("لأ، سيبه", "No, keep it")}</button>
+        <button className="btn danger" onClick={onYes}>{t("أيوه، امسحه", "Yes, delete it")}</button>
       </div>
     </Sheet>
   );

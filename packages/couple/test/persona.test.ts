@@ -25,7 +25,7 @@ describe("لا درجة بلا دليل", () => {
   it("المحاور تبدأ فاضية وتقول ليه", () => {
     const p = readPersona(base(), "him");
     expect(p.axes.every((a) => a.score === null)).toBe(true);
-    expect(p.axes.find((a) => a.id === "followThrough")?.evidence).toMatch(/بدري|مهمة/);
+    expect(p.axes.find((a) => a.id === "followThrough")?.evidence.ar).toMatch(/بدري|مهمة/);
     expect(p.signature).toBeNull();
   });
 
@@ -50,7 +50,7 @@ describe("المبادرة نسبية بين الاتنين", () => {
     const her = readPersona(s, "her").axes.find((a) => a.id === "initiative");
     expect(him?.score).toBe(75);
     expect(her?.score).toBe(25);
-    expect(him?.evidence).toContain("3");
+    expect(him?.evidence.ar).toContain("3");
   });
 });
 
@@ -67,7 +67,7 @@ describe("الإنفاق يُقاس بالفرق عن التقدير", () => {
     const axis = readPersona(s, "him").axes.find((a) => a.id === "spending");
     expect(axis?.n).toBe(3);
     expect(axis?.score).toBe(70);           // متوسط تجاوز 20٪
-    expect(axis?.evidence).toContain("20");
+    expect(axis?.evidence.ar).toContain("20");
   });
 });
 
@@ -83,7 +83,8 @@ describe("الرد يُقاس من وقت القراءة", () => {
     const axis = readPersona(s, "him").axes.find((a) => a.id === "responsiveness");
     expect(axis?.n).toBe(3);
     expect(axis?.score).toBeGreaterThan(90);
-    expect(axis?.evidence).toContain("ساعتين");
+    expect(axis?.evidence.ar).toContain("ساعتين");
+    expect(axis?.evidence.en).toContain("two hours");
   });
 });
 
@@ -114,7 +115,7 @@ describe("الانسجام", () => {
     s = act(s, { type: "persona.set", traits: { loveLanguage: "time" } }, "her");
     const hit = syncReport(s).insights.find((i) => i.code === "love.diff");
     expect(hit?.kind).toBe("friction");
-    expect(hit?.why).toContain("نور");
+    expect(hit?.why.ar).toContain("نور");
     expect(hit?.move).toBeTruthy();
   });
 
@@ -140,7 +141,7 @@ describe("الأسابيع الجاية", () => {
 
     const heavy = f.weeks.find((w) => w.milestones.length > 0);
     expect(heavy?.score).toBe(100);
-    expect(heavy?.note).toContain("الفرح");
+    expect(heavy?.note.ar).toContain("الفرح");
     expect(f.peak?.week).toBe(heavy?.week);
     expect(f.calm?.milestones).toEqual([]);
     expect(f.calm?.score).toBe(0);
@@ -166,7 +167,8 @@ describe("نبض العلاقة", () => {
     const hb = heartbeat(s, TODAY);
     expect(hb.verdict).toBe("cold");
     expect(hb.careShare).toBe(0);
-    expect(hb.line).toContain("التجهيز");
+    expect(hb.line.ar).toContain("التجهيز");
+    expect(hb.line.en).toContain("preparations");
   });
 
   it("الذكريات والرسايل بترفع النبض", () => {
@@ -207,6 +209,6 @@ describe("التقرير الكامل", () => {
     }
     const hit = report(s, TODAY, "him").attention.find((a) => a.code === "heart_cold");
     expect(hit?.screen).toBe("persona");
-    expect(hit?.move).toContain("ذكرى");
+    expect(hit?.move?.ar).toContain("ذكرى");
   });
 });

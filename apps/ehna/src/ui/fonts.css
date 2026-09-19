@@ -1,0 +1,38 @@
+/**
+ * الخطوط — عندنا، لا عند جوجل.
+ *
+ * كانت الواجهة تطلب الخطوط من `fonts.googleapis.com`. وهذا يعني ثلاثة
+ * أشياء لا تليق بمساحة خاصة: طلب يخرج إلى طرف ثالث في كل فتح (يرى منه
+ * عنوان الـIP ووقت الزيارة)، وشاشة بلا خط لو انقطعت الشبكة أو حُجب
+ * النطاق، واستثناءان في سياسة المحتوى يفتحان بابًا لسنا بحاجته.
+ *
+ * فصارت الملفات داخل الحزمة. والثمن ٣٢٠ كيلوبايت تُحمَّل مرة وتُخزَّن
+ * في ذاكرة المتصفح، والمقابل: المنصة تفتح بخطّها كاملًا وهي بلا إنترنت.
+ *
+ * والمقاطع مختارة بعناية لا بالجملة: الحزمة كاملة فيها الكيريلي واليوناني
+ * والفيتنامي — لغات لا تُكتب هنا. نأخذ العربي واللاتيني فقط.
+ *
+ *   IBM Plex Sans Arabic — عربي ٣٠٠…٧٠٠، ولاتيني ٤٠٠…٦٠٠ للأرقام
+ *   IBM Plex Mono        — لاتيني ٣٠٠…٥٠٠، للأرقام والتسميات الإنجليزية
+ *
+ * ولماذا Plex؟ لأنه من العائلات القليلة التي رُسم عربيها ولاتينيها معًا،
+ * فارتفاع السطر والوزن والتباعد متوافقة بين النصّين في السطر الواحد —
+ * وهو بالضبط ما تحتاجه واجهة تُقرأ بلغتين.
+ */
+
+/* العربي: متن الواجهة كله */
+@import "@fontsource/ibm-plex-sans-arabic/arabic-300.css";
+@import "@fontsource/ibm-plex-sans-arabic/arabic-400.css";
+@import "@fontsource/ibm-plex-sans-arabic/arabic-500.css";
+@import "@fontsource/ibm-plex-sans-arabic/arabic-600.css";
+@import "@fontsource/ibm-plex-sans-arabic/arabic-700.css";
+
+/* اللاتيني من نفس العائلة: الأرقام والأسماء الأجنبية داخل جملة عربية */
+@import "@fontsource/ibm-plex-sans-arabic/latin-400.css";
+@import "@fontsource/ibm-plex-sans-arabic/latin-500.css";
+@import "@fontsource/ibm-plex-sans-arabic/latin-600.css";
+
+/* الأحادي: الأرقام والتسميات — لاتيني فقط، فهو بلا عربي أصلًا */
+@import "@fontsource/ibm-plex-mono/latin-300.css";
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-500.css";

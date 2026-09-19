@@ -6,6 +6,7 @@ import { LOG_LIMIT } from "./types.js";
 import type { Action } from "./schema.js";
 import { newId } from "./ids.js";
 import { money } from "./money.js";
+import { T, enDate, type Text } from "./text.js";
 import { arDate, arDayDate, arTime, day } from "./dates.js";
 
 /**
@@ -31,9 +32,18 @@ export type ActErrorCode =
   | "not_yours"      // فعل يخص الطرف الآخر
   | "not_allowed";   // قاعدة مجال تمنعه
 
+/**
+ * خطأ فعل — برسالته باللغتين.
+ *
+ * `Error.message` واحد لأن `Error` كذلك، ويُملأ بالعربية للسجل والتتبّع؛
+ * و`text` يحمل الاثنين لما يخرج إلى الشاشة. فلا يضطر الخادم لأن يعرف لغة
+ * القارئ قبل أن يرمي الخطأ.
+ */
 export class ActError extends Error {
-  constructor(readonly code: ActErrorCode, message: string) {
-    super(message);
+  readonly text: Text;
+  constructor(readonly code: ActErrorCode, ar: string, en: string = ar) {
+    super(ar);
+    this.text = T(ar, en);
     this.name = "ActError";
   }
 }
@@ -51,7 +61,7 @@ function withPatch<T extends object>(base: T, patch: Record<string, unknown>): T
 
 function find<T extends { id: string }>(list: readonly T[], id: string, what: string): T {
   const hit = list.find((x) => x.id === id);
-  if (!hit) throw new ActError("not_found", `${what} غير موجود: ${id}`);
+  if (!hit) throw new ActError("not_found", `${what} غير موجود: ${id}`, `${what} not found: ${id}`);
   return hit;
 }
 
@@ -86,6 +96,14 @@ export function apply(space: Space, action: Action, ctx: ActContext): Space {
       const { type: _t, key, ...rest } = action;
       next.people = { ...space.people, [key]: withPatch(space.people[key], rest) };
       summary = `عدّل بيانات ${space.people[key].name}`;
+      break;
+    }
+
+    case "lang.set": {
+      const me = space.people[ctx.by];
+      next.people = { ...space.people, [ctx.by]: { ...me, lang: action.lang } };
+      // السطر بالعربية كبقية السجل: السجل ذاكرة المساحة لا واجهة قارئ.
+      summary = action.lang === "ar" ? "رجع للعربي" : "بدّل للإنجليزي";
       break;
     }
 
@@ -378,7 +396,7 @@ export function apply(space: Space, action: Action, ctx: ActContext): Space {
     case "note.read": {
       const n = find(space.notes, action.id, "الرسالة");
       // "قُرئت" شهادة من المستقبِل. الكاتب لا يشهد على قراءة نفسه.
-      if (n.from === ctx.by) throw new ActError("not_yours", "دي رسالتك أنت.");
+      if (n.from === ctx.by) throw new ActError("not_yours", "دي رسالتك أنت.", "That note is your own.");
       next.notes = n.readAt ? space.notes : replace(space.notes, { ...n, readAt: at });
       summary = "قرأ رسالة";
       break;
@@ -393,7 +411,7 @@ export function apply(space: Space, action: Action, ctx: ActContext): Space {
 
     case "note.remove": {
       const n = find(space.notes, action.id, "الرسالة");
-      if (n.from !== ctx.by) throw new ActError("not_yours", "مش رسالتك عشان تمسحها.");
+      if (n.from !== ctx.by) throw new ActError("not_yours", "مش رسالتك عشان تمسحها.", "Not your note to delete.");
       next.notes = drop(space.notes, action.id);
       summary = "مسح رسالة بعتها";
       break;
@@ -413,7 +431,7 @@ export function apply(space: Space, action: Action, ctx: ActContext): Space {
       const c = find(space.capsules, action.id, "الرسالة");
       // القفل زمني لا اجتماعي: حتى كاتبها لا يفتحها قبل موعدها
       if (day(at) < c.openAt) {
-        throw new ActError("too_early", `لسه بدري — بتتفتح ${arDate(c.openAt)}.`);
+        throw new ActError("too_early", `لسه بدري — بتتفتح ${arDate(c.openAt)}.`, `Too early — it opens on ${enDate(c.openAt)}.`);
       }
       next.capsules = c.openedAt ? space.capsules : replace(space.capsules, { ...c, openedAt: at });
       summary = `فتح: ${c.title}`;
@@ -422,7 +440,7 @@ export function apply(space: Space, action: Action, ctx: ActContext): Space {
 
     case "capsule.remove": {
       const c = find(space.capsules, action.id, "الرسالة");
-      if (c.from !== ctx.by) throw new ActError("not_yours", "مش رسالتك.");
+      if (c.from !== ctx.by) throw new ActError("not_yours", "مش رسالتك.", "Not your letter.");
       next.capsules = drop(space.capsules, action.id);
       summary = `شال رسالة: ${c.title}`;
       break;
@@ -444,7 +462,7 @@ export function apply(space: Space, action: Action, ctx: ActContext): Space {
     case "decision.vote": {
       const d = find(space.decisions, action.id, "القرار");
       if (!d.options.some((o) => o.id === action.option)) {
-        throw new ActError("not_found", "الخيار ده مش موجود.");
+        throw new ActError("not_found", "الخيار ده مش موجود.", "That option does not exist.");
       }
       const votes = { ...d.votes, [ctx.by]: action.option };
       // لا حسم بصوت واحد ولا بأغلبية — اتفاق أو لا شيء
@@ -470,7 +488,7 @@ export function apply(space: Space, action: Action, ctx: ActContext): Space {
       const items = space.items.filter((i) => !i.seeded);
       const tasks = space.tasks.filter((t) => !t.seeded);
       const removed = (space.items.length - items.length) + (space.tasks.length - tasks.length);
-      if (removed === 0) throw new ActError("not_allowed", "مفيش حاجة من الكشف الافتراضي باقية.");
+      if (removed === 0) throw new ActError("not_allowed", "مفيش حاجة من الكشف الافتراضي باقية.", "Nothing is left from the default checklist.");
       next.items = items;
       next.tasks = tasks;
       summary = `مسح ${removed} سطر من الكشف الافتراضي`;

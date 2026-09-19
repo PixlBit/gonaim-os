@@ -3,6 +3,8 @@ import type { Report } from "./analytics.js";
 import { analyze } from "./analytics.js";
 import { attend } from "./attention.js";
 import { forecast, heartbeat, type Forecast, type Heartbeat } from "./rhythm.js";
+import { nightPlan, type NightPlan } from "./night.js";
+import { onThisDay, nextAnniversary, type OnThisDay } from "./moment.js";
 import { syncReport, type SyncReport } from "./sync.js";
 
 /**
@@ -19,6 +21,12 @@ export interface FullReport extends Report {
   sync: SyncReport;
   forecast: Forecast;
   heartbeat: Heartbeat;
+  /** ليلة مقترحة بدليل — أو `null` حين لا دليل. */
+  night: NightPlan | null;
+  /** ذكريات وقعت في مثل هذا اليوم من سنة ماضية. */
+  onThisDay: OnThisDay[];
+  /** ذكرى سنوية تقترب خلال أسبوع. */
+  anniversary: ReturnType<typeof nextAnniversary>;
 }
 
 export function report(space: Space, todayStr: string, viewer: PersonKey): FullReport {
@@ -31,6 +39,10 @@ export function report(space: Space, todayStr: string, viewer: PersonKey): FullR
   return {
     ...base,
     ...depth,
+    // بعد العمق لا قبله: الليلة تُبنى على التوقّع والنبض معًا
+    night: nightPlan(space, todayStr, viewer, depth),
+    onThisDay: onThisDay(space, todayStr),
+    anniversary: nextAnniversary(space, todayStr),
     attention: attend(space, base, viewer, depth),
   };
 }

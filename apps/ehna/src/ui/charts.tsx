@@ -16,11 +16,34 @@ import { short } from "@gonaim/couple";
 
 export interface Point { label: string; value: number }
 
+/** نصّ بلغة القارئ داخل دوال ليست مكوّنات — اللغة من `<html lang>`. */
+function say(ar: string, en: string): string {
+  return typeof document !== "undefined" && document.documentElement.lang === "en" ? en : ar;
+}
+
+/**
+ * الزمن يجري في اتجاه القراءة.
+ *
+ * الرسوم هنا تُحسب بالسينات يدويًا لا بمكتبة، وكانت مقلوبة يدويًا أيضًا:
+ * أقدم عمود عند اليمين، لأن العربية تُقرأ من اليمين. وهذا صحيح — وصحيح
+ * فقط بالعربية. الإنجليزية تقرأ الزمن من اليسار، ومخطط مقلوب فيها يقول
+ * إن الإنفاق **ينخفض** بينما هو يرتفع.
+ *
+ * فصار القلب مشروطًا بلغة القارئ: `flip` واحدة تمرّ على كل دالة إسقاط،
+ * ومعها ينقلب المحور والمسار والمفتاح معًا. ولأن القارئين اثنان قد
+ * يختلفان، فالمخطط الواحد يُرسم لكلٍّ منهما في اتجاهه من نفس الأرقام.
+ */
+function useFlip(): boolean {
+  // من `<html lang>` لا من حالة React: الرسم هنا دوال خالصة بلا سياق
+  return typeof document !== "undefined" && document.documentElement.lang === "en" ? false : true;
+}
+
 /** أعمدة — للإنفاق الشهري وإنجاز الأسابيع. */
 export function Bars({ data, height = 132, unit }: {
   data: Point[]; height?: number; unit?: ((n: number) => string) | undefined;
 }) {
   const id = useId();
+  const flip = useFlip();
   if (data.length === 0) return <Blank />;
 
   const w = 100;
@@ -46,8 +69,9 @@ export function Bars({ data, height = 132, unit }: {
         </defs>
         {data.map((d, i) => {
           const h = Math.max(1.5, (d.value / max) * plot);
-          // القلب: العمود الأول عند اليمين
-          const x = w - bw - (x0 + i * (bw + gap));
+          // الأقدم أولًا في اتجاه القراءة: يمينًا بالعربية، يسارًا بالإنجليزية
+          const left = x0 + i * (bw + gap);
+          const x = flip ? w - bw - left : left;
           return (
             <g key={d.label}>
               <title>{`${d.label}: ${unit ? unit(d.value) : d.value}`}</title>
@@ -75,17 +99,23 @@ export function Trail({ data, ceiling, height = 150, unit }: {
   data: Point[]; ceiling?: number | undefined; height?: number; unit?: ((n: number) => string) | undefined;
 }) {
   const id = useId();
-  if (data.length < 2) return <Blank note="محتاج شهرين على الأقل عشان يبان خط." />;
+  const flip = useFlip();
+  if (data.length < 2) {
+    return <Blank note={say("محتاج شهرين على الأقل عشان يبان خط.",
+                            "Two months at least before a line means anything.")} />;
+  }
 
   const w = 100, top = 12, bottom = 16;
   const plot = height - top - bottom;
   const max = Math.max(...data.map((d) => d.value), ceiling ?? 0, 1);
-  const x = (i: number) => w - (i / (data.length - 1)) * w;
+  const x = (i: number) => (flip ? w - (i / (data.length - 1)) * w : (i / (data.length - 1)) * w);
   const y = (v: number) => top + plot - (v / max) * plot;
 
   const path = data.map((d, i) => `${i === 0 ? "M" : "L"}${x(i).toFixed(2)},${y(d.value).toFixed(2)}`).join(" ");
-  // المسار يبدأ عند اليمين وينتهي عند اليسار، فالإغلاق يمر بالزاويتين بنفس الترتيب
-  const area = `${path} L0,${top + plot} L${w},${top + plot} Z`;
+  // الإغلاق يمرّ بالزاويتين بنفس ترتيب المسار، وإلا التوى الظل على نفسه
+  const area = flip
+    ? `${path} L0,${top + plot} L${w},${top + plot} Z`
+    : `${path} L${w},${top + plot} L0,${top + plot} Z`;
 
   return (
     <>
@@ -120,7 +150,7 @@ export function Trail({ data, ceiling, height = 150, unit }: {
       <div className="row" style={{ justifyContent: "space-between", marginTop: 6 }}>
         <span className="label">{data[0]?.label}</span>
         {ceiling !== undefined && ceiling > 0
-          ? <span className="label" style={{ color: "var(--red)" }}>— الميزانية</span>
+          ? <span className="label" style={{ color: "var(--red)" }}>— {say("الميزانية", "budget")}</span>
           : null}
         <span className="label">{data[data.length - 1]?.label}</span>
       </div>
@@ -169,7 +199,7 @@ function Blank({ note }: { note?: string | undefined }) {
       border: "1px dashed var(--line)", borderRadius: 10, padding: "22px 14px",
       textAlign: "center", color: "var(--dust)", fontSize: 13,
     }}>
-      {note ?? "لسه مفيش أرقام كفاية للرسم."}
+      {note ?? say("لسه مفيش أرقام كفاية للرسم.", "Not enough numbers to draw yet.")}
     </div>
   );
 }

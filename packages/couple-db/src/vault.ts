@@ -71,6 +71,14 @@ export interface Store {
    */
   write(next: Vault, expectedRev: number): Promise<Vault>;
   putPhoto(photo: Photo): Promise<string>;
+  /**
+   * كتابة صورة بمعرّف معروف — للاسترجاع وحده.
+   *
+   * `putPhoto` تولّد معرّفًا جديدًا، والاسترجاع لا يحتمل ذلك: الذكريات
+   * تشير إلى الصور بمعرّفاتها، فنسخة تعيد الصور بأسماء جديدة تعيد ألبومًا
+   * فارغًا. تُرجع false لو المعرّف موجود بالفعل.
+   */
+  putPhotoAs(id: string, photo: Photo): Promise<boolean>;
   getPhoto(id: string): Promise<Photo | null>;
   removePhoto(id: string): Promise<void>;
   close(): Promise<void>;

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useApp } from "./store.js";
+import { useTongue, useDocumentLang } from "./lang.js";
 import { Gate } from "./screens/Gate.js";
 import { Pulse } from "./screens/Pulse.js";
 import { Plan } from "./screens/Plan.js";
@@ -23,17 +24,29 @@ export type ScreenId =
   | "pulse" | "plan" | "nest" | "money" | "signal"
   | "dates" | "memories" | "us" | "persona" | "settings";
 
-const SCREENS: Array<{ id: ScreenId; glyph: string; name: string; title: string }> = [
-  { id: "pulse",    glyph: "✦", name: "النبض",     title: "Pulse" },
-  { id: "plan",     glyph: "◫", name: "الخطة",     title: "Plan" },
-  { id: "nest",     glyph: "⌂", name: "العش",      title: "Nest" },
-  { id: "money",    glyph: "◈", name: "الفلوس",    title: "Ledger" },
-  { id: "signal",   glyph: "◉", name: "التحليل",   title: "Signal" },
-  { id: "dates",    glyph: "◷", name: "المواعيد",  title: "Dates" },
-  { id: "memories", glyph: "❖", name: "الذكريات",  title: "Memory" },
-  { id: "us",       glyph: "♥", name: "إحنا",      title: "Us" },
-  { id: "persona",  glyph: "◐", name: "الأنماط",   title: "Patterns" },
-  { id: "settings", glyph: "⚙", name: "الإعدادات", title: "Config" },
+/**
+ * الأسماء اختيار، لا ترجمة.
+ *
+ * «الفلوس» صارت **الميزان**: الشاشة لا تعدّ نقودًا، بل تزن الداخل بالخارج
+ * والمتوقَّع بالميزانية — و«الميزان» في العربية يحمل المعنيين معًا، كفّة
+ * وحسابًا. و«التحليل» صارت **المرصد**: التحليل فعل يُطلب، والمرصد مكان
+ * يعمل وأنت نائم — وهذا وصف الشاشة بدقة، فهي تقيس الإيقاع بلا أن تُسأل.
+ * و«الإعدادات» صارت **الضبط**: أقصر، وعربية أصيلة، وتتّسع في الشريط بلا
+ * قصّ.
+ *
+ * وما بقي بقي: «النبض» و«العش» و«إحنا» لا يُحسَّن عليها.
+ */
+const SCREENS: Array<{ id: ScreenId; glyph: string; ar: string; en: string }> = [
+  { id: "pulse",    glyph: "✦", ar: "النبض",    en: "Pulse" },
+  { id: "plan",     glyph: "◫", ar: "الخطة",    en: "Plan" },
+  { id: "nest",     glyph: "⌂", ar: "العش",     en: "Nest" },
+  { id: "money",    glyph: "◈", ar: "الميزان",  en: "Ledger" },
+  { id: "signal",   glyph: "◉", ar: "المرصد",   en: "Signal" },
+  { id: "dates",    glyph: "◷", ar: "المواعيد", en: "Dates" },
+  { id: "memories", glyph: "❖", ar: "الذكريات", en: "Memories" },
+  { id: "us",       glyph: "♥", ar: "إحنا",     en: "Us" },
+  { id: "persona",  glyph: "◐", ar: "الأنماط",  en: "Patterns" },
+  { id: "settings", glyph: "⚙", ar: "الضبط",    en: "Config" },
 ];
 
 function useHashScreen(): [ScreenId, (id: ScreenId) => void] {
@@ -53,6 +66,8 @@ function useHashScreen(): [ScreenId, (id: ScreenId) => void] {
 export function App() {
   const { phase, busy, problem, clearProblem, signOut } = useApp();
   const [screen, go] = useHashScreen();
+  const { lang, t, set: setLang } = useTongue();
+  useDocumentLang(lang);
 
   const sky = (
     <>
@@ -63,7 +78,7 @@ export function App() {
   );
 
   if (phase.kind === "loading") {
-    return <>{sky}<div className="gate"><div className="label">بيفتح…</div></div></>;
+    return <>{sky}<div className="gate"><div className="label">{t("بيفتح…", "Opening…")}</div></div></>;
   }
 
   if (phase.kind === "gate") return <>{sky}<Gate note={phase.note} /></>;
@@ -73,10 +88,10 @@ export function App() {
       <>{sky}
         <div className="gate">
           <div className="panel hot box" style={{ padding: 28, maxWidth: 440, textAlign: "center" }}>
-            <div className="logo" style={{ fontSize: 24 }}>EHNA//OS</div>
+            <div className="logo" lang="en" style={{ fontSize: 24 }}>EHNA//OS</div>
             <p style={{ color: "var(--muted)", marginTop: 14 }}>{phase.message}</p>
             <button className="btn ghost" style={{ marginTop: 14 }} onClick={() => window.location.reload()}>
-              جرّب تاني
+              {t("جرّب تاني", "Try again")}
             </button>
           </div>
         </div>
@@ -97,16 +112,16 @@ export function App() {
       {sky}
       <div className="shell">
         <nav className="rail">
-          <div className="brand"><b>إحنا</b>EHNA//OS</div>
+          <div className="brand"><b>{t("إحنا", "EHNA")}</b><span className="os" lang="en">EHNA//OS</span></div>
           {SCREENS.map((s) => (
             <button
               key={s.id}
               aria-current={s.id === screen}
               onClick={() => go(s.id)}
-              title={s.name}
+              title={lang === "ar" ? s.ar : s.en}
             >
               <i>{s.glyph}</i>
-              <span>{s.name}</span>
+              <span>{lang === "ar" ? s.ar : s.en}</span>
               {((s.id === "pulse" && urgent) || (s.id === "us" && waiting > 0)) && <em className="pip" />}
             </button>
           ))}
@@ -114,10 +129,14 @@ export function App() {
 
         <div className="main">
           <header className="topbar">
-            <div className="screen-name">{current.title}</div>
+            {/* اللغة الأخرى عمدًا: الشريط الجانبي كتب اسم الشاشة بلغتك، فلا
+                معنى لتكراره هنا — وهذا السطر يبقي المساحة ثنائية في العين. */}
+            <div className="screen-name" lang={lang === "ar" ? "en" : "ar"}>
+              {lang === "ar" ? current.en : current.ar}
+            </div>
             <div className="spacer" />
             {problem && (
-              <button className="chip bad" onClick={clearProblem} title="اضغط عشان تخفيه">
+              <button className="chip bad" onClick={clearProblem} title={t("اضغط عشان تخفيه", "Tap to dismiss")}>
                 {problem}
               </button>
             )}
@@ -125,8 +144,20 @@ export function App() {
               <i className="dotcolor" style={{ color: you.accent }} />
               {you.name}
             </div>
-            <i className={`beat${busy ? " busy" : ""}`} title={busy ? "بيتحفظ" : "متصل"} />
-            <button className="iconbtn" onClick={() => void signOut()} title="اقفل الجلسة">⏻</button>
+            {/* تبديل اللغة زرّ واحد في الشريط لا قسمًا في الضبط: التبديل
+                حاجة عادية تُعمل بضغطة، لا إعدادًا يُفتح له مكان. والزر يكتب
+                اللغة **الأخرى** — العُرف المتعارف عليه، ولا يحتاج شرحًا. */}
+            <button
+              className="iconbtn lang-swap"
+              disabled={busy}
+              onClick={() => void setLang(lang === "ar" ? "en" : "ar")}
+              title={lang === "ar" ? "بدّل للإنجليزي" : "Switch to Arabic"}
+              lang={lang === "ar" ? "en" : "ar"}
+            >
+              {lang === "ar" ? "EN" : "ع"}
+            </button>
+            <i className={`beat${busy ? " busy" : ""}`} title={busy ? t("بيتحفظ", "Saving") : t("متصل", "Connected")} />
+            <button className="iconbtn" onClick={() => void signOut()} title={t("اقفل الجلسة", "Sign out")}>⏻</button>
           </header>
 
           <main className="stage">

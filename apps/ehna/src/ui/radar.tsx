@@ -1,4 +1,5 @@
 import type { Persona } from "@gonaim/couple";
+import { useTongue } from "../lang.js";
 
 /**
  * البصمة.
@@ -17,6 +18,7 @@ const CENTER = 100;
 const SIZE = 200;
 
 export function Fingerprint({ people }: { people: Persona[] }) {
+  const { s } = useTongue();
   const axes = people[0]?.axes ?? [];
   if (axes.length === 0) return null;
   const n = axes.length;
@@ -81,7 +83,7 @@ export function Fingerprint({ people }: { people: Persona[] }) {
           return (
             <text key={a.id} x={x} y={y} textAnchor="middle" dominantBaseline="middle"
                   fill="var(--muted)" fontSize="8">
-              {a.name}
+              {s(a.name)}
             </text>
           );
         })}

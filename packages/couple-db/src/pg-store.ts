@@ -61,6 +61,15 @@ export class PgStore implements Store {
     return id;
   }
 
+  async putPhotoAs(id: string, photo: Photo): Promise<boolean> {
+    const rows = await this.sql`
+      insert into ehna_photo (id, mime, bytes)
+      values (${id}, ${photo.mime}, ${Buffer.from(photo.bytes)})
+      on conflict (id) do nothing
+      returning id`;
+    return rows.length > 0;
+  }
+
   async getPhoto(id: string): Promise<Photo | null> {
     const rows = await this.sql<{ mime: string; bytes: Buffer }[]>`
       select mime, bytes from ehna_photo where id = ${id}`;

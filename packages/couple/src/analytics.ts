@@ -3,6 +3,7 @@ import type {
 } from "./types.js";
 import { addDays, arSpan, day, daysBetween, monthKey, weekKey } from "./dates.js";
 import { pct } from "./money.js";
+import { T, enSpan, type Text } from "./text.js";
 
 /**
  * التحليلات.
@@ -21,17 +22,22 @@ export type Level = "now" | "soon" | "watch";
 export interface Attention {
   code: string;
   level: Level;
-  title: string;
-  why: string;
-  move?: string;
+  /**
+   * ثلاثتها `Text` لا `string`: الملاحظة تُبنى مرة على الخادم ويقرأها
+   * اثنان بلغتين مختلفتين من نفس الحمولة. ولو وُلِّدت بلغة القارئ لاحتاج
+   * كل منهما تقريرًا مستقلًا، ولصار تبديل اللغة رحلة إلى الشبكة.
+   */
+  title: Text;
+  why: Text;
+  move?: Text;
   /** الشاشة التي تحلّ الملاحظة — الواجهة تحوّلها إلى زر. */
   screen?: string;
 }
 
 export interface MilestoneView extends Milestone {
   daysAway: number;
-  /** "بعد 3 شهور" · "النهارده" · "فات" */
-  when: string;
+  /** "بعد 3 شهور" · "النهارده" · "فات" — وما يقابلها بالإنجليزية. */
+  when: Text;
   past: boolean;
 }
 
@@ -165,7 +171,9 @@ export function analyze(space: Space, todayStr: string, viewer: PersonKey): Repo
     const daysAway = daysBetween(todayStr, m.date);
     return {
       ...m, daysAway, past: daysAway < 0,
-      when: daysAway === 0 ? "النهارده" : daysAway > 0 ? `بعد ${arSpan(daysAway)}` : `من ${arSpan(daysAway)}`,
+      when: daysAway === 0 ? T("النهارده", "today")
+        : daysAway > 0 ? T(`بعد ${arSpan(daysAway)}`, `in ${enSpan(daysAway)}`)
+          : T(`من ${arSpan(daysAway)}`, `${enSpan(daysAway)} ago`),
     };
   }).sort((a, b) => a.date.localeCompare(b.date));
 

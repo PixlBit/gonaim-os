@@ -83,7 +83,12 @@ export function SpaceProvider({ children }: { children: ReactNode }) {
       return true;
     } catch (err) {
       const e = err as ApiError;
-      if (e.status === 401) { setPhase({ kind: "gate", note: "الجلسة انتهت. ادخل تاني." }); return false; }
+      if (e.status === 401) { setPhase({
+          kind: "gate",
+          note: document.documentElement.lang === "en"
+            ? "Your session ended. Sign in again."
+            : "الجلسة انتهت. ادخل تاني.",
+        }); return false; }
       setProblem(e.message);
       return false;
     } finally {

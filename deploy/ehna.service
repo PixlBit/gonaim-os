@@ -1,0 +1,29 @@
+# تشغيل بلا docker. انسخه إلى /etc/systemd/system/ehna.service ثم:
+#
+#   sudo systemctl enable --now ehna
+#   journalctl -u ehna -f
+#
+[Unit]
+Description=EHNA//OS — مساحة الاثنين
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ehna
+WorkingDirectory=/opt/gonaim-os
+EnvironmentFile=/opt/gonaim-os/.env
+Environment=EHNA_DIR=/var/lib/ehna
+ExecStart=/usr/bin/npm run ehna
+Restart=always
+RestartSec=5
+
+# البيانات وحدها قابلة للكتابة
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/ehna
+
+[Install]
+WantedBy=multi-user.target

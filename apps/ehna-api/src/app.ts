@@ -1,6 +1,6 @@
 import { createServer, type IncomingMessage, type Server, type ServerResponse } from "node:http";
 import {
-  Actions, ActError, apply, forViewer, report, today as todayOf,
+  Actions, ActError, apply, forViewer, report, T, today as todayOf,
   type PersonKey, type Space,
 } from "@gonaim/couple";
 import { ask, buildBrief, offline, OracleError, type Brief, type OracleKind } from "@gonaim/oracle";
@@ -122,7 +122,8 @@ export function createApp(cfg: AppConfig): Server {
     catch {
       json(res, 503, {
         error: "not_initialized",
-        message: "المساحة لسه مش متعملة. شغّل npm run ehna:setup.",
+        message: T("المساحة لسه مش متعملة. شغّل npm run ehna:setup.",
+                   "The space has not been created yet. Run npm run ehna:setup."),
       });
       return null;
     }
@@ -194,14 +195,16 @@ export function createApp(cfg: AppConfig): Server {
       if (site.serve(path, res)) return;
       return json(res, 404, {
         error: "no_site",
-        message: "الواجهة مش مبنية. شغّل npm run ehna:build.",
+        message: T("الواجهة مش مبنية. شغّل npm run ehna:build.",
+                   "The interface is not built. Run npm run ehna:build."),
       });
     }
 
     if (SECRET.length < 32) {
       return json(res, 503, {
         error: "no_secret",
-        message: "EHNA_SECRET غير مضبوط (32 حرفًا على الأقل). شغّل npm run ehna:setup.",
+        message: T("EHNA_SECRET غير مضبوط (32 حرفًا على الأقل). شغّل npm run ehna:setup.",
+                   "EHNA_SECRET is not set (32 characters minimum). Run npm run ehna:setup."),
       });
     }
 
@@ -235,8 +238,9 @@ export function createApp(cfg: AppConfig): Server {
         return json(res, 401, {
           error: result.reason,
           message: result.reason === "locked"
-            ? `الحساب مقفول مؤقتًا. جرّب بعد ${result.retryAfterMin} دقيقة.`
-            : "البيانات مش مظبوطة.",
+            ? T(`الحساب مقفول مؤقتًا. جرّب بعد ${result.retryAfterMin} دقيقة.`,
+                `The account is locked for now. Try again in ${result.retryAfterMin} minutes.`)
+            : T("البيانات مش مظبوطة.", "Those details are not right."),
         });
       }
 
@@ -282,7 +286,7 @@ export function createApp(cfg: AppConfig): Server {
         try {
           vault.space = apply(vault.space, parsed.data, { by: me.session.key, now });
         } catch (err) {
-          if (err instanceof ActError) return json(res, 409, { error: err.code, message: err.message });
+          if (err instanceof ActError) return json(res, 409, { error: err.code, message: err.text });
           throw err;
         }
         try {
@@ -301,15 +305,21 @@ export function createApp(cfg: AppConfig): Server {
           if (!(err instanceof ConflictError)) throw err;
         }
       }
-      return json(res, 503, { error: "busy", message: "المساحة بتتكتب من الجهة التانية. جرّب تاني." });
+      return json(res, 503, {
+        error: "busy",
+        message: T("المساحة بتتكتب من الجهة التانية. جرّب تاني.",
+                   "The other side is writing to the space. Try again."),
+      });
     }
 
     if (path === "/api/photo" && req.method === "POST") {
       let bytes: Buffer;
       try { bytes = await readBody(req, MAX_PHOTO); }
-      catch { return json(res, 413, { error: "too_large", message: "الصورة أكبر من 8 ميجا." }); }
+      catch {
+        return json(res, 413, { error: "too_large", message: T("الصورة أكبر من 8 ميجا.", "The photo is larger than 8 MB.") });
+      }
       const mime = sniffImage(bytes);
-      if (!mime) return json(res, 415, { error: "not_image", message: "الملف ده مش صورة." });
+      if (!mime) return json(res, 415, { error: "not_image", message: T("الملف ده مش صورة.", "That file is not an image.") });
       const id = await store.putPhoto({ bytes, mime });
       fresh.set(id, now.getTime());
       return json(res, 200, { id });
@@ -345,7 +355,7 @@ export function createApp(cfg: AppConfig): Server {
       const account = me.vault.accounts.find((a) => a.key === me.session.key);
       if (!account) return json(res, 404, { error: "not_found" });
       if (!await checkPassword(current, account)) {
-        return json(res, 401, { error: "wrong", message: "كلمة السر الحالية مش مظبوطة." });
+        return json(res, 401, { error: "wrong", message: T("كلمة السر الحالية مش مظبوطة.", "That is not your current password.") });
       }
       const problem = passwordProblem(next);
       if (problem) return json(res, 400, { error: "weak", message: problem });
@@ -398,7 +408,8 @@ export function createApp(cfg: AppConfig): Server {
       if (used >= ORACLE_PER_DAY) {
         return json(res, 429, {
           error: "oracle_limit",
-          message: `خلصت الـ${ORACLE_PER_DAY} نداء بتوع النهارده.`,
+          message: T(`خلصت الـ${ORACLE_PER_DAY} نداء بتوع النهارده.`,
+                     `That is all ${ORACLE_PER_DAY} calls for today.`),
           brief, text: offline(brief), offline: true,
         });
       }
@@ -413,7 +424,9 @@ export function createApp(cfg: AppConfig): Server {
         );
         return json(res, 200, { brief, text: answer.text, model: answer.model, used: used + 1, limit: ORACLE_PER_DAY });
       } catch (err) {
-        const message = err instanceof OracleError ? err.message : "النموذج مردّش.";
+        const message = err instanceof OracleError
+          ? T(err.message, err.message)
+          : T("النموذج مردّش.", "The model did not answer.");
         console.error("[oracle]", err);
         return json(res, 502, { error: "oracle_failed", message, brief, text: offline(brief), offline: true });
       }

@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
-import { arDate, arSpan, daysBetween, today, type Memory } from "@gonaim/couple";
+import { arDate, arSpan, daysBetween, enDate, enSpan, today, type Memory } from "@gonaim/couple";
 import { api, photoUrl, type ApiError } from "../api.js";
 import { useSpace } from "../store.js";
 import { Confirm, Empty, Field, Sheet } from "../ui/bits.js";
 import { Oracle } from "../ui/oracle.js";
+import { useTongue } from "../lang.js";
 
 /**
  * الذكريات.
@@ -20,6 +21,8 @@ export function Memories() {
   const [editing, setEditing] = useState<Memory | "new" | null>(null);
   const [kill, setKill] = useState<Memory | null>(null);
   const [open, setOpen] = useState<Memory | null>(null);
+  const { lang, t } = useTongue();
+  const date = (d: string) => (lang === "ar" ? arDate(d) : enDate(d));
 
   const years = [...new Set(space.memories.map((m) => m.date.slice(0, 4)))].sort().reverse();
   const [year, setYear] = useState<string | null>(null);
@@ -29,17 +32,18 @@ export function Memories() {
 
   return (
     <>
-      <h1 className="title">الذكريات</h1>
+      <h1 className="title">{t("الذكريات", "Memories")}</h1>
       <p className="sub">
         {space.memories.length === 0
-          ? "لسه مفيش ذكرى واحدة."
-          : `${space.memories.length} ذكرى${report.life.lastMemoryDaysAgo !== null && report.life.lastMemoryDaysAgo > 0 ? ` · آخر واحدة من ${arSpan(report.life.lastMemoryDaysAgo)}` : " · آخر واحدة النهارده"}`}
+          ? t("لسه مفيش ذكرى واحدة.", "Not one memory yet.")
+          : t(`${space.memories.length} ذكرى${report.life.lastMemoryDaysAgo !== null && report.life.lastMemoryDaysAgo > 0 ? ` · آخر واحدة من ${arSpan(report.life.lastMemoryDaysAgo)}` : " · آخر واحدة النهارده"}`,
+              `${space.memories.length} memories${report.life.lastMemoryDaysAgo !== null && report.life.lastMemoryDaysAgo > 0 ? ` · the last one ${enSpan(report.life.lastMemoryDaysAgo)} ago` : " · the last one today"}`)}
       </p>
 
       <div className="row" style={{ justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
         <div className="row" style={{ gap: 7, flex: 1 }}>
           <button className={`btn ghost${year === null ? " primary" : ""}`} style={{ flex: "0 0 auto" }} onClick={() => setYear(null)}>
-            الكل
+            {t("الكل", "All")}
           </button>
           {years.map((y) => (
             <button key={y} className={`btn ghost${year === y ? " primary" : ""}`} style={{ flex: "0 0 auto" }} onClick={() => setYear(y)}>
@@ -47,27 +51,30 @@ export function Memories() {
             </button>
           ))}
         </div>
-        <button className="btn primary" style={{ flex: "0 0 auto" }} onClick={() => setEditing("new")}>+ ذكرى</button>
+        <button className="btn primary" style={{ flex: "0 0 auto" }} onClick={() => setEditing("new")}>+ {t("ذكرى", "Memory")}</button>
       </div>
 
       {list.length === 0 ? (
         <Empty
-          title="الصفحة لسه بيضا"
-          note="أول لقاء، أول شقة شفتوها، يوم الخطوبة، أي حاجة ضحكتوا فيها."
-          action={<button className="btn primary" onClick={() => setEditing("new")}>سجّلوا أول ذكرى</button>}
+          title={t("الصفحة لسه بيضا", "The page is still blank")}
+          note={t("أول لقاء، أول شقة شفتوها، يوم الخطوبة، أي حاجة ضحكتوا فيها.",
+                  "The first time you met, the first flat you saw, the engagement day, anything that made you laugh.")}
+          action={<button className="btn primary" onClick={() => setEditing("new")}>
+            {t("سجّلوا أول ذكرى", "Write the first one")}
+          </button>}
         />
       ) : (
         <>
           {pinned.length > 0 && (
             <section className="block">
-              <div className="head"><span className="label">مثبّتة</span><hr /></div>
+              <div className="head"><span className="label">{t("مثبّتة", "Pinned")}</span><hr /></div>
               <div className="memories stagger">
                 {pinned.map((m) => <Card key={m.id} memory={m} onOpen={() => setOpen(m)} />)}
               </div>
             </section>
           )}
           <section className="block">
-            {pinned.length > 0 && <div className="head"><span className="label">الباقي</span><hr /></div>}
+            {pinned.length > 0 && <div className="head"><span className="label">{t("الباقي", "The rest")}</span><hr /></div>}
             <div className="memories stagger">
               {rest.map((m) => <Card key={m.id} memory={m} onOpen={() => setOpen(m)} />)}
             </div>
@@ -76,16 +83,17 @@ export function Memories() {
       )}
 
       <section className="block" style={{ marginTop: 34 }}>
-        <div className="head"><span className="label">الشهر ده في سطور</span><hr /></div>
-        <Oracle kind="letter" title="رسالة الشهر" />
+        <div className="head"><span className="label">{t("الشهر ده في سطور", "This month, in a few lines")}</span><hr /></div>
+        <Oracle kind="letter" title={t("رسالة الشهر", "The month\u2019s letter")} />
       </section>
 
       {open && (
         <Sheet title={open.title} onClose={() => setOpen(null)} wide>
           <div className="label" style={{ marginBottom: 10 }}>
-            {arDate(open.date)} · {space.people[open.by].name}
+            {date(open.date)} · {space.people[open.by].name}
             {open.place ? ` · ${open.place}` : ""}
-            {` · من ${arSpan(daysBetween(open.date, today()))}`}
+            {t(` · من ${arSpan(daysBetween(open.date, today()))}`,
+               ` · ${enSpan(daysBetween(open.date, today()))} ago`)}
           </div>
           {open.photos.length > 0 && (
             <div className="shots" style={{ marginBottom: 14 }}>
@@ -98,17 +106,17 @@ export function Memories() {
           )}
           {open.story && <p style={{ whiteSpace: "pre-wrap", lineHeight: 1.95 }}>{open.story}</p>}
           <div style={{ marginTop: 16 }}>
-            <Oracle kind="story" targetId={open.id} title="احكيها من أول وجديد" />
+            <Oracle kind="story" targetId={open.id} title={t("احكيها من أول وجديد", "Tell it again, from the start")} />
           </div>
           <div className="row" style={{ marginTop: 16 }}>
             <button
               className="btn ghost"
               onClick={() => void act({ type: "memory.update", id: open.id, patch: { pinned: !open.pinned } })}
             >
-              {open.pinned ? "شيل التثبيت" : "ثبّتها"}
+              {open.pinned ? t("شيل التثبيت", "Unpin") : t("ثبّتها", "Pin it")}
             </button>
-            <button className="btn ghost" onClick={() => { setEditing(open); setOpen(null); }}>عدّل</button>
-            <button className="btn danger" onClick={() => { setKill(open); setOpen(null); }}>امسح</button>
+            <button className="btn ghost" onClick={() => { setEditing(open); setOpen(null); }}>{t("عدّل", "Edit")}</button>
+            <button className="btn danger" onClick={() => { setKill(open); setOpen(null); }}>{t("امسح", "Delete")}</button>
           </div>
         </Sheet>
       )}
@@ -116,7 +124,7 @@ export function Memories() {
       {editing && <MemorySheet memory={editing === "new" ? null : editing} onClose={() => setEditing(null)} />}
       {kill && (
         <Confirm
-          text={`هتمسح ذكرى «${kill.title}» وصورها.`}
+          text={t(`هتمسح ذكرى «${kill.title}» وصورها.`, `The memory “${kill.title}” and its photos will be deleted.`)}
           onNo={() => setKill(null)}
           onYes={() => { void act({ type: "memory.remove", id: kill.id }); setKill(null); }}
         />
@@ -127,6 +135,7 @@ export function Memories() {
 
 function Card({ memory, onOpen }: { memory: Memory; onOpen: () => void }) {
   const { space } = useSpace();
+  const { lang, t } = useTongue();
   const cover = memory.photos[0];
   return (
     <button className="panel mem hoverable" onClick={onOpen} style={{ textAlign: "start", padding: 0, border: "1px solid var(--line)" }}>
@@ -135,13 +144,13 @@ function Card({ memory, onOpen }: { memory: Memory; onOpen: () => void }) {
         {memory.photos.length > 1 && <span className="more">+{memory.photos.length - 1}</span>}
       </div>
       <div className="body">
-        <span className="d">{arDate(memory.date)}</span>
-        <h4>{memory.title}</h4>
+        <span className="d">{lang === "ar" ? arDate(memory.date) : enDate(memory.date)}</span>
+        <h4><bdi>{memory.title}</bdi></h4>
         {memory.story && <p>{memory.story.slice(0, 110)}{memory.story.length > 110 ? "…" : ""}</p>}
         <div className="row" style={{ gap: 6, marginTop: 9 }}>
           <span className={`chip ${memory.by}`}>{space.people[memory.by].name}</span>
           {memory.place && <span className="chip">{memory.place}</span>}
-          {memory.pinned && <span className="chip warn">مثبّتة</span>}
+          {memory.pinned && <span className="chip warn">{t("مثبّتة", "pinned")}</span>}
         </div>
       </div>
     </button>
@@ -150,6 +159,7 @@ function Card({ memory, onOpen }: { memory: Memory; onOpen: () => void }) {
 
 function MemorySheet({ memory, onClose }: { memory: Memory | null; onClose: () => void }) {
   const { act, busy } = useSpace();
+  const { t } = useTongue();
   const [date, setDate] = useState(memory?.date ?? today());
   const [title, setTitle] = useState(memory?.title ?? "");
   const [story, setStory] = useState(memory?.story ?? "");
@@ -185,23 +195,26 @@ function MemorySheet({ memory, onClose }: { memory: Memory | null; onClose: () =
   }
 
   return (
-    <Sheet title={memory ? "تعديل الذكرى" : "ذكرى جديدة"} onClose={onClose}>
+    <Sheet title={memory ? t("تعديل الذكرى", "Edit memory") : t("ذكرى جديدة", "New memory")} onClose={onClose}>
       <div className="row">
-        <Field label="اليوم">
+        <Field label={t("اليوم", "Day")}>
           <input type="date" value={date} onChange={(e) => setDate(e.target.value)} dir="ltr" />
         </Field>
-        <Field label="المكان">
-          <input value={place} onChange={(e) => setPlace(e.target.value)} placeholder="فين كنتوا" />
+        <Field label={t("المكان", "Place")}>
+          <input value={place} onChange={(e) => setPlace(e.target.value)}
+                 placeholder={t("فين كنتوا", "Where you were")} />
         </Field>
       </div>
-      <Field label="العنوان">
-        <input value={title} onChange={(e) => setTitle(e.target.value)} autoFocus placeholder="أول مرة نشوف الشقة" />
+      <Field label={t("العنوان", "Title")}>
+        <input value={title} onChange={(e) => setTitle(e.target.value)} autoFocus
+               placeholder={t("أول مرة نشوف الشقة", "The first time we saw the flat")} />
       </Field>
-      <Field label="الحكاية">
-        <textarea value={story} onChange={(e) => setStory(e.target.value)} style={{ minHeight: 140 }} placeholder="اكتبها زي ما حصلت…" />
+      <Field label={t("الحكاية", "The story")}>
+        <textarea value={story} onChange={(e) => setStory(e.target.value)} style={{ minHeight: 140 }}
+                  placeholder={t("اكتبها زي ما حصلت…", "Write it the way it happened…")} />
       </Field>
 
-      <Field label={`الصور — ${photos.length}/12`}>
+      <Field label={t(`الصور — ${photos.length}/12`, `Photos — ${photos.length}/12`)}>
         <div className="shots">
           {photos.map((p) => (
             <div key={p} style={{ position: "relative" }}>
@@ -210,13 +223,13 @@ function MemorySheet({ memory, onClose }: { memory: Memory | null; onClose: () =
                 className="iconbtn danger"
                 style={{ position: "absolute", insetBlockStart: -6, insetInlineEnd: -6, background: "var(--panel)", borderRadius: "50%" }}
                 onClick={() => setPhotos((all) => all.filter((x) => x !== p))}
-                aria-label="شيل"
+                aria-label={t("شيل", "Remove")}
               >✕</button>
             </div>
           ))}
           {uploading > 0 && <div className="slot">…</div>}
           {photos.length < 12 && (
-            <button className="slot" onClick={() => picker.current?.click()} aria-label="زوّد صورة">+</button>
+            <button className="slot" onClick={() => picker.current?.click()} aria-label={t("زوّد صورة", "Add a photo")}>+</button>
           )}
         </div>
         <input
@@ -232,9 +245,9 @@ function MemorySheet({ memory, onClose }: { memory: Memory | null; onClose: () =
       {error && <div className="err">{error}</div>}
 
       <div className="row" style={{ marginTop: 6 }}>
-        <button className="btn ghost" onClick={onClose}>إلغاء</button>
+        <button className="btn ghost" onClick={onClose}>{t("إلغاء", "Cancel")}</button>
         <button className="btn primary" disabled={busy || uploading > 0 || !title.trim()} onClick={() => void save()}>
-          {uploading > 0 ? "بيرفع الصور…" : "احفظ"}
+          {uploading > 0 ? t("بيرفع الصور…", "Uploading…") : t("احفظ", "Save")}
         </button>
       </div>
     </Sheet>

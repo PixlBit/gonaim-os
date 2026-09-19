@@ -136,7 +136,9 @@ describe("الانتباه — الصمت حالة نجاح", () => {
     const a = report(s, TODAY, "him").attention;
     expect(a[0]?.code).toBe("over_budget");
     expect(a[0]?.level).toBe("now");
-    expect(a[0]?.title).toContain("10,000");
+    expect(a[0]?.title.ar).toContain("10,000");
+    // نفس الرقم في اللغتين: الأرقام لاتينية، والجملة وحدها تتغيّر
+    expect(a[0]?.title.en).toContain("10,000");
   });
 
   it("الأساسي الناقص يظهر قرب الفرح فقط", () => {
@@ -165,7 +167,8 @@ describe("الانتباه — الصمت حالة نجاح", () => {
     s = act(s, { type: "memory.add", date: "2025-11-01", title: "الخطوبة" });
     const hit = attend(s, analyze(s, TODAY, "him"), "him").find((a) => a.code === "memory_gap");
     expect(hit?.level).toBe("watch");
-    expect(hit?.title).toContain("شهرين");
+    expect(hit?.title.ar).toContain("شهرين");
+    expect(hit?.title.en).toContain("2 months");
   });
 });
 
